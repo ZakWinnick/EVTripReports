@@ -11,19 +11,15 @@ crons = ["17 14 * * 1"]
 SITE_URL = "https://evtripreports.pages.dev"
 ROUTES_WEEKLY = "la-to-las-vegas"
 ROUTES_MONTHLY = ""
-NOTIFY_FROM = "plans@evtripreports.com"
-# NOTIFY_TO is set once the notification inbox is verified in Email Routing.
+NOTIFY_FROM = "admin@evtripreports.com"
+NOTIFY_TO = "admin@evtripreports.com"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "ev-trip-reports"
 database_id = "6a6d8d78-d71c-4d01-bb88-ae2eb173e3c7"
 
-# Uncomment after the destination address is verified in Email Routing:
-# [[send_email]]
-# name = "EMAIL"
-# destination_address = "you@example.com"
-
 # Secrets (set in the Cloudflare dashboard, never in this file):
 #   NLR_API_KEY  DOE / NLR developer key
 #   RUN_TOKEN    random string that guards /run and /latest
+#   FASTMAIL_TOKEN  Fastmail API token (Email + Email submission) used to send the report
