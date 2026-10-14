@@ -103,6 +103,9 @@ const stopSources = (s: any) => {
         <div class="cols">
           <div>
             <h3 class="h3 sub">Backups</h3>
+            {s.backups.length === 0 ? (
+              <p class="muted">No backup confirmed on a network locator for this stop yet.</p>
+            ) : (
             <ul class="list">
               {s.backups.map((b: any) => (
                 <li class="item">
@@ -119,6 +122,7 @@ const stopSources = (s: any) => {
                 </li>
               ))}
             </ul>
+            )}
             {s.other.length > 0 && (
               <details class="other">
                 <summary>Other DC sites nearby ({s.other.length}), DOE data only</summary>

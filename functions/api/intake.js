@@ -1,12 +1,53 @@
-// Cloudflare Pages Function: POST /api/intake
-// Needs a D1 binding named DB (see schema.sql). Without it, returns 503 and the form says requests aren't open yet.
-// With the FASTMAIL_TOKEN secret set, each request is also emailed to NOTIFY_TO (default admin@evtripreports.com).
+// Cloudflare Pages Function: /api/intake
+// POST writes a plan request to a D1 database bound as DB (see schema.sql).
+// Without that binding, POST returns 503 and the form says requests aren't open yet.
+// With the FASTMAIL_TOKEN secret set, each request is also emailed to NOTIFY_TO
+// (default admin@evtripreports.com).
+//
+// Turnstile (optional). Both names are Pages variables, not committed:
+//   TURNSTILE_SITE_KEY   public site key. GET returns it so the form can render the widget.
+//   TURNSTILE_SECRET      secret key. When set, POST requires a passing siteverify.
+//   TURNSTILE_HOSTNAMES   optional comma-separated hostnames. Default: evtripreports.com.
+// If TURNSTILE_SECRET is unset, the form still accepts requests (it still needs D1).
+// Set both the site key and the secret before expecting the widget to be enforced.
 import { sendMail } from '../_lib/fastmail.js';
+
 const REQUIRED = ['name', 'email', 'tier', 'car', 'port', 'start', 'end', 'depart'];
 const MAX = 2000;
+const SITEVERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
+
+export async function onRequestGet({ env }) {
+  return json({ turnstileSiteKey: env.TURNSTILE_SITE_KEY || null });
+}
+
+async function verifyTurnstile(request, env, token) {
+  if (!env.TURNSTILE_SECRET) return true;
+  const value = String(token ?? '');
+  if (value.length < 1 || value.length > 2048) return false;
+
+  const body = new URLSearchParams({ secret: env.TURNSTILE_SECRET, response: value });
+  const ip = request.headers.get('CF-Connecting-IP');
+  if (ip) body.set('remoteip', ip);
+
+  let res;
+  try {
+    res = await fetch(SITEVERIFY, { method: 'POST', body });
+  } catch {
+    return false;
+  }
+  let out;
+  try { out = await res.json(); } catch { return false; }
+  if (!res.ok || !out.success || out.action !== 'plan_request') return false;
+
+  const allowed = String(env.TURNSTILE_HOSTNAMES || 'evtripreports.com')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return allowed.includes(out.hostname);
+}
 
 export async function onRequestPost({ request, env, waitUntil }) {
   if (!env.DB) return json({ error: 'Plan requests are not open yet.' }, 503);
@@ -15,6 +56,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
   try { data = await request.json(); } catch { return json({ error: 'The request was not valid JSON.' }, 400); }
 
   if (data.website) return json({ ok: true }); // honeypot: pretend success
+
+  if (!(await verifyTurnstile(request, env, data['cf-turnstile-response']))) {
+    return json({ error: 'The security check failed. Refresh the page and try again.' }, 403);
+  }
 
   const missing = REQUIRED.filter((k) => !String(data[k] ?? '').trim());
   if (missing.length) return json({ error: `Missing: ${missing.join(', ')}.` }, 400);

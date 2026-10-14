@@ -1,11 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const tiers = [
-  { name: 'Route plan', price: '$19', blurb: 'Charging stops and backups for one drive.', delivery: 'Within 48 hours' },
-  { name: 'Detailed plan', price: '$39', blurb: 'The route plan, plus food, restrooms, and hotels with chargers.', delivery: 'Within 48 hours' },
-  { name: 'Multi-day or family', price: '$79', blurb: 'Several days, overnight charging, and stops timed for kids.', delivery: 'Within 3 business days' },
-];
+import { tiers, priceLabel, checkoutOpen } from '../data/plans.js';
 const rows: [string, boolean, boolean, boolean][] = [
   ['Primary charger and backup at every stop', true, true, true],
   ['Every stop re-checked against the network before delivery', true, true, true],
@@ -29,7 +24,7 @@ const faq = [
     <div class="wrap">
       <h1 class="h1">A trip plan built<br />for your car.</h1>
       <p class="lede" style="margin-top:20px">Tell us what you drive and where you're going. We pick each stop for your port, adapter, and memberships, check it against the network's own locator, and send it back with a backup at every stop.</p>
-      <p class="note" style="margin-top:28px"><strong>Founding plans are free.</strong> The first 10 plans cost nothing. In return, send us a short trip report after you drive it. Paid checkout opens after that.</p>
+      <p class="note" style="margin-top:28px"><strong>Founding plans are free.</strong> Paid checkout is not open yet. In return for a founding plan, send a short trip report after you drive it.</p>
     </div>
   </section>
 
@@ -42,7 +37,8 @@ const faq = [
           {tiers.map((t) => (
             <div role="columnheader" class="cmp__tier">
               <span class="cmp__name">{t.name}</span>
-              <span class="cmp__price">{t.price}</span>
+              <span class="cmp__price">{priceLabel(t)}</span>
+              {!checkoutOpen(t) && <span class="small muted">Paid checkout coming soon</span>}
               <span class="small muted">{t.blurb}</span>
             </div>
           ))}
@@ -109,6 +105,7 @@ const faq = [
         </fieldset>
         <label>Anything else<textarea name="notes" rows="4" placeholder="Must-stops, hotels you like, how far you're comfortable driving in a day"></textarea></label>
         <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label>
+        <div id="turnstile-slot" hidden></div>
         <div class="btnrow">
           <button class="pill pill--lg" type="submit">Request my plan</button>
           <span class="small muted">By sending, you agree to the <a href="/terms">terms</a> and <a href="/privacy">privacy policy</a>.</span>
@@ -158,6 +155,7 @@ const faq = [
       <h2 id="refunds" class="h2" style="margin-top:64px">Refund policy</h2>
       <div class="prose" style="margin-top:16px">
         <ul>
+          <li>Founding plans are free, so there is nothing to refund until paid checkout opens. Once a plan is paid, the rules below apply.</li>
           <li>If we miss the delivery time, you get a full refund.</li>
           <li>If a station fact in your plan was wrong on the date we checked it, you get a full refund.</li>
           <li>Networks change things after we check. A plan that was correct on its check date isn't refundable because a site changed later.</li>
@@ -171,6 +169,40 @@ const faq = [
 <script>
   const form = document.getElementById('intake') as HTMLFormElement | null;
   const msg = form?.querySelector('.form__msg') as HTMLElement | null;
+  const slot = document.getElementById('turnstile-slot');
+  let widgetId: string | null = null;
+
+  function loadTurnstile() {
+    return new Promise<void>((resolve, reject) => {
+      const w = window as unknown as { turnstile?: { render: Function; getResponse: Function; reset: Function } };
+      if (w.turnstile) { resolve(); return; }
+      const s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      s.async = true;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('turnstile'));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function setupTurnstile() {
+    if (!slot) return;
+    try {
+      const res = await fetch('/api/intake');
+      if (!res.ok) return;
+      const body = await res.json();
+      const sitekey = body.turnstileSiteKey;
+      if (!sitekey) return;
+      await loadTurnstile();
+      const turnstile = (window as unknown as { turnstile: { render: Function } }).turnstile;
+      slot.hidden = false;
+      widgetId = turnstile.render(slot, { sitekey, action: 'plan_request' });
+    } catch {
+      widgetId = null;
+    }
+  }
+  setupTurnstile();
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!form || !msg) return;
@@ -185,6 +217,8 @@ const faq = [
     const fd = new FormData(form);
     const data: Record<string, unknown> = Object.fromEntries(fd.entries());
     data.memberships = fd.getAll('memberships');
+    const turnstile = (window as unknown as { turnstile?: { getResponse: (id: string) => string; reset: (id: string) => void } }).turnstile;
+    if (widgetId && turnstile) data['cf-turnstile-response'] = turnstile.getResponse(widgetId);
     const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
     btn.disabled = true;
     btn.textContent = 'Sending';
@@ -208,6 +242,7 @@ const faq = [
     } finally {
       btn.disabled = false;
       btn.textContent = 'Request my plan';
+      if (widgetId && turnstile) turnstile.reset(widgetId);
     }
   });
 </script>

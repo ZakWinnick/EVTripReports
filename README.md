@@ -31,6 +31,20 @@ Plan requests and the Monday station check are emailed through Fastmail's JMAP A
 
 Optional overrides: `NOTIFY_TO` and `NOTIFY_FROM`. Without the token, requests are still saved to D1; they just aren't emailed.
 
+## Turnstile on the plan form
+
+The intake form can require a Cloudflare Turnstile check. Add these on the Pages project (Settings > Variables and secrets). Do not commit the values.
+
+- `TURNSTILE_SITE_KEY` — site key. The form asks `GET /api/intake` for it and renders the widget only when it is set.
+- `TURNSTILE_SECRET` — secret key. When it is set, `POST /api/intake` requires a passing siteverify result (`success`, action `plan_request`, and a hostname in the allow list). A failed or unreachable siteverify is rejected.
+- `TURNSTILE_HOSTNAMES` — optional comma-separated hostnames. If unset, the only allowed hostname is `evtripreports.com`.
+
+Both the site key and the secret have to be set for the check to run. If `TURNSTILE_SECRET` is unset, the form still accepts requests and still needs the D1 binding. Preview hostnames are rejected until they are added to `TURNSTILE_HOSTNAMES`.
+
+## Paid checkout
+
+Plan prices live in `src/data/plans.js`. Founding plans are free and `stripeUrl` is null, so the site shows "Free" and "Paid checkout coming soon." To charge a tier later, set `foundingFree` to `false`, set that tier's `price` to the label to display, and set `stripeUrl` to its Stripe Payment Link.
+
 ## Data rules
 
 See `/methodology` on the site. Short version: network locators are the authority, the DOE database finds every site, driver reports are dated and linked, aggregators are never cited, and anything unconfirmed is labeled.
@@ -46,6 +60,7 @@ npm run dev
 
 `workers/station-check/` is a separate Cloudflare Worker that runs every Monday.
 
+- `SITE_URL` is `https://evtripreports.com`. `ROUTES_WEEKLY` lists every published route.
 - Reads each route from `/data/<slug>.json` on the live site.
 - Searches the DOE (NLR) station API for DC fast sites around each stop (`searches` in the route JSON: name, lat, lng, radius in miles) and compares them with the guide (`afdcIds`) and with last week's snapshot.
 - Saves a change list to D1 (`check_runs`) and emails it when email is configured. It never edits the site.
