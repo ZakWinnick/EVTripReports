@@ -1,0 +1,29 @@
+name = "evtripreports-station-check"
+main = "src/index.js"
+compatibility_date = "2026-10-14"
+workers_dev = true
+
+# Mondays 14:17 UTC (7:17 am Pacific in summer, 6:17 am in winter)
+[triggers]
+crons = ["17 14 * * 1"]
+
+[vars]
+SITE_URL = "https://evtripreports.pages.dev"
+ROUTES_WEEKLY = "la-to-las-vegas"
+ROUTES_MONTHLY = ""
+NOTIFY_FROM = "plans@evtripreports.com"
+# NOTIFY_TO is set once the notification inbox is verified in Email Routing.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ev-trip-reports"
+database_id = "6a6d8d78-d71c-4d01-bb88-ae2eb173e3c7"
+
+# Uncomment after the destination address is verified in Email Routing:
+# [[send_email]]
+# name = "EMAIL"
+# destination_address = "you@example.com"
+
+# Secrets (set in the Cloudflare dashboard, never in this file):
+#   NLR_API_KEY  DOE / NLR developer key
+#   RUN_TOKEN    random string that guards /run and /latest
