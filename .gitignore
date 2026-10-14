@@ -4,3 +4,5 @@ dist
 .DS_Store
 .wrangler
 workers/*/node_modules
+.wrangler
+wrangler.toml

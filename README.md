@@ -4,7 +4,9 @@ Static site for evtripreports.com, built with Astro and hosted on Cloudflare Pag
 
 ## How it's built
 
-- Route guides are generated from JSON in `src/data/routes/`. One file per route. Every station fact carries a `status` (`verified`, `conflict`, `unverified`, `unpublished`) and a `source` key that points into the file's `sources` map.
+- Guide content lives in D1 (table `routes`, schema in `schema-routes.sql`). Publishing a new guide or an update is a row write: `functions/guides/[[path]].js` renders the D1 version on each request with the same renderer the build uses (`src/lib/render-guide.js`), and `functions/index.js` updates the home page cards. No deploy needed.
+- The JSON in `src/data/routes/` is the built-in fallback, served when D1 has no row or isn't reachable.
+- Route guides are generated from that JSON at build time. One file per route. Every station fact carries a `status` (`verified`, `conflict`, `unverified`, `unpublished`) and a `source` key that points into the file's `sources` map.
 - `src/data/routes.json` lists all routes and whether each is live.
 - `functions/api/intake.js` handles plan requests. It writes to a D1 database bound as `DB` (schema in `schema.sql`). Without the binding it returns 503 and the form tells visitors requests aren't open yet.
 
@@ -52,3 +54,8 @@ npm run dev
 - Item types: Not in guide, Coming (planned), Status, Access, Changed, Missing.
 
 Setup: run `workers/station-check/schema.sql` in the D1 console, create the Worker from this repo with root directory `workers/station-check`, then add secrets `NLR_API_KEY` and `RUN_TOKEN`. Manual run: `https://<worker>/run?token=<RUN_TOKEN>`. Latest reports: `/latest?token=<RUN_TOKEN>`.
+
+## Publishing
+
+- Content (guides, station facts, new routes): write the route JSON to D1 `routes` with status `live`. Live on the next request.
+- Code (templates, Functions, the Worker): merge to `main`; Cloudflare deploys it.
