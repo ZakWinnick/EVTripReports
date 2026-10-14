@@ -11,7 +11,7 @@ keep_vars = true
 crons = ["17 14 * * MON"]
 
 [vars]
-SITE_URL = "https://evtripreports.pages.dev"
+SITE_URL = "https://evtripreports.com"
 ROUTES_WEEKLY = "la-to-las-vegas"
 ROUTES_MONTHLY = ""
 NOTIFY_FROM = "admin@evtripreports.com"
