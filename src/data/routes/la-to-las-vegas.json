@@ -231,12 +231,16 @@
       ],
       "searches": [
         {
-          "location": "Hesperia, CA",
-          "radius": 4
+          "name": "Hesperia",
+          "lat": 34.425,
+          "lng": -117.36,
+          "radius": 5
         },
         {
-          "location": "Victorville, CA",
-          "radius": 4
+          "name": "Victorville",
+          "lat": 34.5175,
+          "lng": -117.31,
+          "radius": 5
         }
       ]
     },
@@ -387,7 +391,9 @@
       ],
       "searches": [
         {
-          "location": "Barstow, CA",
+          "name": "Barstow",
+          "lat": 34.87,
+          "lng": -117.04,
           "radius": 6
         }
       ]
@@ -468,8 +474,10 @@
       ],
       "searches": [
         {
-          "location": "Yermo, CA",
-          "radius": 4
+          "name": "Yermo",
+          "lat": 34.907,
+          "lng": -116.83,
+          "radius": 6
         }
       ]
     },
@@ -619,7 +627,9 @@
       ],
       "searches": [
         {
-          "location": "Baker, CA",
+          "name": "Baker",
+          "lat": 35.265,
+          "lng": -116.075,
           "radius": 14
         }
       ]
@@ -729,15 +739,9 @@
       ],
       "searches": [
         {
-          "location": "Primm, NV",
-          "radius": 4
-        },
-        {
-          "location": "Jean, NV",
-          "radius": 4
-        },
-        {
-          "location": "Nipton, CA",
+          "name": "Primm, Jean and Valley Wells",
+          "lat": 35.6107,
+          "lng": -115.3876,
           "radius": 25
         }
       ]
