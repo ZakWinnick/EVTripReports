@@ -12,7 +12,7 @@ crons = ["17 14 * * MON"]
 
 [vars]
 SITE_URL = "https://evtripreports.com"
-ROUTES_WEEKLY = "la-to-las-vegas,la-to-sf,sf-to-tahoe,la-to-phoenix,seattle-to-portland,nyc-to-boston"
+ROUTES_WEEKLY = "la-to-las-vegas"
 ROUTES_MONTHLY = ""
 NOTIFY_FROM = "admin@evtripreports.com"
 NOTIFY_TO = "admin@evtripreports.com"
