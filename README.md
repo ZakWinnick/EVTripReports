@@ -4,7 +4,9 @@ Static site for evtripreports.com, built with Astro and hosted on Cloudflare Pag
 
 ## How it's built
 
-- Route guides are generated from JSON in `src/data/routes/`. One file per route. Every station fact carries a `status` (`verified`, `conflict`, `unverified`, `unpublished`) and a `source` key that points into the file's `sources` map.
+- Guide content lives in D1 (table `routes`, schema in `schema-routes.sql`). Publishing a new guide or an update is a row write: `functions/guides/[[path]].js` renders the D1 version on each request with the same renderer the build uses (`src/lib/render-guide.js`), and `functions/index.js` updates the home page cards. No deploy needed.
+- The JSON in `src/data/routes/` is the built-in fallback, served when D1 has no row or isn't reachable.
+- Route guides are generated from that JSON at build time. One file per route. Every station fact carries a `status` (`verified`, `conflict`, `unverified`, `unpublished`) and a `source` key that points into the file's `sources` map.
 - `src/data/routes.json` lists all routes and whether each is live.
 - `functions/api/intake.js` handles plan requests. It writes to a D1 database bound as `DB` (schema in `schema.sql`). Without the binding it returns 503 and the form tells visitors requests aren't open yet.
 
@@ -35,9 +37,9 @@ Optional overrides: `NOTIFY_TO` and `NOTIFY_FROM`. Without the token, requests a
 
 The intake form can require a Cloudflare Turnstile check. Add these on the Pages project (Settings > Variables and secrets). Do not commit the values.
 
-- `TURNSTILE_SITE_KEY` — site key. The form asks `GET /api/intake` for it and renders the widget only when it is set.
-- `TURNSTILE_SECRET` — secret key. When it is set, `POST /api/intake` requires a passing siteverify result (`success`, action `plan_request`, and a hostname in the allow list). A failed or unreachable siteverify is rejected.
-- `TURNSTILE_HOSTNAMES` — optional comma-separated hostnames. If unset, the only allowed hostname is `evtripreports.com`.
+- `TURNSTILE_SITE_KEY`: site key. The form asks `GET /api/intake` for it and renders the widget only when it is set.
+- `TURNSTILE_SECRET`: secret key. When it is set, `POST /api/intake` requires a passing siteverify result (`success`, action `plan_request`, and a hostname in the allow list). A failed or unreachable siteverify is rejected.
+- `TURNSTILE_HOSTNAMES`: optional comma-separated hostnames. If unset, the only allowed hostname is `evtripreports.com`.
 
 Both the site key and the secret have to be set for the check to run. If `TURNSTILE_SECRET` is unset, the form still accepts requests and still needs the D1 binding. Preview hostnames are rejected until they are added to `TURNSTILE_HOSTNAMES`.
 
@@ -48,6 +50,14 @@ Plan prices and Stripe Payment Links live in `src/data/plans.js`. Each tier's pa
 ## Data rules
 
 See `/methodology` on the site. Short version: network locators are the authority, the DOE database finds every site, driver reports are dated and linked, aggregators are never cited, and anything unconfirmed is labeled.
+
+The DOE station search is `developer.nlr.gov`. `nearest.json` needs `latitude` and `longitude`. A `location` parameter returns 422.
+
+Tesla access comes from the locator, not from the DOE port type. `functionType=nacs` means the site is open to other EVs. `functionType=supercharger` alone means Tesla only. Flag each Tesla site that way. Prices move during the day, so a price check needs the clock time it was read. If the page did not show a price, say that. Do not invent a time.
+
+## Unknown guide URLs
+
+`functions/guides/[[path]].js` handles every `/guides/*` request. A live D1 row is rendered into the guide shell. A slug with no D1 row is served only when `dist/guides/<slug>/index.html` exists and its HTML is that guide. Every other path under `/guides/` returns `dist/404.html` with status 404. It does not fall through to the homepage.
 
 ## Local
 
@@ -67,3 +77,22 @@ npm run dev
 - Item types: Not in guide, Coming (planned), Status, Access, Changed, Missing.
 
 Setup: run `workers/station-check/schema.sql` in the D1 console, create the Worker from this repo with root directory `workers/station-check`, then add secrets `NLR_API_KEY` and `RUN_TOKEN`. Manual run: `https://<worker>/run?token=<RUN_TOKEN>`. Latest reports: `/latest?token=<RUN_TOKEN>`.
+
+## Publishing
+
+- Content (guides, station facts, new routes): write the route JSON to D1 `routes` with status `live`. Live on the next request. Until that row exists, the built JSON is what visitors get.
+- Code (templates, Functions, the Worker): merge to `main`; Cloudflare deploys it.
+
+## Loading guides into D1
+
+Do this in the Cloudflare dashboard for the D1 database already bound to the Pages project as `DB`. That is the same database plan requests use. Do not create a second database, and do not run these statements from a deploy script against production.
+
+1. Open Workers & Pages, then D1, then the database bound as `DB`. Open the console.
+2. Paste `schema-routes.sql` and run it. It only creates `routes` when the table is missing. Plan-request tables in `schema.sql` stay as they are.
+3. On your machine, from this repo, run `node scripts/export-routes-sql.mjs > routes.sql`. That file is generated locally. It is not committed.
+4. Paste `routes.sql` into the same D1 console and run it. D1 rejects a single statement over 100KB. The export script skips a route and prints a SKIP line if that happens.
+5. Insert every published route in that one run. `functions/index.js` replaces the whole homepage card list when the table has any rows. A partial load hides the guides that are only in the build.
+6. A row is what the site serves only when `status` is `live` and `json` is set. `verifying` keeps the route on the homepage as coming soon and leaves `/guides/<slug>/` on the built page, or on the 404 if no page was built.
+7. Confirm a guide on the preview URL, then an unknown path such as `/guides/not-a-route/`. The guide should be the D1 copy. The unknown path should be the 404 page with status 404.
+
+The JSON in `src/data/routes/` stays in git. It is the fallback when D1 has no row, and it is what the Monday station check reads until `functions/data/[file].js` finds a live row.

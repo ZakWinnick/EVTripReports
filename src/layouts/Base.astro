@@ -1,12 +1,14 @@
 ---
 import '../styles/global.css';
+import '../styles/guide.css';
 
 interface Props {
   title: string;
   description: string;
   path?: string;
+  noindex?: boolean;
 }
-const { title, description, path = '' } = Astro.props;
+const { title, description, path = '', noindex = false } = Astro.props;
 const fullTitle = title === 'EV Trip Reports' ? title : `${title} | EV Trip Reports`;
 const canonical = new URL(path || Astro.url.pathname, Astro.site).toString();
 const current = Astro.url.pathname.replace(/\/$/, '');
@@ -24,6 +26,7 @@ const links = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />

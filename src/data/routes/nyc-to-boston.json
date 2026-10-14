@@ -58,7 +58,7 @@
       "name": "Stamford",
       "towns": "Stamford and Norwalk, CT",
       "mile": 30,
-      "milepostNote": "Exit 6, Harvard Avenue / West Avenue, miles 6.50–6.62. From the bridge: 23.50 + 6.50 = 30.0.",
+      "milepostNote": "Exit 6, Harvard Avenue / West Avenue, miles 6.50 to 6.62. From the bridge: 23.50 + 6.50 = 30.0.",
       "why": "The Ridgeway Electrify America site is the verified primary. Summer Street was not the exit-6 road, so the exit row stays unverified. Norwalk sites are included from their own search.",
       "primary": {
         "name": "Ridgeway Shopping Center",
@@ -454,7 +454,7 @@
       "name": "North Haven",
       "towns": "North Haven, New Haven, and Guilford, CT",
       "mile": 71,
-      "milepostNote": "I-95 exit 47B, I-91 north, miles 47.58–47.91. From the bridge: 23.50 + 47.58 = 71.1.",
+      "milepostNote": "I-95 exit 47B, I-91 north, miles 47.58 to 47.91. From the bridge: 23.50 + 47.58 = 71.1.",
       "why": "The North Haven Electrify America site is north of I-95 on Universal Drive. The I-91 exit for that driveway was not on the I-95 exit list. Guilford's search is included. Branford's centered search did not complete.",
       "primary": {
         "name": "North Haven Crossing",
