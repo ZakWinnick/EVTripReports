@@ -1,0 +1,631 @@
+{
+  "slug": "la-to-las-vegas",
+  "title": "LA to Las Vegas",
+  "highway": "I-15",
+  "summary": "The desert run everyone makes. Charging is dense now, but the big sites cluster, and Baker on a Sunday afternoon is still Baker.",
+  "checked": "2026-10-14",
+  "startLabel": "I-10 junction, Ontario",
+  "startNote": "Mileage starts where most LA drivers join I-15: the I-10 junction at exit 109.",
+  "endLabel": "Tropicana Ave, Las Vegas",
+  "stats": [
+    {
+      "label": "I-10 junction to Tropicana Ave",
+      "value": "224",
+      "unit": "mi",
+      "source": "wiki-i15-ca",
+      "note": "From exit mileposts: CA exit 109 to the state line at mile 295.4, plus NV exit 37."
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "30",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "18",
+      "unit": ""
+    },
+    {
+      "label": "High point, Mountain Pass",
+      "value": "4,730",
+      "unit": "ft",
+      "source": "wiki-i15-ca"
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "evgo-locator": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "wiki-i15-ca": {
+      "name": "Interstate 15 in California, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_15_in_California"
+    },
+    "wiki-i15-nv": {
+      "name": "Interstate 15 in Nevada, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_15_in_Nevada"
+    },
+    "lh-ea-p90": {
+      "name": "Leasehackr forum, Electrify America thread, page 90",
+      "url": "https://forum.leasehackr.com/t/electrify-america-experiences-and-discussion/503939?page=90"
+    },
+    "f150-baker": {
+      "name": "F150 Lightning Forum, Baker solar charging thread",
+      "url": "https://www.f150lightningforum.com/forum/threads/free-360kw-charging-on-the-way-to-vegas-off-grid-solar-battery-powered-site.36743/"
+    },
+    "ctoc-barstow": {
+      "name": "Cybertruck Owners Club, Barstow 120-stall thread",
+      "url": "https://www.cybertruckownersclub.com/forum/threads/worlds-largest-tesla-supercharger-120-v4-stalls-barstow-ca.33402/"
+    }
+  },
+  "stops": [
+    {
+      "id": "victor-valley",
+      "name": "Victor Valley",
+      "towns": "Hesperia and Victorville, CA",
+      "mile": 34,
+      "milepostNote": "Exits 143 to 151A",
+      "why": "First real stop after the Cajon Pass climb, and the last big town before open desert. Good place to top off if you left LA low.",
+      "primary": {
+        "name": "Walmart Hesperia",
+        "network": "Electrify America",
+        "address": "13401 Main Street, Hesperia, CA 92345",
+        "exit": "Exit 143, Main Street",
+        "stalls": {
+          "value": "10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/hesperia/13401-main-street/100042/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/hesperia/13401-main-street/100042/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        }
+      },
+      "backups": [
+        {
+          "name": "Cardenas Market Hesperia",
+          "network": "EVgo",
+          "address": "15555 Main St., Hesperia, CA 92345",
+          "facts": "4 chargers, 2 CCS cables each (8 cables). 350 kW per charger, shared when both cables are in use.",
+          "access": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "evgo-locator",
+          "url": "https://www.evgo.com/find-a-charger/?siteId=71284"
+        },
+        {
+          "name": "Hesperia (Target)",
+          "network": "Tesla Supercharger",
+          "address": "12795 Main Street, Hesperia, CA 92345",
+          "facts": "20 stalls, up to 250 kW. Non-Tesla: $0.67/kWh, congestion fee up to $0.50/min.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=hesperiasupercharger"
+        },
+        {
+          "name": "Victorville, Roy Rogers Drive (Desert Sky Plaza)",
+          "network": "Tesla Supercharger",
+          "address": "15617 Roy Rogers Drive, Victorville, CA 92394",
+          "facts": "20 stalls, up to 325 kW. Non-Tesla price varies by time of day; check the Tesla app.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=32196"
+        },
+        {
+          "name": "P66 / 76 Victorville",
+          "network": "Electrify America",
+          "address": "15290 Mojave Dr, Victorville, CA 92394",
+          "facts": "4 stalls, 350 kW CCS. EA labels this a Commercial station: pricing is shown on the charger display.",
+          "access": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/victorville/15290-mojave-dr/701218/"
+        },
+        {
+          "name": "Victorville (Victor Plaza)",
+          "network": "Tesla Supercharger",
+          "address": "14598 7th St, Victorville, CA 92395",
+          "facts": "16 stalls, up to 250 kW.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=VictorvilleCASupercharger"
+        }
+      ],
+      "other": [
+        {
+          "name": "Circle K, 15825 Mojave Dr, Victorville",
+          "facts": "DOE lists 3 CCS at 180 kW and 1 CHAdeMO at 100 kW. DOE last confirmed May 2025.",
+          "status": "unverified"
+        },
+        {
+          "name": "Circle K, 15289 Nisqualli Rd, Victorville",
+          "facts": "DOE lists 2 units, CCS 180 kW and CHAdeMO 100 kW.",
+          "status": "unverified"
+        },
+        {
+          "name": "ChargePoint, AMPM Bear Valley Rd, Hesperia",
+          "facts": "DOE lists 1 port, 40 kW.",
+          "status": "unverified"
+        }
+      ],
+      "reports": [
+        {
+          "date": "2026-05-24",
+          "who": "BigNerd",
+          "where": "Leasehackr forum",
+          "source": "lh-ea-p90",
+          "site": "EA Walmart Hesperia",
+          "text": "Two of the ten chargers were out of service, and one session stopped at 85%."
+        },
+        {
+          "date": "2026-05-24",
+          "who": "BYGFEET",
+          "where": "Leasehackr forum",
+          "source": "lh-ea-p90",
+          "site": "EA P66 / 76 Victorville",
+          "text": "Used it several times with no wait. Restroom key comes from the cashier."
+        }
+      ],
+      "around": [
+        {
+          "text": "Hesperia Tesla site is in a Target lot. Roy Rogers Drive site is in Desert Sky Plaza.",
+          "source": "tesla-findus"
+        }
+      ]
+    },
+    {
+      "id": "barstow",
+      "name": "Barstow",
+      "towns": "Barstow, CA",
+      "mile": 69,
+      "milepostNote": "Exits 178 to 184B",
+      "why": "The main event. The most stalls on the corridor, with a CCS option and the outlets for a longer break.",
+      "primary": {
+        "name": "Barstow, 1503 East Main Street",
+        "network": "Tesla Supercharger",
+        "address": "1503 East Main Street, Barstow, CA 92311",
+        "exit": "Exit 184B, East Main Street",
+        "stalls": {
+          "value": "120",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=26996"
+        },
+        "power": {
+          "value": "Up to 325 kW",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=26996"
+        },
+        "access": {
+          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Trailer friendly.",
+          "status": "verified",
+          "source": "tesla-findus"
+        },
+        "teslaAccess": "open",
+        "price": {
+          "value": "Non-Tesla: $0.64/kWh, congestion fee up to $0.50/min. Tesla and members pay less.",
+          "status": "verified",
+          "source": "tesla-findus"
+        }
+      },
+      "backups": [
+        {
+          "name": "Walmart Barstow",
+          "network": "Electrify America",
+          "address": "301 Montara Road, Barstow, CA 92311",
+          "facts": "8 stalls: 7 at 350 kW CCS, 1 at 150 kW CCS with a 50 kW CHAdeMO. In the center of the Walmart lot near Home and Pharmacy.",
+          "access": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/barstow/301-montara-road/100049/"
+        },
+        {
+          "name": "Barstow, Tanger Way (Outlets at Barstow)",
+          "network": "Tesla Supercharger",
+          "address": "2796 Tanger Way, Barstow, CA 92311",
+          "facts": "70 stalls, up to 250 kW. Non-Tesla: $0.64/kWh, congestion fee up to $0.50/min. Trailer friendly.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=BarstowCASupercharger2"
+        },
+        {
+          "name": "Barstow, Lenwood Road",
+          "network": "Rivian Adventure Network",
+          "address": "2835 Lenwood Rd, Barstow, CA 92311",
+          "facts": "DOE lists 6 stalls at 300 kW CCS, public, last confirmed October 2026. Rivian's own locator is in-app only, so we have not checked it against Rivian yet.",
+          "access": "DOE lists it as public",
+          "status": "unverified",
+          "source": "afdc"
+        },
+        {
+          "name": "Barstow (Holiday Inn & Suites)",
+          "network": "Tesla Supercharger",
+          "address": "2812 Lenwood Rd., Barstow, CA 92311",
+          "facts": "16 stalls, up to 150 kW.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=barstowcasupercharger"
+        }
+      ],
+      "other": [
+        {
+          "name": "Coral Charge, 190 Coolwater Ln",
+          "facts": "DOE lists 6 CCS at 180 kW with no network named. DOE last confirmed October 2025.",
+          "status": "unverified"
+        },
+        {
+          "name": "ChargePoint at Love's and 2728 Lenwood Rd",
+          "facts": "DOE lists four single-port units, 40 to 62 kW.",
+          "status": "unverified"
+        },
+        {
+          "name": "Tesla coming-soon site",
+          "facts": "Tesla's map shows a coming-soon Supercharger on the east side of Barstow. No open date listed.",
+          "status": "unverified"
+        }
+      ],
+      "reports": [
+        {
+          "date": "2026-05-24",
+          "who": "BigNerd",
+          "where": "Leasehackr forum",
+          "source": "lh-ea-p90",
+          "site": "EA Walmart Barstow",
+          "text": "One charger down, short wait."
+        },
+        {
+          "date": "2024-12-31",
+          "who": "cybercuh",
+          "where": "Cybertruck Owners Club",
+          "source": "ctoc-barstow",
+          "site": "Tesla 1503 East Main",
+          "text": "Sunday stop coming back from Vegas: mostly empty, but cable position was awkward for a Cybertruck. Older report."
+        }
+      ],
+      "around": [
+        {
+          "text": "Tanger Way site sits at the Outlets at Barstow.",
+          "source": "tesla-findus"
+        }
+      ]
+    },
+    {
+      "id": "yermo",
+      "name": "Yermo",
+      "towns": "Yermo, CA",
+      "mile": 82,
+      "milepostNote": "Exit 194, Calico Road, and Sunrise Canyon Road",
+      "why": "A short hop past Barstow. Worth knowing if Barstow is packed or you want food at EddieWorld.",
+      "primary": {
+        "name": "Yermo, Sunrise Canyon Road (Mis Pinches Tacos)",
+        "network": "Tesla Supercharger",
+        "address": "40865 Sunrise Canyon Road, Yermo, CA 92398",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "40",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=26999"
+        },
+        "power": {
+          "value": "Up to 250 kW",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=26999"
+        },
+        "access": {
+          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "status": "verified",
+          "source": "tesla-findus"
+        },
+        "teslaAccess": "open",
+        "price": {
+          "value": "Non-Tesla: $0.64/kWh, congestion fee up to $0.50/min.",
+          "status": "verified",
+          "source": "tesla-findus"
+        }
+      },
+      "backups": [
+        {
+          "name": "Yermo (EddieWorld)",
+          "network": "Tesla Supercharger",
+          "address": "36017 Calico Road, Yermo, CA 92398",
+          "facts": "Sources conflict. Tesla: 18 stalls, up to 150 kW. DOE: 22 ports at 75 kW. We show Tesla's numbers.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "conflict",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=yermosupercharger"
+        }
+      ],
+      "other": [
+        {
+          "name": "ChargePoint at EddieWorld, 36017 Calico Blvd",
+          "facts": "DOE lists three single-port units, 40 to 62 kW.",
+          "status": "unverified"
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "Calico Road Tesla site is at EddieWorld.",
+          "source": "tesla-findus"
+        }
+      ]
+    },
+    {
+      "id": "baker",
+      "name": "Baker",
+      "towns": "Baker, CA",
+      "mile": 137,
+      "milepostNote": "Exits 245 to 248",
+      "why": "Last stop before the climb to Mountain Pass and the Nevada line. Busy on holiday and Sunday traffic, so have a backup in mind.",
+      "primary": {
+        "name": "Ultra Gas and Mart",
+        "network": "Electrify America",
+        "address": "71808 Baker Blvd, Baker, CA 92309",
+        "exit": "Baker Boulevard",
+        "stalls": {
+          "value": "12",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/baker/71808-baker-blvd/100048/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 12",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/baker/71808-baker-blvd/100048/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. Western part of the lot.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        }
+      },
+      "backups": [
+        {
+          "name": "Baker, Mojave Pointe Road",
+          "network": "Tesla Supercharger",
+          "address": "56383 Mojave Pointe Rd, Baker, CA 92309",
+          "facts": "40 stalls, up to 325 kW. Non-Tesla: $0.66/kWh, congestion fee up to $0.50/min. Trailer friendly.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=30569"
+        },
+        {
+          "name": "Baker (Shell)",
+          "network": "Tesla Supercharger",
+          "address": "71808 Baker Blvd, Baker, CA 92309",
+          "facts": "96 stalls, up to 250 kW. Same address as the EA site.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=bakercasupercharger"
+        },
+        {
+          "name": "PowerStation, Rasor Road",
+          "network": "Independent",
+          "address": "65857 Rasor Rd, Baker, CA 92309",
+          "facts": "13 miles before Baker at exit 233. DOE lists 4 CCS at 360 kW, off-grid solar and battery, with a posted price of $0.30 Tue to Thu and $0.45 other days (DOE does not state the unit). Not yet checked with the operator.",
+          "access": "DOE lists it as public, all vehicle sizes",
+          "status": "unverified",
+          "source": "afdc"
+        }
+      ],
+      "other": [
+        {
+          "name": "Baker Travel Plaza, 72924 Baker Blvd",
+          "facts": "DOE lists 8 ports at 60 kW on EvGateway (7 CCS, 1 CHAdeMO).",
+          "status": "unverified"
+        },
+        {
+          "name": "Tesla coming-soon site",
+          "facts": "Tesla's map shows a coming-soon Supercharger in Baker. No open date listed.",
+          "status": "unverified"
+        }
+      ],
+      "reports": [
+        {
+          "date": "2026-05-24",
+          "who": "BigNerd",
+          "where": "Leasehackr forum",
+          "source": "lh-ea-p90",
+          "site": "EA Ultra Gas and Mart",
+          "text": "Covered, gas-station-style layout. One of twelve out of service, little waiting."
+        },
+        {
+          "date": "2026-05-24",
+          "who": "BYGFEET",
+          "where": "Leasehackr forum",
+          "source": "lh-ea-p90",
+          "site": "Baker",
+          "text": "Baker often gets crowded; mostly avoids it."
+        },
+        {
+          "date": "2026-05-12",
+          "who": "CD4TNF",
+          "where": "F150 Lightning Forum",
+          "source": "f150-baker",
+          "site": "EA Ultra Gas and Mart",
+          "text": "Poor restrooms, heat throttling, frequent broken chargers, and 4 to 8 non-Teslas queued."
+        },
+        {
+          "date": "2026-05-13",
+          "who": "K6CCC",
+          "where": "F150 Lightning Forum",
+          "source": "f150-baker",
+          "site": "Tesla Mojave Pointe Rd",
+          "text": "Open to non-Teslas, next to an Arby's and a food court, clean restrooms. Had been offline for a couple of weeks at the time."
+        },
+        {
+          "date": "2026-05-10",
+          "who": "Cbowe",
+          "where": "F150 Lightning Forum",
+          "source": "f150-baker",
+          "site": "PowerStation Rasor Rd",
+          "text": "Was free through May 2026 and held full power on a Lightning. No longer free after that."
+        }
+      ],
+      "around": [
+        {
+          "text": "Mojave Pointe Road Tesla site: Arby's and a food court nearby, per a May 2026 driver report.",
+          "source": "f150-baker"
+        }
+      ]
+    },
+    {
+      "id": "primm",
+      "name": "Primm and Jean",
+      "towns": "Primm and Jean, NV",
+      "mile": 187,
+      "milepostNote": "NV exits 1 and 12",
+      "why": "Right over the state line. Easy top-off before Las Vegas traffic, or the first stop heading home.",
+      "primary": {
+        "name": "Prizm Outlets",
+        "network": "Electrify America",
+        "address": "32100 S Las Vegas Blvd, Primm, NV 89019",
+        "exit": "NV exit 1, Primm Boulevard",
+        "stalls": {
+          "value": "6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nv/primm/32100-s-las-vegas-blvd/100609/"
+        },
+        "power": {
+          "value": "350 kW CCS on all 6. One also has a 50 kW CHAdeMO.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nv/primm/32100-s-las-vegas-blvd/100609/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. South side of the mall lot.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        }
+      },
+      "backups": [
+        {
+          "name": "Jean (Terrible's)",
+          "network": "Tesla Supercharger",
+          "address": "22625 NV-161, Jean, NV 89019",
+          "facts": "NV exit 12. 64 stalls, up to 325 kW. Non-Tesla: $0.62/kWh, congestion fee up to $0.50/min. Trailer friendly.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=27158"
+        },
+        {
+          "name": "Primm (Primm Valley Casino Resorts)",
+          "network": "Tesla Supercharger",
+          "address": "31900 S Las Vegas Blvd S, Primm, NV 89019",
+          "facts": "42 stalls, up to 250 kW.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=primmnvsupercharger"
+        }
+      ],
+      "other": [
+        {
+          "name": "Caltrans Valley Wells Rest Area, I-15 exit 270 (CA)",
+          "facts": "DOE lists 1 CCS at 100 kW and 1 CHAdeMO at 50 kW in each direction. DOE last confirmed January 2024.",
+          "status": "unverified"
+        }
+      ],
+      "reports": [
+        {
+          "date": "2026-05-24",
+          "who": "BigNerd",
+          "where": "Leasehackr forum",
+          "source": "lh-ea-p90",
+          "site": "EA Prizm Outlets",
+          "text": "No wait on two visits; one other time, four cars waiting."
+        },
+        {
+          "date": "2026-05-24",
+          "who": "BYGFEET",
+          "where": "Leasehackr forum",
+          "source": "lh-ea-p90",
+          "site": "EA Prizm Outlets",
+          "text": "Uses Primm to top off on the way into Vegas."
+        }
+      ],
+      "around": [
+        {
+          "text": "Primm Tesla site is at Primm Valley Casino Resorts. Jean site is at Terrible's.",
+          "source": "tesla-findus"
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "Northbound, Baker to the state line includes the climb to Mountain Pass, the route's high point at 4,730 ft. Leave Baker with more than the distance alone suggests.",
+      "source": "wiki-i15-ca"
+    },
+    {
+      "text": "Non-Tesla drivers: four of the open Superchargers on this route are big enough to skip a queue (Barstow East Main at 120 stalls, Barstow Tanger Way at 70, Jean at 64, Baker Mojave Pointe at 40). You need your own NACS adapter.",
+      "source": "tesla-findus"
+    },
+    {
+      "text": "Tesla-only sites on this route: Baker (Shell), Primm, Barstow Holiday Inn, Victorville Victor Plaza, and Yermo EddieWorld. Don't plan around them in a non-Tesla.",
+      "source": "tesla-findus"
+    },
+    {
+      "text": "Every EA site on this guide had at least one charger down in May 2026 driver reports. Count on fewer stalls than listed.",
+      "source": "lh-ea-p90"
+    }
+  ],
+  "arrival": "Las Vegas arrival charging is not in this guide yet. It is next on the verification list."
+}

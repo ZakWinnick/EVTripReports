@@ -1,0 +1,115 @@
+---
+interface Stop { id: string; name: string; mile: number; }
+interface Props {
+  stops: Stop[];
+  total: number;
+  startLabel: string;
+  endLabel: string;
+  linkBase?: string;
+}
+const { stops, total, startLabel, endLabel, linkBase = '' } = Astro.props;
+
+const W = 1000, X0 = 36, X1 = 964, Y = 96;
+const x = (m: number) => X0 + (m / total) * (X1 - X0);
+
+// Labels go below; a stop that crowds the previous one flips above.
+const placed = stops.map((s, i) => {
+  const prev = stops[i - 1];
+  const crowded = prev ? x(s.mile) - x(prev.mile) < 70 : false;
+  return { ...s, n: i + 1, cx: x(s.mile), above: crowded };
+});
+
+const points = [{ mile: 0 }, ...stops, { mile: total }];
+const segments = points.slice(1).map((p, i) => {
+  const a = points[i].mile, b = p.mile;
+  return { mid: x((a + b) / 2), d: Math.round(b - a) };
+}).filter((s) => s.d >= 28);
+
+const ticks: number[] = [];
+for (let m = 25; m < total; m += 25) ticks.push(m);
+
+const href = (id: string) => (linkBase !== undefined ? `${linkBase}#stop-${id}` : undefined);
+
+// Vertical (mobile): spacing proportional to miles, with a floor so labels never collide.
+const vertical = placed.map((s, i) => {
+  const prevMile = i === 0 ? 0 : stops[i - 1].mile;
+  const gap = s.mile - prevMile;
+  return { ...s, gap, pad: Math.max(18, Math.min(gap * 0.9, 110)) };
+});
+const lastGap = Math.round(total - stops[stops.length - 1].mile);
+---
+<figure class="route" aria-label={`Route line from ${startLabel} to ${endLabel}, ${total} miles, with ${stops.length} charging stops`}>
+  <svg class="route__h" viewBox={`0 0 ${W} 180`} role="img" aria-hidden="true">
+    {ticks.map((m) => (
+      <line x1={x(m)} x2={x(m)} y1={Y - 5} y2={Y + 5} stroke="#b9bfbb" stroke-width="1" />
+    ))}
+    <line x1={X0} x2={X1} y1={Y} y2={Y} stroke="#15191a" stroke-width="3" stroke-linecap="round" />
+    <circle cx={X0} cy={Y} r="6" fill="#ffffff" stroke="#15191a" stroke-width="3" />
+    <rect x={X1 - 7} y={Y - 7} width="14" height="14" fill="#15191a" />
+    <text x={X0 - 6} y={Y - 52} font-size="13" fill="#4e5653" text-anchor="start">{startLabel}</text>
+    <text x={X0 - 6} y={Y - 34} font-size="13" fill="#7a827e" text-anchor="start">mile 0</text>
+    <text x={X1 + 6} y={Y - 52} font-size="13" fill="#4e5653" text-anchor="end">{endLabel}</text>
+    <text x={X1 + 6} y={Y - 34} font-size="13" fill="#7a827e" text-anchor="end">mile {total}</text>
+    {segments.map((s) => (
+      <text x={s.mid} y={Y - 14} font-size="12" fill="#7a827e" text-anchor="middle">{s.d} mi</text>
+    ))}
+    {placed.map((s) => (
+      <a href={href(s.id)}>
+        <g class="route__stop">
+          <circle cx={s.cx} cy={Y} r="15" fill="#1e5a3c" />
+          <text x={s.cx} y={Y + 5} font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">{s.n}</text>
+          {s.above ? (
+            <>
+              <text x={s.cx} y={Y - 52} font-size="15" font-weight="700" fill="#15191a" text-anchor="middle">{s.name}</text>
+              <text x={s.cx} y={Y - 34} font-size="13" fill="#4e5653" text-anchor="middle">mile {s.mile}</text>
+            </>
+          ) : (
+            <>
+              <text x={s.cx} y={Y + 40} font-size="15" font-weight="700" fill="#15191a" text-anchor="middle">{s.name}</text>
+              <text x={s.cx} y={Y + 58} font-size="13" fill="#4e5653" text-anchor="middle">mile {s.mile}</text>
+            </>
+          )}
+        </g>
+      </a>
+    ))}
+  </svg>
+
+  <ol class="route__v">
+    <li class="route__end"><span class="route__dot route__dot--start"></span><span><strong>{startLabel}</strong><span class="muted small">mile 0</span></span></li>
+    {vertical.map((s) => (
+      <li style={`--pad:${s.pad}px`}>
+        {s.pad >= 28 && <span class="route__gap small">{Math.round(s.gap)} mi</span>}
+        <a href={href(s.id)} class="route__row">
+          <span class="route__num">{s.n}</span>
+          <span><strong>{s.name}</strong><span class="muted small">mile {s.mile}</span></span>
+        </a>
+      </li>
+    ))}
+    <li class="route__end" style={`--pad:${Math.max(18, Math.min(lastGap * 0.9, 110))}px`}>
+      <span class="route__gap small">{lastGap} mi</span>
+      <span class="route__dot route__dot--end"></span><span><strong>{endLabel}</strong><span class="muted small">mile {total}</span></span>
+    </li>
+  </ol>
+</figure>
+
+<style>
+  .route { margin: 0; }
+  .route__h { width: 100%; height: auto; font-family: var(--font); }
+  .route__h a { text-decoration: none; }
+  .route__h a:hover circle { fill: #15191a; }
+  .route__v { display: none; list-style: none; margin: 0; padding: 0; position: relative; }
+  @media (max-width: 760px) {
+    .route__h { display: none; }
+    .route__v { display: block; }
+  }
+  .route__v::before { content: ''; position: absolute; left: 14px; top: 10px; bottom: 10px; width: 3px; background: var(--ink); border-radius: 2px; }
+  .route__v li { position: relative; padding-top: var(--pad, 0); }
+  .route__row, .route__end { display: flex; align-items: center; gap: 14px; text-decoration: none; position: relative; }
+  .route__row strong, .route__end strong { display: block; letter-spacing: -0.02em; line-height: 1.2; }
+  .route__row .muted, .route__end .muted { display: block; }
+  .route__num { flex: none; width: 31px; height: 31px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center; }
+  .route__dot { flex: none; width: 31px; display: grid; place-items: center; }
+  .route__dot::before { content: ''; width: 13px; height: 13px; background: #fff; border: 3px solid var(--ink); border-radius: 50%; }
+  .route__dot--end::before { border-radius: 0; background: var(--ink); }
+  .route__gap { position: absolute; left: 30px; top: calc(var(--pad, 0px) / 2 - 10px); color: var(--ink-3); }
+</style>
