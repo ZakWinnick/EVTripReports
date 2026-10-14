@@ -104,7 +104,10 @@
           "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
           "status": "unpublished",
           "source": "ea-locator"
-        }
+        },
+        "afdcIds": [
+          151969
+        ]
       },
       "backups": [
         {
@@ -115,7 +118,10 @@
           "access": "Open to all CCS EVs",
           "status": "verified",
           "source": "evgo-locator",
-          "url": "https://www.evgo.com/find-a-charger/?siteId=71284"
+          "url": "https://www.evgo.com/find-a-charger/?siteId=71284",
+          "afdcIds": [
+            374871
+          ]
         },
         {
           "name": "Hesperia (Target)",
@@ -126,7 +132,10 @@
           "teslaAccess": "open",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=hesperiasupercharger"
+          "url": "https://www.tesla.com/findus?location=hesperiasupercharger",
+          "afdcIds": [
+            169469
+          ]
         },
         {
           "name": "Victorville, Roy Rogers Drive (Desert Sky Plaza)",
@@ -137,7 +146,10 @@
           "teslaAccess": "open",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=32196"
+          "url": "https://www.tesla.com/findus?location=32196",
+          "afdcIds": [
+            361251
+          ]
         },
         {
           "name": "P66 / 76 Victorville",
@@ -147,7 +159,10 @@
           "access": "Open to all CCS EVs",
           "status": "verified",
           "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/ca/victorville/15290-mojave-dr/701218/"
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/victorville/15290-mojave-dr/701218/",
+          "afdcIds": [
+            384558
+          ]
         },
         {
           "name": "Victorville (Victor Plaza)",
@@ -158,24 +173,36 @@
           "teslaAccess": "tesla-only",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=VictorvilleCASupercharger"
+          "url": "https://www.tesla.com/findus?location=VictorvilleCASupercharger",
+          "afdcIds": [
+            238582
+          ]
         }
       ],
       "other": [
         {
           "name": "Circle K, 15825 Mojave Dr, Victorville",
           "facts": "DOE lists 3 CCS at 180 kW and 1 CHAdeMO at 100 kW. DOE last confirmed May 2025.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": [
+            262701
+          ]
         },
         {
           "name": "Circle K, 15289 Nisqualli Rd, Victorville",
           "facts": "DOE lists 2 units, CCS 180 kW and CHAdeMO 100 kW.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": [
+            302207
+          ]
         },
         {
           "name": "ChargePoint, AMPM Bear Valley Rd, Hesperia",
           "facts": "DOE lists 1 port, 40 kW.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": [
+            321440
+          ]
         }
       ],
       "reports": [
@@ -200,6 +227,16 @@
         {
           "text": "Hesperia Tesla site is in a Target lot. Roy Rogers Drive site is in Desert Sky Plaza.",
           "source": "tesla-findus"
+        }
+      ],
+      "searches": [
+        {
+          "location": "Hesperia, CA",
+          "radius": 4
+        },
+        {
+          "location": "Victorville, CA",
+          "radius": 4
         }
       ]
     },
@@ -237,7 +274,10 @@
           "value": "Non-Tesla: $0.64/kWh, congestion fee up to $0.50/min. Tesla and members pay less.",
           "status": "verified",
           "source": "tesla-findus"
-        }
+        },
+        "afdcIds": [
+          375431
+        ]
       },
       "backups": [
         {
@@ -248,7 +288,10 @@
           "access": "Open to all CCS EVs",
           "status": "verified",
           "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/ca/barstow/301-montara-road/100049/"
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/barstow/301-montara-road/100049/",
+          "afdcIds": [
+            154846
+          ]
         },
         {
           "name": "Barstow, Tanger Way (Outlets at Barstow)",
@@ -259,7 +302,10 @@
           "teslaAccess": "open",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=BarstowCASupercharger2"
+          "url": "https://www.tesla.com/findus?location=BarstowCASupercharger2",
+          "afdcIds": [
+            220686
+          ]
         },
         {
           "name": "Barstow, Lenwood Road",
@@ -268,7 +314,10 @@
           "facts": "DOE lists 6 stalls at 300 kW CCS, public, last confirmed October 2026. Rivian's own locator is in-app only, so we have not checked it against Rivian yet.",
           "access": "DOE lists it as public",
           "status": "unverified",
-          "source": "afdc"
+          "source": "afdc",
+          "afdcIds": [
+            391293
+          ]
         },
         {
           "name": "Barstow (Holiday Inn & Suites)",
@@ -279,24 +328,37 @@
           "teslaAccess": "tesla-only",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=barstowcasupercharger"
+          "url": "https://www.tesla.com/findus?location=barstowcasupercharger",
+          "afdcIds": [
+            102001
+          ]
         }
       ],
       "other": [
         {
           "name": "Coral Charge, 190 Coolwater Ln",
           "facts": "DOE lists 6 CCS at 180 kW with no network named. DOE last confirmed October 2025.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": [
+            428667
+          ]
         },
         {
           "name": "ChargePoint at Love's and 2728 Lenwood Rd",
           "facts": "DOE lists four single-port units, 40 to 62 kW.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": [
+            175769,
+            175768,
+            175742,
+            175740
+          ]
         },
         {
           "name": "Tesla coming-soon site",
           "facts": "Tesla's map shows a coming-soon Supercharger on the east side of Barstow. No open date listed.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": []
         }
       ],
       "reports": [
@@ -321,6 +383,12 @@
         {
           "text": "Tanger Way site sits at the Outlets at Barstow.",
           "source": "tesla-findus"
+        }
+      ],
+      "searches": [
+        {
+          "location": "Barstow, CA",
+          "radius": 6
         }
       ]
     },
@@ -358,7 +426,10 @@
           "value": "Non-Tesla: $0.64/kWh, congestion fee up to $0.50/min.",
           "status": "verified",
           "source": "tesla-findus"
-        }
+        },
+        "afdcIds": [
+          261473
+        ]
       },
       "backups": [
         {
@@ -370,14 +441,22 @@
           "teslaAccess": "tesla-only",
           "status": "conflict",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=yermosupercharger"
+          "url": "https://www.tesla.com/findus?location=yermosupercharger",
+          "afdcIds": [
+            102077
+          ]
         }
       ],
       "other": [
         {
           "name": "ChargePoint at EddieWorld, 36017 Calico Blvd",
           "facts": "DOE lists three single-port units, 40 to 62 kW.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": [
+            200588,
+            200589,
+            201225
+          ]
         }
       ],
       "reports": [],
@@ -385,6 +464,12 @@
         {
           "text": "Calico Road Tesla site is at EddieWorld.",
           "source": "tesla-findus"
+        }
+      ],
+      "searches": [
+        {
+          "location": "Yermo, CA",
+          "radius": 4
         }
       ]
     },
@@ -421,7 +506,10 @@
           "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
           "status": "unpublished",
           "source": "ea-locator"
-        }
+        },
+        "afdcIds": [
+          165658
+        ]
       },
       "backups": [
         {
@@ -433,7 +521,10 @@
           "teslaAccess": "open",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=30569"
+          "url": "https://www.tesla.com/findus?location=30569",
+          "afdcIds": [
+            434861
+          ]
         },
         {
           "name": "Baker (Shell)",
@@ -444,7 +535,10 @@
           "teslaAccess": "tesla-only",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=bakercasupercharger"
+          "url": "https://www.tesla.com/findus?location=bakercasupercharger",
+          "afdcIds": [
+            101999
+          ]
         },
         {
           "name": "PowerStation, Rasor Road",
@@ -453,19 +547,26 @@
           "facts": "13 miles before Baker at exit 233. DOE lists 4 CCS at 360 kW, off-grid solar and battery, with a posted price of $0.30 Tue to Thu and $0.45 other days (DOE does not state the unit). Not yet checked with the operator.",
           "access": "DOE lists it as public, all vehicle sizes",
           "status": "unverified",
-          "source": "afdc"
+          "source": "afdc",
+          "afdcIds": [
+            461337
+          ]
         }
       ],
       "other": [
         {
           "name": "Baker Travel Plaza, 72924 Baker Blvd",
           "facts": "DOE lists 8 ports at 60 kW on EvGateway (7 CCS, 1 CHAdeMO).",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": [
+            376615
+          ]
         },
         {
           "name": "Tesla coming-soon site",
           "facts": "Tesla's map shows a coming-soon Supercharger in Baker. No open date listed.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": []
         }
       ],
       "reports": [
@@ -515,6 +616,12 @@
           "text": "Mojave Pointe Road Tesla site: Arby's and a food court nearby, per a May 2026 driver report.",
           "source": "f150-baker"
         }
+      ],
+      "searches": [
+        {
+          "location": "Baker, CA",
+          "radius": 14
+        }
       ]
     },
     {
@@ -550,7 +657,10 @@
           "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
           "status": "unpublished",
           "source": "ea-locator"
-        }
+        },
+        "afdcIds": [
+          279478
+        ]
       },
       "backups": [
         {
@@ -562,7 +672,10 @@
           "teslaAccess": "open",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=27158"
+          "url": "https://www.tesla.com/findus?location=27158",
+          "afdcIds": [
+            459665
+          ]
         },
         {
           "name": "Primm (Primm Valley Casino Resorts)",
@@ -573,14 +686,21 @@
           "teslaAccess": "tesla-only",
           "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus?location=primmnvsupercharger"
+          "url": "https://www.tesla.com/findus?location=primmnvsupercharger",
+          "afdcIds": [
+            102319
+          ]
         }
       ],
       "other": [
         {
           "name": "Caltrans Valley Wells Rest Area, I-15 exit 270 (CA)",
           "facts": "DOE lists 1 CCS at 100 kW and 1 CHAdeMO at 50 kW in each direction. DOE last confirmed January 2024.",
-          "status": "unverified"
+          "status": "unverified",
+          "afdcIds": [
+            186209,
+            186208
+          ]
         }
       ],
       "reports": [
@@ -605,6 +725,20 @@
         {
           "text": "Primm Tesla site is at Primm Valley Casino Resorts. Jean site is at Terrible's.",
           "source": "tesla-findus"
+        }
+      ],
+      "searches": [
+        {
+          "location": "Primm, NV",
+          "radius": 4
+        },
+        {
+          "location": "Jean, NV",
+          "radius": 4
+        },
+        {
+          "location": "Nipton, CA",
+          "radius": 25
         }
       ]
     }

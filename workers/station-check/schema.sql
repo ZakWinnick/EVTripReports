@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS station_snapshots (
+  afdc_id INTEGER PRIMARY KEY,
+  route TEXT NOT NULL,
+  stop TEXT,
+  data TEXT NOT NULL,
+  fetched_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS check_runs (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  run_at TEXT NOT NULL,
+  route TEXT NOT NULL,
+  items INTEGER NOT NULL,
+  summary TEXT NOT NULL,
+  details TEXT NOT NULL
+);
