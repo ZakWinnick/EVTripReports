@@ -2,10 +2,13 @@ name = "evtripreports-station-check"
 main = "src/index.js"
 compatibility_date = "2026-10-14"
 workers_dev = true
+# Keep variables added in the dashboard when this file is deployed.
+keep_vars = true
 
-# Mondays 14:17 UTC (7:17 am Pacific in summer, 6:17 am in winter)
+# Mondays 14:17 UTC (7:17 am Pacific in summer, 6:17 am in winter).
+# Cloudflare counts day-of-week from 1 = Sunday, so use the name.
 [triggers]
-crons = ["17 14 * * 1"]
+crons = ["17 14 * * MON"]
 
 [vars]
 SITE_URL = "https://evtripreports.pages.dev"
