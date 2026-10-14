@@ -73,7 +73,8 @@ async function checkRoute(env, slug) {
     const k = known.get(id);
     if (!k) {
       if (st.status_code === 'E') add('Not in guide', stop, `${label(st)}: ${now.ev_dc_fast_num ?? '?'} DC ports, ${now.ev_network || 'no network listed'}. Verify with the network, then add or exclude.`);
-      else add('Coming', stop, `${label(st)} is ${STATUS[st.status_code] || st.status_code} in DOE.`);
+      else if (st.status_code === 'P') add('Coming', stop, `${label(st)} is planned in DOE.`);
+      else add('Unavailable, not in guide', stop, `${label(st)} is ${STATUS[st.status_code] || st.status_code} in DOE.`);
       continue;
     }
     if (st.status_code !== 'E') add('Status', k.stop, `${k.name} (${k.role}) shows ${STATUS[st.status_code] || st.status_code} in DOE. Check the network before the next update.`);

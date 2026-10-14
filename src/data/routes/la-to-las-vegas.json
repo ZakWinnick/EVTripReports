@@ -17,12 +17,12 @@
     },
     {
       "label": "DC fast sites listed",
-      "value": "30",
+      "value": "37",
       "unit": ""
     },
     {
       "label": "Checked against the network",
-      "value": "18",
+      "value": "21",
       "unit": ""
     },
     {
@@ -124,6 +124,47 @@
           ]
         },
         {
+          "name": "Green Tree Inn",
+          "network": "EVgo",
+          "address": "14173 Green Tree Blvd, Victorville, CA 92395",
+          "facts": "6 chargers. Four at 350 kW with two cables each, one of them with NACS cables; two cars on one charger share its power. Two at 100 kW with CCS and CHAdeMO.",
+          "access": "Open to all. NACS cables on one charger.",
+          "status": "verified",
+          "source": "evgo-locator",
+          "url": "https://www.evgo.com/find-a-charger/?siteId=49260",
+          "afdcIds": [
+            253745
+          ]
+        },
+        {
+          "name": "Hesperia, Main Street (Topaz Marketplace)",
+          "network": "Tesla Supercharger",
+          "address": "14135 Main Street, Hesperia, CA 92345",
+          "facts": "16 stalls, up to 250 kW. Non-Tesla: $0.78/kWh at our afternoon check, congestion fee up to $0.50/min. Trailer friendly.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=20757",
+          "afdcIds": [
+            331352
+          ]
+        },
+        {
+          "name": "Victorville, Amargosa Road (Restaurant Row)",
+          "network": "Tesla Supercharger",
+          "address": "11604 Amargosa Rd, Victorville, CA 92392",
+          "facts": "16 stalls, up to 250 kW. Non-Tesla: $0.78/kWh at our afternoon check, congestion fee up to $0.50/min.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus?location=VictorvilleCAQ322",
+          "afdcIds": [
+            252516
+          ]
+        },
+        {
           "name": "Hesperia (Target)",
           "network": "Tesla Supercharger",
           "address": "12795 Main Street, Hesperia, CA 92345",
@@ -198,10 +239,45 @@
         },
         {
           "name": "ChargePoint, AMPM Bear Valley Rd, Hesperia",
-          "facts": "DOE lists 1 port, 40 kW.",
+          "facts": "DOE lists 2 single-port units, 40 kW; one is listed as temporarily unavailable.",
           "status": "unverified",
           "afdcIds": [
-            321440
+            321440,
+            321439
+          ]
+        },
+        {
+          "name": "The Mall of Victor Valley, 14370 Bear Valley Rd",
+          "facts": "DOE lists 2 DC ports on EVgo. EVgo's locator didn't load details at our check.",
+          "status": "unverified",
+          "afdcIds": [
+            228294
+          ]
+        },
+        {
+          "name": "Victorville Chevrolet Cadillac, 15425 Dos Palmas Rd",
+          "facts": "Dealership. DOE lists 2 DC ports on EV Connect.",
+          "status": "unverified",
+          "afdcIds": [
+            360272
+          ]
+        },
+        {
+          "name": "ChargePoint, Chevron at 14250 Bear Valley Rd and Valley Hi Kia",
+          "facts": "DOE lists one DC port at each. The Kia site is a dealership.",
+          "status": "unverified",
+          "afdcIds": [
+            158736,
+            329017
+          ]
+        },
+        {
+          "name": "ChargePoint, 16868 Stoddard Wells Rd, Victorville",
+          "facts": "DOE lists 2 single-port units, north of town.",
+          "status": "unverified",
+          "afdcIds": [
+            200750,
+            200748
           ]
         }
       ],
@@ -349,13 +425,14 @@
         },
         {
           "name": "ChargePoint at Love's and 2728 Lenwood Rd",
-          "facts": "DOE lists four single-port units, 40 to 62 kW.",
+          "facts": "DOE lists five single-port units, 40 to 62 kW; one is listed as temporarily unavailable.",
           "status": "unverified",
           "afdcIds": [
             175769,
             175768,
             175742,
-            175740
+            175740,
+            175743
           ]
         },
         {
