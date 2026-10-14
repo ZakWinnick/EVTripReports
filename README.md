@@ -47,7 +47,7 @@ npm run dev
 `workers/station-check/` is a separate Cloudflare Worker that runs every Monday.
 
 - Reads each route from `/data/<slug>.json` on the live site.
-- Searches the DOE (NLR) station API for DC fast sites around each stop (`searches` in the route JSON) and compares them with the guide (`afdcIds`) and with last week's snapshot.
+- Searches the DOE (NLR) station API for DC fast sites around each stop (`searches` in the route JSON: name, lat, lng, radius in miles) and compares them with the guide (`afdcIds`) and with last week's snapshot.
 - Saves a change list to D1 (`check_runs`) and emails it when email is configured. It never edits the site.
 - Item types: Not in guide, Coming (planned), Status, Access, Changed, Missing.
 

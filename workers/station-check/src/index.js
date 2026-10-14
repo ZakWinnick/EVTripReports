@@ -36,15 +36,16 @@ async function checkRoute(env, slug) {
 
   for (const stop of route.stops) {
     for (const s of stop.searches || []) {
+      // DOE dropped the 'location' parameter in 2025; searches use coordinates.
       const qs = new URLSearchParams({
-        api_key: env.NLR_API_KEY, location: s.location, radius: String(s.radius),
+        api_key: env.NLR_API_KEY, latitude: String(s.lat), longitude: String(s.lng), radius: String(s.radius),
         fuel_type: 'ELEC', ev_charging_level: 'dc_fast', status: 'E,P,T', access: 'public', limit: '200',
       });
       try {
         const data = await getJSON(`${API}/nearest.json?${qs}`);
         for (const st of data.fuel_stations || []) if (!seen.has(st.id)) seen.set(st.id, { st, stop: stop.name });
       } catch (e) {
-        errors.push(`Search ${s.location}: ${e.message}`);
+        errors.push(`Search ${s.name}: ${e.message}`);
       }
     }
   }
