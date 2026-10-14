@@ -22,6 +22,15 @@ Static site for evtripreports.com, built with Astro and hosted on Cloudflare Pag
 3. In the Pages project: Settings > Bindings > add D1 database, variable name `DB`.
 4. Redeploy.
 
+## Email notifications (Fastmail)
+
+Plan requests and the Monday station check are emailed through Fastmail's JMAP API from and to admin@evtripreports.com. Create a Fastmail API token with Email and Email submission access, then add it as a secret named `FASTMAIL_TOKEN` in both places:
+
+- Pages project `evtripreports`: Settings > Variables and secrets (type Secret).
+- Worker `evtripreports-station-check`: Settings > Variables and Secrets (type Secret).
+
+Optional overrides: `NOTIFY_TO` and `NOTIFY_FROM`. Without the token, requests are still saved to D1; they just aren't emailed.
+
 ## Data rules
 
 See `/methodology` on the site. Short version: network locators are the authority, the DOE database finds every site, driver reports are dated and linked, aggregators are never cited, and anything unconfirmed is labeled.

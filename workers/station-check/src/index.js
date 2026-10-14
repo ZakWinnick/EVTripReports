@@ -2,7 +2,7 @@
 // Weekly: pulls DOE (NLR) DC fast station data for every stop town on each route,
 // compares it with the guide and with last week's snapshot, stores a change list in D1,
 // and emails it if email is configured. It never edits the site: a person reviews the list.
-import { EmailMessage } from 'cloudflare:email';
+import { sendMail } from './fastmail.js';
 
 const API = 'https://developer.nlr.gov/api/alt-fuel-stations/v1';
 const FIELDS = ['station_name', 'street_address', 'city', 'state', 'status_code', 'access_code', 'ev_network', 'ev_dc_fast_num', 'ev_connector_types', 'date_last_confirmed', 'updated_at', 'facility_type'];
@@ -121,19 +121,14 @@ function render(results) {
 }
 
 async function notify(env, body) {
-  if (!env.EMAIL || !env.NOTIFY_FROM || !env.NOTIFY_TO) return false;
-  const raw = [
-    `From: EV Trip Reports <${env.NOTIFY_FROM}>`,
-    `To: ${env.NOTIFY_TO}`,
-    `Subject: Station check: ${new Date().toISOString().slice(0, 10)}`,
-    `Message-ID: <${crypto.randomUUID()}@evtripreports.com>`,
-    `Date: ${new Date().toUTCString()}`,
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=utf-8',
-    '',
-    body,
-  ].join('\r\n');
-  await env.EMAIL.send(new EmailMessage(env.NOTIFY_FROM, env.NOTIFY_TO, raw));
+  if (!env.FASTMAIL_TOKEN || !env.NOTIFY_TO) return false;
+  await sendMail({
+    token: env.FASTMAIL_TOKEN,
+    from: env.NOTIFY_FROM || env.NOTIFY_TO,
+    to: env.NOTIFY_TO,
+    subject: `Station check: ${new Date().toISOString().slice(0, 10)}`,
+    text: body,
+  });
   return true;
 }
 
