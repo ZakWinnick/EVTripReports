@@ -47,7 +47,7 @@ Both the site key and the secret have to be set for the check to run. If `TURNST
 
 Plan prices and Stripe Payment Links live in `src/data/plans.js`. Each tier's pay button uses that tier's `stripeUrl`. The intake form is saved first, then the browser opens the matching link. Stripe is configured to return to `https://evtripreports.com/plans?paid=1`, where the page shows a payment-received message. Replace a link in `plans.js` if you create a new Payment Link. Keep the success URL on `/plans?paid=1`.
 
-Every plan is reviewed by the owner before it is sent. That includes the $19, $39, and $79 tiers. The intake insert stores status `review`, and the Fastmail message (when `FASTMAIL_TOKEN` is set) is the review notice. Customers are told the delivery time only: within 48 hours for route and detailed plans, within 3 business days for multi-day and family plans. Existing databases do not need a change. The insert sets the status itself.
+Intake stores each request with status `new` and, when `FASTMAIL_TOKEN` is set, emails that request to the owner (`NOTIFY_TO`). The customer is not a recipient. This pull request does not generate a plan and does not email a plan. A plan is sent only after the owner approves it, outside this code. Customer pages state the delivery time only: within 48 hours for route and detailed plans, within 3 business days for multi-day and family plans.
 
 ## Data rules
 
