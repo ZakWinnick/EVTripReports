@@ -1,8 +1,9 @@
 // Cloudflare Pages Function: /api/intake
 // POST writes a plan request to a D1 database bound as DB (see schema.sql).
 // Without that binding, POST returns 503 and the form says requests aren't open yet.
-// With the FASTMAIL_TOKEN secret set, each request is also emailed to NOTIFY_TO
-// (default admin@evtripreports.com).
+// With the FASTMAIL_TOKEN secret set, the form is emailed to NOTIFY_TO
+// (default admin@evtripreports.com). Every tier is stored as status 'review'.
+// The owner reviews the plan before it is sent. No tier skips that step.
 //
 // Turnstile (optional). Both names are Pages variables, not committed:
 //   TURNSTILE_SITE_KEY   public site key. GET returns it so the form can render the widget.
@@ -70,7 +71,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   await env.DB.prepare(
     `INSERT INTO plan_requests (created_at, name, email, tier, car, port, start_place, end_place, depart, return_date, passengers, memberships, notes, status)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new')`
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'review')`
   ).bind(
     new Date().toISOString(), clip(data.name), clip(data.email), clip(data.tier), clip(data.car), clip(data.port),
     clip(data.start), clip(data.end), clip(data.depart), clip(data.return), clip(data.passengers), memberships, clip(data.notes)
@@ -79,7 +80,8 @@ export async function onRequestPost({ request, env, waitUntil }) {
   if (env.FASTMAIL_TOKEN) {
     const to = env.NOTIFY_TO || 'admin@evtripreports.com';
     const lines = [
-      `New plan request: ${clip(data.tier)}`,
+      `Review before sending. Tier: ${clip(data.tier)}.`,
+      'This step is the same for every tier. Do not send the plan until you have reviewed it.',
       '',
       `Name: ${clip(data.name)}`,
       `Email: ${clip(data.email)}`,
@@ -93,7 +95,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
       'Notes:',
       clip(data.notes) || '(none)',
       '',
-      'Reply to this email to reach the driver.',
+      'Reply to this email to reach the driver. Send the plan only after this review.',
     ];
     waitUntil(
       sendMail({
@@ -101,7 +103,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
         from: env.NOTIFY_FROM || to,
         to,
         replyTo: clip(data.email),
-        subject: `Plan request: ${clip(data.start)} to ${clip(data.end)} (${clip(data.tier)})`,
+        subject: `Review plan: ${clip(data.start)} to ${clip(data.end)} (${clip(data.tier)})`,
         text: lines.join('\n'),
       }).catch((e) => console.error('notify failed', e.message))
     );

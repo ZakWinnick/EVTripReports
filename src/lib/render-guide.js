@@ -213,7 +213,7 @@ ${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
     .map((t) => `<li>${esc(t.text)} ${S[t.source] ? ext(S[t.source].url, 'Source', 'small') : ''}</li>`)
     .join('')}</ol><p class="note" style="margin-top:28px">${esc(arrivalNote(route))}</p></div></section>
 <section class="band band--tight band--mist"><div class="wrap plan-cta"><div><h2 class="h2">Want this built around your car?</h2>
-<p class="lede" style="margin-top:12px">Tell us your car, adapter, and dates. We check every stop again before we send your plan.</p></div>
+<p class="lede" style="margin-top:12px">Enter your car, adapter, and dates. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p></div>
 <a class="pill pill--lg" href="/plans#request">Plan my trip</a></div></section>`;
 }
 
