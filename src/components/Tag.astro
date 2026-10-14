@@ -1,0 +1,14 @@
+---
+interface Props { status: string; checked?: string; }
+const { status, checked } = Astro.props;
+const fmt = (d?: string) => d ? new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : '';
+const labels: Record<string, string> = {
+  verified: checked ? `Verified ${fmt(checked)}` : 'Verified',
+  conflict: 'Sources conflict',
+  unverified: 'Not yet verified',
+  unpublished: 'Not published by network',
+  'tesla-only': 'Tesla only',
+  open: 'Open to all EVs',
+};
+---
+<span class={`tag tag--${status}`}>{labels[status] ?? status}</span>

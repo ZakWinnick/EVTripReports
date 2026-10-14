@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import RouteLine from '../components/RouteLine.astro';
+import StatStrip from '../components/StatStrip.astro';
+import featured from '../data/routes/la-to-las-vegas.json';
+import routes from '../data/routes.json';
+
+const total = Number(featured.stats[0].value);
+const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+---
+<Base title="EV Trip Reports" description="Stop-by-stop EV road trip guides. Stall counts, kW, access and prices checked against the charging networks themselves, with a source and date on every fact.">
+  <section class="band hero">
+    <div class="wrap">
+      <h1 class="display">Know every stop<br />before you leave.</h1>
+      <p class="lede" style="margin-top:28px">Stop-by-stop charging guides for EV road trips. Stall counts, kW, access, and price come from the networks' own locators, and every fact carries a source and the date we checked it.</p>
+      <div class="btnrow" style="margin-top:32px">
+        <a class="pill pill--lg" href="/guides/la-to-las-vegas">Read the LA to Las Vegas guide</a>
+        <a class="pill pill--lg pill--ghost" href="/plans">Get a plan for your car</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--mist">
+    <div class="wrap">
+      <div class="feat__head">
+        <div>
+          <p class="muted" style="margin:0 0 8px">Featured route, {featured.highway}</p>
+          <h2 class="h2">{featured.title}</h2>
+        </div>
+        <p class="small muted" style="margin:0">Checked {checkedLabel}</p>
+      </div>
+      <div class="panel" style="padding: clamp(18px, 3vw, 32px); margin-top: 28px">
+        <RouteLine stops={featured.stops} total={total} startLabel={featured.startLabel} endLabel={featured.endLabel} linkBase="/guides/la-to-las-vegas" />
+      </div>
+      <div style="margin-top: 40px"><StatStrip stats={featured.stats} /></div>
+    </div>
+  </section>
+
+  <section id="guides" class="band">
+    <div class="wrap">
+      <h2 class="h2">Route guides</h2>
+      <p class="lede" style="margin-top:12px">One route goes live when every stop on it has been checked. The rest are in progress.</p>
+      <ul class="guides">
+        {routes.map((r) => r.status === 'live' ? (
+          <li>
+            <a class="panel guide guide--live" href={`/guides/${r.slug}`}>
+              <span class="guide__hw">{r.highway}</span>
+              <span class="guide__t">{r.title}</span>
+              <span class="small muted">{r.miles} miles, {featured.stops.length} charging stops</span>
+              <span class="guide__go">Read the guide</span>
+            </a>
+          </li>
+        ) : (
+          <li>
+            <div class="panel guide">
+              <span class="guide__hw">{r.highway}</span>
+              <span class="guide__t">{r.title}</span>
+              <span class="small muted">Verifying stops now</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band--mist">
+    <div class="wrap plans">
+      <div>
+        <h2 class="h2">A plan built for your car.</h2>
+        <p class="lede" style="margin-top:16px">Routing apps know where chargers are. They don't know the EA site in Baker had a queue last month, or that the closest Supercharger is Tesla-only. Tell us your car, adapter, and dates, and we check every stop again before we send your plan.</p>
+        <div class="btnrow" style="margin-top:28px">
+          <a class="pill pill--lg" href="/plans#request">Plan my trip</a>
+          <a class="pill pill--lg pill--ghost" href="/plans">Compare plans</a>
+        </div>
+      </div>
+      <dl class="tiers">
+        <div><dt>Route plan</dt><dd>$19</dd></div>
+        <div><dt>Detailed plan, with food and lodging</dt><dd>$39</dd></div>
+        <div><dt>Multi-day or family trip</dt><dd>$79</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap method">
+      <h2 class="h2">Where the numbers come from</h2>
+      <ol class="sources">
+        <li><strong>The network's own locator.</strong> Tesla, Electrify America, EVgo and the rest decide stall count, kW, access, and price.</li>
+        <li><strong>The DOE station database.</strong> We pull every DC fast site in each stop town so nothing gets missed.</li>
+        <li><strong>Drivers who were just there.</strong> Forum and Reddit reports on broken stalls and waits, each with a link and a date.</li>
+      </ol>
+      <p class="muted" style="margin-top:20px">Third-party aggregators are leads, never the source. When sources disagree, we show both. <a href="/methodology">Full methodology</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-top: clamp(64px, 11vw, 140px); padding-bottom: clamp(56px, 8vw, 104px); }
+  .feat__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+  .guides { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .guides { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .guides { grid-template-columns: 1fr; } }
+  .guide { display: flex; flex-direction: column; gap: 6px; padding: 22px; height: 100%; text-decoration: none; color: var(--ink-2); }
+  .guide .guide__t { color: var(--ink-2); }
+  .guide--live { border-color: var(--ink); color: var(--ink); }
+  .guide--live .guide__t { color: var(--ink); }
+  .guide--live:hover { background: var(--ink); color: #fff; }
+  .guide--live:hover .muted, .guide--live:hover .guide__t, .guide--live:hover .guide__hw { color: #fff; }
+  .guide__hw { font-weight: 700; font-size: 0.9rem; color: var(--green); }
+  .guide__t { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; }
+  .guide__go { margin-top: 14px; font-weight: 600; font-size: 0.94rem; }
+  .plans { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  @media (max-width: 860px) { .plans { grid-template-columns: 1fr; } }
+  .tiers { margin: 0; border-top: 1px solid var(--ink); }
+  .tiers div { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+  .tiers dt { color: var(--ink-2); }
+  .tiers dd { margin: 0; font-size: 2rem; font-weight: 700; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+  .sources { margin: 28px 0 0; padding-left: 1.3em; max-width: 64ch; font-size: 1.05rem; }
+  .sources li { margin: 14px 0; padding-left: 6px; }
+</style>
