@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { tiers, priceLabel, checkoutOpen } from '../data/plans.js';
+import { tiers, priceLabel } from '../data/plans.js';
 const rows: [string, boolean, boolean, boolean][] = [
   ['Primary charger and backup at every stop', true, true, true],
   ['Every stop re-checked against the network before delivery', true, true, true],
@@ -16,7 +16,8 @@ const faq = [
   { q: 'What if a charger is down when I get there?', a: 'Every stop in your plan has a backup, and we tell you how far it is. We also flag sites where drivers have recently reported broken stalls, so you can plan to arrive with extra range.' },
   { q: 'Does any charging network pay you?', a: 'No. No network pays for placement or coverage. If we ever add affiliate links for hotels or gear, they will be marked on the page.' },
   { q: 'What do you need from me?', a: 'Your car, its charge port and any adapter you carry, your charging memberships, where you\'re starting and ending, and your dates. Notes about kids, pets, or a must-stop diner help too.' },
-  { q: 'When do I get my plan?', a: 'Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days. Each stop is checked again right before we send it.' },
+  { q: 'When do I get my plan?', a: 'Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days. Each stop is checked again right before we send it. The clock starts when we have both the payment and the trip form.' },
+  { q: 'Why the form before payment?', a: 'The Stripe page records the charge. It does not record your car, adapter, route, or dates. Send those first. Checkout then opens for the plan you picked, and Stripe brings you back here.' },
 ];
 ---
 <Base title="Custom EV trip plans" description="A charging plan built for your car, adapter, and dates. Every stop re-checked against the network before delivery.">
@@ -24,13 +25,18 @@ const faq = [
     <div class="wrap">
       <h1 class="h1">A trip plan built<br />for your car.</h1>
       <p class="lede" style="margin-top:20px">Tell us what you drive and where you're going. We pick each stop for your port, adapter, and memberships, check it against the network's own locator, and send it back with a backup at every stop.</p>
-      <p class="note" style="margin-top:28px"><strong>Founding plans are free.</strong> Paid checkout is not open yet. In return for a founding plan, send a short trip report after you drive it.</p>
+      <div id="paid-thanks" class="note" hidden>
+        <h2 class="h2">Payment received.</h2>
+        <p style="margin:12px 0 0">Thanks. If the trip form is already in, we'll email the plan. If you paid before sending it, use the form below. The receipt doesn't include your car, route, or dates.</p>
+      </div>
+      <p class="note" style="margin-top:28px">Send the trip details, then pay. A plan is $19, $39, or $79. After payment, Stripe returns you to this page.</p>
     </div>
   </section>
 
-  <section class="band band--tight band--mist">
+  <section id="compare" class="band band--tight band--mist">
     <div class="wrap">
       <h2 class="h2">Compare plans</h2>
+      <p class="lede" style="margin-top:12px">Each pay button opens that plan's Stripe checkout. Send the form first so we have the trip, then come back here from Stripe.</p>
       <div class="cmp" role="table" aria-label="Plan comparison">
         <div class="cmp__row cmp__hdr" role="row">
           <div role="columnheader"><span class="sr">Feature</span></div>
@@ -38,8 +44,8 @@ const faq = [
             <div role="columnheader" class="cmp__tier">
               <span class="cmp__name">{t.name}</span>
               <span class="cmp__price">{priceLabel(t)}</span>
-              {!checkoutOpen(t) && <span class="small muted">Paid checkout coming soon</span>}
               <span class="small muted">{t.blurb}</span>
+              <a class="pill pay-link" href={t.stripeUrl}>Pay {t.price}</a>
             </div>
           ))}
         </div>
@@ -64,8 +70,8 @@ const faq = [
   <section id="request" class="band band--tight">
     <div class="wrap req">
       <div>
-        <h2 class="h2">Request a plan</h2>
-        <p class="lede" style="margin-top:14px">We reply by email. Nothing is charged for founding plans.</p>
+        <h2 class="h2">Trip details</h2>
+        <p id="form-lede" class="lede" style="margin-top:14px">This is step one. We save it, then open checkout for the plan you chose. We email the finished plan.</p>
       </div>
       <form id="intake" class="panel form" novalidate>
         <div class="grid2">
@@ -73,7 +79,7 @@ const faq = [
           <label>Email<input name="email" type="email" autocomplete="email" required /></label>
         </div>
         <label>Plan<select name="tier" required>
-          {tiers.map((t) => <option value={t.name}>{t.name}</option>)}
+          {tiers.map((t) => <option value={t.name}>{t.name}, {t.price}</option>)}
         </select></label>
         <div class="grid2">
           <label>Car (year, make, model, trim)<input name="car" placeholder="2024 Ioniq 5 SE AWD" required /></label>
@@ -107,7 +113,7 @@ const faq = [
         <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label>
         <div id="turnstile-slot" hidden></div>
         <div class="btnrow">
-          <button class="pill pill--lg" type="submit">Request my plan</button>
+          <button class="pill pill--lg" type="submit">Save details and pay $19</button>
           <span class="small muted">By sending, you agree to the <a href="/terms">terms</a> and <a href="/privacy">privacy policy</a>.</span>
         </div>
         <p class="form__msg" role="status" aria-live="polite"></p>
@@ -155,7 +161,6 @@ const faq = [
       <h2 id="refunds" class="h2" style="margin-top:64px">Refund policy</h2>
       <div class="prose" style="margin-top:16px">
         <ul>
-          <li>Founding plans are free, so there is nothing to refund until paid checkout opens. Once a plan is paid, the rules below apply.</li>
           <li>If we miss the delivery time, you get a full refund.</li>
           <li>If a station fact in your plan was wrong on the date we checked it, you get a full refund.</li>
           <li>Networks change things after we check. A plan that was correct on its check date isn't refundable because a site changed later.</li>
@@ -166,6 +171,7 @@ const faq = [
   </section>
 </Base>
 
+<script is:inline id="plan-tiers" type="application/json" set:html={JSON.stringify(tiers.map((t) => ({ name: t.name, price: t.price, stripeUrl: t.stripeUrl })))}></script>
 <script>
   const form = document.getElementById('intake') as HTMLFormElement | null;
   const msg = form?.querySelector('.form__msg') as HTMLElement | null;
@@ -203,6 +209,37 @@ const faq = [
   }
   setupTurnstile();
 
+  const paid = new URLSearchParams(location.search).get('paid') === '1';
+  const thanks = document.getElementById('paid-thanks');
+  const formLede = document.getElementById('form-lede');
+  const planTiers = tiersJson();
+  const submitBtn = form?.querySelector('button[type=submit]') as HTMLButtonElement | null;
+
+  function tiersJson(): { name: string; price: string; stripeUrl: string }[] {
+    return JSON.parse(document.getElementById('plan-tiers')?.textContent || '[]');
+  }
+
+  function selectedTier() {
+    const name = (form?.querySelector('[name=tier]') as HTMLSelectElement | null)?.value;
+    return planTiers.find((t) => t.name === name) || planTiers[0];
+  }
+
+  function payLabel() {
+    const tier = selectedTier();
+    if (!tier) return 'Save details and pay';
+    return paid ? 'Send trip details' : `Save details and pay ${tier.price}`;
+  }
+
+  if (paid) {
+    thanks?.removeAttribute('hidden');
+    document.querySelectorAll('.pay-link').forEach((el) => el.setAttribute('hidden', ''));
+    if (formLede) formLede.textContent = 'Payment is in. Send the trip details if you have not already. We email the plan from this form.';
+  }
+  if (submitBtn) submitBtn.textContent = payLabel();
+  form?.querySelector('[name=tier]')?.addEventListener('change', () => {
+    if (submitBtn) submitBtn.textContent = payLabel();
+  });
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!form || !msg) return;
@@ -220,13 +257,20 @@ const faq = [
     const turnstile = (window as unknown as { turnstile?: { getResponse: (id: string) => string; reset: (id: string) => void } }).turnstile;
     if (widgetId && turnstile) data['cf-turnstile-response'] = turnstile.getResponse(widgetId);
     const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
+    const tier = selectedTier();
     btn.disabled = true;
     btn.textContent = 'Sending';
     try {
       const res = await fetch('/api/intake', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
       if (res.ok) {
+        if (!paid && tier?.stripeUrl) {
+          const next = new URL(tier.stripeUrl);
+          if (data.email) next.searchParams.set('prefilled_email', String(data.email));
+          window.location.href = next.toString();
+          return;
+        }
         form.reset();
-        msg.textContent = 'Request received. We will email you within a day to confirm the details.';
+        msg.textContent = 'Trip details received. We will email the plan.';
         msg.classList.add('is-ok');
       } else if (res.status === 503 || res.status === 404 || res.status === 405) {
         msg.textContent = 'Plan requests are not open yet. Check back soon.';
@@ -240,8 +284,9 @@ const faq = [
       msg.textContent = 'Your request did not go through because the connection dropped. Try again.';
       msg.classList.add('is-err');
     } finally {
+      if (!paid && tier?.stripeUrl && msg.classList.contains('is-ok')) return;
       btn.disabled = false;
-      btn.textContent = 'Request my plan';
+      btn.textContent = payLabel();
       if (widgetId && turnstile) turnstile.reset(widgetId);
     }
   });
@@ -254,6 +299,7 @@ const faq = [
   .cmp__hdr { border-bottom: 1px solid var(--ink); align-items: end; padding-bottom: 20px; }
   .cmp__tier { display: flex; flex-direction: column; gap: 4px; }
   .cmp__name { font-weight: 700; letter-spacing: -0.02em; }
+  .pay-link { margin-top: 10px; align-self: flex-start; }
   .cmp__price { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
   .cmp__label { color: var(--ink); }
   .yes { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--green); }

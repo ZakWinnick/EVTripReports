@@ -43,7 +43,7 @@ Both the site key and the secret have to be set for the check to run. If `TURNST
 
 ## Paid checkout
 
-Plan prices live in `src/data/plans.js`. Founding plans are free and `stripeUrl` is null, so the site shows "Free" and "Paid checkout coming soon." To charge a tier later, set `foundingFree` to `false`, set that tier's `price` to the label to display, and set `stripeUrl` to its Stripe Payment Link.
+Plan prices and Stripe Payment Links live in `src/data/plans.js`. Each tier's pay button uses that tier's `stripeUrl`. The intake form is saved first, then the browser opens the matching link. Stripe is configured to return to `https://evtripreports.com/plans?paid=1`, where the page shows a payment-received message. Replace a link in `plans.js` if you create a new Payment Link. Keep the success URL on `/plans?paid=1`.
 
 ## Data rules
 

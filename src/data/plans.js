@@ -1,40 +1,32 @@
-// Paid checkout is off. Founding plans are free.
-// When checkout opens: set foundingFree to false, set each tier's price to the
-// string to show (for example "$19"), and set stripeUrl to that tier's Stripe Payment Link.
-export const foundingFree = true;
-
+// Stripe Payment Links. Each link is set in the Stripe dashboard to return
+// to https://evtripreports.com/plans?paid=1 after payment.
 export const tiers = [
   {
     id: 'route',
     name: 'Route plan',
     blurb: 'Charging stops and backups for one drive.',
     delivery: 'Within 48 hours',
-    price: null,
-    stripeUrl: null,
+    price: '$19',
+    stripeUrl: 'https://buy.stripe.com/dRmeVd3ui5XF9r06iq5sA00',
   },
   {
     id: 'detailed',
     name: 'Detailed plan',
     blurb: 'The route plan, plus food, restrooms, and hotels with chargers.',
     delivery: 'Within 48 hours',
-    price: null,
-    stripeUrl: null,
+    price: '$39',
+    stripeUrl: 'https://buy.stripe.com/aFa8wP2qeadVeLk36e5sA01',
   },
   {
     id: 'multiday',
     name: 'Multi-day or family',
     blurb: 'Several days, overnight charging, and stops timed for kids.',
     delivery: 'Within 3 business days',
-    price: null,
-    stripeUrl: null,
+    price: '$79',
+    stripeUrl: 'https://buy.stripe.com/28E14naWKeub9r05em5sA02',
   },
 ];
 
-export function checkoutOpen(tier) {
-  return foundingFree === false && Boolean(tier.stripeUrl);
-}
-
 export function priceLabel(tier) {
-  if (!checkoutOpen(tier)) return 'Free';
-  return tier.price || 'Paid';
+  return tier.price;
 }
