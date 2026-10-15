@@ -11,14 +11,14 @@
     "title": "LA to San Francisco",
     "highway": "I-5",
     "miles": 317,
-    "status": "live-ready"
+    "status": "live"
   },
   {
     "slug": "sf-to-tahoe",
     "title": "SF to Lake Tahoe",
     "highway": "I-80",
     "miles": 186,
-    "status": "live-ready"
+    "status": "live"
   },
   {
     "slug": "la-to-phoenix",
@@ -32,13 +32,13 @@
     "title": "Seattle to Portland",
     "highway": "I-5",
     "miles": 165,
-    "status": "live-ready"
+    "status": "live"
   },
   {
     "slug": "nyc-to-boston",
     "title": "NYC to Boston",
     "highway": "I-95",
     "miles": 197,
-    "status": "live-ready"
+    "status": "live"
   }
 ]

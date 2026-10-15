@@ -1,9 +1,12 @@
 // Publishes each route's data at /data/<slug>.json so the station-check Worker can diff against it.
 export async function getStaticPaths() {
+  const list = (await import('../../data/routes.json')).default as { slug: string; status: string }[];
+  const live = new Set(list.filter((r) => r.status === 'live').map((r) => r.slug));
   const files = import.meta.glob('../../data/routes/*.json', { eager: true });
-  return Object.values(files).map((m: any) => {
+  return Object.values(files).flatMap((m: any) => {
     const route = m.default ?? m;
-    return { params: { slug: route.slug }, props: { route } };
+    if (!live.has(route.slug)) return [];
+    return [{ params: { slug: route.slug }, props: { route } }];
   });
 }
 

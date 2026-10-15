@@ -270,7 +270,7 @@ ${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
 export function guideCards(routes) {
   return routes
     .map((r) =>
-      r.status === 'live' || r.status === 'live-ready'
+      r.status === 'live'
         ? `<li><a class="panel guide guide--live" href="/guides/${esc(r.slug)}"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(
             r.title
           )}</span><span class="small muted">${esc(r.miles)} miles, ${esc(r.stops)} charging stops</span><span class="guide__go">Read the guide</span></a></li>`
