@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/write-built-guides.mjs && astro build",
     "preview": "astro preview",
-    "test": "node --test functions/guides/guide-404.test.mjs functions/api/plan-review.test.mjs functions/api/portal.test.mjs functions/api/subscribe.test.mjs scripts/publish-status.test.mjs"
+    "test": "node --test functions/guides/guide-404.test.mjs functions/api/plan-review.test.mjs functions/api/portal.test.mjs functions/api/subscribe.test.mjs functions/sitemap.test.mjs scripts/publish-status.test.mjs"
   },
   "dependencies": {
     "astro": "^7.3.8"
