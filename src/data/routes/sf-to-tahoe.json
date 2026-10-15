@@ -1,0 +1,1847 @@
+{
+  "slug": "sf-to-tahoe",
+  "title": "SF to Lake Tahoe",
+  "highway": "I-80",
+  "summary": "I-80 from San Francisco to Truckee. The pass is the point of this drive: Donner Summit is 7,239 ft westbound. Primaries are Electrify America sites confirmed on EA's locator. Sierra sites that are DOE-only stay in the list, unverified.",
+  "checked": "2026-10-15",
+  "startLabel": "US 101, San Francisco",
+  "startNote": "Mileage is the I-80 exit list, from US 101 in San Francisco (mile 0.00) to Central Truckee (mile 185.57), shown as 186.",
+  "endLabel": "Central Truckee",
+  "stats": [
+    {
+      "label": "US 101 to Central Truckee",
+      "value": "186",
+      "unit": "mi",
+      "source": "wiki-i80",
+      "note": "Interstate 80 in California exit list, mile 0.00 to mile 185.57."
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "131",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "72",
+      "unit": ""
+    },
+    {
+      "label": "High point, Donner Summit",
+      "value": "7,239",
+      "unit": "ft",
+      "source": "wiki-i80",
+      "note": "Westbound. The same page lists eastbound at 7,227 ft."
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "wiki-i80": {
+      "name": "Interstate 80 in California, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_80_in_California"
+    },
+    "plugshare": {
+      "name": "PlugShare",
+      "url": "https://www.plugshare.com/"
+    },
+    "evcs": {
+      "name": "EVCS station pages",
+      "url": "https://web2.evcs.com/ev-charging-stations"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "rivian": {
+      "name": "Rivian charging map",
+      "url": "https://rivian.com/experience/charging"
+    }
+  },
+  "stops": [
+    {
+      "id": "fairfield",
+      "name": "Fairfield",
+      "towns": "Suisun City, Fairfield, and Vallejo, CA",
+      "mile": 43,
+      "milepostNote": "Exit 43, SR-12 east toward Suisun City, mile 43.30.",
+      "why": "The primary is the Suisun City Walmart, confirmed on EA's locator. Walters Road was not the exit road on the I-80 list, so the exit row is unverified and the mile marker is exit 43. Vallejo sites from a separate search are DOE-only.",
+      "primary": {
+        "name": "Walmart Suisun City",
+        "network": "Electrify America",
+        "address": "350 Walters Rd, Suisun City, CA 94585",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/suisun-city/350-walters-rd/240290/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/suisun-city/350-walters-rd/240290/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          357393
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "7Charge - Suisun City 38961, 301 Walters Rd, Suisun City",
+          "facts": "DOE lists 1 CCS at 180 kW, 1 NACS at 180 kW on 7CHARGE. DOE last confirmed 2026-02-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            319951
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR FAIRFIELD DC1, 2061 Cadenasso Dr, Fairfield",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            223314
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR FAIRFIELD DC2, 2061 Cadenasso Dr, Fairfield",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            191283
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Department of Agriculture - 2543 Cordelia Road (General Services Dept), 2543 Cordelia Road, Fairfield",
+          "facts": "EVCS lists 8 connectors: 4 CHAdeMO up to 50 kW, 4 CCS up to 50 kW. DOE lists 4 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            357681
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/fairfield/department-of-agriculture-2543-cordelia-road-general-services-dept"
+        },
+        {
+          "name": "Fairfield Civic Center Lot A, 1000 Webster Street, Fairfield",
+          "facts": "EVCS lists 6 connectors: 3 CHAdeMO up to 50 kW, 3 CCS up to 50 kW. DOE lists 3 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            397527
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/fairfield/fairfield-civic-center-lot-a"
+        },
+        {
+          "name": "Fairfield Library, 1150 Kentucky Street, Fairfield",
+          "facts": "EVCS lists 8 connectors: 4 CHAdeMO up to 50 kW, 4 CCS up to 50 kW. DOE lists 4 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            397528
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/fairfield/fairfield-library"
+        },
+        {
+          "name": "Fairfield Transit Center Garage, 2000 Cadenasso Drive, City of Fairfield",
+          "facts": "EVCS lists 12 connectors: 6 CHAdeMO up to 50 kW, 6 CCS up to 50 kW. DOE lists 9 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            351897
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/city-of-fairfield/fairfield-transit-center-garage"
+        },
+        {
+          "name": "Fairfield, CA - 3001 Travis Boulevard - Tesla Supercharger, 3001 Travis Boulevard, Fairfield",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 3001  Travis Boulevard, Fairfield. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            256050
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/20601",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Fairfield, CA - Holiday Ln - Tesla Supercharger, 1350 Holiday Lane, Fairfield",
+          "facts": "Tesla Find Us lists 12 stalls, up to 150 kW, at 1350 Holiday Lane, Fairfield. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            149309
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/fairfieldholidaylanesupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Fairfield, CA - Pittman Road - Tesla Supercharger, 190 Pittman Rd, Fairfield",
+          "facts": "Tesla Find Us lists 8 stalls, up to 325 kW, at 190 Pittman Rd, Fairfield. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            360294
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/31548",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Fairfield, CA - Travis Boulevard - Tesla Supercharger, 1350 Travis Blvd., Fairfield",
+          "facts": "Tesla Find Us lists 12 stalls, up to 150 kW, at 1350 Travis Blvd., Fairfield. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            102019
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/fairfieldcasupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Fairfield, CA - Waterman Boulevard - Tesla Supercharger, 2401 Waterman Blvd, Fairfield",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 2401 Waterman Blvd, Fairfield. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            350087
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/35668",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Gateway Plaza, 173 Plaza Dr, Vallejo",
+          "facts": "DOE lists 8 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            397695
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY H&S 3060, 333 Curtola Pkwy, Vallejo",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326209
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY H&S 3060.2, 333 Curtola Parkway, Vallejo",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326210
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY H&S 3060.4, 333 Curtola Pkwy, Vallejo",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326212
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY H&S 3060.5, 333 Curtola Parkway, Vallejo",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326208
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY H&S 3060.6, 333 Curtola Parkway, Vallejo",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326207
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Jelly Belly, 1 Jelly Belly Ln, Fairfield",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW, 4 J1772 at 7.4 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            163948
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Lawler Ranch - Suisun City, 1230 McCoy Creek Dr., Suisun City",
+          "facts": "EVCS lists 20 connectors: 10 CHAdeMO up to 50 kW, 10 CCS up to 50 kW. DOE lists 10 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            333023
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/suisun-city/lawler-ranch-suisun-city"
+        },
+        {
+          "name": "Mission Village Shopping Center, 2525 N Texas St, Fairfield",
+          "facts": "EVgo lists 4 chargers at 2525 N Texas St, Fairfield: 4 at 350 kW with two CCS connectors (8 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            371703
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/fairfield/71212/"
+        },
+        {
+          "name": "Momentum Nissan, 2545 Auto Mall Pkwy, Fairfield",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on Non-Networked. DOE last confirmed 2024-02-12. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            46724
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Oliver Road Park and Ride, 1031 Oliver Road, Fairfield",
+          "facts": "EVCS lists 8 connectors: 4 CHAdeMO up to 50 kW, 4 CCS up to 50 kW. DOE lists 4 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            461460
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/fairfield/oliver-road-park-and-ride"
+        },
+        {
+          "name": "Raley's Fairfield Travis, 3001 Travis Blvd, Fairfield",
+          "facts": "DOE lists 2 CCS at 350 kW, 4 CCS at 100 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            257386
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Solano County - 600 Texas Parking Lot, 600 Texas St, Fairfield",
+          "facts": "DOE lists this as planned, not open. 4 DC ports on Non-Networked. DOE last confirmed 2026-06-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            262368
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Solano County - Clay Bank Parking Lot, 2450 Clay Bank Rd, Fairfield",
+          "facts": "DOE lists this as planned, not open. 3 DC ports on NOODOE. DOE last confirmed 2026-06-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            262370
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Solano County - Fairfield Civic Center Library, 1150 Kentucky St, Fairfield",
+          "facts": "DOE lists 4 CHAdeMO at 50 kW on Non-Networked. DOE last confirmed 2026-06-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            322627
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Springstowne Center, 2120 Springs Rd, Vallejo",
+          "facts": "EVgo lists 5 chargers at 2120 Springs Rd, Vallejo: 2 at 350 kW with two NACS connectors, 3 at 350 kW with two CCS connectors (10 connectors). DOE lists 6 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            367855
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/vallejo/70536/"
+        },
+        {
+          "name": "STA - Fairfield - Allan Witt Community Park, 1741 W Texas Street, Fairfield",
+          "facts": "EVCS lists 8 connectors: 4 CHAdeMO up to 50 kW, 2 CCS up to 50 kW, 2 Tesla up to 50 kW. DOE lists 2 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            303615
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/fairfield/sta-fairfield-allan-witt-community-park"
+        },
+        {
+          "name": "STA - Fairfield - Laurel Creek Community Park, 1050 Cement Hill Rd., Fairfield",
+          "facts": "EVCS lists 6 connectors: 3 CHAdeMO up to 50 kW, 3 CCS up to 50 kW. DOE lists 3 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            332989
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/fairfield/sta-fairfield-laurel-creek-community-park"
+        },
+        {
+          "name": "Starbucks - Tesla Supercharger, 2980 Travis Blvd, Fairfield",
+          "facts": "Tesla Find Us lists 8 stalls, up to 325 kW, at 2980 Travis Blvd, Fairfield. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            451132
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/437024",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Twin Peaks Center, 1736 N Texas St, Fairfield",
+          "facts": "EVgo lists 6 chargers at 1736 N Texas St, Fairfield: 4 at 350 kW with CCS and CHAdeMO, 2 at 100 kW with CCS and CHAdeMO (12 connectors). DOE lists 4 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            367759
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/fairfield/72525/"
+        },
+        {
+          "name": "Vallejo Downtown Parking Lot F, 201 Capitol Street, Vallejo",
+          "facts": "DOE lists 3 CHAdeMO at 50 kW, 3 CCS at 50 kW on EVCS. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            454257
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vallejo Downtown Parking Lot J, 301 Virginia Street, Vallejo",
+          "facts": "DOE lists 4 CCS at 50 kW, 4 CHAdeMO at 50 kW on EVCS. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            348968
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vallejo, CA - Plaza Dr - Tesla Supercharger, 173 Plaza Drive #114, Vallejo",
+          "facts": "Tesla Find Us lists 10 stalls, up to 325 kW, at 173 Plaza Dr, Vallejo. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            440443
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/18209",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vallejo, CA - Robles Way - Tesla Supercharger, 122 Robles Way, Vallejo",
+          "facts": "Tesla Find Us lists 8 stalls, up to 325 kW, at 122 Robles Way, Vallejo. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            358286
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/30953",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vallejo, CA - Solano Avenue - Tesla Supercharger, 2155 Solano Avenue, Vallejo",
+          "facts": "Tesla Find Us lists 20 stalls, up to 250 kW, at 2155 Solano Ave, Vallejo. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            227699
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/VallejoCASupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vallejo, CA - Tesla Supercharger, 904 Admiral Callaghan Lane, Vallejo",
+          "facts": "Tesla Find Us lists 18 stalls, up to 150 kW, at 904 Admiral Callaghan Lane, Vallejo. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            149361
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/vallejosupercharger",
+          "source": "tesla-findus"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Fairfield, CA",
+          "lat": 38.2493581,
+          "lng": -122.039966,
+          "radius": 6
+        },
+        {
+          "name": "Vallejo, CA",
+          "lat": 38.1040864,
+          "lng": -122.2566367,
+          "radius": 5
+        }
+      ]
+    },
+    {
+      "id": "vacaville",
+      "name": "Vacaville",
+      "towns": "Vacaville and Dixon, CA",
+      "mile": 55,
+      "milepostNote": "Nut Tree Parkway, exit at mile 54.73.",
+      "why": "The outlets site is on Nut Tree Parkway at I-80. Dixon, the next town east, is included from its own search and labeled by city.",
+      "primary": {
+        "name": "Vacaville Premium Outlets",
+        "network": "Electrify America",
+        "address": "321 Nut Tree Road, Vacaville, CA 95687",
+        "exit": "Exit 55, Nut Tree Parkway",
+        "stalls": {
+          "value": "8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/vacaville/321-nut-tree-road/100014/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/vacaville/321-nut-tree-road/100014/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          149834
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "Davis Commons, 500 1st St, Davis",
+          "facts": "EVgo lists 2 chargers at 500 1st St, Davis: 2 at 50 kW with CCS and CHAdeMO (4 connectors). The panel also lists 1 Level 2 charger. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228285
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/davis/372/"
+        },
+        {
+          "name": "Davis, CA - Russell Blvd - Tesla Supercharger, 737 Russell Blvd, Davis",
+          "facts": "Tesla Find Us lists 20 stalls, up to 325 kW, at 737 Russell Blvd, Davis. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            398003
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/401813",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Davis, CA - Tesla Supercharger, 2107-2151 Cowell Blvd, Davis",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 2107-2151 Cowell Blvd, Davis. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            171464
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/DavisCAsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Dixon, CA - Tesla Supercharger, 1285 Stratford Ave, Dixon",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 1285 Stratford Ave, Dixon. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            323265
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34886",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "GF4EVA NUGGET DC1, 134 Browns Valley Pkwy, Vacaville",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            181881
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GF4EVA NUGGET DC2, 134 Browns Valley Pkwy, Vacaville",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            181880
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Nut Tree Plaza, 1661 E Monte Vista Ave, Vacaville",
+          "facts": "DOE lists 4 CHAdeMO at 100 kW, 2 CCS at 100 kW, 2 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            372501
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RR #70 DIXON DC STATION 1, 2299 N 1st St, Dixon",
+          "facts": "DOE lists 1 CHAdeMO at 100 kW, 1 CCS at 100 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            387992
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RR #70 DIXON DC STATION 2, 2299 N 1st St, Dixon",
+          "facts": "DOE lists 1 CHAdeMO at 100 kW, 1 CCS at 100 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            384128
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vacaville Premium Outlets North, 321 Nut Tree Rd, Vacaville",
+          "facts": "DOE lists 1 J1772 at 7.2 kW, 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            228263
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vacaville, CA - Alamo Drive - Tesla Supercharger, 870 Alamo Drive, Vacaville",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 870 Alamo Drive, Vacaville. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            259985
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/28435",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Vacaville, CA - Browns Valley Parkway - Tesla Supercharger, 154 Browns Valley Pkwy, Vacaville",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 154 Browns Valley Pkwy, Vacaville. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            321148
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/VacavilleCA2Q42022",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vacaville, CA - East Monte Vista Avenue - Tesla Supercharger, 1661 E Monte Vista Ave, Vacaville",
+          "facts": "Tesla Find Us lists 28 stalls, up to 325 kW, at 1661 E Monte Vista Ave, Vacaville. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            449669
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/29107",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vacaville, CA - Harbison Drive - Tesla Supercharger, 2098 Harbison Dr, Vacaville",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 2098 Harbison Dr, Vacaville. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            311233
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/28561",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vacaville, CA - Tesla Supercharger, 321 Nut Tree Road, Vacaville",
+          "facts": "Tesla Find Us lists 16 stalls, up to 150 kW, at 321 Nut Tree Road, Vacaville. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            102075
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/vacavillecasupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "WinCo Foods - Vacaville #60, 855 Davis St, Vacaville",
+          "facts": "DOE lists 2 CCS at 350 kW, 2 CHAdeMO at 100 kW, 2 CCS at 100 kW on eVgo Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            260519
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Vacaville, CA",
+          "lat": 38.3565773,
+          "lng": -121.9877444,
+          "radius": 6
+        },
+        {
+          "name": "Dixon, CA",
+          "lat": 38.4454641,
+          "lng": -121.8232958,
+          "radius": 10
+        }
+      ]
+    },
+    {
+      "id": "davis",
+      "name": "Davis",
+      "towns": "Davis, CA",
+      "mile": 72,
+      "milepostNote": "Richards Boulevard, exits 72A and 72B, mile 72.43.",
+      "why": "Davis is the clean I-80 stop west of Sacramento. The West Sacramento search was not folded into this stop, because a 6-mile radius there reaches across the river into Sacramento.",
+      "primary": {
+        "name": "Electrify America, Davis",
+        "network": "Electrify America",
+        "address": "325 E Street, Davis, CA 95616",
+        "exit": "Exits 72A-B, Richards Boulevard",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/davis/325-e-street/210070/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/davis/325-e-street/210070/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          190432
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/307130",
+            "date": "2026-08-23",
+            "summary": "Summer Sat evening just two chargers in use."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "7-ELEVEN 38681 DAVIS DC1, 400 Mace Blvd, Davis",
+          "facts": "DOE lists 1 NACS at 62 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            193746
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Hanlees Nissan, 5009 Chiles Rd, Davis",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW on Non-Networked. DOE last confirmed 2026-01-13. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            39883
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Davis, CA",
+          "lat": 38.5435526,
+          "lng": -121.739005,
+          "radius": 5
+        }
+      ]
+    },
+    {
+      "id": "rocklin",
+      "name": "Roseville and Rocklin",
+      "towns": "Roseville and Rocklin, CA",
+      "mile": 108,
+      "milepostNote": "Rocklin Road, mile 107.58. Roseville's Riverside Avenue exit is mile 101.79.",
+      "why": "The primary is the Rocklin Target on Commons Drive, just off Rocklin Road. Roseville Galleria is a verified backup. Two Costco sites in this search are labeled Commercial on EA's locator.",
+      "primary": {
+        "name": "Target Rocklin",
+        "network": "Electrify America",
+        "address": "5104 Commons Drive, Rocklin, CA 95677",
+        "exit": "Exit 108, Rocklin Road",
+        "stalls": {
+          "value": "6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/rocklin/5104-commons-drive/100019/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/rocklin/5104-commons-drive/100019/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          190400
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186191",
+            "date": "2026-10-11",
+            "summary": "Couldn't activate with credit card. Worked after I called them. All stations working, but showing unknown status on PlugShare."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Roseville, 1151 Galleria Blvd",
+          "network": "Electrify America",
+          "address": "1151 Galleria Blvd, Roseville, CA 95678",
+          "facts": "6 chargers, each with CCS at 350 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/roseville/1151-galleria-blvd/210406/",
+          "afdcIds": [
+            191562
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/46257",
+              "date": "2024-07-24",
+              "summary": "They are currently working on all the chargers"
+            }
+          ],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Roseville, 5000 Baseline Road, EV",
+          "network": "Electrify America",
+          "address": "5000 Baseline Road, EV, Roseville, CA 95747",
+          "facts": "10 chargers, each with CCS at 350 kW.",
+          "access": "EA lists this site as COMMERCIAL.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/roseville/5000-baseline-road-ev/701402/",
+          "afdcIds": [
+            448915
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1513682",
+              "date": "2026-08-10",
+              "summary": "I have Mercedes Benz free charging at EA for two years. Be aware, that is not useable at this location."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1513682",
+              "date": "2026-07-19",
+              "summary": "Easy interface. No issues at all. Get the app + membership ($7/month). Save you some money."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1513682",
+              "date": "2026-07-07",
+              "summary": "easy, convenient fast charging at Costco, but no EA member discount here."
+            }
+          ],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Citrus Heights, 6111 Sunrise Blvd",
+          "network": "Electrify America",
+          "address": "6111 Sunrise Blvd, Citrus Heights, CA 95610",
+          "facts": "6 chargers, each with CCS at 350 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/citrus-heights/6111-sunrise-blvd/240352/",
+          "afdcIds": [
+            448010
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Loomis, 4107 Sierra College Blvd.",
+          "network": "Electrify America",
+          "address": "4107 Sierra College Blvd., Loomis, CA 95677",
+          "facts": "14 chargers, each with CCS at 350 kW.",
+          "access": "EA lists this site as COMMERCIAL.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/loomis/4107-sierra-college-blvd/701410/",
+          "afdcIds": [
+            371680
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "76 Roseville Pkwy, 1300 E Roseville Pkwy, Roseville",
+          "facts": "DOE lists this as temporarily unavailable: 8 CCS at 200 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            354374
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Antelope Food & Gas, 4311 Antelope Rd, Antelope",
+          "facts": "DOE lists 4 CHAdeMO at 50 kW, 4 CCS at 50 kW on EVOLV_CHARGING. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            470276
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Ethan Conrad #120, 6041 Sunrise Mall, Citrus Heights",
+          "facts": "EVgo lists 6 chargers at 6041 Sunrise Mall, Citrus Heights: 4 at 350 kW with two CCS connectors, 2 at 350 kW with two NACS connectors (12 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            429572
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/citrus-heights/84696/"
+        },
+        {
+          "name": "Ethan Conrad #28, 5441 Diablo Dr, Sacramento",
+          "facts": "EVgo lists 5 chargers at 5441 Diablo Dr, Sacramento: 2 at 350 kW with two NACS connectors, 3 at 350 kW with two CCS connectors (10 connectors). DOE lists this as temporarily unavailable: 6 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            450104
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/sacramento/88087/"
+        },
+        {
+          "name": "Ethan Conrad Granite Bay 5, 8595 Auburn Folsom Rd., Granite Bay",
+          "facts": "EVgo lists 4 chargers at 8595 Auburn Folsom Rd., Granite Bay: 4 at 350 kW with two CCS connectors (8 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            463886
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/granite-bay/95536/"
+        },
+        {
+          "name": "Ethan Conrad Rocklin #121 (Sunset Pointe), 1240 Sunset Blvd., Rocklin",
+          "facts": "EVgo lists 2 chargers at 1240 Sunset Blvd., Rocklin: 2 at 100 kW with two CCS connectors (4 connectors). DOE lists 4 CCS at 350 kW, 2 NACS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            446298
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/rocklin/86036/"
+        },
+        {
+          "name": "Ethan Conrad_Sacramento_#26, 4411 Elkhorn Blvd., Sacramento",
+          "facts": "EVgo lists 4 chargers at 4411 Elkhorn Blvd., Sacramento: 4 at 350 kW with two CCS connectors (8 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            451724
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/sacramento/89043/"
+        },
+        {
+          "name": "Future Nissan of Roseville, 600 Automall Dr, Roseville",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on Non-Networked. DOE last confirmed 2026-01-13. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            39928
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Galleria Blvd - Roseville CA, 1216 Galleria Blvd., Roseville",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on SHELL_RECHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            186857
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY PM 3023, 1050 Sunset Boulevard, Rocklin",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            335535
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY PM 3023.2, 1050 Sunset Boulevard, Rocklin",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            335533
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY PM 3023.3, 1050 Sunset Boulevard, Rocklin",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            335534
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY PM 3023.5, 1050 Sunset Boulevard, Rocklin",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            335537
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY PM 3023.6, 1050 Sunset Boulevard, Rocklin",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            335538
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Loomis, CA - Tesla Supercharger, 6119 Horseshoe Bar Road, Loomis",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 6119 Horseshoe Bar Rd, Loomis. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            186876
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/LoomisCAsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Mercedes-Benz - Rocklin, 4747 Granite Dr, Rocklin",
+          "facts": "DOE lists 1 CCS at 62.5 kW on Non-Networked. DOE last confirmed 2026-07-15. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            218627
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Pleasant Grove Pointe, 933 Pleasant Grove Boulevard, Roseville",
+          "facts": "EVgo lists 3 chargers at 933 Pleasant Grove Boulevard, Roseville: 1 at 350 kW with two NACS connectors, 2 at 350 kW with two CCS connectors (6 connectors). DOE lists 6 CCS at 350 kW, 2 NACS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            463887
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/roseville/95538/"
+        },
+        {
+          "name": "Raley's Citrus Heights #239, 7847 Lichen Dr, Citrus Heights",
+          "facts": "EVgo lists 2 chargers at 7847 Lichen Dr, Citrus Heights: 2 at 100 kW with CCS and CHAdeMO (4 connectors). DOE lists 6 CHAdeMO at 100 kW, 2 CCS at 100 kW, 4 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            373087
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/citrus-heights/73809/"
+        },
+        {
+          "name": "Reliable Buick GMC Cadillac, 400 Automall Drive, Roseville",
+          "facts": "DOE lists 2 CCS at 60 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            325553
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Rocklin, CA - Granite Drive - Tesla Supercharger, 4800 Granite Dr, Rocklin",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 4800 Granite Dr, Rocklin. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            324008
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4007105",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Rocklin, CA - Tesla Supercharger, 4361 Granite Drive, Rocklin",
+          "facts": "Tesla Find Us lists 18 stalls, up to 150 kW, at 4361 Granite Drive, Rocklin. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            102053
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/NA-US-CA-Rocklin",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Rocklin, CA, 4401 Granite Drive, Rocklin",
+          "facts": "Rivian's charging map lists 12 chargers, up to 300 kW, at 4401 Granite Drive, Rocklin. Open to non-Rivian EVs. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            460459
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://rivian.com/experience/charging",
+          "source": "rivian"
+        },
+        {
+          "name": "ROCKLINEV1 DCFAST HOG, 4401 Granite Dr, Rocklin",
+          "facts": "DOE lists 1 CCS at 24 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            158968
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Roseville, CA - Douglas Boulevard - Tesla Supercharger, 1925 Douglas Blvd, Roseville",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 1925  Douglas Boulevard, Roseville. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            314466
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/18606",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Roseville, CA - Freedom Way - Tesla Supercharger, 1851 Freedom Wy, Roseville",
+          "facts": "Tesla Find Us lists 24 stalls, up to 250 kW, at 1851 Freedom Wy, Roseville. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            311228
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/29080",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Roseville, CA - Galleria Boulevard - Tesla Supercharger, 1120 Galleria Boulevard, Roseville",
+          "facts": "Tesla Find Us lists 20 stalls, up to 150 kW, at 1120 Galleria Boulevard, Roseville. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            154202
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/rosevillegalleriasupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Roseville, CA - Harding Boulevard - Tesla Supercharger, 108 Harding Blvd, Roseville",
+          "facts": "Tesla Find Us lists 16 stalls, up to 325 kW, at 108 A Harding Blvd, Roseville. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            326666
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/31347",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Roseville, CA - Tesla Supercharger, 1151 Galleria Blvd, Roseville",
+          "facts": "Tesla Find Us lists 7 stalls, up to 150 kW, at 1151 Galleria Blvd, Roseville. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            102054
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/rosevillesupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "RSS CENTER LLC, 446 Roseville Square, Roseville",
+          "facts": "DOE lists this as temporarily unavailable: 8 CHAdeMO at 50 kW, 8 CCS at 50 kW, 8 J1772 at 7.2 kW on EVOLV_CHARGING. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            470338
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Summer Hills Plaza - Tesla Supercharger, 7873 Lichen Dr, Citrus Heights",
+          "facts": "Tesla Find Us lists 24 stalls, up to 325 kW, at 7873 Lichen Dr, Citrus Heights. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            458525
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/426462",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "University Avenue & Whitney Ranch Parkway, 1 University Avenue, Rocklin",
+          "facts": "DOE lists 2 CCS at 120 kW on CHARGELAB. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            466795
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "West Roseville Associates, 1780 Pleasant Grove Blvd, Roseville",
+          "facts": "DOE lists this as temporarily unavailable: 3 J1772 at 11 kW, 4 CCS at 160 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            388933
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Whole Foods Roseville, 1001 Galleria Blvd, Roseville",
+          "facts": "EVgo lists 6 chargers at 1001 Galleria Blvd, Roseville: 6 at 100 kW with CCS and CHAdeMO (12 connectors). DOE lists 4 CCS at 100 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            470498
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/roseville/97836/"
+        },
+        {
+          "name": "Antelope, CA Rechargery Relay - Elverta Rd, 4249 Elverta Rd, Antelope, CA",
+          "facts": "IONNA's finder lists this as opening soon, not open, at 4249 Elverta Rd, Antelope, CA. The page shows 400 kW.",
+          "status": "unverified",
+          "afdcIds": [],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ca/antelope/4249-elverta-rd-95843/"
+        },
+        {
+          "name": "Granite Bay, CA Rechargery Relay - Auburn Folsom Rd, 8705 Auburn Folsom Rd, Granite Bay, CA",
+          "facts": "IONNA's finder lists this as opening soon, not open, at 8705 Auburn Folsom Rd, Granite Bay, CA. The page shows 400 kW.",
+          "status": "unverified",
+          "afdcIds": [],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ca/granite-bay/8705-auburn-folsom-rd-95746/"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Roseville, CA",
+          "lat": 38.7521235,
+          "lng": -121.2880059,
+          "radius": 6
+        },
+        {
+          "name": "Rocklin, CA",
+          "lat": 38.7907339,
+          "lng": -121.2357828,
+          "radius": 6
+        }
+      ]
+    },
+    {
+      "id": "auburn",
+      "name": "Auburn",
+      "towns": "Auburn and Colfax, CA",
+      "mile": 121,
+      "milepostNote": "Auburn Ravine Road, mile 120.98. Colfax is exit 133 (Canyon Way, mile 133.30) and exit 135 (SR-174, mile 134.63).",
+      "why": "Last verified Electrify America site before the Sierra climb. Colfax has no locator-verified primary, so its DOE sites are listed here under Colfax, not as the Auburn charger.",
+      "primary": {
+        "name": "Electrify America, Auburn",
+        "network": "Electrify America",
+        "address": "1819 Auburn Ravine Rd, Auburn, CA 95603",
+        "exit": "Exit 121, Auburn Ravine Road",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/auburn/1819-auburn-ravine-rd/110108/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/auburn/1819-auburn-ravine-rd/110108/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          201630
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/350450",
+            "date": "2026-10-07",
+            "summary": "Charger 1 is not working but the other 3 or ok. This Mini only accepts a max of 50 kw so I got a good charge and the bathroom is always available in the motel lobby."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/350450",
+            "date": "2026-09-18",
+            "summary": "Great location, was able to use the lobby bathroom with no hassle, will be able to get back on the freeway r-80 quickly"
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "ARCO - Tesla Supercharger, 421 S Auburn St, Colfax",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 421 S Auburn St, Colfax. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            461012
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4008861",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "AUB CHERRY MAG 01, 165 Magnolia Ave, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            186085
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "AUB CHERRY MAG 02, 145 Magnolia Ave, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            204629
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "AUB CHERRY MAG 03, 138 Magnolia Ave, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            204502
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "AUB CHERRY MAG 04, 138 Magnolia Ave, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            204630
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Auburn, CA - Auburn Ravine Rd - Tesla Supercharger, 1790 Auburn Ravine Rd, Auburn",
+          "facts": "Tesla Find Us lists 8 stalls, up to 325 kW, at 1790 Auburn Ravine Rd, Auburn. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            440462
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/416511",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Auburn, CA - Lincoln Way - Tesla Supercharger, 13446 Lincoln Way, Auburn",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 13446 Lincoln Way, Auburn. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            330107
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4007357",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Auburn, CA - Tesla Supercharger, 13437 Bowman Road, Auburn",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 13437 Bowman Rd, Auburn. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            206269
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/AuburnCAsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "DC CORRIDOR ABN TARGET DC1, 2700 Bell Rd, Auburn",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            201410
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR ABN TARGET DC2, 2700 E Bell Rd, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            201409
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR ABN TARGET DC3, 2700 E Bell Rd, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            206308
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR ABN TARGET DC4, 2700 Bell Rd, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            206331
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR COLFAX D&D DC1, 1516 S Canyon Way, Colfax",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            176333
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR COLFAX D&D DC2, 1516 S Canyon Way, Colfax",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            205440
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR HOLIDAY INN DC1, 120 Grass Valley Hwy, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            201240
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR HOLIDAY INN DC2, 120 Grass Valley Hwy, Auburn",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            201241
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EV Charging By Citrine, 333 Canyon Ct, Colfax",
+          "facts": "DOE lists 2 CCS at 150.2 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            450025
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Grass Valley, CA - Tesla Supercharger, 692 Freeman Lane, Grass Valley",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 692 Freeman Ln, Grass Valley. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            262348
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/28429",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "US Bank Auburn, 874 Lincoln Way, Auburn",
+          "facts": "EVCS lists 2 connectors: 1 CHAdeMO up to 50 kW, 1 CCS up to 50 kW. DOE lists 1 DC port.",
+          "status": "conflict",
+          "afdcIds": [
+            348910
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/auburn/us-bank-auburn"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Auburn, CA",
+          "lat": 38.8945939,
+          "lng": -121.0739897,
+          "radius": 10
+        },
+        {
+          "name": "Colfax, CA",
+          "lat": 39.1007902,
+          "lng": -120.9532947,
+          "radius": 10
+        }
+      ]
+    },
+    {
+      "id": "truckee",
+      "name": "Truckee",
+      "towns": "Truckee, Cisco Grove, and Emigrant Gap, CA",
+      "mile": 186,
+      "milepostNote": "Central Truckee, mile 185.57. Cisco Grove is exit 165, mile 164.88.",
+      "why": "The Save Mart site is the verified Truckee charger. Cisco Grove and Emigrant Gap are on the climb below town. Their DOE sites are listed by town. A Soda Springs-centered search was not run.",
+      "primary": {
+        "name": "Save Mart Truckee",
+        "network": "Electrify America",
+        "address": "11399 Deerfield Drive., Truckee, CA 96161",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/truckee/11399-deerfield-drive/100027/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/truckee/11399-deerfield-drive/100027/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          152396
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/190889",
+            "date": "2026-09-17",
+            "summary": "2 of 4 bays were available. A busy spot so felt fortunate. Station 1 would not connect with my car, but was able to move over and charged quite quickly."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "DC CORRIDOR LUCKYS SS DC1, 90 Cisco Rd, Soda Springs",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            181598
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR LUCKYS SS DC2, 90 Cisco Rd, Soda Springs",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            181599
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR TRUCKEE DC1, 10069 Donner Pass Rd., Truckee",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            180743
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC CORRIDOR TRUCKEE DC2, 10069 Donner Pass Rd., Truckee",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            164062
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Northstar - Castle Peak - Truckee, 150 Northstar Dr, Truckee",
+          "facts": "DOE lists 4 CHAdeMO at 100 kW, 4 CCS at 350 kW on EVRANGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            310667
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Soda Springs, CA - Tesla Supercharger, 90 Cisco Rd, Soda Springs",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 90 Cisco Rd, Soda Springs. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            322834
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34612",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Truckee, CA - Brockway Road - Tesla Supercharger, 11209 Brockway Road, Truckee",
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 11209 Brockway Road, Truckee. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            102071
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/truckeebrockwayroadsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Truckee, CA - Deerfield Drive - Tesla Supercharger, 12277 Deerfield Dr, Truckee",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 12277 Deerfield Dr, Truckee. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            356459
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4006752",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Truckee, CA - Donner Pass Road - Tesla Supercharger, 11290 Donner Pass Rd, Truckee",
+          "facts": "Tesla Find Us lists 11 stalls, up to 150 kW, at 11290 Donner Pass Rd, Truckee. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            102072
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/truckeecaliforniadonnersupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Truckee, CA - Soaring Way - Tesla Supercharger, Soaring Way, Truckee",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 10001 Soaring Way, Truckee. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            202623
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/TruckeeCAsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Truckee, CA, 12047 Donner Pass, Truckee",
+          "facts": "Rivian's charging map lists 6 chargers, up to 300 kW, at 12047 Donner Pass, Truckee. Open to non-Rivian EVs. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            391176
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://rivian.com/experience/charging",
+          "source": "rivian"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Truckee, CA",
+          "lat": 39.3279454,
+          "lng": -120.1835765,
+          "radius": 10
+        },
+        {
+          "name": "Cisco Grove, CA",
+          "lat": 39.3099025,
+          "lng": -120.5399297,
+          "radius": 10
+        },
+        {
+          "name": "Emigrant Gap, CA",
+          "lat": 39.3013284,
+          "lng": -120.6603526,
+          "radius": 10
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "Donner Summit is 7,239 ft westbound and 7,227 ft eastbound. Caltrans runs chain controls on this pass in snow, and the pass can close in the worst storms.",
+      "source": "wiki-i80"
+    },
+    {
+      "text": "Colfax, Cisco Grove, and Emigrant Gap have DOE listings and no Electrify America site we could confirm. They are listed on the Auburn and Truckee stops with their own town names, and they are not primaries.",
+      "source": "afdc"
+    },
+    {
+      "text": "A West Sacramento search (6 miles) returned 52 DC fast sites, including Sacramento chargers across the river. That search is not a stop here. San Francisco, Oakland, and the Bay Bridge approach are not listed either. This guide starts at Fairfield.",
+      "source": "afdc"
+    }
+  ],
+  "arrival": "Arrival charging around Lake Tahoe, including the CA-267 basin, is not in this guide. The last stop is Truckee on I-80."
+}

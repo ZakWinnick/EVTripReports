@@ -1,0 +1,2028 @@
+{
+  "slug": "nyc-to-boston",
+  "title": "NYC to Boston",
+  "highway": "I-95",
+  "summary": "I-95 from the George Washington Bridge to Foxborough. Primaries are Electrify America sites confirmed on EA's locator, including the Waterford site that lists CCS and NACS at 400 kW. Boston itself is past the last stop.",
+  "checked": "2026-10-15",
+  "startLabel": "George Washington Bridge",
+  "startNote": "Mileage is New York 23.50 miles (George Washington Bridge to the Connecticut line), plus Connecticut 111.57, plus Rhode Island 42.36, plus Massachusetts to exit 19 at mile 19.215. That sum is 196.6 miles, shown as 197.",
+  "endLabel": "Exit 19, Foxborough",
+  "stats": [
+    {
+      "label": "George Washington Bridge to Foxborough exit 19",
+      "value": "197",
+      "unit": "mi",
+      "source": "wiki-i95-ny",
+      "note": "NY 23.50 + CT 111.57 + RI 42.36 + MA 19.215."
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "148",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "48",
+      "unit": ""
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "wiki-i95-ny": {
+      "name": "Interstate 95 in New York (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_95_in_New_York"
+    },
+    "wiki-i95-ct": {
+      "name": "Interstate 95 in Connecticut, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_95_in_Connecticut"
+    },
+    "wiki-i95-ri": {
+      "name": "Interstate 95 in Rhode Island, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_95_in_Rhode_Island"
+    },
+    "wiki-i95-ma": {
+      "name": "Interstate 95 in Massachusetts, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_95_in_Massachusetts"
+    },
+    "plugshare": {
+      "name": "PlugShare",
+      "url": "https://www.plugshare.com/"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "rivian": {
+      "name": "Rivian charging map",
+      "url": "https://rivian.com/experience/charging"
+    }
+  },
+  "stops": [
+    {
+      "id": "stamford",
+      "name": "Stamford",
+      "towns": "Stamford and Norwalk, CT",
+      "mile": 30,
+      "milepostNote": "Exit 6, Harvard Avenue / West Avenue, miles 6.50 to 6.62. From the bridge: 23.50 + 6.50 = 30.0.",
+      "why": "The Ridgeway Electrify America site is the verified primary. Summer Street was not the exit-6 road, so the exit row stays unverified. Norwalk sites are included from their own search.",
+      "primary": {
+        "name": "Ridgeway Shopping Center",
+        "network": "Electrify America",
+        "address": "2233 Summer St, Stamford, CT 06905",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/stamford/2233-summer-st/100613/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/stamford/2233-summer-st/100613/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          186283
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "Darien, CT - Northbound - Tesla Supercharger, 1 E Trail, Darien",
+          "facts": "Tesla Find Us lists 10 stalls, up to 250 kW, at 1 E Trail, Darien. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            102093
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/dariennorthsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Darien, CT - Southbound - Tesla Supercharger, 1 West Ave., Darien",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 1 West Ave., Darien. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            102094
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/dariensouthsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Garavel Chrysler Jeep Dodge Ram, 300 Westport Ave, Norwalk",
+          "facts": "DOE lists 4 J1772 at 11 kW, 2 CCS at 180 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            422096
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "I-95 Darien NB Service Plaza, 1 Darien Cl, Darien",
+          "facts": "DOE lists 4 CHAdeMO at 100 kW, 4 CCS at 350 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            320781
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "I-95 Darien SB Service Plaza, 1 West Ave, Darien",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 350 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            320782
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KIA MAIN KS CPE250 1, 263 Selleck St, Stamford",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            350681
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KIA MAIN KS CPE250 2, 263 Selleck St, Stamford",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            350687
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Minchin Buick of Stamford, 131 Jefferson St, Stamford",
+          "facts": "DOE lists 2 CCS at 60 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            381293
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "New Canaan SB Service Plaza, 47 Gerdes Rd, Merritt Pkwy S, New Canaan",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 150 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            256125
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "North Stamford, CT - Tesla Supercharger, 1145 High Ridge Rd, North Stamford",
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 1145 High Ridge Rd, North Stamford. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            149337
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/northstamfordsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Norwalk, CT - Tesla Supercharger, 47 Richards Ave, Norwalk",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 47 Richards Ave, Norwalk. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            417114
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/407518",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Stamford, CT - Greyrock Place - Tesla Supercharger, 100 Greyrock Pl, Stamford",
+          "facts": "Tesla Find Us lists 24 stalls, up to 325 kW, at 100 Greyrock Pl, Stamford. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            417745
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/19569",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Stamford, CT - Tesla Supercharger, 2233 Summer Street, Stamford",
+          "facts": "Tesla Find Us lists 12 stalls, up to 72 kW, at 2233 Summer Street, Stamford. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            149360
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/stamfordsupercharger",
+          "source": "tesla-findus"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Stamford, CT",
+          "lat": 41.0534302,
+          "lng": -73.5387341,
+          "radius": 4
+        },
+        {
+          "name": "Norwalk, CT",
+          "lat": 41.1175966,
+          "lng": -73.4078968,
+          "radius": 4
+        }
+      ]
+    },
+    {
+      "id": "stratford",
+      "name": "Stratford",
+      "towns": "Stratford, Bridgeport, and Milford, CT",
+      "mile": 56,
+      "milepostNote": "Exit 32A, Honeyspot Road, mile 32.12. From the bridge: 23.50 + 32.12 = 55.6.",
+      "why": "The Stratford Square Electrify America site is the verified primary for the Bridgeport area. Barnum Avenue was not the Honeyspot Road exit, so the exit row stays unverified.",
+      "primary": {
+        "name": "Stratford Square",
+        "network": "Electrify America",
+        "address": "411 Barnum Ave Cutoff, Stratford, CT 06615",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/stratford/411-barnum-ave-cutoff/100284/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/stratford/411-barnum-ave-cutoff/100284/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          121739
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152891",
+            "date": "2026-08-23",
+            "summary": "Good charging session. Very busy location."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152891",
+            "date": "2026-08-23",
+            "summary": "Great location with no issues charging. Everyone goes to the McDonalds there for food and bathroom usage"
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "6570 Main St, 6570 Main St, Stratford",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on LOOP. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            399303
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Bridgeport, CT - Tesla Supercharger, 10 E Main St, Bridgeport",
+          "facts": "Tesla Find Us lists 16 stalls, up to 325 kW, at 10 E Main St, Bridgeport. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            374991
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/32483",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Fairfield, CT - Northbound - Tesla Supercharger, 165 Round Hill Road, Fairfield",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 165 Round Hill Rd, Fairfield. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            151948
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/fairfieldctnsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Fairfield, CT - Southbound - Tesla Supercharger, 267 Round Hill Road, Fairfield",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 267 Round Hill Rd, Fairfield. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            151947
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/fairfieldctssupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Fairfield, CT - Tesla Supercharger, 696-700 Post Rd, Fairfield",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 696-700 Post Rd, Fairfield. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            302200
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/19589",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "I-95 Fairfield NB Service Plaza, 165 Round Hill Rd, Fairfield",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 150 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            256124
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "I-95 Fairfield SB Service Plaza, 95 Connecticut Turnpike, Fairfield",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 150 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            256123
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "I-95 Milford NB Service Plaza, I 95 N, Milford",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 350 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            347235
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "I-95 Milford SB Service Plaza, I-95 Connecticut Turnpike, Milford",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 350 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            347234
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MARITIME CHEVROLET, 985 POST RD., FAIRFIELD",
+          "facts": "DOE lists 1 CCS at 50 kW, 2 CCS at 120 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            260326
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MILFORD GENESIS CPE250-1, 1040 Boston Post Rd, Milford",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            349748
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Milford, CT - Boston Post Road - Tesla Supercharger, 1201 Boston Post Road, Milford",
+          "facts": "Tesla Find Us lists 14 stalls, up to 150 kW, at 1201 Boston Post Road, Milford. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            102099
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/milfordbostonpostsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Milford, CT - Northbound - Tesla Supercharger, 1 Connecticut Turnpike, Milford",
+          "facts": "Tesla Find Us lists 2 stalls, up to 120 kW, at 1 Connecticut Turnpike, Milford. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            149331
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/milfordnorthsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Milford, CT - Southboun - Tesla Supercharger, 2 Connecticut Turnpike, Milford",
+          "facts": "Tesla Find Us lists 2 stalls, up to 125 kW, at 2 Connecticut Turnpike, Milford. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            149332
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/milfordsouthsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "PARK CITY FORD PARKCITY01, 65 Sylvan Ave, Bridgeport",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            250431
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PARK CITY FORD PARKCITY02, 65 Sylvan Ave, Bridgeport",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            250432
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Peck Lane Plaza Shopping Center, 550 Boston Post Rd, Orange",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            228595
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Popeyes Kitchen - Fairfield Pizza, 200 E Main St, Stratford",
+          "facts": "EVgo lists 4 chargers at 200 E Main St, Stratford: 2 at 350 kW with two NACS connectors, 2 at 350 kW with two CCS connectors (8 connectors). DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            228596
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ct/stratford/705/"
+        },
+        {
+          "name": "RT 15 Fairfield NB Service Plaza, 1396 Merritt Pkwy, Fairfield",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 350 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            347232
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RT 15 Fairfield SB Service Plaza, 4647 Merritt Pkwy, Fairfield",
+          "facts": "DOE lists 4 CHAdeMO at 100 kW, 4 CCS at 350 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            347231
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Trumbull, CT - Tesla Supercharger, 120 Hawley Ln, Trumbull",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 120 Hawley Ln, Trumbull. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            440448
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/3405",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Westfield Trumbull (Trumbull, CT), 5065 Main Street, Trumbull",
+          "facts": "Electrify America lists 4 chargers, each with CCS at 350 kW. Address matches 5065 Main Street, Trumbull.",
+          "status": "verified",
+          "afdcIds": [
+            204787
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/trumbull/5065-main-street/110038/"
+        },
+        {
+          "name": "Bridgeport, CT Rechargery - Fairfield Ave, 2178 Fairfield Ave, Bridgeport, CT",
+          "facts": "IONNA's finder lists this as opening soon, not open, at 2178 Fairfield Ave, Bridgeport, CT. The page shows 400 kW.",
+          "status": "unverified",
+          "afdcIds": [],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ca/bridgeport/2178-fairfield-ave-06605/"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Bridgeport, CT",
+          "lat": 41.1792695,
+          "lng": -73.1887863,
+          "radius": 6
+        },
+        {
+          "name": "Milford, CT",
+          "lat": 41.2222218,
+          "lng": -73.0570603,
+          "radius": 4
+        }
+      ]
+    },
+    {
+      "id": "north-haven",
+      "name": "North Haven",
+      "towns": "North Haven, New Haven, and Guilford, CT",
+      "mile": 71,
+      "milepostNote": "I-95 exit 47B, I-91 north, miles 47.58 to 47.91. From the bridge: 23.50 + 47.58 = 71.1.",
+      "why": "The North Haven Electrify America site is north of I-95 on Universal Drive. The I-91 exit for that driveway was not on the I-95 exit list. Guilford's search is included. Branford's centered search did not complete.",
+      "primary": {
+        "name": "North Haven Crossing",
+        "network": "Electrify America",
+        "address": "410 Universal Drive North, North Haven, CT 06473",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/north-haven/410-universal-drive-north/110057/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/north-haven/410-universal-drive-north/110057/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          189349
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/317693",
+            "date": "2026-10-13",
+            "summary": "With four cars here I’m only getting 90kW when the car should be pulling over 200kW."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/317693",
+            "date": "2026-09-10",
+            "summary": "Charger not going above 90kW on a warm morning and the car @ 59%. Disappointing"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/317693",
+            "date": "2026-08-12",
+            "summary": "With four cars charging only getting 84kW."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "365 E MAIN ST CPE250 1, 365 East Main Street, Branford",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            331999
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "365 E MAIN ST CPE250 2, 365 East Main Street, Branford",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            332000
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Applegreen Electric I-95 Madison SB Service Plaza, 1 South St, Madison",
+          "facts": "DOE lists 4 CHAdeMO at 50 kW, 4 CCS at 150 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            223850
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "BRANDFON CHARGE BHONDA 1, 515 West Main Street, Branford",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            360664
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "BRANDFON CHARGE BHONDA 2, 515 West Main Street, Branford",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            360665
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "BRANDFON HYUN STATION 1, 115 Peat Meadow Rd, New Haven",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326024
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "BRANDFON HYUN STATION 2, 115 Peat Meadow Rd, New Haven",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326025
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Clinton Premium Outlets MB.HPC, 20 Killingworth Turnpike, Clinton",
+          "facts": "DOE lists 10 NACS at 400 kW, 10 CCS at 400 kW on MERCEDES_BENZ. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            458941
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cody's Diner, 95 Water St, New Haven",
+          "facts": "DOE lists this as temporarily unavailable: 2 CCS at 120 kW on VIALYNK. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            334529
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Dunkin' Donuts, 189 Forbes Ave, New Haven",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            227974
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "East Haven, CT - Tesla Supercharger, 65 Frontage Rd, East Haven",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 65 Frontage Rd, East Haven. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            257671
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26755",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Executive Jeep / Nissan, 900 Universal Drive North, North Haven",
+          "facts": "DOE lists 1 J1772 at 15.1 kW, 2 J1772 at 6.7 kW, 2 CCS at 180 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            329846
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GPM INVESTMENTS 315 DC 1, 528 Main Street, West Haven",
+          "facts": "DOE lists 1 NACS at 160 kW, 1 CCS at 160 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            460230
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GPM INVESTMENTS 315 DC 2, 528 Main Street, West Haven",
+          "facts": "DOE lists 1 NACS at 160 kW, 1 CCS at 160 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            460231
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GURUKRUPA GI LLC EV-1, 85a Hemingway Ave, East Haven",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            333500
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Hamden, CT - Dixwell Avenue - Tesla Supercharger, 2100 Dixwell Avenue, Hamden",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 2100 Dixwell Avenue, Hamden. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            187162
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/HamdenCTsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "I-95 Branford NB Service Plaza, I-95 Branford Service Plaza N, Branford",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 150 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            323256
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "I-95 Branford SB Service Plaza, Interstate 95 S, Branford",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 150 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            323257
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Madison I-95 NB Service Plaza, 6443 I-95, Madison",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 150 kW on APPLEGREEN. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            256122
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Madison, CT - Northbound - Tesla Supercharger, 1-95 North Avenue, Madison",
+          "facts": "Tesla Find Us lists 10 stalls, up to 250 kW, at 1-95 North Avenue, Madison. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            153822
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/nmadisonctsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Madison, CT - Southbound - Tesla Supercharger, 1-95 South Street, Madison",
+          "facts": "Tesla Find Us lists 10 stalls, up to 250 kW, at 1-95 South Street, Madison. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            153823
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/smadisonctsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "New Haven, CT - Tesla Supercharger, 500 Sargent Drive, New Haven",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 500 Sargent Drive, New Haven. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            237649
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/NewHavenCTsupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "New Haven, CT - Whalley Avenue - Tesla Supercharger, 1449-1473 Whalley Ave, New Haven",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 1449-1473 Whalley Ave, New Haven. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            347086
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4008806",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "North Haven MB.HPC, 70 Universal Drive, North Haven",
+          "facts": "DOE lists 10 NACS at 400 kW, 10 CCS at 400 kW on MERCEDES_BENZ. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            458922
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "North Haven Pavilion, 100 Universal Dr North, North Haven",
+          "facts": "DOE lists 6 CHAdeMO at 100 kW, 6 CCS at 100 kW on eVgo Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            228768
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "New Haven, CT",
+          "lat": 41.3082138,
+          "lng": -72.9250518,
+          "radius": 5
+        },
+        {
+          "name": "Guilford, CT",
+          "lat": 41.2827593,
+          "lng": -72.6816365,
+          "radius": 10
+        },
+        {
+          "name": "Branford, CT",
+          "lat": 41.2797657,
+          "lng": -72.8148923,
+          "radius": 6
+        }
+      ]
+    },
+    {
+      "id": "waterford",
+      "name": "Waterford",
+      "towns": "Old Saybrook, Waterford, New London, Groton, and Mystic, CT",
+      "mile": 115,
+      "milepostNote": "Route 85, Broad Street, mile 91.81. From the bridge: 23.50 + 91.81 = 115.3.",
+      "why": "The Waterford Commons site lists CCS and NACS at 400 kW on every charger. Hartford Turnpike was not matched to a numbered exit, so the mile marker is Route 85 in Waterford. Shoreline towns from Old Saybrook to Mystic are in this stop's searches.",
+      "primary": {
+        "name": "Waterford Commons",
+        "network": "Electrify America",
+        "address": "915 Hartford Turnpike, Waterford, CT 06385",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/waterford/915-hartford-turnpike/100286/"
+        },
+        "power": {
+          "value": "Each charger lists CCS at 400 kW and NACS at 400 kW",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ct/waterford/915-hartford-turnpike/100286/"
+        },
+        "access": {
+          "value": "Open to CCS and NACS cars",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          121737
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152893",
+            "date": "2026-08-27",
+            "summary": "Price came down with recent EA app changes. 33 cents per is cheapest around for fast charging."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152893",
+            "date": "2026-07-22",
+            "summary": "3b faulted after 2 min, moved to 2b and completed charge without issue"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152893",
+            "date": "2026-07-18",
+            "summary": "400 charger, fastest I've seen advertised yet. Warm day, a few spots open. Decent speed."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "COLONIAL FRONT PUBLIC, 452 Broad St, New London",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            207656
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "East Lyme Town Hall, 118 Pennsylvania Ave, Niantic",
+          "facts": "DOE lists 4 CCS at 75 kW on LOOP. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            428665
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "HAUDINL NL FAST LEFT, 501 CT-85, New London",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            328212
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "HAUDINL NL FAST RIGHT, 501 CT-85, New London",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            323308
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MB NEW LONDON FAST CHARGER, 488 Colman Street, New London",
+          "facts": "DOE lists 1 CCS at 23.9 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            202905
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mercedes-Benz of New London, 488 Colman St, New London",
+          "facts": "DOE lists 4 CCS at 120 kW on EVGATEWAY. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            378094
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Monaco Ford of Niantic, 218 Flanders Road, East Lyme",
+          "facts": "DOE lists 2 CCS at 180 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            354746
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mystic, CT - Tesla Supercharger, 12 Coogan Boulevard, Mystic",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 12 Coogan Boulevard, Mystic. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            220698
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/MysticCTSupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "New London, CT - Tesla Supercharger, 351 North Frontage Road, New London",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 351 North Frontage Road, New London. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            154662
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/newlondonctsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "NO 1, 16 Pearl St, New London",
+          "facts": "DOE lists 1 CCS at 50 kW on Non-Networked. DOE last confirmed 2024-07-11. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            349567
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vachon Buick GMC, 225 Middlesex ave, old saybrook",
+          "facts": "DOE lists 1 CCS at 50 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            327589
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Valenti Ford, 72 Jerry Browne Rd, Mystic",
+          "facts": "DOE lists 4 CCS at 180 kW, 3 J1772 at 19.2 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            405408
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Old Saybrook, CT",
+          "lat": 41.2917652,
+          "lng": -72.3761956,
+          "radius": 10
+        },
+        {
+          "name": "New London, CT",
+          "lat": 41.3556187,
+          "lng": -72.0997804,
+          "radius": 8
+        },
+        {
+          "name": "Groton, CT",
+          "lat": 41.34655,
+          "lng": -72.0388786,
+          "radius": 10
+        },
+        {
+          "name": "Mystic, CT",
+          "lat": 41.3560375,
+          "lng": -71.9573331,
+          "radius": 10
+        }
+      ]
+    },
+    {
+      "id": "providence",
+      "name": "Providence",
+      "towns": "Westerly, Richmond, Warwick, Providence, and Pawtucket, RI",
+      "mile": 172,
+      "milepostNote": "Memorial Boulevard, downtown Providence, Rhode Island mile 37.2. From the bridge: 23.50 + 111.57 + 37.2 = 172.3.",
+      "why": "The Providence Walmart is the verified primary. Silver Spring Street was not the Memorial Boulevard exit. Westerly through Pawtucket are included from their own searches. West Greenwich's centered search did not complete.",
+      "primary": {
+        "name": "Walmart Providence",
+        "network": "Electrify America",
+        "address": "51 Silver Spring Street, Providence, RI 02904",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ri/providence/51-silver-spring-street/100622/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ri/providence/51-silver-spring-street/100622/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          167864
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186874",
+            "date": "2026-07-05",
+            "summary": "Almost made it 1 month of no chargers broken. Could not activate"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186874",
+            "date": "2026-07-03",
+            "summary": "1 of 4 chargers down"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186874",
+            "date": "2026-06-27",
+            "summary": "I used the Electrify America app to initiate the charge."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "2027 Post Rd, 2027 Post Rd, Warwick",
+          "facts": "DOE lists 12 CCS at 180 kW on SHELL_RECHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            422229
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "2055 Warwick Ave, 2055 Warwick Ave, Warwick",
+          "facts": "DOE lists 8 CCS at 180 kW on SHELL_RECHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            422093
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "525 Killingly St, 525 Killingly St, JOHNSTON",
+          "facts": "DOE lists 4 CCS at 180 kW on SHELL_RECHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            359956
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "777 Cranston St, 777 Cranston Street, Cranston",
+          "facts": "DOE lists 8 CCS at 180 kW on SHELL_RECHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            374381
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Balise Chevrolet of Warwick, 1338 Post Rd, Warwick",
+          "facts": "DOE lists 1 CCS at 25 kW on Non-Networked. DOE last confirmed 2024-11-06. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            221087
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "East Greenwich, RI - Tesla Supercharger, 1000 Division Street, East Greenwich",
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 1000 Division Street, East Greenwich. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            102400
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/eastgreenwichsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "East Greenwich, RI, 1191 Division St., East Greenwich",
+          "facts": "Rivian's charging map lists 6 chargers, up to 300 kW, at 1191 Division St., East Greenwich. Open to non-Rivian EVs. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            421388
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://rivian.com/experience/charging",
+          "source": "rivian"
+        },
+        {
+          "name": "Emerald Square, 999 S Washington St, North Attleboro",
+          "facts": "EVgo lists 2 chargers at 999 S Washington St, North Attleboro: 2 at 50 kW with CCS and CHAdeMO (4 connectors). The panel also lists 1 Level 2 charger. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228523
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ma/north-attleboro/620/"
+        },
+        {
+          "name": "Gabriels Exxon, 625 Fall River Ave, Seekonk",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            461142
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GOOD FUND DC FAST CHARGE, 333 Smith St., Providence",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            202687
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Grieco Acura, 16 Highland Avenue, Seekonk",
+          "facts": "DOE lists 1 CCS at 30 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            383249
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IRVINGOIL RI-PROV-L3-0001, 36 Pleasant Valley Pkwy, Providence",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            229495
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IRVINGOIL RI-PROV-L3-0002, 36 Pleasant Valley Pkwy, Providence",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            229494
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Nissan Village of North Attleboro, 685 S Washington St, North Attleboro",
+          "facts": "DOE lists 1 CHAdeMO at 44 kW on Non-Networked. DOE last confirmed 2024-02-12. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            45902
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "North Providence Marketplace, 9 - 41 Smithfield Road N, Providence",
+          "facts": "EVgo lists 3 chargers at 41 Smithfield Road N, Providence: 2 at 100 kW with CCS and CHAdeMO, 1 at 350 kW with two CCS connectors (6 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228259
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ri/providence/45399/"
+        },
+        {
+          "name": "OCEAN STATE HD DC FAST EXETER, 435 Nooseneck Hill Rd, Exeter",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            204944
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OCEAN STATE HD DCFASTHOG, 35 Albany Rd, Warwick",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            165228
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Paul Masse Chevrolet South, 399 Main St, South Kingstown",
+          "facts": "DOE lists 2 CCS at 50 kW on Non-Networked. DOE last confirmed 2025-09-12. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            221094
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PICK & PAY DCF EV 1, 94 George Waterman Rd, Johnston",
+          "facts": "DOE lists 1 CHAdeMO at 31 kW, 1 CCS at 31 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            189581
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PICK & PAY DCF EV2, 94 George Waterman Rd, Johnston",
+          "facts": "DOE lists 1 CHAdeMO at 31 kW, 1 CCS at 31 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            189580
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Providence, RI - Tesla Supercharger, 288 Kinsley Ave, Providence",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 288 Kinsley Ave, Providence. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            238588
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/ProvidenceRIQ322",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "RI OER ASHAWAY DCFC1, 400 Main Street, Hopkinton",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            165561
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RI OER ASHAWAY DCFC2, 400 Main Street, Hopkinton",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            165635
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RI OER ASHAWAY NEVIDC1, 400 Main Street, Hopkinton",
+          "facts": "DOE lists 2 CCS at 280 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            348931
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RI OER ASHAWAY NEVIDC2, 400 Main Street, Hopkinton",
+          "facts": "DOE lists 2 CCS at 320 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            348926
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Richmond, RI - Tesla Supercharger, 1175 Main St, Richmond",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 1175 Main St, Richmond. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            222335
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/richmondrisupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "RIOER NEVI DCFC 1, 292 Centerville Road, Warwick",
+          "facts": "DOE lists 2 CCS at 320 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            347151
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RIOER NEVI DCFC 2, 292 Centerville Road, Warwick",
+          "facts": "DOE lists 2 CCS at 280 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            347154
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RIOER RT117 DCFC1, 292 Centerville Road, Warwick",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            165560
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RIOER RT117 DCFC2, 292 Centerville Road, Warwick",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            181115
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Seekonk, MA - Tesla Supercharger, 965 Fall River Avenue, Seekonk",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 965 Fall River Avenue, Seekonk. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            205808
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/seekonksupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Speedcraft Nissan, 885 Quaker Ln, West Warwick",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on Non-Networked. DOE last confirmed 2026-01-13. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            49711
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Target Warwick #T1188, 1245 Bald Hill Rd, Warwick",
+          "facts": "EVgo lists 4 chargers at 1245 Bald Hill Rd, Warwick: 2 at 100 kW with CCS and CHAdeMO, 2 at 350 kW with CCS and CHAdeMO (8 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            373075
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ri/warwick/73794/"
+        },
+        {
+          "name": "Warwick, RI - Division Street - Tesla Supercharger, 1149 Division St, Warwick",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 1149 Division St, Warwick. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            302964
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/17293",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Warwick, RI - Tesla Supercharger, 1776 Post Road, Warwick",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 1776 Post Road, Warwick. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            207761
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/WarwickRISupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Exit 6 Shopping Center - Tesla Supercharger, 45 Nooseneck Hill Rd, West Greenwich",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 45 Nooseneck Hill Rd, West Greenwich. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            462744
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/428613"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Westerly, RI",
+          "lat": 41.3775996,
+          "lng": -71.8272911,
+          "radius": 10
+        },
+        {
+          "name": "Richmond, RI",
+          "lat": 41.4998322,
+          "lng": -71.660263,
+          "radius": 10
+        },
+        {
+          "name": "Warwick, RI",
+          "lat": 41.6992717,
+          "lng": -71.4586114,
+          "radius": 5
+        },
+        {
+          "name": "Providence, RI",
+          "lat": 41.8239891,
+          "lng": -71.4128343,
+          "radius": 5
+        },
+        {
+          "name": "Pawtucket, RI",
+          "lat": 41.8789531,
+          "lng": -71.3821203,
+          "radius": 6
+        },
+        {
+          "name": "West Greenwich, RI",
+          "lat": 41.6226185,
+          "lng": -71.6657892,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "id": "foxborough",
+      "name": "Foxborough",
+      "towns": "Attleboro, North Attleborough, Mansfield, Foxborough, and Wrentham, MA",
+      "mile": 197,
+      "milepostNote": "Exit 19, US 1, mile 19.215. From the bridge: 23.50 + 111.57 + 42.36 + 19.215 = 196.6.",
+      "why": "The Foxborough Electrify America site is the primary. Wrentham Village is a verified Electrify America backup when that search returns it. A Mercedes-Benz site in the DOE data for Wrentham was not confirmed on Mercedes' locator, so it stays unverified. Boston is past this exit.",
+      "primary": {
+        "name": "Electrify America, Foxborough",
+        "network": "Electrify America",
+        "address": "16 School Street, Foxborough, MA 02035",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ma/foxborough/16-school-street/210118/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ma/foxborough/16-school-street/210118/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          171425
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/298366",
+            "date": "2026-10-12",
+            "summary": "Station 1 does NOT work, even if it looks like it does"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/298366",
+            "date": "2026-04-13",
+            "summary": "Fastest charging I’ve ever had at an Electrify America station"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/298366",
+            "date": "2025-12-26",
+            "summary": "23° battery preconditioned"
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Wrentham, 1 Premium Outlets Blvd",
+          "network": "Electrify America",
+          "address": "1 Premium Outlets Blvd, Wrentham, MA 02093",
+          "facts": "4 chargers, each with CCS at 350 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ma/wrentham/1-premium-outlets-blvd/210309/",
+          "afdcIds": [
+            212050
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/367490",
+              "date": "2026-10-03",
+              "summary": "Charging l limited by station to 184 kW. boo!!!"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/367490",
+              "date": "2026-09-15",
+              "summary": "There are other chargers at this location that are much cheaper."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/367490",
+              "date": "2026-08-02",
+              "summary": "very easy to charge here. credit card only, no account required. cheaper than electrify america that's just across the parking lot. would use this network again anytime"
+            }
+          ],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Medfield, 478 Main St",
+          "network": "Electrify America",
+          "address": "478 Main St, Medfield, MA 02052",
+          "facts": "4 chargers, each with CCS at 350 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ma/medfield/478-main-st/210119/",
+          "afdcIds": [
+            211862
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "21 Bristol Dr LLC, 21 Bristol Dr, Easton",
+          "facts": "DOE lists 4 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            400272
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "24 Ford of Easton, 703 Washington Street, South Easton",
+          "facts": "DOE lists 4 CCS at 120 kW, 2 CCS at 140 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            422171
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "45 Washington St, 45 Washington St, Foxborough",
+          "facts": "DOE lists 6 J1772 at 19.2 kW, 6 CCS at 180 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            390943
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "461 E Washington St, 461 E Washington St, North Attleboro",
+          "facts": "DOE lists 1 CHAdeMO at 100 kW, 3 CCS at 180 kW on SHELL_RECHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            357524
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "825 Providence Hwy, 825 Providence Hwy, Norwood",
+          "facts": "DOE lists 4 CCS at 120 kW, 6 J1772 at 19.2 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            387072
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Adirondack Club, 800 Chestnut St, Franklin",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            400458
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "BES Realty, 41 Pleasant, Norton",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            421604
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Camilia Service & Auto, 10 Taunton St, Plainville",
+          "facts": "DOE lists 4 CCS at 180 kW on VIALYNK. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            376248
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Copeland Chevrolet, 955 Pearl St, Brockton",
+          "facts": "DOE lists 4 CCS at 120 kW on Non-Networked. DOE last confirmed 2025-01-13. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            372488
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cottage Car Wash, 36 Pine St Norfolk, Norfolk",
+          "facts": "DOE lists 4 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            460789
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Elite Health and Fitness, 1519 Central St, Stoughton",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            447202
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Exxon Mobil Rehoboth, 238 Winthrop St, Rehoboth",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            452287
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Foxborough, MA - Tesla Supercharger, 4 Fisher St, Foxborough",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 4 Fisher St, Foxborough. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            332095
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/33475",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Franklin Fire Department, 600 King St, Franklin",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            453571
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Franklin Municipal Building, 355 E Central St, Franklin",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            453487
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Franklin, MA - Tesla Supercharger, 250 Franklin Village Drive, Franklin",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 250 Franklin Village Drive, Franklin. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            202625
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/FranklinMAsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Interstate Refrigerant, 131 Morse St, Foxborough",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            429552
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Kellys Place, 294 East Main St, Norton",
+          "facts": "DOE lists 6 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            400527
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mansfield, MA - Tesla Supercharger, 280 School Street, Mansfield",
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 280 School Street, Mansfield. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            102204
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/mansfieldsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Mick Morgans Restaurant, 973 Providence Hwy, Sharon",
+          "facts": "DOE lists 8 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            422960
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "New England Chapel, 300 East Central Street, Franklin",
+          "facts": "DOE lists 5 CCS at 120 kW, 1 CCS at 57.6 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            462679
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Pine Street Medical Center, 31 Pine Street Norfolk, Norfolk",
+          "facts": "DOE lists 4 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            461143
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SHARON TH TOWN HALL - 1, 90 South Main Street, Sharon",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            376032
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SHARON TH TOWN HALL - 2, 90 South Main Street, Sharon",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            376018
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Silko VW, 661 Washington Street, South Easton",
+          "facts": "DOE lists this as temporarily unavailable: 2 CCS at 60 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            383371
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Tosca Dr DCFC, 28 Tosca Dr, Stoughton",
+          "facts": "DOE lists 2 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            400258
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Town of Wrentham, 79 South Street, Wrentham",
+          "facts": "DOE lists 2 CCS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            429786
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vendetti Motors, 411 W Central St, Franklin",
+          "facts": "DOE lists 4 CCS at 180 kW on VIALYNK. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            351421
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walpole Mall, 90 Providence Hwy, Walpole",
+          "facts": "EVgo lists 3 chargers at 90 Providence Hwy, Walpole: 3 at 350 kW with two CCS connectors (6 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            448471
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ma/walpole/85560/"
+        },
+        {
+          "name": "Wrentham 5 Dedham, 5 Dedham St, Wrentham",
+          "facts": "DOE lists 2 CCS at 120 kW, 2 NACS at 120 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            400500
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Wrentham Village Premium Outlets MB.HPC, 1 Premium Outlet Blvd, Wrentham",
+          "facts": "DOE lists 10 NACS at 400 kW, 10 CCS at 400 kW on MERCEDES_BENZ. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            458957
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Attleboro, MA",
+          "lat": 41.9439695,
+          "lng": -71.2804301,
+          "radius": 10
+        },
+        {
+          "name": "North Attleborough, MA",
+          "lat": 41.9841334,
+          "lng": -71.3322798,
+          "radius": 8
+        },
+        {
+          "name": "Mansfield, MA",
+          "lat": 42.0334326,
+          "lng": -71.2189405,
+          "radius": 8
+        },
+        {
+          "name": "Foxborough, MA",
+          "lat": 42.0653768,
+          "lng": -71.2478308,
+          "radius": 10
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "Service-plaza and Tesla sites along this corridor stay unverified unless a network locator page was retrieved. DOE listings for them are in the stop lists.",
+      "source": "afdc"
+    },
+    {
+      "text": "The West Greenwich search was completed on October 15, 2026. The Exit 6 Shopping Center Tesla site is on the Providence stop. Branford's centered search still did not complete because the DOE API hit its rate limit. Sites that only fall in that search are not listed yet.",
+      "source": "afdc"
+    },
+    {
+      "text": "Waterford Commons lists a CCS connector and a NACS connector on each charger, both at 400 kW, on EA's locator.",
+      "source": "ea-locator"
+    }
+  ],
+  "arrival": "Dedham and Boston city charging are not in this guide. The last stop is Foxborough at I-95 exit 19."
+}

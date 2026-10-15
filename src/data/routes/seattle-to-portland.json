@@ -1,0 +1,1813 @@
+{
+  "slug": "seattle-to-portland",
+  "title": "Seattle to Portland",
+  "highway": "I-5",
+  "summary": "I-5 from the I-90 interchange to the Interstate Bridge. Washington mileposts decrease as you drive south. Centralia and Chehalis have DOE listings, and none of those was confirmed on a network locator, so they are not a primary stop.",
+  "checked": "2026-10-15",
+  "startLabel": "I-5 at I-90",
+  "startNote": "Mileage starts at I-5 exit 164A (I-90, mile 164.55) and ends at the Washington line, mile 0, the Interstate Bridge. That is 164.55 miles, shown as 165. North Portland sites in the last stop sit just south of the bridge.",
+  "endLabel": "Interstate Bridge",
+  "stats": [
+    {
+      "label": "I-90 to the Interstate Bridge",
+      "value": "165",
+      "unit": "mi",
+      "source": "wiki-i5-wa",
+      "note": "Washington I-5 mile 164.55 to mile 0. Oregon's I-5 reaches the bridge at mile 308.14."
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "134",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "52",
+      "unit": ""
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "wiki-i5-wa": {
+      "name": "Interstate 5 in Washington, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_5_in_Washington"
+    },
+    "wiki-i5-or": {
+      "name": "Interstate 5 in Oregon (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_5_in_Oregon"
+    },
+    "plugshare": {
+      "name": "PlugShare",
+      "url": "https://www.plugshare.com/"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
+    },
+    "evcs": {
+      "name": "EVCS station pages",
+      "url": "https://web2.evcs.com/ev-charging-stations"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    }
+  },
+  "stops": [
+    {
+      "id": "federal-way",
+      "name": "Federal Way",
+      "towns": "Federal Way, WA",
+      "mile": 21,
+      "milepostNote": "South 320th Street, exit 143, mile 143.89. 164.55 − 143.89 = 20.7.",
+      "why": "The Walmart site is the verified primary. One of its four chargers is J1772 at 7.2 kW, so the DC count is 3, which matches DOE.",
+      "primary": {
+        "name": "Walmart Federal Way",
+        "network": "Electrify America",
+        "address": "34520 16TH AVE S, Federal Way, WA 98003",
+        "exit": "Exit 143, South 320th Street",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/federal-way/34520-16th-ave-s/200211/"
+        },
+        "power": {
+          "value": "4 chargers: 1 with CCS at 350 kW and CHAdeMO at 50 kW; 2 with CCS at 350 kW; 1 with IEC_62196_T1 at 7 kW",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/federal-way/34520-16th-ave-s/200211/"
+        },
+        "access": {
+          "value": "Open to CCS and CHAdeMO cars",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          185190
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/305117",
+            "date": "2026-09-30",
+            "summary": "Expensive for a J1772."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/305117",
+            "date": "2026-08-20",
+            "summary": "Ford Plug & Charge did not work but using the EA app did work"
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Auburn, 1101 Outlet Collection Way",
+          "network": "Electrify America",
+          "address": "1101 Outlet Collection Way, Auburn, WA 98001",
+          "facts": "4 chargers: 1 with CCS at 150 kW and CHAdeMO at 50 kW; 3 with CCS at 150 kW and CCS at 150 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/auburn/1101-outlet-collection-way/210216/",
+          "afdcIds": [
+            189391
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "Auburn, WA - Tesla Supercharger, 1101 Outlet Collection Way, Auburn",
+          "facts": "Tesla Find Us lists 12 stalls, up to 150 kW, at 1101 Outlet Collection Way, Auburn. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            150184
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/auburnwasupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Federal Way, 31717 Pacific Highway, Federal Way",
+          "facts": "DOE lists 2 NACS at 200.2 kW, 2 CCS at 200.2 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            466512
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Federal Way, WA - South 320th Street - Tesla Supercharger, 2012 S 320th St, Federal Way",
+          "facts": "Tesla Find Us lists 16 stalls, up to 325 kW, at 2012 S 320th St, Federal Way. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            360295
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/403963",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Federal Way, WA - Tesla Supercharger, 32015 Pacific Highway South, Federal Way",
+          "facts": "Tesla Find Us lists 16 stalls, up to 325 kW, at 32015 Pacific Highway South, Federal Way. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            187166
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/tacomawashingtonsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Tahoma Market, 6006 Pacific Highway E, Fife",
+          "facts": "EVCS lists 10 connectors: 2 CHAdeMO up to 200 kW, 8 CCS up to 200 kW. DOE lists 4 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            361045
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/wa/fife/tahoma-market"
+        },
+        {
+          "name": "Walmart EV Charging, 762 Outlet Collection Way, Auburn",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on WALMART. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            469481
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Federal Way, WA",
+          "lat": 47.313494,
+          "lng": -122.33931,
+          "radius": 5
+        }
+      ]
+    },
+    {
+      "id": "tacoma",
+      "name": "Tacoma",
+      "towns": "Tacoma and Fife, WA",
+      "mile": 34,
+      "milepostNote": "South 56th Street, exit 130, mile 130.75. 164.55 − 130.75 = 33.8.",
+      "why": "The Tacoma Walmart is the primary. One charger there is J1772 at 7.2 kW. Fife's search is included so those sites are not dropped; they are labeled by city and were not confirmed on a network locator unless they are an Electrify America site with a stall breakdown.",
+      "primary": {
+        "name": "Walmart Tacoma",
+        "network": "Electrify America",
+        "address": "1965 S Union Ave., Tacoma, WA 98405",
+        "exit": "Exit 130, South 56th Street",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/tacoma/1965-s-union-ave/200214/"
+        },
+        "power": {
+          "value": "4 chargers: 3 with CCS at 350 kW; 1 with IEC_62196_T1 at 7 kW",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/tacoma/1965-s-union-ave/200214/"
+        },
+        "access": {
+          "value": "Open to CCS cars",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          135872
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186868",
+            "date": "2026-10-06",
+            "summary": "Derated to 180."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186868",
+            "date": "2026-09-08",
+            "summary": "Iced. Three stalls closed. Blocked by vehicle"
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Puyallup, 3700 S. Meridian",
+          "network": "Electrify America",
+          "address": "3700 S. Meridian, Puyallup, WA 98373",
+          "facts": "4 chargers, each with CCS at 350 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/puyallup/3700-s-meridian/210230/",
+          "afdcIds": [
+            170297
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "14th & Pacific Parking Lot Fast Charger, 1416 Court A, Tacoma",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on FLO. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            446232
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "3606 S Sprague Ave, 3606 S Sprague Ave, Tacoma",
+          "facts": "DOE lists this as temporarily unavailable: 2 CCS at 200 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            330519
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Auburn Chevrolet, 1600 Auburn Way North, Auburn",
+          "facts": "DOE lists 2 CCS at 180 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            391810
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Auburn, WA - Auburn Way North - Tesla Supercharger, 801 Auburn Wy N, Auburn",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 801 Auburn Wy N, Auburn. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            430837
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/18983",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "CSG EV AAA TACOMA - #1, 1801 S Union Ave, Tacoma",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            384631
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CSG EV AAA TACOMA - #2, 1801 S Union Ave, Tacoma",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            384627
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CSG EV AAA TACOMA - #3, 1801 S Union Ave, Tacoma",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            384533
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CSG EV AAA TACOMA - #4, 1801 S Union Ave, Tacoma",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            384532
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Dennys Auburn, 521 Auburn Way S, Auburn",
+          "facts": "DOE lists 3 NACS at 200.2 kW, 3 CCS at 200.2 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            465665
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "HYSHOP CUSTOMER ST, 7601 S Tacoma Way, Tacoma",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            327544
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "HYSHOP INVENTORY, 7601 S Tacoma Way, Tacoma",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            327545
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KOP FAST CHARGE KOP FASTCHARGER, 111 Valley Avenue Northeast, Puyallup",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            398131
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Korum Ford, 100 River Rd, Puyallup",
+          "facts": "DOE lists 8 CCS at 240 kW on FORD_CHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            416767
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KORUM HYUNDAI PC 1, 111 River Rd, Puyallup",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            214876
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KORUM HYUNDAI PC 2, 111 River Rd, Puyallup",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            214875
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Korum Lincoln, 150 River Rd, Puyallup",
+          "facts": "DOE lists 2 CCS at 120 kW on FORD_CHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            358431
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "LA Fitness - Tacoma Pacific, 15707 Pacific Avenue South, Spanaway",
+          "facts": "EVCS lists 8 connectors: 7 CCS up to 200 kW, 1 CHAdeMO up to 200 kW. DOE lists 6 DC ports.",
+          "status": "conflict",
+          "afdcIds": [
+            465380
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/wa/spanaway/la-fitness-tacoma-pacific"
+        },
+        {
+          "name": "LeMay - America's Car Museum, 2702 E D St, Tacoma",
+          "facts": "EVgo lists 3 chargers at 2702 E D St, Tacoma: 3 at 100 kW with two CCS connectors (6 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228817
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wa/tacoma/2037/"
+        },
+        {
+          "name": "LOVE'S 448 - WA #448 DC1, 1501 33rd Avenue East, Tacoma",
+          "facts": "DOE lists 2 NACS at 320 kW, 2 CCS at 320 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            461122
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "LOVE'S 448 - WA #448 DC2, 1501 33rd Avenue East, Tacoma",
+          "facts": "DOE lists 2 NACS at 320 kW, 2 CCS at 320 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            461121
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Municipal Lot Fast Charger, 728 Market St., Tacoma",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on FLO. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            375743
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Old Cannery: 13624 Cannery Way, Sumner, 13624 Cannery Way, Sumner",
+          "facts": "DOE lists this as temporarily unavailable: 2 CHAdeMO at 100 kW, 2 CCS at 180 kW, 4 J1772 at 9.6 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            332061
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Puyallup, WA - Tesla Supercharger, 3310 S Meridian, Puyallup",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 3310 S Meridian, Puyallup. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            421304
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/27473",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Safeway Auburn #0531, 101 Auburn Way S, Auburn",
+          "facts": "EVgo lists 4 chargers at 101 Auburn Way S, Auburn: 2 at 100 kW with CCS and CHAdeMO, 2 at 350 kW with CCS and CHAdeMO (8 connectors). DOE lists this as temporarily unavailable: 4 CCS at 350 kW, 2 CHAdeMO at 100 kW, 2 CCS at 100 kW on eVgo Network. DOE last confirmed 2026-10-14.",
+          "status": "conflict",
+          "afdcIds": [
+            416914
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wa/auburn/81506/"
+        },
+        {
+          "name": "Safeway Tacoma, 1112 S M St, Tacoma",
+          "facts": "EVgo lists 4 chargers at 1112 S M St, Tacoma: 2 at 350 kW with CCS and CHAdeMO, 2 at 100 kW with CCS and CHAdeMO (8 connectors). DOE lists this as temporarily unavailable: 4 CHAdeMO at 100 kW, 2 CCS at 100 kW, 2 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-14.",
+          "status": "conflict",
+          "afdcIds": [
+            416915
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wa/tacoma/81509/"
+        },
+        {
+          "name": "Scarff Ford, 501 Auburn Way N, Auburn",
+          "facts": "DOE lists 4 CCS at 120 kW on FORD_CHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            358430
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "South Tacoma Honda, 7802 South Tacoma Way, Tacoma",
+          "facts": "DOE lists 2 CCS at 60 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            316998
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SUBARU PUYALLUP LEVEL 3 CHARGER, 720 River Rd, Puyallup",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            350620
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Tacoma Nissan, 4030 S Tacoma Way, Tacoma",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on Non-Networked. DOE last confirmed 2026-01-13. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            39797
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Tacoma South, 7921 S Hosmer St, Tacoma",
+          "facts": "EVgo lists 10 chargers at 7921 S Hosmer St, Tacoma: 10 at 350 kW with CCS and CHAdeMO (20 connectors). DOE lists 6 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
+          "afdcIds": [
+            261825
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wa/tacoma/54701/"
+        },
+        {
+          "name": "Tacoma, WA - S 40th Street - Tesla Supercharger, 2221 S 40th St, Tacoma",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 2221 S 40th St, Tacoma. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            353794
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26481",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Tacoma, WA - South Hosmer Street - Tesla Supercharger, 7427 S Hosmer St, Tacoma",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 7427 S Hosmer St, Tacoma. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            333707
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/35410",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Tacoma, WA - South Steele Street - Tesla Supercharger, 4502 S Steele St, Tacoma",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 4502 S Steele St, Tacoma. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            326167
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34799",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Tacoma, WA - Tesla Supercharger, 5219 Tacoma Mall Boulevard, Tacoma",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 5219 Tacoma Mall Boulevard, Tacoma. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            256577
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/19205",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "WinCo Foods - Sumner #74, 6621 Wahl Rd East, Sumner",
+          "facts": "EVgo lists 4 chargers at 6621 Wahl Rd East, Sumner: 2 at 100 kW with CCS and CHAdeMO, 1 at 350 kW with two CCS connectors, 1 at 350 kW with two NACS connectors (8 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            257755
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wa/sumner/48750/"
+        },
+        {
+          "name": "University Place, WA Rechargery Relay - Regents Blvd, 6720 Regents Blvd, University Place, WA",
+          "facts": "IONNA's finder lists this as opening soon, not open, at 6720 Regents Blvd, University Place, WA. The page shows 400 kW.",
+          "status": "unverified",
+          "afdcIds": [],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/wa/university-place/6720-regents-blvd-98466/"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Tacoma, WA",
+          "lat": 47.2455013,
+          "lng": -122.438329,
+          "radius": 5
+        },
+        {
+          "name": "Fife, WA",
+          "lat": 47.2359524,
+          "lng": -122.3626381,
+          "radius": 10
+        }
+      ]
+    },
+    {
+      "id": "lacey",
+      "name": "Lacey",
+      "towns": "Lacey, Olympia, and DuPont, WA",
+      "mile": 56,
+      "milepostNote": "Sleater-Kinney Road, exits 108A and 108B, mile 108.46. 164.55 − 108.46 = 56.1.",
+      "why": "The primary is Fred Meyer on Sleater-Kinney, 6 CCS chargers at 350 kW. The Galaxy Drive Walmart and the Olympia site top out lower, and the Olympia locator does not list a 350 kW charger. DuPont is included from its own search.",
+      "primary": {
+        "name": "Fred Meyer, Sleater-Kinney",
+        "network": "Electrify America",
+        "address": "700 Sleater Kinney RD SE, Lacey, WA 98503",
+        "exit": "Exits 108A-B, Sleater-Kinney Road",
+        "stalls": {
+          "value": "6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/lacey/700-sleater-kinney-rd-se/240131/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/lacey/700-sleater-kinney-rd-se/240131/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          391666
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Lacey, 4775 Whitman Lane SE",
+          "network": "Electrify America",
+          "address": "4775 Whitman Lane SE, Lacey, WA 98512",
+          "facts": "4 chargers, each with CCS at 350 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/lacey/4775-whitman-lane-se/210430/",
+          "afdcIds": [
+            201629
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Lacey, 1401 Galaxy Dr. NE",
+          "network": "Electrify America",
+          "address": "1401 Galaxy Dr. NE, Lacey, WA 98516",
+          "facts": "6 chargers: 3 with CCS at 150 kW and CCS at 150 kW; 2 with CCS at 350 kW and CCS at 350 kW; 1 with CCS at 150 kW and CHAdeMO at 50 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/lacey/1401-galaxy-dr-ne/100066/",
+          "afdcIds": [
+            123479
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/182506",
+              "date": "2026-10-13",
+              "summary": "3 out of 5 chargers are down right now"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/182506",
+              "date": "2026-10-12",
+              "summary": "One Hyper isn't working but the other is."
+            }
+          ],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Olympia, 2925 Harrison Ave NW",
+          "network": "Electrify America",
+          "address": "2925 Harrison Ave NW, Olympia, WA 98502",
+          "facts": "4 chargers: 1 with CCS at 150 kW and CHAdeMO at 50 kW; 3 with CCS at 150 kW and CCS at 150 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/olympia/2925-harrison-ave-nw/210228/",
+          "afdcIds": [
+            164163
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "7Charge - Lacey 41884, 4044 Pacific Ave SE, Lacey",
+          "facts": "DOE lists 1 NACS at 180 kW, 3 CCS at 180 kW on 7CHARGE. DOE last confirmed 2026-02-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            327687
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ARCO Hawks Prairie Road NE, Lacey, WA, 7465 Hawks Prairie Road NE, Lacey",
+          "facts": "DOE lists 5 CCS at 150 kW, 1 CHAdeMO at 150 kW on BP_PULSE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            361213
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF LACEY CITY HALL DC, 420 6th Ave SE, Lacey",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            395272
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF LACEY RAC1, 8323 Steilacoom Rd SE, Lacey",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            352460
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF LACEY RAC2, 8323 Steilacoom Rd SE, Lacey",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            372526
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF LACEY RAC3, 8323 Steilacoom Rd SE, Lacey",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            372530
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF LACEY RAC4, 8323 Steilacoom Rd SE, Lacey",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            372527
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF LACEY RAC5, 8323 Steilacoom Rd SE, Lacey",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            372528
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF LACEY RAC6, 8323 Steilacoom Rd SE, Lacey",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            372529
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF LACEY WCP DC FAST, 6279 Pacific Avenue Southeast, Lacey",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            434825
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Dupont Center - Ace Hardware, 1585 McNeil St, DuPont",
+          "facts": "EVgo lists 1 charger at 1585 McNeil St, DuPont: 1 at 100 kW with two CCS connectors (2 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228205
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wa/dupont/2331/"
+        },
+        {
+          "name": "Electric Era Charging Station, 13101 Gravelly Lake Dr SW,, Lakewood",
+          "facts": "DOE lists 2 NACS at 200 kW, 2 CCS at 200 kW on ELECTRIC_ERA. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            446574
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Lacey, WA - Tesla Supercharger, 665 Sleater Kinney Road SE, Lacey",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 665 Sleater Kinney Road SE, Lacey. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            168277
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/laceywasupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Mullinax Ford of Olympia, 1905 Cooper Point Road SW, Olympia",
+          "facts": "DOE lists 6 CCS at 180 kW, 3 J1772 at 19 kW on SYNERGEV. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            456773
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OLYMPIA KIA OLYMPIASUBKIA1, 2300 Carriage Loop SW, Olympia",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            372810
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OLYMPIA KIA OLYMPIASUBKIA2, 2300 Carriage Loop SW, Olympia",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            260271
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OLYMPIA KIA OLYMPIASUBKIA3, 2300 Carriage Loop SW, Olympia",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            260270
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OLYMPIA LILLY R PETROCARD 1, 501 Lilly Rd SE, Olympia",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            204497
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OLYMPIA LILLY R PETROCARD 2, 501 Lilly Rd SE, Olympia",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            204664
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Olympia Nissan, 2220 Carriage Dr SW, Olympia",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on Non-Networked. DOE last confirmed 2026-01-13. Listed as a car dealership. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            39786
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Shell Gas Station - Tumwater, 6131 Capital Blvd, Tumwater",
+          "facts": "EVCS lists 4 connectors: 2 CCS up to 175 kW, 2 CHAdeMO up to 175 kW. DOE lists 1 DC port.",
+          "status": "conflict",
+          "afdcIds": [
+            73412
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/wa/tumwater/shell-gas-station-tumwater"
+        },
+        {
+          "name": "The Hub at Lacey Office Space: 676 Woodland Square Loop SE, Lacey, 676 Woodland Square Loop SE, Lacey",
+          "facts": "DOE lists this as temporarily unavailable: 2 CHAdeMO at 100 kW, 2 CCS at 150 kW, 4 J1772 at 9.6 kW on EV Connect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            166926
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Titus-Will Hyundai, 2255 Carriage Loop Southwest, Olympia",
+          "facts": "DOE lists 2 CCS at 120 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            360774
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Tumwater Trading Post, 7000 Little Rock Rd SW, Tumwater",
+          "facts": "DOE lists 4 CCS at 180 kW on RED_E. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            396913
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Tumwater, WA - Kingswood Drive Southwest - Tesla Supercharger, 1401 Kingswood Dr SW, Tumwater",
+          "facts": "Tesla Find Us lists 20 stalls, up to 325 kW, at 1401 Kingswood Dr SW, Tumwater. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            395417
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4008818",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Lacey, WA",
+          "lat": 47.0263876,
+          "lng": -122.8072257,
+          "radius": 6
+        },
+        {
+          "name": "Olympia, WA",
+          "lat": 47.0451022,
+          "lng": -122.8950075,
+          "radius": 5
+        },
+        {
+          "name": "DuPont, WA",
+          "lat": 47.0990689,
+          "lng": -122.637546,
+          "radius": 10
+        }
+      ]
+    },
+    {
+      "id": "kelso",
+      "name": "Kelso",
+      "towns": "Kelso, Longview, Centralia, Chehalis, Kalama, and Woodland, WA",
+      "mile": 125,
+      "milepostNote": "SR 4, exit 39, mile 39.88, at Three Rivers Mall. 164.55 − 39.88 = 124.7.",
+      "why": "The verified primary is Electrify America at Three Rivers Mall. Centralia and Chehalis are about 40 miles north of here and have no locator-verified primary, so their DOE sites are on this stop under their own city names. Treat them as unverified, not as the Kelso charger.",
+      "primary": {
+        "name": "Three Rivers Mall",
+        "network": "Electrify America",
+        "address": "351 Three Rivers Dr., Kelso, WA 98626",
+        "exit": "Exit 39, SR 4 (Allen Street)",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/kelso/351-three-rivers-dr/100062/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/kelso/351-three-rivers-dr/100062/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          124684
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "Awesome Ford, 1001 SW Interstate Ave, Chehalis",
+          "facts": "DOE lists 4 CCS at 240 kW on FORD_CHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            416809
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Bud Clary Ford, 700 7th Ave, Longview",
+          "facts": "DOE lists 4 CCS at 120 kW on FORD_CHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            375843
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cascade Select Market - Castle Rock, 204 Cowlitz Street West, Castle Rock",
+          "facts": "EVCS lists 4 connectors: 2 CCS up to 175 kW, 2 CHAdeMO up to 175 kW. DOE lists 1 DC port.",
+          "status": "conflict",
+          "afdcIds": [
+            65864
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/wa/castle-rock/cascade-select-market-castle-rock"
+        },
+        {
+          "name": "Centralia, WA - Tesla Supercharger, 1200 Lum Rd, Centralia",
+          "facts": "Tesla Find Us lists 20 stalls, up to 150 kW, at 1200 Lum Rd, Centralia. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            102486
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/centraliasupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Chehalis Commerce District, 1701 NW Louisiana Ave, Chehalis",
+          "facts": "EVgo lists 4 chargers at 1701 NW Louisiana Ave, Chehalis: 2 at 350 kW with two CCS connectors, 2 at 100 kW with CCS and CHAdeMO (8 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            233514
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wa/chehalis/2261/"
+        },
+        {
+          "name": "Chehalis, WA - Tesla Supercharger, 700 Northwest Arkansas Way, Chehalis",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 700 Northwest Arkansas Way, Chehalis. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            253282
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/19015",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Country Cafe - Ridgefield, 6370 N 1st Circle,, Ridgefield",
+          "facts": "EVCS lists 4 connectors: 2 CHAdeMO up to 175 kW, 2 CCS up to 175 kW. DOE lists 1 DC port.",
+          "status": "conflict",
+          "afdcIds": [
+            65866
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/wa/ridgefield/country-cafe-ridgefield"
+        },
+        {
+          "name": "CPUD CC RIDER DCFC, 207 W B St, Rainier",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            356444
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CRPUD DEER ISLAND DC1, 64001 Columbia River Hwy, Deer Island",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            174369
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CRPUD DEER ISLAND DC2, 64001 Columbia River Hwy, Deer Island",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            143950
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CRPUD SCAPPOOSEBAYDC1, 57420 Old Portland Road, Warren",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            350154
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CRPUD SCAPPOOSEBAYDC2, 57420 Old Portland Road, Warren",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            350153
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CRPUD ST HELENS DC1, 260 S 2nd St, St. Helens",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            211836
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CRPUD ST HELENS DC2, 260 S 2nd St, St. Helens",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            211835
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Electric Era Charging Station, 1003 Eckerson Rd, Centralia",
+          "facts": "DOE lists 3 NACS at 200 kW, 3 CCS at 200 kW on ELECTRIC_ERA. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            456724
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Electric Era Charging Station, 519 N 56th Place, Ridgefield",
+          "facts": "DOE lists 5 CCS at 200 kW, 1 NACS at 200 kW on ELECTRIC_ERA. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            360762
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ESD EXIT 68 DCFC 1, 172 US-12, Chehalis",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326218
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ESD EXIT 68 DCFC 2, 172 US-12, Chehalis",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326217
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ESD EXIT 68 DCFC 3, 172 US-12, Chehalis",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326220
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ESD EXIT 68 DCFC 4, 172 U.S. 12, Chehalis",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326977
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EZstop Kalama Waterfront, 215 N Hendrickson Dr, Kalama",
+          "facts": "DOE lists 2 CCS at 120 kW, 2 CHAdeMO at 120 kW on Non-Networked. DOE last confirmed 2025-07-03. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            196042
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Kelso, WA - Tesla Supercharger, 207 Three Rivers Drive, Kelso",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 207 Three Rivers Drive, Kelso. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            158651
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/kelsowasupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "LC TRANSIT MELLEN ST. 1, 12 Airport Rd, Centralia",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            191438
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Ridgefield, WA - Tesla Supercharger, 125 N 65th Ave, Ridgefield",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 125 N 65th Ave, Ridgefield. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            262358
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/19220",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Rochester, WA - Sargent Road Southwest - Tesla Supercharger, 19770 Sargent Rd SW, Rochester",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 19770 Sargent Rd SW, Rochester. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            351247
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/27113",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Rochester, WA - Tesla Supercharger, 19615 Elderberry St SW, Rochester",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 19615 Elderberry St SW, Rochester. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            322836
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34723",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Starbucks Ridgefield MB.HPC, 100 N 56th Pl, Ridgefield",
+          "facts": "DOE lists 6 NACS at 400 kW, 6 CCS at 400 kW on MERCEDES_BENZ. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            458971
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "TENINO AG PARK TENINO AG PARK1, 16404 Old Hwy 99 SE, Tenino",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            404900
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "TENINO AG PARK TENINO AG PARK2, 16404 Old Highway 99 Southeast, Tenino",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            404899
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Wendys - Centralia, 817 Harrison Avenue, Centralia",
+          "facts": "EVCS lists 4 connectors: 2 CCS up to 175 kW, 2 CHAdeMO up to 175 kW. DOE lists 1 DC port.",
+          "status": "conflict",
+          "afdcIds": [
+            65861
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/wa/centralia/wendys-centralia"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Kelso, WA",
+          "lat": 46.1421249,
+          "lng": -122.905299,
+          "radius": 10
+        },
+        {
+          "name": "Longview, WA",
+          "lat": 46.1377048,
+          "lng": -122.934462,
+          "radius": 10
+        },
+        {
+          "name": "Centralia, WA",
+          "lat": 46.7204489,
+          "lng": -122.96143,
+          "radius": 10
+        },
+        {
+          "name": "Chehalis, WA",
+          "lat": 46.6599653,
+          "lng": -122.963432,
+          "radius": 10
+        },
+        {
+          "name": "Kalama, WA",
+          "lat": 46.0085225,
+          "lng": -122.84247,
+          "radius": 10
+        },
+        {
+          "name": "Woodland, WA",
+          "lat": 45.9018496,
+          "lng": -122.7459664,
+          "radius": 10
+        }
+      ]
+    },
+    {
+      "id": "vancouver",
+      "name": "Vancouver",
+      "towns": "Vancouver and Ridgefield, WA, and North Portland, OR",
+      "mile": 164,
+      "milepostNote": "6th Street, exit 1B, mile 0.45. 164.55 − 0.45 = 164.1. The bridge is Washington mile 0.",
+      "why": "The primary is Vancouver Plaza, 4 CCS chargers at 350 kW. The Walmart on Highway 99 is a verified backup with a mixed connector list. North Portland Electrify America sites are included when the Jantzen Beach search returns them. Downtown Portland is not.",
+      "primary": {
+        "name": "Vancouver Plaza",
+        "network": "Electrify America",
+        "address": "7809 NE Vancouver Plaza Dr, Vancouver, WA 98663",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/vancouver/7809-ne-vancouver-plaza-dr/210214/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/vancouver/7809-ne-vancouver-plaza-dr/210214/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          163338
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Portland, 7404 N Interstate Ave",
+          "network": "Electrify America",
+          "address": "7404 N Interstate Ave, Portland, OR 97217",
+          "facts": "6 chargers, each with CCS at 350 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/or/portland/7404-n-interstate-ave/216023/",
+          "afdcIds": [
+            279355
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/507020",
+              "date": "2026-09-25",
+              "summary": "Easy plug and charge."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/507020",
+              "date": "2026-09-15",
+              "summary": "Very fast outside of peak hours"
+            }
+          ],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Vancouver, 9000 NE HIGHWAY 99",
+          "network": "Electrify America",
+          "address": "9000 NE HIGHWAY 99, Vancouver, WA 98665",
+          "facts": "6 chargers: 1 with CCS at 150 kW and CHAdeMO at 50 kW; 2 with CCS at 350 kW and CCS at 350 kW; 3 with CCS at 150 kW and CCS at 150 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wa/vancouver/9000-ne-highway-99/100064/",
+          "afdcIds": [
+            121709
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Portland, 6850 N Lombard St",
+          "network": "Electrify America",
+          "address": "6850 N Lombard St, Portland, OR 97203",
+          "facts": "4 chargers, each with CCS at 350 kW.",
+          "access": "Open to CCS cars.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/or/portland/6850-n-lombard-st/210522/",
+          "afdcIds": [
+            206716
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/362963",
+              "date": "2026-06-15",
+              "summary": "Avoid electrify america Broken hardware"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/362963",
+              "date": "2026-05-26",
+              "summary": "Expensive, but fast."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/362963",
+              "date": "2026-05-09",
+              "summary": "No chademo at fred meyer lombard peninsula lication app incorrectly says there is"
+            }
+          ],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "ARCO NE Andresen Road, Vancouver, WA, 1800 NE Andresen Road, Vancouver",
+          "facts": "DOE lists 4 CCS at 150 kW on BP_PULSE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            347939
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "City of Portland 1ABB184, 6848 N CUTTER CIR, Portland",
+          "facts": "DOE lists this as planned, not open. 2 DC ports on OpConnect. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            361194
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CPU DC STATION 1, 850 Officers Row, Vancouver",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            204258
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CPU DC STATION 2, 850 Officers Row, Vancouver",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            204259
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CRPUD SCAPPOOSE DC1, 52432 NW 1st St, Scappoose",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            323029
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CRPUD SCAPPOOSE DC2, 52432 NW 1st St, Scappoose",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            323030
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC VANCOUVER DC1, 4301 NE Fourth Plain Blvd, Vancouver",
+          "facts": "DOE lists 1 NACS at 93 kW, 1 CCS at 93 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            211787
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC VANCOUVER DC2, 4301 NE Fourth Plain Blvd, Vancouver",
+          "facts": "DOE lists 1 NACS at 93 kW, 1 CCS at 93 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            211786
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC VANCOUVER DC3, 4301 NE Fourth Plain Blvd, Vancouver",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            323901
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC VANCOUVER DC4, 4301 NE Fourth Plain Blvd, Vancouver",
+          "facts": "DOE lists 1 NACS at 125 kW, 1 CCS at 125 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            211785
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DTNA E ISLAND PL, 4717 North Lagoon Avenue, Portland",
+          "facts": "DOE lists 1 NACS at 200 kW, 1 CCS at 200 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            302789
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Electric Era Charging Station, 6060 NE Columbia Blvd, Portland",
+          "facts": "DOE lists 2 CCS at 200 kW on ELECTRIC_ERA. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            316177
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Fred Meyer - Scappoose, 51501 Columbia River Hwy, Scappoose",
+          "facts": "EVCS lists 2 connectors: 1 CCS up to 50 kW, 1 CHAdeMO up to 50 kW. DOE lists 1 DC port.",
+          "status": "conflict",
+          "afdcIds": [
+            73420
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/or/scappoose/fred-meyer-scappoose"
+        },
+        {
+          "name": "New Seasons Portland (Williams Ave) #13, 3445 N Williams Ave, Portland",
+          "facts": "EVgo lists 2 chargers at 3445 N Williams Ave, Portland: 2 at 100 kW with CCS and CHAdeMO (4 connectors). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            373047
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/or/portland/51435/"
+        },
+        {
+          "name": "New Seasons, 3210 NE Broadway St, Portland",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            448312
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Portland, OR - North Pavilion Avenue - Tesla Supercharger, 12154 N Pavilion Ave, Portland",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 12154 N Pavilion Ave, Portland. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            352631
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/32197",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Scappoose, OR - Tesla Supercharger, 52426 SE 2nd St, Scappoose",
+          "facts": "Tesla Find Us lists 4 stalls, up to 250 kW, at 52426 SE 2nd St, Scappoose. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            261470
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34567",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vancouver Ford, 6801 NE 40th St, Vancouver",
+          "facts": "DOE lists 4 CCS at 120 kW on FORD_CHARGE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            358432
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vancouver Hyundai, 6802 Northeast 40th Street, Vancouver",
+          "facts": "DOE lists 2 CCS at 60 kW, 1 J1772 at 13.5 kW on Blink Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            360234
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vancouver, WA - Northeast Andresen Road - Tesla Supercharger, 2101 NE Andresen Rd, Vancouver",
+          "facts": "Tesla Find Us lists 16 stalls, up to 325 kW, at 2101 NE Andresen Rd, Vancouver. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            372613
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/27120",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vancouver, WA - Northeast Fourth Plain Boulevard - Tesla Supercharger, 6916 NE Fourth Plain Blvd, Vancouver",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 6916 NE Fourth Plain Blvd, Vancouver. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            251147
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/VancouverWA",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vancouver, WA - Northeast Vancouver Mall Drive - Tesla Supercharger, 8700 NE Vancouver Mall Drive, Vancouver",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 8700 NE Vancouver Mall Drive, Vancouver. Open to non-Tesla EVs with a NACS adapter.",
+          "status": "verified",
+          "afdcIds": [
+            154794
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/vancouverwanevancouvermalldrivesupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Vancouver, WA - Tesla Supercharger, 800 NE Tenney Road, Vancouver",
+          "facts": "Tesla Find Us lists 12 stalls, up to 150 kW, at 800 NE Tenney Road, Vancouver. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
+          "afdcIds": [
+            102493
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/vancouver800wasupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Walmart EV Charging, 1201 SW 13th Ave, Battle Ground",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on WALMART. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            462454
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Vancouver, WA",
+          "lat": 45.6306954,
+          "lng": -122.6744557,
+          "radius": 6
+        },
+        {
+          "name": "Ridgefield, WA",
+          "lat": 45.8167616,
+          "lng": -122.7433775,
+          "radius": 10
+        },
+        {
+          "name": "Jantzen Beach, OR",
+          "lat": 45.6126534,
+          "lng": -122.6846193,
+          "radius": 6
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "Centralia and Chehalis DOE sites, including EVgo on Louisiana Avenue and Electric Era on Eckerson Road, were not confirmed on those networks' locators. They are listed on the Kelso stop by city, not as a recommended primary.",
+      "source": "afdc"
+    },
+    {
+      "text": "Some older Electrify America sites on this corridor list two CCS connectors on one charger, and one Federal Way and one Tacoma charger is J1772 at 7.2 kW. The stop text follows the locator. It does not assume those CCS connectors share a single power rating.",
+      "source": "ea-locator"
+    }
+  ],
+  "arrival": "Downtown Portland charging is not in this guide. The last stop includes Vancouver and the North Portland sites returned by the Jantzen Beach search."
+}

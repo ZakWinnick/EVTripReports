@@ -17,11 +17,11 @@ const cards = routes.map((r: any) => ({
 }));
 const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
-<Base title="EV Trip Reports" description="Stop-by-stop EV road trip guides. Stall counts, kW, access and prices checked against the charging networks themselves, with a source and date on every fact.">
+<Base title="EV Trip Reports" description="A travel agent for EV road trips. Tell us where you're going and what you drive. We plan stops that work for your car, a backup for each, and on detailed plans a place to eat or sleep while you charge.">
   <section class="band hero">
     <div class="wrap">
-      <h1 class="display">Know every stop<br />before you leave.</h1>
-      <p class="lede" style="margin-top:28px">Stop-by-stop charging guides for EV road trips. Stall counts, kW, access, and price come from the networks' own locators, and every fact carries a source and the date we checked it.</p>
+      <h1 class="display">A travel agent<br />for EVs.</h1>
+      <p class="lede" style="margin-top:28px">Tell us where you're going and what you drive. We plan the trip around charging: stops that work for your car, a backup for each, and on a detailed plan a place to eat or sleep while you charge. Free guides cover the corridors we publish. We don't book the hotel, the rental, or the ticket.</p>
       <div class="btnrow" style="margin-top:32px">
         <a class="pill pill--lg" href="/guides/la-to-las-vegas">Read the LA to Las Vegas guide</a>
         <a class="pill pill--lg pill--ghost" href="/plans">Get a plan for your car</a>
@@ -56,8 +56,8 @@ const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateStrin
   <section class="band band--mist">
     <div class="wrap plans">
       <div>
-        <h2 class="h2">A plan built for your car.</h2>
-        <p class="lede" style="margin-top:16px">Routing apps know where chargers are. They don't know the EA site in Baker had a queue last month, or that the closest Supercharger is Tesla-only. Enter your car, adapter, and dates. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p>
+        <h2 class="h2">A plan for your car and your dates.</h2>
+        <p class="lede" style="margin-top:16px">A paid plan uses your car, charge port, adapter, memberships, and dates. Every charging fact comes from the network's own site, with the date we checked it. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p>
         <div class="btnrow" style="margin-top:28px">
           <a class="pill pill--lg" href="/plans#request">Plan my trip</a>
           <a class="pill pill--lg pill--ghost" href="/plans">Compare plans</a>
@@ -80,7 +80,7 @@ const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateStrin
       <ol class="sources">
         <li><strong>The network's own locator.</strong> Tesla, Electrify America, EVgo and the rest decide stall count, kW, access, and price.</li>
         <li><strong>The DOE station database.</strong> We pull every DC fast site in each stop town so nothing gets missed.</li>
-        <li><strong>Drivers who were just there.</strong> Forum and Reddit reports on broken stalls and waits, each with a link and a date.</li>
+        <li><strong>Driver reports.</strong> PlugShare, X, Reddit, and forums, each with a link and a date. A report stays a report. It is not a confirmed stall count or access flag.</li>
       </ol>
       <p class="muted" style="margin-top:20px">Third-party aggregators are leads, never the source. When sources disagree, we show both. <a href="/methodology">Full methodology</a></p>
     </div>

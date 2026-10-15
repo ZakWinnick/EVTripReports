@@ -19,6 +19,7 @@ console.log('BEGIN TRANSACTION;');
 for (const file of files) {
   const route = JSON.parse(await readFile(path.join(dir, file), 'utf8'));
   const meta = list.find((r) => r.slug === route.slug);
+  // Only status live is published. verifying, including LA to Phoenix, stays unpublished in D1.
   const status = meta?.status === 'live' ? 'live' : 'verifying';
   const sort = ((order.get(route.slug) ?? 100) + 1) * 10;
   const json = q(JSON.stringify(route));

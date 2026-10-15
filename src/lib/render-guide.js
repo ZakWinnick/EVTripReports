@@ -10,7 +10,7 @@ export const fmtDate = (d) =>
 
 const TAG = {
   verified: (c) => (c ? `Verified ${fmtDate(c)}` : 'Verified'),
-  conflict: () => 'Sources conflict',
+  conflict: (c) => (c ? `Sources conflict, checked ${fmtDate(c)}` : 'Sources conflict'),
   unverified: () => 'Not yet verified',
   unpublished: () => 'Not published by network',
   'tesla-only': () => 'Tesla only',
@@ -21,6 +21,24 @@ export const tag = (status, checked) =>
 
 const ext = (url, text, cls = '') =>
   `<a${cls ? ` class="${cls}"` : ''} href="${esc(url)}" rel="nofollow noopener" target="_blank">${esc(text)}</a>`;
+
+const REPORT_LABEL = { plugshare: 'PlugShare', x: 'X', reddit: 'Reddit', forum: 'Forum' };
+
+function stationDriverReports(station) {
+  if (!station || !Array.isArray(station.driverReports)) return [];
+  return station.driverReports.filter((r) => r && r.url && r.date && r.summary && REPORT_LABEL[r.source]);
+}
+
+function collectDriverReports(stop) {
+  const out = [];
+  const take = (station) => {
+    for (const r of stationDriverReports(station)) out.push({ ...r, about: station.name || '' });
+  };
+  take(stop.primary);
+  (stop.backups || []).forEach(take);
+  (stop.other || []).forEach(take);
+  return out;
+}
 
 export function statStrip(stats) {
   return `<dl class="specs">${stats
@@ -112,11 +130,23 @@ export function guideMeta(route) {
   };
 }
 
+function primaryRollup(p) {
+  const states = ['stalls', 'power', 'access'].map((k) => p[k]?.status);
+  if (states.some((st) => st === 'conflict')) return 'conflict';
+  if (states.every((st) => st === 'verified')) return 'verified';
+  return 'unverified';
+}
+
+function stationChecked(station, route) {
+  return station?.checkedOn || route.checked;
+}
+
 function stopSection(route, s, i) {
   const S = route.sources;
-  const checked = route.checked;
   const src = (id) => S[id] || { name: id, url: '' };
   const p = s.primary;
+  const checked = stationChecked(p, route);
+  const rollup = primaryRollup(p);
   const rows = [
     { k: 'Network', v: p.network },
     { k: 'Address', v: p.address },
@@ -130,16 +160,24 @@ function stopSection(route, s, i) {
   ['stalls', 'power', 'access', 'price'].forEach((k) => p[k]?.source && ids.add(p[k].source));
   s.backups.forEach((b) => b.source && ids.add(b.source));
   if (s.other.length) ids.add('afdc');
-  s.reports.forEach((r) => ids.add(r.source));
+  (s.reports || []).forEach((r) => ids.add(r.source));
   s.around.forEach((a) => ids.add(a.source));
+  const driverReports = collectDriverReports(s);
   const sources = [...ids].map((id) => S[id]).filter(Boolean);
+  const seenReportUrls = new Set();
+  const reportSources = [];
+  for (const r of driverReports) {
+    if (seenReportUrls.has(r.url)) continue;
+    seenReportUrls.add(r.url);
+    reportSources.push({ name: `${REPORT_LABEL[r.source]}: ${r.about}`, url: r.url });
+  }
   const backupHtml = s.backups.length
     ? `<ul class="list">${s.backups
         .map(
           (b) =>
             `<li class="item"><div class="item__top"><strong>${esc(b.name)}</strong><span class="btnrow">${b.teslaAccess ? tag(b.teslaAccess) : ''}${tag(
               b.status,
-              b.status === 'verified' ? checked : undefined
+              b.status === 'verified' || b.status === 'conflict' ? stationChecked(b, route) : undefined
             )}</span></div>
 <p class="small muted item__meta">${esc(b.network)}. ${esc(b.address)}</p><p class="item__facts">${esc(b.facts)}</p>
 <p class="small item__meta">${esc(String(b.access).replace(/\.$/, ''))}. ${
@@ -154,7 +192,7 @@ function stopSection(route, s, i) {
 <div class="stop__mile"><span class="num">mile ${esc(s.mile)}</span><span class="small muted">${esc(s.milepostNote)}</span></div></header>
 <p class="stop__why">${esc(s.why)}</p>
 <div class="panel primary"><div class="primary__top"><div><p class="small muted" style="margin:0 0 4px">Primary charger</p><h3 class="h3">${esc(p.name)}</h3></div>
-<div class="btnrow">${p.teslaAccess ? tag(p.teslaAccess) : ''}${tag('verified', checked)}</div></div>
+<div class="btnrow">${p.teslaAccess ? tag(p.teslaAccess) : ''}${tag(rollup, rollup === 'verified' || rollup === 'conflict' ? checked : undefined)}</div></div>
 <dl class="sheet">${rows
     .map(
       (r) =>
@@ -165,29 +203,40 @@ function stopSection(route, s, i) {
     .join('')}</dl></div>
 <div class="cols"><div><h3 class="h3 sub">Backups</h3>${backupHtml}${
     s.other.length
-      ? `<details class="other"><summary>Other DC sites nearby (${s.other.length}), DOE data only</summary><ul class="list">${s.other
+      ? `<details class="other"><summary>Other DC sites nearby (${s.other.length})</summary><ul class="list">${s.other
           .map(
             (o) =>
-              `<li class="item"><div class="item__top"><strong>${esc(o.name)}</strong>${tag(o.status)}</div><p class="item__facts small">${esc(o.facts)}</p></li>`
+              `<li class="item"><div class="item__top"><strong>${esc(o.name)}</strong>${tag(
+                o.status,
+                o.status === 'verified' || o.status === 'conflict' ? stationChecked(o, route) : undefined
+              )}</div><p class="item__facts small">${esc(o.facts)}${
+                o.url ? ` ${ext(o.url, 'Source', 'src')}` : ''
+              }</p></li>`
           )
           .join('')}</ul></details>`
       : ''
   }</div>
 <div><h3 class="h3 sub">Driver reports</h3>${
-    s.reports.length === 0
+    driverReports.length === 0 && (s.reports || []).length === 0
       ? `<p class="muted">No recent driver reports found for this stop yet.</p>`
-      : `<ul class="list">${s.reports
-          .map(
+      : `<ul class="list">${[
+          ...driverReports.map(
+            (r) =>
+              `<li class="report"><p class="report__text">${esc(r.summary)}</p><p class="small muted" style="margin:0"><time datetime="${esc(r.date)}">${esc(
+                fmtDate(r.date)
+              )}</time>, ${ext(r.url, REPORT_LABEL[r.source])}. About: ${esc(r.about)}</p></li>`
+          ),
+          ...(s.reports || []).map(
             (r) =>
               `<li class="report"><p class="report__text">${esc(r.text)}</p><p class="small muted" style="margin:0"><time datetime="${esc(r.date)}">${esc(
                 fmtDate(r.date)
               )}</time>, ${esc(r.who)} on ${ext(src(r.source).url, r.where)}. About: ${esc(r.site)}</p></li>`
-          )
-          .join('')}</ul>`
+          ),
+        ].join('')}</ul>`
   }${
     s.around.length ? `<h3 class="h3 sub">Around the stop</h3><ul class="plain">${s.around.map((a) => `<li>${esc(a.text)}</li>`).join('')}</ul>` : ''
   }
-<h3 class="h3 sub">Sources for this stop</h3><ul class="plain small">${sources.map((x) => `<li>${ext(x.url, x.name)}</li>`).join('')}</ul></div></div>
+<h3 class="h3 sub">Sources for this stop</h3><ul class="plain small">${[...sources.map((x) => `<li>${ext(x.url, x.name)}</li>`), ...reportSources.map((x) => `<li>${ext(x.url, x.name)}</li>`)].join('')}</ul></div></div>
 </div></section>`;
 }
 
@@ -212,8 +261,8 @@ ${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
 <section class="band band--tight"><div class="wrap"><h2 class="h2">Tips for this route</h2><ol class="tips">${route.tips
     .map((t) => `<li>${esc(t.text)} ${S[t.source] ? ext(S[t.source].url, 'Source', 'small') : ''}</li>`)
     .join('')}</ol><p class="note" style="margin-top:28px">${esc(arrivalNote(route))}</p></div></section>
-<section class="band band--tight band--mist"><div class="wrap plan-cta"><div><h2 class="h2">Want this built around your car?</h2>
-<p class="lede" style="margin-top:12px">Enter your car, adapter, and dates. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p></div>
+<section class="band band--tight band--mist"><div class="wrap plan-cta"><div><h2 class="h2">Want this planned for your car?</h2>
+<p class="lede" style="margin-top:12px">Stops that work for your port and adapter, with a backup at each. Detailed plans add food and a hotel with a charger. We don't book the room. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p></div>
 <a class="pill pill--lg" href="/plans#request">Plan my trip</a></div></section>`;
 }
 

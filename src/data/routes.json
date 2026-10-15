@@ -1,8 +1,44 @@
 [
-  { "slug": "la-to-las-vegas", "title": "LA to Las Vegas", "highway": "I-15", "miles": 224, "status": "live" },
-  { "slug": "la-to-sf", "title": "LA to San Francisco", "highway": "I-5", "status": "verifying" },
-  { "slug": "sf-to-tahoe", "title": "SF to Lake Tahoe", "highway": "I-80", "status": "verifying" },
-  { "slug": "la-to-phoenix", "title": "LA to Phoenix", "highway": "I-10", "status": "verifying" },
-  { "slug": "seattle-to-portland", "title": "Seattle to Portland", "highway": "I-5", "status": "verifying" },
-  { "slug": "nyc-to-boston", "title": "NYC to Boston", "highway": "I-95", "status": "verifying" }
+  {
+    "slug": "la-to-las-vegas",
+    "title": "LA to Las Vegas",
+    "highway": "I-15",
+    "miles": 224,
+    "status": "live"
+  },
+  {
+    "slug": "la-to-sf",
+    "title": "LA to San Francisco",
+    "highway": "I-5",
+    "miles": 317,
+    "status": "live"
+  },
+  {
+    "slug": "sf-to-tahoe",
+    "title": "SF to Lake Tahoe",
+    "highway": "I-80",
+    "miles": 186,
+    "status": "live"
+  },
+  {
+    "slug": "la-to-phoenix",
+    "title": "LA to Phoenix",
+    "highway": "I-10",
+    "miles": 344,
+    "status": "verifying"
+  },
+  {
+    "slug": "seattle-to-portland",
+    "title": "Seattle to Portland",
+    "highway": "I-5",
+    "miles": 165,
+    "status": "live"
+  },
+  {
+    "slug": "nyc-to-boston",
+    "title": "NYC to Boston",
+    "highway": "I-95",
+    "miles": 197,
+    "status": "live"
+  }
 ]
