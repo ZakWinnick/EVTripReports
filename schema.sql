@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS plan_requests (
   passengers TEXT,
   memberships TEXT,
   notes TEXT,
-  status TEXT NOT NULL DEFAULT 'review'
+  status TEXT NOT NULL DEFAULT 'new'
 );
