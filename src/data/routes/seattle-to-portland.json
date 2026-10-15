@@ -42,6 +42,10 @@
     "wiki-i5-or": {
       "name": "Interstate 5 in Oregon (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Interstate_5_in_Oregon"
+    },
+    "plugshare": {
+      "name": "PlugShare",
+      "url": "https://www.plugshare.com/"
     }
   },
   "stops": [
@@ -81,6 +85,20 @@
         },
         "afdcIds": [
           185190
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/305117",
+            "date": "2026-09-30",
+            "summary": "Expensive for a J1772."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/305117",
+            "date": "2026-08-20",
+            "summary": "Ford Plug & Charge did not work but using the EA app did work"
+          }
         ]
       },
       "backups": [
@@ -95,7 +113,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/wa/auburn/1101-outlet-collection-way/210216/",
           "afdcIds": [
             189391
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "other": [
@@ -105,7 +124,8 @@
           "status": "unverified",
           "afdcIds": [
             150184
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Federal Way, 31717 Pacific Highway, Federal Way",
@@ -113,7 +133,8 @@
           "status": "unverified",
           "afdcIds": [
             466512
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Federal Way, WA - South 320th Street - Tesla Supercharger, 2012 S 320th St, Federal Way",
@@ -121,7 +142,8 @@
           "status": "unverified",
           "afdcIds": [
             360295
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Federal Way, WA - Tesla Supercharger, 32015 Pacific Highway South, Federal Way",
@@ -129,7 +151,8 @@
           "status": "unverified",
           "afdcIds": [
             187166
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tahoma Market, 6006 Pacific Highway E, Fife",
@@ -137,7 +160,8 @@
           "status": "unverified",
           "afdcIds": [
             361045
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Walmart EV Charging, 762 Outlet Collection Way, Auburn",
@@ -145,7 +169,8 @@
           "status": "unverified",
           "afdcIds": [
             469481
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -195,6 +220,20 @@
         },
         "afdcIds": [
           135872
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186868",
+            "date": "2026-10-06",
+            "summary": "Derated to 180."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186868",
+            "date": "2026-09-08",
+            "summary": "Iced. Three stalls closed. Blocked by vehicle"
+          }
         ]
       },
       "backups": [
@@ -209,7 +248,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/wa/puyallup/3700-s-meridian/210230/",
           "afdcIds": [
             170297
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "other": [
@@ -219,7 +259,8 @@
           "status": "unverified",
           "afdcIds": [
             446232
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "3606 S Sprague Ave, 3606 S Sprague Ave, Tacoma",
@@ -227,7 +268,8 @@
           "status": "unverified",
           "afdcIds": [
             330519
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Auburn Chevrolet, 1600 Auburn Way North, Auburn",
@@ -235,7 +277,8 @@
           "status": "unverified",
           "afdcIds": [
             391810
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Auburn, WA - Auburn Way North - Tesla Supercharger, 801 Auburn Wy N, Auburn",
@@ -243,7 +286,8 @@
           "status": "unverified",
           "afdcIds": [
             430837
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CSG EV AAA TACOMA - #1, 1801 S Union Ave, Tacoma",
@@ -251,7 +295,8 @@
           "status": "unverified",
           "afdcIds": [
             384631
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CSG EV AAA TACOMA - #2, 1801 S Union Ave, Tacoma",
@@ -259,7 +304,8 @@
           "status": "unverified",
           "afdcIds": [
             384627
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CSG EV AAA TACOMA - #3, 1801 S Union Ave, Tacoma",
@@ -267,7 +313,8 @@
           "status": "unverified",
           "afdcIds": [
             384533
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CSG EV AAA TACOMA - #4, 1801 S Union Ave, Tacoma",
@@ -275,7 +322,8 @@
           "status": "unverified",
           "afdcIds": [
             384532
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Dennys Auburn, 521 Auburn Way S, Auburn",
@@ -283,7 +331,8 @@
           "status": "unverified",
           "afdcIds": [
             465665
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "HYSHOP CUSTOMER ST, 7601 S Tacoma Way, Tacoma",
@@ -291,7 +340,8 @@
           "status": "unverified",
           "afdcIds": [
             327544
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "HYSHOP INVENTORY, 7601 S Tacoma Way, Tacoma",
@@ -299,7 +349,8 @@
           "status": "unverified",
           "afdcIds": [
             327545
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "KOP FAST CHARGE KOP FASTCHARGER, 111 Valley Avenue Northeast, Puyallup",
@@ -307,7 +358,8 @@
           "status": "unverified",
           "afdcIds": [
             398131
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Korum Ford, 100 River Rd, Puyallup",
@@ -315,7 +367,8 @@
           "status": "unverified",
           "afdcIds": [
             416767
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "KORUM HYUNDAI PC 1, 111 River Rd, Puyallup",
@@ -323,7 +376,8 @@
           "status": "unverified",
           "afdcIds": [
             214876
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "KORUM HYUNDAI PC 2, 111 River Rd, Puyallup",
@@ -331,7 +385,8 @@
           "status": "unverified",
           "afdcIds": [
             214875
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Korum Lincoln, 150 River Rd, Puyallup",
@@ -339,7 +394,8 @@
           "status": "unverified",
           "afdcIds": [
             358431
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "LA Fitness - Tacoma Pacific, 15707 Pacific Avenue South, Spanaway",
@@ -347,7 +403,8 @@
           "status": "unverified",
           "afdcIds": [
             465380
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "LeMay - America's Car Museum, 2702 E D St, Tacoma",
@@ -355,7 +412,8 @@
           "status": "unverified",
           "afdcIds": [
             228817
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "LOVE'S 448 - WA #448 DC1, 1501 33rd Avenue East, Tacoma",
@@ -363,7 +421,8 @@
           "status": "unverified",
           "afdcIds": [
             461122
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "LOVE'S 448 - WA #448 DC2, 1501 33rd Avenue East, Tacoma",
@@ -371,7 +430,8 @@
           "status": "unverified",
           "afdcIds": [
             461121
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Municipal Lot Fast Charger, 728 Market St., Tacoma",
@@ -379,7 +439,8 @@
           "status": "unverified",
           "afdcIds": [
             375743
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Old Cannery: 13624 Cannery Way, Sumner, 13624 Cannery Way, Sumner",
@@ -387,7 +448,8 @@
           "status": "unverified",
           "afdcIds": [
             332061
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Puyallup, WA - Tesla Supercharger, 3310 S Meridian, Puyallup",
@@ -395,7 +457,8 @@
           "status": "unverified",
           "afdcIds": [
             421304
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Safeway Auburn #0531, 101 Auburn Way S, Auburn",
@@ -403,7 +466,8 @@
           "status": "unverified",
           "afdcIds": [
             416914
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Safeway Tacoma, 1112 S M St, Tacoma",
@@ -411,7 +475,8 @@
           "status": "unverified",
           "afdcIds": [
             416915
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Scarff Ford, 501 Auburn Way N, Auburn",
@@ -419,7 +484,8 @@
           "status": "unverified",
           "afdcIds": [
             358430
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "South Tacoma Honda, 7802 South Tacoma Way, Tacoma",
@@ -427,7 +493,8 @@
           "status": "unverified",
           "afdcIds": [
             316998
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "SUBARU PUYALLUP LEVEL 3 CHARGER, 720 River Rd, Puyallup",
@@ -435,7 +502,8 @@
           "status": "unverified",
           "afdcIds": [
             350620
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tacoma Nissan, 4030 S Tacoma Way, Tacoma",
@@ -443,7 +511,8 @@
           "status": "unverified",
           "afdcIds": [
             39797
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tacoma South, 7921 S Hosmer St, Tacoma",
@@ -451,7 +520,8 @@
           "status": "unverified",
           "afdcIds": [
             261825
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tacoma, WA - S 40th Street - Tesla Supercharger, 2221 S 40th St, Tacoma",
@@ -459,7 +529,8 @@
           "status": "unverified",
           "afdcIds": [
             353794
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tacoma, WA - South Hosmer Street - Tesla Supercharger, 7427 S Hosmer St, Tacoma",
@@ -467,7 +538,8 @@
           "status": "unverified",
           "afdcIds": [
             333707
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tacoma, WA - South Steele Street - Tesla Supercharger, 4502 S Steele St, Tacoma",
@@ -475,7 +547,8 @@
           "status": "unverified",
           "afdcIds": [
             326167
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tacoma, WA - Tesla Supercharger, 5219 Tacoma Mall Boulevard, Tacoma",
@@ -483,7 +556,8 @@
           "status": "unverified",
           "afdcIds": [
             256577
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "WinCo Foods - Sumner #74, 6621 Wahl Rd East, Sumner",
@@ -491,7 +565,8 @@
           "status": "unverified",
           "afdcIds": [
             257755
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -547,7 +622,8 @@
         },
         "afdcIds": [
           391666
-        ]
+        ],
+        "driverReports": []
       },
       "backups": [
         {
@@ -561,7 +637,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/wa/lacey/4775-whitman-lane-se/210430/",
           "afdcIds": [
             201629
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Lacey, 1401 Galaxy Dr. NE",
@@ -574,6 +651,20 @@
           "url": "https://www.electrifyamerica.com/locate-charger/wa/lacey/1401-galaxy-dr-ne/100066/",
           "afdcIds": [
             123479
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/182506",
+              "date": "2026-10-13",
+              "summary": "3 out of 5 chargers are down right now"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/182506",
+              "date": "2026-10-12",
+              "summary": "One Hyper isn't working but the other is."
+            }
           ]
         },
         {
@@ -587,7 +678,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/wa/olympia/2925-harrison-ave-nw/210228/",
           "afdcIds": [
             164163
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "other": [
@@ -597,7 +689,8 @@
           "status": "unverified",
           "afdcIds": [
             327687
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ARCO Hawks Prairie Road NE, Lacey, WA, 7465 Hawks Prairie Road NE, Lacey",
@@ -605,7 +698,8 @@
           "status": "unverified",
           "afdcIds": [
             361213
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CITY OF LACEY CITY HALL DC, 420 6th Ave SE, Lacey",
@@ -613,7 +707,8 @@
           "status": "unverified",
           "afdcIds": [
             395272
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CITY OF LACEY RAC1, 8323 Steilacoom Rd SE, Lacey",
@@ -621,7 +716,8 @@
           "status": "unverified",
           "afdcIds": [
             352460
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CITY OF LACEY RAC2, 8323 Steilacoom Rd SE, Lacey",
@@ -629,7 +725,8 @@
           "status": "unverified",
           "afdcIds": [
             372526
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CITY OF LACEY RAC3, 8323 Steilacoom Rd SE, Lacey",
@@ -637,7 +734,8 @@
           "status": "unverified",
           "afdcIds": [
             372530
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CITY OF LACEY RAC4, 8323 Steilacoom Rd SE, Lacey",
@@ -645,7 +743,8 @@
           "status": "unverified",
           "afdcIds": [
             372527
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CITY OF LACEY RAC5, 8323 Steilacoom Rd SE, Lacey",
@@ -653,7 +752,8 @@
           "status": "unverified",
           "afdcIds": [
             372528
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CITY OF LACEY RAC6, 8323 Steilacoom Rd SE, Lacey",
@@ -661,7 +761,8 @@
           "status": "unverified",
           "afdcIds": [
             372529
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CITY OF LACEY WCP DC FAST, 6279 Pacific Avenue Southeast, Lacey",
@@ -669,7 +770,8 @@
           "status": "unverified",
           "afdcIds": [
             434825
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Dupont Center - Ace Hardware, 1585 McNeil St, DuPont",
@@ -677,7 +779,8 @@
           "status": "unverified",
           "afdcIds": [
             228205
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Electric Era Charging Station, 13101 Gravelly Lake Dr SW,, Lakewood",
@@ -685,7 +788,8 @@
           "status": "unverified",
           "afdcIds": [
             446574
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Lacey, WA - Tesla Supercharger, 665 Sleater Kinney Road SE, Lacey",
@@ -693,7 +797,8 @@
           "status": "unverified",
           "afdcIds": [
             168277
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Mullinax Ford of Olympia, 1905 Cooper Point Road SW, Olympia",
@@ -701,7 +806,8 @@
           "status": "unverified",
           "afdcIds": [
             456773
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "OLYMPIA KIA OLYMPIASUBKIA1, 2300 Carriage Loop SW, Olympia",
@@ -709,7 +815,8 @@
           "status": "unverified",
           "afdcIds": [
             372810
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "OLYMPIA KIA OLYMPIASUBKIA2, 2300 Carriage Loop SW, Olympia",
@@ -717,7 +824,8 @@
           "status": "unverified",
           "afdcIds": [
             260271
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "OLYMPIA KIA OLYMPIASUBKIA3, 2300 Carriage Loop SW, Olympia",
@@ -725,7 +833,8 @@
           "status": "unverified",
           "afdcIds": [
             260270
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "OLYMPIA LILLY R PETROCARD 1, 501 Lilly Rd SE, Olympia",
@@ -733,7 +842,8 @@
           "status": "unverified",
           "afdcIds": [
             204497
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "OLYMPIA LILLY R PETROCARD 2, 501 Lilly Rd SE, Olympia",
@@ -741,7 +851,8 @@
           "status": "unverified",
           "afdcIds": [
             204664
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Olympia Nissan, 2220 Carriage Dr SW, Olympia",
@@ -749,7 +860,8 @@
           "status": "unverified",
           "afdcIds": [
             39786
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Shell Gas Station - Tumwater, 6131 Capital Blvd, Tumwater",
@@ -757,7 +869,8 @@
           "status": "unverified",
           "afdcIds": [
             73412
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "The Hub at Lacey Office Space: 676 Woodland Square Loop SE, Lacey, 676 Woodland Square Loop SE, Lacey",
@@ -765,7 +878,8 @@
           "status": "unverified",
           "afdcIds": [
             166926
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Titus-Will Hyundai, 2255 Carriage Loop Southwest, Olympia",
@@ -773,7 +887,8 @@
           "status": "unverified",
           "afdcIds": [
             360774
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tumwater Trading Post, 7000 Little Rock Rd SW, Tumwater",
@@ -781,7 +896,8 @@
           "status": "unverified",
           "afdcIds": [
             396913
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tumwater, WA - Kingswood Drive Southwest - Tesla Supercharger, 1401 Kingswood Dr SW, Tumwater",
@@ -789,7 +905,8 @@
           "status": "unverified",
           "afdcIds": [
             395417
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -851,7 +968,8 @@
         },
         "afdcIds": [
           124684
-        ]
+        ],
+        "driverReports": []
       },
       "backups": [],
       "other": [
@@ -861,7 +979,8 @@
           "status": "unverified",
           "afdcIds": [
             416809
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Bud Clary Ford, 700 7th Ave, Longview",
@@ -869,7 +988,8 @@
           "status": "unverified",
           "afdcIds": [
             375843
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Cascade Select Market - Castle Rock, 204 Cowlitz Street West, Castle Rock",
@@ -877,7 +997,8 @@
           "status": "unverified",
           "afdcIds": [
             65864
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Centralia, WA - Tesla Supercharger, 1200 Lum Rd, Centralia",
@@ -885,7 +1006,8 @@
           "status": "unverified",
           "afdcIds": [
             102486
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Chehalis Commerce District, 1701 NW Louisiana Ave, Chehalis",
@@ -893,7 +1015,8 @@
           "status": "unverified",
           "afdcIds": [
             233514
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Chehalis, WA - Tesla Supercharger, 700 Northwest Arkansas Way, Chehalis",
@@ -901,7 +1024,8 @@
           "status": "unverified",
           "afdcIds": [
             253282
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Country Cafe - Ridgefield, 6370 N 1st Circle,, Ridgefield",
@@ -909,7 +1033,8 @@
           "status": "unverified",
           "afdcIds": [
             65866
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CPUD CC RIDER DCFC, 207 W B St, Rainier",
@@ -917,7 +1042,8 @@
           "status": "unverified",
           "afdcIds": [
             356444
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CRPUD DEER ISLAND DC1, 64001 Columbia River Hwy, Deer Island",
@@ -925,7 +1051,8 @@
           "status": "unverified",
           "afdcIds": [
             174369
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CRPUD DEER ISLAND DC2, 64001 Columbia River Hwy, Deer Island",
@@ -933,7 +1060,8 @@
           "status": "unverified",
           "afdcIds": [
             143950
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CRPUD SCAPPOOSEBAYDC1, 57420 Old Portland Road, Warren",
@@ -941,7 +1069,8 @@
           "status": "unverified",
           "afdcIds": [
             350154
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CRPUD SCAPPOOSEBAYDC2, 57420 Old Portland Road, Warren",
@@ -949,7 +1078,8 @@
           "status": "unverified",
           "afdcIds": [
             350153
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CRPUD ST HELENS DC1, 260 S 2nd St, St. Helens",
@@ -957,7 +1087,8 @@
           "status": "unverified",
           "afdcIds": [
             211836
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CRPUD ST HELENS DC2, 260 S 2nd St, St. Helens",
@@ -965,7 +1096,8 @@
           "status": "unverified",
           "afdcIds": [
             211835
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Electric Era Charging Station, 1003 Eckerson Rd, Centralia",
@@ -973,7 +1105,8 @@
           "status": "unverified",
           "afdcIds": [
             456724
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Electric Era Charging Station, 519 N 56th Place, Ridgefield",
@@ -981,7 +1114,8 @@
           "status": "unverified",
           "afdcIds": [
             360762
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ESD EXIT 68 DCFC 1, 172 US-12, Chehalis",
@@ -989,7 +1123,8 @@
           "status": "unverified",
           "afdcIds": [
             326218
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ESD EXIT 68 DCFC 2, 172 US-12, Chehalis",
@@ -997,7 +1132,8 @@
           "status": "unverified",
           "afdcIds": [
             326217
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ESD EXIT 68 DCFC 3, 172 US-12, Chehalis",
@@ -1005,7 +1141,8 @@
           "status": "unverified",
           "afdcIds": [
             326220
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ESD EXIT 68 DCFC 4, 172 U.S. 12, Chehalis",
@@ -1013,7 +1150,8 @@
           "status": "unverified",
           "afdcIds": [
             326977
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "EZstop Kalama Waterfront, 215 N Hendrickson Dr, Kalama",
@@ -1021,7 +1159,8 @@
           "status": "unverified",
           "afdcIds": [
             196042
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Kelso, WA - Tesla Supercharger, 207 Three Rivers Drive, Kelso",
@@ -1029,7 +1168,8 @@
           "status": "unverified",
           "afdcIds": [
             158651
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "LC TRANSIT MELLEN ST. 1, 12 Airport Rd, Centralia",
@@ -1037,7 +1177,8 @@
           "status": "unverified",
           "afdcIds": [
             191438
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Ridgefield, WA - Tesla Supercharger, 125 N 65th Ave, Ridgefield",
@@ -1045,7 +1186,8 @@
           "status": "unverified",
           "afdcIds": [
             262358
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Rochester, WA - Sargent Road Southwest - Tesla Supercharger, 19770 Sargent Rd SW, Rochester",
@@ -1053,7 +1195,8 @@
           "status": "unverified",
           "afdcIds": [
             351247
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Rochester, WA - Tesla Supercharger, 19615 Elderberry St SW, Rochester",
@@ -1061,7 +1204,8 @@
           "status": "unverified",
           "afdcIds": [
             322836
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Starbucks Ridgefield MB.HPC, 100 N 56th Pl, Ridgefield",
@@ -1069,7 +1213,8 @@
           "status": "unverified",
           "afdcIds": [
             458971
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "TENINO AG PARK TENINO AG PARK1, 16404 Old Hwy 99 SE, Tenino",
@@ -1077,7 +1222,8 @@
           "status": "unverified",
           "afdcIds": [
             404900
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "TENINO AG PARK TENINO AG PARK2, 16404 Old Highway 99 Southeast, Tenino",
@@ -1085,7 +1231,8 @@
           "status": "unverified",
           "afdcIds": [
             404899
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Wendys - Centralia, 817 Harrison Avenue, Centralia",
@@ -1093,7 +1240,8 @@
           "status": "unverified",
           "afdcIds": [
             65861
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -1173,7 +1321,8 @@
         },
         "afdcIds": [
           163338
-        ]
+        ],
+        "driverReports": []
       },
       "backups": [
         {
@@ -1187,6 +1336,20 @@
           "url": "https://www.electrifyamerica.com/locate-charger/or/portland/7404-n-interstate-ave/216023/",
           "afdcIds": [
             279355
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/507020",
+              "date": "2026-09-25",
+              "summary": "Easy plug and charge."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/507020",
+              "date": "2026-09-15",
+              "summary": "Very fast outside of peak hours"
+            }
           ]
         },
         {
@@ -1200,7 +1363,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/wa/vancouver/9000-ne-highway-99/100064/",
           "afdcIds": [
             121709
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Portland, 6850 N Lombard St",
@@ -1213,6 +1377,26 @@
           "url": "https://www.electrifyamerica.com/locate-charger/or/portland/6850-n-lombard-st/210522/",
           "afdcIds": [
             206716
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/362963",
+              "date": "2026-06-15",
+              "summary": "Avoid electrify america Broken hardware"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/362963",
+              "date": "2026-05-26",
+              "summary": "Expensive, but fast."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/362963",
+              "date": "2026-05-09",
+              "summary": "No chademo at fred meyer lombard peninsula lication app incorrectly says there is"
+            }
           ]
         }
       ],
@@ -1223,7 +1407,8 @@
           "status": "unverified",
           "afdcIds": [
             347939
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "City of Portland 1ABB184, 6848 N CUTTER CIR, Portland",
@@ -1231,7 +1416,8 @@
           "status": "unverified",
           "afdcIds": [
             361194
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CPU DC STATION 1, 850 Officers Row, Vancouver",
@@ -1239,7 +1425,8 @@
           "status": "unverified",
           "afdcIds": [
             204258
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CPU DC STATION 2, 850 Officers Row, Vancouver",
@@ -1247,7 +1434,8 @@
           "status": "unverified",
           "afdcIds": [
             204259
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CRPUD SCAPPOOSE DC1, 52432 NW 1st St, Scappoose",
@@ -1255,7 +1443,8 @@
           "status": "unverified",
           "afdcIds": [
             323029
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CRPUD SCAPPOOSE DC2, 52432 NW 1st St, Scappoose",
@@ -1263,7 +1452,8 @@
           "status": "unverified",
           "afdcIds": [
             323030
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC VANCOUVER DC1, 4301 NE Fourth Plain Blvd, Vancouver",
@@ -1271,7 +1461,8 @@
           "status": "unverified",
           "afdcIds": [
             211787
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC VANCOUVER DC2, 4301 NE Fourth Plain Blvd, Vancouver",
@@ -1279,7 +1470,8 @@
           "status": "unverified",
           "afdcIds": [
             211786
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC VANCOUVER DC3, 4301 NE Fourth Plain Blvd, Vancouver",
@@ -1287,7 +1479,8 @@
           "status": "unverified",
           "afdcIds": [
             323901
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC VANCOUVER DC4, 4301 NE Fourth Plain Blvd, Vancouver",
@@ -1295,7 +1488,8 @@
           "status": "unverified",
           "afdcIds": [
             211785
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DTNA E ISLAND PL, 4717 North Lagoon Avenue, Portland",
@@ -1303,7 +1497,8 @@
           "status": "unverified",
           "afdcIds": [
             302789
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Electric Era Charging Station, 6060 NE Columbia Blvd, Portland",
@@ -1311,7 +1506,8 @@
           "status": "unverified",
           "afdcIds": [
             316177
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fred Meyer - Scappoose, 51501 Columbia River Hwy, Scappoose",
@@ -1319,7 +1515,8 @@
           "status": "unverified",
           "afdcIds": [
             73420
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "New Seasons Portland (Williams Ave) #13, 3445 N Williams Ave, Portland",
@@ -1327,7 +1524,8 @@
           "status": "unverified",
           "afdcIds": [
             373047
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "New Seasons, 3210 NE Broadway St, Portland",
@@ -1335,7 +1533,8 @@
           "status": "unverified",
           "afdcIds": [
             448312
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Portland, OR - North Pavilion Avenue - Tesla Supercharger, 12154 N Pavilion Ave, Portland",
@@ -1343,7 +1542,8 @@
           "status": "unverified",
           "afdcIds": [
             352631
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Scappoose, OR - Tesla Supercharger, 52426 SE 2nd St, Scappoose",
@@ -1351,7 +1551,8 @@
           "status": "unverified",
           "afdcIds": [
             261470
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vancouver Ford, 6801 NE 40th St, Vancouver",
@@ -1359,7 +1560,8 @@
           "status": "unverified",
           "afdcIds": [
             358432
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vancouver Hyundai, 6802 Northeast 40th Street, Vancouver",
@@ -1367,7 +1569,8 @@
           "status": "unverified",
           "afdcIds": [
             360234
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vancouver, WA - Northeast Andresen Road - Tesla Supercharger, 2101 NE Andresen Rd, Vancouver",
@@ -1375,7 +1578,8 @@
           "status": "unverified",
           "afdcIds": [
             372613
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vancouver, WA - Northeast Fourth Plain Boulevard - Tesla Supercharger, 6916 NE Fourth Plain Blvd, Vancouver",
@@ -1383,7 +1587,8 @@
           "status": "unverified",
           "afdcIds": [
             251147
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vancouver, WA - Northeast Vancouver Mall Drive - Tesla Supercharger, 8700 NE Vancouver Mall Drive, Vancouver",
@@ -1391,7 +1596,8 @@
           "status": "unverified",
           "afdcIds": [
             154794
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vancouver, WA - Tesla Supercharger, 800 NE Tenney Road, Vancouver",
@@ -1399,7 +1605,8 @@
           "status": "unverified",
           "afdcIds": [
             102493
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Walmart EV Charging, 1201 SW 13th Ave, Battle Ground",
@@ -1407,7 +1614,8 @@
           "status": "unverified",
           "afdcIds": [
             462454
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],

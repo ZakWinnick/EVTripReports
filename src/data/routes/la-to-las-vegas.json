@@ -68,6 +68,10 @@
     "ctoc-barstow": {
       "name": "Cybertruck Owners Club, Barstow 120-stall thread",
       "url": "https://www.cybertruckownersclub.com/forum/threads/worlds-largest-tesla-supercharger-120-v4-stalls-barstow-ca.33402/"
+    },
+    "plugshare": {
+      "name": "PlugShare",
+      "url": "https://www.plugshare.com/"
     }
   },
   "stops": [
@@ -107,6 +111,26 @@
         },
         "afdcIds": [
           151969
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186196",
+            "date": "2026-10-08",
+            "summary": "Busy town and a busy Walmart. Getting in and getting out might take some time on a busy day. Charger availability and reliability seems to be good, but I will skip this and consider other chargers if possible."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186196",
+            "date": "2026-10-02",
+            "summary": "Works well."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186196",
+            "date": "2026-09-28",
+            "summary": "You have to go the wrong way in the lane to back in."
+          }
         ]
       },
       "backups": [
@@ -121,6 +145,26 @@
           "url": "https://www.evgo.com/find-a-charger/?siteId=71284",
           "afdcIds": [
             374871
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/647765",
+              "date": "2026-08-10",
+              "summary": "EA chargers at the Walmart down the road full as usual but most of the plugs here were available"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/647765",
+              "date": "2026-07-30",
+              "summary": "Easy. No one here when I arrived. Quick to connect."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/647765",
+              "date": "2026-03-27",
+              "summary": "Painfully slow, maybe CA limits power when it's hot out?"
+            }
           ]
         },
         {
@@ -134,6 +178,26 @@
           "url": "https://www.evgo.com/find-a-charger/?siteId=49260",
           "afdcIds": [
             253745
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/490718",
+              "date": "2026-09-26",
+              "summary": "Easy payment with the Ford app and BlueOval Charge Network."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/490718",
+              "date": "2026-08-16",
+              "summary": "I love the charging options here and the best part, they are across the street from multiple restaurants and a coffee shop with a nice lounge area. Ignore the parking lot these are in, its actually peaceful here."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/490718",
+              "date": "2026-07-30",
+              "summary": "Was only giving 32 kW of charging. Couldn't wait. There's another and a father one at Cardenas Market. They're 350s. In use"
+            }
           ]
         },
         {
@@ -148,7 +212,8 @@
           "url": "https://www.tesla.com/findus?location=20757",
           "afdcIds": [
             331352
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Victorville, Amargosa Road (Restaurant Row)",
@@ -162,7 +227,8 @@
           "url": "https://www.tesla.com/findus?location=VictorvilleCAQ322",
           "afdcIds": [
             252516
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Hesperia (Target)",
@@ -176,6 +242,14 @@
           "url": "https://www.tesla.com/findus?location=hesperiasupercharger",
           "afdcIds": [
             169469
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/285659",
+              "date": "2026-10-14",
+              "summary": "Lots of chargers, handy location for shopping"
+            }
           ]
         },
         {
@@ -190,7 +264,8 @@
           "url": "https://www.tesla.com/findus?location=32196",
           "afdcIds": [
             361251
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "P66 / 76 Victorville",
@@ -203,6 +278,26 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ca/victorville/15290-mojave-dr/701218/",
           "afdcIds": [
             384558
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/656565",
+              "date": "2026-10-08",
+              "summary": "This might be the best charging station I've ever used. I've been here about a dozen times over the past year. I've never had any trouble of any kind. I've never had to wait, and it always delivers the max speed my vehicle will take."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/656565",
+              "date": "2026-09-28",
+              "summary": "$.64 per kilowatt hour on a Saturday afternoon with Chargers open. 76 gas station badging but Electrify America under the hood."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/656565",
+              "date": "2026-06-01",
+              "summary": "Nice quick stop. Convenience store location with a restroom."
+            }
           ]
         },
         {
@@ -217,7 +312,8 @@
           "url": "https://www.tesla.com/findus?location=VictorvilleCASupercharger",
           "afdcIds": [
             238582
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "other": [
@@ -227,7 +323,8 @@
           "status": "unverified",
           "afdcIds": [
             262701
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Circle K, 15289 Nisqualli Rd, Victorville",
@@ -235,7 +332,8 @@
           "status": "unverified",
           "afdcIds": [
             302207
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ChargePoint, AMPM Bear Valley Rd, Hesperia",
@@ -244,7 +342,8 @@
           "afdcIds": [
             321440,
             321439
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "The Mall of Victor Valley, 14370 Bear Valley Rd",
@@ -252,7 +351,8 @@
           "status": "unverified",
           "afdcIds": [
             228294
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Victorville Chevrolet Cadillac, 15425 Dos Palmas Rd",
@@ -260,7 +360,8 @@
           "status": "unverified",
           "afdcIds": [
             360272
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ChargePoint, Chevron at 14250 Bear Valley Rd and Valley Hi Kia",
@@ -269,7 +370,8 @@
           "afdcIds": [
             158736,
             329017
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ChargePoint, 16868 Stoddard Wells Rd, Victorville",
@@ -278,7 +380,8 @@
           "afdcIds": [
             200750,
             200748
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [
@@ -357,6 +460,14 @@
         },
         "afdcIds": [
           375431
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/650004",
+            "date": "2026-10-07",
+            "summary": "Nice to have the longer V4 cables for my Lightning."
+          }
         ]
       },
       "backups": [
@@ -371,6 +482,20 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ca/barstow/301-montara-road/100049/",
           "afdcIds": [
             154846
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/186195",
+              "date": "2026-10-05",
+              "summary": "Worked great. This station is very busy. I was lucky to not have to wait this time. A line formed while I was charging."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/186195",
+              "date": "2026-10-02",
+              "summary": "Works well. Not too busy. 25kW delivered in 20 mins."
+            }
           ]
         },
         {
@@ -385,7 +510,8 @@
           "url": "https://www.tesla.com/findus?location=BarstowCASupercharger2",
           "afdcIds": [
             220686
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Barstow, Lenwood Road",
@@ -397,7 +523,8 @@
           "source": "afdc",
           "afdcIds": [
             391293
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Barstow (Holiday Inn & Suites)",
@@ -411,6 +538,20 @@
           "url": "https://www.tesla.com/findus?location=barstowcasupercharger",
           "afdcIds": [
             102001
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/10838",
+              "date": "2026-05-23",
+              "summary": "Derated charging. Pulling ~60ish kw from an older dispenser."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/10838",
+              "date": "2026-01-02",
+              "summary": "Could not activate"
+            }
           ]
         }
       ],
@@ -421,7 +562,8 @@
           "status": "unverified",
           "afdcIds": [
             428667
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ChargePoint at Love's and 2728 Lenwood Rd",
@@ -433,13 +575,15 @@
             175742,
             175740,
             175743
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tesla coming-soon site",
           "facts": "Tesla's map shows a coming-soon Supercharger on the east side of Barstow. No open date listed.",
           "status": "unverified",
-          "afdcIds": []
+          "afdcIds": [],
+          "driverReports": []
         }
       ],
       "reports": [
@@ -512,6 +656,14 @@
         },
         "afdcIds": [
           261473
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/526689",
+            "date": "2026-09-01",
+            "summary": "Great location, but very dirty. Trash everywhere even though there are several trash cans with no trash in them."
+          }
         ]
       },
       "backups": [
@@ -527,6 +679,20 @@
           "url": "https://www.tesla.com/findus?location=yermosupercharger",
           "afdcIds": [
             102077
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/135834",
+              "date": "2026-10-04",
+              "summary": "Good location, chargers are older 150kw units. Got 70 max during the session because it was full."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/135834",
+              "date": "2026-08-20",
+              "summary": "Pedestal 8A 8b reported OUT OF SERVICE"
+            }
           ]
         }
       ],
@@ -539,7 +705,8 @@
             200588,
             200589,
             201225
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -594,6 +761,26 @@
         },
         "afdcIds": [
           165658
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/196551",
+            "date": "2026-10-05",
+            "summary": "Fast charge, appreciated the covered shade. Another charger here has a dead screen"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/196551",
+            "date": "2026-10-05",
+            "summary": "If you pull in and there's empty chargers give your fellow EV driver a break and don't pick the plug adjacent to them because the load management immediately cuts the output in half. True here and basically everywhere."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/196551",
+            "date": "2026-10-02",
+            "summary": "Works well. Getting an average of 75kW. Charged from 44% to 75% in 25 mins. *note: Charge station 8 is down. No display."
+          }
         ]
       },
       "backups": [
@@ -609,6 +796,20 @@
           "url": "https://www.tesla.com/findus?location=30569",
           "afdcIds": [
             434861
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1294824",
+              "date": "2026-09-27",
+              "summary": "Charged on 7B. No issues"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1294824",
+              "date": "2026-09-06",
+              "summary": "Clean and next to a coffee shop!"
+            }
           ]
         },
         {
@@ -623,7 +824,8 @@
           "url": "https://www.tesla.com/findus?location=bakercasupercharger",
           "afdcIds": [
             101999
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "PowerStation, Rasor Road",
@@ -635,6 +837,20 @@
           "source": "afdc",
           "afdcIds": [
             461337
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1598063",
+              "date": "2026-09-30",
+              "summary": "My first charge at this site requiring payment - 30¢ kW/h - lower than the nearest EA and Tesla sites. Excellent speed. Two gripes: 1) The card reader only does chips AND it is finicky; I tried three cards before it finally authorized.."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1598063",
+              "date": "2026-09-29",
+              "summary": "$.30/kwh at 2pm on 9/29"
+            }
           ]
         }
       ],
@@ -645,13 +861,15 @@
           "status": "unverified",
           "afdcIds": [
             376615
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tesla coming-soon site",
           "facts": "Tesla's map shows a coming-soon Supercharger in Baker. No open date listed.",
           "status": "unverified",
-          "afdcIds": []
+          "afdcIds": [],
+          "driverReports": []
         }
       ],
       "reports": [
@@ -747,6 +965,26 @@
         },
         "afdcIds": [
           279478
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/338611",
+            "date": "2026-10-13",
+            "summary": "Charged from 34% on station 3."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/338611",
+            "date": "2026-10-09",
+            "summary": "Paying was a nightmare. Swipe, insert and tap did not work. Luckily I checked my Chevrolet app and I could pay via there. Wasted a good 15 min trying to pay."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/338611",
+            "date": "2026-09-26",
+            "summary": "No issues whatsoever."
+          }
         ]
       },
       "backups": [
@@ -762,6 +1000,20 @@
           "url": "https://www.tesla.com/findus?location=27158",
           "afdcIds": [
             459665
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1289303",
+              "date": "2026-09-10",
+              "summary": "So so many stations"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1289303",
+              "date": "2026-09-04",
+              "summary": "New, clean, lots of services"
+            }
           ]
         },
         {
@@ -776,6 +1028,14 @@
           "url": "https://www.tesla.com/findus?location=primmnvsupercharger",
           "afdcIds": [
             102319
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/58299",
+              "date": "2026-09-12",
+              "summary": "Could not activate"
+            }
           ]
         }
       ],
@@ -787,7 +1047,8 @@
           "afdcIds": [
             186209,
             186208
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [

@@ -22,6 +22,24 @@ export const tag = (status, checked) =>
 const ext = (url, text, cls = '') =>
   `<a${cls ? ` class="${cls}"` : ''} href="${esc(url)}" rel="nofollow noopener" target="_blank">${esc(text)}</a>`;
 
+const REPORT_LABEL = { plugshare: 'PlugShare', x: 'X', reddit: 'Reddit', forum: 'Forum' };
+
+function stationDriverReports(station) {
+  if (!station || !Array.isArray(station.driverReports)) return [];
+  return station.driverReports.filter((r) => r && r.url && r.date && r.summary && REPORT_LABEL[r.source]);
+}
+
+function collectDriverReports(stop) {
+  const out = [];
+  const take = (station) => {
+    for (const r of stationDriverReports(station)) out.push({ ...r, about: station.name || '' });
+  };
+  take(stop.primary);
+  (stop.backups || []).forEach(take);
+  (stop.other || []).forEach(take);
+  return out;
+}
+
 export function statStrip(stats) {
   return `<dl class="specs">${stats
     .map(
@@ -130,9 +148,17 @@ function stopSection(route, s, i) {
   ['stalls', 'power', 'access', 'price'].forEach((k) => p[k]?.source && ids.add(p[k].source));
   s.backups.forEach((b) => b.source && ids.add(b.source));
   if (s.other.length) ids.add('afdc');
-  s.reports.forEach((r) => ids.add(r.source));
+  (s.reports || []).forEach((r) => ids.add(r.source));
   s.around.forEach((a) => ids.add(a.source));
+  const driverReports = collectDriverReports(s);
   const sources = [...ids].map((id) => S[id]).filter(Boolean);
+  const seenReportUrls = new Set();
+  const reportSources = [];
+  for (const r of driverReports) {
+    if (seenReportUrls.has(r.url)) continue;
+    seenReportUrls.add(r.url);
+    reportSources.push({ name: `${REPORT_LABEL[r.source]}: ${r.about}`, url: r.url });
+  }
   const backupHtml = s.backups.length
     ? `<ul class="list">${s.backups
         .map(
@@ -174,20 +200,26 @@ function stopSection(route, s, i) {
       : ''
   }</div>
 <div><h3 class="h3 sub">Driver reports</h3>${
-    s.reports.length === 0
+    driverReports.length === 0 && (s.reports || []).length === 0
       ? `<p class="muted">No recent driver reports found for this stop yet.</p>`
-      : `<ul class="list">${s.reports
-          .map(
+      : `<ul class="list">${[
+          ...driverReports.map(
+            (r) =>
+              `<li class="report"><p class="report__text">${esc(r.summary)}</p><p class="small muted" style="margin:0"><time datetime="${esc(r.date)}">${esc(
+                fmtDate(r.date)
+              )}</time>, ${ext(r.url, REPORT_LABEL[r.source])}. About: ${esc(r.about)}</p></li>`
+          ),
+          ...(s.reports || []).map(
             (r) =>
               `<li class="report"><p class="report__text">${esc(r.text)}</p><p class="small muted" style="margin:0"><time datetime="${esc(r.date)}">${esc(
                 fmtDate(r.date)
               )}</time>, ${esc(r.who)} on ${ext(src(r.source).url, r.where)}. About: ${esc(r.site)}</p></li>`
-          )
-          .join('')}</ul>`
+          ),
+        ].join('')}</ul>`
   }${
     s.around.length ? `<h3 class="h3 sub">Around the stop</h3><ul class="plain">${s.around.map((a) => `<li>${esc(a.text)}</li>`).join('')}</ul>` : ''
   }
-<h3 class="h3 sub">Sources for this stop</h3><ul class="plain small">${sources.map((x) => `<li>${ext(x.url, x.name)}</li>`).join('')}</ul></div></div>
+<h3 class="h3 sub">Sources for this stop</h3><ul class="plain small">${[...sources.map((x) => `<li>${ext(x.url, x.name)}</li>`), ...reportSources.map((x) => `<li>${ext(x.url, x.name)}</li>`)].join('')}</ul></div></div>
 </div></section>`;
 }
 

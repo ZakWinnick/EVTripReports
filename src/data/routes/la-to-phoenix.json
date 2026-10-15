@@ -50,6 +50,10 @@
     "wiki-i10-az": {
       "name": "Interstate 10 in Arizona, exit list (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Interstate_10_in_Arizona"
+    },
+    "plugshare": {
+      "name": "PlugShare",
+      "url": "https://www.plugshare.com/"
     }
   },
   "stops": [
@@ -89,7 +93,8 @@
         },
         "afdcIds": [
           165415
-        ]
+        ],
+        "driverReports": []
       },
       "backups": [],
       "other": [
@@ -99,7 +104,8 @@
           "status": "unverified",
           "afdcIds": [
             230866
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Banning Farm's House Restaurant, 6261 Joshua Palmer Way, Banning",
@@ -107,7 +113,8 @@
           "status": "unverified",
           "afdcIds": [
             332995
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Beaumont, CA - Oak Valley Village Cir - Tesla Supercharger, 1815 Oak Valley Village Cir, Beaumont",
@@ -115,7 +122,8 @@
           "status": "unverified",
           "afdcIds": [
             238576
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Beaumont, CA - Tesla Supercharger, 1540 E. 2nd Street, Beaumont",
@@ -123,7 +131,8 @@
           "status": "unverified",
           "afdcIds": [
             164002
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "BEAUMONT, CA CENTER STATION, 600 E 6th St, Beaumont",
@@ -131,7 +140,8 @@
           "status": "unverified",
           "afdcIds": [
             181319
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "BEAUMONT, CA NORTH STATION, 600 E 6th St, Beaumont",
@@ -139,7 +149,8 @@
           "status": "unverified",
           "afdcIds": [
             166943
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "BEAUMONT, CA SOUTH STATION, 600 E 6th St, Beaumont",
@@ -147,7 +158,8 @@
           "status": "unverified",
           "afdcIds": [
             181320
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Cabazon, CA - Morongo Trail - Tesla Supercharger, 48540 Morongo Trail, Cabazon",
@@ -155,7 +167,8 @@
           "status": "unverified",
           "afdcIds": [
             206275
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Cabazon, CA - Tesla Supercharger, 48400 Seminole Drive, Cabazon",
@@ -163,7 +176,8 @@
           "status": "unverified",
           "afdcIds": [
             102006
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Calimesa, CA - Tesla Supercharger, 497 Sandalwood Dr, Calimesa",
@@ -171,7 +185,8 @@
           "status": "unverified",
           "afdcIds": [
             314458
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "GF4EVA KOHLS BMONT DC1, 1479 E 2nd St, Beaumont",
@@ -179,7 +194,8 @@
           "status": "unverified",
           "afdcIds": [
             197928
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "GF4EVA KOHLS BMONT DC2, 1479 E 2nd St, Beaumont",
@@ -187,7 +203,8 @@
           "status": "unverified",
           "afdcIds": [
             197916
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Morongo Casino Resort and Spa, 49500 Seminole Dr, Cabazon",
@@ -195,7 +212,8 @@
           "status": "unverified",
           "afdcIds": [
             228113
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -257,6 +275,20 @@
         },
         "afdcIds": [
           146616
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186170",
+            "date": "2026-10-12",
+            "summary": "There are only 3 stalls here, not 4. Charger 1 was out of order, had to wait a few minutes for a spot."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186170",
+            "date": "2026-10-12",
+            "summary": "Did allow other cars to charge, but didn’t allow my bolt euv charge Could not activate"
+          }
         ]
       },
       "backups": [
@@ -271,7 +303,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ca/laquinta/79220-hwy-111/210439/",
           "afdcIds": [
             279335
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "other": [
@@ -281,7 +314,8 @@
           "status": "unverified",
           "afdcIds": [
             165779
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CHIRIACO CHIRIACO S DC2, 62450 Chiriaco Rd, Indio",
@@ -289,7 +323,8 @@
           "status": "unverified",
           "afdcIds": [
             212701
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CircleK - Palm Desert, CA, 78005 Country Club Dr, Palm Desert",
@@ -297,7 +332,8 @@
           "status": "unverified",
           "afdcIds": [
             260252
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "COACHELLA EV 1 LIBRARY, 1500 6th St, Coachella",
@@ -305,7 +341,8 @@
           "status": "unverified",
           "afdcIds": [
             310902
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CSTMR FCNG CUSTOMER FACING, 79025 CA-111, La Quinta",
@@ -313,7 +350,8 @@
           "status": "unverified",
           "afdcIds": [
             252178
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-10 FIESTA KIA LV 3-1, 78550 Varner Road, Indio",
@@ -321,7 +359,8 @@
           "status": "unverified",
           "afdcIds": [
             455889
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Indio, CA - Tesla Supercharger, 42100 Jackson Street, Indio",
@@ -329,7 +368,8 @@
           "status": "unverified",
           "afdcIds": [
             102033
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "La Quinta Centre - Tesla Supercharger, 79251 CA-111, La Quinta",
@@ -337,7 +377,8 @@
           "status": "unverified",
           "afdcIds": [
             457056
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "La Quinta, CA - Tesla Supercharger, 50929 Washington St, La Quinta",
@@ -345,7 +386,8 @@
           "status": "unverified",
           "afdcIds": [
             311243
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "TOWER MARKET NOT PUBLIC, 61980 Tyler Street, Thermal",
@@ -353,7 +395,8 @@
           "status": "unverified",
           "afdcIds": [
             177878
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tower Market, 84417 Indio Blvd, Indio",
@@ -361,7 +404,8 @@
           "status": "unverified",
           "afdcIds": [
             166809
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -430,6 +474,26 @@
         },
         "afdcIds": [
           348909
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/600669",
+            "date": "2026-05-16",
+            "summary": "Even though you tap start charge in the app you still have to press “start “ on the charger."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/600669",
+            "date": "2026-03-15",
+            "summary": "Could not activate"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/600669",
+            "date": "2026-03-15",
+            "summary": "Does this station work? Traveling through the area, and would love an update. Thank you!"
+          }
         ]
       },
       "backups": [],
@@ -440,7 +504,8 @@
           "status": "unverified",
           "afdcIds": [
             200713
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "CEC CORRIDOR BLYTH DENNY DC2, 876 W Donlon St, Blythe",
@@ -448,7 +513,8 @@
           "status": "unverified",
           "afdcIds": [
             200712
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Ehrenberg, AZ - Frontage Rd - Tesla Supercharger, 14283 Frontage Rd N, Ehrenberg",
@@ -456,7 +522,8 @@
           "status": "unverified",
           "afdcIds": [
             440465
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Ehrenberg, AZ - Tesla Supercharger, 11 Frontage Road North, Ehrenberg",
@@ -464,7 +531,8 @@
           "status": "unverified",
           "afdcIds": [
             153411
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "WattEV - Blythe, 2100 E Donlon St, Blythe",
@@ -472,7 +540,8 @@
           "status": "unverified",
           "afdcIds": [
             347219
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -534,7 +603,8 @@
         },
         "afdcIds": [
           187948
-        ]
+        ],
+        "driverReports": []
       },
       "backups": [],
       "other": [
@@ -544,7 +614,8 @@
           "status": "unverified",
           "afdcIds": [
             308415
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Quartzsite, AZ - Tesla Supercharger, 1451 West Main Street, Quartzsite",
@@ -552,7 +623,8 @@
           "status": "unverified",
           "afdcIds": [
             101990
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Quartzsite, AZ, 1349 W. Main Street, Quartzsite",
@@ -560,7 +632,8 @@
           "status": "unverified",
           "afdcIds": [
             391382
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -610,6 +683,26 @@
         },
         "afdcIds": [
           121828
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169445",
+            "date": "2026-10-14",
+            "summary": "It supposed to be 350 & is charging super slow. Took 10 min to get it started. Parking is super tight. There is truck containers to make it tighter."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169445",
+            "date": "2026-10-14",
+            "summary": "Parking is to small. Avoid if possible Blocked by vehicle"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169445",
+            "date": "2026-10-12",
+            "summary": "Payment wouldn't work Could not activate"
+          }
         ]
       },
       "backups": [],
@@ -620,7 +713,8 @@
           "status": "unverified",
           "afdcIds": [
             101980
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Jones Ford Buckeye, 24600 West Yuma Rd, Buckeye",
@@ -628,7 +722,8 @@
           "status": "unverified",
           "afdcIds": [
             434126
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],

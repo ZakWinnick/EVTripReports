@@ -49,6 +49,10 @@
     "wiki-i80": {
       "name": "Interstate 80 in California, exit list (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Interstate_80_in_California"
+    },
+    "plugshare": {
+      "name": "PlugShare",
+      "url": "https://www.plugshare.com/"
     }
   },
   "stops": [
@@ -88,7 +92,8 @@
         },
         "afdcIds": [
           357393
-        ]
+        ],
+        "driverReports": []
       },
       "backups": [],
       "other": [
@@ -98,7 +103,8 @@
           "status": "unverified",
           "afdcIds": [
             319951
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR FAIRFIELD DC1, 2061 Cadenasso Dr, Fairfield",
@@ -106,7 +112,8 @@
           "status": "unverified",
           "afdcIds": [
             223314
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR FAIRFIELD DC2, 2061 Cadenasso Dr, Fairfield",
@@ -114,7 +121,8 @@
           "status": "unverified",
           "afdcIds": [
             191283
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Department of Agriculture - 2543 Cordelia Road (General Services Dept), 2543 Cordelia Road, Fairfield",
@@ -122,7 +130,8 @@
           "status": "unverified",
           "afdcIds": [
             357681
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield Civic Center Lot A, 1000 Webster Street, Fairfield",
@@ -130,7 +139,8 @@
           "status": "unverified",
           "afdcIds": [
             397527
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield Library, 1150 Kentucky Street, Fairfield",
@@ -138,7 +148,8 @@
           "status": "unverified",
           "afdcIds": [
             397528
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield Transit Center Garage, 2000 Cadenasso Drive, City of Fairfield",
@@ -146,7 +157,8 @@
           "status": "unverified",
           "afdcIds": [
             351897
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield, CA - 3001 Travis Boulevard - Tesla Supercharger, 3001 Travis Boulevard, Fairfield",
@@ -154,7 +166,8 @@
           "status": "unverified",
           "afdcIds": [
             256050
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield, CA - Holiday Ln - Tesla Supercharger, 1350 Holiday Lane, Fairfield",
@@ -162,7 +175,8 @@
           "status": "unverified",
           "afdcIds": [
             149309
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield, CA - Pittman Road - Tesla Supercharger, 190 Pittman Rd, Fairfield",
@@ -170,7 +184,8 @@
           "status": "unverified",
           "afdcIds": [
             360294
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield, CA - Travis Boulevard - Tesla Supercharger, 1350 Travis Blvd., Fairfield",
@@ -178,7 +193,8 @@
           "status": "unverified",
           "afdcIds": [
             102019
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield, CA - Waterman Boulevard - Tesla Supercharger, 2401 Waterman Blvd, Fairfield",
@@ -186,7 +202,8 @@
           "status": "unverified",
           "afdcIds": [
             350087
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Gateway Plaza, 173 Plaza Dr, Vallejo",
@@ -194,7 +211,8 @@
           "status": "unverified",
           "afdcIds": [
             397695
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY H&S 3060, 333 Curtola Pkwy, Vallejo",
@@ -202,7 +220,8 @@
           "status": "unverified",
           "afdcIds": [
             326209
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY H&S 3060.2, 333 Curtola Parkway, Vallejo",
@@ -210,7 +229,8 @@
           "status": "unverified",
           "afdcIds": [
             326210
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY H&S 3060.4, 333 Curtola Pkwy, Vallejo",
@@ -218,7 +238,8 @@
           "status": "unverified",
           "afdcIds": [
             326212
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY H&S 3060.5, 333 Curtola Parkway, Vallejo",
@@ -226,7 +247,8 @@
           "status": "unverified",
           "afdcIds": [
             326208
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY H&S 3060.6, 333 Curtola Parkway, Vallejo",
@@ -234,7 +256,8 @@
           "status": "unverified",
           "afdcIds": [
             326207
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Jelly Belly, 1 Jelly Belly Ln, Fairfield",
@@ -242,7 +265,8 @@
           "status": "unverified",
           "afdcIds": [
             163948
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Lawler Ranch - Suisun City, 1230 McCoy Creek Dr., Suisun City",
@@ -250,7 +274,8 @@
           "status": "unverified",
           "afdcIds": [
             333023
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Mission Village Shopping Center, 2525 N Texas St, Fairfield",
@@ -258,7 +283,8 @@
           "status": "unverified",
           "afdcIds": [
             371703
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Momentum Nissan, 2545 Auto Mall Pkwy, Fairfield",
@@ -266,7 +292,8 @@
           "status": "unverified",
           "afdcIds": [
             46724
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Oliver Road Park and Ride, 1031 Oliver Road, Fairfield",
@@ -274,7 +301,8 @@
           "status": "unverified",
           "afdcIds": [
             461460
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Raley's Fairfield Travis, 3001 Travis Blvd, Fairfield",
@@ -282,7 +310,8 @@
           "status": "unverified",
           "afdcIds": [
             257386
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Solano County - 600 Texas Parking Lot, 600 Texas St, Fairfield",
@@ -290,7 +319,8 @@
           "status": "unverified",
           "afdcIds": [
             262368
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Solano County - Clay Bank Parking Lot, 2450 Clay Bank Rd, Fairfield",
@@ -298,7 +328,8 @@
           "status": "unverified",
           "afdcIds": [
             262370
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Solano County - Fairfield Civic Center Library, 1150 Kentucky St, Fairfield",
@@ -306,7 +337,8 @@
           "status": "unverified",
           "afdcIds": [
             322627
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Springstowne Center, 2120 Springs Rd, Vallejo",
@@ -314,7 +346,8 @@
           "status": "unverified",
           "afdcIds": [
             367855
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "STA - Fairfield - Allan Witt Community Park, 1741 W Texas Street, Fairfield",
@@ -322,7 +355,8 @@
           "status": "unverified",
           "afdcIds": [
             303615
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "STA - Fairfield - Laurel Creek Community Park, 1050 Cement Hill Rd., Fairfield",
@@ -330,7 +364,8 @@
           "status": "unverified",
           "afdcIds": [
             332989
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Starbucks - Tesla Supercharger, 2980 Travis Blvd, Fairfield",
@@ -338,7 +373,8 @@
           "status": "unverified",
           "afdcIds": [
             451132
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Twin Peaks Center, 1736 N Texas St, Fairfield",
@@ -346,7 +382,8 @@
           "status": "unverified",
           "afdcIds": [
             367759
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vallejo Downtown Parking Lot F, 201 Capitol Street, Vallejo",
@@ -354,7 +391,8 @@
           "status": "unverified",
           "afdcIds": [
             454257
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vallejo Downtown Parking Lot J, 301 Virginia Street, Vallejo",
@@ -362,7 +400,8 @@
           "status": "unverified",
           "afdcIds": [
             348968
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vallejo, CA - Plaza Dr - Tesla Supercharger, 173 Plaza Drive #114, Vallejo",
@@ -370,7 +409,8 @@
           "status": "unverified",
           "afdcIds": [
             440443
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vallejo, CA - Robles Way - Tesla Supercharger, 122 Robles Way, Vallejo",
@@ -378,7 +418,8 @@
           "status": "unverified",
           "afdcIds": [
             358286
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vallejo, CA - Solano Avenue - Tesla Supercharger, 2155 Solano Avenue, Vallejo",
@@ -386,7 +427,8 @@
           "status": "unverified",
           "afdcIds": [
             227699
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vallejo, CA - Tesla Supercharger, 904 Admiral Callaghan Lane, Vallejo",
@@ -394,7 +436,8 @@
           "status": "unverified",
           "afdcIds": [
             149361
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -450,7 +493,8 @@
         },
         "afdcIds": [
           149834
-        ]
+        ],
+        "driverReports": []
       },
       "backups": [],
       "other": [
@@ -460,7 +504,8 @@
           "status": "unverified",
           "afdcIds": [
             228285
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Davis, CA - Russell Blvd - Tesla Supercharger, 737 Russell Blvd, Davis",
@@ -468,7 +513,8 @@
           "status": "unverified",
           "afdcIds": [
             398003
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Davis, CA - Tesla Supercharger, 2107-2151 Cowell Blvd, Davis",
@@ -476,7 +522,8 @@
           "status": "unverified",
           "afdcIds": [
             171464
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Dixon, CA - Tesla Supercharger, 1285 Stratford Ave, Dixon",
@@ -484,7 +531,8 @@
           "status": "unverified",
           "afdcIds": [
             323265
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "GF4EVA NUGGET DC1, 134 Browns Valley Pkwy, Vacaville",
@@ -492,7 +540,8 @@
           "status": "unverified",
           "afdcIds": [
             181881
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "GF4EVA NUGGET DC2, 134 Browns Valley Pkwy, Vacaville",
@@ -500,7 +549,8 @@
           "status": "unverified",
           "afdcIds": [
             181880
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Nut Tree Plaza, 1661 E Monte Vista Ave, Vacaville",
@@ -508,7 +558,8 @@
           "status": "unverified",
           "afdcIds": [
             372501
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RR #70 DIXON DC STATION 1, 2299 N 1st St, Dixon",
@@ -516,7 +567,8 @@
           "status": "unverified",
           "afdcIds": [
             387992
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RR #70 DIXON DC STATION 2, 2299 N 1st St, Dixon",
@@ -524,7 +576,8 @@
           "status": "unverified",
           "afdcIds": [
             384128
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vacaville Premium Outlets North, 321 Nut Tree Rd, Vacaville",
@@ -532,7 +585,8 @@
           "status": "unverified",
           "afdcIds": [
             228263
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vacaville, CA - Alamo Drive - Tesla Supercharger, 870 Alamo Drive, Vacaville",
@@ -540,7 +594,8 @@
           "status": "unverified",
           "afdcIds": [
             259985
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vacaville, CA - Browns Valley Parkway - Tesla Supercharger, 154 Browns Valley Pkwy, Vacaville",
@@ -548,7 +603,8 @@
           "status": "unverified",
           "afdcIds": [
             321148
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vacaville, CA - East Monte Vista Avenue - Tesla Supercharger, 1661 E Monte Vista Ave, Vacaville",
@@ -556,7 +612,8 @@
           "status": "unverified",
           "afdcIds": [
             449669
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vacaville, CA - Harbison Drive - Tesla Supercharger, 2098 Harbison Dr, Vacaville",
@@ -564,7 +621,8 @@
           "status": "unverified",
           "afdcIds": [
             311233
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vacaville, CA - Tesla Supercharger, 321 Nut Tree Road, Vacaville",
@@ -572,7 +630,8 @@
           "status": "unverified",
           "afdcIds": [
             102075
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "WinCo Foods - Vacaville #60, 855 Davis St, Vacaville",
@@ -580,7 +639,8 @@
           "status": "unverified",
           "afdcIds": [
             260519
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -636,6 +696,14 @@
         },
         "afdcIds": [
           190432
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/307130",
+            "date": "2026-08-23",
+            "summary": "Summer Sat evening just two chargers in use."
+          }
         ]
       },
       "backups": [],
@@ -646,7 +714,8 @@
           "status": "unverified",
           "afdcIds": [
             193746
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Hanlees Nissan, 5009 Chiles Rd, Davis",
@@ -654,7 +723,8 @@
           "status": "unverified",
           "afdcIds": [
             39883
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -704,6 +774,14 @@
         },
         "afdcIds": [
           190400
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186191",
+            "date": "2026-10-11",
+            "summary": "Couldn't activate with credit card. Worked after I called them. All stations working, but showing unknown status on PlugShare."
+          }
         ]
       },
       "backups": [
@@ -718,6 +796,14 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ca/roseville/1151-galleria-blvd/210406/",
           "afdcIds": [
             191562
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/46257",
+              "date": "2024-07-24",
+              "summary": "They are currently working on all the chargers"
+            }
           ]
         },
         {
@@ -731,6 +817,26 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ca/roseville/5000-baseline-road-ev/701402/",
           "afdcIds": [
             448915
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1513682",
+              "date": "2026-08-10",
+              "summary": "I have Mercedes Benz free charging at EA for two years. Be aware, that is not useable at this location."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1513682",
+              "date": "2026-07-19",
+              "summary": "Easy interface. No issues at all. Get the app + membership ($7/month). Save you some money."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/1513682",
+              "date": "2026-07-07",
+              "summary": "easy, convenient fast charging at Costco, but no EA member discount here."
+            }
           ]
         },
         {
@@ -744,7 +850,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ca/citrus-heights/6111-sunrise-blvd/240352/",
           "afdcIds": [
             448010
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Loomis, 4107 Sierra College Blvd.",
@@ -757,7 +864,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ca/loomis/4107-sierra-college-blvd/701410/",
           "afdcIds": [
             371680
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "other": [
@@ -767,7 +875,8 @@
           "status": "unverified",
           "afdcIds": [
             354374
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Antelope Food & Gas, 4311 Antelope Rd, Antelope",
@@ -775,7 +884,8 @@
           "status": "unverified",
           "afdcIds": [
             470276
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Ethan Conrad #120, 6041 Sunrise Mall, Citrus Heights",
@@ -783,7 +893,8 @@
           "status": "unverified",
           "afdcIds": [
             429572
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Ethan Conrad #28, 5441 Diablo Dr, Sacramento",
@@ -791,7 +902,8 @@
           "status": "unverified",
           "afdcIds": [
             450104
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Ethan Conrad Granite Bay 5, 8595 Auburn Folsom Rd., Granite Bay",
@@ -799,7 +911,8 @@
           "status": "unverified",
           "afdcIds": [
             463886
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Ethan Conrad Rocklin #121 (Sunset Pointe), 1240 Sunset Blvd., Rocklin",
@@ -807,7 +920,8 @@
           "status": "unverified",
           "afdcIds": [
             446298
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Ethan Conrad_Sacramento_#26, 4411 Elkhorn Blvd., Sacramento",
@@ -815,7 +929,8 @@
           "status": "unverified",
           "afdcIds": [
             451724
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Future Nissan of Roseville, 600 Automall Dr, Roseville",
@@ -823,7 +938,8 @@
           "status": "unverified",
           "afdcIds": [
             39928
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Galleria Blvd - Roseville CA, 1216 Galleria Blvd., Roseville",
@@ -831,7 +947,8 @@
           "status": "unverified",
           "afdcIds": [
             186857
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY PM 3023, 1050 Sunset Boulevard, Rocklin",
@@ -839,7 +956,8 @@
           "status": "unverified",
           "afdcIds": [
             335535
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY PM 3023.2, 1050 Sunset Boulevard, Rocklin",
@@ -847,7 +965,8 @@
           "status": "unverified",
           "afdcIds": [
             335533
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY PM 3023.3, 1050 Sunset Boulevard, Rocklin",
@@ -855,7 +974,8 @@
           "status": "unverified",
           "afdcIds": [
             335534
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY PM 3023.5, 1050 Sunset Boulevard, Rocklin",
@@ -863,7 +983,8 @@
           "status": "unverified",
           "afdcIds": [
             335537
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "H&S ENERGY PM 3023.6, 1050 Sunset Boulevard, Rocklin",
@@ -871,7 +992,8 @@
           "status": "unverified",
           "afdcIds": [
             335538
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Loomis, CA - Tesla Supercharger, 6119 Horseshoe Bar Road, Loomis",
@@ -879,7 +1001,8 @@
           "status": "unverified",
           "afdcIds": [
             186876
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Mercedes-Benz - Rocklin, 4747 Granite Dr, Rocklin",
@@ -887,7 +1010,8 @@
           "status": "unverified",
           "afdcIds": [
             218627
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Pleasant Grove Pointe, 933 Pleasant Grove Boulevard, Roseville",
@@ -895,7 +1019,8 @@
           "status": "unverified",
           "afdcIds": [
             463887
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Raley's Citrus Heights #239, 7847 Lichen Dr, Citrus Heights",
@@ -903,7 +1028,8 @@
           "status": "unverified",
           "afdcIds": [
             373087
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Reliable Buick GMC Cadillac, 400 Automall Drive, Roseville",
@@ -911,7 +1037,8 @@
           "status": "unverified",
           "afdcIds": [
             325553
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Rocklin, CA - Granite Drive - Tesla Supercharger, 4800 Granite Dr, Rocklin",
@@ -919,7 +1046,8 @@
           "status": "unverified",
           "afdcIds": [
             324008
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Rocklin, CA - Tesla Supercharger, 4361 Granite Drive, Rocklin",
@@ -927,7 +1055,8 @@
           "status": "unverified",
           "afdcIds": [
             102053
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Rocklin, CA, 4401 Granite Drive, Rocklin",
@@ -935,7 +1064,8 @@
           "status": "unverified",
           "afdcIds": [
             460459
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "ROCKLINEV1 DCFAST HOG, 4401 Granite Dr, Rocklin",
@@ -943,7 +1073,8 @@
           "status": "unverified",
           "afdcIds": [
             158968
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Roseville, CA - Douglas Boulevard - Tesla Supercharger, 1925 Douglas Blvd, Roseville",
@@ -951,7 +1082,8 @@
           "status": "unverified",
           "afdcIds": [
             314466
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Roseville, CA - Freedom Way - Tesla Supercharger, 1851 Freedom Wy, Roseville",
@@ -959,7 +1091,8 @@
           "status": "unverified",
           "afdcIds": [
             311228
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Roseville, CA - Galleria Boulevard - Tesla Supercharger, 1120 Galleria Boulevard, Roseville",
@@ -967,7 +1100,8 @@
           "status": "unverified",
           "afdcIds": [
             154202
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Roseville, CA - Harding Boulevard - Tesla Supercharger, 108 Harding Blvd, Roseville",
@@ -975,7 +1109,8 @@
           "status": "unverified",
           "afdcIds": [
             326666
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Roseville, CA - Tesla Supercharger, 1151 Galleria Blvd, Roseville",
@@ -983,7 +1118,8 @@
           "status": "unverified",
           "afdcIds": [
             102054
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RSS CENTER LLC, 446 Roseville Square, Roseville",
@@ -991,7 +1127,8 @@
           "status": "unverified",
           "afdcIds": [
             470338
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Summer Hills Plaza - Tesla Supercharger, 7873 Lichen Dr, Citrus Heights",
@@ -999,7 +1136,8 @@
           "status": "unverified",
           "afdcIds": [
             458525
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "University Avenue & Whitney Ranch Parkway, 1 University Avenue, Rocklin",
@@ -1007,7 +1145,8 @@
           "status": "unverified",
           "afdcIds": [
             466795
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "West Roseville Associates, 1780 Pleasant Grove Blvd, Roseville",
@@ -1015,7 +1154,8 @@
           "status": "unverified",
           "afdcIds": [
             388933
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Whole Foods Roseville, 1001 Galleria Blvd, Roseville",
@@ -1023,7 +1163,8 @@
           "status": "unverified",
           "afdcIds": [
             470498
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -1079,6 +1220,20 @@
         },
         "afdcIds": [
           201630
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/350450",
+            "date": "2026-10-07",
+            "summary": "Charger 1 is not working but the other 3 or ok. This Mini only accepts a max of 50 kw so I got a good charge and the bathroom is always available in the motel lobby."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/350450",
+            "date": "2026-09-18",
+            "summary": "Great location, was able to use the lobby bathroom with no hassle, will be able to get back on the freeway r-80 quickly"
+          }
         ]
       },
       "backups": [],
@@ -1089,7 +1244,8 @@
           "status": "unverified",
           "afdcIds": [
             461012
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "AUB CHERRY MAG 01, 165 Magnolia Ave, Auburn",
@@ -1097,7 +1253,8 @@
           "status": "unverified",
           "afdcIds": [
             186085
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "AUB CHERRY MAG 02, 145 Magnolia Ave, Auburn",
@@ -1105,7 +1262,8 @@
           "status": "unverified",
           "afdcIds": [
             204629
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "AUB CHERRY MAG 03, 138 Magnolia Ave, Auburn",
@@ -1113,7 +1271,8 @@
           "status": "unverified",
           "afdcIds": [
             204502
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "AUB CHERRY MAG 04, 138 Magnolia Ave, Auburn",
@@ -1121,7 +1280,8 @@
           "status": "unverified",
           "afdcIds": [
             204630
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Auburn, CA - Auburn Ravine Rd - Tesla Supercharger, 1790 Auburn Ravine Rd, Auburn",
@@ -1129,7 +1289,8 @@
           "status": "unverified",
           "afdcIds": [
             440462
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Auburn, CA - Lincoln Way - Tesla Supercharger, 13446 Lincoln Way, Auburn",
@@ -1137,7 +1298,8 @@
           "status": "unverified",
           "afdcIds": [
             330107
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Auburn, CA - Tesla Supercharger, 13437 Bowman Road, Auburn",
@@ -1145,7 +1307,8 @@
           "status": "unverified",
           "afdcIds": [
             206269
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR ABN TARGET DC1, 2700 Bell Rd, Auburn",
@@ -1153,7 +1316,8 @@
           "status": "unverified",
           "afdcIds": [
             201410
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR ABN TARGET DC2, 2700 E Bell Rd, Auburn",
@@ -1161,7 +1325,8 @@
           "status": "unverified",
           "afdcIds": [
             201409
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR ABN TARGET DC3, 2700 E Bell Rd, Auburn",
@@ -1169,7 +1334,8 @@
           "status": "unverified",
           "afdcIds": [
             206308
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR ABN TARGET DC4, 2700 Bell Rd, Auburn",
@@ -1177,7 +1343,8 @@
           "status": "unverified",
           "afdcIds": [
             206331
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR COLFAX D&D DC1, 1516 S Canyon Way, Colfax",
@@ -1185,7 +1352,8 @@
           "status": "unverified",
           "afdcIds": [
             176333
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR COLFAX D&D DC2, 1516 S Canyon Way, Colfax",
@@ -1193,7 +1361,8 @@
           "status": "unverified",
           "afdcIds": [
             205440
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR HOLIDAY INN DC1, 120 Grass Valley Hwy, Auburn",
@@ -1201,7 +1370,8 @@
           "status": "unverified",
           "afdcIds": [
             201240
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR HOLIDAY INN DC2, 120 Grass Valley Hwy, Auburn",
@@ -1209,7 +1379,8 @@
           "status": "unverified",
           "afdcIds": [
             201241
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "EV Charging By Citrine, 333 Canyon Ct, Colfax",
@@ -1217,7 +1388,8 @@
           "status": "unverified",
           "afdcIds": [
             450025
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Grass Valley, CA - Tesla Supercharger, 692 Freeman Lane, Grass Valley",
@@ -1225,7 +1397,8 @@
           "status": "unverified",
           "afdcIds": [
             262348
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "US Bank Auburn, 874 Lincoln Way, Auburn",
@@ -1233,7 +1406,8 @@
           "status": "unverified",
           "afdcIds": [
             348910
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -1289,6 +1463,14 @@
         },
         "afdcIds": [
           152396
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/190889",
+            "date": "2026-09-17",
+            "summary": "2 of 4 bays were available. A busy spot so felt fortunate. Station 1 would not connect with my car, but was able to move over and charged quite quickly."
+          }
         ]
       },
       "backups": [],
@@ -1299,7 +1481,8 @@
           "status": "unverified",
           "afdcIds": [
             181598
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR LUCKYS SS DC2, 90 Cisco Rd, Soda Springs",
@@ -1307,7 +1490,8 @@
           "status": "unverified",
           "afdcIds": [
             181599
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR TRUCKEE DC1, 10069 Donner Pass Rd., Truckee",
@@ -1315,7 +1499,8 @@
           "status": "unverified",
           "afdcIds": [
             180743
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "DC CORRIDOR TRUCKEE DC2, 10069 Donner Pass Rd., Truckee",
@@ -1323,7 +1508,8 @@
           "status": "unverified",
           "afdcIds": [
             164062
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Northstar - Castle Peak - Truckee, 150 Northstar Dr, Truckee",
@@ -1331,7 +1517,8 @@
           "status": "unverified",
           "afdcIds": [
             310667
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Soda Springs, CA - Tesla Supercharger, 90 Cisco Rd, Soda Springs",
@@ -1339,7 +1526,8 @@
           "status": "unverified",
           "afdcIds": [
             322834
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Truckee, CA - Brockway Road - Tesla Supercharger, 11209 Brockway Road, Truckee",
@@ -1347,7 +1535,8 @@
           "status": "unverified",
           "afdcIds": [
             102071
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Truckee, CA - Deerfield Drive - Tesla Supercharger, 12277 Deerfield Dr, Truckee",
@@ -1355,7 +1544,8 @@
           "status": "unverified",
           "afdcIds": [
             356459
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Truckee, CA - Donner Pass Road - Tesla Supercharger, 11290 Donner Pass Rd, Truckee",
@@ -1363,7 +1553,8 @@
           "status": "unverified",
           "afdcIds": [
             102072
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Truckee, CA - Soaring Way - Tesla Supercharger, Soaring Way, Truckee",
@@ -1371,7 +1562,8 @@
           "status": "unverified",
           "afdcIds": [
             202623
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Truckee, CA, 12047 Donner Pass, Truckee",
@@ -1379,7 +1571,8 @@
           "status": "unverified",
           "afdcIds": [
             391176
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],

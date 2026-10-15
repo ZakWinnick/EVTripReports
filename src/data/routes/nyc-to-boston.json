@@ -50,6 +50,10 @@
     "wiki-i95-ma": {
       "name": "Interstate 95 in Massachusetts, exit list (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Interstate_95_in_Massachusetts"
+    },
+    "plugshare": {
+      "name": "PlugShare",
+      "url": "https://www.plugshare.com/"
     }
   },
   "stops": [
@@ -89,7 +93,8 @@
         },
         "afdcIds": [
           186283
-        ]
+        ],
+        "driverReports": []
       },
       "backups": [],
       "other": [
@@ -99,7 +104,8 @@
           "status": "unverified",
           "afdcIds": [
             102093
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Darien, CT - Southbound - Tesla Supercharger, 1 West Ave., Darien",
@@ -107,7 +113,8 @@
           "status": "unverified",
           "afdcIds": [
             102094
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Garavel Chrysler Jeep Dodge Ram, 300 Westport Ave, Norwalk",
@@ -115,7 +122,8 @@
           "status": "unverified",
           "afdcIds": [
             422096
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-95 Darien NB Service Plaza, 1 Darien Cl, Darien",
@@ -123,7 +131,8 @@
           "status": "unverified",
           "afdcIds": [
             320781
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-95 Darien SB Service Plaza, 1 West Ave, Darien",
@@ -131,7 +140,8 @@
           "status": "unverified",
           "afdcIds": [
             320782
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "KIA MAIN KS CPE250 1, 263 Selleck St, Stamford",
@@ -139,7 +149,8 @@
           "status": "unverified",
           "afdcIds": [
             350681
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "KIA MAIN KS CPE250 2, 263 Selleck St, Stamford",
@@ -147,7 +158,8 @@
           "status": "unverified",
           "afdcIds": [
             350687
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Minchin Buick of Stamford, 131 Jefferson St, Stamford",
@@ -155,7 +167,8 @@
           "status": "unverified",
           "afdcIds": [
             381293
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "New Canaan SB Service Plaza, 47 Gerdes Rd, Merritt Pkwy S, New Canaan",
@@ -163,7 +176,8 @@
           "status": "unverified",
           "afdcIds": [
             256125
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "North Stamford, CT - Tesla Supercharger, 1145 High Ridge Rd, North Stamford",
@@ -171,7 +185,8 @@
           "status": "unverified",
           "afdcIds": [
             149337
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Norwalk, CT - Tesla Supercharger, 47 Richards Ave, Norwalk",
@@ -179,7 +194,8 @@
           "status": "unverified",
           "afdcIds": [
             417114
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Stamford, CT - Greyrock Place - Tesla Supercharger, 100 Greyrock Pl, Stamford",
@@ -187,7 +203,8 @@
           "status": "unverified",
           "afdcIds": [
             417745
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Stamford, CT - Tesla Supercharger, 2233 Summer Street, Stamford",
@@ -195,7 +212,8 @@
           "status": "unverified",
           "afdcIds": [
             149360
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -251,6 +269,20 @@
         },
         "afdcIds": [
           121739
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152891",
+            "date": "2026-08-23",
+            "summary": "Good charging session. Very busy location."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152891",
+            "date": "2026-08-23",
+            "summary": "Great location with no issues charging. Everyone goes to the McDonalds there for food and bathroom usage"
+          }
         ]
       },
       "backups": [],
@@ -261,7 +293,8 @@
           "status": "unverified",
           "afdcIds": [
             399303
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Bridgeport, CT - Tesla Supercharger, 10 E Main St, Bridgeport",
@@ -269,7 +302,8 @@
           "status": "unverified",
           "afdcIds": [
             374991
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield, CT - Northbound - Tesla Supercharger, 165 Round Hill Road, Fairfield",
@@ -277,7 +311,8 @@
           "status": "unverified",
           "afdcIds": [
             151948
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield, CT - Southbound - Tesla Supercharger, 267 Round Hill Road, Fairfield",
@@ -285,7 +320,8 @@
           "status": "unverified",
           "afdcIds": [
             151947
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Fairfield, CT - Tesla Supercharger, 696-700 Post Rd, Fairfield",
@@ -293,7 +329,8 @@
           "status": "unverified",
           "afdcIds": [
             302200
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-95 Fairfield NB Service Plaza, 165 Round Hill Rd, Fairfield",
@@ -301,7 +338,8 @@
           "status": "unverified",
           "afdcIds": [
             256124
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-95 Fairfield SB Service Plaza, 95 Connecticut Turnpike, Fairfield",
@@ -309,7 +347,8 @@
           "status": "unverified",
           "afdcIds": [
             256123
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-95 Milford NB Service Plaza, I 95 N, Milford",
@@ -317,7 +356,8 @@
           "status": "unverified",
           "afdcIds": [
             347235
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-95 Milford SB Service Plaza, I-95 Connecticut Turnpike, Milford",
@@ -325,7 +365,8 @@
           "status": "unverified",
           "afdcIds": [
             347234
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "MARITIME CHEVROLET, 985 POST RD., FAIRFIELD",
@@ -333,7 +374,8 @@
           "status": "unverified",
           "afdcIds": [
             260326
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "MILFORD GENESIS CPE250-1, 1040 Boston Post Rd, Milford",
@@ -341,7 +383,8 @@
           "status": "unverified",
           "afdcIds": [
             349748
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Milford, CT - Boston Post Road - Tesla Supercharger, 1201 Boston Post Road, Milford",
@@ -349,7 +392,8 @@
           "status": "unverified",
           "afdcIds": [
             102099
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Milford, CT - Northbound - Tesla Supercharger, 1 Connecticut Turnpike, Milford",
@@ -357,7 +401,8 @@
           "status": "unverified",
           "afdcIds": [
             149331
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Milford, CT - Southboun - Tesla Supercharger, 2 Connecticut Turnpike, Milford",
@@ -365,7 +410,8 @@
           "status": "unverified",
           "afdcIds": [
             149332
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "PARK CITY FORD PARKCITY01, 65 Sylvan Ave, Bridgeport",
@@ -373,7 +419,8 @@
           "status": "unverified",
           "afdcIds": [
             250431
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "PARK CITY FORD PARKCITY02, 65 Sylvan Ave, Bridgeport",
@@ -381,7 +428,8 @@
           "status": "unverified",
           "afdcIds": [
             250432
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Peck Lane Plaza Shopping Center, 550 Boston Post Rd, Orange",
@@ -389,7 +437,8 @@
           "status": "unverified",
           "afdcIds": [
             228595
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Popeyes Kitchen - Fairfield Pizza, 200 E Main St, Stratford",
@@ -397,7 +446,8 @@
           "status": "unverified",
           "afdcIds": [
             228596
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RT 15 Fairfield NB Service Plaza, 1396 Merritt Pkwy, Fairfield",
@@ -405,7 +455,8 @@
           "status": "unverified",
           "afdcIds": [
             347232
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RT 15 Fairfield SB Service Plaza, 4647 Merritt Pkwy, Fairfield",
@@ -413,7 +464,8 @@
           "status": "unverified",
           "afdcIds": [
             347231
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Trumbull, CT - Tesla Supercharger, 120 Hawley Ln, Trumbull",
@@ -421,7 +473,8 @@
           "status": "unverified",
           "afdcIds": [
             440448
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Westfield Trumbull (Trumbull, CT), 5065 Main Street, Trumbull",
@@ -429,7 +482,8 @@
           "status": "unverified",
           "afdcIds": [
             204787
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -485,6 +539,26 @@
         },
         "afdcIds": [
           189349
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/317693",
+            "date": "2026-10-13",
+            "summary": "With four cars here I’m only getting 90kW when the car should be pulling over 200kW."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/317693",
+            "date": "2026-09-10",
+            "summary": "Charger not going above 90kW on a warm morning and the car @ 59%. Disappointing"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/317693",
+            "date": "2026-08-12",
+            "summary": "With four cars charging only getting 84kW."
+          }
         ]
       },
       "backups": [],
@@ -495,7 +569,8 @@
           "status": "unverified",
           "afdcIds": [
             331999
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "365 E MAIN ST CPE250 2, 365 East Main Street, Branford",
@@ -503,7 +578,8 @@
           "status": "unverified",
           "afdcIds": [
             332000
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Applegreen Electric I-95 Madison SB Service Plaza, 1 South St, Madison",
@@ -511,7 +587,8 @@
           "status": "unverified",
           "afdcIds": [
             223850
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "BRANDFON CHARGE BHONDA 1, 515 West Main Street, Branford",
@@ -519,7 +596,8 @@
           "status": "unverified",
           "afdcIds": [
             360664
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "BRANDFON CHARGE BHONDA 2, 515 West Main Street, Branford",
@@ -527,7 +605,8 @@
           "status": "unverified",
           "afdcIds": [
             360665
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "BRANDFON HYUN STATION 1, 115 Peat Meadow Rd, New Haven",
@@ -535,7 +614,8 @@
           "status": "unverified",
           "afdcIds": [
             326024
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "BRANDFON HYUN STATION 2, 115 Peat Meadow Rd, New Haven",
@@ -543,7 +623,8 @@
           "status": "unverified",
           "afdcIds": [
             326025
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Clinton Premium Outlets MB.HPC, 20 Killingworth Turnpike, Clinton",
@@ -551,7 +632,8 @@
           "status": "unverified",
           "afdcIds": [
             458941
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Cody's Diner, 95 Water St, New Haven",
@@ -559,7 +641,8 @@
           "status": "unverified",
           "afdcIds": [
             334529
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Dunkin' Donuts, 189 Forbes Ave, New Haven",
@@ -567,7 +650,8 @@
           "status": "unverified",
           "afdcIds": [
             227974
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "East Haven, CT - Tesla Supercharger, 65 Frontage Rd, East Haven",
@@ -575,7 +659,8 @@
           "status": "unverified",
           "afdcIds": [
             257671
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Executive Jeep / Nissan, 900 Universal Drive North, North Haven",
@@ -583,7 +668,8 @@
           "status": "unverified",
           "afdcIds": [
             329846
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "GPM INVESTMENTS 315 DC 1, 528 Main Street, West Haven",
@@ -591,7 +677,8 @@
           "status": "unverified",
           "afdcIds": [
             460230
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "GPM INVESTMENTS 315 DC 2, 528 Main Street, West Haven",
@@ -599,7 +686,8 @@
           "status": "unverified",
           "afdcIds": [
             460231
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "GURUKRUPA GI LLC EV-1, 85a Hemingway Ave, East Haven",
@@ -607,7 +695,8 @@
           "status": "unverified",
           "afdcIds": [
             333500
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Hamden, CT - Dixwell Avenue - Tesla Supercharger, 2100 Dixwell Avenue, Hamden",
@@ -615,7 +704,8 @@
           "status": "unverified",
           "afdcIds": [
             187162
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-95 Branford NB Service Plaza, I-95 Branford Service Plaza N, Branford",
@@ -623,7 +713,8 @@
           "status": "unverified",
           "afdcIds": [
             323256
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "I-95 Branford SB Service Plaza, Interstate 95 S, Branford",
@@ -631,7 +722,8 @@
           "status": "unverified",
           "afdcIds": [
             323257
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Madison I-95 NB Service Plaza, 6443 I-95, Madison",
@@ -639,7 +731,8 @@
           "status": "unverified",
           "afdcIds": [
             256122
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Madison, CT - Northbound - Tesla Supercharger, 1-95 North Avenue, Madison",
@@ -647,7 +740,8 @@
           "status": "unverified",
           "afdcIds": [
             153822
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Madison, CT - Southbound - Tesla Supercharger, 1-95 South Street, Madison",
@@ -655,7 +749,8 @@
           "status": "unverified",
           "afdcIds": [
             153823
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "New Haven, CT - Tesla Supercharger, 500 Sargent Drive, New Haven",
@@ -663,7 +758,8 @@
           "status": "unverified",
           "afdcIds": [
             237649
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "New Haven, CT - Whalley Avenue - Tesla Supercharger, 1449-1473 Whalley Ave, New Haven",
@@ -671,7 +767,8 @@
           "status": "unverified",
           "afdcIds": [
             347086
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "North Haven MB.HPC, 70 Universal Drive, North Haven",
@@ -679,7 +776,8 @@
           "status": "unverified",
           "afdcIds": [
             458922
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "North Haven Pavilion, 100 Universal Dr North, North Haven",
@@ -687,7 +785,8 @@
           "status": "unverified",
           "afdcIds": [
             228768
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -749,6 +848,26 @@
         },
         "afdcIds": [
           121737
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152893",
+            "date": "2026-08-27",
+            "summary": "Price came down with recent EA app changes. 33 cents per is cheapest around for fast charging."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152893",
+            "date": "2026-07-22",
+            "summary": "3b faulted after 2 min, moved to 2b and completed charge without issue"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/152893",
+            "date": "2026-07-18",
+            "summary": "400 charger, fastest I've seen advertised yet. Warm day, a few spots open. Decent speed."
+          }
         ]
       },
       "backups": [],
@@ -759,7 +878,8 @@
           "status": "unverified",
           "afdcIds": [
             207656
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "East Lyme Town Hall, 118 Pennsylvania Ave, Niantic",
@@ -767,7 +887,8 @@
           "status": "unverified",
           "afdcIds": [
             428665
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "HAUDINL NL FAST LEFT, 501 CT-85, New London",
@@ -775,7 +896,8 @@
           "status": "unverified",
           "afdcIds": [
             328212
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "HAUDINL NL FAST RIGHT, 501 CT-85, New London",
@@ -783,7 +905,8 @@
           "status": "unverified",
           "afdcIds": [
             323308
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "MB NEW LONDON FAST CHARGER, 488 Colman Street, New London",
@@ -791,7 +914,8 @@
           "status": "unverified",
           "afdcIds": [
             202905
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Mercedes-Benz of New London, 488 Colman St, New London",
@@ -799,7 +923,8 @@
           "status": "unverified",
           "afdcIds": [
             378094
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Monaco Ford of Niantic, 218 Flanders Road, East Lyme",
@@ -807,7 +932,8 @@
           "status": "unverified",
           "afdcIds": [
             354746
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Mystic, CT - Tesla Supercharger, 12 Coogan Boulevard, Mystic",
@@ -815,7 +941,8 @@
           "status": "unverified",
           "afdcIds": [
             220698
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "New London, CT - Tesla Supercharger, 351 North Frontage Road, New London",
@@ -823,7 +950,8 @@
           "status": "unverified",
           "afdcIds": [
             154662
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "NO 1, 16 Pearl St, New London",
@@ -831,7 +959,8 @@
           "status": "unverified",
           "afdcIds": [
             349567
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vachon Buick GMC, 225 Middlesex ave, old saybrook",
@@ -839,7 +968,8 @@
           "status": "unverified",
           "afdcIds": [
             327589
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Valenti Ford, 72 Jerry Browne Rd, Mystic",
@@ -847,7 +977,8 @@
           "status": "unverified",
           "afdcIds": [
             405408
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -915,6 +1046,26 @@
         },
         "afdcIds": [
           167864
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186874",
+            "date": "2026-07-05",
+            "summary": "Almost made it 1 month of no chargers broken. Could not activate"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186874",
+            "date": "2026-07-03",
+            "summary": "1 of 4 chargers down"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186874",
+            "date": "2026-06-27",
+            "summary": "I used the Electrify America app to initiate the charge."
+          }
         ]
       },
       "backups": [],
@@ -925,7 +1076,8 @@
           "status": "unverified",
           "afdcIds": [
             422229
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "2055 Warwick Ave, 2055 Warwick Ave, Warwick",
@@ -933,7 +1085,8 @@
           "status": "unverified",
           "afdcIds": [
             422093
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "525 Killingly St, 525 Killingly St, JOHNSTON",
@@ -941,7 +1094,8 @@
           "status": "unverified",
           "afdcIds": [
             359956
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "777 Cranston St, 777 Cranston Street, Cranston",
@@ -949,7 +1103,8 @@
           "status": "unverified",
           "afdcIds": [
             374381
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Balise Chevrolet of Warwick, 1338 Post Rd, Warwick",
@@ -957,7 +1112,8 @@
           "status": "unverified",
           "afdcIds": [
             221087
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "East Greenwich, RI - Tesla Supercharger, 1000 Division Street, East Greenwich",
@@ -965,7 +1121,8 @@
           "status": "unverified",
           "afdcIds": [
             102400
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "East Greenwich, RI, 1191 Division St., East Greenwich",
@@ -973,7 +1130,8 @@
           "status": "unverified",
           "afdcIds": [
             421388
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Emerald Square, 999 S Washington St, North Attleboro",
@@ -981,7 +1139,8 @@
           "status": "unverified",
           "afdcIds": [
             228523
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Gabriels Exxon, 625 Fall River Ave, Seekonk",
@@ -989,7 +1148,8 @@
           "status": "unverified",
           "afdcIds": [
             461142
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "GOOD FUND DC FAST CHARGE, 333 Smith St., Providence",
@@ -997,7 +1157,8 @@
           "status": "unverified",
           "afdcIds": [
             202687
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Grieco Acura, 16 Highland Avenue, Seekonk",
@@ -1005,7 +1166,8 @@
           "status": "unverified",
           "afdcIds": [
             383249
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "IRVINGOIL RI-PROV-L3-0001, 36 Pleasant Valley Pkwy, Providence",
@@ -1013,7 +1175,8 @@
           "status": "unverified",
           "afdcIds": [
             229495
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "IRVINGOIL RI-PROV-L3-0002, 36 Pleasant Valley Pkwy, Providence",
@@ -1021,7 +1184,8 @@
           "status": "unverified",
           "afdcIds": [
             229494
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Nissan Village of North Attleboro, 685 S Washington St, North Attleboro",
@@ -1029,7 +1193,8 @@
           "status": "unverified",
           "afdcIds": [
             45902
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "North Providence Marketplace, 9 - 41 Smithfield Road N, Providence",
@@ -1037,7 +1202,8 @@
           "status": "unverified",
           "afdcIds": [
             228259
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "OCEAN STATE HD DC FAST EXETER, 435 Nooseneck Hill Rd, Exeter",
@@ -1045,7 +1211,8 @@
           "status": "unverified",
           "afdcIds": [
             204944
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "OCEAN STATE HD DCFASTHOG, 35 Albany Rd, Warwick",
@@ -1053,7 +1220,8 @@
           "status": "unverified",
           "afdcIds": [
             165228
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Paul Masse Chevrolet South, 399 Main St, South Kingstown",
@@ -1061,7 +1229,8 @@
           "status": "unverified",
           "afdcIds": [
             221094
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "PICK & PAY DCF EV 1, 94 George Waterman Rd, Johnston",
@@ -1069,7 +1238,8 @@
           "status": "unverified",
           "afdcIds": [
             189581
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "PICK & PAY DCF EV2, 94 George Waterman Rd, Johnston",
@@ -1077,7 +1247,8 @@
           "status": "unverified",
           "afdcIds": [
             189580
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Providence, RI - Tesla Supercharger, 288 Kinsley Ave, Providence",
@@ -1085,7 +1256,8 @@
           "status": "unverified",
           "afdcIds": [
             238588
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RI OER ASHAWAY DCFC1, 400 Main Street, Hopkinton",
@@ -1093,7 +1265,8 @@
           "status": "unverified",
           "afdcIds": [
             165561
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RI OER ASHAWAY DCFC2, 400 Main Street, Hopkinton",
@@ -1101,7 +1274,8 @@
           "status": "unverified",
           "afdcIds": [
             165635
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RI OER ASHAWAY NEVIDC1, 400 Main Street, Hopkinton",
@@ -1109,7 +1283,8 @@
           "status": "unverified",
           "afdcIds": [
             348931
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RI OER ASHAWAY NEVIDC2, 400 Main Street, Hopkinton",
@@ -1117,7 +1292,8 @@
           "status": "unverified",
           "afdcIds": [
             348926
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Richmond, RI - Tesla Supercharger, 1175 Main St, Richmond",
@@ -1125,7 +1301,8 @@
           "status": "unverified",
           "afdcIds": [
             222335
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RIOER NEVI DCFC 1, 292 Centerville Road, Warwick",
@@ -1133,7 +1310,8 @@
           "status": "unverified",
           "afdcIds": [
             347151
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RIOER NEVI DCFC 2, 292 Centerville Road, Warwick",
@@ -1141,7 +1319,8 @@
           "status": "unverified",
           "afdcIds": [
             347154
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RIOER RT117 DCFC1, 292 Centerville Road, Warwick",
@@ -1149,7 +1328,8 @@
           "status": "unverified",
           "afdcIds": [
             165560
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "RIOER RT117 DCFC2, 292 Centerville Road, Warwick",
@@ -1157,7 +1337,8 @@
           "status": "unverified",
           "afdcIds": [
             181115
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Seekonk, MA - Tesla Supercharger, 965 Fall River Avenue, Seekonk",
@@ -1165,7 +1346,8 @@
           "status": "unverified",
           "afdcIds": [
             205808
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Speedcraft Nissan, 885 Quaker Ln, West Warwick",
@@ -1173,7 +1355,8 @@
           "status": "unverified",
           "afdcIds": [
             49711
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Target Warwick #T1188, 1245 Bald Hill Rd, Warwick",
@@ -1181,7 +1364,8 @@
           "status": "unverified",
           "afdcIds": [
             373075
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Warwick, RI - Division Street - Tesla Supercharger, 1149 Division St, Warwick",
@@ -1189,7 +1373,8 @@
           "status": "unverified",
           "afdcIds": [
             302964
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Warwick, RI - Tesla Supercharger, 1776 Post Road, Warwick",
@@ -1197,7 +1382,8 @@
           "status": "unverified",
           "afdcIds": [
             207761
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
@@ -1277,6 +1463,26 @@
         },
         "afdcIds": [
           171425
+        ],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/298366",
+            "date": "2026-10-12",
+            "summary": "Station 1 does NOT work, even if it looks like it does"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/298366",
+            "date": "2026-04-13",
+            "summary": "Fastest charging I’ve ever had at an Electrify America station"
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/298366",
+            "date": "2025-12-26",
+            "summary": "23° battery preconditioned"
+          }
         ]
       },
       "backups": [
@@ -1291,6 +1497,26 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ma/wrentham/1-premium-outlets-blvd/210309/",
           "afdcIds": [
             212050
+          ],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/367490",
+              "date": "2026-10-03",
+              "summary": "Charging l limited by station to 184 kW. boo!!!"
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/367490",
+              "date": "2026-09-15",
+              "summary": "There are other chargers at this location that are much cheaper."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/367490",
+              "date": "2026-08-02",
+              "summary": "very easy to charge here. credit card only, no account required. cheaper than electrify america that's just across the parking lot. would use this network again anytime"
+            }
           ]
         },
         {
@@ -1304,7 +1530,8 @@
           "url": "https://www.electrifyamerica.com/locate-charger/ma/medfield/478-main-st/210119/",
           "afdcIds": [
             211862
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "other": [
@@ -1314,7 +1541,8 @@
           "status": "unverified",
           "afdcIds": [
             400272
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "24 Ford of Easton, 703 Washington Street, South Easton",
@@ -1322,7 +1550,8 @@
           "status": "unverified",
           "afdcIds": [
             422171
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "45 Washington St, 45 Washington St, Foxborough",
@@ -1330,7 +1559,8 @@
           "status": "unverified",
           "afdcIds": [
             390943
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "461 E Washington St, 461 E Washington St, North Attleboro",
@@ -1338,7 +1568,8 @@
           "status": "unverified",
           "afdcIds": [
             357524
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "825 Providence Hwy, 825 Providence Hwy, Norwood",
@@ -1346,7 +1577,8 @@
           "status": "unverified",
           "afdcIds": [
             387072
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Adirondack Club, 800 Chestnut St, Franklin",
@@ -1354,7 +1586,8 @@
           "status": "unverified",
           "afdcIds": [
             400458
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "BES Realty, 41 Pleasant, Norton",
@@ -1362,7 +1595,8 @@
           "status": "unverified",
           "afdcIds": [
             421604
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Camilia Service & Auto, 10 Taunton St, Plainville",
@@ -1370,7 +1604,8 @@
           "status": "unverified",
           "afdcIds": [
             376248
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Copeland Chevrolet, 955 Pearl St, Brockton",
@@ -1378,7 +1613,8 @@
           "status": "unverified",
           "afdcIds": [
             372488
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Cottage Car Wash, 36 Pine St Norfolk, Norfolk",
@@ -1386,7 +1622,8 @@
           "status": "unverified",
           "afdcIds": [
             460789
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Elite Health and Fitness, 1519 Central St, Stoughton",
@@ -1394,7 +1631,8 @@
           "status": "unverified",
           "afdcIds": [
             447202
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Exxon Mobil Rehoboth, 238 Winthrop St, Rehoboth",
@@ -1402,7 +1640,8 @@
           "status": "unverified",
           "afdcIds": [
             452287
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Foxborough, MA - Tesla Supercharger, 4 Fisher St, Foxborough",
@@ -1410,7 +1649,8 @@
           "status": "unverified",
           "afdcIds": [
             332095
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Franklin Fire Department, 600 King St, Franklin",
@@ -1418,7 +1658,8 @@
           "status": "unverified",
           "afdcIds": [
             453571
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Franklin Municipal Building, 355 E Central St, Franklin",
@@ -1426,7 +1667,8 @@
           "status": "unverified",
           "afdcIds": [
             453487
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Franklin, MA - Tesla Supercharger, 250 Franklin Village Drive, Franklin",
@@ -1434,7 +1676,8 @@
           "status": "unverified",
           "afdcIds": [
             202625
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Interstate Refrigerant, 131 Morse St, Foxborough",
@@ -1442,7 +1685,8 @@
           "status": "unverified",
           "afdcIds": [
             429552
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Kellys Place, 294 East Main St, Norton",
@@ -1450,7 +1694,8 @@
           "status": "unverified",
           "afdcIds": [
             400527
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Mansfield, MA - Tesla Supercharger, 280 School Street, Mansfield",
@@ -1458,7 +1703,8 @@
           "status": "unverified",
           "afdcIds": [
             102204
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Mick Morgans Restaurant, 973 Providence Hwy, Sharon",
@@ -1466,7 +1712,8 @@
           "status": "unverified",
           "afdcIds": [
             422960
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "New England Chapel, 300 East Central Street, Franklin",
@@ -1474,7 +1721,8 @@
           "status": "unverified",
           "afdcIds": [
             462679
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Pine Street Medical Center, 31 Pine Street Norfolk, Norfolk",
@@ -1482,7 +1730,8 @@
           "status": "unverified",
           "afdcIds": [
             461143
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "SHARON TH TOWN HALL - 1, 90 South Main Street, Sharon",
@@ -1490,7 +1739,8 @@
           "status": "unverified",
           "afdcIds": [
             376032
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "SHARON TH TOWN HALL - 2, 90 South Main Street, Sharon",
@@ -1498,7 +1748,8 @@
           "status": "unverified",
           "afdcIds": [
             376018
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Silko VW, 661 Washington Street, South Easton",
@@ -1506,7 +1757,8 @@
           "status": "unverified",
           "afdcIds": [
             383371
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Tosca Dr DCFC, 28 Tosca Dr, Stoughton",
@@ -1514,7 +1766,8 @@
           "status": "unverified",
           "afdcIds": [
             400258
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Town of Wrentham, 79 South Street, Wrentham",
@@ -1522,7 +1775,8 @@
           "status": "unverified",
           "afdcIds": [
             429786
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Vendetti Motors, 411 W Central St, Franklin",
@@ -1530,7 +1784,8 @@
           "status": "unverified",
           "afdcIds": [
             351421
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Walpole Mall, 90 Providence Hwy, Walpole",
@@ -1538,7 +1793,8 @@
           "status": "unverified",
           "afdcIds": [
             448471
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Wrentham 5 Dedham, 5 Dedham St, Wrentham",
@@ -1546,7 +1802,8 @@
           "status": "unverified",
           "afdcIds": [
             400500
-          ]
+          ],
+          "driverReports": []
         },
         {
           "name": "Wrentham Village Premium Outlets MB.HPC, 1 Premium Outlet Blvd, Wrentham",
@@ -1554,7 +1811,8 @@
           "status": "unverified",
           "afdcIds": [
             458957
-          ]
+          ],
+          "driverReports": []
         }
       ],
       "reports": [],
