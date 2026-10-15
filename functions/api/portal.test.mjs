@@ -173,8 +173,8 @@ function memoryDb() {
             if (!draft || !request) return null;
             return planRow(draft, request);
           }
-          if (text.includes('d.access_code = ? OR d.access_code = ?')) {
-            const draft = drafts.find((row) => row.access_code === bound[0] || row.access_code === bound[1]);
+          if (text.includes('WHERE d.access_code = ?')) {
+            const draft = drafts.find((row) => row.access_code === bound[0]);
             if (!draft) return null;
             const request = requests.find((row) => row.id === draft.request_id);
             return request ? planRow(draft, request) : null;
@@ -215,7 +215,7 @@ function memoryDb() {
   };
 }
 
-function installFetch(log, { failSend = false } = {}) {
+function installFetch(log, { failSend = false, hold = null } = {}) {
   const original = globalThis.fetch;
   globalThis.fetch = async (url, opts = {}) => {
     const body = opts.body ? String(opts.body) : '';
@@ -226,6 +226,7 @@ function installFetch(log, { failSend = false } = {}) {
       if (response === 'wrong-action') return Response.json({ success: true, action: 'plan_request', hostname: 'evtripreports.com' });
       return Response.json({ success: false });
     }
+    if (hold) await hold;
     if (failSend) throw new Error('network down');
     if (String(url).includes('/jmap/session')) {
       return Response.json({ apiUrl: 'https://api.fastmail.com/jmap/', primaryAccounts: { 'urn:ietf:params:jmap:submission': 'acc' } });
@@ -257,13 +258,19 @@ function sentMails(log) {
 }
 
 function postPortal(db, { email = 'ada@example.com', ip = '203.0.113.5', extra = {}, env = {} } = {}) {
-  return onApi({
+  const pending = [];
+  const response = onApi({
     request: new Request('https://evtripreports.com/api/portal', {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'CF-Connecting-IP': ip },
       body: JSON.stringify({ email, ...extra }),
     }),
     env: { DB: db, FASTMAIL_TOKEN: 'fastmail-token', ...env },
+    waitUntil(promise) { pending.push(promise); },
+  });
+  return response.then(async (res) => {
+    await Promise.all(pending);
+    return res;
   });
 }
 
@@ -403,6 +410,46 @@ test('turnstile, honeypot, and a missing mail token stay neutral', async () => {
   }
 });
 
+test('the response is not held for mail, with or without plans', async () => {
+  const db = memoryDb();
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  const log = [];
+  const restore = installFetch(log, { hold: gate });
+  const pending = [];
+  const call = (email, ip) => onApi({
+    request: new Request('https://evtripreports.com/api/portal', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'CF-Connecting-IP': ip },
+      body: JSON.stringify({ email }),
+    }),
+    env: { DB: db, FASTMAIL_TOKEN: 'fastmail-token' },
+    waitUntil(promise) { pending.push(promise); },
+  });
+  const within = (promise) => {
+    let timer;
+    const timeout = new Promise((_, reject) => {
+      timer = setTimeout(() => reject(new Error('response waited on mail')), 500);
+    });
+    return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+  };
+  try {
+    const known = await within(call('ada@example.com', '203.0.113.30'));
+    const unknown = await within(call('nobody@example.com', '203.0.113.31'));
+    assert.equal(known.status, 200);
+    assert.equal(unknown.status, 200);
+    assert.deepEqual(await known.json(), { ok: true, message: NEUTRAL_MESSAGE });
+    assert.deepEqual(await unknown.json(), { ok: true, message: NEUTRAL_MESSAGE });
+    assert.equal(sentMails(log).length, 0);
+    release();
+    await Promise.all(pending);
+    assert.equal(sentMails(log).length, 1);
+  } finally {
+    release();
+    restore();
+  }
+});
+
 test('a failed send still returns the neutral message', async () => {
   const db = memoryDb();
   const log = [];
@@ -515,13 +562,22 @@ test('the sign-in link is single use and lists only approved plans', async () =>
       params: { token: LEGACY_TOKEN },
       env: { DB: db },
     });
-    assert.match(await legacy.text(), /Legacy plan/);
+    assert.equal(legacy.status, 404);
+    assert.equal((await legacy.text()).includes('Legacy plan'), false);
     const hashed = await onPlan({
       request: new Request(`https://evtripreports.com/plan/${HASH_TOKEN}`),
       params: { token: HASH_TOKEN },
       env: { DB: db },
     });
     assert.match(await hashed.text(), /Hashed plan/);
+    const digest = db.drafts.find((row) => row.id === 13).access_code;
+    const asHash = await onPlan({
+      request: new Request(`https://evtripreports.com/plan/${digest}`),
+      params: { token: digest },
+      env: { DB: db },
+    });
+    assert.equal(asHash.status, 404);
+    assert.equal((await asHash.text()).includes('Hashed plan'), false);
 
     db.signins[0].expires_at = '2020-01-01T00:00:00.000Z';
     db.signins[0].used_at = null;

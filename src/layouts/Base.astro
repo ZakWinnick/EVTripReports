@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/guide.css';
+import { newsletterForm } from '../lib/newsletter.js';
 
 interface Props {
   title: string;
@@ -64,6 +65,9 @@ const links = [
       <slot />
     </main>
     <footer class="foot">
+      <div class="wrap foot__signup">
+        <Fragment set:html={newsletterForm('newsletter-footer')} />
+      </div>
       <div class="wrap foot__grid">
         <div>
           <strong style="color: var(--ink)">EV Trip Reports</strong><br />
@@ -81,5 +85,103 @@ const links = [
         </nav>
       </div>
     </footer>
+    <script is:inline>
+      (function () {
+        var forms = Array.prototype.slice.call(document.querySelectorAll('form.newsletter'));
+        if (!forms.length) return;
+        var widgets = new WeakMap();
+
+        function loadTurnstile() {
+          return new Promise(function (resolve, reject) {
+            if (window.turnstile) { resolve(); return; }
+            var existing = document.querySelector('script[src*="challenges.cloudflare.com/turnstile/v0/api.js"]');
+            if (existing) {
+              if (window.turnstile) { resolve(); return; }
+              existing.addEventListener('load', function () { resolve(); }, { once: true });
+              existing.addEventListener('error', function () { reject(new Error('turnstile')); }, { once: true });
+              return;
+            }
+            var s = document.createElement('script');
+            s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+            s.async = true;
+            s.onload = function () { resolve(); };
+            s.onerror = function () { reject(new Error('turnstile')); };
+            document.head.appendChild(s);
+          });
+        }
+
+        fetch('/api/subscribe').then(function (res) {
+          if (!res.ok) return null;
+          return res.json();
+        }).then(function (body) {
+          var sitekey = body && body.turnstileSiteKey;
+          if (!sitekey) return;
+          return loadTurnstile().then(function () {
+            forms.forEach(function (form) {
+              var slot = form.querySelector('.newsletter__slot');
+              if (!slot || !window.turnstile) return;
+              slot.hidden = false;
+              widgets.set(form, window.turnstile.render(slot, { sitekey: sitekey, action: 'newsletter_signup' }));
+            });
+          });
+        }).catch(function () {});
+
+        forms.forEach(function (form) {
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var msg = form.querySelector('.newsletter__msg');
+            var btn = form.querySelector('button[type="submit"]');
+            if (!msg || !btn || btn.disabled) return;
+            msg.className = 'newsletter__msg';
+            msg.textContent = '';
+            if (!form.checkValidity()) {
+              msg.textContent = 'Enter an email address.';
+              msg.classList.add('is-err');
+              var bad = form.querySelector(':invalid');
+              if (bad) bad.focus();
+              return;
+            }
+            var fd = new FormData(form);
+            var data = { email: String(fd.get('email') || '').trim() };
+            var honey = fd.get('website');
+            if (honey) data.website = String(honey);
+            var widgetId = widgets.get(form);
+            if (widgetId && window.turnstile) data['cf-turnstile-response'] = window.turnstile.getResponse(widgetId);
+            var label = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Sending';
+            fetch('/api/subscribe', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(data),
+            }).then(function (res) {
+              return res.json().catch(function () { return {}; }).then(function (body) {
+                return { res: res, body: body };
+              });
+            }).then(function (out) {
+              if (out.res.ok) {
+                form.reset();
+                msg.textContent = out.body.already ? 'That email is already signed up.' : 'Check your email to confirm.';
+                msg.classList.add('is-ok');
+              } else if (out.res.status === 503 || out.res.status === 404 || out.res.status === 405) {
+                msg.textContent = out.body.error || 'Newsletter signup is not open yet.';
+                msg.classList.add('is-err');
+              } else {
+                msg.textContent = out.body.error || 'Signup did not go through. Try again.';
+                msg.classList.add('is-err');
+              }
+            }).catch(function () {
+              msg.textContent = 'Signup did not go through because the connection dropped. Try again.';
+              msg.classList.add('is-err');
+            }).then(function () {
+              btn.disabled = false;
+              btn.textContent = label;
+              var id = widgets.get(form);
+              if (id && window.turnstile) window.turnstile.reset(id);
+            });
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

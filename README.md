@@ -66,7 +66,7 @@ The plan page reads JSON from `plan_drafts.body` (save it with format `markdown`
 
 ## Find my plans
 
-`/find-my-plans` emails a one-time link to the address used at checkout. The link expires in 15 minutes, works once, and opens a list of that email's approved plans. Each list gives private `/plan/<token>` links. Tokens are 32 bytes. The database stores only SHA-256 hashes.
+`/find-my-plans` emails a one-time link to the address used at checkout. The link expires in 15 minutes, works once, and opens a list of that email's approved plans. Each list gives private `/plan/<token>` links. Tokens are 32 bytes. The database stores only SHA-256 hashes. The plan page looks up that hash. The stored hash is not itself a working link.
 
 Pages Functions:
 
@@ -75,6 +75,8 @@ Pages Functions:
 - `GET /find-my-plans/open/<token>` shows a button and does not use the link up. `POST` on that URL uses it once and sets a 15-minute cookie.
 - `GET /find-my-plans/list` lists approved plans for that cookie.
 - `GET /plan/<token>` shows the approved plan. Unknown tokens and unapproved drafts are a 404. Responses send `X-Robots-Tag: noindex, nofollow` and `Referrer-Policy: no-referrer`.
+
+The sign-in email is passed to `waitUntil` when the runtime provides it, including when there is nothing to send, so the response does not wait on Fastmail.
 
 Rate limits, counted in D1 before the email is looked up: 3 requests per email per 15 minutes, and 10 per IP per 15 minutes. Over the limit, the response is 429 with the same message for every address. The form has the same honeypot field as intake (`website`).
 

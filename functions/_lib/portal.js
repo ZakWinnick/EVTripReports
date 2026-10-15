@@ -157,13 +157,13 @@ const PLAN_BY_CODE = `SELECT d.id, d.body, d.sources, d.format, d.access_code, d
   r.status, r.tier, r.car, r.port, r.start_place, r.end_place, r.depart, r.return_date
   FROM plan_drafts d
   JOIN plan_requests r ON r.id = d.request_id
-  WHERE d.access_code = ? OR d.access_code = ?`;
+  WHERE d.access_code = ?`;
 
 async function findPlan(db, token) {
   const hash = await sha256Hex(token);
   const linked = await db.prepare(PLAN_BY_LINK).bind(hash).first();
   if (linked) return linked;
-  return db.prepare(PLAN_BY_CODE).bind(hash, token).first();
+  return db.prepare(PLAN_BY_CODE).bind(hash).first();
 }
 
 function messagePage(title, text) {
@@ -205,7 +205,7 @@ function planTokensFromCookie(request) {
 }
 
 export async function onApi(context) {
-  const { request, env } = context;
+  const { request, env, waitUntil } = context;
   if (request.method === 'GET') return json({ turnstileSiteKey: env.TURNSTILE_SITE_KEY || null });
   if (request.method !== 'POST') return new Response('Method not allowed', { status: 405, headers: { allow: 'GET, POST' } });
   if (!env.DB || !env.FASTMAIL_TOKEN) return json({ error: CLOSED_MESSAGE }, 503);
@@ -229,6 +229,7 @@ export async function onApi(context) {
     await recordLimit(env.DB, 'ip', ipKey);
 
     const plans = await approvedPlans(env.DB, email);
+    let delivery = Promise.resolve();
     if (plans.length) {
       const token = newToken();
       const now = new Date();
@@ -237,24 +238,22 @@ export async function onApi(context) {
         `INSERT INTO portal_signins (email, token_hash, created_at, expires_at, used_at) VALUES (?, ?, ?, ?, NULL)`
       ).bind(email, await sha256Hex(token), now.toISOString(), expires.toISOString()).run();
       const link = `${siteOrigin(request)}/find-my-plans/open/${token}`;
-      try {
-        await sendMail({
-          token: env.FASTMAIL_TOKEN,
-          from: FROM,
-          to: email,
-          subject: 'Your EV Trip Reports sign-in link',
-          text: [
-            'Use this link to see your approved plans. It works once and expires in 15 minutes.',
-            '',
-            link,
-            '',
-            'If you did not ask for this, ignore this email.',
-          ].join('\n'),
-        });
-      } catch (e) {
-        console.error('portal mail failed', e.message);
-      }
+      delivery = sendMail({
+        token: env.FASTMAIL_TOKEN,
+        from: FROM,
+        to: email,
+        subject: 'Your EV Trip Reports sign-in link',
+        text: [
+          'Use this link to see your approved plans. It works once and expires in 15 minutes.',
+          '',
+          link,
+          '',
+          'If you did not ask for this, ignore this email.',
+        ].join('\n'),
+      }).catch((e) => console.error('portal mail failed', e.message));
     }
+    if (typeof waitUntil === 'function') waitUntil(delivery);
+    else await delivery;
   } catch (e) {
     console.error('portal failed', e.message);
     return json({ error: 'Something went wrong. Try again in a few minutes.' }, 500);

@@ -1,6 +1,7 @@
 // Renders guide HTML from route data.
 // Used at build time by the Astro pages and at request time by the Pages Functions,
 // so a guide published to D1 looks exactly like one built into the site.
+import { newsletterForm } from './newsletter.js';
 
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ESC[c]);
@@ -281,7 +282,8 @@ ${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
     .join('')}</ol><p class="note" style="margin-top:28px">${esc(arrivalNote(route))}</p></div></section>
 <section class="band band--tight band--mist"><div class="wrap plan-cta"><div><h2 class="h2">Want this planned for your car?</h2>
 <p class="lede" style="margin-top:12px">Stops that work for your port and adapter, with a backup at each. Detailed plans add food and a hotel with a charger. We don't book the room. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p></div>
-<a class="pill pill--lg" href="/plans#request">Plan my trip</a></div></section>`;
+<a class="pill pill--lg" href="/plans#request">Plan my trip</a></div></section>
+<section class="band band--tight"><div class="wrap"><h2 class="h2">Route updates</h2>${newsletterForm('newsletter-guide')}</div></section>`;
 }
 
 // Home page guide cards. `routes` is a list of { slug, title, highway, status, miles, stops }.
