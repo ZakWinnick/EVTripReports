@@ -49,6 +49,43 @@ Plan prices and Stripe Payment Links live in `src/data/plans.js`. Each tier's pa
 
 Intake stores each request with status `new` and, when `FASTMAIL_TOKEN` is set, emails that request to the owner (`NOTIFY_TO`). The customer is not a recipient. Intake does not generate a plan and does not email a plan. Customer pages state the delivery time only: within 48 hours for route and detailed plans, within 3 business days for multi-day and family plans.
 
+## From a paid order to a draft
+
+The order arrives at `POST /api/intake` and is stored as `new`. That request does not build a plan. Build the draft locally, then review it in the admin API. Approval is what creates the private link.
+
+1. Save the order as JSON. The builder reads `slug`, `vehicle` (or `car`), `adapter` (or `port`), `memberships`, `startBattery`, `depart`, `tier`, and `notes`. Tier is `$19`, `$39`, or `$79`, or the form labels `Route plan`, `Detailed plan`, and `Multi-day or family`.
+2. Build the plan body from that order and the verified route file:
+
+```
+node scripts/build-plan.mjs --order order.json --route src/data/routes/<slug>.json --out plan.json
+```
+
+`scripts/build-plan.mjs` is pure. Same order and same route always produce the same JSON. It does not open a database, and it does not send email. `node scripts/dry-run-order.mjs` runs a built-in fake order, prints a summary, and writes `scripts/out/dry-run-plan.json`. That file is local output. It is not a plan on the site.
+
+3. The JSON file is the `plan_drafts.body` document. `/plan/<token>` parses that JSON. Post it to the admin API as `format: "markdown"` (the column allows `markdown` or `html`, not `json`) with `sources` taken from the plan's `sources` map (`label` and `url`). `draftRecord()` in the script returns that POST body.
+
+What the draft contains:
+
+- A primary is a station whose stalls, power, and access are `verified`, each with a source link and a checked-on date. A station this car cannot use is not a primary. Tesla only stays Tesla only. An open Tesla site is used only when the order has a NACS port or a NACS adapter.
+- Unknowns are the words `Not yet verified`.
+- Each Tesla site that is used is flagged `tesla-only` or `open` (Tesla only, or open to all EVs).
+- Stall counts and kW. The draft does not label a site fast or slow.
+- Every included stop has one backup. If the route has no second verified station this car can use, the backup says `Not yet verified`.
+- Food, restroom, and overnight notes are included only when the route data has them, and only on the $39 and $79 plans. A driver report stays labeled as a driver report.
+- Battery percent and drive time are estimates. Each estimate starts with `Estimate:`. The assumptions are listed on the plan. $19 does not include those estimates.
+- $19 is the stops list: verified primary and one backup at each stop.
+- $39 adds the estimates and the food, restroom, and overnight notes the data actually has.
+- $79 adds the other verified sites at the stop, and contingency notes (the backup to use if the primary is full or offline, Tesla only sites to skip, and route notes that have a source).
+
+4. Owner review uses `ADMIN_TOKEN` and does not email the customer.
+
+- `GET /api/admin/plans` lists requests in `new` or `review`.
+- `POST /api/admin/plans/:id/draft` saves the body and sources. The request moves to `review`.
+- Read the draft. `POST /api/admin/plans/:id/decision` with `{ "status": "rejected-for-redo" }` sends it back. `{ "status": "approved" }` accepts the latest draft.
+- Approval returns `accessCode` once. The private page is `/plan/<accessCode>`. Only the SHA-256 hash is stored. The builder does not approve a plan and does not create that link.
+
+Do not point these scripts at production. They have no D1 binding and no Fastmail token. Applying `schema-plan-drafts.sql` or `schema-portal.sql`, and approving a plan, are owner steps in the D1 console and the admin API.
+
 ## Plan review
 
 `functions/api/admin/plans/[[path]].js` is the owner review API. It does not email the customer, and it does not send a plan.
