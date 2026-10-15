@@ -39,6 +39,7 @@
   .sheet dt { color: var(--ink-2); font-size: 0.94rem; }
   .sheet dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; font-variant-numeric: tabular-nums; }
   .sheet dd > span:first-child { font-weight: 500; }
+  .sheet__note { flex-basis: 100%; font-weight: 400; }
   @media (max-width: 560px) { .sheet__row { grid-template-columns: 1fr; gap: 4px; } }
   .src { font-size: 0.82rem; color: var(--ink-2); }
   .cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(24px, 5vw, 64px); margin-top: 40px; }

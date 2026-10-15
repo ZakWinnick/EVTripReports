@@ -3,14 +3,15 @@
 // functions/guides/[[path]].js serves that instead, with the same renderer.
 import Base from '../../layouts/Base.astro';
 import { guideMain, guideMeta } from '../../lib/render-guide.js';
+import { exportStatus } from '../../lib/publish-status.js';
 
 export async function getStaticPaths() {
   const list = (await import('../../data/routes.json')).default as { slug: string; status: string }[];
-  const live = new Set(list.filter((r) => r.status === 'live').map((r) => r.slug));
+  const listed = new Map(list.map((r) => [r.slug, r.status]));
   const files = import.meta.glob('../../data/routes/*.json', { eager: true });
   return Object.values(files).flatMap((m: any) => {
     const route = m.default ?? m;
-    if (!live.has(route.slug)) return [];
+    if (exportStatus(listed.get(route.slug), route) !== 'live') return [];
     return [{ params: { slug: route.slug }, props: { route } }];
   });
 }

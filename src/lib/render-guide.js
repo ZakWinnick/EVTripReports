@@ -141,6 +141,24 @@ function stationChecked(station, route) {
   return station?.checkedOn || route.checked;
 }
 
+function addFactSources(ids, fact) {
+  if (!fact) return;
+  if (fact.source) ids.add(fact.source);
+  for (const extra of fact.also || []) if (extra?.source) ids.add(extra.source);
+}
+
+function factBits(fact) {
+  if (!fact) return '';
+  const bits = [];
+  if (fact.status && fact.status !== 'verified') bits.push(tag(fact.status));
+  if (fact.note) bits.push(`<span class="sheet__note small muted">${esc(fact.note)}</span>`);
+  if (fact.url) bits.push(ext(fact.url, 'Source', 'src'));
+  for (const extra of fact.also || []) {
+    if (extra?.url) bits.push(ext(extra.url, extra.name || 'Source', 'src'));
+  }
+  return bits.join('');
+}
+
 function stopSection(route, s, i) {
   const S = route.sources;
   const src = (id) => S[id] || { name: id, url: '' };
@@ -157,7 +175,7 @@ function stopSection(route, s, i) {
     { k: 'Price', v: p.price.value, f: p.price },
   ];
   const ids = new Set();
-  ['stalls', 'power', 'access', 'price'].forEach((k) => p[k]?.source && ids.add(p[k].source));
+  ['stalls', 'power', 'access', 'price'].forEach((k) => addFactSources(ids, p[k]));
   s.backups.forEach((b) => b.source && ids.add(b.source));
   if (s.other.length) ids.add('afdc');
   (s.reports || []).forEach((r) => ids.add(r.source));
@@ -196,9 +214,9 @@ function stopSection(route, s, i) {
 <dl class="sheet">${rows
     .map(
       (r) =>
-        `<div class="sheet__row"><dt>${esc(r.k)}</dt><dd><span>${esc(r.v)}</span>${r.f && r.f.status !== 'verified' ? tag(r.f.status) : ''}${
+        `<div class="sheet__row"><dt>${esc(r.k)}</dt><dd><span>${esc(r.v)}</span>${factBits(r.f)}${
           r.status ? tag(r.status) : ''
-        }${r.f && r.f.url ? ext(r.f.url, 'Source', 'src') : ''}</dd></div>`
+        }</dd></div>`
     )
     .join('')}</dl></div>
 <div class="cols"><div><h3 class="h3 sub">Backups</h3>${backupHtml}${
@@ -206,10 +224,10 @@ function stopSection(route, s, i) {
       ? `<details class="other"><summary>Other DC sites nearby (${s.other.length})</summary><ul class="list">${s.other
           .map(
             (o) =>
-              `<li class="item"><div class="item__top"><strong>${esc(o.name)}</strong>${tag(
+              `<li class="item"><div class="item__top"><strong>${esc(o.name)}</strong><span class="btnrow">${o.teslaAccess ? tag(o.teslaAccess) : ''}${tag(
                 o.status,
                 o.status === 'verified' || o.status === 'conflict' ? stationChecked(o, route) : undefined
-              )}</div><p class="item__facts small">${esc(o.facts)}${
+              )}</span></div><p class="item__facts small">${esc(o.facts)}${
                 o.url ? ` ${ext(o.url, 'Source', 'src')}` : ''
               }</p></li>`
           )

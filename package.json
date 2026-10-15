@@ -5,7 +5,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node --test functions/guides/guide-404.test.mjs functions/api/plan-review.test.mjs"
+    "test": "node --test functions/guides/guide-404.test.mjs functions/api/plan-review.test.mjs scripts/publish-status.test.mjs"
   },
   "dependencies": {
     "astro": "^7.3.8"

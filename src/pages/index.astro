@@ -1,19 +1,21 @@
 ---
 import Base from '../layouts/Base.astro';
 import { routeLine, statStrip, guideCards } from '../lib/render-guide.js';
+import { exportStatus } from '../lib/publish-status.js';
 import featured from '../data/routes/la-to-las-vegas.json';
 import routes from '../data/routes.json';
 import { tiers, priceLabel } from '../data/plans.js';
 
 const routeFiles = import.meta.glob('../data/routes/*.json', { eager: true });
-const stopsBySlug = Object.fromEntries(Object.values(routeFiles).map((m) => {
+const routeBySlug = Object.fromEntries(Object.values(routeFiles).map((m) => {
   const route = (m as { default?: { slug: string; stops: unknown[] } }).default ?? (m as { slug: string; stops: unknown[] });
-  return [route.slug, route.stops.length];
+  return [route.slug, route];
 }));
 
 const cards = routes.map((r: any) => ({
   ...r,
-  stops: stopsBySlug[r.slug],
+  status: exportStatus(r.status, routeBySlug[r.slug]),
+  stops: routeBySlug[r.slug]?.stops.length,
 }));
 const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---

@@ -2,8 +2,8 @@
   "slug": "la-to-phoenix",
   "title": "LA to Phoenix",
   "highway": "I-10",
-  "summary": "I-10 from the East LA interchange to Buckeye. Blythe's primary stall count still conflicts: EVCS lists 4 connectors at 100 Hobsonway and DOE lists 2 DC ports. Ehrenberg's Tesla sites were checked on Tesla's locator.",
-  "checked": "2026-10-15",
+  "summary": "I-10 from the East LA interchange to Buckeye. Blythe's primary is EVCS at US Bank, 100 Hobsonway: 2 stalls, each with CCS and CHAdeMO, up to 50 kW. Ehrenberg's Tesla sites were checked on Tesla's locator.",
+  "checked": "2026-10-14",
   "startLabel": "East LA Interchange",
   "startNote": "Mileage starts at I-10 exit 16B, the west end of the East Los Angeles Interchange (mile 16.23), and ends at Watson Road in Buckeye (Arizona mile 117.01). California to the state line is 243.31 − 16.23 = 227.08 miles, plus 117.01 in Arizona, which is 344.09 and shown as 344.",
   "endLabel": "Watson Road, Buckeye",
@@ -42,6 +42,14 @@
     "evcs": {
       "name": "EVCS station page, US Bank Blythe",
       "url": "https://web2.evcs.com/ev-charging-stations/ca/blythe/us-bank-blythe"
+    },
+    "evcs-blythe-photo": {
+      "name": "EVCS site photo, US Bank Blythe",
+      "url": "https://static-prod.noodoe.com/charger-photo/s1vd-img-1.jpg"
+    },
+    "afdc-348909": {
+      "name": "DOE station record 348909, US Bank Blythe",
+      "url": "https://developer.nlr.gov/api/alt-fuel-stations/v1/348909.json"
     },
     "wiki-i10-ca": {
       "name": "Interstate 10 in California, exit list (Wikipedia)",
@@ -103,7 +111,7 @@
           165415
         ],
         "driverReports": [],
-        "checkedOn": "2026-10-15",
+        "checkedOn": "2026-10-14",
         "source": "ea-locator"
       },
       "backups": [],
@@ -125,7 +133,7 @@
             332995
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "source": "evcs",
           "url": "https://web2.evcs.com/ev-charging-stations/ca/banning/banning-farm-s-house-restaurant"
         },
@@ -137,9 +145,10 @@
             238576
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/BeaumontCAQ322",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Beaumont, CA - Tesla Supercharger, 1540 E. 2nd Street, Beaumont",
@@ -149,9 +158,10 @@
             164002
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/beaumontcasupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "BEAUMONT, CA CENTER STATION, 600 E 6th St, Beaumont",
@@ -188,7 +198,7 @@
             206275
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/CabazonCASupercharger2",
           "source": "tesla-findus",
           "teslaAccess": "open"
@@ -201,9 +211,10 @@
             102006
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/cabazoncaliforniasupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Calimesa, CA - Tesla Supercharger, 497 Sandalwood Dr, Calimesa",
@@ -213,9 +224,10 @@
             314458
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/36090",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "GF4EVA KOHLS BMONT DC1, 1479 E 2nd St, Beaumont",
@@ -243,7 +255,7 @@
             228113
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "source": "evgo",
           "url": "https://www.evgo.com/find-a-charger/ca/cabazon/206/"
         }
@@ -322,7 +334,7 @@
             "summary": "Did allow other cars to charge, but didn’t allow my bolt euv charge Could not activate"
           }
         ],
-        "checkedOn": "2026-10-15",
+        "checkedOn": "2026-10-14",
         "source": "ea-locator"
       },
       "backups": [
@@ -339,7 +351,7 @@
             279335
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-14"
         }
       ],
       "other": [
@@ -405,19 +417,20 @@
             102033
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/indiocaliforniasupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "La Quinta Centre - Tesla Supercharger, 79251 CA-111, La Quinta",
-          "facts": "Tesla Find Us, rechecked October 15, 2026, lists 16 stalls, up to 325 kW, at 79295 CA-111, La Quinta Centre. Open to non-Tesla EVs with a NACS adapter. The page shows that street number. DOE lists 16 NACS at 325 kW at 79251 CA-111, last confirmed October 13, 2026. Stall count and kW match. The street numbers do not.",
+          "facts": "Tesla Find Us, rechecked October 14, 2026, lists 16 stalls, up to 325 kW, at 79295 CA-111, La Quinta Centre. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW at 79251 CA-111, last confirmed October 13, 2026. Stall count and kW match. Noted difference: Tesla's page shows 79295 and DOE shows 79251.",
           "status": "conflict",
           "afdcIds": [
             457056
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/18383",
           "source": "tesla-findus",
           "teslaAccess": "open"
@@ -430,9 +443,10 @@
             311243
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/18381",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "TOWER MARKET NOT PUBLIC, 61980 Tyler Street, Thermal",
@@ -454,13 +468,13 @@
         },
         {
           "name": "Rancho Mirage, CA - Tesla Supercharger, 71800 CA-111, Rancho Mirage",
-          "facts": "Tesla Find Us, rechecked October 15, 2026, lists 24 stalls, up to 72 kW, at 71800 CA-111, Rancho Mirage. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists 24 NACS at 75 kW at the same address, last confirmed June 18, 2026. Stall count matches. The kW figures do not.",
+          "facts": "Tesla Find Us, rechecked October 14, 2026, lists 24 stalls, up to 72 kW, at 71800 CA-111, Rancho Mirage. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists 24 NACS at 75 kW at the same address, last confirmed June 18, 2026. Stall count matches. Noted difference: Tesla lists up to 72 kW and DOE lists 75 kW.",
           "status": "conflict",
           "afdcIds": [
             149347
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "source": "tesla-findus",
           "url": "https://www.tesla.com/findus/location/supercharger/ranchoimragesupercharger",
           "teslaAccess": "tesla-only"
@@ -473,7 +487,7 @@
             171424
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/palm-desert/72549-highway-111/210075/"
         },
@@ -506,13 +520,13 @@
         },
         {
           "name": "Rancho Las Palmas Shopping Center, 42370 Bob Hope Dr, Rancho Mirage",
-          "facts": "EVgo, rechecked October 15, 2026, lists 10 stalls at 42370 Bob Hope Dr, Rancho Mirage: 4 chargers at 100 kW with CCS and CHAdeMO, and 6 chargers at 350 kW with CCS and CHAdeMO. DOE lists 10 DC ports at the same address, last confirmed October 14, 2026: 10 CHAdeMO at 100 kW, 4 CCS at 100 kW, and 6 CCS at 350 kW. The stall count matches. The connector power mix does not.",
+          "facts": "EVgo, rechecked October 14, 2026, lists 10 stalls at 42370 Bob Hope Dr, Rancho Mirage: 4 chargers at 100 kW with CCS and CHAdeMO, and 6 chargers at 350 kW with CCS and CHAdeMO. DOE lists 10 DC ports at the same address, last confirmed October 14, 2026: 10 CHAdeMO at 100 kW, 4 CCS at 100 kW, and 6 CCS at 350 kW. The stall count matches. Noted difference: the connector power mix.",
           "status": "conflict",
           "afdcIds": [
             228041
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "source": "evgo",
           "url": "https://www.evgo.com/find-a-charger/ca/rancho-mirage/128/"
         },
@@ -533,7 +547,7 @@
             373137
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "source": "evgo",
           "url": "https://www.evgo.com/find-a-charger/ca/rancho-mirage/73969/"
         },
@@ -591,17 +605,30 @@
       "towns": "Blythe, CA and Ehrenberg, AZ",
       "mile": 224,
       "milepostNote": "7th Street is exit 240, mile 239.98. 239.98 − 16.23 = 223.8. Hobson Way is exits 242 and 243.",
-      "why": "Blythe has DC fast charging. The primary is EVCS at US Bank, 100 Hobsonway. Rechecked October 15, 2026 on EVCS's own page: 2 CCS and 2 CHAdeMO connectors, each up to 50 kW. DOE lists 2 DC ports at that address, last confirmed October 14, 2026. The stall count stays a conflict, so this route is not live-ready. Ehrenberg's Tesla sites were checked on Tesla's locator and are listed on this stop. Desert Center, back up the freeway, returned no public DC fast sites.",
+      "why": "The primary is EVCS at US Bank, 100 Hobsonway: 2 stalls, each with CCS and CHAdeMO, up to 50 kW. The stall count comes from the DOE record and the EVCS site photo. EVCS's page counts 4 connectors. NACS cars need an adapter. The 50 kW is up to, and likely only one connector per stall charges at a time. Ehrenberg's Tesla sites were checked on Tesla's locator and are on this stop. Desert Center, back up the freeway, returned no public DC sites.",
       "primary": {
         "name": "US Bank Blythe",
         "network": "EVCS",
         "address": "100 Hobsonway, Blythe, CA 92225",
         "exit": "Exit 242 westbound or exit 243 eastbound, Hobson Way",
         "stalls": {
-          "value": "EVCS lists 4 connectors at 100 Hobsonway: 2 CCS and 2 CHAdeMO. DOE lists 2 DC ports. Last confirmed by DOE on October 14, 2026.",
-          "status": "conflict",
+          "value": "2 stalls, each with CCS and CHAdeMO, up to 50 kW (EVCS)",
+          "status": "verified",
           "source": "evcs",
-          "url": "https://web2.evcs.com/ev-charging-stations/ca/blythe/us-bank-blythe"
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/blythe/us-bank-blythe",
+          "note": "The stall count comes from the DOE record and the EVCS site photo. DOE lists 2 DC ports: two charging units, each CHAdeMO and J1772COMBO at 50 kW. The photo shows two dispensers, two cables each. EVCS's page counts connectors (4). NACS cars need an adapter. The 50 kW is up to, and likely only one connector per stall charges at a time.",
+          "also": [
+            {
+              "name": "EVCS site photo",
+              "url": "https://static-prod.noodoe.com/charger-photo/s1vd-img-1.jpg",
+              "source": "evcs-blythe-photo"
+            },
+            {
+              "name": "DOE record 348909",
+              "url": "https://developer.nlr.gov/api/alt-fuel-stations/v1/348909.json",
+              "source": "afdc-348909"
+            }
+          ]
         },
         "power": {
           "value": "Up to 50 kW on the CCS and CHAdeMO connectors",
@@ -643,7 +670,7 @@
             "summary": "Does this station work? Traveling through the area, and would love an update. Thank you!"
           }
         ],
-        "checkedOn": "2026-10-15"
+        "checkedOn": "2026-10-14"
       },
       "backups": [],
       "other": [
@@ -673,9 +700,10 @@
             440465
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/412229",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Ehrenberg, AZ - Tesla Supercharger, 11 Frontage Road North, Ehrenberg",
@@ -685,9 +713,10 @@
             153411
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/ehrenburgazsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "WattEV - Blythe, 2100 E Donlon St, Blythe",
@@ -760,7 +789,7 @@
           187948
         ],
         "driverReports": [],
-        "checkedOn": "2026-10-15",
+        "checkedOn": "2026-10-14",
         "source": "ea-locator"
       },
       "backups": [],
@@ -773,7 +802,7 @@
             308415
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/27261",
           "source": "tesla-findus",
           "teslaAccess": "open"
@@ -786,9 +815,10 @@
             101990
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/quartzsitesupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Quartzsite, AZ, 1349 W. Main Street, Quartzsite",
@@ -798,7 +828,7 @@
             391382
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://rivian.com/experience/charging",
           "source": "rivian"
         }
@@ -871,7 +901,7 @@
             "summary": "Payment wouldn't work Could not activate"
           }
         ],
-        "checkedOn": "2026-10-15",
+        "checkedOn": "2026-10-14",
         "source": "ea-locator"
       },
       "backups": [],
@@ -884,9 +914,10 @@
             101980
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
+          "checkedOn": "2026-10-14",
           "url": "https://www.tesla.com/findus/location/supercharger/buckeyesupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Jones Ford Buckeye, 24600 West Yuma Rd, Buckeye",
@@ -918,7 +949,7 @@
   ],
   "tips": [
     {
-      "text": "Blythe has DC fast charging. EVCS lists 2 CCS and 2 CHAdeMO connectors, up to 50 kW, at 100 Hobsonway. DOE lists 2 DC ports at that address. Both numbers are on the stop. ChargePoint sites on Donlon Street were not confirmed on ChargePoint's locator. Ehrenberg's Tesla sites were checked on Tesla's locator.",
+      "text": "Blythe's primary is 2 stalls at US Bank, 100 Hobsonway, each with CCS and CHAdeMO, up to 50 kW. The stall count comes from the DOE record and the EVCS site photo. EVCS's page counts 4 connectors. NACS cars need an adapter. The 50 kW is up to, and likely only one connector per stall charges at a time. ChargePoint sites on Donlon Street were not confirmed on ChargePoint's locator. Ehrenberg's Tesla sites were checked on Tesla's locator.",
       "source": "evcs"
     },
     {
@@ -926,7 +957,7 @@
       "source": "afdc"
     },
     {
-      "text": "The Palm Desert search, 6 miles around the town, was completed from the DOE California file on October 15, 2026. Those sites are listed on the Indio stop. Ones not opened on a network locator stay unverified.",
+      "text": "The Palm Desert search, 6 miles around the town, was completed from the DOE California file on October 14, 2026. Those sites are listed on the Indio stop. Ones not opened on a network locator stay unverified.",
       "source": "afdc"
     }
   ],
