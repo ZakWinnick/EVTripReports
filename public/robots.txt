@@ -3,3 +3,5 @@ Allow: /
 Disallow: /plan/
 Disallow: /find-my-plans/open/
 Disallow: /find-my-plans/list
+
+Sitemap: https://evtripreports.com/sitemap.xml
