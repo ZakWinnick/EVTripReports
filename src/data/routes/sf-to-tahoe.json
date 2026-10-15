@@ -571,7 +571,20 @@
         "afdcIds": [
           149834
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Sacramento/comments/tb5ait/ev_charging_stations_on_i5_between_sacramento_and/i051fon/",
+            "date": "2022-03-10",
+            "summary": "Driver prefers the Davis EA over the Vacaville EA because the Vacaville site has more people."
+          },
+          {
+            "source": "forum",
+            "url": "https://teslamotorsclub.com/tmc/threads/best-supercharger-locations-for-east-bay-to-tahoe.299781/",
+            "date": "2023-04-17",
+            "summary": "Commenter says Vacaville is only 150 kW and generally crowded, in a reply that compares it with the Davis EA."
+          }
+        ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
@@ -811,6 +824,18 @@
             "url": "https://www.plugshare.com/location/307130",
             "date": "2026-08-23",
             "summary": "Summer Sat evening just two chargers in use."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Sacramento/comments/tb5ait/ev_charging_stations_on_i5_between_sacramento_and/i051fon/",
+            "date": "2022-03-10",
+            "summary": "VW ID.4 driver prefers the Davis EA at Bank of America over the Vacaville EA because fewer people use it."
+          },
+          {
+            "source": "forum",
+            "url": "https://teslamotorsclub.com/tmc/threads/best-supercharger-locations-for-east-bay-to-tahoe.299781/",
+            "date": "2023-04-17",
+            "summary": "Commenter says the Davis EA is 250 kW and seems open (replying in a thread about EA stops on the way to Tahoe)."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -891,6 +916,18 @@
             "url": "https://www.plugshare.com/location/186191",
             "date": "2026-10-11",
             "summary": "Couldn't activate with credit card. Worked after I called them. All stations working, but showing unknown status on PlugShare."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/ElectrifyAmericaUsers/comments/1fa124v/the_worst/lltcqk5/",
+            "date": "2024-09-06",
+            "summary": "Commenter says the Rocklin EA site was being rebuilt and was close to opening."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/ElectrifyAmericaUsers/comments/1fa124v/the_worst/lmd678a/",
+            "date": "2024-09-10",
+            "summary": "Commenter says the Rocklin Target EA site reopened that day with six 350 kW dispensers."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -1423,6 +1460,30 @@
             "url": "https://www.plugshare.com/location/350450",
             "date": "2026-09-18",
             "summary": "Great location, was able to use the lobby bathroom with no hassle, will be able to get back on the freeway r-80 quickly"
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Ioniq5/comments/1hi474p/bestleast_crowded_places_to_recharge_between/m335r24/",
+            "date": "2024-12-21",
+            "summary": "Commenter says there are 4 EA chargers at the Motel 6 off the Foresthill exit in Auburn."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Sacramento/comments/1gxgeq8/ev_owners_of_sacramento_what_does_a_trip_to_tahoe/lyhyzo8/",
+            "date": "2024-11-22",
+            "summary": "Kia Niro driver regularly tops up at the Motel 6 EA in Auburn; says it is easy on and off I-80."
+          },
+          {
+            "source": "forum",
+            "url": "https://teslamotorsclub.com/tmc/threads/best-supercharger-locations-for-east-bay-to-tahoe.299781/",
+            "date": "2023-04-17",
+            "summary": "Tesla owner in a TMC thread says the nearby EA station in Auburn has also worked well for him when using a CCS adapter."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/ElectrifyAmericaUsers/comments/1fa124v/the_worst/lltcqk5/",
+            "date": "2024-09-06",
+            "summary": "Commenter says the Auburn and Truckee EA sites stayed working while the Rocklin and Roseville sites were being rebuilt."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -1680,6 +1741,54 @@
             "url": "https://www.plugshare.com/location/190889",
             "date": "2026-09-17",
             "summary": "2 of 4 bays were available. A busy spot so felt fortunate. Station 1 would not connect with my car, but was able to move over and charged quite quickly."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/truckee/comments/1pheyan/how_reliablebusy_are_the_ev_chargers_in_truckee/nsya0tr/",
+            "date": "2025-12-08",
+            "summary": "Local commenter says the Save Mart EA site has only 4 chargers and fills up."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/truckee/comments/1pheyan/how_reliablebusy_are_the_ev_chargers_in_truckee/nt1i5du/",
+            "date": "2025-12-09",
+            "summary": "Commenter says the EA near CVS has good speeds but is very busy."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/truckee/comments/1pheyan/how_reliablebusy_are_the_ev_chargers_in_truckee/ntjyqew/",
+            "date": "2025-12-11",
+            "summary": "Commenter says the Save Mart EA CCS chargers get swamped on busy holiday weeks and weekends, slightly better since Rivian and Tesla networks opened to more cars."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Ioniq5/comments/1hi474p/bestleast_crowded_places_to_recharge_between/m335r24/",
+            "date": "2024-12-21",
+            "summary": "Commenter lists 4 EA chargers near Save Mart in Truckee, busy on weekends and holidays."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Sacramento/comments/1gxgeq8/ev_owners_of_sacramento_what_does_a_trip_to_tahoe/lyhyzo8/",
+            "date": "2024-11-22",
+            "summary": "Kia Niro driver says they top up at the Save Mart lot EA in Truckee when they need a charge at the top of the climb."
+          },
+          {
+            "source": "forum",
+            "url": "https://www.macheforum.com/site/threads/sf-bay-area-to-trucke-tahoe-anyone.49038/",
+            "date": "2025-09-09",
+            "summary": "Mach-E owner says the Truckee EA has historically been spotty and suggests checking recent PlugShare reviews; a NACS adapter adds options."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/F150Lightning/comments/1e95y43/ea_overloaded/lecmyac/",
+            "date": "2024-07-22",
+            "summary": "F-150 Lightning driver on a long trip called Truckee EA decent but power-limited."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/ElectrifyAmericaUsers/comments/1fa124v/the_worst/lltcqk5/",
+            "date": "2024-09-06",
+            "summary": "Commenter says the Truckee and Auburn EA sites stayed working while the Rocklin and Roseville sites were being rebuilt."
           }
         ],
         "checkedOn": "2026-10-15",

@@ -25,20 +25,64 @@ const ext = (url, text, cls = '') =>
 
 const REPORT_LABEL = { plugshare: 'PlugShare', x: 'X', reddit: 'Reddit', forum: 'Forum' };
 
+// A report dated on this day is exactly 3 years old, so it still shows.
+export function driverReportCutoff(now = new Date()) {
+  return new Date(Date.UTC(now.getUTCFullYear() - 3, now.getUTCMonth(), now.getUTCDate())).toISOString().slice(0, 10);
+}
+
+function recentReportDate(date, cutoff) {
+  return typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date) && date >= cutoff;
+}
+
 function stationDriverReports(station) {
   if (!station || !Array.isArray(station.driverReports)) return [];
   return station.driverReports.filter((r) => r && r.url && r.date && r.summary && REPORT_LABEL[r.source]);
 }
 
-function collectDriverReports(stop) {
+function collectDriverReports(stop, cutoff) {
   const out = [];
   const take = (station) => {
-    for (const r of stationDriverReports(station)) out.push({ ...r, about: station.name || '' });
+    for (const r of stationDriverReports(station)) {
+      if (!recentReportDate(r.date, cutoff)) continue;
+      out.push({ ...r, about: station.name || '' });
+    }
   };
   take(stop.primary);
   (stop.backups || []).forEach(take);
   (stop.other || []).forEach(take);
-  return out;
+  out.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  const seen = new Set();
+  return out.filter((r) => {
+    const key = `${r.url}\n${r.date}\n${r.summary}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function legacyDriverReports(stop, cutoff) {
+  return (stop.reports || []).filter((r) => r && r.text && recentReportDate(r.date, cutoff));
+}
+
+function driverReportItem(r) {
+  return `<li class="report"><p class="report__text">${esc(r.summary)}</p><p class="small muted" style="margin:0">Driver report, <time datetime="${esc(r.date)}">${esc(
+    fmtDate(r.date)
+  )}</time>, ${ext(r.url, REPORT_LABEL[r.source])}. About: ${esc(r.about)}</p></li>`;
+}
+
+function legacyReportItem(r, src) {
+  return `<li class="report"><p class="report__text">${esc(r.text)}</p><p class="small muted" style="margin:0">Driver report, <time datetime="${esc(r.date)}">${esc(
+    fmtDate(r.date)
+  )}</time>, ${esc(r.who)} on ${ext(src(r.source).url, r.where)}. About: ${esc(r.site)}</p></li>`;
+}
+
+function reportEntries(driverReports, legacyReports, src) {
+  const items = [
+    ...driverReports.map((r) => ({ date: r.date, html: driverReportItem(r) })),
+    ...legacyReports.map((r) => ({ date: r.date, html: legacyReportItem(r, src) })),
+  ];
+  items.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  return items.map((item) => item.html).join('');
 }
 
 export function statStrip(stats) {
@@ -179,16 +223,18 @@ function stopSection(route, s, i) {
   ['stalls', 'power', 'access', 'price'].forEach((k) => addFactSources(ids, p[k]));
   s.backups.forEach((b) => b.source && ids.add(b.source));
   if (s.other.length) ids.add('afdc');
-  (s.reports || []).forEach((r) => ids.add(r.source));
+  const cutoff = driverReportCutoff();
+  const driverReports = collectDriverReports(s, cutoff);
+  const legacyReports = legacyDriverReports(s, cutoff);
+  legacyReports.forEach((r) => r.source && ids.add(r.source));
   s.around.forEach((a) => ids.add(a.source));
-  const driverReports = collectDriverReports(s);
   const sources = [...ids].map((id) => S[id]).filter(Boolean);
   const seenReportUrls = new Set();
   const reportSources = [];
   for (const r of driverReports) {
     if (seenReportUrls.has(r.url)) continue;
     seenReportUrls.add(r.url);
-    reportSources.push({ name: `${REPORT_LABEL[r.source]}: ${r.about}`, url: r.url });
+    reportSources.push({ name: `Driver report, ${REPORT_LABEL[r.source]}: ${r.about}`, url: r.url });
   }
   const backupHtml = s.backups.length
     ? `<ul class="list">${s.backups
@@ -236,22 +282,9 @@ function stopSection(route, s, i) {
       : ''
   }</div>
 <div><h3 class="h3 sub">Driver reports</h3>${
-    driverReports.length === 0 && (s.reports || []).length === 0
+    driverReports.length === 0 && legacyReports.length === 0
       ? `<p class="muted">No recent driver reports found for this stop yet.</p>`
-      : `<ul class="list">${[
-          ...driverReports.map(
-            (r) =>
-              `<li class="report"><p class="report__text">${esc(r.summary)}</p><p class="small muted" style="margin:0"><time datetime="${esc(r.date)}">${esc(
-                fmtDate(r.date)
-              )}</time>, ${ext(r.url, REPORT_LABEL[r.source])}. About: ${esc(r.about)}</p></li>`
-          ),
-          ...(s.reports || []).map(
-            (r) =>
-              `<li class="report"><p class="report__text">${esc(r.text)}</p><p class="small muted" style="margin:0"><time datetime="${esc(r.date)}">${esc(
-                fmtDate(r.date)
-              )}</time>, ${esc(r.who)} on ${ext(src(r.source).url, r.where)}. About: ${esc(r.site)}</p></li>`
-          ),
-        ].join('')}</ul>`
+      : `<ul class="list">${reportEntries(driverReports, legacyReports, src)}</ul>`
   }${
     s.around.length ? `<h3 class="h3 sub">Around the stop</h3><ul class="plain">${s.around.map((a) => `<li>${esc(a.text)}</li>`).join('')}</ul>` : ''
   }

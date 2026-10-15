@@ -110,7 +110,26 @@
         "afdcIds": [
           165415
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "forum",
+            "url": "https://www.kiaevforums.com/threads/phoenix-to-los-angeles-road-trip.5363/",
+            "date": "2022-12-10",
+            "summary": "EV6 owner found the Cabazon EA site had one station blocked by a gas car and the rest in use, waited about 5 minutes, and peaked at 205 kW."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Coachella/comments/1jts3nl/ev_charging_in_palm_springs/mlx7c66/",
+            "date": "2025-04-07",
+            "summary": "Commenter says the Cabazon outlets have a good number of fast chargers, are well used, and limit people to one hour at a time."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Coachella/comments/1jts3nl/ev_charging_in_palm_springs/mly3uuk/",
+            "date": "2025-04-07",
+            "summary": "Commenter says they topped off at the Cabazon outlet while eating and the car was well charged by the time they were done."
+          }
+        ],
         "checkedOn": "2026-10-14",
         "source": "ea-locator"
       },
@@ -332,6 +351,12 @@
             "url": "https://www.plugshare.com/location/186170",
             "date": "2026-10-12",
             "summary": "Did allow other cars to charge, but didn’t allow my bolt euv charge Could not activate"
+          },
+          {
+            "source": "forum",
+            "url": "https://lucidowners.com/threads/arizona.795/page-51",
+            "date": "2024-12-21",
+            "summary": "Lucid owner says 11 AM is the best time to charge at the Indio EA, with about 90% availability, since locals fill up at Walmart around noon."
           }
         ],
         "checkedOn": "2026-10-14",
@@ -681,7 +706,20 @@
           "afdcIds": [
             200713
           ],
-          "driverReports": []
+          "driverReports": [
+            {
+              "source": "forum",
+              "url": "https://lucidowners.com/threads/arizona.795/page-51",
+              "date": "2024-12-21",
+              "summary": "Lucid owner uses the ChargePoint DC fast charger at the Denny's in Blythe as the backup when Quartzsite is full, and says its 120 kW is shared between 2 stations."
+            },
+            {
+              "source": "forum",
+              "url": "https://www.macheforum.com/site/threads/dcfc-in-america-it%E2%80%99s-falling-apart.20888/page-26",
+              "date": "2022-09-07",
+              "summary": "Poster says the ChargePoint and EV Connect 50 kW chargers in Blythe were all broken over Labor Day weekend 2022."
+            }
+          ]
         },
         {
           "name": "CEC CORRIDOR BLYTH DENNY DC2, 876 W Donlon St, Blythe",
@@ -690,7 +728,20 @@
           "afdcIds": [
             200712
           ],
-          "driverReports": []
+          "driverReports": [
+            {
+              "source": "forum",
+              "url": "https://lucidowners.com/threads/arizona.795/page-51",
+              "date": "2024-12-21",
+              "summary": "Lucid owner uses the ChargePoint DC fast charger at the Denny's in Blythe as the backup when Quartzsite is full, and says its 120 kW is shared between 2 stations."
+            },
+            {
+              "source": "forum",
+              "url": "https://www.macheforum.com/site/threads/dcfc-in-america-it%E2%80%99s-falling-apart.20888/page-26",
+              "date": "2022-09-07",
+              "summary": "Poster says the ChargePoint and EV Connect 50 kW chargers in Blythe were all broken over Labor Day weekend 2022."
+            }
+          ]
         },
         {
           "name": "Ehrenberg, AZ - Frontage Rd - Tesla Supercharger, 14283 Frontage Rd N, Ehrenberg",
@@ -788,7 +839,56 @@
         "afdcIds": [
           187948
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/evcharging/comments/1dydybl/queuing_to_charge_in_quartzite_az/",
+            "date": "2024-07-08",
+            "summary": "Driver reports 5 hours waiting and charging at Quartzsite on a holiday weekend in 115F heat, with many cars struggling to charge."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/evcharging/comments/1dydybl/queuing_to_charge_in_quartzite_az/lca3n28/",
+            "date": "2024-07-09",
+            "summary": "Commenter calls the 4 EA CCS chargers at Quartzsite woefully inadequate."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1puwqk9/road_trip_los_angeles_to_az/nvsdypd/",
+            "date": "2025-12-24",
+            "summary": "Commenter says Quartzsite has four EA 350 kW chargers that back up on weekends and holidays, and Tesla or Rivian sites nearby avoid the queue."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1puwqk9/road_trip_los_angeles_to_az/nvsmd8y/",
+            "date": "2025-12-24",
+            "summary": "Commenter calls Quartzsite a well-known CCS bottleneck and advises a NACS adapter."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/ElectrifyAmericaUsers/comments/15lxit8/anyone_have_experience_going_from_indio_ca_to/jvhdbbn/",
+            "date": "2023-08-09",
+            "summary": "Commenter says the Quartzsite EA is almost always a mess and to check PlugShare before leaving."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/ElectrifyAmericaUsers/comments/15lxit8/anyone_have_experience_going_from_indio_ca_to/jyejzby/",
+            "date": "2023-08-30",
+            "summary": "Commenter says Quartzsite was a saviour on their trip and all chargers were going fast."
+          },
+          {
+            "source": "forum",
+            "url": "https://www.kiaevforums.com/threads/phoenix-to-los-angeles-road-trip.5363/",
+            "date": "2022-12-10",
+            "summary": "EV6 owner found one Quartzsite station down, no queue on arrival, and a 350 kW unit that peaked at 120 kW."
+          },
+          {
+            "source": "forum",
+            "url": "https://www.macheforum.com/site/threads/dcfc-in-america-it%E2%80%99s-falling-apart.20888/page-26",
+            "date": "2022-09-07",
+            "summary": "Poster says EA had a large failure at the Quartzsite chargers over Labor Day weekend 2022."
+          }
+        ],
         "checkedOn": "2026-10-14",
         "source": "ea-locator"
       },

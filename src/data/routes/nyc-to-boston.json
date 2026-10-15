@@ -106,7 +106,14 @@
         "afdcIds": [
           186283
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/ul43pf/more_directional_signage_to_charging_stations/",
+            "date": "2022-05-08",
+            "summary": "Driver says the Ridgeway EA chargers are on the lower level of a parking garage with no signage, and were hard to find."
+          }
+        ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
@@ -314,6 +321,18 @@
             "url": "https://www.plugshare.com/location/152891",
             "date": "2026-08-23",
             "summary": "Great location with no issues charging. Everyone goes to the McDonalds there for food and bathroom usage"
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1hfz5ux/state_of_electrify_america_between_boston_and_new/m2sessb/",
+            "date": "2024-12-19",
+            "summary": "Commenter says Stratford Square has 8 350 kW chargers off I-95 exit 33, jammed at rush hour and on weekends, otherwise usually available."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1hfz5ux/state_of_electrify_america_between_boston_and_new/m2g5ath/",
+            "date": "2024-12-17",
+            "summary": "Commenter who drives Boston to NJ says they usually stop at Stratford; chargers there work well, with one out now and then."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -633,6 +652,18 @@
             "url": "https://www.plugshare.com/location/317693",
             "date": "2026-08-12",
             "summary": "With four cars charging only getting 84kW."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/newhaven/comments/1s622ba/ev_charging_cost/ocywyv5/",
+            "date": "2026-03-28",
+            "summary": "Commenter says they charged at 410 Universal Drive in North Haven on a rental, it was fast, and a first-charge promo covered the session."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/VWiD4Owners/comments/129ktgk/longish_trip_went_well_on_i_95_ct_to_nyc/",
+            "date": "2023-04-02",
+            "summary": "ID.4 owner says North Haven gave problems on all 3 of their visits, with one fast charger and the others down or a line."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -964,6 +995,18 @@
             "url": "https://www.plugshare.com/location/152893",
             "date": "2026-07-18",
             "summary": "400 charger, fastest I've seen advertised yet. Warm day, a few spots open. Decent speed."
+          },
+          {
+            "source": "forum",
+            "url": "https://www.f150lightningforum.com/forum/threads/electrify-america-400kw-station-with-nacs-connections.26680/",
+            "date": "2025-04-23",
+            "summary": "Forum poster says Waterford Commons reopened with revised equipment and both CCS1 and NACS connectors."
+          },
+          {
+            "source": "forum",
+            "url": "https://lucidowners.com/threads/tried-the-new-ea-pilot-station-waterford-ct-liked-it-a-lot.12973/",
+            "date": "2025-07-23",
+            "summary": "Lucid owner says outbound charge at Waterford had no issues, on the return one connector errored and one stall showed out of service before a third worked fast."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -1170,6 +1213,36 @@
             "url": "https://www.plugshare.com/location/186874",
             "date": "2026-06-27",
             "summary": "I used the Electrify America app to initiate the charge."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/evcharging/comments/1qyjkvn/ev_america_in_providence_ri/",
+            "date": "2026-02-07",
+            "summary": "Providence Walmart EA user says it had gone downhill over the winter with one or two chargers down, and that all chargers showed offline on the day of posting."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/evcharging/comments/1qyjkvn/ev_america_in_providence_ri/o6191ez/",
+            "date": "2026-02-18",
+            "summary": "Commenter says all chargers at the Providence Walmart EA were still offline on Feb 18."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/evcharging/comments/1qyjkvn/ev_america_in_providence_ri/o61ryyx/",
+            "date": "2026-02-18",
+            "summary": "Commenter says new chargers were in place at the Providence Walmart and the EA app had shown an upgrade starting Feb 5."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/evcharging/comments/1qyjkvn/ev_america_in_providence_ri/o4dl33g/",
+            "date": "2026-02-09",
+            "summary": "Commenter says the EA app showed the site back with four 350 kW chargers instead of two 150s and two 350s, which they took to mean a hardware upgrade."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/providence/comments/1oyxqil/ev_chargers_near_prospect_park/np7qmq5/",
+            "date": "2025-11-16",
+            "summary": "Weekly user says the Providence Walmart EA had been pretty good but got worse over the prior month or two, with two of four chargers out of order."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -1667,6 +1740,12 @@
               "url": "https://www.plugshare.com/location/367490",
               "date": "2026-08-02",
               "summary": "very easy to charge here. credit card only, no account required. cheaper than electrify america that's just across the parking lot. would use this network again anytime"
+            },
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/evcharging/comments/1qyjkvn/ev_america_in_providence_ri/o6nzfcx/",
+              "date": "2026-02-21",
+              "summary": "Commenter says Wrentham has 4 new EA chargers that worked great with no wait, peaking at 239 kW on an Ioniq 5."
             }
           ],
           "checkedOn": "2026-10-15"

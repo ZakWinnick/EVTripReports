@@ -260,6 +260,12 @@
             "url": "https://www.plugshare.com/location/186868",
             "date": "2026-09-08",
             "summary": "Iced. Three stalls closed. Blocked by vehicle"
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Tacoma/comments/15fm27i/ev_chargers_at_walmart/juestd2/",
+            "date": "2023-08-01",
+            "summary": "Commenter in an r/Tacoma thread about the Walmart chargers says the EA chargers there were always down or limited in charge rate."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -1063,7 +1069,26 @@
         "afdcIds": [
           124684
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1iwqbm2/nontesla_charging_between_seattle_and_portland/meg1x6u/",
+            "date": "2025-02-24",
+            "summary": "Commenter says Three Rivers Mall in Longview is ok since the equipment was upgraded, but not very close to I-5."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1iwqbm2/nontesla_charging_between_seattle_and_portland/megofrl/",
+            "date": "2025-02-24",
+            "summary": "Commenter says the Three Rivers Mall EA tends to have a queue when they have been, and they had better luck at the Vancouver Walmart EA."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1hdl121/hows_ccs_road_tripping_through_washington_state/m1wxgik/",
+            "date": "2024-12-13",
+            "summary": "Commenter says the EA chargers at Three Rivers Mall in Longview are always crowded and points to an EVCS charger in Castle Rock as an alternative."
+          }
+        ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
@@ -1495,7 +1520,20 @@
           "afdcIds": [
             121709
           ],
-          "driverReports": [],
+          "driverReports": [
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/electricvehicles/comments/1iwqbm2/nontesla_charging_between_seattle_and_portland/meg1x6u/",
+              "date": "2025-02-24",
+              "summary": "Commenter says the Walmart EA in Vancouver has been good."
+            },
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/electricvehicles/comments/1iwqbm2/nontesla_charging_between_seattle_and_portland/megofrl/",
+              "date": "2025-02-24",
+              "summary": "Commenter says they had better luck at the EA chargers at the Vancouver Walmart than at Three Rivers Mall, and that Walmart sites usually have more stalls."
+            }
+          ],
           "checkedOn": "2026-10-15"
         },
         {
