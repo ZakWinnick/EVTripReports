@@ -1101,7 +1101,7 @@
       "towns": "Kettleman City and Avenal, CA",
       "mile": 147,
       "milepostNote": "State Route 41, exit 309, mile 308.90. 308.90 − 162.24 = 146.7.",
-      "why": "Two large sites at the same exit: Electrify America on Hubert Way, and the Tesla site on Bernard Drive that Tesla lists at 55 stalls. A second Tesla address on Bernard Drive is in DOE only. Avenal sites inside the 10-mile search are listed with their own city.",
+      "why": "Two large sites at the same exit: Electrify America on Hubert Way, and the Tesla site at 33341 Bernard Drive that Tesla lists at 55 stalls, open to other EVs. A second Tesla site at 27675 Bernard Drive lists 40 stalls and is Tesla only. Avenal sites inside the 10-mile search are listed with their own city.",
       "primary": {
         "name": "Electrify America, Kettleman City",
         "network": "Electrify America",
@@ -1138,6 +1138,12 @@
             "url": "https://www.reddit.com/r/electricvehicles/comments/184gypb/la_to_san_franciscobay_area_1125_3_hour_wait_at/",
             "date": "2023-11-26",
             "summary": "Reported a 3 hour wait to plug in. About 20 cars were in line on arrival, 7 of the 10 chargers were working, and the line was longer by the time they left."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/TailosiveEV/status/1927135311533834257",
+            "date": "2025-05-26",
+            "summary": "Shows a line of cars waiting at Electrify America Kettleman City. The poster went to a Tesla site and had no wait."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -1163,6 +1169,18 @@
               "url": "https://www.plugshare.com/location/350134",
               "date": "2026-09-08",
               "summary": "Non-tesla can charge with an adapter. Plenty of stations and space so even though the cords are short we were able to pull into a space to make it work"
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/PragmaTwice/status/2005080299324276863",
+              "date": "2025-12-28",
+              "summary": "At the Kettleman City Supercharger, 5 or more stalls kept stopping in the middle of a charge, with no warning in the app."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/JoeChacon/status/2031060577100116134",
+              "date": "2026-03-09",
+              "summary": "Says the Kettleman City site has 40 stalls and a Tesla Lounge."
             }
           ],
           "checkedOn": "2026-10-15"
@@ -1360,7 +1378,20 @@
         },
         "teslaAccess": "open",
         "afdcIds": [],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "x",
+            "url": "https://x.com/wholemars/status/2091674852788965644",
+            "date": "2026-08-23",
+            "summary": "The Firebaugh Supercharger was packed."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/contractorsPOV/status/2066759978682405270",
+            "date": "2026-06-16",
+            "summary": "Firebaugh is a very large site with food and lodging nearby."
+          }
+        ],
         "checkedOn": "2026-10-15",
         "url": "https://www.tesla.com/findus/location/supercharger/firebaughsupercharger",
         "source": "tesla-findus"
@@ -1452,7 +1483,20 @@
           "afdcIds": [
             226529
           ],
-          "driverReports": [],
+          "driverReports": [
+            {
+              "source": "x",
+              "url": "https://x.com/ChargePozitive/status/1915210669240299664",
+              "date": "2025-04-24",
+              "summary": "Santa Nella Supercharger has 3 dedicated towing stalls, and there are 2 Rivian towing stalls in the same lot."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/DavidMoss/status/2005114905112838482",
+              "date": "2025-12-28",
+              "summary": "The Rivian Adventure Network and Tesla stalls share the hotel parking lot in Santa Nella."
+            }
+          ],
           "checkedOn": "2026-10-15"
         }
       ],

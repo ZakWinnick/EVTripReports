@@ -22,7 +22,7 @@
     },
     {
       "label": "Checked against the network",
-      "value": "21",
+      "value": "22",
       "unit": ""
     },
     {
@@ -72,6 +72,10 @@
     "plugshare": {
       "name": "PlugShare",
       "url": "https://www.plugshare.com/"
+    },
+    "rivian": {
+      "name": "Rivian charging map",
+      "url": "https://rivian.com/experience/charging"
     }
   },
   "stops": [
@@ -467,6 +471,18 @@
             "url": "https://www.plugshare.com/location/650004",
             "date": "2026-10-07",
             "summary": "Nice to have the longer V4 cables for my Lightning."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/ChargePozitive/status/1977211383931711849",
+            "date": "2025-10-12",
+            "summary": "At the 120-stall Barstow site, the pull-through towing stall now has a sign, and a tire air station was added next to it."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/BLKMDL3/status/1923861694620762433",
+            "date": "2025-05-17",
+            "summary": "Describes the 120-stall Barstow site as having solar canopies, V4 posts, and pull-through trailer stalls next to the highway."
           }
         ]
       },
@@ -495,6 +511,12 @@
               "url": "https://www.plugshare.com/location/186195",
               "date": "2026-10-02",
               "summary": "Works well. Not too busy. 25kW delivered in 20 mins."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/Theresa60774184/status/2043482989573902770",
+              "date": "2026-04-13",
+              "summary": "At an Electrify America station in Barstow, a transit bus held a charger for about 1 hour 20 minutes while cars waited to charge. Walmart is the only EA site in Barstow in our data, so this is probably that site, but the post doesn't name it."
             }
           ]
         },
@@ -511,20 +533,42 @@
           "afdcIds": [
             220686
           ],
-          "driverReports": []
+          "driverReports": [
+            {
+              "source": "x",
+              "url": "https://x.com/elis/status/2096782804764037167",
+              "date": "2026-09-07",
+              "summary": "Says the Barstow Outlets Supercharger was handing out $10 gift cards to spend at the outlets while charging."
+            }
+          ]
         },
         {
           "name": "Barstow, Lenwood Road",
           "network": "Rivian Adventure Network",
           "address": "2835 Lenwood Rd, Barstow, CA 92311",
-          "facts": "DOE lists 6 stalls at 300 kW CCS, public, last confirmed October 2026. Rivian's own locator is in-app only, so we have not checked it against Rivian yet.",
-          "access": "DOE lists it as public",
-          "status": "unverified",
-          "source": "afdc",
+          "facts": "Rivian's charging map lists 6 chargers, up to 300 kW, at 2835 Lenwood Rd, Barstow. Open to non-Rivian EVs. DOE lists the same port count.",
+          "access": "Open to non-Rivian EVs.",
+          "status": "verified",
+          "source": "rivian",
           "afdcIds": [
             391293
           ],
-          "driverReports": []
+          "driverReports": [
+            {
+              "source": "x",
+              "url": "https://x.com/mrkylefield/status/1914443696478806139",
+              "date": "2025-04-21",
+              "summary": "At the Rivian Adventure Network site in Barstow, pulled a steady 148 kW for about 15 minutes. Lots of restaurants nearby."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/sherwinmdev/status/2008307106546684067",
+              "date": "2026-01-05",
+              "summary": "Says the Barstow RAN chargers were replaced with v1.5 units and non-Rivian EVs can charge now. Saw a Kia, a Polestar, and a BMW charging."
+            }
+          ],
+          "url": "https://rivian.com/experience/charging",
+          "checkedOn": "2026-10-15"
         },
         {
           "name": "Barstow (Holiday Inn & Suites)",
@@ -671,7 +715,7 @@
           "name": "Yermo (EddieWorld)",
           "network": "Tesla Supercharger",
           "address": "36017 Calico Road, Yermo, CA 92398",
-          "facts": "Sources conflict. Tesla: 18 stalls, up to 150 kW. DOE: 22 ports at 75 kW. We show Tesla's numbers.",
+          "facts": "Sources conflict. Tesla's page, rechecked October 15, 2026, lists 18 stalls, up to 150 kW, and pricing for Tesla only. DOE lists 22 ports at 75 kW. We show Tesla's numbers.",
           "access": "Tesla only",
           "teslaAccess": "tesla-only",
           "status": "conflict",
@@ -692,8 +736,33 @@
               "url": "https://www.plugshare.com/location/135834",
               "date": "2026-08-20",
               "summary": "Pedestal 8A 8b reported OUT OF SERVICE"
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/TheZacher/status/2030158344015790382",
+              "date": "2026-03-07",
+              "summary": "Says the current Eddie World chargers top out at 72 kW."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/FightNight702/status/2008187123569209460",
+              "date": "2026-01-05",
+              "summary": "Says charging in Yermo is poor on the old V2 stalls, but Eddie World itself is good."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/periodicaudio/status/2008959319472263668",
+              "date": "2026-01-07",
+              "summary": "Sometimes sees lines at the Eddie World Superchargers, usually a 10 to 15 minute wait at most."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/aytoozeeusa/status/1926674102892249132",
+              "date": "2025-05-25",
+              "summary": "Says Eddie World was the only Supercharger site they've used with a restroom that wasn't in an unrelated business nearby."
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         }
       ],
       "other": [
@@ -780,6 +849,30 @@
             "url": "https://www.plugshare.com/location/196551",
             "date": "2026-10-02",
             "summary": "Works well. Getting an average of 75kW. Charged from 44% to 75% in 25 mins. *note: Charge station 8 is down. No display."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/macheroadtrip/status/1937249663989530854",
+            "date": "2025-06-23",
+            "summary": "Every stall at Electrify America Baker was taken. In 2021 they had been the only car there."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/macheroadtrip/status/2103616482890670442",
+            "date": "2026-09-25",
+            "summary": "Every stall at Electrify America Baker was taken again; hopes the site gets expanded."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/macheroadtrip/status/2104344114313810085",
+            "date": "2026-09-27",
+            "summary": "Electrify America Baker filled up right after they took the photo."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/ChargePozitive/status/1977774679571198203",
+            "date": "2025-10-13",
+            "summary": "A Nissan Leaf driver in Baker couldn't find a working CHAdeMO charger. The poster notes that Electrify America in Baker is CCS only."
           }
         ]
       },
@@ -809,6 +902,18 @@
               "url": "https://www.plugshare.com/location/1294824",
               "date": "2026-09-06",
               "summary": "Clean and next to a coffee shop!"
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/ChargePozitive/status/1985825492067614902",
+              "date": "2025-11-04",
+              "summary": "New 40-stall V4 site on Mojave Pointe Rd. Open to NACS vehicles, and 6 stalls have pull-through room for trailers."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/PrescottNorm/status/2086960852964626929",
+              "date": "2026-08-10",
+              "summary": "Says rolling blackouts shut down both Baker Supercharger sites that day."
             }
           ]
         },
@@ -825,7 +930,27 @@
           "afdcIds": [
             101999
           ],
-          "driverReports": []
+          "driverReports": [
+            {
+              "source": "x",
+              "url": "https://x.com/sincitytesla/status/2053327593970311618",
+              "date": "2026-05-10",
+              "summary": "Evening visit: 53 of 96 stalls open on arrival, $0.47/kWh, and $12.24 for a 35% to 80% charge."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/sherwinmdev/status/2002431301937205450",
+              "date": "2025-12-20",
+              "summary": "Says Baker has older 150 kW stalls in front and 250 kW V3 stalls in back. The V3 cables are short, which is hard for a Cybertruck."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/PrescottNorm/status/2086960852964626929",
+              "date": "2026-08-10",
+              "summary": "Says rolling blackouts shut down both Baker Supercharger sites that day, so they were rerouted. Applies to the Mojave Pointe Road site too."
+            }
+          ],
+          "checkedOn": "2026-10-15"
         },
         {
           "name": "PowerStation, Rasor Road",
@@ -1013,6 +1138,18 @@
               "url": "https://www.plugshare.com/location/1289303",
               "date": "2026-09-04",
               "summary": "New, clean, lots of services"
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/TheZacher/status/2056868728743338004",
+              "date": "2026-05-19",
+              "summary": "64 stalls with pull-through stalls for towing, next to a travel center with lots of amenities."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/CTJESU55/status/2058665897385164962",
+              "date": "2026-05-24",
+              "summary": "Recommends the new Jean site over Primm and says it has lots of restrooms."
             }
           ]
         },
@@ -1035,8 +1172,21 @@
               "url": "https://www.plugshare.com/location/58299",
               "date": "2026-09-12",
               "summary": "Could not activate"
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/whatsinside/status/2037558023712047480",
+              "date": "2026-03-27",
+              "summary": "Says the Primm Superchargers don't work for non-Tesla EVs, and they often see non-Tesla drivers there sent over to Electrify America."
+            },
+            {
+              "source": "x",
+              "url": "https://x.com/DavidMoss/status/2048929147456716884",
+              "date": "2026-04-28",
+              "summary": "Recommends the Primm stop for its good restrooms and the Bonnie and Clyde car inside the attached casino."
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         }
       ],
       "other": [
