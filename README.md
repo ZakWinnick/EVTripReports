@@ -58,9 +58,29 @@ Set `ADMIN_TOKEN` as a Pages secret. Every request needs `Authorization: Bearer 
 - `GET /api/admin/plans` lists requests whose status is `new` or `review`.
 - `GET /api/admin/plans/:id` returns that request and its drafts.
 - `POST /api/admin/plans/:id/draft` saves a draft. Body: `format` (`markdown` or `html`), `body`, and `sources` (a list of `{ "label", "url" }`). The request status becomes `review`.
-- `POST /api/admin/plans/:id/decision` with `{ "status": "approved" }` or `{ "status": "rejected-for-redo" }`. Approval requires a saved draft. The latest draft then gets a long random access code. Rejection clears any access code.
+- `POST /api/admin/plans/:id/decision` with `{ "status": "approved" }` or `{ "status": "rejected-for-redo" }`. Approval requires a saved draft. The response includes a long random access code once. Only the SHA-256 hash is stored, on the latest draft (`plan_drafts.access_code`) and in `plan_links`. That code is the private `/plan/<code>` link. Rejection clears the hash and deletes `plan_links` for that request. Apply `schema-portal.sql` before approving. If that table is missing, approval returns 503 and the request stays in review.
 
 Drafts live in `plan_drafts`. The statement is `schema-plan-drafts.sql`. Paste it into the D1 console for the database bound as `DB`, after `schema.sql`. Do not run it against production from a deploy or from CI.
+
+The plan page reads JSON from `plan_drafts.body` (save it with format `markdown` or `html`; the column only allows those two). Use the same shape as a guide where you can: `title`, `summary`, `checked`, `stats`, `sources`, and `stops` with a `primary` whose `stalls`, `power`, `access`, and `price` each have `value`, `url` or `source`, and `checkedOn`. Source ids resolve through `sources` on the JSON or the draft's `sources` list. Facts without a link or a date omit that part. Unapproved drafts are never shown.
+
+## Find my plans
+
+`/find-my-plans` emails a one-time link to the address used at checkout. The link expires in 15 minutes, works once, and opens a list of that email's approved plans. Each list gives private `/plan/<token>` links. Tokens are 32 bytes. The database stores only SHA-256 hashes.
+
+Pages Functions:
+
+- `GET /api/portal` returns `{ "turnstileSiteKey" }` (or null).
+- `POST /api/portal` with `{ "email", "cf-turnstile-response" }`. The JSON message is the same whether or not the email has an approved plan. Turnstile action is `find_plans` when `TURNSTILE_SECRET` is set.
+- `GET /find-my-plans/open/<token>` shows a button and does not use the link up. `POST` on that URL uses it once and sets a 15-minute cookie.
+- `GET /find-my-plans/list` lists approved plans for that cookie.
+- `GET /plan/<token>` shows the approved plan. Unknown tokens and unapproved drafts are a 404. Responses send `X-Robots-Tag: noindex, nofollow` and `Referrer-Policy: no-referrer`.
+
+Rate limits, counted in D1 before the email is looked up: 3 requests per email per 15 minutes, and 10 per IP per 15 minutes. Over the limit, the response is 429 with the same message for every address. The form has the same honeypot field as intake (`website`).
+
+Mail uses the existing Fastmail helper. From is `admin@evtripreports.com`. No new secret. The feature stays closed (503) until both `DB` and `FASTMAIL_TOKEN` are set. Turnstile uses the existing `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET`, and optional `TURNSTILE_HOSTNAMES`.
+
+Tables are in `schema-portal.sql`: `plan_links`, `portal_signins`, `portal_sessions`, `portal_rate_limits`. Paste it into the D1 console. Do not run it against production from a deploy or from CI.
 
 ## Data rules
 

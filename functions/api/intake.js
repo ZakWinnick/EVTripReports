@@ -12,42 +12,16 @@
 // If TURNSTILE_SECRET is unset, the form still accepts requests (it still needs D1).
 // Set both the site key and the secret before expecting the widget to be enforced.
 import { sendMail } from '../_lib/fastmail.js';
+import { verifyTurnstile } from '../_lib/turnstile.js';
 
 const REQUIRED = ['name', 'email', 'tier', 'car', 'port', 'start', 'end', 'depart'];
 const MAX = 2000;
-const SITEVERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 
 export async function onRequestGet({ env }) {
   return json({ turnstileSiteKey: env.TURNSTILE_SITE_KEY || null });
-}
-
-async function verifyTurnstile(request, env, token) {
-  if (!env.TURNSTILE_SECRET) return true;
-  const value = String(token ?? '');
-  if (value.length < 1 || value.length > 2048) return false;
-
-  const body = new URLSearchParams({ secret: env.TURNSTILE_SECRET, response: value });
-  const ip = request.headers.get('CF-Connecting-IP');
-  if (ip) body.set('remoteip', ip);
-
-  let res;
-  try {
-    res = await fetch(SITEVERIFY, { method: 'POST', body });
-  } catch {
-    return false;
-  }
-  let out;
-  try { out = await res.json(); } catch { return false; }
-  if (!res.ok || !out.success || out.action !== 'plan_request') return false;
-
-  const allowed = String(env.TURNSTILE_HOSTNAMES || 'evtripreports.com')
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
-  return allowed.includes(out.hostname);
 }
 
 export async function onRequestPost({ request, env, waitUntil }) {
@@ -58,7 +32,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   if (data.website) return json({ ok: true }); // honeypot: pretend success
 
-  if (!(await verifyTurnstile(request, env, data['cf-turnstile-response']))) {
+  if (!(await verifyTurnstile(request, env, data['cf-turnstile-response'], 'plan_request'))) {
     return json({ error: 'The security check failed. Refresh the page and try again.' }, 403);
   }
 

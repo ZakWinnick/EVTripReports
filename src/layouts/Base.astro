@@ -7,8 +7,11 @@ interface Props {
   description: string;
   path?: string;
   noindex?: boolean;
+  robots?: string;
+  analytics?: boolean;
+  referrer?: string;
 }
-const { title, description, path = '', noindex = false } = Astro.props;
+const { title, description, path = '', noindex = false, robots = 'noindex', analytics = true, referrer = '' } = Astro.props;
 const fullTitle = title === 'EV Trip Reports' ? title : `${title} | EV Trip Reports`;
 const canonical = new URL(path || Astro.url.pathname, Astro.site).toString();
 const current = Astro.url.pathname.replace(/\/$/, '');
@@ -27,7 +30,8 @@ const links = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {noindex && <meta name="robots" content={robots} />}
+    {referrer && <meta name="referrer" content={referrer} />}
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -39,7 +43,7 @@ const links = [
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <slot name="head" />
-    <script is:inline src="https://tinylytics.app/embed/yTazdLcW53ZLKkX41y8k.js" defer></script>
+    {analytics && <script is:inline src="https://tinylytics.app/embed/yTazdLcW53ZLKkX41y8k.js" defer></script>}
   </head>
   <body>
     <header class="nav">
@@ -68,6 +72,7 @@ const links = [
         <nav aria-label="Footer">
           <a href="/#guides">Guides</a>
           <a href="/plans">Custom plans</a>
+          <a href="/find-my-plans">Find my plans</a>
           <a href="/faq">FAQ</a>
           <a href="/methodology">How we check</a>
           <a href="/about">About</a>

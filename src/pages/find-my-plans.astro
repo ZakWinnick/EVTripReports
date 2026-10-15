@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Find my plans" description="Email yourself a one-time link to the EV trip plans you already bought. No password.">
+  <section class="band band--tight">
+    <div class="wrap">
+      <h1 class="h1">Find my plans.</h1>
+      <p class="lede" style="margin-top:20px">Enter the email you used at checkout. If it has an approved plan, we send a link that works once and expires in 15 minutes. No password and no account.</p>
+    </div>
+  </section>
+
+  <section class="band band--tight band--mist">
+    <div class="wrap narrow">
+      <form id="find-plans" class="panel form" novalidate>
+        <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+        <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label>
+        <div id="turnstile-slot" hidden></div>
+        <div class="btnrow">
+          <button class="pill pill--lg" type="submit">Email me a link</button>
+        </div>
+        <p class="form__msg" role="status" aria-live="polite"></p>
+      </form>
+      <p class="small muted" style="margin-top:16px">The reply looks the same if that email has no plan. We do that so the form does not reveal who bought one.</p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.getElementById('find-plans') as HTMLFormElement | null;
+  const msg = form?.querySelector('.form__msg') as HTMLElement | null;
+  const slot = document.getElementById('turnstile-slot');
+  let widgetId: string | null = null;
+
+  function loadTurnstile() {
+    return new Promise<void>((resolve, reject) => {
+      const w = window as unknown as { turnstile?: { render: Function } };
+      if (w.turnstile) { resolve(); return; }
+      const s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      s.async = true;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('turnstile'));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function setupTurnstile() {
+    if (!slot) return;
+    try {
+      const res = await fetch('/api/portal');
+      if (!res.ok) return;
+      const body = await res.json();
+      const sitekey = body.turnstileSiteKey;
+      if (!sitekey) return;
+      await loadTurnstile();
+      const turnstile = (window as unknown as { turnstile: { render: Function } }).turnstile;
+      slot.hidden = false;
+      widgetId = turnstile.render(slot, { sitekey, action: 'find_plans' });
+    } catch {
+      widgetId = null;
+    }
+  }
+  setupTurnstile();
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !msg) return;
+    msg.className = 'form__msg';
+    if (!form.checkValidity()) {
+      msg.textContent = 'Enter the email you used at checkout.';
+      msg.classList.add('is-err');
+      (form.querySelector(':invalid') as HTMLInputElement | null)?.focus();
+      return;
+    }
+    const data: Record<string, unknown> = Object.fromEntries(new FormData(form).entries());
+    const turnstile = (window as unknown as { turnstile?: { getResponse: (id: string) => string; reset: (id: string) => void } }).turnstile;
+    if (widgetId && turnstile) data['cf-turnstile-response'] = turnstile.getResponse(widgetId);
+    const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Sending';
+    try {
+      const res = await fetch('/api/portal', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
+      const body = await res.json().catch(() => ({}));
+      if (res.ok) {
+        form.reset();
+        msg.textContent = body.message || 'If this email has an approved plan, we sent a sign-in link. It expires in 15 minutes and works once.';
+        msg.classList.add('is-ok');
+      } else if (res.status === 503 || res.status === 404 || res.status === 405) {
+        msg.textContent = body.error || 'Plan lookup is not open yet. Check back soon.';
+        msg.classList.add('is-err');
+      } else {
+        msg.textContent = body.error || 'That did not go through. Try again.';
+        msg.classList.add('is-err');
+      }
+    } catch {
+      msg.textContent = 'That did not go through because the connection dropped. Try again.';
+      msg.classList.add('is-err');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Email me a link';
+      if (widgetId && turnstile) turnstile.reset(widgetId);
+    }
+  });
+</script>
+
+<style>
+  .narrow { max-width: 640px; }
+  .form { padding: clamp(18px, 3vw, 32px); display: grid; gap: 16px; }
+  .form label { display: grid; gap: 6px; font-size: 0.94rem; font-weight: 500; }
+  .form input { font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); background: #fff; border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 12px; width: 100%; }
+  .form input:focus { outline: 2px solid var(--green); outline-offset: 0; border-color: var(--green); }
+  .hp { position: absolute; left: -9999px; }
+  .form__msg { margin: 0; font-weight: 500; }
+  .form__msg.is-ok { color: var(--green); }
+  .form__msg.is-err { color: #8a1f11; }
+</style>

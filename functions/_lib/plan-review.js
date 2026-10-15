@@ -1,5 +1,7 @@
 // Admin review of plan requests. Nothing in this file emails a customer.
 // ADMIN_TOKEN is a Pages secret. The customer is never a recipient.
+// Approval returns a 32-byte access code once. Only its SHA-256 hash is stored.
+import { newToken, sha256Hex } from './tokens.js';
 
 const QUEUE = new Set(['new', 'review']);
 const DECISIONS = new Set(['approved', 'rejected-for-redo']);
@@ -24,11 +26,7 @@ function safeEqual(a, b) {
 }
 
 export function newAccessCode() {
-  const bytes = new Uint8Array(32);
-  crypto.getRandomValues(bytes);
-  let bin = '';
-  for (const b of bytes) bin += String.fromCharCode(b);
-  return btoa(bin).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '');
+  return newToken();
 }
 
 function tokenFrom(request) {
@@ -134,6 +132,12 @@ async function decide(db, id, data) {
   if (!QUEUE.has(row.status)) return json({ error: 'This request is not waiting for review.' }, 409);
 
   if (status === 'rejected-for-redo') {
+    try {
+      await db.prepare(`DELETE FROM plan_links WHERE request_id = ?`).bind(id).run();
+    } catch (e) {
+      console.error('plan_links clear failed', e.message);
+      return json({ error: 'Plan links are not set up yet. Apply schema-portal.sql, then try again.' }, 503);
+    }
     await db.prepare(`UPDATE plan_drafts SET access_code = NULL WHERE request_id = ?`).bind(id).run();
     await db.prepare(`UPDATE plan_requests SET status = ? WHERE id = ?`).bind('rejected-for-redo', id).run();
     return json({ ok: true, status: 'rejected-for-redo' });
@@ -145,9 +149,18 @@ async function decide(db, id, data) {
   if (!latest) return json({ error: 'Save a draft before approving.' }, 400);
 
   const accessCode = newAccessCode();
+  const tokenHash = await sha256Hex(accessCode);
   const now = new Date().toISOString();
+  try {
+    await db.prepare(
+      `INSERT INTO plan_links (request_id, draft_id, token_hash, created_at) VALUES (?, ?, ?, ?)`
+    ).bind(id, latest.id, tokenHash, now).run();
+  } catch (e) {
+    console.error('plan_links insert failed', e.message);
+    return json({ error: 'Plan links are not set up yet. Apply schema-portal.sql, then approve again.' }, 503);
+  }
   await db.prepare(`UPDATE plan_drafts SET access_code = NULL WHERE request_id = ?`).bind(id).run();
-  await db.prepare(`UPDATE plan_drafts SET access_code = ?, updated_at = ? WHERE id = ?`).bind(accessCode, now, latest.id).run();
+  await db.prepare(`UPDATE plan_drafts SET access_code = ?, updated_at = ? WHERE id = ?`).bind(tokenHash, now, latest.id).run();
   await db.prepare(`UPDATE plan_requests SET status = ? WHERE id = ?`).bind('approved', id).run();
   return json({ ok: true, status: 'approved', draftId: latest.id, accessCode });
 }

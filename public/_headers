@@ -1,2 +1,14 @@
 /guides/*
   X-Etr-Guide: 1
+
+/plan/*
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer
+
+/find-my-plans/open/*
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer
+
+/find-my-plans/list
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer

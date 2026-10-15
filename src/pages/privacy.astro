@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
   <section class="band band--tight">
     <div class="wrap prose">
       <h1 class="h1">Privacy</h1>
-      <p class="note" style="margin-top:20px">Draft, last updated October 14, 2026. Pending legal review.</p>
+      <p class="note" style="margin-top:20px">Draft, last updated October 15, 2026. Pending legal review.</p>
 
       <h2>Reading the guides</h2>
       <p>You can read every guide without an account. We use Cloudflare Web Analytics to count visits. It doesn't set cookies or track you across other sites.</p>
@@ -14,6 +14,9 @@ import Base from '../layouts/Base.astro';
       <p>When you request a plan, we collect what you put in the form: your name, email, car, charge port and adapter, route, dates, passengers, memberships, and notes. We use those details to build your plan and to email it to you. The details are stored with our hosting provider, Cloudflare.</p>
       <p>When the form's security check is turned on, Cloudflare Turnstile processes a verification token to tell automated requests from people. That check stays off until both the site key and the secret are set.</p>
       <p>AI tools help research and draft plans, so your trip details may be processed by an AI provider for that purpose. We don't use your details for anything else.</p>
+
+      <h2>Finding a plan</h2>
+      <p>An approved plan is on a private link. We store a hash of that link, not the link itself. Find my plans emails a one-time link to the address you used at checkout. That link expires in 15 minutes and works once. We store a hash of it, that email address, the time it was sent, and the time it was used. The same Turnstile check as the request form runs when that check is turned on. The page does not say whether an email has a plan.</p>
 
       <h2>What we don't do</h2>
       <ul>
