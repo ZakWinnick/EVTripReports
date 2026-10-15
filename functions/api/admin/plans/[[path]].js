@@ -4,6 +4,6 @@
 // GET  /api/admin/plans/:id             one request and its drafts
 // POST /api/admin/plans/:id/draft       save markdown or html plus sources
 // POST /api/admin/plans/:id/decision    { "status": "approved" } or { "status": "rejected-for-redo" }
-// Approved plans store a long random access code on the latest draft.
-// This file does not email anyone.
+// Approved plans return a long random access code once. Only its hash is stored.
+// This file does not email anyone. Apply schema-portal.sql before approving.
 export { onRequest } from '../../../_lib/plan-review.js';

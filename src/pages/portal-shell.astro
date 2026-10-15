@@ -1,0 +1,13 @@
+---
+// Empty page frame for private plan pages. Functions fill <main>.
+// No analytics script: the URL can contain a secret token.
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Plan"
+  description="A private trip plan."
+  noindex={true}
+  robots="noindex, nofollow"
+  analytics={false}
+  referrer="no-referrer"
+/>

@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /plan/
+Disallow: /find-my-plans/open/
+Disallow: /find-my-plans/list

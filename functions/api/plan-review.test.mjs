@@ -2,16 +2,19 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { onRequest } from './admin/plans/[[path]].js';
+import { sha256Hex } from '../_lib/tokens.js';
 
 const TOKEN = 'test-admin-token';
 
 function memoryDb(seed) {
   const requests = seed.map((row) => ({ ...row }));
   const drafts = [];
+  const links = [];
   let nextDraft = 1;
   return {
     requests,
     drafts,
+    links,
     prepare(sql) {
       const text = sql.replace(/\s+/g, ' ').trim();
       let bound = [];
@@ -43,6 +46,25 @@ function memoryDb(seed) {
           throw new Error(`unhandled first: ${text}`);
         },
         async run() {
+          if (text.startsWith('INSERT INTO plan_links')) {
+            links.push({
+              request_id: bound[0],
+              draft_id: bound[1],
+              token_hash: bound[2],
+              created_at: bound[3],
+            });
+            return { success: true, meta: { last_row_id: links.length, changes: 1 } };
+          }
+          if (text.startsWith('DELETE FROM plan_links')) {
+            let changes = 0;
+            for (let i = links.length - 1; i >= 0; i--) {
+              if (links[i].request_id === bound[0]) {
+                links.splice(i, 1);
+                changes += 1;
+              }
+            }
+            return { success: true, meta: { changes } };
+          }
           if (text.startsWith('INSERT INTO plan_drafts')) {
             const id = nextDraft++;
             drafts.push({
@@ -196,7 +218,13 @@ test('approve stores an unguessable code and does not call the network', async (
     assert.match(body.accessCode, /^[A-Za-z0-9_-]{43}$/);
     assert.equal(db.requests[0].status, 'approved');
     assert.equal(db.drafts[0].access_code, null);
-    assert.equal(db.drafts[1].access_code, body.accessCode);
+    assert.equal(db.drafts[1].access_code, await sha256Hex(body.accessCode));
+    assert.notEqual(db.drafts[1].access_code, body.accessCode);
+    assert.equal(db.links.length, 1);
+    assert.equal(db.links[0].token_hash, db.drafts[1].access_code);
+    assert.equal(db.links[0].draft_id, db.drafts[1].id);
+    assert.equal(JSON.stringify(db.drafts).includes(body.accessCode), false);
+    assert.equal(JSON.stringify(db.links).includes(body.accessCode), false);
     assert.equal((await call({ method: 'POST', path: '/1/decision', db, body: { status: 'approved' } })).status, 409);
     assert.equal((await call({ method: 'POST', path: '/1/draft', db, body: { format: 'markdown', body: 'nope', sources: [] } })).status, 409);
     assert.equal(calls.length, 0);
@@ -214,10 +242,12 @@ test('reject for redo clears any access code and sends nothing', async () => {
     body: { format: 'markdown', body: 'Draft', sources: [] },
   });
   db.drafts[0].access_code = 'should-clear';
+  db.links.push({ request_id: 2, draft_id: 1, token_hash: 'abc', created_at: '2026-10-15T00:00:00.000Z' });
   const res = await call({ method: 'POST', path: '/2/decision', db, body: { status: 'rejected-for-redo' } });
   assert.equal((await res.json()).status, 'rejected-for-redo');
   assert.equal(db.requests[1].status, 'rejected-for-redo');
   assert.equal(db.drafts[0].access_code, null);
+  assert.equal(db.links.length, 0);
   const listed = await (await call({ path: '', db })).json();
   assert.equal(listed.requests.some((row) => row.id === 2), false);
 });

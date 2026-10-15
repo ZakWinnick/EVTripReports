@@ -1,5 +1,9 @@
 /* Route line, guide pages and guide cards. Global because the same HTML is rendered at build time and by Pages Functions. */
   .specs .spec { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
+  .spec__src { display: block; margin-top: 6px; font-size: 0.82rem; font-weight: 400; color: var(--ink-2); }
+  .spec__src a { color: var(--ink-2); }
+  .stack { display: grid; gap: 16px; margin-top: 28px; max-width: 720px; }
+  .stack .panel { padding: 22px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
   .specs .spec__l { margin-top: 10px; }
   .specs .spec__v { margin: 0; }
 
