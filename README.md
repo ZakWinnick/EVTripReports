@@ -47,7 +47,20 @@ Both the site key and the secret have to be set for the check to run. If `TURNST
 
 Plan prices and Stripe Payment Links live in `src/data/plans.js`. Each tier's pay button uses that tier's `stripeUrl`. The intake form is saved first, then the browser opens the matching link. Stripe is configured to return to `https://evtripreports.com/plans?paid=1`, where the page shows a payment-received message. Replace a link in `plans.js` if you create a new Payment Link. Keep the success URL on `/plans?paid=1`.
 
-Intake stores each request with status `new` and, when `FASTMAIL_TOKEN` is set, emails that request to the owner (`NOTIFY_TO`). The customer is not a recipient. This pull request does not generate a plan and does not email a plan. A plan is sent only after the owner approves it, outside this code. Customer pages state the delivery time only: within 48 hours for route and detailed plans, within 3 business days for multi-day and family plans.
+Intake stores each request with status `new` and, when `FASTMAIL_TOKEN` is set, emails that request to the owner (`NOTIFY_TO`). The customer is not a recipient. Intake does not generate a plan and does not email a plan. Customer pages state the delivery time only: within 48 hours for route and detailed plans, within 3 business days for multi-day and family plans.
+
+## Plan review
+
+`functions/api/admin/plans/[[path]].js` is the owner review API. It does not email the customer, and it does not send a plan.
+
+Set `ADMIN_TOKEN` as a Pages secret. Every request needs `Authorization: Bearer <ADMIN_TOKEN>` or the `x-admin-token` header. If the token or the D1 binding is missing, the API returns 503.
+
+- `GET /api/admin/plans` lists requests whose status is `new` or `review`.
+- `GET /api/admin/plans/:id` returns that request and its drafts.
+- `POST /api/admin/plans/:id/draft` saves a draft. Body: `format` (`markdown` or `html`), `body`, and `sources` (a list of `{ "label", "url" }`). The request status becomes `review`.
+- `POST /api/admin/plans/:id/decision` with `{ "status": "approved" }` or `{ "status": "rejected-for-redo" }`. Approval requires a saved draft. The latest draft then gets a long random access code. Rejection clears any access code.
+
+Drafts live in `plan_drafts`. The statement is `schema-plan-drafts.sql`. Paste it into the D1 console for the database bound as `DB`, after `schema.sql`. Do not run it against production from a deploy or from CI.
 
 ## Data rules
 
