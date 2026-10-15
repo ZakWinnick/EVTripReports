@@ -10,7 +10,7 @@ export const fmtDate = (d) =>
 
 const TAG = {
   verified: (c) => (c ? `Verified ${fmtDate(c)}` : 'Verified'),
-  conflict: () => 'Sources conflict',
+  conflict: (c) => (c ? `Sources conflict, checked ${fmtDate(c)}` : 'Sources conflict'),
   unverified: () => 'Not yet verified',
   unpublished: () => 'Not published by network',
   'tesla-only': () => 'Tesla only',
@@ -130,11 +130,23 @@ export function guideMeta(route) {
   };
 }
 
+function primaryRollup(p) {
+  const states = ['stalls', 'power', 'access'].map((k) => p[k]?.status);
+  if (states.some((st) => st === 'conflict')) return 'conflict';
+  if (states.every((st) => st === 'verified')) return 'verified';
+  return 'unverified';
+}
+
+function stationChecked(station, route) {
+  return station?.checkedOn || route.checked;
+}
+
 function stopSection(route, s, i) {
   const S = route.sources;
-  const checked = route.checked;
   const src = (id) => S[id] || { name: id, url: '' };
   const p = s.primary;
+  const checked = stationChecked(p, route);
+  const rollup = primaryRollup(p);
   const rows = [
     { k: 'Network', v: p.network },
     { k: 'Address', v: p.address },
@@ -165,7 +177,7 @@ function stopSection(route, s, i) {
           (b) =>
             `<li class="item"><div class="item__top"><strong>${esc(b.name)}</strong><span class="btnrow">${b.teslaAccess ? tag(b.teslaAccess) : ''}${tag(
               b.status,
-              b.status === 'verified' ? checked : undefined
+              b.status === 'verified' || b.status === 'conflict' ? stationChecked(b, route) : undefined
             )}</span></div>
 <p class="small muted item__meta">${esc(b.network)}. ${esc(b.address)}</p><p class="item__facts">${esc(b.facts)}</p>
 <p class="small item__meta">${esc(String(b.access).replace(/\.$/, ''))}. ${
@@ -180,7 +192,7 @@ function stopSection(route, s, i) {
 <div class="stop__mile"><span class="num">mile ${esc(s.mile)}</span><span class="small muted">${esc(s.milepostNote)}</span></div></header>
 <p class="stop__why">${esc(s.why)}</p>
 <div class="panel primary"><div class="primary__top"><div><p class="small muted" style="margin:0 0 4px">Primary charger</p><h3 class="h3">${esc(p.name)}</h3></div>
-<div class="btnrow">${p.teslaAccess ? tag(p.teslaAccess) : ''}${tag('verified', checked)}</div></div>
+<div class="btnrow">${p.teslaAccess ? tag(p.teslaAccess) : ''}${tag(rollup, rollup === 'verified' || rollup === 'conflict' ? checked : undefined)}</div></div>
 <dl class="sheet">${rows
     .map(
       (r) =>
@@ -191,10 +203,15 @@ function stopSection(route, s, i) {
     .join('')}</dl></div>
 <div class="cols"><div><h3 class="h3 sub">Backups</h3>${backupHtml}${
     s.other.length
-      ? `<details class="other"><summary>Other DC sites nearby (${s.other.length}), DOE data only</summary><ul class="list">${s.other
+      ? `<details class="other"><summary>Other DC sites nearby (${s.other.length})</summary><ul class="list">${s.other
           .map(
             (o) =>
-              `<li class="item"><div class="item__top"><strong>${esc(o.name)}</strong>${tag(o.status)}</div><p class="item__facts small">${esc(o.facts)}</p></li>`
+              `<li class="item"><div class="item__top"><strong>${esc(o.name)}</strong>${tag(
+                o.status,
+                o.status === 'verified' || o.status === 'conflict' ? stationChecked(o, route) : undefined
+              )}</div><p class="item__facts small">${esc(o.facts)}${
+                o.url ? ` ${ext(o.url, 'Source', 'src')}` : ''
+              }</p></li>`
           )
           .join('')}</ul></details>`
       : ''
@@ -253,7 +270,7 @@ ${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
 export function guideCards(routes) {
   return routes
     .map((r) =>
-      r.status === 'live'
+      r.status === 'live' || r.status === 'live-ready'
         ? `<li><a class="panel guide guide--live" href="/guides/${esc(r.slug)}"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(
             r.title
           )}</span><span class="small muted">${esc(r.miles)} miles, ${esc(r.stops)} charging stops</span><span class="guide__go">Read the guide</span></a></li>`

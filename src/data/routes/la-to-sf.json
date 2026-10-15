@@ -2,8 +2,8 @@
   "slug": "la-to-sf",
   "title": "LA to San Francisco",
   "highway": "I-5",
-  "summary": "I-5 up the San Joaquin Valley, then I-580 over Altamont into the East Bay. The verified stops are the ones whose primary charger was on the network's own locator. A few town searches did not finish, and those gaps are marked.",
-  "checked": "2026-10-14",
+  "summary": "I-5 up the San Joaquin Valley, then I-580 over Altamont into the East Bay. The verified stops are the ones whose primary charger was on the network's own locator. Town searches for this corridor were completed from the DOE California file.",
+  "checked": "2026-10-15",
   "startLabel": "I-5 at SR-14",
   "startNote": "Mileage starts at I-5 exit 164 (SR-14, mile 162.24) and ends at I-580 exit 48 (El Charro Road, mile 48.24). I-5 from SR-14 to the I-580 junction is 446.35 − 162.24 = 284.11 miles. I-580 from its east end at mile 81.12 back to exit 48 is 32.88 miles. Total 316.99, shown as 317. The I-580/I-680 exit in Dublin has no milepost in the exit list, so it is not the endpoint.",
   "endLabel": "Livermore outlets, exit 48",
@@ -17,12 +17,12 @@
     },
     {
       "label": "DC fast sites listed",
-      "value": "117",
+      "value": "126",
       "unit": ""
     },
     {
       "label": "Checked against the network",
-      "value": "18",
+      "value": "71",
       "unit": ""
     },
     {
@@ -60,6 +60,18 @@
     "plugshare": {
       "name": "PlugShare",
       "url": "https://www.plugshare.com/"
+    },
+    "evcs": {
+      "name": "EVCS station pages",
+      "url": "https://web2.evcs.com/ev-charging-stations"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "rivian": {
+      "name": "Rivian charging map",
+      "url": "https://rivian.com/experience/charging"
     }
   },
   "stops": [
@@ -119,7 +131,9 @@
             "date": "2026-08-07",
             "summary": "Also simultaneously charging my Pebble on charger 6"
           }
-        ]
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
       },
       "backups": [
         {
@@ -127,7 +141,7 @@
           "network": "Electrify America",
           "address": "25048 Valencia Blvd, Santa Clarita, CA 91355",
           "facts": "4 chargers, each with CCS at 350 kW.",
-          "access": "Open to CCS cars. EA labels this a Commercial station",
+          "access": "EA lists this site as COMMERCIAL.",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/santa-clarita/25048-valencia-blvd/701297/",
@@ -153,14 +167,15 @@
               "date": "2026-10-05",
               "summary": "Just got the message the site opened today. Visit with caution as the EA app still shows it is not open."
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         },
         {
           "name": "Valencia, 24201 Valencia Blvd",
           "network": "Electrify America",
           "address": "24201 Valencia Blvd, Valencia, CA 91355",
           "facts": "6 chargers, each with CCS at 350 kW.",
-          "access": "Open to all CCS EVs",
+          "access": "Open to CCS cars.",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/valencia/24201-valencia-blvd/210011/",
@@ -186,14 +201,15 @@
               "date": "2026-07-12",
               "summary": "this charger never got above 81kW. Charger #2 next to me was getting 175kW. Plenty of good food options close by. The Stand has a great kids menu and the slow charger sort of helped us eat the whole meal, so i guess that’s okay.."
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         },
         {
           "name": "Stevenson Ranch, 24909 Pico Canyon Rd",
           "network": "Electrify America",
           "address": "24909 Pico Canyon Rd, Stevenson Ranch, CA 91381",
           "facts": "4 chargers, each with CCS at 350 kW.",
-          "access": "Open to all CCS EVs",
+          "access": "Open to CCS cars.",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/stevenson-ranch/24909-pico-canyon-rd/210413/",
@@ -219,36 +235,46 @@
               "date": "2026-08-09",
               "summary": "Popular location, five deep when I showed up. Turned over fairly quickly though and all stations were working."
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         }
       ],
       "other": [
         {
           "name": "Bridgeport Marketplace, 23841 Newhall Ranch Rd, Valencia",
-          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 2 chargers at 23841 Newhall Ranch Rd, Valencia: 2 at 50 kW with CCS and CHAdeMO (4 connectors). DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             228160
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/valencia/245/"
         },
         {
           "name": "Castaic Village Shopping Center - Tesla Supercharger, 31884 Castaic Rd, Castaic",
-          "facts": "DOE lists 32 NACS at 325 kW, 32 CCS at 325 kW on Tesla. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 32 stalls, up to 325 kW, at 31884 Castaic Rd, Castaic. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             468055
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/424903",
+          "source": "tesla-findus"
         },
         {
           "name": "Castaic, CA - Tesla Supercharger, 29461 The Old Road, Castaic",
-          "facts": "DOE lists 12 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 29461 The Old Rd, Castaic. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             225843
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/CastaicCASupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "GF4EVA HILTON DC, 27710 The Old Rd, Valencia",
@@ -261,12 +287,15 @@
         },
         {
           "name": "In-N-Out Valencia, 27510 The Old Rd, Valencia",
-          "facts": "DOE lists 4 CHAdeMO at 100 kW, 2 CCS at 100 kW, 2 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 4 chargers at 27510 The Old Rd, Valencia: 2 at 100 kW with CCS and CHAdeMO, 2 at 350 kW with CCS and CHAdeMO (8 connectors). DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             235413
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/valencia/47090/"
         },
         {
           "name": "JSEINER-SUBARU SERVICE LOANER1, 24000 Creekside Rd, Santa Clarita",
@@ -306,39 +335,51 @@
         },
         {
           "name": "Santa Clarita, CA - Newhall Ranch Road - Tesla Supercharger, 28273 Newhall Ranch Rd, Santa Clarita",
-          "facts": "DOE lists 24 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 24 stalls, up to 250 kW, at 28273 Newhall Ranch Rd, Santa Clarita. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             324003
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26178",
+          "source": "tesla-findus"
         },
         {
           "name": "Santa Clarita, CA - Tesla Supercharger, 24061 Newhall Ranch Road, Valencia",
-          "facts": "DOE lists 32 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 32 stalls, up to 250 kW, at 24061 Newhall Ranch Road, Valencia. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             102076
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/santaclaritacaliforniasupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Valencia Crossroads, 24290 Valencia Blvd, Valencia",
-          "facts": "DOE lists 6 CHAdeMO at 100 kW, 4 CCS at 350 kW, 2 CCS at 100 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 4 chargers at 24290 Valencia Blvd, Valencia: 2 at 100 kW with CCS and CHAdeMO, 2 at 350 kW with CCS and CHAdeMO (8 connectors). DOE lists 6 CHAdeMO at 100 kW, 4 CCS at 350 kW, 2 CCS at 100 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
           "afdcIds": [
             416900
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/valencia/81492/"
         },
         {
           "name": "Valencia, CA - Tesla Supercharger, 27630 The Old Road, Valencia",
-          "facts": "DOE lists 8 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 27630 The Old Road, Valencia. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             238570
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/ValenciaCAQ322",
+          "source": "tesla-findus"
         },
         {
           "name": "William S. Hart UHSD, 21429 Centre Pointe Pkwy, Santa Clarita",
@@ -367,7 +408,7 @@
       "towns": "Lebec and Wheeler Ridge, CA",
       "mile": 57,
       "milepostNote": "Laval Road, exit 219, mile 218.79. 218.79 − 162.24 = 56.6.",
-      "why": "Bottom of the Tejon grade, at the outlets. Stall count and 150 kW are from Tesla's page. That page does not say whether other EVs can charge here.",
+      "why": "Bottom of the Tejon grade, at the outlets. Tesla Find Us lists 24 stalls, up to 150 kW, and pricing for Tesla only. The page does not say other EVs can charge here.",
       "primary": {
         "name": "Outlets at Tejon",
         "network": "Tesla Supercharger",
@@ -386,8 +427,8 @@
           "url": "https://www.tesla.com/findus/location/supercharger/tejonranchcasupercharger"
         },
         "access": {
-          "value": "Tesla's page lists pricing for Tesla and does not say the site is open to other EVs. Access for other cars is not confirmed.",
-          "status": "unverified",
+          "value": "Tesla only. The page lists pricing for Tesla and does not say other EVs can charge.",
+          "status": "verified",
           "source": "tesla-findus",
           "url": "https://www.tesla.com/findus/location/supercharger/tejonranchcasupercharger"
         },
@@ -399,18 +440,25 @@
         "afdcIds": [
           102037
         ],
-        "driverReports": []
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "url": "https://www.tesla.com/findus/location/supercharger/tejonranchcasupercharger",
+        "source": "tesla-findus",
+        "teslaAccess": "tesla-only"
       },
       "backups": [],
       "other": [
         {
           "name": "Bakersfield, CA – Copus Road - Tesla Supercharger, 10565 Copus Road, Bakersfield",
-          "facts": "DOE lists 20 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 20 stalls, up to 250 kW, at 10565 Copus Rd, Bakersfield. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             191699
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/BakersfieldCopusSupercharger21",
+          "source": "tesla-findus"
         },
         {
           "name": "DC CORRIDOR FRAZIERPARK DC1, 73 Frazier Mountain Park Rd, Lebec",
@@ -450,21 +498,27 @@
         },
         {
           "name": "Lebec, CA - Tesla Supercharger, 51526 Ralphs Ranch Rd, Lebec",
-          "facts": "DOE lists 38 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 38 stalls, up to 325 kW, at 51526 Ralphs Ranch Rd, Lebec. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             372599
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/58505",
+          "source": "tesla-findus"
         },
         {
           "name": "Tejon Ranch, CA – Outlets at Tejon Pkwy - Tesla Supercharger, 5701 Outlets at Tejon Parkway, Arvin",
-          "facts": "DOE lists 76 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 76 stalls, up to 250 kW, at 5701 Outlets at Tejon Pkwy, Arvin. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             195695
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/ArvinCAsupercharger",
+          "source": "tesla-findus"
         }
       ],
       "reports": [],
@@ -540,7 +594,9 @@
             "date": "2026-08-19",
             "summary": "Good charging session. Note: this site limits charging to 85% max."
           }
-        ]
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
       },
       "backups": [
         {
@@ -548,7 +604,7 @@
           "network": "Electrify America",
           "address": "4310 California Ave., Bakersfield, CA 93309",
           "facts": "4 chargers, each with CCS at 350 kW.",
-          "access": "Open to all CCS EVs",
+          "access": "Open to CCS cars.",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/bakersfield/4310-california-ave/100036/",
@@ -574,14 +630,15 @@
               "date": "2026-09-21",
               "summary": "Worked well. Ate at the Panera right there as it changed."
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         },
         {
           "name": "Bakersfield, 3401 Mall View Rd",
           "network": "Electrify America",
           "address": "3401 Mall View Rd, Bakersfield, CA 93306",
           "facts": "10 chargers, each with CCS at 350 kW.",
-          "access": "Open to all CCS EVs",
+          "access": "Open to CCS cars.",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/bakersfield/3401-mall-view-rd/240396/",
@@ -601,7 +658,8 @@
               "date": "2026-08-29",
               "summary": "Just opened. 1/2 stations not available yet. Moved to another stall and charged successfully. Could not activate"
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         }
       ],
       "other": [
@@ -661,66 +719,87 @@
         },
         {
           "name": "Bakersfield, CA - Camino Del Rio Ct - Tesla Supercharger, 3100 Camino Del Rio Court, Bakersfield",
-          "facts": "DOE lists 20 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 20 stalls, up to 250 kW, at 3100 Camino Del Rio Ct, Bakersfield . Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             324010
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/28247",
+          "source": "tesla-findus"
         },
         {
           "name": "Bakersfield, CA - I-5 - Tesla Supercharger, 29541 Stockdale Hwy, Bakersfield",
-          "facts": "DOE lists 10 NACS at 150 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 10 stalls, up to 150 kW, at 29541 Stockdale Hwy, Bakersfield. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             102000
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/bakersfieldsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Bakersfield, CA - Olive Drive - Tesla Supercharger, 1121 Olive Dr, Bakersfield",
-          "facts": "DOE lists 12 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 1121 Olive Dr, Bakersfield. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             372607
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/400703",
+          "source": "tesla-findus"
         },
         {
           "name": "Buttonwillow, CA - Cal Club Rd - Tesla Supercharger, 24551 West Lerdo Highway, Buttonwillow",
-          "facts": "DOE lists 16 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 24551 W Lerdo Hwy, Buttonwillow. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             227703
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/ButtonwillowCASupercharger2",
+          "source": "tesla-findus"
         },
         {
           "name": "Buttonwillow, CA - Tesla Supercharger, 20673 Tracy Ave., Buttonwillow",
-          "facts": "DOE lists 10 NACS at 150 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 10 stalls, up to 150 kW, at 20673 Tracy Ave., Buttonwillow. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             102005
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/buttonwillowsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Buttonwillow, CA, 20673 Tracy Avenue, Buttonwillow",
-          "facts": "DOE lists 6 CCS at 300 kW, 3 NACS at 300 kW on RIVIAN_ADVENTURE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Rivian's charging map lists 9 chargers, up to 300 kW, at 20673 Tracy Avenue, Buttonwillow. Open to non-Rivian EVs. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             391292
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://rivian.com/experience/charging",
+          "source": "rivian"
         },
         {
           "name": "Crossroads Shopping Center - SW Bakersfield, 6300 White Ln, Bakersfield",
-          "facts": "DOE lists 4 NACS at 350 kW, 8 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 6 chargers at 6300 White Ln, Bakersfield: 2 at 350 kW with two NACS connectors, 4 at 350 kW with two CCS connectors (12 connectors). DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             446185
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/bakersfield/82620/"
         },
         {
           "name": "DC CORRIDOR BUTTONW DC 1, 20673 Tracy Ave, Buttonwillow",
@@ -760,21 +839,27 @@
         },
         {
           "name": "Foodsco N. Bakersfield H 384, 2505 Haley St, Bakersfield",
-          "facts": "DOE lists 6 CCS at 350 kW, 2 NACS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 4 chargers at 2505 Haley St, Bakersfield: 3 at 350 kW with two CCS connectors, 1 at 350 kW with two NACS connectors (8 connectors). DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             461663
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/bakersfield/94534/"
         },
         {
           "name": "Foodsco S.Bkrsfld W 365, 1801 White Ln, Bakersfield",
-          "facts": "DOE lists 4 CCS at 350 kW, 2 NACS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 3 chargers at 1801 White Ln, Bakersfield: 2 at 350 kW with two CCS connectors, 1 at 350 kW with two NACS connectors (6 connectors). DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             461662
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/bakersfield/94535/"
         },
         {
           "name": "Jim Burke Ford - Oak Street, 2001 Oak St, Bakersfield",
@@ -814,21 +899,27 @@
         },
         {
           "name": "Riverlakes Village - Tesla Supercharger, 4420 Coffee Rd, Bakersfield",
-          "facts": "DOE lists 8 NACS at 325 kW on Tesla. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 325 kW, at 4420 Coffee Road, Bakersfield. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             459235
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/425021",
+          "source": "tesla-findus"
         },
         {
           "name": "Spectrum Fairfield Inn & Suites, 8700 Spectrum Park Way, Bakersfield",
-          "facts": "DOE lists 4 CHAdeMO at 50 kW, 2 NACS at 50 kW, 2 CCS at 50 kW on EVCS. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVCS lists 8 connectors: 2 Tesla up to 50 kW, 4 CHAdeMO up to 50 kW, 2 CCS up to 50 kW. DOE lists 4 DC ports.",
+          "status": "conflict",
           "afdcIds": [
             260351
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/bakersfield/spectrum-fairfield-inn-and-suites"
         },
         {
           "name": "Strata Credit Union, 1717 Truxtun Avenue, Bakersfield",
@@ -859,12 +950,15 @@
         },
         {
           "name": "TownePlace Suites By Marriott Bakersfield West, 8300 Granite Falls Dr, Bakersfield",
-          "facts": "DOE lists 1 J1772 at 7.6 kW, 4 CCS at 50 kW, 4 CHAdeMO at 50 kW on EVCS. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVCS lists 8 connectors: 4 CHAdeMO up to 50 kW, 4 CCS up to 50 kW. DOE lists 1 DC port.",
+          "status": "conflict",
           "afdcIds": [
             333161
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/bakersfield/towneplace-suites-by-marriott-bakersfield-west"
         },
         {
           "name": "WattEV - Bakersfield (HWY65), 18836 CA-65, Bakersfield",
@@ -899,7 +993,7 @@
       "towns": "Lost Hills, CA",
       "mile": 116,
       "milepostNote": "State Route 46, exit 278, mile 278.29. 278.29 − 162.24 = 116.1.",
-      "why": "The Electrify America site is on SR-46 at the freeway. A Tesla site on Highway 46 shows a large stall count in DOE. That count was not on a Tesla page we could retrieve, so it stays unverified.",
+      "why": "The Electrify America site is on SR-46 at the freeway. Tesla lists a separate 20-stall site at I-5 and CA-46, open to other EVs with a NACS adapter. The larger Tesla Oasis site is on Highway 46.",
       "primary": {
         "name": "Electrify America, Lost Hills",
         "network": "Electrify America",
@@ -949,7 +1043,9 @@
             "date": "2026-10-02",
             "summary": "One charger is down."
           }
-        ]
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
       },
       "backups": [],
       "other": [
@@ -964,21 +1060,28 @@
         },
         {
           "name": "Lost Hills, CA - Tesla Supercharger, I-5 CA-46, Lost Hills",
-          "facts": "DOE lists 20 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 20 stalls, up to 250 kW, at I-5 and CA-46, Lost Hills. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             321152
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/18458",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Tesla Oasis - Tesla Supercharger, 22422 Highway 46, Lost Hills",
-          "facts": "DOE lists 164 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 164 stalls, up to 325 kW, at 22422 Highway 46, Lost Hills. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             405689
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/25874",
+          "source": "tesla-findus"
         }
       ],
       "reports": [],
@@ -1036,15 +1139,17 @@
             "date": "2023-11-26",
             "summary": "Reported a 3 hour wait to plug in. About 20 cars were in line on arrival, 7 of the 10 chargers were working, and the line was longer by the time they left."
           }
-        ]
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
       },
       "backups": [
         {
           "name": "Kettleman City, Bernard Drive",
           "network": "Tesla Supercharger",
           "address": "33341 Bernard Drive, Kettleman City, CA 93239",
-          "facts": "55 stalls, up to 250 kW, 24 hours. Tesla's page says a NACS adapter is required, which means the site is open to other EVs.",
-          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "facts": "55 stalls, up to 250 kW. Open to non-Tesla EVs with a NACS adapter.",
+          "access": "Open to non-Tesla EVs with a NACS adapter.",
           "teslaAccess": "open",
           "status": "verified",
           "source": "tesla-findus",
@@ -1059,7 +1164,8 @@
               "date": "2026-09-08",
               "summary": "Non-tesla can charge with an adapter. Plenty of stations and space so even though the cords are short we were able to pull into a space to make it work"
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         }
       ],
       "other": [
@@ -1101,12 +1207,15 @@
         },
         {
           "name": "Kettleman City, CA - Tesla Supercharger, 27675 Bernard Drive, Kettleman City",
-          "facts": "DOE lists 40 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 40 stalls, up to 250 kW, at 27675 Bernard Drive, Kettleman City. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             102035
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/kettlemancitysupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Quality Inn - Kettleman City, 33415 Powers Dr., Kettleman City",
@@ -1116,6 +1225,79 @@
             224432
           ],
           "driverReports": []
+        },
+        {
+          "name": "Harris Ranch, CA - Tesla Supercharger, 24505 W Dorris Ave, Coalinga",
+          "facts": "Tesla Find Us lists 18 stalls, up to 150 kW, at 24505 W Dorris Ave, Coalinga. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            102007
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/harrisranchcasupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Harris Ranch Inn & Restaurant (Coalinga, CA), 24505 West Dorris Avenue, Coalinga",
+          "facts": "Electrify America lists 6 chargers, each with CCS at 350 kW. Address matches 24505 West Dorris Avenue, Coalinga.",
+          "status": "verified",
+          "afdcIds": [
+            170206
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/coalinga/24505-west-dorris-avenue/100026/"
+        },
+        {
+          "name": "Coalinga, CA - Tesla Supercharger, 24553 W Dorris Avenue, Coalinga",
+          "facts": "Tesla Find Us lists 80 stalls, up to 250 kW, at 24553 W Dorris Ave, Coalinga. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            238569
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/CoalingaCAsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "GF4EVA CHEVRON C DC 3, 25032 W Dorris Ave, Coalinga",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            261217
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GF4EVA CHEVRON C DC 1, 25032 W Dorris Ave, Coalinga",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            261218
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GF4EVA CHEVRON C DC 2, 25032 W Dorris Ave, Coalinga",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            261219
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Coalinga, CA Rechargery Relay - W Dorris Ave, 25101 W Dorris Ave, Coalinga, CA",
+          "facts": "IONNA's finder lists this as opening soon, not open, at 25101 W Dorris Ave, Coalinga, CA. The page shows 400 kW.",
+          "status": "unverified",
+          "afdcIds": [],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ca/coalinga/25101-w-dorris-ave-93210/"
         }
       ],
       "reports": [],
@@ -1145,14 +1327,14 @@
       "id": "firebaugh",
       "name": "Firebaugh",
       "towns": "Firebaugh, CA",
-      "mile": 223,
-      "milepostNote": "Nees Avenue, exit 385, mile 384.80. 384.80 − 162.24 = 222.6. The Tesla site is on West Panoche Road; that exit was not matched.",
-      "why": "Tesla's locator lists 56 stalls, up to 250 kW, open to other EVs with a NACS adapter. The DOE search centered on Firebaugh did not complete on October 14, 2026, so other DC fast sites in town are not listed yet. The Monday check still searches this town.",
+      "mile": 206,
+      "milepostNote": "Panoche Road, exit 368, mile 368.01. 368.01 − 162.24 = 205.8.",
+      "why": "Tesla Find Us lists 56 stalls, up to 250 kW, open to other EVs with a NACS adapter, at 46272 West Panoche Road. That address is I-5 exit 368, Panoche Road. A DOE search of 10 miles around Firebaugh town on October 15, 2026 found no other DC fast sites.",
       "primary": {
         "name": "Firebaugh, West Panoche Road",
         "network": "Tesla Supercharger",
         "address": "46272 West Panoche Road, Firebaugh, CA 93622",
-        "exit": "Not yet verified",
+        "exit": "Exit 368, Panoche Road",
         "stalls": {
           "value": "56",
           "status": "verified",
@@ -1166,7 +1348,7 @@
           "url": "https://www.tesla.com/findus/location/supercharger/firebaughsupercharger"
         },
         "access": {
-          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Tesla lists the site as 24 hours.",
+          "value": "Open to non-Tesla EVs with a NACS adapter.",
           "status": "verified",
           "source": "tesla-findus",
           "url": "https://www.tesla.com/findus/location/supercharger/firebaughsupercharger"
@@ -1178,7 +1360,10 @@
         },
         "teslaAccess": "open",
         "afdcIds": [],
-        "driverReports": []
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "url": "https://www.tesla.com/findus/location/supercharger/firebaughsupercharger",
+        "source": "tesla-findus"
       },
       "backups": [],
       "other": [],
@@ -1199,7 +1384,7 @@
       "towns": "Los Banos, Santa Nella, and Gustine, CA",
       "mile": 241,
       "milepostNote": "State Route 152, exit 403A, mile 402.76. 402.76 − 162.24 = 240.5. Santa Nella is exit 407, mile 407.02.",
-      "why": "The verified primary is the Los Banos Target, a few miles east of I-5 on SR-152. Santa Nella's Tesla page confirms the address and a NACS adapter. The stall count on that page did not come through, so DOE's 48 ports stay unverified.",
+      "why": "The verified primary is the Los Banos Target, a few miles east of I-5 on SR-152. Santa Nella Tesla lists 48 stalls, up to 250 kW, and a NACS adapter for other EVs.",
       "primary": {
         "name": "Target, Los Banos",
         "network": "Electrify America",
@@ -1249,23 +1434,26 @@
             "date": "2026-07-30",
             "summary": "Great charging. No one at 11pm. Super fast, low cost."
           }
-        ]
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
       },
       "backups": [
         {
           "name": "Santa Nella, Hotel Mission De Oro",
           "network": "Tesla Supercharger",
           "address": "13070 CA-33, Santa Nella, CA 95322",
-          "facts": "Tesla's page confirms this address and that a NACS adapter is needed. The stall count did not come through on the page we retrieved. DOE lists 48 ports, last confirmed 2026-06-18. That count is not verified on Tesla.",
-          "access": "Tesla's page says a NACS adapter is needed. Stall count is not yet verified.",
+          "facts": "48 stalls, up to 250 kW. Open to non-Tesla EVs with a NACS adapter.",
+          "access": "Open to non-Tesla EVs with a NACS adapter.",
           "teslaAccess": "open",
-          "status": "unverified",
+          "status": "verified",
           "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus/location/supercharger/santanellacasupercharger",
+          "url": "https://www.tesla.com/findus/location/supercharger/SantaNellaCASupercharger",
           "afdcIds": [
             226529
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
         }
       ],
       "other": [
@@ -1280,21 +1468,27 @@
         },
         {
           "name": "Gustine, CA - Tesla Supercharger, 12411 CA-33, Gustine",
-          "facts": "DOE lists 12 NACS at 150 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 150 kW, at 12411 CA-33, Gustine. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             122298
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/gustinesupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Los Banos, CA - Tesla Supercharger, 1363 W Pacheco Blvd, Los Banos",
-          "facts": "DOE lists 10 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 10 stalls, up to 325 kW, at 1363 West Pacheco Boulevard, Los Banos. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             353832
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/13887",
+          "source": "tesla-findus"
         },
         {
           "name": "Santa Nella, 28821 Gonzaga Rd, Gustine",
@@ -1307,12 +1501,15 @@
         },
         {
           "name": "Santa Nella, CA, 13070 CA-33, Santa Nella",
-          "facts": "DOE lists 6 CCS at 300 kW, 6 NACS at 300 kW on RIVIAN_ADVENTURE. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Rivian's charging map lists 12 chargers, up to 300 kW, at 13070 CA-33, Santa Nella. Open to non-Rivian EVs. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             391101
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://rivian.com/experience/charging",
+          "source": "rivian"
         },
         {
           "name": "WattEV - Gustine, Central Yosemite Hwy, Gustine",
@@ -1403,7 +1600,9 @@
             "date": "2026-07-03",
             "summary": "Charger 02 broken (no network connection) Charger 04 is in a different standalone aisle closer to the “Home and Fashion” entrance to Walmart. The Walmart had clean bathrooms"
           }
-        ]
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
       },
       "backups": [],
       "other": [
@@ -1418,21 +1617,37 @@
         },
         {
           "name": "Patterson, CA - Rogers Road - Tesla Supercharger, 40 Rogers Rd, Patterson",
-          "facts": "DOE lists 24 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 24 stalls, up to 325 kW, at 40 Rogers Rd, Patterson. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             420625
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/436107",
+          "source": "tesla-findus"
         },
         {
           "name": "Patterson, CA - Speno Drive - Tesla Supercharger, 2959 Speno Drive, Patterson",
-          "facts": "DOE lists 8 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 2959 Speno Dr, Patterson. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             166703
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/pattersoncaspenodrsupercharger",
+          "source": "tesla-findus"
+        },
+        {
+          "name": "Patterson, CA Rechargery Relay - Rogers Rd, 175 Rogers Rd, Patterson, CA",
+          "facts": "IONNA's finder lists this as opening soon, not open, at 175 Rogers Rd, Patterson, CA. The page shows 400 kW.",
+          "status": "unverified",
+          "afdcIds": [],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ca/patterson/175-rogers-rd-95363/"
         }
       ],
       "reports": [],
@@ -1452,7 +1667,7 @@
       "towns": "Tracy and Mountain House, CA",
       "mile": 302,
       "milepostNote": "I-580 exit 63, Grant Line Road, mile 63.49. From I-5: 284.11 + (81.12 − 63.49) = 301.7.",
-      "why": "The primary is the Tracy Walmart on Grant Line Road, confirmed on Electrify America's locator. The Tracy-centered DOE search did not complete. Sites listed here are the ones the Mountain House search returned, plus this EA site.",
+      "why": "The primary is the Tracy Walmart on Grant Line Road, confirmed on Electrify America's locator. The Tracy-centered DOE search was completed from the California file on October 15, 2026. Sites inside that radius are on this stop.",
       "primary": {
         "name": "Walmart Tracy",
         "network": "Electrify America",
@@ -1502,7 +1717,9 @@
             "date": "2026-03-07",
             "summary": "03 Said error and not working"
           }
-        ]
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
       },
       "backups": [],
       "other": [
@@ -1571,30 +1788,39 @@
         },
         {
           "name": "Tracy Homes - Tracy, 340 W 4th St, Tracy",
-          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW, 8 J1772 at 7 kW on EVCS. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVCS lists 4 connectors: 2 CCS up to 50 kW, 2 CHAdeMO up to 50 kW. DOE lists 2 DC ports.",
+          "status": "conflict",
           "afdcIds": [
             332793
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/tracy/tracy-homes-tracy"
         },
         {
           "name": "Tracy, CA - N Tracy Blvd - Tesla Supercharger, 3225 N Tracy Blvd, Tracy",
-          "facts": "DOE lists 20 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 20 stalls, up to 325 kW, at 3225 N Tracy Blvd, Tracy. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             398471
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/56652",
+          "source": "tesla-findus"
         },
         {
           "name": "Tracy, CA - W Grant Line Rd - Tesla Supercharger, 2850 West Grant Line Road, Tracy",
-          "facts": "DOE lists 12 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 2850 W Grant Line Rd, Tracy. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             216365
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/TracyCASupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Valley Fuels - 40kW DC, 4600 Corral Hollow Road, Tracy",
@@ -1616,12 +1842,15 @@
         },
         {
           "name": "West Valley Mall, 3200 Naglee Rd, Tracy",
-          "facts": "DOE lists this as temporarily unavailable: 1 J1772 at 7.2 kW, 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 1 charger at 3200 Naglee Rd, Tracy: 1 at 50 kW with CCS and CHAdeMO (2 connectors). DOE lists this as temporarily unavailable: 1 J1772 at 7.2 kW, 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
           "afdcIds": [
             228354
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/tracy/453/"
         }
       ],
       "reports": [],
@@ -1691,7 +1920,9 @@
             "date": "2025-12-01",
             "summary": "Broken hardware"
           }
-        ]
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
       },
       "backups": [
         {
@@ -1699,7 +1930,7 @@
           "network": "Electrify America",
           "address": "1951 Holmes St, Livermore, CA 94550",
           "facts": "3 chargers, each with CCS at 350 kW.",
-          "access": "Open to all CCS EVs",
+          "access": "Open to CCS cars.",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/livermore/1951-holmes-st/210465/",
@@ -1725,14 +1956,15 @@
               "date": "2026-06-28",
               "summary": "Well lit and near a shopping center"
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         },
         {
           "name": "Pleasanton, 1701 Santa Rita Road",
           "network": "Electrify America",
           "address": "1701 Santa Rita Road, Pleasanton, CA 94566",
           "facts": "3 chargers, each with CCS at 350 kW.",
-          "access": "Open to all CCS EVs",
+          "access": "Open to CCS cars.",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/pleasanton/1701-santa-rita-road/200166/",
@@ -1758,18 +1990,22 @@
               "date": "2025-04-27",
               "summary": "Station 2 is broken"
             }
-          ]
+          ],
+          "checkedOn": "2026-10-15"
         }
       ],
       "other": [
         {
           "name": "Courtyard by Marriott Livermore, 2929 Constitution Drive, Livermore",
-          "facts": "DOE lists 4 J1772 at 7.6 kW, 8 CCS at 100 kW on EVCS. DOE last confirmed 2026-10-14. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVCS lists 8 connectors: 8 CCS up to 100 kW. DOE lists 4 DC ports.",
+          "status": "conflict",
           "afdcIds": [
             417718
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evcs",
+          "url": "https://web2.evcs.com/ev-charging-stations/ca/livermore/courtyard-by-marriott-livermore"
         },
         {
           "name": "Double Tree by Hilton Livermore, 720 Las Flores Rd, Livermore",
@@ -1782,66 +2018,87 @@
         },
         {
           "name": "Dublin, CA - Dublin Boulevard - Tesla Supercharger, 2800 Dublin Boulevard, Dublin",
-          "facts": "DOE lists 10 NACS at 150 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 10 stalls, up to 150 kW, at 2800 Dublin Boulevard, Dublin. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             201307
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/DublinCAsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Livermore, CA - Holmes Street - Tesla Supercharger, 1606 Holmes St, Livermore",
-          "facts": "DOE lists 8 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 1606 Holmes St, Livermore. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             355053
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34471",
+          "source": "tesla-findus"
         },
         {
           "name": "Livermore, CA - Livermore Outlets Drive - Tesla Supercharger, 3505 Livermore Outlets Dr, Livermore",
-          "facts": "DOE lists 28 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 28 stalls, up to 325 kW, at 3505 Livermore Outlets Dr, Livermore. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             446604
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4009311",
+          "source": "tesla-findus"
         },
         {
           "name": "Livermore, CA - N Vasco Rd - Tesla Supercharger, 1472 N Vasco Rd, Livermore",
-          "facts": "DOE lists 24 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 24 stalls, up to 325 kW, at 1472 N Vasco Rd, Livermore. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             422572
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/31872",
+          "source": "tesla-findus"
         },
         {
           "name": "Livermore, CA - Tesla Supercharger, 2774 Livermore Outlets Drive, Livermore",
-          "facts": "DOE lists 20 NACS at 75 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 20 stalls, up to 72 kW, at 2774 Livermore Outlets Drive, Livermore. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             116780
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/livermorecasupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Livermore, CA - West Jack London Boulevard - Tesla Supercharger, 3020 West Jack London Boulevard, Livermore",
-          "facts": "DOE lists 16 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 3020 West Jack London Boulevard, Livermore. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             322839
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/14819",
+          "source": "tesla-findus"
         },
         {
           "name": "Lowe's of Livermore, 4255 1st St, Livermore",
-          "facts": "DOE lists 6 CCS at 350 kW, 4 NACS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 5 chargers at 4255 1st St, Livermore: 3 at 350 kW with two CCS connectors, 2 at 350 kW with two NACS connectors (10 connectors). DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             373044
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/livermore/73763/"
         },
         {
           "name": "Pacific Pearl Shopping Center, 2693 Stoneridge Dr, Pleasanton",
@@ -1863,21 +2120,27 @@
         },
         {
           "name": "Pleasanton, CA - Bernal Avenue - Tesla Supercharger, 3550 Bernal Ave, Pleasanton",
-          "facts": "DOE lists 20 NACS at 325 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 20 stalls, up to 325 kW, at 3550 Bernal Ave, Pleasanton. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             422983
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/36205",
+          "source": "tesla-findus"
         },
         {
           "name": "Pleasanton, CA - Tesla Supercharger, 6770 Santa Rita Rd, Pleasanton",
-          "facts": "DOE lists 12 NACS at 250 kW on Tesla. DOE last confirmed 2026-06-18. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 6770  Santa Rita Road, Pleasanton . Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count.",
+          "status": "verified",
           "afdcIds": [
             321139
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34834",
+          "source": "tesla-findus"
         },
         {
           "name": "San Francisco Premium Outlets, 2774 Livermore Outlets Dr, Livermore",
@@ -1899,12 +2162,25 @@
         },
         {
           "name": "Vasco Plaza Shopping Center, 1600 N Vasco Rd, Livermore",
-          "facts": "DOE lists 10 CHAdeMO at 100 kW, 10 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
-          "status": "unverified",
+          "facts": "EVgo lists 3 chargers at 1600 N Vasco Rd, Livermore: 3 at 350 kW with two CCS connectors (6 connectors). DOE lists 10 CHAdeMO at 100 kW, 10 CCS at 350 kW on eVgo Network. DOE last confirmed 2026-10-13.",
+          "status": "conflict",
           "afdcIds": [
             323782
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/livermore/55740/"
+        },
+        {
+          "name": "Livermore, CA Rechargery Relay - N Greenville Rd, 200 N Greenville Rd, Livermore, CA",
+          "facts": "IONNA's finder lists this as opening soon, not open, at 200 N Greenville Rd, Livermore, CA. The page shows 400 kW.",
+          "status": "unverified",
+          "afdcIds": [],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ca/livermore/200-n-greenville-rd-94551/"
         }
       ],
       "reports": [],
@@ -1929,11 +2205,11 @@
       "source": "wiki-i580"
     },
     {
-      "text": "The Coalinga town-center search (10 miles) on October 14, 2026 returned no public DC fast sites. A separate search centered on Harris Ranch did not complete because the DOE API hit its rate limit, so this guide does not say Harris Ranch has no charging.",
+      "text": "The Coalinga town-center search (10 miles) on October 14, 2026 returned no public DC fast sites. The Harris Ranch search, 8 miles around the ranch, was completed from the DOE state file on October 15, 2026. Those sites are listed on the Kettleman stop.",
       "source": "afdc"
     },
     {
-      "text": "The Firebaugh and Tracy-centered DOE searches also hit that rate limit. Firebaugh lists only the Tesla site confirmed on Tesla's locator. Tracy lists the sites returned by the Mountain House search, plus the Tracy Electrify America site confirmed on EA's locator.",
+      "text": "The Firebaugh town search and the Tracy search were completed from the DOE California file on October 15, 2026. Sites inside those search radii are on those stops. Ones not opened on a network locator stay unverified.",
       "source": "afdc"
     }
   ],
