@@ -17,11 +17,11 @@ const cards = routes.map((r: any) => ({
 }));
 const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
-<Base title="EV Trip Reports" description="Stop-by-stop EV road trip guides. Stall counts, kW, access and prices checked against the charging networks themselves, with a source and date on every fact.">
+<Base title="EV Trip Reports" description="A travel agent for EV road trips. Free guides with verified charging stops, plus custom plans with backups, food, and hotels. We don't book the hotel or the rental.">
   <section class="band hero">
     <div class="wrap">
-      <h1 class="display">Know every stop<br />before you leave.</h1>
-      <p class="lede" style="margin-top:28px">Stop-by-stop charging guides for EV road trips. Stall counts, kW, access, and price come from the networks' own locators, and every fact carries a source and the date we checked it.</p>
+      <h1 class="display">A travel agent<br />for EVs.</h1>
+      <p class="lede" style="margin-top:28px">We plan the drive. Free guides list verified charging stops, with a backup, on the corridors we publish. A custom plan uses your car, adapter, and dates. Detailed plans add where to eat and a hotel with a charger. We don't book the room or a rental car.</p>
       <div class="btnrow" style="margin-top:32px">
         <a class="pill pill--lg" href="/guides/la-to-las-vegas">Read the LA to Las Vegas guide</a>
         <a class="pill pill--lg pill--ghost" href="/plans">Get a plan for your car</a>
@@ -56,8 +56,8 @@ const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateStrin
   <section class="band band--mist">
     <div class="wrap plans">
       <div>
-        <h2 class="h2">A plan built for your car.</h2>
-        <p class="lede" style="margin-top:16px">Routing apps know where chargers are. They don't know the EA site in Baker had a queue last month, or that the closest Supercharger is Tesla-only. Enter your car, adapter, and dates. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p>
+        <h2 class="h2">Tell us the trip.</h2>
+        <p class="lede" style="margin-top:16px">Routing apps know where chargers are. They don't know the EA site in Baker had a queue last month, or that the closest Supercharger is Tesla-only. We name the stop and the backup for your car. Detailed plans add food and a hotel with a charger. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p>
         <div class="btnrow" style="margin-top:28px">
           <a class="pill pill--lg" href="/plans#request">Plan my trip</a>
           <a class="pill pill--lg pill--ghost" href="/plans">Compare plans</a>
