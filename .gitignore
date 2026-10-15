@@ -5,3 +5,4 @@ dist
 .wrangler
 workers/*/node_modules
 wrangler.toml
+scripts/out/
