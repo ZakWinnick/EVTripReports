@@ -12,22 +12,22 @@ const rows: [string, boolean, boolean, boolean][] = [
   ['Stops timed for meals and bathroom breaks', false, false, true],
 ];
 const faq = [
-  { q: 'How is this different from ABRP?', a: 'A Better Routeplanner is good at routing and battery math, and we suggest you keep using it. What it can\'t tell you is whether the Supercharger it picked is Tesla-only, whether its stall count matches the network\'s own locator this week, or that drivers reported a queue there last month. The plan includes those checks and a backup at each stop.' },
+  { q: 'How is this different from ABRP?', a: 'A Better Routeplanner is the right tool for battery math and routing, and you should keep it for the drive. A plan is what you read before you leave. It is built for your port, adapter, and memberships, checked against each network\'s own locator, with a backup at every stop.' },
   { q: 'What if a charger is down when I get there?', a: 'Every stop in your plan has a backup, and we tell you how far it is. We also flag sites where drivers have recently reported broken stalls, so you can plan to arrive with extra range.' },
   { q: 'Does any charging network pay you?', a: 'No. No network pays for placement or coverage. If we ever add affiliate links for hotels or gear, they will be marked on the page.' },
   { q: 'What do you need from me?', a: 'Your car, its charge port and any adapter you carry, your charging memberships, where you\'re starting and ending, and your dates. Notes about kids, pets, or a must-stop diner help too.' },
-  { q: 'When do I get my plan?', a: 'Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days. The clock starts when we have both the payment and the trip form.' },
+  { q: 'When do I get my plan?', a: 'Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days. The clock starts when we have both the payment and the trip form. A person reviews the plan before it is sent.' },
   { q: 'Why the form before payment?', a: 'The Stripe page records the charge. It does not record your car, adapter, route, or dates. Send those first. Checkout then opens for the plan you picked, and Stripe brings you back here.' },
 ];
 ---
-<Base title="Custom EV trip plans" description="A charging plan built for your car, adapter, and dates. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.">
+<Base title="Plan an EV road trip" description="A plan for your car, adapter, memberships, and dates. Stops that work for your car, a backup at each, and on detailed plans a place to eat or sleep while you charge. A person reviews it before you get it.">
   <section class="band band--tight">
     <div class="wrap">
-      <h1 class="h1">A trip plan built<br />for your car.</h1>
-      <p class="lede" style="margin-top:20px">Enter the car and the route. The plan matches stops to your port, adapter, and memberships, using each network's own locator, with a backup at every stop. Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days.</p>
+      <h1 class="h1">We'll plan<br />the trip.</h1>
+      <p class="lede" style="margin-top:20px">Send the car, the adapter, the memberships, and the dates. You get stops that work for that car, with a backup at every stop. Detailed plans add food, restrooms, and a hotel with a charger. We recommend them. We don't book the hotel, the rental, or a ticket. A person reviews every plan before it is sent. Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days.</p>
       <div id="paid-thanks" class="note" hidden>
         <h2 class="h2">Payment received.</h2>
-        <p style="margin:12px 0 0">Thanks. If the trip form is already in, the plan goes out on that tier's delivery time. If you paid before sending the form, use it below. The receipt doesn't include your car, route, or dates.</p>
+        <p style="margin:12px 0 0">Thanks. If the trip form is already in, a person reviews the plan and it goes out on that tier's delivery time. If you paid before sending the form, use it below. The receipt doesn't include your car, route, or dates.</p>
       </div>
       <p class="note" style="margin-top:28px">Send the trip details, then pay. A plan is $19, $39, or $79. After payment, Stripe returns you to this page.</p>
     </div>
@@ -71,7 +71,7 @@ const faq = [
     <div class="wrap req">
       <div>
         <h2 class="h2">Trip details</h2>
-        <p id="form-lede" class="lede" style="margin-top:14px">This is step one. We save it, then open checkout for the plan you chose. Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days.</p>
+        <p id="form-lede" class="lede" style="margin-top:14px">This is step one. We save it, then open checkout for the plan you chose. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days.</p>
       </div>
       <form id="intake" class="panel form" novalidate>
         <div class="grid2">
@@ -149,6 +149,7 @@ const faq = [
   <section class="band band--tight">
     <div class="wrap">
       <h2 class="h2">Questions</h2>
+      <p class="lede" style="margin-top:12px">More answers are on the <a href="/faq">FAQ</a>, including why this is different from your car's navigation.</p>
       <div class="faq">
         {faq.map((f) => (
           <details>
