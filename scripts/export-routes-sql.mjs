@@ -2,6 +2,7 @@
 // The owner runs the output in the D1 console. Do not point this at production from a script.
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { exportStatus, primaryPublishBlock } from '../src/lib/publish-status.js';
 
 const root = process.cwd();
 const dir = path.join(root, 'src/data/routes');
@@ -19,8 +20,14 @@ console.log('BEGIN TRANSACTION;');
 for (const file of files) {
   const route = JSON.parse(await readFile(path.join(dir, file), 'utf8'));
   const meta = list.find((r) => r.slug === route.slug);
-  // Only status live is published. verifying, including LA to Phoenix, stays unpublished in D1.
-  const status = meta?.status === 'live' ? 'live' : 'verifying';
+  // Live when routes.json approves it and every primary's stalls, power, and access are verified.
+  // A disclosed conflict on a backup or other site does not block that.
+  // Unverified, unpublished, or conflicting primary stalls, power, or access stays verifying.
+  const block = primaryPublishBlock(route);
+  const status = exportStatus(meta?.status, route);
+  if ((meta?.status === 'live' || meta?.status === 'live-ready') && block) {
+    console.error(`-- ${route.slug} stays verifying: ${block}`);
+  }
   const sort = ((order.get(route.slug) ?? 100) + 1) * 10;
   const json = q(JSON.stringify(route));
   const sql = `INSERT INTO routes (slug, title, highway, status, sort, json, updated_at) VALUES ('${q(route.slug)}', '${q(route.title)}', '${q(route.highway)}', '${status}', ${sort}, '${json}', datetime('now')) ON CONFLICT(slug) DO UPDATE SET title = excluded.title, highway = excluded.highway, status = excluded.status, sort = excluded.sort, json = excluded.json, updated_at = excluded.updated_at;`;
