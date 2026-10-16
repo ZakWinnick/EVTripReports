@@ -154,7 +154,7 @@
             "source": "reddit",
             "url": "https://www.reddit.com/r/Ioniq5/comments/1dybkfa/i_took_my_i5_on_a_4th_of_july_weekend_road_trip/lc8rnc8/",
             "date": "2024-07-08",
-            "summary": "Regular user says the site is usually only 2\u20133 cars, but a Bolt or other low-power EV often sits on a 350 kW stall. Normally sees 180\u2013200 kW on a 350; one recent visit only got about 75 kW."
+            "summary": "Regular user says the site is usually only 2 to 3 cars, but a Bolt or other low-power EV often sits on a 350 kW stall. Normally sees 180 to 200 kW on a 350; one recent visit only got about 75 kW."
           },
           {
             "source": "reddit",
@@ -167,6 +167,12 @@
             "url": "https://www.reddit.com/r/ChargerDrama/comments/1wsa8qd/how_much_of_a_problem_is_ev_charger_congestion/pcjyv3z/",
             "date": "2026-09-28",
             "summary": "After lines at smaller EA sites the prior year, driver picked Abingdon Walmart (8+ stalls) and had no wait."
+          },
+          {
+            "source": "forum",
+            "url": "https://forum.leasehackr.com/t/electrify-america-experiences-and-discussion/503939/1630",
+            "date": "2025-04-26",
+            "summary": "Leasehackr post #1630: driver who avoids EA calls Abingdon pretty good because it has 8 stalls. Driver report, not network data."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -421,6 +427,13 @@
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/md/abingdon/401-constant-friendship-blvd/100277/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "EA site note: chargers are on the left edge of the lot when facing the Walmart, along the pickup area.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/md/abingdon/401-constant-friendship-blvd/100277/",
+          "checkedOn": "2026-10-15"
         }
       ],
       "searches": [
@@ -486,7 +499,7 @@
             "source": "reddit",
             "url": "https://www.reddit.com/r/electricvehicles/comments/1foj8z2/it_turns_out_charging_stations_are_cash_cows_for/loqp2vy/",
             "date": "2024-09-24",
-            "summary": "Confirms Wawa Store 840 at 4000 N DuPont Hwy (New Castle/Wilmington). Used a few times on DC\u2013PA/NJ/NYC trips: works ok, not the fastest speeds. Dunkin next door."
+            "summary": "Confirms Wawa Store 840 at 4000 N DuPont Hwy (New Castle/Wilmington). Used a few times on DC to PA/NJ/NYC trips: works ok, not the fastest speeds. Dunkin next door."
           },
           {
             "source": "reddit",
@@ -861,6 +874,13 @@
           "source": "wawa",
           "url": "https://www.wawa.com/locations/0840",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "EA site note: chargers are in the Wawa lot, on the left side of the store.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/de/new-castle/4000-n-dupont-hwy/100276/",
+          "checkedOn": "2026-10-15"
         }
       ],
       "searches": [
@@ -896,7 +916,7 @@
       "towns": "Moorestown, Mount Laurel, Cherry Hill, Somerdale, and Deptford, NJ",
       "mile": 134,
       "milepostNote": "Measured along OSRM's route from the start: 133.9 miles. The site is about 0.8 mile from that route line. Exit confirmed 2026-10-15: OSRM leaves the Turnpike on the ramp signed NJ 73, Mount Laurel, Camden, which is NJ Turnpike interchange 4 at milepost 34.5. NJTA's camera list names the NJ 73 interchange in Mount Laurel Twp. From the ramp OSRM drives about 1.4 miles on NJ 73 North and Collins Road to Nixon Drive. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-74.96451,39.93898 . NJTA: https://www.njta.gov/travel-resources/camera-list/ . Wikipedia: https://en.wikipedia.org/wiki/New_Jersey_Turnpike",
-      "why": "ShopRite's Electrify America site in Moorestown is 6 stalls at 350 kW. Marlton Commons and the Somerdale Walmart are verified backups on Electrify America. The Applegreen plazas on the NJ Turnpike at Walt Whitman and James Fenimore Cooper are listed from DOE and Applegreen's map and are not verified.",
+      "why": "ShopRite's Electrify America site in Moorestown is 6 stalls at 350 kW. Marlton Commons and the Somerdale Walmart are verified backups on Electrify America. The Applegreen plazas on the NJ Turnpike at Walt Whitman and James Fenimore Cooper are listed from DOE and Applegreen's map and are not verified. EA's own site description says the site is being brought back online, so confirm in the EA app before you rely on it.",
       "primary": {
         "name": "Wakefern Shoprite 594 (Moorestown, NJ)",
         "network": "Electrify America",
@@ -1397,6 +1417,20 @@
           "source": "ravitz-mt-laurel",
           "url": "https://ravitzfamilymarkets.com/shoprite-of-mount-laurel/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "EA site note: chargers are in the north-east corner of the ShopRite lot, along Nixon Dr.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/",
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "Electrify America's own site description for this location also says: \"We are currently working to bring the site back online.\" The locator lists all six chargers and shows the site status as AVAILABLE, so the two disagree. Check the EA app for live status before you plan around Moorestown. The Marlton Commons and Somerdale backups are the fallback.",
+          "category": "status",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/",
+          "checkedOn": "2026-10-15"
         }
       ],
       "searches": [
@@ -1474,19 +1508,37 @@
             "source": "reddit",
             "url": "https://www.reddit.com/r/vwidclub/comments/1hbf8xt/the_future_of_charging/m1kc3hf/",
             "date": "2024-12-11",
-            "summary": "MA\u2013DC trip stop at East Brunswick Walmart EA: 57.7 kWh in 34 minutes at $0.42/kWh. About a 5-minute wait; 10 chargers and very busy."
+            "summary": "MA to DC trip stop at East Brunswick Walmart EA: 57.7 kWh in 34 minutes at $0.42/kWh. About a 5-minute wait; 10 chargers and very busy."
           },
           {
             "source": "reddit",
             "url": "https://www.reddit.com/r/KiaEV9/comments/1kftrv9/first_road_trip_need_advice/mr8y1a2/",
             "date": "2025-05-08",
-            "summary": "DC-area to CT trip used East Brunswick Walmart EA (about 8\u201310 stalls) as a planned stop with New Castle Wawa. Longest charge on the whole trip was 18.5 minutes."
+            "summary": "DC-area to CT trip used East Brunswick Walmart EA (about 8 to 10 stalls) as a planned stop with New Castle Wawa. Longest charge on the whole trip was 18.5 minutes."
           },
           {
             "source": "reddit",
             "url": "https://www.reddit.com/r/ChargerDrama/comments/1wsa8qd/how_much_of_a_problem_is_ev_charger_congestion/pcjyv3z/",
             "date": "2026-09-28",
             "summary": "Chose East Brunswick Walmart EA for its eight-plus stalls after prior-year lines elsewhere; no wait on that trip."
+          },
+          {
+            "source": "forum",
+            "url": "https://forum.leasehackr.com/t/electrify-america-experiences-and-discussion/503939/20",
+            "date": "2023-10-23",
+            "summary": "Leasehackr post #20: Sunday night, queue peaked at 8 cars. 3 of 10 stalls were down and the stall the driver got maxed at 18 kW. Driver report, not network data."
+          },
+          {
+            "source": "forum",
+            "url": "https://forum.leasehackr.com/t/electrify-america-experiences-and-discussion/503939/32",
+            "date": "2023-10-24",
+            "summary": "Leasehackr post #32: stopped earlier in 2023 late on a Sunday night and found barely any cars on the 350 kW stalls. Driver report, not network data."
+          },
+          {
+            "source": "forum",
+            "url": "https://forum.leasehackr.com/t/electrify-america-experiences-and-discussion/503939/1048",
+            "date": "2024-06-20",
+            "summary": "Leasehackr post #1048: says East Brunswick is the worst EA site on the route and there is always a line. Opinion, no stall detail. Driver report, not network data."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -2107,6 +2159,13 @@
           "source": "walmart-3078",
           "url": "https://www.walmart.com/store/3078-east-brunswick-nj",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "EA site note: chargers are on the right side of the Walmart lot, near the pickup area.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/east-brunswick/290-nj-18/100281/",
+          "checkedOn": "2026-10-15"
         }
       ],
       "searches": [
@@ -2197,6 +2256,24 @@
             "url": "https://www.reddit.com/r/XC40_Recharge/comments/17715r0/range_question/k4t5q3e/",
             "date": "2023-10-14",
             "summary": "Charged at Jersey Gardens mall EA near EWR: connected on a 150 kW stall (car topped ~91 kW), grabbed food in the mall, returned in 29 minutes at 83%."
+          },
+          {
+            "source": "forum",
+            "url": "https://www.vwidtalk.com/threads/charging-tips-near-newark-liberty-airport-ewr.17057/",
+            "date": "2024-09-19",
+            "summary": "VW ID Forum post #3: calls the Jersey Gardens EA site 10 stalls, always fairly busy but fairly reliable with high turnover. Driver report, not network data."
+          },
+          {
+            "source": "forum",
+            "url": "https://www.vwidtalk.com/threads/charging-tips-near-newark-liberty-airport-ewr.17057/",
+            "date": "2024-09-19",
+            "summary": "VW ID Forum post #4: busy at times, waited about 10 minutes on the last visit. Driver report, not network data."
+          },
+          {
+            "source": "forum",
+            "url": "https://www.vwidtalk.com/threads/charging-tips-near-newark-liberty-airport-ewr.17057/",
+            "date": "2024-09-19",
+            "summary": "VW ID Forum post #5: used Jersey Gardens for a January return trip and charged only to 80%, which forced a top-up further north. Driver report, not network data."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -2739,6 +2816,13 @@
           "source": "simon-jersey-gardens-hours",
           "url": "https://www.simon.com/mall/the-mills-at-jersey-gardens/hours",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "EA site note: chargers are in the big lot next to the Burlington lot, along Jersey Garden Blvd.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/elizabeth/651-kapkowski-road/100282/",
+          "checkedOn": "2026-10-15"
         }
       ],
       "searches": [
@@ -2782,6 +2866,10 @@
     },
     {
       "text": "Electrify America's chargers on this route are CCS. NACS cars need an adapter.",
+      "source": "ea-locator"
+    },
+    {
+      "text": "Moorestown: EA's locator description says \"We are currently working to bring the site back online\" while the status field reads AVAILABLE. Not resolved as of 2026-10-15. The route stays verifying.",
       "source": "ea-locator"
     }
   ],
