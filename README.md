@@ -84,7 +84,7 @@ What the draft contains:
 
 4. Owner review uses `ADMIN_TOKEN` and does not email the customer.
 
-- `GET /api/admin/plans` lists requests in `new` or `review`.
+- `GET /api/admin/plans` lists requests in `new`, `review`, or `rejected-for-redo`. A redo row is labeled `Needs redo`.
 - `POST /api/admin/plans/:id/draft` saves the body and sources. The request moves to `review`.
 - Read the draft. `POST /api/admin/plans/:id/decision` with `{ "status": "rejected-for-redo" }` sends it back. `{ "status": "approved" }` accepts the latest draft.
 - Approval returns `accessCode` once. The private page is `/plan/<accessCode>`. Only the SHA-256 hash is stored. The builder does not approve a plan and does not create that link.
@@ -97,7 +97,7 @@ Do not point these scripts at production. They have no D1 binding and no Fastmai
 
 Set `ADMIN_TOKEN` as a Pages secret. Every request needs `Authorization: Bearer <ADMIN_TOKEN>` or the `x-admin-token` header. If the token or the D1 binding is missing, the API returns 503.
 
-- `GET /api/admin/plans` lists requests whose status is `new` or `review`.
+- `GET /api/admin/plans` lists requests whose status is `new`, `review`, or `rejected-for-redo`. Redo rows include `queueLabel: "Needs redo"`.
 - `GET /api/admin/plans/:id` returns that request and its drafts.
 - `POST /api/admin/plans/:id/draft` saves a draft. Body: `format` (`markdown` or `html`), `body`, and `sources` (a list of `{ "label", "url" }`). The request status becomes `review`.
 - `POST /api/admin/plans/:id/decision` with `{ "status": "approved" }` or `{ "status": "rejected-for-redo" }`. Approval requires a saved draft. The response includes a long random access code once. Only the SHA-256 hash is stored, on the latest draft (`plan_drafts.access_code`) and in `plan_links`. That code is the private `/plan/<code>` link. Rejection clears the hash and deletes `plan_links` for that request. Apply `schema-portal.sql` before approving. If that table is missing, approval returns 503 and the request stays in review.

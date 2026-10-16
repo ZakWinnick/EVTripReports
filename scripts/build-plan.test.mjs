@@ -183,6 +183,12 @@ function order(overrides = {}) {
   };
 }
 
+function assertCleanHtml(html, label = '') {
+  for (const bad of ['Invalid Date', 'undefined', 'null', 'NaN']) {
+    assert.equal(html.includes(bad), false, `${label} ${bad}`.trim());
+  }
+}
+
 function generatedText(plan) {
   const bits = [plan.summary, ...(plan.assumptions || [])];
   for (const tip of plan.tips || []) bits.push(typeof tip === 'string' ? tip : tip.text);
@@ -384,7 +390,9 @@ test('a draft record is the JSON body the admin API stores', () => {
   assert.match(html, /Estimate: about 64%/);
   assert.match(html, /Optional stop/);
   assert.match(html, /Not yet verified/);
+  assert.match(html, /<h2 class="h2">Charging strategy<\/h2>/);
   assert.equal(html.includes('\u2014'), false);
+  assertCleanHtml(html, 'draft');
 });
 
 test('published routes build for each tier without inventing a station', async () => {
@@ -457,6 +465,14 @@ test('published routes build for each tier without inventing a station', async (
       }
       const html = renderPlan(plan);
       assert.match(html, new RegExp(plan.stops[0].primary.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+      assertCleanHtml(html, meta.slug);
+      if (tier === '$19') assert.doesNotMatch(html, /Charging strategy/);
+      if (tier === '$39' || tier === '$79') {
+        assert.match(html, /<h2 class="h2">Charging strategy<\/h2>/);
+        assert.ok(html.indexOf('>Charging strategy<') < html.indexOf('id="stop-'), meta.slug);
+        assert.match(html, /Reserve floor is 10%/);
+        assert.match(html, /Arrival target is 15%/);
+      }
     }
   }
 });
@@ -717,6 +733,12 @@ test('the LA to Las Vegas dry-run order does not overstate verification or attac
   assert.equal(planMarkdown(plan).split(yermo.note).length - 1, 1);
   assert.equal(yermo.primary.exit.value, UNKNOWN);
   assert.equal(yermo.primary.exit.status, 'unverified');
+  const yermoHtml = renderPlan(plan);
+  const yermoAt = yermoHtml.indexOf('id="stop-yermo"');
+  const yermoStop = yermoHtml.slice(yermoAt, yermoHtml.indexOf('</section>', yermoAt));
+  const exitAt = yermoStop.indexOf('<dt>Exit</dt>');
+  const exitRow = yermoStop.slice(exitAt, yermoStop.indexOf('</div>', exitAt));
+  assert.equal(exitRow.split('Not yet verified').length - 1, 1);
   const primm = plan.stops.find((stop) => stop.id === 'primm');
   assert.equal(JSON.stringify(primm).includes('lots of restrooms'), false);
   assert.equal(primm.charging, false);
@@ -884,7 +906,13 @@ test('direction wording follows the trip, and a named origin that matches the fi
 test('a stored plan renders the same HTML, and new sections appear only when the plan has them', async () => {
   const stored = JSON.parse(await readFile(path.join(root, 'scripts/fixtures/stored-plan.json'), 'utf8'));
   const snap = (await readFile(path.join(root, 'scripts/fixtures/stored-plan.snapshot.html'), 'utf8')).replace(/\n$/, '');
-  assert.equal(renderPlan(stored), snap);
+  const storedHtml = renderPlan(stored);
+  assert.equal(storedHtml, snap);
+  assertCleanHtml(storedHtml, 'stored plan');
+  assert.match(storedHtml, /Verified Oct 15, 2026/);
+  assert.match(storedHtml, /<h2 class="h2">Charging strategy<\/h2>/);
+  assert.match(storedHtml, /Charge at Walmart Alpha to 50%/);
+  assert.match(storedHtml, /Reserve floor is 10%/);
   const route = sampleRoute();
   route.originLegs = [{
     start: 'Los Angeles',
@@ -912,6 +940,53 @@ test('a stored plan renders the same HTML, and new sections appear only when the
   assert.match(html, /Primary cautions/);
   assert.match(html, /Backup cautions/);
   assert.doesNotMatch(html, /<h3 class="h3 sub">Cautions<\/h3>/);
+});
+
+test('repeated unverified fields collapse to one line', () => {
+  const plan = {
+    title: 'Yermo',
+    tier: 'Detailed plan ($39)',
+    strategy: {
+      text: 'No charging stop.',
+      reservePercent: 10,
+      targetPercent: 15,
+      stops: [],
+      destination: { arrivePercent: 20, arriveClock: '10:00', belowReserve: false, ranOut: false },
+    },
+    stops: [{
+      id: 'yermo',
+      name: 'Yermo',
+      mile: 82,
+      primary: {
+        name: 'Yermo, Sunrise Canyon Road',
+        network: { value: 'Tesla Supercharger', status: 'verified', url: 'https://www.tesla.com/findus', checkedOn: '2026-10-14' },
+        address: { value: '40865 Sunrise Canyon Road, Yermo, CA', status: 'verified', url: 'https://www.tesla.com/findus', checkedOn: '2026-10-14' },
+        exit: { value: UNKNOWN, status: 'unverified' },
+        stalls: { value: UNKNOWN, status: 'unverified' },
+        power: { value: UNKNOWN, status: 'unverified' },
+        access: { value: 'Open to all EVs', status: 'verified', url: 'https://www.tesla.com/findus', checkedOn: '2026-10-14' },
+        checkedOn: '2026-10-14',
+      },
+    }],
+  };
+  const html = renderPlan(plan);
+  assert.match(html, /Exit, stalls and power/);
+  assert.match(html, />Not yet verified</);
+  const start = html.indexOf('Primary charger');
+  const primary = html.slice(start, html.indexOf('</section>', start));
+  const sheet = primary.slice(primary.indexOf('<dl class="sheet">'), primary.indexOf('</dl>'));
+  assert.equal(sheet.split('Not yet verified').length - 1, 1);
+  assert.match(sheet, /<dt>Exit, stalls and power<\/dt><dd><span>Not yet verified<\/span>/);
+  assert.doesNotMatch(sheet, /<dt>Exit<\/dt>|<dt>Stalls<\/dt>|<dt>Max power<\/dt>/);
+  const md = planMarkdown(plan);
+  assert.match(md, /- Exit, stalls and power: Not yet verified/);
+  assert.equal(md.split('- exit: Not yet verified').length - 1, 0);
+  assert.equal(md.split('- stalls: Not yet verified').length - 1, 0);
+  assert.equal(md.split('- power: Not yet verified').length - 1, 0);
+  assert.match(md, /- network: Tesla Supercharger/);
+  assert.match(md, /- access: Open to all EVs/);
+  assertCleanHtml(html, 'yermo');
+  assert.equal(html.includes('\u2014'), false);
 });
 
 test('buildPlan does not call the network', () => {

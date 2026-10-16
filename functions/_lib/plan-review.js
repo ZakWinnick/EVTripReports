@@ -93,9 +93,12 @@ function checkSources(sources) {
 
 async function listQueue(db) {
   const rows = await db.prepare(
-    `SELECT ${REQUEST_COLS} FROM plan_requests WHERE status IN ('new', 'review') ORDER BY created_at ASC, id ASC`
+    `SELECT ${REQUEST_COLS} FROM plan_requests WHERE status IN ('new', 'review', 'rejected-for-redo') ORDER BY created_at ASC, id ASC`
   ).all();
-  return json({ requests: rows.results || [] });
+  const requests = (rows.results || []).map((row) => (
+    row.status === 'rejected-for-redo' ? { ...row, queueLabel: 'Needs redo' } : row
+  ));
+  return json({ requests });
 }
 
 async function saveDraft(db, id, data) {

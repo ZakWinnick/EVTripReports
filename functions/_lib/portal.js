@@ -137,12 +137,32 @@ async function tokensMatchPlans(db, email, tokens, plans) {
   return byDraft;
 }
 
+// Reissue the token on the existing approved row. A rejected plan has no access code, so it is not reused.
+async function reusePlanLink(db, plan, email) {
+  const row = await db.prepare(
+    `SELECT l.id
+     FROM plan_links l
+     JOIN plan_drafts d ON d.id = l.draft_id AND d.access_code IS NOT NULL
+     JOIN plan_requests r ON r.id = l.request_id
+     WHERE l.request_id = ? AND l.draft_id = ? AND lower(r.email) = ? AND r.status = 'approved'
+     ORDER BY l.id DESC
+     LIMIT 1`
+  ).bind(plan.request_id, plan.draft_id, email).first();
+  if (!row?.id) return '';
+  const token = newToken();
+  await db.prepare(`UPDATE plan_links SET token_hash = ? WHERE id = ?`).bind(await sha256Hex(token), row.id).run();
+  return token;
+}
+
 async function linksFor(db, email, existing) {
   const plans = await approvedPlans(db, email);
   const matched = existing.length ? await tokensMatchPlans(db, email, existing, plans) : null;
   if (matched) return { plans: plans.map((plan) => ({ ...plan, token: matched.get(plan.draft_id) })), fresh: false };
   const minted = [];
-  for (const plan of plans) minted.push({ ...plan, token: await mintPlanLink(db, plan) });
+  for (const plan of plans) {
+    const token = (await reusePlanLink(db, plan, email)) || (await mintPlanLink(db, plan));
+    minted.push({ ...plan, token });
+  }
   return { plans: minted, fresh: minted.length > 0 };
 }
 
@@ -351,11 +371,15 @@ export async function onList(context) {
     return renderPrivatePage(env, request, { title: 'Your plans', description: 'Your approved plans.', main: messagePage('Not open yet.', CLOSED_MESSAGE), status: 503 });
   }
   if (!email) {
-    return renderPrivatePage(env, request, {
+    const page = await renderPrivatePage(env, request, {
       title: 'Your plans',
       description: 'Your approved plans.',
       main: messagePage('Sign-in expired.', 'This sign-in has expired. Request a new link.'),
+      status: 302,
     });
+    const headers = new Headers(page.headers);
+    headers.set('location', '/find-my-plans');
+    return new Response(page.body, { status: 302, headers });
   }
 
   let linked;

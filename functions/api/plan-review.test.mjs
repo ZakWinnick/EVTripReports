@@ -24,9 +24,9 @@ function memoryDb(seed) {
           return api;
         },
         async all() {
-          if (text.includes("status IN ('new', 'review')")) {
+          if (text.includes("status IN ('new', 'review', 'rejected-for-redo')")) {
             const results = requests
-              .filter((row) => row.status === 'new' || row.status === 'review')
+              .filter((row) => row.status === 'new' || row.status === 'review' || row.status === 'rejected-for-redo')
               .sort((a, b) => a.created_at.localeCompare(b.created_at) || a.id - b.id);
             return { results };
           }
@@ -140,11 +140,32 @@ test('admin routes require the token and the database', async () => {
   assert.equal((await call({ path: '', db: undefined })).status, 503);
 });
 
-test('the queue is only new and review, oldest first', async () => {
-  const res = await call({ path: '', db: memoryDb(seed()) });
+test('the queue lists new, review, and redo requests, oldest first', async () => {
+  const db = memoryDb(seed());
+  db.requests.push({
+    id: 4,
+    created_at: '2026-10-14T01:00:00.000Z',
+    name: 'Dee',
+    email: 'dee@example.com',
+    tier: 'Detailed plan',
+    car: '2024 Ioniq 5',
+    port: 'CCS',
+    start_place: 'LA',
+    end_place: 'Vegas',
+    depart: '2026-11-04',
+    return_date: '',
+    passengers: '',
+    memberships: '',
+    notes: '',
+    status: 'rejected-for-redo',
+  });
+  const res = await call({ path: '', db });
   assert.equal(res.status, 200);
   const body = await res.json();
-  assert.deepEqual(body.requests.map((row) => row.id), [1, 2]);
+  assert.deepEqual(body.requests.map((row) => row.id), [4, 1, 2]);
+  assert.equal(body.requests[0].status, 'rejected-for-redo');
+  assert.equal(body.requests[0].queueLabel, 'Needs redo');
+  assert.equal(body.requests[1].queueLabel, undefined);
   assert.equal(body.requests.some((row) => row.email === 'cam@example.com'), false);
 });
 
@@ -249,7 +270,10 @@ test('reject for redo clears any access code and sends nothing', async () => {
   assert.equal(db.drafts[0].access_code, null);
   assert.equal(db.links.length, 0);
   const listed = await (await call({ path: '', db })).json();
-  assert.equal(listed.requests.some((row) => row.id === 2), false);
+  const redo = listed.requests.find((row) => row.id === 2);
+  assert.equal(redo.status, 'rejected-for-redo');
+  assert.equal(redo.queueLabel, 'Needs redo');
+  assert.equal(listed.requests.some((row) => row.status === 'approved'), false);
 });
 
 test('the header token works and the review code never imports mail', async () => {

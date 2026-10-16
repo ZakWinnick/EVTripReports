@@ -88,6 +88,7 @@ function memoryDb() {
   const sessions = [];
   const rates = [];
   let signinId = 1;
+  let linkId = 1;
   const planRow = (draft, request) => ({
     id: draft.id,
     body: draft.body,
@@ -149,6 +150,16 @@ function memoryDb() {
             const n = rates.filter((row) => row.scope === bound[0] && row.key_hash === bound[1] && row.created_at > bound[2]).length;
             return { n };
           }
+          if (text.startsWith('SELECT l.id') && text.includes('FROM plan_links l') && text.includes("r.status = 'approved'")) {
+            const hits = links.filter((row) => {
+              if (row.request_id !== bound[0] || row.draft_id !== bound[1]) return false;
+              const draft = drafts.find((item) => item.id === row.draft_id && item.access_code != null);
+              const request = requests.find((item) => item.id === row.request_id && item.email.toLowerCase() === bound[2] && item.status === 'approved');
+              return Boolean(draft && request);
+            });
+            hits.sort((a, b) => b.id - a.id);
+            return hits[0] ? { id: hits[0].id } : null;
+          }
           if (text.startsWith('SELECT l.draft_id')) {
             const link = links.find((row) => row.token_hash === bound[0]);
             if (!link) return null;
@@ -204,8 +215,14 @@ function memoryDb() {
             return { success: true, meta: { changes: 1 } };
           }
           if (text.startsWith('INSERT INTO plan_links')) {
-            links.push({ request_id: bound[0], draft_id: bound[1], token_hash: bound[2], created_at: bound[3] });
-            return { success: true, meta: { changes: 1 } };
+            const id = linkId++;
+            links.push({ id, request_id: bound[0], draft_id: bound[1], token_hash: bound[2], created_at: bound[3] });
+            return { success: true, meta: { last_row_id: id, changes: 1 } };
+          }
+          if (text.startsWith('UPDATE plan_links SET token_hash')) {
+            const row = links.find((item) => item.id === bound[1]);
+            if (row) row.token_hash = bound[0];
+            return { success: true, meta: { changes: row ? 1 : 0 } };
           }
           throw new Error(`unhandled run: ${text}`);
         },
@@ -623,6 +640,64 @@ test('a non-json draft is not rendered as HTML', async () => {
   } finally {
     restore();
   }
+});
+
+test('list without a session redirects to the sign-in page', async () => {
+  const res = await onList({
+    request: new Request('https://evtripreports.com/find-my-plans/list'),
+    env: { DB: memoryDb() },
+  });
+  assert.equal(res.status, 302);
+  assert.equal(res.headers.get('location'), '/find-my-plans');
+  const html = await res.text();
+  assert.match(html, /Sign-in expired/);
+  assert.match(html, /href="\/find-my-plans"/);
+});
+
+test('a list load without the plans cookie reuses the active link row', async () => {
+  const db = memoryDb();
+  const session = 'S'.repeat(43);
+  db.sessions.push({
+    email: 'ada@example.com',
+    token_hash: await sha256Hex(session),
+    created_at: new Date().toISOString(),
+    expires_at: new Date(Date.now() + 60_000).toISOString(),
+  });
+  const list = (cookie) => onList({
+    request: new Request('https://evtripreports.com/find-my-plans/list', { headers: { cookie } }),
+    env: { DB: db },
+  });
+  const first = await list(`etr_portal=${session}`);
+  assert.equal(first.status, 200);
+  const token1 = (await first.text()).match(/\/plan\/([A-Za-z0-9_-]{43})/)[1];
+  assert.equal(db.links.length, 1);
+
+  const second = await list(`etr_portal=${session}`);
+  assert.equal(second.status, 200);
+  const token2 = (await second.text()).match(/\/plan\/([A-Za-z0-9_-]{43})/)[1];
+  assert.equal(db.links.length, 1);
+  const opened = await onPlan({
+    request: new Request(`https://evtripreports.com/plan/${token2}`),
+    params: { token: token2 },
+    env: { DB: db },
+  });
+  assert.equal(opened.status, 200);
+  assert.match(await opened.text(), /Pasadena to Phoenix/);
+
+  const ada = db.requests.find((row) => row.email.toLowerCase() === 'ada@example.com');
+  ada.status = 'rejected-for-redo';
+  for (const draft of db.drafts) if (draft.request_id === ada.id) draft.access_code = null;
+  const before = db.links.length;
+  const third = await list(`etr_portal=${session}`);
+  assert.equal(db.links.length, before);
+  assert.equal((await third.text()).includes('/plan/'), false);
+  const dead = await onPlan({
+    request: new Request(`https://evtripreports.com/plan/${token2}`),
+    params: { token: token2 },
+    env: { DB: db },
+  });
+  assert.equal(dead.status, 404);
+  assert.notEqual(token1, '');
 });
 
 test('pages and schema mention the portal and do not add a new secret', () => {
