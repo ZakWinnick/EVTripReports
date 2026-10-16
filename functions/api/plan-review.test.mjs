@@ -10,11 +10,14 @@ function memoryDb(seed) {
   const requests = seed.map((row) => ({ ...row }));
   const drafts = [];
   const links = [];
+  const delivery = [];
   let nextDraft = 1;
-  return {
+  const db = {
     requests,
     drafts,
     links,
+    delivery,
+    noDeliveryTable: false,
     prepare(sql) {
       const text = sql.replace(/\s+/g, ' ').trim();
       let bound = [];
@@ -24,6 +27,18 @@ function memoryDb(seed) {
           return api;
         },
         async all() {
+          if (text.includes('LEFT JOIN plan_delivery')) {
+            if (db.noDeliveryTable) throw new Error('no such table: plan_delivery');
+            const results = requests
+              .filter((row) => row.status === 'approved')
+              .map((row) => {
+                const mine = links.filter((link) => link.request_id === row.id).map((link) => link.created_at).sort();
+                const sent = delivery.find((item) => item.request_id === row.id);
+                return { ...row, approved_at: mine.length ? mine[mine.length - 1] : null, delivered_at: sent ? sent.delivered_at : null, delivery_note: sent ? sent.note : null };
+              })
+              .sort((a, b) => String(a.approved_at).localeCompare(String(b.approved_at)) || a.id - b.id);
+            return { results };
+          }
           if (text.includes("status IN ('new', 'review', 'rejected-for-redo')")) {
             const results = requests
               .filter((row) => row.status === 'new' || row.status === 'review' || row.status === 'rejected-for-redo')
@@ -36,6 +51,7 @@ function memoryDb(seed) {
           throw new Error(`unhandled all: ${text}`);
         },
         async first() {
+          if (text.startsWith('SELECT delivered_at, note FROM plan_delivery')) return delivery.find((item) => item.request_id === bound[0]) || null;
           if (text.startsWith('SELECT id, created_at') && text.includes('FROM plan_requests WHERE id = ?')) {
             return requests.find((row) => row.id === bound[0]) || null;
           }
@@ -46,6 +62,12 @@ function memoryDb(seed) {
           throw new Error(`unhandled first: ${text}`);
         },
         async run() {
+          if (text.startsWith('INSERT OR IGNORE INTO plan_delivery')) {
+            if (db.noDeliveryTable) throw new Error('no such table: plan_delivery');
+            if (delivery.some((item) => item.request_id === bound[0])) return { success: true, meta: { changes: 0 } };
+            delivery.push({ request_id: bound[0], delivered_at: bound[1], note: bound[2] });
+            return { success: true, meta: { changes: 1 } };
+          }
           if (text.startsWith('INSERT INTO plan_links')) {
             links.push({
               request_id: bound[0],
@@ -108,6 +130,7 @@ function memoryDb(seed) {
       return api;
     },
   };
+  return db;
 }
 
 function seed() {
@@ -127,7 +150,7 @@ function call({ method = 'GET', path, body, token = TOKEN, db, admin = TOKEN }) 
       headers,
       body: body == null ? undefined : JSON.stringify(body),
     }),
-    params: { path: path.replace(/^\//, '') },
+    params: { path: path.replace(/^\//, '').split('?')[0] },
     env: { ADMIN_TOKEN: admin, DB: db },
   });
 }
@@ -318,4 +341,93 @@ test('the queue flags orders that need a person before a plan is built', async (
   assert.equal(redo.flags[0].code, 'port-unknown');
   const one = await (await call({ path: '/12', db })).json();
   assert.equal(one.request.flags[0].code, 'reverse-direction');
+});
+
+const HOUR = 60 * 60 * 1000;
+const ago = (hours) => new Date(Date.now() - hours * HOUR).toISOString();
+
+function approvedSeed() {
+  const db = memoryDb(seed());
+  db.requests.push({ ...seed()[0], id: 5, name: 'Fay', email: 'fay@example.com', status: 'approved' }, { ...seed()[0], id: 6, name: 'Gus', email: 'gus@example.com', tier: 'Multi-day or family', status: 'approved' });
+  db.links.push(
+    { request_id: 3, draft_id: 1, token_hash: 'a', created_at: ago(60) },
+    { request_id: 5, draft_id: 2, token_hash: 'b', created_at: ago(50) },
+    { request_id: 6, draft_id: 3, token_hash: 'c', created_at: ago(2) },
+  );
+  return db;
+}
+
+test('marking an approved plan delivered records the time once, and the queue shows what is waiting', async () => {
+  const db = approvedSeed();
+  const before = await (await call({ path: '', db })).json();
+  assert.equal(before.awaitingDelivery.count, 3);
+  assert.equal(before.awaitingDelivery.overdueCount, 2);
+  assert.equal(before.awaitingDelivery.overdueHours, 48);
+
+  const first = await call({ method: 'POST', path: '/3/delivered', body: { note: 'sent by email' }, db });
+  assert.equal(first.status, 200);
+  const sent = await first.json();
+  assert.equal(sent.ok, true);
+  assert.equal(sent.alreadyDelivered, false);
+  assert.equal(sent.note, 'sent by email');
+  assert.equal(db.requests.find((row) => row.id === 3).status, 'approved');
+
+  const again = await (await call({ method: 'POST', path: '/3/delivered', body: { note: 'second try' }, db })).json();
+  assert.equal(again.alreadyDelivered, true);
+  assert.equal(again.deliveredAt, sent.deliveredAt);
+  assert.equal(again.note, 'sent by email');
+  assert.equal(db.delivery.length, 1);
+
+  const after = await (await call({ path: '', db })).json();
+  assert.equal(after.awaitingDelivery.count, 2);
+  assert.deepEqual(after.awaitingDelivery.plans.filter((plan) => plan.overdue).map((plan) => plan.id), [5]);
+});
+
+test('delivered needs an approved plan, and a clear message when the table is missing', async () => {
+  const db = approvedSeed();
+  assert.equal((await call({ method: 'POST', path: '/1/delivered', body: {}, db })).status, 409);
+  assert.equal((await call({ method: 'POST', path: '/99/delivered', body: {}, db })).status, 404);
+  assert.equal((await call({ method: 'POST', path: '/3/delivered', body: {}, token: '', db })).status, 401);
+  db.noDeliveryTable = true;
+  const res = await call({ method: 'POST', path: '/3/delivered', body: {}, db });
+  assert.equal(res.status, 503);
+  assert.match((await res.json()).error, /schema-delivery\.sql/);
+  const queue = await (await call({ path: '', db })).json();
+  assert.equal(queue.awaitingDelivery, null);
+  assert.equal(queue.requests.length, 2);
+  assert.equal((await call({ path: '/approved', db })).status, 503);
+});
+
+test('the approved list shows delivery, and pending older than 48 hours is the overdue list', async () => {
+  const db = approvedSeed();
+  await call({ method: 'POST', path: '/3/delivered', body: {}, db });
+  const all = (await (await call({ path: '/approved', db })).json()).approved;
+  assert.deepEqual(all.map((item) => [item.id, Boolean(item.deliveredAt), item.overdue]), [[3, true, false], [5, false, true], [6, false, false]]);
+  assert.ok(all[1].hoursSinceApproval >= 49 && all[1].hoursSinceApproval <= 51);
+  const overdue = (await (await call({ path: '/approved?pending=1&olderThanHours=48', db })).json()).approved;
+  assert.deepEqual(overdue.map((item) => item.id), [5]);
+  const sooner = (await (await call({ path: '/approved?pending=1&olderThanHours=1', db })).json()).approved;
+  assert.deepEqual(sooner.map((item) => item.id), [5, 6]);
+});
+
+test('the payment lookup stays under 100 bound parameters for a long queue', async () => {
+  const db = memoryDb([]);
+  for (let i = 1; i <= 250; i++) db.requests.push({ ...seed()[0], id: i, created_at: `2026-10-15T00:${String(i % 60).padStart(2, '0')}:00.000Z` });
+  const widest = [];
+  const real = db.prepare.bind(db);
+  db.prepare = (sql) => {
+    const api = real(sql);
+    if (/FROM stripe_payments/.test(sql)) {
+      const bind = api.bind.bind(api);
+      return { bind(...args) { widest.push(args.length); return { all: async () => ({ results: [] }), ...{} }; }, _bind: bind };
+    }
+    return api;
+  };
+  const res = await call({ path: '', db });
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  assert.equal(body.requests.length, 250);
+  assert.ok(widest.length >= 3);
+  assert.ok(Math.max(...widest) < 100, `widest ${Math.max(...widest)}`);
+  assert.ok(body.requests.every((row) => row.payment.state === 'unpaid'));
 });
