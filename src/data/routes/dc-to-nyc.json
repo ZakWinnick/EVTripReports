@@ -89,7 +89,7 @@
       "url": "https://www.tesla.com/findus"
     },
     "walmart-3078": {
-      "name": "Walmart Supercenter #3078, East Brunswick (store page via Internet Archive)",
+      "name": "Walmart store page, Supercenter #3078, 290 State Route 18, East Brunswick",
       "url": "https://www.walmart.com/store/3078-east-brunswick-nj"
     },
     "ravitz-mt-laurel": {
@@ -135,6 +135,14 @@
     "shakeshack-marlton": {
       "name": "Shake Shack Marlton location page (hours)",
       "url": "https://shakeshack.com/location/marlton-nj"
+    },
+    "walmart-2009": {
+      "name": "Walmart store page, Supercenter #2009, 401 Constant Friendship Blvd, Abingdon",
+      "url": "https://www.walmart.com/store/2009-abingdon-md"
+    },
+    "ravitz-marlton": {
+      "name": "Ravitz Family Markets, ShopRite of Marlton",
+      "url": "https://ravitzfamilymarkets.com/shoprite-of-marlton/"
     }
   },
   "stops": [
@@ -486,11 +494,11 @@
       "reports": [],
       "around": [
         {
-          "text": "Host is Walmart Supercenter #2009. Grocery and packaged food are inside the store while it is open. Store hours and restrooms: Not yet verified. Live walmart.com store page blocked automated reads on 2026-10-15 (rechecked). An older Internet Archive capture of the store page listed hours but did not list restrooms, so neither field is cited from the host page.",
+          "text": "Host is Walmart Supercenter #2009 at 401 Constant Friendship Blvd. Grocery and packaged food are inside the store while it is open. Walmart's store page lists store hours of 6am to 11pm, Monday to Sunday (checked 2026-10-16). Restrooms: Not yet verified (the store page lists no restroom info).",
           "category": "food",
-          "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/md/abingdon/401-constant-friendship-blvd/100277/",
-          "checkedOn": "2026-10-15"
+          "source": "walmart-2009",
+          "url": "https://www.walmart.com/store/2009-abingdon-md",
+          "checkedOn": "2026-10-16"
         },
         {
           "text": "EA site note: chargers are on the left edge of the lot when facing the Walmart, along the pickup area.",
@@ -500,7 +508,7 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list shopping, WiFi, grocery, dining, restrooms, and EV parking as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "text": "PlugShare users list shopping, WiFi, grocery, dining, restrooms, and EV parking as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart's store page does not list restrooms, so restrooms stay Not yet verified.",
           "category": "food",
           "source": "plugshare-169544",
           "url": "https://www.plugshare.com/location/169544",
@@ -883,7 +891,7 @@
         },
         {
           "name": "Newark, DE - Tesla Supercharger, 530 John F Kennedy Memorial Hwy, Newark",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us for newarkdesupercharger returned 404 on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18).",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us for newarkdesupercharger returned 404 on 2026-10-15 and again on 2026-10-16 in a normal browser visit, and a Find Us search for Newark, DE showed no result for it, and DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "afdcIds": [
             102103
@@ -1642,18 +1650,27 @@
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Host is Marlton Commons, an Urban Edge center at Routes 70 and 73 anchored by ShopRite, Kohl's and PetSmart, with WineWorks, Shake Shack and honeygrow (Urban Edge property page, checked 2026-10-16). Center hours and restrooms: Not yet verified (not on that page).",
+          "text": "Host is Marlton Commons, an Urban Edge center at Routes 70 and 73 anchored by ShopRite, Kohl's and PetSmart, with WineWorks, Shake Shack and honeygrow (Urban Edge property page, checked 2026-10-16). That page does not list center hours or restrooms.",
           "category": "food",
           "source": "uedge-marlton",
           "url": "https://uedge.com/property/marlton-commons",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Shake Shack Marlton, 321 Route 70 West, lists dine-in hours of 10:00 AM to 10:00 PM Sunday to Thursday and 10:00 AM to 11:00 PM Friday and Saturday (checked 2026-10-16). Its page puts it about 45 m from EA's listed site point. Restrooms: Not yet verified (not listed on that page).",
+          "text": "ShopRite, the anchor of Marlton Commons, lists 307 West Route 70 as its address, the address EA lists for this site. The ShopRite of Marlton store page lists hours of 7am to 10pm and a pharmacy (checked 2026-10-16). Restrooms: Not yet verified (not listed on that page).",
+          "category": "food",
+          "source": "ravitz-marlton",
+          "url": "https://ravitzfamilymarkets.com/shoprite-of-marlton/",
+          "checkedOn": "2026-10-16",
+          "site": "Urban Edge Properties Marlton Commons (Marlton, NJ)"
+        },
+        {
+          "text": "Shake Shack at Marlton Commons, 321 Route 70 West, lists dine-in hours of 10:00 AM to 10:00 PM Sunday to Thursday and 10:00 AM to 11:00 PM Friday and Saturday (checked 2026-10-16). Its page puts it about 45 m from EA's listed site point. Restrooms: Not yet verified (not listed on that page).",
           "category": "food",
           "source": "shakeshack-marlton",
           "url": "https://shakeshack.com/location/marlton-nj",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Urban Edge Properties Marlton Commons (Marlton, NJ)"
         },
         {
           "text": "Moorestown backup: Host is ShopRite of Mount Laurel (Wakefern #594) at 1000 Nixon Drive. The Ravitz Family Markets page lists hours 7am to 10pm and names Chinese Wok plus order, pickup and delivery (rechecked 2026-10-15). ShopRite's own store page blocked automated reads on 2026-10-16. Grocery food is in the store while open. Restrooms: Not yet verified (not listed on that page).",
@@ -2454,11 +2471,11 @@
       "reports": [],
       "around": [
         {
-          "text": "Host is Walmart Supercenter #3078 with grocery and a bakery. An Aug 17, 2024 Internet Archive capture of the walmart.com store page listed daily hours from 6am until 11pm and named Electrify America on site; that capture does not list restrooms. Live walmart.com page blocked automated reads on 2026-10-15 (rechecked), so treat those hours as archive-only. Restrooms: Not yet verified.",
+          "text": "Host is Walmart Supercenter #3078 at 290 State Route 18. Grocery and packaged food are inside the store while it is open. Walmart's store page lists store hours of 6am to 11pm, Monday to Sunday (checked 2026-10-16). Restrooms: Not yet verified (the store page lists no restroom info).",
           "category": "food",
           "source": "walmart-3078",
-          "url": "https://web.archive.org/web/20240817170726/https://www.walmart.com/store/3078-east-brunswick-nj/",
-          "checkedOn": "2026-10-15"
+          "url": "https://www.walmart.com/store/3078-east-brunswick-nj",
+          "checkedOn": "2026-10-16"
         },
         {
           "text": "EA site note: chargers are on the right side of the Walmart lot, near the pickup area.",
@@ -2468,7 +2485,7 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list restrooms, EV parking, dining, shopping, and grocery as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "text": "PlugShare users list restrooms, EV parking, dining, shopping, and grocery as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart's store page does not list restrooms, so restrooms stay Not yet verified.",
           "category": "food",
           "source": "plugshare-193079",
           "url": "https://www.plugshare.com/location/193079",
@@ -3137,18 +3154,18 @@
       "reports": [],
       "around": [
         {
-          "text": "Mall food court is upper level center court by Entrance C. Restrooms are throughout the mall corridors (accessible restrooms listed on the About page). Simon About also says the EV chargers in the Cohoes-facing lot are available 24 hours a day, 7 days a week. Live simon.com About redirected or blocked automated reads on 2026-10-15; cited from Internet Archive snapshot dated 2025-12-06.",
+          "text": "Simon's About page lists the food court on the upper level center court by Entrance C, restrooms throughout the mall corridors, and accessible restrooms. It says the EV chargers are open 24 hours a day, 7 days a week, in \"the parking lot that is shared with Cohoes and is facing Hotels & Ruby Tuesday.\" Live simon.com pages blocked automated reads on 2026-10-15 and 2026-10-16, so this cites the Internet Archive capture dated 2025-12-06 (rechecked 2026-10-16).",
           "category": "food",
-          "source": "simon-jersey-gardens-about-archive",
+          "source": "simon-jersey-gardens-about",
           "url": "https://web.archive.org/web/20251206184646/https://www.simon.com/mall/the-mills-at-jersey-gardens/about",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
         },
         {
-          "text": "Mall regular hours: Monday to Saturday 10:00am to 9:00pm, Sunday 11:00am to 7:00pm. Read from Simon Hours via Internet Archive snapshot dated 2026-01-30 (live simon.com pages blocked automated reads on 2026-10-15).",
+          "text": "Mall regular hours on Simon's hours page: Monday to Saturday 10:00am to 9:00pm, Sunday 11:00am to 7:00pm. Live simon.com pages blocked automated reads on 2026-10-15 and 2026-10-16. The same hours are in the Internet Archive capture dated 2026-01-30 and in a search engine copy of the live page showing the week of October 7, 2026 (checked 2026-10-16). Holiday hours can differ.",
           "category": "food",
           "source": "simon-jersey-gardens-hours",
-          "url": "https://www.simon.com/mall/the-mills-at-jersey-gardens/hours",
-          "checkedOn": "2026-10-15"
+          "url": "https://web.archive.org/web/20260130105633/https://www.simon.com/mall/the-mills-at-jersey-gardens/hours",
+          "checkedOn": "2026-10-16"
         },
         {
           "text": "EA site note: chargers are in the big lot next to the Burlington lot, along Jersey Garden Blvd.",
@@ -3182,7 +3199,7 @@
   ],
   "tips": [
     {
-      "text": "68 of 69 Tesla sites on this route carry an access flag from Tesla Find Us (54 open to all EVs, 14 Tesla only), checked 2026-10-15. 63 of those also match DOE's access note, and 5 more (Bellmawr, Piscataway, Woodbridge, Newark Ferry St and Jersey City) show \"Adapter Included For Other EVs\" where DOE lists CCS connectors or \"NACS partner enabled\". Newark, DE on JFK Memorial Hwy stays Not yet verified: Find Us returned 404 on 2026-10-15 and timed out on 2026-10-16. DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18). That note alone does not set a flag.",
+      "text": "68 of 69 Tesla sites on this route carry an access flag from Tesla Find Us (54 open to all EVs, 14 Tesla only), checked 2026-10-15. 63 of those also match DOE's access note, and 5 more (Bellmawr, Piscataway, Woodbridge, Newark Ferry St and Jersey City) show \"Adapter Included For Other EVs\" where DOE lists CCS connectors or \"NACS partner enabled\". Newark, DE on JFK Memorial Hwy stays Not yet verified: Find Us returned 404 on 2026-10-15 and again on 2026-10-16. DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18). That note alone does not set a flag.",
       "source": "tesla-findus"
     },
     {
@@ -3194,8 +3211,8 @@
       "source": "afdc"
     },
     {
-      "text": "Food and restroom notes are filled for all five primaries (checked 2026-10-15). Elizabeth has mall restrooms and a food court on Simon pages. Marlton hours come from Shake Shack's page for its spot in the center; Marlton restrooms stay Not yet verified. New Castle hours come from Wawa's store page (5:00 AM to 10:00 PM daily, checked 2026-10-16). New Castle, Abingdon and East Brunswick restrooms stay Not yet verified on host pages. Walmart and some Simon live pages blocked automated reads; East Brunswick hours and Elizabeth hours cite archives where noted.",
-      "source": "ea-locator"
+      "text": "Store hours at all five primaries come from host pages, checked 2026-10-16: Abingdon and East Brunswick Walmart 6am to 11pm daily (walmart.com), New Castle Wawa 5:00 AM to 10:00 PM daily (wawa.com), Marlton ShopRite 7am to 10pm (Ravitz Family Markets), and the Elizabeth mall 10:00am to 9:00pm Monday to Saturday, 11:00am to 7:00pm Sunday (Simon, archive and search copies). Elizabeth has mall restrooms and a food court on Simon's About page. Restrooms at Abingdon, New Castle, Marlton and East Brunswick stay Not yet verified: none of those host pages lists them.",
+      "source": "walmart-2009"
     },
     {
       "text": "Electrify America's chargers on this route are CCS. NACS cars need an adapter.",

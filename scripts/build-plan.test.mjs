@@ -1137,14 +1137,17 @@ test('LV to SLC plan does not count the Cedar City Reddit report as a sourced re
   if (restroom) assert.match(restroom.note, /^Driver report/);
 });
 
-test('host-page store hours at the LA to San Diego Walmarts and the New Castle Wawa reach the plan with link and date', async () => {
+test('host-page store hours at the LA to San Diego Walmarts and the DC to NYC hosts reach the plan with link and date', async () => {
   const cases = [
     { slug: 'la-to-san-diego', battery: 15, stops: [
       { name: /Walmart 2242/, url: 'https://www.walmart.com/store/2242-anaheim-ca', hours: /6am to 11pm, Monday to Sunday/ },
       { name: /Walmart 2494/, url: 'https://www.walmart.com/store/2494-oceanside-ca', hours: /6am to 11pm, Monday to Sunday/ },
     ] },
     { slug: 'dc-to-nyc', battery: 20, stops: [
+      { name: /Walmart 2009/, url: 'https://www.walmart.com/store/2009-abingdon-md', hours: /6am to 11pm, Monday to Sunday/ },
       { name: /Wawa Store 840/, url: 'https://www.wawa.com/locations/0840', hours: /5:00 AM to 10:00 PM, Monday to Sunday/ },
+      { name: /Urban Edge Properties Marlton Commons/, url: 'https://ravitzfamilymarkets.com/shoprite-of-marlton/', hours: /7am to 10pm/ },
+      { name: /Walmart 3078/, url: 'https://www.walmart.com/store/3078-east-brunswick-nj', hours: /6am to 11pm, Monday to Sunday/ },
     ] },
   ];
   for (const { slug, battery, stops } of cases) {
