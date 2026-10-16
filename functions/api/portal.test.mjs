@@ -648,10 +648,10 @@ test('list without a session redirects to the sign-in page', async () => {
     env: { DB: memoryDb() },
   });
   assert.equal(res.status, 302);
-  assert.equal(res.headers.get('location'), '/find-my-plans');
+  assert.equal(res.headers.get('location'), '/find-my-plans/');
   const html = await res.text();
   assert.match(html, /Sign-in expired/);
-  assert.match(html, /href="\/find-my-plans"/);
+  assert.match(html, /href="\/find-my-plans\/"/);
 });
 
 test('a list load without the plans cookie reuses the active link row', async () => {
@@ -705,7 +705,7 @@ test('pages and schema mention the portal and do not add a new secret', () => {
   const plans = readFileSync(new URL('../../src/pages/plans.astro', import.meta.url), 'utf8');
   const schema = readFileSync(new URL('../../schema-portal.sql', import.meta.url), 'utf8');
   const find = readFileSync(new URL('../../src/pages/find-my-plans.astro', import.meta.url), 'utf8');
-  assert.match(footer, /href="\/find-my-plans"/);
+  assert.match(footer, /href="\/find-my-plans\/"/);
   assert.match(plans, /id="paid-thanks"[\s\S]*href="\/find-my-plans"/);
   assert.match(find, /action: 'find_plans'/);
   for (const name of ['plan_links', 'portal_signins', 'portal_sessions', 'portal_rate_limits']) {

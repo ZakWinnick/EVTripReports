@@ -84,12 +84,13 @@ test('LA to Phoenix primaries pass and the three noted differences stay conflict
   assert.match(html, /2 stalls, each with CCS and CHAdeMO, up to 50 kW \(EVCS\)/);
   assert.match(html, /https:\/\/web2\.evcs\.com\/ev-charging-stations\/ca\/blythe\/us-bank-blythe/);
   assert.match(html, /https:\/\/static-prod\.noodoe\.com\/charger-photo\/s1vd-img-1\.jpg/);
-  assert.match(html, /https:\/\/developer\.nlr\.gov\/api\/alt-fuel-stations\/v1\/348909\.json/);
+  assert.match(html, /https:\/\/afdc\.energy\.gov\/stations\/#\/station\/348909/);
+  assert.equal(html.includes('developer.nlr.gov'), false);
   assert.match(html, /likely only one connector per stall/);
   assert.doesNotMatch(html, /still conflicts|not live-ready|October 15, 2026|—/);
 
   const cards = guideCards([{ slug: 'la-to-phoenix', title: 'LA to Phoenix', highway: 'I-10', status: exportStatus(meta.status, routeData), miles: 344, stops: routeData.stops.length }]);
-  assert.match(cards, /href="\/guides\/la-to-phoenix"/);
+  assert.match(cards, /href="\/guides\/la-to-phoenix\/"/);
   assert.doesNotMatch(cards, /Coming soon/);
 });
 
