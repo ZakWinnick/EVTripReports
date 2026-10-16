@@ -48,7 +48,11 @@ function renderFromD1(shell, route, request) {
     })
     .on('main#main', { element: (e) => e.setInnerContent(guideMain(route), { html: true }) })
     .transform(shell);
-  return new Response(out.body, { status: 200, headers: html(shell) });
+  // The /guide-shell/* _headers rule sends X-Robots-Tag: noindex for the bare shell.
+  // A rendered, published guide is indexable, so drop the inherited header.
+  const headers = html(shell);
+  headers.delete('x-robots-tag');
+  return new Response(out.body, { status: 200, headers });
 }
 
 function indexHeaders(page) {
