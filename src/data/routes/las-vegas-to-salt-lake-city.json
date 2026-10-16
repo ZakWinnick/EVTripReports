@@ -3,7 +3,7 @@
   "title": "Las Vegas to Salt Lake City",
   "highway": "I-15",
   "direction": "northbound",
-  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. 28 of 29 Tesla sites carry an access flag from Tesla Find Us (23 open to all EVs, 5 Tesla only). WinCo Foods in Orem stays Not yet verified.",
+  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Six primaries are Electrify America sites confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. The last is EVgo's site at the Target on 300 West in Salt Lake City, confirmed on EVgo's locator. 28 of 29 Tesla sites carry an access flag from Tesla Find Us (23 open to all EVs, 5 Tesla only). WinCo Foods in Orem stays Not yet verified.",
   "checked": "2026-10-15",
   "startLabel": "Tropicana Ave on-ramp, Las Vegas",
   "startNote": "Mileage starts at the I-15 on-ramp at Tropicana Avenue in Las Vegas (Nevada exit 37, mile 37.40), where the LA to Las Vegas guide ends, and ends at I-15 exit 306, 600 South in Salt Lake City. The 423.07 miles is OSRM's driving distance on I-15 between those two points, shown as 423. Stop miles are each site's nearest point on that route. Utah exit miles minus 115.48 line up with those stop miles at exits 10, 57, 112, 188 and 257B.",
@@ -130,6 +130,18 @@
     "walmart-4068": {
       "name": "Walmart store page, Supercenter #4068, 1206 N Canyon Creek Pkwy, Spanish Fork",
       "url": "https://www.walmart.com/store/4068-spanish-fork-ut"
+    },
+    "target-2641": {
+      "name": "Target store page, Salt Lake City store 2641, 1110 S 300 W (hours, store map)",
+      "url": "https://www.target.com/sl/salt-lake-city/2641"
+    },
+    "plugshare-481558": {
+      "name": "PlugShare location 481558, Target Salt Lake City #T2641 (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/481558"
+    },
+    "plugshare-169535": {
+      "name": "PlugShare location 169535, Sam's Club 6686 (Salt Lake City, UT) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/169535"
     }
   },
   "stops": [
@@ -1594,56 +1606,90 @@
       "id": "salt-lake-city",
       "name": "Salt Lake City",
       "towns": "Draper, Midvale, Sandy, Murray and Salt Lake City, UT",
-      "mile": 421,
-      "milepostNote": "Measured along OSRM's route from the start: 421.3 miles. The site is about 0.3 mile from that route line. OSRM's route from the site joins I-15 north from 2100 South (SR 201), the 305B interchange. Wikipedia lists exit 305B as 2100 South.",
-      "why": "The last stop before downtown. The Electrify America site at the Sam's Club on 300 West has 8 chargers at 350 kW, 0.3 mile off the route near exit 305B. The EA sites in Draper and Midvale and the EVgo site at the Target on 300 West are verified backups. Tesla, Walmart, ChargePoint and other sites in the valley are listed below.",
+      "mile": 422,
+      "milepostNote": "Measured along OSRM's route from the start: 422.4 miles. The site is about 0.2 mile from that route line. OSRM's route to the site leaves I-15 north at the 305 interchange and takes exit 305C, 1300 South, then 300 West. Leaving, it rejoins I-15 north from 1300 South. Wikipedia lists exit 305C as 1300 South.",
+      "why": "The last stop before downtown. EVgo's site at the Target on 300 West has 6 stalls, two chargers at 350 kW and two at 100 kW, 0.2 mile off the route by exit 305C. Target's store page lists hours and marks restrooms on its store map. The Electrify America site at the Sam's Club on 300 West (8 chargers at 350 kW, about 1 mile back) and the EA sites in Draper and Midvale are verified backups. Tesla, Walmart, ChargePoint and other sites in the valley are listed below.",
       "primary": {
-        "name": "Sam's Club 6686 (Salt Lake City, UT)",
-        "network": "Electrify America",
-        "address": "1905 South 300 West, Salt Lake City, UT 84115",
-        "exit": "Exit 305B, 2100 South (SR 201)",
+        "name": "Target Salt Lake City #T2641",
+        "network": "EVgo",
+        "address": "1110 S 300 W, Salt Lake City, UT 84101",
+        "exit": "Exit 305C, 1300 South",
         "stalls": {
-          "value": "8",
+          "value": "6 stalls",
           "status": "verified",
-          "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/ut/salt-lake-city/1905-south-300-west/100085/"
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ut/salt-lake-city/73816/"
         },
         "power": {
-          "value": "350 kW, CCS on all 8",
+          "value": "2 chargers at 350 kW with two CCS (both connectors can be used at once, sharing the power); 2 chargers at 100 kW with CCS and CHAdeMO",
           "status": "verified",
-          "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/ut/salt-lake-city/1905-south-300-west/100085/"
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ut/salt-lake-city/73816/"
         },
         "access": {
-          "value": "Open to all CCS EVs",
+          "value": "Open to all EVs that use CCS or CHAdeMO, per EVgo. NACS cars need an adapter.",
           "status": "verified",
-          "source": "ea-locator"
+          "source": "evgo"
         },
         "price": {
-          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "value": "Shown in the EVgo app and on the charger. EVgo does not publish it on the locator.",
           "status": "unpublished",
-          "source": "ea-locator"
+          "source": "evgo"
         },
         "afdcIds": [
-          170340
+          373096
         ],
         "driverReports": [
           {
-            "source": "reddit",
-            "url": "https://www.reddit.com/r/Taycan/comments/1e4qr6i/plug_and_charge/lek4b8u/",
-            "date": "2024-07-23",
-            "summary": "Taycan owner calls the Sam's Club EA site the main and largest one in the Salt Lake area. Plug and Charge was not working for them and they were told to try other EA stations."
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/481558",
+            "date": "2026-09-27",
+            "summary": "PlugShare check-in dated 2026-09-27. No comment about the site."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/481558",
+            "date": "2026-09-14",
+            "summary": "PlugShare check-in: \"Needs shade.\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/481558",
+            "date": "2026-08-17",
+            "summary": "Bolt EV driver reported low power on the TREA and RENZ units and mentioned a service fee."
           }
         ],
-        "checkedOn": "2026-10-15",
-        "source": "ea-locator"
+        "checkedOn": "2026-10-16",
+        "source": "evgo"
       },
       "backups": [
+        {
+          "name": "Sam's Club 6686 (Salt Lake City, UT)",
+          "network": "Electrify America",
+          "address": "1905 South 300 West, Salt Lake City, UT 84115",
+          "facts": "8 chargers: 8 CCS at 350 kW. DOE lists the same port count. About 1 mile before the Target (1.2 miles by road), on 300 West near 2100 South, I-15 exit 305B. Club restrooms may be members only: see the note below.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/salt-lake-city/1905-south-300-west/100085/",
+          "afdcIds": [
+            170340
+          ],
+          "driverReports": [
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/Taycan/comments/1e4qr6i/plug_and_charge/lek4b8u/",
+              "date": "2024-07-23",
+              "summary": "Taycan owner calls the Sam's Club EA site the main and largest one in the Salt Lake area. Plug and Charge was not working for them and they were told to try other EA stations."
+            }
+          ],
+          "checkedOn": "2026-10-16"
+        },
         {
           "name": "RMP Draper (Draper, UT)",
           "network": "Electrify America",
           "address": "12033 Lone Peak Pkwy, Draper, UT 84020",
-          "facts": "6 chargers: 6 CCS at 350 kW. DOE lists the same port count. About 14 miles before the Sam's Club, on Lone Peak Parkway in Draper, 1 mile from I-15 exit 292.",
+          "facts": "6 chargers: 6 CCS at 350 kW. DOE lists the same port count. About 15 miles before the Target, on Lone Peak Parkway in Draper, 1 mile from I-15 exit 292.",
           "access": "Open to all CCS EVs.",
           "status": "verified",
           "source": "ea-locator",
@@ -1658,28 +1704,13 @@
           "name": "RMP Midvale (Midvale, UT)",
           "network": "Electrify America",
           "address": "7250 S 180 W, Midvale, UT 84047",
-          "facts": "6 chargers: 6 CCS at 350 kW. DOE lists the same port count. About 7.5 miles before the Sam's Club, off 7200 South in Midvale.",
+          "facts": "6 chargers: 6 CCS at 350 kW. DOE lists the same port count. About 8.5 miles before the Target, off 7200 South in Midvale.",
           "access": "Open to all CCS EVs.",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/midvale/7250-s-180-w/701348/",
           "afdcIds": [
             460875
-          ],
-          "driverReports": [],
-          "checkedOn": "2026-10-15"
-        },
-        {
-          "name": "Target Salt Lake City #T2641",
-          "network": "EVgo",
-          "address": "1110 S 300 W, Salt Lake City, UT 84101",
-          "facts": "6 stalls: 2 chargers at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count. On South 300 West, about 1.2 miles (straight line) from the Sam's Club.",
-          "access": "Open to all EVs that use CCS or CHAdeMO, per EVgo.",
-          "status": "verified",
-          "source": "evgo",
-          "url": "https://www.evgo.com/find-a-charger/ut/salt-lake-city/73816/",
-          "afdcIds": [
-            373096
           ],
           "driverReports": [],
           "checkedOn": "2026-10-15"
@@ -2153,11 +2184,44 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the southeast side of the Sam's Club lot. Sam's Club 6686 lists club hours 9:00 AM to 8:00 PM daily at 1905 South 300 West, and a Sam's Cafe that opens at 10:00 AM. Whether non-members can use the cafe or the restrooms: Not yet verified on the club page.",
+          "text": "Host is Target, Salt Lake City store 2641, at 1110 S 300 W. Target's store page lists store hours of 7am to 10pm daily (Oct 16 to 22), a Starbucks Cafe open 7am to 8pm and a CVS pharmacy (checked 2026-10-16).",
+          "category": "food",
+          "source": "target-2641",
+          "url": "https://www.target.com/sl/salt-lake-city/2641",
+          "checkedOn": "2026-10-16",
+          "site": "Target Salt Lake City #T2641"
+        },
+        {
+          "text": "Restrooms: Target's store map for store 2641 marks restrooms inside the store (Target store page, checked 2026-10-16). Use them during store hours, 7am to 10pm.",
+          "category": "restroom",
+          "source": "target-2641",
+          "url": "https://www.target.com/sl/salt-lake-city/2641",
+          "checkedOn": "2026-10-16",
+          "site": "Target Salt Lake City #T2641"
+        },
+        {
+          "text": "Driver-reported: PlugShare's amenity icons at this Target site list restrooms, and a check-in is dated 2026-09-27 (PlugShare location page, checked 2026-10-16). PlugShare's station info puts the site on the south side of the Target parking lot.",
+          "category": "site",
+          "source": "plugshare-481558",
+          "url": "https://www.plugshare.com/location/481558",
+          "checkedOn": "2026-10-16",
+          "site": "Target Salt Lake City #T2641"
+        },
+        {
+          "text": "Backup host: EA's site note puts the EA site on the southeast side of the Sam's Club lot. Sam's Club 6686 lists club hours 9:00 AM to 8:00 PM daily at 1905 South 300 West, and a Sam's Cafe that opens at 10:00 AM. Whether non-members can use the cafe or the restrooms: Not yet verified on the club page.",
           "category": "food",
           "source": "samsclub-6686",
           "url": "https://www.samsclub.com/club/6686",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Sam's Club 6686 (Salt Lake City, UT)"
+        },
+        {
+          "text": "Backup host restrooms: PlugShare's auto-generated review summary for the Sam's Club site says there is no bathroom access there. No dated check-in we read says so, so treat Sam's Club restrooms as members only until confirmed. Target, 1.2 miles by road, has restrooms on its store map.",
+          "category": "site",
+          "source": "plugshare-169535",
+          "url": "https://www.plugshare.com/location/169535",
+          "checkedOn": "2026-10-16",
+          "site": "Sam's Club 6686 (Salt Lake City, UT)"
         }
       ],
       "searches": [
@@ -2208,13 +2272,13 @@
       "source": "ea-locator"
     },
     {
-      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers, and Pilot's copy on both store pages mentions clean restrooms; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily and a Sam's Cafe from 10:00 AM; IONNA lists restrooms at Mesquite and Beaver. Walmart's store pages list store hours of 6am to 11pm daily at Mesquite (#3847), Washington (#1439), Cedar City (#1438) and Spanish Fork (#4068), checked 2026-10-16. None of the four pages lists restrooms. Restrooms at those four Walmart stops are Driver-reported from PlugShare amenity icons plus a dated successful check-in (Mesquite 2026-09-24, Washington 2026-10-14, Cedar City 2026-10-09, Spanish Fork 2026-10-04), not a host fact. A Reddit report also notes restrooms at Cedar City (driver report).",
+      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers, and Pilot's copy on both store pages mentions clean restrooms; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Target in Salt Lake City lists 7am to 10pm daily, a Starbucks Cafe and restrooms on its store map; IONNA lists restrooms at Mesquite and Beaver. Walmart's store pages list store hours of 6am to 11pm daily at Mesquite (#3847), Washington (#1439), Cedar City (#1438) and Spanish Fork (#4068), checked 2026-10-16. None of the four pages lists restrooms. Restrooms at those four Walmart stops are Driver-reported from PlugShare amenity icons plus a dated successful check-in (Mesquite 2026-09-24, Washington 2026-10-14, Cedar City 2026-10-09, Spanish Fork 2026-10-04), not a host fact. A Reddit report also notes restrooms at Cedar City (driver report).",
       "source": "pilotflyingj-scipio"
     },
     {
-      "text": "Every primary stop now has at least one network-verified backup: IONNA at Mesquite and Beaver, Tesla (open) at Washington, Cedar City and Scipio, Rivian at Beaver Creamery, Orem EA for Spanish Fork, and Draper EA, Midvale EA and Target EVgo for Salt Lake City.",
+      "text": "Every primary stop now has at least one network-verified backup: IONNA at Mesquite and Beaver, Tesla (open) at Washington, Cedar City and Scipio, Rivian at Beaver Creamery, Orem EA for Spanish Fork, and the Sam's Club EA, Draper EA and Midvale EA for Salt Lake City.",
       "source": "ionna"
     }
   ],
-  "arrival": "Downtown Salt Lake City, the airport and the rest of the Wasatch Front north of 600 South are not in this guide. The last stop is the Sam's Club near 2100 South, about 2 miles before the end of the route."
+  "arrival": "Downtown Salt Lake City, the airport and the rest of the Wasatch Front north of 600 South are not in this guide. The last stop is the EVgo site at the Target on 300 West, under a mile before the end of the route."
 }

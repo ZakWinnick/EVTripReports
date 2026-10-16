@@ -1232,3 +1232,26 @@ test('LA to San Diego primaries each get a Restroom line: driver-reported at Irv
     assert.match(note.text, /12:00 AM daily/);
   }
 });
+
+test('LV to SLC Salt Lake City primary is the Target EVgo site with a host-sourced restroom; Sam\'s Club is a backup', async () => {
+  const route = JSON.parse(await readFile(path.join(root, 'src/data/routes/las-vegas-to-salt-lake-city.json'), 'utf8'));
+  const slc = route.stops.find((stop) => stop.id === 'salt-lake-city');
+  assert.equal(slc.primary.name, 'Target Salt Lake City #T2641');
+  assert.equal(slc.primary.network, 'EVgo');
+  for (const key of ['stalls', 'power', 'access']) assert.equal(slc.primary[key].status, 'verified');
+  assert.equal(slc.backups[0].name, "Sam's Club 6686 (Salt Lake City, UT)");
+  assert.equal(slc.backups.some((backup) => backup.name === 'Target Salt Lake City #T2641'), false);
+  const plan = buildPlan({ ...FAKE_ORDER, tier: '$79', notes: '', startBattery: 20, slug: route.slug, start: route.startLabel, end: route.endLabel }, route);
+  const stop = plan.stops.find((item) => /Target Salt Lake City/.test(item.primary?.name || ''));
+  assert.ok(stop, 'SLC stop in plan');
+  const restroom = (stop.primary.facts || []).find((fact) => fact.label === 'Restroom');
+  assert.ok(restroom, 'Restroom fact at SLC');
+  assert.equal(restroom.url, 'https://www.target.com/sl/salt-lake-city/2641');
+  assert.equal(restroom.checkedOn, '2026-10-16');
+  assert.match(restroom.value, /store map for store 2641 marks restrooms/);
+  assert.match(restroom.note, /^Route note/);
+  const hours = (stop.food || []).find((item) => item.url === 'https://www.target.com/sl/salt-lake-city/2641');
+  assert.ok(hours, 'Target hours note');
+  assert.match(hours.text, /7am to 10pm daily/);
+  assert.equal(JSON.stringify(stop.primaryCautions || []).includes("Sam's Club"), false);
+});
