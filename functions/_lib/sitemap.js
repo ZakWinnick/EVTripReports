@@ -11,6 +11,7 @@ export const STATIC_LOCS = [
   `${ORIGIN}/`,
   `${ORIGIN}/guides/`,
   `${ORIGIN}/plans/`,
+  `${ORIGIN}/sample-plan/`,
   `${ORIGIN}/about/`,
   `${ORIGIN}/faq/`,
   `${ORIGIN}/methodology/`,

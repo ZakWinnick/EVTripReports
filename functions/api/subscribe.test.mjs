@@ -251,7 +251,7 @@ test('newsletter forms and the route updates band stay hidden unless signup is o
   const client = readFileSync(new URL('../../src/lib/turnstile-client.js', import.meta.url), 'utf8');
 
   assert.match(layout, /class="wrap foot__signup newsletter-band" hidden/);
-  assert.match(guide, /<section class="band band--tight newsletter-band" hidden><div class="wrap"><h2 class="h2">Route updates<\/h2>/);
+  assert.match(guide, /<section class="band band--tight newsletter-band" hidden><div class="wrap">[\s\S]*Guide updates/);
   assert.match(client, /function setOpen\(open\)/);
   assert.match(client, /form\.closest\('\.newsletter-band'\)/);
   assert.match(client, /form\.hidden = !open/);

@@ -15,7 +15,7 @@ import { sendMail } from '../_lib/fastmail.js';
 import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { verifyTurnstile } from '../_lib/turnstile.js';
 import { refFor } from '../_lib/stripe.js';
-import { CORRIDORS, UNSUPPORTED_MESSAGE, matchOrder } from '../../src/lib/corridors.js';
+import { matchOrder } from '../../src/lib/corridors.js';
 import { packNotes, portKnown } from '../../src/lib/order-flags.js';
 
 const REQUIRED = ['name', 'email', 'tier', 'car', 'port', 'start', 'end', 'depart'];
@@ -66,17 +66,14 @@ export async function onRequestPost({ request, env, waitUntil }) {
     depart = `${depart}T${timeRaw}`;
   }
 
-  // A buyer must not pay for a trip we cannot plan. Plans run in the direction of the corridor only.
+  // Guide coverage is a research shortcut, not an ordering restriction.
+  // A new route or reverse trip needs its own sourced route data before fulfillment.
   const corridor = matchOrder({ start: data.start, end: data.end });
-  if (corridor.status === 'unmatched') {
-    return json({ error: UNSUPPORTED_MESSAGE, corridors: CORRIDORS.map((item) => item.title) }, 422);
-  }
-  if (corridor.status === 'reverse') {
-    return json({
-      error: `We plan ${corridor.title} in that direction only, so we cannot plan this trip yet. If you want the drive the other way, write to admin@evtripreports.com before you pay.`,
-      corridors: CORRIDORS.map((item) => item.title),
-    }, 422);
-  }
+  const research = corridor.status === 'forward'
+    ? `Corridor: ${corridor.title}${corridor.startMatch === 'near' || corridor.endMatch === 'near' ? ' (start or end is near the end point)' : ''}`
+    : corridor.status === 'reverse'
+      ? `Route research required: reverse of ${corridor.title}. Source the requested direction; do not reuse forward mile marks.`
+      : 'Route research required: no published corridor match. Gather and verify source data for the requested trip before building.';
 
   const memberships = Array.isArray(data.memberships) ? data.memberships.map(clip).join('; ') : clip(data.memberships);
 
@@ -101,7 +98,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
       `Car: ${clip(data.car)}`,
       `Port/adapter: ${clip(data.port)}`,
       `Route: ${clip(data.start)} to ${clip(data.end)}`,
-      `Corridor: ${corridor.title}${corridor.startMatch === 'near' || corridor.endMatch === 'near' ? ' (start or end is near the end point)' : ''}`,
+      research,
       `Leaving: ${depart.replace('T', ' at ')}${data.return ? `, back ${clip(data.return)} (the way back is built by hand)` : ''}`,
       `Start battery: ${startBattery == null ? 'not given' : `${startBattery}%`}`,
       ...(portKnown(data.port) ? [] : ['Charge port: NOT SURE. Ask the customer before building.']),

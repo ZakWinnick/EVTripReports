@@ -60,8 +60,8 @@ function fixture(primaryReports, otherReports = [], legacy = []) {
 }
 
 function reportsBlock(html) {
-  const start = html.indexOf('<h3 class="h3 sub">Driver reports</h3>');
-  const end = html.indexOf('<h3 class="h3 sub">Sources for this stop</h3>');
+  const start = html.indexOf('<summary>Driver reports (');
+  const end = html.indexOf('</details>', start);
   return html.slice(start, end);
 }
 
@@ -84,7 +84,7 @@ test('driver reports show a link and date, newest first, and drop entries older 
     )
   );
   const block = reportsBlock(html);
-  assert.match(block, /<h3 class="h3 sub">Driver reports<\/h3>/);
+  assert.match(block, /<summary>Driver reports \(\d+\)<\/summary>/);
   assert.doesNotMatch(block, /Too old to show/);
   assert.match(block, /Exactly three years/);
   assert.match(block, /Newest report/);
@@ -155,7 +155,7 @@ test('Sources for this stop lists each URL once when a named source and driver r
   // No stored route repeats a URL in any stop's source list.
   for (const f of (await readdir(new URL('../src/data/routes/', import.meta.url))).filter((n) => n.endsWith('.json'))) {
     const r = JSON.parse(await readFile(new URL(`../src/data/routes/${f}`, import.meta.url), 'utf8'));
-    for (const part of guideMain(r).split('<h3 class="h3 sub">Sources for this stop</h3>').slice(1)) {
+    for (const part of guideMain(r).split('<summary>Sources for this stop</summary>').slice(1)) {
       const urls = [...part.split('</ul>')[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
       assert.equal(new Set(urls).size, urls.length, `${f} repeats a source URL: ${urls.filter((u, i) => urls.indexOf(u) !== i)}`);
     }
@@ -178,9 +178,9 @@ test('corridor guides keep stored reports and hide ones older than 3 years', asy
   assert.doesNotMatch(blytheReports, /Does this station work/);
   assert.doesNotMatch(blytheReports, /tag--verified|Verified |network verification/);
 
-  const sections = html.split('<h3 class="h3 sub">Driver reports</h3>').slice(1);
+  const sections = html.split('<summary>Driver reports (').slice(1);
   for (const section of sections) {
-    const block = section.split('<h3 class="h3 sub">')[0];
+    const block = section.split('</details>')[0];
     const dates = [...block.matchAll(/<time datetime="(\d{4}-\d{2}-\d{2})">/g)].map((m) => m[1]);
     for (const date of dates) assert.ok(date >= cutoff, date);
     assert.deepEqual(dates, [...dates].sort((a, b) => (a < b ? 1 : a > b ? -1 : 0)));
@@ -437,4 +437,15 @@ test('rendered routes use a hyphen in station names and leave driver-report quot
     ]),
   );
   assert.match(quoted, /Town \u2013 Name and also used an em dash \u2014 here\./);
+});
+
+test('long exit verification notes remain available without expanding the stop heading', async () => {
+  const route = JSON.parse(await readFile(new URL('../src/data/routes/dc-to-nyc.json', import.meta.url), 'utf8'));
+  const html = guideMain(route);
+  assert.match(html, /<summary>Mile marker and exit notes<\/summary>/);
+  for (const header of html.matchAll(/<header class="stop__head">([\s\S]*?)<\/header>/g)) {
+    assert.doesNotMatch(header[1], /router\.project-osrm\.org/);
+  }
+  assert.match(html, /router\.project-osrm\.org/);
+  assert.match(html, /Route facts and sources/);
 });

@@ -29,29 +29,28 @@ function capture() {
   };
 }
 
-test('intake refuses a trip we cannot plan, before any row is written', async () => {
+test('intake accepts custom trips outside the published guides and preserves endpoints', async () => {
   const seen = capture();
-  const res = await post({ ...form, start: 'Chicago, IL', end: 'Milwaukee, WI' }, { DB: seen.DB });
-  assert.equal(res.status, 422);
-  const body = await res.json();
-  assert.match(body.error, /cannot plan that trip yet/);
-  assert.ok(body.corridors.includes('LA to Las Vegas'));
-  assert.equal(body.corridors.includes('Chicago to Milwaukee'), false);
-  assert.equal(seen.rows.length, 0);
+  const res = await post({ ...form, start: 'Chicago, IL', end: 'Milwaukee, WI' }, seen);
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { ok: true, ref: 'etr-7' });
+  assert.equal(seen.rows[0][6], 'Chicago, IL');
+  assert.equal(seen.rows[0][7], 'Milwaukee, WI');
 });
 
-test('intake refuses a reverse-direction trip and names the corridor', async () => {
+test('intake accepts reverse directions without swapping the requested endpoints', async () => {
   const seen = capture();
-  const res = await post({ ...form, start: 'Las Vegas, NV', end: 'Los Angeles, CA' }, { DB: seen.DB });
-  assert.equal(res.status, 422);
-  assert.match((await res.json()).error, /LA to Las Vegas in that direction only/);
-  assert.equal(seen.rows.length, 0);
+  const res = await post({ ...form, start: 'Las Vegas, NV', end: 'Los Angeles, CA' }, seen);
+  assert.equal(res.status, 200);
+  assert.equal(seen.rows[0][6], 'Las Vegas, NV');
+  assert.equal(seen.rows[0][7], 'Los Angeles, CA');
 });
 
-test('intake accepts a start in the same metro area, and Portland Maine is not Portland Oregon', async () => {
+test('intake accepts both nearby endpoints and a different Portland without silently changing the trip', async () => {
   assert.equal((await post({ ...form, start: 'Pasadena, CA' }, capture())).status, 200);
-  const wrong = await post({ ...form, start: 'Seattle, WA', end: 'Portland, ME' }, capture());
-  assert.equal(wrong.status, 422);
+  const seen = capture();
+  assert.equal((await post({ ...form, start: 'Seattle, WA', end: 'Portland, ME' }, seen)).status, 200);
+  assert.equal(seen.rows[0][7], 'Portland, ME');
 });
 
 test('intake stores the start battery in the notes and the departure time with the date', async () => {

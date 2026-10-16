@@ -1,11 +1,7 @@
-// The corridors we can plan a paid trip for, and the check that maps an order's
-// start and end to one of them. Pure: no clock, no network, no files.
-//
-// A plan is built from one corridor file, in the direction the file runs
-// (`from` to `to`). An order that runs the other way, or that does not match a
-// corridor, is never auto-built. scripts/order-to-route.mjs and the admin queue
-// use this file, and /plans/ lists CORRIDORS. src/data/routes.json decides which
-// corridors are live. A test keeps the two in step, so a hidden route is never offered.
+// Matches requests to existing guide data as a research shortcut.
+// Custom trips are not limited to these routes. Unmatched or reverse requests
+// need freshly sourced route data before the builder can use them.
+// Pure: no clock, network, or files.
 
 const STATES = {
   al: 'alabama', ak: 'alaska', az: 'arizona', ar: 'arkansas', ca: 'california', co: 'colorado', ct: 'connecticut',
@@ -146,7 +142,7 @@ export function corridorBySlug(slug) {
   return CORRIDORS.find((corridor) => corridor.slug === slug) || null;
 }
 
-// What the buyer sees. Direction matters: a plan runs from `from` to `to` only.
+// Published-guide examples, with the direction their source data describes.
 export function plannableList() {
   return CORRIDORS.map((corridor) => ({
     slug: corridor.slug,
@@ -156,5 +152,3 @@ export function plannableList() {
     to: corridor.to.label,
   }));
 }
-
-export const UNSUPPORTED_MESSAGE = 'We cannot plan that trip yet. We plan the corridors listed on the plans page, in the direction shown. If yours is close to one, write to admin@evtripreports.com before you pay.';

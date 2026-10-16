@@ -333,7 +333,7 @@ test('the queue flags orders that need a person before a plan is built', async (
   assert.equal(by(11).blocked, true);
   assert.match(by(12).queueLabel, /^Needs manual build: reverse direction/);
   assert.equal(by(12).corridor.status, 'reverse');
-  assert.match(by(13).queueLabel, /^Needs manual check/);
+  assert.match(by(13).queueLabel, /^Needs route research/);
   // Redo keeps its label, and the flags stay visible.
   db.requests.find((row) => row.id === 11).status = 'rejected-for-redo';
   const redo = (await (await call({ path: '', db })).json()).requests.find((row) => row.id === 11);

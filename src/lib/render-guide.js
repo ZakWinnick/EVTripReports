@@ -219,7 +219,7 @@ export function routeLine(route, linkBase = '') {
     ...segments.map((s) => t(s.mid, Y - 14, 12, '#686f6c', 'middle', `${s.d} mi`)),
     ...placed.map(
       (s) =>
-        `<a href="${href(s.id)}"><g class="route__stop"><circle cx="${s.cx}" cy="${Y}" r="15" fill="#1e5a3c"/>` +
+        `<a href="${href(s.id)}" tabindex="-1"><g class="route__stop"><circle cx="${s.cx}" cy="${Y}" r="15" fill="#1e5a3c"/>` +
         t(s.cx, Y + 5, 14, '#ffffff', 'middle', s.n, 700) +
         (s.above
           ? t(s.cx, Y - 52, 15, '#15191a', 'middle', s.name, 700) + t(s.cx, Y - 34, 13, '#4e5653', 'middle', `mile ${s.mile}`)
@@ -248,7 +248,7 @@ export function routeLine(route, linkBase = '') {
   ].join('');
 
   return `<figure class="route" aria-label="${esc(
-    `Route line from ${route.startLabel} to ${route.endLabel}, ${total} miles, with ${stops.length} charging stops`
+    `Route line from ${route.startLabel} to ${route.endLabel}, ${total} miles, with ${stops.length} charging areas`
   )}">${svg}${vertical}</figure>`;
 }
 
@@ -327,6 +327,7 @@ function stopSection(route, s, i) {
   const src = (id) => S[id] || { name: id, url: '' };
   const p = s.primary;
   const checked = stationChecked(p, route);
+  const longMileNote = String(s.milepostNote || '').length > 140;
   const rollup = primaryRollup(p);
   const rows = [
     { k: 'Network', v: p.network },
@@ -361,101 +362,76 @@ function stopSection(route, s, i) {
     seenSourceUrls.add(r.url);
     reportSources.push({ name: `Driver report, ${REPORT_LABEL[r.source]}: ${r.about}`, url: r.url });
   }
-  const backupHtml = s.backups.length
-    ? `<ul class="list">${s.backups
-        .map(
-          (b) =>
-            `<li class="item"><div class="item__top"><strong>${esc(b.name)}</strong><span class="btnrow">${b.teslaAccess ? tag(b.teslaAccess) : ''}${tag(
-              b.status,
-              b.status === 'verified' || b.status === 'conflict' ? stationChecked(b, route) : undefined
-            )}</span></div>
+  const backupItems = s.backups.map(
+    (b) =>
+      `<li class="item"><div class="item__top"><strong>${esc(b.name)}</strong><span class="btnrow">${b.teslaAccess ? tag(b.teslaAccess) : ''}${tag(
+        b.status,
+        b.status === 'verified' || b.status === 'conflict' ? stationChecked(b, route) : undefined
+      )}</span></div>
 <p class="small muted item__meta">${esc(b.network)}. ${esc(b.address)}</p><p class="item__facts">${esc(b.facts)}</p>
 <p class="small item__meta">${esc(String(b.access).replace(/\.$/, ''))}. ${
-              b.url ? ext(b.url, `Source: ${src(b.source).name}`) : `<span class="muted">Source: ${esc(src(b.source).name)}</span>`
-            }</p></li>`
-        )
-        .join('')}</ul>`
-    : `<p class="muted">No backup confirmed on a network locator for this stop yet.</p>`;
-
-  return `<section id="stop-${esc(s.id)}" class="band band--tight stop${i % 2 ? ' band--mist' : ''}"><div class="wrap">
+        b.url ? ext(b.url, `Source: ${src(b.source).name}`) : `<span class="muted">Source: ${esc(src(b.source).name)}</span>`
+      }</p></li>`
+  );
+  const firstBackup = backupItems[0] || '<li class="small muted">No backup confirmed on a network locator for this stop yet.</li>';
+  const directions = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${p.name}, ${p.address || s.towns || ''}`)}`;
+  const correction = `mailto:admin@evtripreports.com?subject=${encodeURIComponent(`Guide correction: ${route.title} / ${s.name}`)}`;
+  const reportsCount = driverReports.length + legacyReports.length;
+  return `<section id="stop-${esc(s.id)}" class="band band--tight stop"><div class="wrap">
 <header class="stop__head"><span class="stop__num">${i + 1}</span><div><h2 class="h2">${esc(s.name)}</h2><p class="muted" style="margin:6px 0 0">${esc(s.towns)}</p></div>
-<div class="stop__mile"><span class="num">mile ${esc(s.mile)}</span><span class="small muted">${esc(s.milepostNote)}</span></div></header>
+<div class="stop__mile"><span class="num">mile ${esc(s.mile)}</span><span class="small muted">${longMileNote ? 'Exit and mile-marker notes below' : esc(s.milepostNote)}</span></div></header>
 <p class="stop__why">${esc(s.why)}</p>
-<div class="panel primary"><div class="primary__top"><div><p class="small muted" style="margin:0 0 4px">Primary charger</p><h3 class="h3">${esc(p.name)}</h3></div>
+<div class="stop-grid"><div class="panel primary"><div class="primary__top"><div><p class="small muted" style="margin:0 0 5px">Primary charger</p><h3 class="h3">${esc(p.name)}</h3></div>
 <div class="btnrow">${p.teslaAccess ? tag(p.teslaAccess) : ''}${tag(rollup, rollup === 'verified' || rollup === 'conflict' ? checked : undefined)}</div></div>
-<dl class="sheet">${rows
-    .map(
-      (r) =>
-        `<div class="sheet__row"><dt>${esc(r.k)}</dt><dd><span>${esc(r.v)}</span>${factBits(r.f)}${
-          r.status ? tag(r.status) : ''
-        }</dd></div>`
-    )
-    .join('')}</dl></div>
-<div class="cols"><div><h3 class="h3 sub">Backups</h3>${backupHtml}${
-    s.other.length
-      ? `<details class="other"><summary>Other DC sites nearby (${s.other.length})</summary><ul class="list">${s.other
-          .map(
-            (o) =>
-              `<li class="item"><div class="item__top"><strong>${esc(o.name)}</strong><span class="btnrow">${o.teslaAccess ? tag(o.teslaAccess) : ''}${tag(
-                o.status,
-                o.status === 'verified' || o.status === 'conflict' ? stationChecked(o, route) : undefined
-              )}</span></div><p class="item__facts small">${esc(o.facts)}${
-                o.url ? ` ${ext(o.url, 'Source', 'src')}` : ''
-              }</p></li>`
-          )
-          .join('')}</ul></details>`
-      : ''
-  }</div>
-<div><h3 class="h3 sub">Driver reports</h3>${
-    driverReports.length === 0 && legacyReports.length === 0
-      ? `<p class="muted">No recent driver reports found for this stop yet.</p>`
-      : `<ul class="list">${reportEntries(driverReports, legacyReports, src)}</ul>`
-  }${
-    s.around.length ? `<h3 class="h3 sub">Around the stop</h3><ul class="plain">${s.around.map((a) => `<li>${esc(a.text)}</li>`).join('')}</ul>` : ''
-  }
-<h3 class="h3 sub">Sources for this stop</h3><ul class="plain small">${[...sources.map((x) => `<li>${ext(x.url, x.name)}</li>`), ...reportSources.map((x) => `<li>${ext(x.url, x.name)}</li>`)].join('')}</ul></div></div>
+<dl class="sheet">${rows.map((r) => `<div class="sheet__row"><dt>${esc(r.k)}</dt><dd><span>${esc(r.v)}</span>${factBits(r.f)}${r.status ? tag(r.status) : ''}</dd></div>`).join('')}</dl>
+<div class="primary-actions">${ext(directions, 'Open in maps ↗', 'pill')}${p.stalls?.url ? ext(p.stalls.url, 'Check with the network', 'text-link') : ''}</div></div>
+<aside class="stop-sidebar" aria-label="Backup and local notes for ${esc(s.name)}"><h3 class="eyebrow">Backup to consider</h3><p class="small muted">Check its access requirements for your car.</p><ul class="list">${firstBackup}</ul>
+${s.around.length ? `<div class="around-compact"><h3>Around the stop</h3><ul>${s.around.map((x) => `<li>${esc(x.text)}</li>`).join('')}</ul></div>` : '<p class="small muted" style="margin-top:20px">Food and restroom details have not been confirmed for this stop.</p>'}</aside></div>
+<div class="stop-evidence">
+${longMileNote ? `<details><summary>Mile marker and exit notes</summary><p class="small">${esc(s.milepostNote)}</p></details>` : ''}
+${backupItems.length > 1 ? `<details><summary>More backups (${backupItems.length - 1})</summary><ul class="list">${backupItems.slice(1).join('')}</ul></details>` : ''}
+${s.other.length ? `<details><summary>Other DC sites nearby (${s.other.length})</summary><p class="report-note">Check the status labels: these sites may include unverified details or conflicting sources.</p><ul class="list">${s.other.map((o) => `<li class="item"><div class="item__top"><strong>${esc(o.name)}</strong><span class="btnrow">${o.teslaAccess ? tag(o.teslaAccess) : ''}${tag(o.status, o.status === 'verified' || o.status === 'conflict' ? stationChecked(o, route) : undefined)}</span></div><p class="item__facts small">${esc(o.facts)}${o.url ? ` ${ext(o.url, 'Source', 'src')}` : ''}</p></li>`).join('')}</ul></details>` : ''}
+<details><summary>Driver reports (${reportsCount})</summary><p class="report-note">Dated experiences from individual drivers, not live availability. Read the date and station name before relying on a report.</p>${reportsCount ? `<ul class="list">${reportEntries(driverReports, legacyReports, src)}</ul>` : '<p class="small muted">No recent driver reports found for this stop yet.</p>'}</details>
+<details><summary>Sources for this stop</summary><ul class="plain small">${[...sources.map((x) => `<li>${ext(x.url, x.name)}</li>`), ...reportSources.map((x) => `<li>${ext(x.url, x.name)}</li>`)].join('')}</ul></details></div>
+<p class="stop-footer">Something changed? <a href="${esc(correction)}">Report an issue with this stop</a>.</p>
 </div></section>`;
 }
 
 function arrivalNote(route) {
-  const extra = 'Lodging with chargers is also coming in the next update.';
-  const text = String(route.arrival || '').trim();
-  if (!text) return extra;
-  if (text.includes(extra)) return text;
-  return `${text} ${extra}`;
+  return String(route.arrival || 'Check charging at your destination before you leave.').trim();
 }
 
 export function guideMain(route) {
   route = forDisplay(route);
   const S = route.sources;
-  return `<section class="band band--tight"><div class="wrap">
-<p class="muted" style="margin-bottom:14px"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> ${esc(route.highway)}</p>
-<h1 class="h1">${esc(route.title)}</h1><p class="lede" style="margin-top:18px">${esc(route.summary)}</p>
-<p class="small muted" style="margin-top:14px">Station facts checked ${esc(fmtDate(route.checked))}. Anything we couldn't confirm is labeled. <a href="/methodology/">How we check</a></p>
-<div style="margin-top:40px">${statStrip(route.stats)}</div></div></section>
-<section class="band band--tight band--mist"><div class="wrap"><div class="panel" style="padding: clamp(18px, 3vw, 32px)">${routeLine(route)}</div>
-<p class="small muted" style="margin-top:12px">${esc(route.startNote)} Stops are placed to scale.</p></div></section>
-${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
-<section class="band band--tight"><div class="wrap"><h2 class="h2">Tips for this route</h2><ol class="tips">${route.tips
-    .map((t) => `<li>${esc(t.text)} ${S[t.source] ? ext(S[t.source].url, 'Source', 'small') : ''}</li>`)
-    .join('')}</ol><p class="note" style="margin-top:28px">${esc(arrivalNote(route))}</p></div></section>
-<section class="band band--tight band--mist"><div class="wrap plan-cta"><div><h2 class="h2">Want this planned for your car?</h2>
-<p class="lede" style="margin-top:12px">Stops that work for your port and adapter, with a backup at each. Detailed plans add food and a hotel with a charger. We don't book the room. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p></div>
-<a class="pill pill--lg" href="/plans/#request">Plan my trip</a></div></section>
-<section class="band band--tight newsletter-band" hidden><div class="wrap"><h2 class="h2">Route updates</h2>${newsletterForm('newsletter-guide')}</div></section>`;
+  return `<section class="guide-hero"><div class="wrap">
+<div class="guide-hero__top"><p class="eyebrow"><a href="/guides/">Route guides</a> / ${esc(route.highway)}</p><div class="guide-tools"><button type="button" data-print>Print guide ↗</button></div></div>
+<h1 class="h1">${esc(route.title)}</h1><p class="lede" style="margin-top:20px">${esc(route.summary)}</p>
+<div class="guide-boundary"><span><strong>Coverage:</strong> ${esc(route.startLabel)} → ${esc(route.endLabel)}</span><span class="boundary-distance">${esc(route.stats[0].value)} corridor miles · ${route.stops.length} charging areas</span></div>
+<p class="checked-note">Station facts checked ${esc(fmtDate(route.checked))}. Checked specifications are not live availability. <a href="/methodology/">How we check</a></p></div></section>
+<section class="route-overview" aria-label="Route overview"><div class="wrap">${routeLine(route)}
+<p class="note">${esc(route.startNote)} The areas below are options, not a requirement to charge at every stop. Choose stops for your car, adapter, and battery level.</p><details class="guide-route-facts"><summary>Route facts and sources</summary>${statStrip(route.stats)}</details></div></section>
+<nav class="stop-nav" aria-label="Jump to a charging area"><div class="wrap"><span class="eyebrow">Along the way</span>${route.stops.map((stop, i) => `<a href="#stop-${esc(stop.id)}"><span>${i + 1}</span>${esc(stop.name)}</a>`).join('')}<a href="#route-notes">Trip notes</a></div></nav>
+${route.stops.map((stop, i) => stopSection(route, stop, i)).join('\n')}
+<section id="route-notes" class="band"><div class="wrap guide-bottom"><div><p class="eyebrow">Before you go</p><h2 class="h2">Trip notes</h2><ol class="tips">${route.tips.map((tip) => `<li>${esc(tip.text)} ${S[tip.source] ? ext(S[tip.source].url, 'Source', 'small') : ''}</li>`).join('')}</ol></div><div><p class="eyebrow">At the other end</p><h2 class="h2">At your destination</h2><p class="note">${esc(arrivalNote(route))}</p><p class="small muted" style="margin-top:20px">This guide covers the endpoints shown above. Allow for the drive to the corridor and onward to your destination.</p></div></div></section>
+<section class="band band--tight"><div class="wrap"><div class="plan-cta"><div><p class="eyebrow">Custom planning</p><h2 class="h2">Want a plan for this trip?</h2><p class="lede" style="margin-top:18px">Get a plan for your vehicle, adapter, and dates, with checked charging options and any gaps clearly flagged. Reviewed by a person before delivery.</p></div><div class="btnrow"><a class="pill pill--lg" href="/plans/?route=${esc(route.slug)}#request">Plan this trip</a><a class="text-link" href="/sample-plan/">See a sample</a></div></div></div></section>
+<section class="band band--tight newsletter-band" hidden><div class="wrap"><p class="eyebrow">Keep in the loop</p><h2 class="h2">Guide updates</h2>${newsletterForm('newsletter-guide')}</div></section>`;
+}
+
+export function guideRegion(slug = '') {
+  if (/nyc|boston|^dc-/.test(slug)) return 'Northeast';
+  if (/dallas|austin/.test(slug)) return 'Texas';
+  if (/chicago|milwaukee/.test(slug)) return 'Midwest';
+  return 'West';
+}
+
+export function guideSearch(slug = '') {
+  return `${slug.replaceAll('-', ' ')} ${/^la-/.test(slug) ? 'Los Angeles' : ''} ${/sf|francisco/.test(slug) ? 'San Francisco Bay Area' : ''} ${/nyc/.test(slug) ? 'New York City' : ''} ${/dc-/.test(slug) ? 'Washington DC' : ''}`;
 }
 
 // Home page guide cards. `routes` is a list of { slug, title, highway, status, miles, stops }.
 export function guideCards(routes) {
-  return forDisplay(routes)
-    .map((r) =>
-      r.status === 'live'
-        ? `<li><a class="panel guide guide--live" href="/guides/${esc(r.slug)}/"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(
-            r.title
-          )}</span><span class="small muted">${esc(r.miles)} miles, ${esc(r.stops)} charging stops</span><span class="guide__go">Read the guide</span></a></li>`
-        : `<li><div class="panel guide"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(
-            r.title
-          )}</span><span class="small muted">Coming soon</span></div></li>`
-    )
-    .join('');
+  return forDisplay(routes).map((r) => r.status === 'live'
+    ? `<li data-region="${esc(guideRegion(r.slug))}" data-search="${esc(guideSearch(r.slug))}"><a class="guide guide--live" href="/guides/${esc(r.slug)}/"><span class="guide__hw">${esc(r.highway)}</span><div class="guide__body"><span class="guide__t">${esc(r.title)}</span>${r.start && r.end ? `<span class="guide__boundary">${esc(r.start)} → ${esc(r.end)}</span>` : '<span class="guide__boundary">See guide for covered endpoints.</span>'}</div><span class="guide__distance">${esc(r.miles)}<span>corridor miles</span></span><span class="guide__go" aria-hidden="true">→</span></a></li>`
+    : '').join('');
 }

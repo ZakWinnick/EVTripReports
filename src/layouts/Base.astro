@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/guide.css';
+import '../styles/field-guide.css';
 import { newsletterForm } from '../lib/newsletter.js';
 
 interface Props {
@@ -26,7 +27,7 @@ const navCurrent = (href: string) => {
 const links = [
   { href: '/guides/', label: 'Guides' },
   { href: '/plans/', label: 'Custom plans' },
-  { href: '/faq/', label: 'FAQ' },
+  { href: '/sample-plan/', label: 'Sample plan' },
   { href: '/methodology/', label: 'How we check' },
   { href: '/about/', label: 'About' },
 ];
@@ -53,7 +54,7 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find my plans' }
     <meta property="og:site_name" content="EV Trip Reports" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#faf9f6" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <slot name="head" />
@@ -80,7 +81,7 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find my plans' }
             ))}
           </nav>
         </details>
-        <a class="pill" href="/plans/#request">Plan my trip</a>
+        <a class="pill" href="/plans/">Plan my trip</a>
       </div>
     </header>
     <main id="main">
@@ -93,11 +94,12 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find my plans' }
       <div class="wrap foot__grid">
         <div>
           <strong style="color: var(--ink)">EV Trip Reports</strong><br />
-          A travel agent for EVs. Independent. No charging network pays for placement or coverage.
+          EV charging guides and custom trip plans.<br />Independent guides. No paid charging-network placement.
         </div>
         <nav aria-label="Footer">
           <a href="/guides/">Guides</a>
           <a href="/plans/">Custom plans</a>
+          <a href="/sample-plan/">Sample plan</a>
           <a href="/find-my-plans/">Find my plans</a>
           <a href="/faq/">FAQ</a>
           <a href="/methodology/">How we check</a>
@@ -111,6 +113,8 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find my plans' }
     <script>
       import { mountNewsletterForms } from '../lib/turnstile-client.js';
       mountNewsletterForms();
+      import { mountFieldGuide } from '../lib/field-guide-client.js';
+      mountFieldGuide();
     </script>
   </body>
 </html>

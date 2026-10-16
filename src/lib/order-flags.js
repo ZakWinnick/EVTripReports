@@ -45,9 +45,9 @@ export function reviewFlags(row) {
   }
   const corridor = matchOrder({ start, end });
   if (corridor.status === 'reverse') {
-    flags.push({ code: 'reverse-direction', blocking: true, label: `Needs manual build: reverse direction (we only build ${corridor.title} as written)` });
+    flags.push({ code: 'reverse-direction', blocking: true, label: `Needs manual build: reverse direction (source route data for the reverse of ${corridor.title})` });
   } else if (corridor.status === 'unmatched') {
-    flags.push({ code: 'corridor-unmatched', blocking: true, label: 'Needs manual check: not one of our corridors' });
+    flags.push({ code: 'corridor-unmatched', blocking: true, label: 'Needs route research: gather and verify source data for this custom trip' });
   } else if (corridor.startMatch === 'near' || corridor.endMatch === 'near') {
     flags.push({ code: 'near-endpoint', blocking: false, label: `Start or end is near the ${corridor.title} end point, not at it` });
   }

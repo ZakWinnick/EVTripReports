@@ -119,7 +119,7 @@ export function buildPlan(order, route) {
     throw new OrderBlockedError('needs-customer-question', `Needs customer question: the charge port or adapter is "${cleanCopy(input.adapter ?? input.port ?? '') || 'empty'}". Ask the customer, then build. No plan was made.`);
   }
   const trip = matchOrder({ start: input.start ?? input.startPlace ?? '', end: input.end ?? input.endPlace ?? '' });
-  if (trip.status === 'reverse' || tripIsReverse(input, route)) {
+  if ((trip.status === 'reverse' && corridorBySlug(slug)) || tripIsReverse(input, route)) {
     throw new OrderBlockedError('needs-manual-build', `Needs manual build: reverse direction. ${cleanCopy(route.title || slug)} is only built as written, so stop order, mile marks, charging math and clock times would all be wrong. No plan was made.`);
   }
   if (trip.status === 'forward' && corridorBySlug(slug) && trip.slug !== slug) {

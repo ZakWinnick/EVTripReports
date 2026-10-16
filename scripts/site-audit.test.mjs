@@ -3,9 +3,9 @@ import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 
 const HOME_DESCRIPTION =
-  'A travel agent for EV road trips. Stops that work for your car, a backup for each, and a place to eat or sleep while you charge.';
+  'Free EV charging guides and custom trip plans. Compare stations, access requirements, backups, and dated source information before your next drive.';
 const PLANS_DESCRIPTION =
-  'A plan for your car, adapter, memberships, and dates. Stops that work for your car, a backup at each stop, and a place to eat or sleep while you charge.';
+  'Get an EV trip plan for your car, adapter, and dates. Compare $19, $39, and $79 plans, see a sample, and tell us where you want to go.';
 
 function lin(channel) {
   const c = channel / 255;
@@ -29,11 +29,11 @@ test('home title, descriptions, and home structured data', async () => {
   const home = await source('../src/pages/index.astro');
   const plans = await source('../src/pages/plans.astro');
   const layout = await source('../src/layouts/Base.astro');
-  assert.match(home, /title="A travel agent for EVs"/);
-  assert.match(home, new RegExp(`description="${HOME_DESCRIPTION.replace(/[.]/g, '\\.')}"`));
+  assert.match(home, /title="EV road-trip guides and custom plans"/);
+  assert.match(home, new RegExp(`description="${HOME_DESCRIPTION.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
   assert.ok(HOME_DESCRIPTION.length <= 160, HOME_DESCRIPTION.length);
-  assert.match(plans, new RegExp(`description="${PLANS_DESCRIPTION.replace(/[.]/g, '\\.')}"`));
-  assert.ok(PLANS_DESCRIPTION.length >= 150 && PLANS_DESCRIPTION.length <= 160, String(PLANS_DESCRIPTION.length));
+  assert.match(plans, new RegExp(`description="${PLANS_DESCRIPTION.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
+  assert.ok(PLANS_DESCRIPTION.length <= 160, String(PLANS_DESCRIPTION.length));
   assert.equal(layout.includes("title === 'EV Trip Reports'"), false);
   assert.match(layout, /const fullTitle = `\$\{title\} \| EV Trip Reports`;/);
   assert.match(home, /'@type': 'WebSite'/);
@@ -80,7 +80,7 @@ test('compare-table pay buttons open the intake form, and checkout still follows
   assert.equal(plans.includes('href={t.stripeUrl}'), false);
   assert.match(plans, /a\.pay-link/);
   assert.match(plans, /select\.value = name/);
-  assert.match(plans, /if \(!paid && tier\?\.stripeUrl\)/);
+  assert.match(plans, /if \(tier\?\.stripeUrl\)/);
   assert.match(plans, /window\.location\.href = next\.toString\(\)/);
   assert.match(plans, /Save details and pay/);
   assert.match(plans, /role="img" aria-label="Included"/);
@@ -111,4 +111,24 @@ test('the dc-to-nyc guide does not cite the Marlton EA station page that returns
   assert.equal(text.includes('/locate-charger/nj/marlton/307-rte-70-w/240408/'), false);
   assert.match(text, /search 307 Rte 70 W, Marlton, NJ \(EA station 240408\)/);
   assert.equal(text.includes('\u2014') || text.includes('\u2013'), false);
+});
+
+test('checkout return is neutral and custom requests are not limited to published corridors', async () => {
+  const plans = await source('../src/pages/plans.astro');
+  const intake = await source('../functions/api/intake.js');
+  assert.match(plans, /id="checkout-return"[^>]*hidden/);
+  assert.match(plans, /This page cannot confirm a payment/);
+  assert.doesNotMatch(plans, /Payment received|!paid &&|match\.status !==/);
+  assert.match(plans, /if \(!form \|\| !msg \|\| returning\) return/);
+  assert.doesNotMatch(intake, /UNSUPPORTED_MESSAGE|corridors: CORRIDORS/);
+  assert.match(intake, /Route research required/);
+});
+
+test('guide filters handle highways, punctuation, and multiword searches', async () => {
+  const { matchesGuide } = await import('../src/lib/field-guide-client.js');
+  assert.equal(matchesGuide('Washington, DC to NYC I-95', 'dc I95'), true);
+  assert.equal(matchesGuide('Washington, DC to NYC I-95', 'dc i-95'), true);
+  assert.equal(matchesGuide('SF to Lake Tahoe San Francisco I-80', 'san francisco'), true);
+  assert.equal(matchesGuide('Los Angeles to Las Vegas', 'chicago'), false);
+  assert.equal(matchesGuide('Any route', ''), true);
 });

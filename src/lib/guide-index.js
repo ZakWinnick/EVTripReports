@@ -1,6 +1,6 @@
 // Guide index rows for /guides/. Used by the Astro page and by
 // functions/guides/[[path]].js when a live D1 row is merged in.
-import { esc } from './render-guide.js';
+import { esc, guideRegion, guideSearch } from './render-guide.js';
 
 function clean(value) {
   if (value == null) return '';
@@ -95,10 +95,10 @@ export function guideIndexList(guides) {
       const rows = [
         sheetRow('Start', guide.start),
         sheetRow('End', guide.end),
-        sheetRow('Distance', formatDistance(guide.miles)),
+        sheetRow('Corridor miles', formatDistance(guide.miles)),
       ].filter(Boolean);
       const sheet = rows.length ? `<dl class="sheet">${rows.join('')}</dl>` : '';
-      return `<li><a class="panel index-row" href="/guides/${esc(guide.slug)}/"><div class="index-row__head"><h2 class="guide__t">${esc(guide.title)}</h2>${highway}</div>${sheet}<span class="guide__go">Read the guide</span></a></li>`;
+      return `<li data-region="${esc(guideRegion(guide.slug))}" data-search="${esc(guideSearch(guide.slug))}"><a class="panel index-row" href="/guides/${esc(guide.slug)}/"><div class="index-row__head"><h2 class="guide__t">${esc(guide.title)}</h2>${highway}</div>${sheet}<span class="guide__go">Read the guide</span></a></li>`;
     })
     .join('');
 }

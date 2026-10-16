@@ -84,7 +84,7 @@ function card(html, slug) {
   const href = `href="/guides/${slug}/"`;
   const start = html.indexOf(href);
   assert.notEqual(start, -1, slug);
-  const open = html.lastIndexOf('<li>', start);
+  const open = html.lastIndexOf('<li ', start);
   const close = html.indexOf('</li>', start);
   return html.slice(open, close);
 }
@@ -124,14 +124,14 @@ test('index rows show title, ends, distance, and a link', () => {
   assert.match(vegas, /I-15/);
   assert.match(vegas, /<dt>Start<\/dt><dd><span>I-10 junction, Ontario<\/span>/);
   assert.match(vegas, /<dt>End<\/dt><dd><span>Tropicana Ave, Las Vegas<\/span>/);
-  assert.match(vegas, /<dt>Distance<\/dt><dd><span>224 mi<\/span>/);
+  assert.match(vegas, /<dt>Corridor miles<\/dt><dd><span>224 mi<\/span>/);
   assert.match(vegas, /Read the guide/);
   const bare = card(html, 'no-miles');
   assert.match(bare, /Denver to Albuquerque/);
   assert.match(bare, /<dt>Start<\/dt><dd><span>Denver<\/span>/);
   assert.match(bare, /<dt>End<\/dt><dd><span>Albuquerque<\/span>/);
   assert.equal(bare.includes('Distance'), false);
-  assert.equal(bare.includes(' mi'), false);
+  assert.doesNotMatch(bare, /<dd><span>[^<]* mi<\/span>/);
   assert.match(card(html, 'bad'), /A &lt;b&gt;title&lt;\/b&gt;/);
   assert.match(card(html, 'bad'), /A &amp; B/);
   assert.equal(html.includes('—'), false);

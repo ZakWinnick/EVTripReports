@@ -1,0 +1,15 @@
+---
+import route from '../data/routes/la-to-las-vegas.json';
+import { samplePlan } from '../lib/sample-plan.js';
+const plan = samplePlan(route);
+const stop = plan.stops.find((s: any) => s.charging);
+const strategy = plan.strategy.stops.find((s: any) => s.stopId === stop?.id);
+---
+<div class="sample-preview">
+  <div class="sample-preview__top"><span>SAMPLE DETAILED PLAN</span><span>$39 TIER · EXAMPLE ONLY</span></div>
+  <h3>Ontario to Las Vegas</h3>
+  <p class="sample-vehicle">Ioniq 5 · CCS + NACS adapter</p>
+  <div class="sample-charger"><p class="eyebrow">Planned charging stop / {stop?.name}</p><p><strong>{stop?.primary.name}</strong></p><p>Backup: {stop?.backups?.[0]?.name || 'Not yet verified'}</p></div>
+  <div class="sample-charge"><div><strong>{strategy?.arrivePercent}%</strong><span>Estimated arrival</span></div><div><strong>{strategy?.departPercent}%</strong><span>Estimated charge target</span></div></div>
+  <p class="sample-preview__foot">Example only. Assumes 250 miles of range and starts at the corridor boundary. <a href="/sample-plan/#assumptions">See assumptions</a>.</p>
+</div>

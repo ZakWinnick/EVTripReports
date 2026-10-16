@@ -1,104 +1,74 @@
 ---
+// HERO: One annotated trip sheet, from leaving home to arriving with a charge.
 import Base from '../layouts/Base.astro';
-import { routeLine, statStrip, guideCards } from '../lib/render-guide.js';
-import { visibleHomeRoutes } from '../lib/publish-status.js';
-import featured from '../data/routes/la-to-las-vegas.json';
-import routes from '../data/routes.json';
-import { tiers, priceLabel } from '../data/plans.js';
-
-const routeFiles = import.meta.glob('../data/routes/*.json', { eager: true });
-const routeBySlug = Object.fromEntries(Object.values(routeFiles).map((m) => {
-  const route = (m as { default?: { slug: string; stops: unknown[] } }).default ?? (m as { slug: string; stops: unknown[] });
-  return [route.slug, route];
-}));
-
-const cards = visibleHomeRoutes(routes, routeBySlug);
-const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
-const homeLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'WebSite',
-      name: 'EV Trip Reports',
-      url: 'https://evtripreports.com/',
-      description: 'A travel agent for EVs.',
-    },
-    {
-      '@type': 'Organization',
-      name: 'EV Trip Reports',
-      url: 'https://evtripreports.com/',
-      description: 'A travel agent for EVs.',
-    },
-  ],
-};
+import '../styles/trip-home.css';
+import route from '../data/routes/la-to-las-vegas.json';
+import { samplePlan } from '../lib/sample-plan.js';
+import { fmtDate } from '../lib/render-guide.js';
+import { tiers } from '../data/plans.js';
+const plan = samplePlan(route);
+const stop = plan.stops.find((s: any) => s.charging);
+const strategy = plan.strategy.stops.find((s: any) => s.stopId === stop.id);
+const backup = stop.backups[0];
+const homeLd = { '@context': 'https://schema.org', '@graph': [
+  { '@type': 'WebSite', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'Custom EV trip planning and independent charging guides.' },
+  { '@type': 'Organization', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'A travel agent for EVs.' },
+] };
 ---
-<Base title="A travel agent for EVs" description="A travel agent for EV road trips. Stops that work for your car, a backup for each, and a place to eat or sleep while you charge.">
+<Base title="EV road-trip guides and custom plans" description="Free EV charging guides and custom trip plans. Compare stations, access requirements, backups, and dated source information before your next drive.">
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(homeLd)}></script>
-  <section class="band hero">
-    <div class="wrap">
-      <h1 class="display">A travel agent<br />for EVs.</h1>
-      <p class="lede" style="margin-top:28px">Tell us where you're going and what you drive. We plan the trip around charging: stops that work for your car, a backup for each, and on a detailed plan a place to eat or sleep while you charge. Free guides cover the corridors we publish. We don't book the hotel, the rental, or the ticket.</p>
-      <div class="btnrow" style="margin-top:32px">
-        <a class="pill pill--lg" href="/guides/la-to-las-vegas/">Read the LA to Las Vegas guide</a>
-        <a class="pill pill--lg pill--ghost" href="/plans/">Get a plan for your car</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--mist">
-    <div class="wrap">
-      <div class="feat__head">
-        <div>
-          <p class="muted" style="margin:0 0 8px">Featured route, {featured.highway}</p>
-          <h2 class="h2">{featured.title}</h2>
+  <div class="trip-home">
+    <section class="trip-opening">
+      <div class="trip-wrap opening-grid">
+        <div class="opening-copy">
+          <p class="trip-label">Personal trip planning for EV drivers</p>
+          <h1>You pick the destination.<br /><span>We’ll work out<br class="desktop-break" /> the stops.</span></h1>
+          <p class="opening-description">A weekend away. A cross-country move. The drive to see your family. Get a charging plan built around your car and the trip you actually want to take.</p>
+          <div class="trip-actions"><a class="trip-button" href="/plans/#request">Plan my trip <span aria-hidden="true">↗</span></a><a class="trip-link" href="#inside-plan">See what you get <span aria-hidden="true">↓</span></a></div>
+          <p class="opening-fine">From $19 per plan. Researched, then reviewed by a person.</p>
         </div>
-        <p class="small muted" style="margin:0">Checked {checkedLabel}</p>
-      </div>
-      <div class="panel" id="featured-route" style="padding: clamp(18px, 3vw, 32px); margin-top: 28px">
-        <Fragment set:html={routeLine(featured, '/guides/la-to-las-vegas/')} />
-      </div>
-      <div id="featured-stats" style="margin-top: 40px"><Fragment set:html={statStrip(featured.stats)} /></div>
-    </div>
-  </section>
-
-  <section id="guides" class="band">
-    <div class="wrap">
-      <h2 class="h2">Route guides</h2>
-      <p class="lede" style="margin-top:12px">A guide is linked once the primary charger at every stop has been checked on the network's locator. Unconfirmed facts stay labeled on the page.</p>
-      <ul class="guides" id="guides-list"><Fragment set:html={guideCards(cards)} /></ul>
-    </div>
-  </section>
-
-  <section class="band band--mist">
-    <div class="wrap plans">
-      <div>
-        <h2 class="h2">A plan for your car and your dates.</h2>
-        <p class="lede" style="margin-top:16px">A paid plan uses your car, charge port, adapter, memberships, and dates. Every charging fact comes from the network's own site, with the date we checked it. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p>
-        <div class="btnrow" style="margin-top:28px">
-          <a class="pill pill--lg" href="/plans/#request">Plan my trip</a>
-          <a class="pill pill--lg pill--ghost" href="/plans/">Compare plans</a>
+        <div class="trip-document" aria-label="Illustrative trip plan overview">
+          <div class="document-top"><span>EV Trip Reports</span><span>Sample / Detailed plan</span></div>
+          <p class="document-label">A Monday in the Mojave</p>
+          <h2>Ontario<span class="destination-arrow" aria-hidden="true">↘</span><br />Las Vegas</h2>
+          <p class="document-subtitle">November 2, 2026 · 224-mile corridor</p>
+          <div class="traveler-strip"><span>2024 Hyundai Ioniq 5</span><span>2 adults + 1 dog</span></div>
+          <ol class="journey-line">
+            <li><span class="journey-dot"></span><div><span class="journey-note">Start / I-10 junction</span><strong>Ontario, CA</strong><span>Leave with 80% battery</span></div></li>
+            <li class="journey-charge"><span class="journey-dot"></span><div><span class="journey-note">Charge / mile {stop.mile}</span><strong>{stop.name}, CA</strong><span>{stop.primary.network.value} · backup included</span><a href="#inside-plan">Look inside this stop <span aria-hidden="true">↘</span></a></div></li>
+            <li><span class="journey-dot"></span><div><span class="journey-note">Arrive / Tropicana Avenue</span><strong>Las Vegas, NV</strong><span>{plan.strategy.destination.arrivePercent}% estimated arrival battery</span></div></li>
+          </ol>
+          <div class="document-bottom"><span>Illustrative trip, not a current recommendation.</span><a href="/sample-plan/#assumptions">Read assumptions</a></div>
         </div>
       </div>
-      <dl class="tiers">
-        {tiers.map((t) => (
-          <div>
-            <dt>{t.name}</dt>
-            <dd><a href="/plans/#compare">{priceLabel(t)}</a></dd>
-          </div>
-        ))}
-      </dl>
-    </div>
-  </section>
+      <div class="trip-wrap opening-bottom"><span>Your car. Your dates. Any route.</span><a href="/guides/">Planning it yourself? Browse the free guides <span aria-hidden="true">↗</span></a></div>
+    </section>
 
-  <section class="band">
-    <div class="wrap method">
-      <h2 class="h2">Where the numbers come from</h2>
-      <ol class="sources">
-        <li><strong>The network's own locator.</strong> Tesla, Electrify America, EVgo and the rest decide stall count, kW, access, and price.</li>
-        <li><strong>The DOE station database.</strong> We pull every DC fast site in each stop town so nothing gets missed.</li>
-        <li><strong>Driver reports.</strong> PlugShare, X, Reddit, and forums, each with a link and a date. A report stays a report. It is not a confirmed stall count or access flag.</li>
-      </ol>
-      <p class="muted" style="margin-top:20px">Third-party aggregators are leads, never the source. When sources disagree, we show both. <a href="/methodology/">Full methodology</a></p>
-    </div>
-  </section>
+    <section id="inside-plan" class="inside-plan trip-wrap">
+      <div class="plan-explanation">
+        <p class="trip-label">Inside your plan</p>
+        <h2>A stop worth<br />knowing about.</h2>
+        <p>A pin on a map is a starting point. Your plan explains which charger fits your car, why the stop makes sense, and what to try if it doesn’t work out.</p>
+        <div class="margin-note"><span class="note-number">01</span><div><h3>The charging decision</h3><p>Station details and estimated battery targets, with the assumptions behind them.</p></div></div>
+        <div class="margin-note"><span class="note-number">02</span><div><h3>A way to change plans</h3><p>An available backup, including the adapter or access requirements you’ll need to know.</p></div></div>
+        <div class="margin-note"><span class="note-number">03</span><div><h3>The limits of the research</h3><p>Source dates and missing information are part of the plan, too.</p></div></div>
+        <a class="trip-link" href="/sample-plan/">Read the complete sample plan <span aria-hidden="true">↗</span></a>
+      </div>
+      <article class="stop-sheet">
+        <div class="sheet-heading"><span>From the sample Detailed plan</span><span>Stop 01</span></div>
+        <div class="stop-title"><p class="trip-label">Baker, California / Mile {stop.mile}</p><h3>{stop.primary.name}</h3><p>{stop.primary.network.value}</p></div>
+        <p class="stop-reason">{stop.why}</p>
+        <div class="battery-targets"><div><span>Estimated arrival</span><strong>{strategy.arrivePercent}<small>%</small></strong></div><span class="battery-arrow" aria-hidden="true">→</span><div><span>Estimated charge target</span><strong>{strategy.departPercent}<small>%</small></strong></div></div>
+        <p class="estimate-note">Illustrative calculations assume 250 miles of range, a 75 kWh battery, and 65 mph. Weather, elevation, and load change the result.</p>
+        <dl class="stop-specs"><div><dt>Connection</dt><dd>CCS at the primary station</dd></div><div><dt>Station power</dt><dd>{stop.primary.power.value}</dd></div><div><dt>Station facts checked</dt><dd><a href={stop.primary.network.url} target="_blank" rel="noopener noreferrer">{fmtDate(stop.primary.network.checkedOn)} · Source ↗</a></dd></div></dl>
+        <div class="backup-note"><p class="trip-label">If you need a backup</p><h4>{backup.network}</h4><p>{backup.name}. {backup.access}</p><a href={backup.url} target="_blank" rel="noopener noreferrer">Station source · {fmtDate(backup.checkedOn)} ↗</a></div>
+        <div class="research-note"><strong>Before you arrive</strong><p>Check both stations in their network apps for current status. No sourced restroom or pet-facility note at the primary charger; confirm before counting on either.</p></div>
+        <a class="arrival-line" href="/sample-plan/">Next: arriving in Las Vegas <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+
+    <section class="planner-section"><div class="trip-wrap planner-grid"><div><p class="trip-label">The person behind the plan</p><h2>Hi, I’m Zak.</h2><a href="/about/" class="planner-byline">Zak Winnick / Founder <span aria-hidden="true">↗</span></a></div><div class="planner-letter"><p>I work in EV charging infrastructure. Before that, I spent 15 years in hospitality.</p><p>That’s how I think about a trip: where you’ll charge, what the stop will be like, and what you’ll need along the way.</p><p class="planner-detail">Every custom plan gets a human review before it reaches you. Charging networks don’t pay for placement here.</p><a href="/methodology/">How the research is checked <span aria-hidden="true">↗</span></a></div></div></section>
+
+    <section class="trip-wrap trip-pricing" id="planning"><div class="pricing-intro"><p class="trip-label">Let’s plan your trip</p><h2>A little help.<br />Or the whole itinerary.</h2><p>Tell us where you’re going, what you drive, and who’s coming along. Choose your plan, send your details, and pay securely at checkout.</p><p class="pricing-timing">Delivery starts after payment and complete trip details.</p></div><div class="price-list">{tiers.map((tier) => <a href={`/plans/?tier=${tier.id}#request`} class="price-row"><div><h3>{tier.name}</h3><p>{tier.blurb}</p><span>{tier.delivery}</span></div><div class="price-amount">{tier.price}<span aria-hidden="true">↗</span></div></a>)}<a class="trip-link price-compare" href="/plans/">Compare everything included <span aria-hidden="true">↗</span></a></div></section>
+  </div>
 </Base>

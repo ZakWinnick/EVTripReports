@@ -13,7 +13,7 @@ function slashlessPage(value) {
   if (path.includes('${')) {
     if (!path.startsWith('/')) return null;
     if (path.startsWith('/api/') || path.startsWith('/data/') || path.startsWith('/_astro/')) return null;
-    const hash = path.indexOf('#');
+    const hash = path.search(/[?#]/);
     const pathname = hash === -1 ? path : path.slice(0, hash);
     if (pathname === '/' || pathname.endsWith('/')) return null;
     if (FILE.test(pathname.replace(/\$\{[^}]+\}/g, 'x'))) return null;
@@ -137,7 +137,7 @@ test('nav current matches a slash or slashless page value against the slash href
   assert.match(layout, /href: '\/find-my-plans\/'/);
   assert.match(layout, /const current = String\(currentProp \|\| Astro\.url\.pathname\)/);
   assert.match(layout, /href\.replace\(\/\\\/\+\$\/, ''\)/);
-  assert.match(layout, /href="\/plans\/#request"/);
+  assert.match(layout, /href="\/plans\/"/);
   assert.match(layout, /\{!noindex && <link rel="canonical"/);
   assert.match(layout, /\{!noindex && <meta property="og:url"/);
 });

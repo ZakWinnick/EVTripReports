@@ -1310,3 +1310,15 @@ test('positive driver notes are filed as Driver notes, and problems stay under C
   assert.match(html, /Driver notes/);
   assert.match(planMarkdown(plan), /Driver notes:/);
 });
+
+
+test('custom trips and reverse journeys can use their own researched route data', () => {
+  for (const [start, end, slug] of [['Chicago', 'Milwaukee', 'chicago-custom'], ['Las Vegas', 'Los Angeles', 'vegas-la-custom']]) {
+    const route = sampleRoute();
+    Object.assign(route, { slug, title: `${start} to ${end}`, startLabel: start, endLabel: end });
+    const plan = buildPlan(order({ slug, start, end }), route);
+    assert.ok(plan.stops.length > 0);
+    assert.ok(plan.sources['ea-locator']);
+    assert.match(plan.summary, /Start battery/);
+  }
+});

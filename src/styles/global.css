@@ -9,17 +9,17 @@
 
 :root {
   --white: #ffffff;
-  --mist: #f3f4f2;
-  --ink: #15191a;
-  --ink-2: #4e5653;
-  --ink-3: #686f6c;
-  --line: #d9ddda;
+  --mist: #f0f0eb;
+  --ink: #272b28;
+  --ink-2: #515650;
+  --ink-3: #5d625c;
+  --line: #d6d8d2;
   --line-strong: #b9bfbb;
   --control: #7a827e;
-  --green: #1e5a3c;
+  --green: #234f3d;
   --green-soft: #e4ede7;
-  --radius: 16px;
-  --radius-sm: 10px;
+  --radius: 5px;
+  --radius-sm: 4px;
   --max: 1180px;
   --gutter: clamp(16px, 4vw, 40px);
   --font: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -29,7 +29,7 @@
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
 body {
   margin: 0;
-  background: var(--white);
+  background: #faf9f6;
   color: var(--ink);
   font-family: var(--font);
   font-size: 17px;
@@ -208,3 +208,5 @@ form.newsletter[hidden] { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+[hidden] { display: none !important; }

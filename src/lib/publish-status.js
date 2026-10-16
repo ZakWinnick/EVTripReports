@@ -39,6 +39,9 @@ export function visibleHomeRoutes(list, routeBySlug) {
       const route = routeBySlug?.[item?.slug];
       return {
         ...item,
+        start: route?.startLabel,
+        end: route?.endLabel,
+        checked: route?.checked,
         status: exportStatus(item?.status, route),
         stops: Array.isArray(route?.stops) ? route.stops.length : item?.stops,
       };

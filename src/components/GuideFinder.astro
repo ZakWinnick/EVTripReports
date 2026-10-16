@@ -1,0 +1,12 @@
+---
+const { target = 'guides-list' } = Astro.props;
+---
+<div class="guide-finder" data-guide-finder data-target={target}>
+  <label for={`search-${target}`} class="eyebrow">Search the guides</label>
+  <div class="finder-input"><input id={`search-${target}`} type="search" placeholder="Try Las Vegas, Tahoe, or I-95" autocomplete="off" aria-controls={target} /><button class="finder-clear" type="button" hidden>Clear</button></div>
+  <div class="filter-row" aria-label="Filter guides by region">
+    {['All routes', 'West', 'Northeast', 'Texas'].map((region, i) => <button type="button" class="filter" data-region={i ? region : ''} aria-pressed={i === 0 ? 'true' : 'false'}>{region}</button>)}
+  </div>
+  <p class="finder-status small muted" role="status" aria-live="polite"></p>
+  <p class="finder-empty note" hidden>No published guide matches yet. We can still <a href="/plans/">plan your trip</a>, or try another city or highway.</p>
+</div>
