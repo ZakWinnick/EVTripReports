@@ -63,6 +63,14 @@ const TAG = {
 export const tag = (status, checked) =>
   `<span class="tag tag--${esc(status)}">${esc(TAG[status] ? TAG[status](checked) : status)}</span>`;
 
+// Interstate shield for highway labels like "I-15". Anything else falls back to a plain plate.
+export function shield(highway, cls = '') {
+  const hw = String(highway ?? '');
+  const m = /^I-(\d{1,3})$/.exec(hw.trim());
+  if (!m) return `<span class="guide__hw${cls ? ` ${cls}` : ''}">${esc(hw)}</span>`;
+  return `<span class="shield${cls ? ` ${cls}` : ''}" role="img" aria-label="${esc(hw)}"><span aria-hidden="true">${esc(m[1])}</span></span>`;
+}
+
 const ext = (url, text, cls = '') =>
   `<a${cls ? ` class="${cls}"` : ''} href="${esc(url)}" rel="nofollow noopener" target="_blank">${esc(text)}</a>`;
 
@@ -208,22 +216,23 @@ export function routeLine(route, linkBase = '') {
 
   const svg = [
     `<svg class="route__h" viewBox="0 0 ${W} 180" aria-hidden="true">`,
-    ...ticks.map((m) => `<line x1="${x(m)}" x2="${x(m)}" y1="${Y - 5}" y2="${Y + 5}" stroke="#b9bfbb" stroke-width="1"/>`),
-    `<line x1="${X0}" x2="${X1}" y1="${Y}" y2="${Y}" stroke="#15191a" stroke-width="3" stroke-linecap="round"/>`,
-    `<circle cx="${X0}" cy="${Y}" r="6" fill="#ffffff" stroke="#15191a" stroke-width="3"/>`,
-    `<rect x="${X1 - 7}" y="${Y - 7}" width="14" height="14" fill="#15191a"/>`,
-    t(X0 - 6, Y - 52, 13, '#4e5653', 'start', route.startLabel),
-    t(X0 - 6, Y - 34, 13, '#686f6c', 'start', 'mile 0'),
-    t(X1 + 6, Y - 52, 13, '#4e5653', 'end', route.endLabel),
-    t(X1 + 6, Y - 34, 13, '#686f6c', 'end', `mile ${total}`),
-    ...segments.map((s) => t(s.mid, Y - 14, 12, '#686f6c', 'middle', `${s.d} mi`)),
+    `<line x1="${X0}" x2="${X1}" y1="${Y}" y2="${Y}" stroke="#ffd232" stroke-opacity="0.55" stroke-width="18" stroke-linecap="round"/>`,
+    `<line x1="${X0}" x2="${X1}" y1="${Y}" y2="${Y}" stroke="#1b1f22" stroke-width="4" stroke-linecap="round"/>`,
+    ...ticks.map((m) => `<line x1="${x(m)}" x2="${x(m)}" y1="${Y - 2}" y2="${Y + 2}" stroke="#ffffff" stroke-width="2"/>`),
+    `<circle cx="${X0}" cy="${Y}" r="7" fill="#ffffff" stroke="#1b1f22" stroke-width="4"/>`,
+    `<rect x="${X1 - 8}" y="${Y - 8}" width="16" height="16" rx="2" fill="#ffffff" stroke="#1b1f22" stroke-width="4"/>`,
+    t(X0 - 6, Y - 52, 13, '#4a5257', 'start', route.startLabel),
+    t(X0 - 6, Y - 34, 13, '#5a636a', 'start', 'mile 0'),
+    t(X1 + 6, Y - 52, 13, '#4a5257', 'end', route.endLabel),
+    t(X1 + 6, Y - 34, 13, '#5a636a', 'end', `mile ${total}`),
+    ...segments.map((s) => t(s.mid, Y - 16, 12, '#5a636a', 'middle', `${s.d} mi`)),
     ...placed.map(
       (s) =>
-        `<a href="${href(s.id)}" tabindex="-1"><g class="route__stop"><circle cx="${s.cx}" cy="${Y}" r="15" fill="#1e5a3c"/>` +
-        t(s.cx, Y + 5, 14, '#ffffff', 'middle', s.n, 700) +
+        `<a href="${href(s.id)}" tabindex="-1"><g class="route__stop"><rect x="${s.cx - 20}" y="${Y - 14}" width="40" height="28" rx="4" fill="#00704a"/><rect x="${s.cx - 17.5}" y="${Y - 11.5}" width="35" height="23" rx="2.5" fill="none" stroke="#ffffff" stroke-width="1.5"/>` +
+        t(s.cx, Y + 5.5, 15, '#ffffff', 'middle', s.mile, 800) +
         (s.above
-          ? t(s.cx, Y - 52, 15, '#15191a', 'middle', s.name, 700) + t(s.cx, Y - 34, 13, '#4e5653', 'middle', `mile ${s.mile}`)
-          : t(s.cx, Y + 40, 15, '#15191a', 'middle', s.name, 700) + t(s.cx, Y + 58, 13, '#4e5653', 'middle', `mile ${s.mile}`)) +
+          ? t(s.cx, Y - 30, 15, '#1b1f22', 'middle', s.name, 700)
+          : t(s.cx, Y + 40, 15, '#1b1f22', 'middle', s.name, 700)) +
         `</g></a>`
     ),
     `</svg>`,
@@ -240,7 +249,7 @@ export function routeLine(route, linkBase = '') {
       return (
         `<li style="--pad:${p}px">` +
         (p >= 28 ? `<span class="route__gap small">${Math.round(gap)} mi</span>` : '') +
-        `<a href="${href(s.id)}" class="route__row"><span class="route__num">${s.n}</span><span><strong>${esc(s.name)}</strong><span class="muted small">mile ${esc(s.mile)}</span></span></a></li>`
+        `<a href="${href(s.id)}" class="route__row"><span class="route__num"><span class="sr">mile </span>${esc(s.mile)}</span><span><strong>${esc(s.name)}</strong></span></a></li>`
       );
     }),
     `<li class="route__end" style="--pad:${pad(lastGap)}px"><span class="route__gap small">${lastGap} mi</span><span class="route__dot route__dot--end"></span><span><strong>${esc(route.endLabel)}</strong><span class="muted small">mile ${total}</span></span></li>`,
@@ -378,14 +387,14 @@ function stopSection(route, s, i) {
   const correction = `mailto:admin@evtripreports.com?subject=${encodeURIComponent(`Guide correction: ${route.title} / ${s.name}`)}`;
   const reportsCount = driverReports.length + legacyReports.length;
   return `<section id="stop-${esc(s.id)}" class="band band--tight stop"><div class="wrap">
-<header class="stop__head"><span class="stop__num">${i + 1}</span><div><h2 class="h2">${esc(s.name)}</h2><p class="muted" style="margin:6px 0 0">${esc(s.towns)}</p></div>
-<div class="stop__mile"><span class="num">mile ${esc(s.mile)}</span><span class="small muted">${longMileNote ? 'Exit and mile-marker notes below' : esc(s.milepostNote)}</span></div></header>
+<header class="stop__head"><span class="milemarker"><span>Mile</span>${esc(s.mile)}</span><div><h2 class="h2">${esc(s.name)}</h2><p class="muted" style="margin:6px 0 0">${esc(s.towns)}</p></div>
+<div class="stop__mile"><span class="small muted">${longMileNote ? 'Exit and mile-marker notes below' : esc(s.milepostNote)}</span></div></header>
 <p class="stop__why">${esc(s.why)}</p>
 <div class="stop-grid"><div class="panel primary"><div class="primary__top"><div><p class="small muted" style="margin:0 0 5px">Primary charger</p><h3 class="h3">${esc(p.name)}</h3></div>
 <div class="btnrow">${p.teslaAccess ? tag(p.teslaAccess) : ''}${tag(rollup, rollup === 'verified' || rollup === 'conflict' ? checked : undefined)}</div></div>
 <dl class="sheet">${rows.map((r) => `<div class="sheet__row"><dt>${esc(r.k)}</dt><dd><span>${esc(r.v)}</span>${factBits(r.f)}${r.status ? tag(r.status) : ''}</dd></div>`).join('')}</dl>
-<div class="primary-actions">${ext(directions, 'Open in maps ↗', 'pill')}${p.stalls?.url ? ext(p.stalls.url, 'Check with the network', 'text-link') : ''}</div></div>
-<aside class="stop-sidebar" aria-label="Backup and local notes for ${esc(s.name)}"><h3 class="eyebrow">Backup to consider</h3><p class="small muted">Check its access requirements for your car.</p><ul class="list">${firstBackup}</ul>
+<div class="primary-actions">${ext(directions, 'Open in maps', 'pill')}${p.stalls?.url ? ext(p.stalls.url, 'Check with the network', 'text-link') : ''}</div></div>
+<aside class="stop-sidebar" aria-label="Backup and local notes for ${esc(s.name)}"><h3 class="h3 stop-sidebar__title">Backup to consider</h3><p class="small muted">Check its access requirements for your car.</p><ul class="list">${firstBackup}</ul>
 ${s.around.length ? `<div class="around-compact"><h3>Around the stop</h3><ul>${s.around.map((x) => `<li>${esc(x.text)}</li>`).join('')}</ul></div>` : '<p class="small muted" style="margin-top:20px">Food and restroom details have not been confirmed for this stop.</p>'}</aside></div>
 <div class="stop-evidence">
 ${longMileNote ? `<details><summary>Mile marker and exit notes</summary><p class="small">${esc(s.milepostNote)}</p></details>` : ''}
@@ -405,17 +414,17 @@ export function guideMain(route) {
   route = forDisplay(route);
   const S = route.sources;
   return `<section class="guide-hero"><div class="wrap">
-<div class="guide-hero__top"><p class="eyebrow"><a href="/">EV Trip Reports</a> / ${esc(route.highway)}</p><div class="guide-tools"><button type="button" data-print>Print guide ↗</button></div></div>
+<div class="guide-hero__top"><p class="guide-crumb">${shield(route.highway, 'shield--lg')}<span>Charging research for ${esc(route.highway)}</span></p><div class="guide-tools"><button type="button" data-print>Print guide</button></div></div>
 <h1 class="h1">${esc(route.title)}</h1><p class="lede" style="margin-top:20px">${esc(route.summary)}</p>
-<div class="guide-boundary"><span><strong>Coverage:</strong> ${esc(route.startLabel)} → ${esc(route.endLabel)}</span><span class="boundary-distance">${esc(route.stats[0].value)} corridor miles · ${route.stops.length} charging areas</span></div>
+<div class="guide-boundary"><span><strong>Covers</strong> ${esc(route.startLabel)} to ${esc(route.endLabel)}</span><span class="boundary-distance">${esc(route.stats[0].value)} corridor miles, ${route.stops.length} charging areas</span></div>
 <p class="checked-note">Station facts checked ${esc(fmtDate(route.checked))}. Checked specifications are not live availability. <a href="/methodology/">How we check</a></p></div></section>
 <section class="route-overview" aria-label="Route overview"><div class="wrap">${routeLine(route)}
 <p class="note">${esc(route.startNote)} The areas below are options, not a requirement to charge at every stop. Choose stops for your car, adapter, and battery level.</p><details class="guide-route-facts"><summary>Route facts and sources</summary>${statStrip(route.stats)}</details></div></section>
-<nav class="stop-nav" aria-label="Jump to a charging area"><div class="wrap"><span class="eyebrow">Along the way</span>${route.stops.map((stop, i) => `<a href="#stop-${esc(stop.id)}"><span>${i + 1}</span>${esc(stop.name)}</a>`).join('')}<a href="#route-notes">Trip notes</a></div></nav>
+<nav class="stop-nav" aria-label="Jump to a charging area"><div class="wrap"><span class="stop-nav__label">Jump to</span>${route.stops.map((stop) => `<a href="#stop-${esc(stop.id)}"><span>${esc(stop.mile)}</span>${esc(stop.name)}</a>`).join('')}<a href="#route-notes">Trip notes</a></div></nav>
 ${route.stops.map((stop, i) => stopSection(route, stop, i)).join('\n')}
-<section id="route-notes" class="band"><div class="wrap guide-bottom"><div><p class="eyebrow">Before you go</p><h2 class="h2">Trip notes</h2><ol class="tips">${route.tips.map((tip) => `<li>${esc(tip.text)} ${S[tip.source] ? ext(S[tip.source].url, 'Source', 'small') : ''}</li>`).join('')}</ol></div><div><p class="eyebrow">At the other end</p><h2 class="h2">At your destination</h2><p class="note">${esc(arrivalNote(route))}</p><p class="small muted" style="margin-top:20px">This guide covers the endpoints shown above. Allow for the drive to the corridor and onward to your destination.</p></div></div></section>
-<section class="band band--tight"><div class="wrap"><div class="plan-cta"><div><p class="eyebrow">Custom planning</p><h2 class="h2">Want a plan for this trip?</h2><p class="lede" style="margin-top:18px">Get a plan for your vehicle, adapter, and dates, with checked charging options and any gaps clearly flagged. Reviewed by a person before delivery.</p></div><div class="btnrow"><a class="pill pill--lg" href="/plans/?route=${esc(route.slug)}#request">Plan this trip</a><a class="text-link" href="/sample-plan/">See a sample</a></div></div></div></section>
-<section class="band band--tight newsletter-band" hidden><div class="wrap"><p class="eyebrow">Keep in the loop</p><h2 class="h2">Guide updates</h2>${newsletterForm('newsletter-guide')}</div></section>`;
+<section id="route-notes" class="band"><div class="wrap guide-bottom"><div><h2 class="h2">Trip notes</h2><ol class="tips">${route.tips.map((tip) => `<li>${esc(tip.text)} ${S[tip.source] ? ext(S[tip.source].url, 'Source', 'small') : ''}</li>`).join('')}</ol></div><div><h2 class="h2">At your destination</h2><p class="note">${esc(arrivalNote(route))}</p><p class="small muted" style="margin-top:20px">This guide covers the endpoints shown above. Allow for the drive to the corridor and onward to your destination.</p></div></div></section>
+<section class="band band--tight"><div class="wrap"><div class="plan-cta"><div><h2 class="h2">Want a plan for this trip?</h2><p class="lede" style="margin-top:18px">Get a plan for your vehicle, adapter, and dates, with checked charging options and any gaps clearly flagged. Reviewed by a person before delivery.</p></div><div class="btnrow"><a class="pill pill--lg" href="/plans/?route=${esc(route.slug)}#request">Plan this trip</a><a class="text-link" href="/sample-plan/">See a sample</a></div></div></div></section>
+<section class="band band--tight newsletter-band" hidden><div class="wrap"><h2 class="h2">Guide updates</h2>${newsletterForm('newsletter-guide')}</div></section>`;
 }
 
 export function guideRegion(slug = '') {
