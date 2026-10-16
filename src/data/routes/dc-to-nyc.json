@@ -430,7 +430,7 @@
       "reports": [],
       "around": [
         {
-          "text": "Host is Walmart Supercenter #2009. Grocery and packaged food are inside the store while it is open. Store hours and restrooms: Not yet verified. The live walmart.com store page blocked automated reads on 2026-10-15, so hours and restrooms are not cited from the host page.",
+          "text": "Host is Walmart Supercenter #2009. Grocery and packaged food are inside the store while it is open. Store hours and restrooms: Not yet verified. Live walmart.com store page blocked automated reads on 2026-10-15 (rechecked). An older Internet Archive capture of the store page listed hours but did not list restrooms, so neither field is cited from the host page.",
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/md/abingdon/401-constant-friendship-blvd/100277/",
@@ -759,12 +759,15 @@
         },
         {
           "name": "Newark, DE - Tesla Supercharger, 530 John F Kennedy Memorial Hwy, Newark",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"Open to Teslas only\". DOE last confirmed 2026-06-18. Tesla Find Us returned 404 (site may be closed) on 2026-10-15.",
+          "facts": "Tesla Supercharger at 530 John F Kennedy Memorial Hwy, Newark, DE. DOE lists 12 NACS at 150 kW and notes \"Open to Teslas only\" (last confirmed 2026-06-18). Tesla Find Us for newarkdesupercharger returned 404 on 2026-10-15 (rechecked same day). Tesla only or open to all EVs: Not yet verified (no live Find Us page to agree with DOE).",
           "status": "unverified",
           "afdcIds": [
             102103
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/newarkdesupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Newark, DE, 132 Christiana Mall, Newark",
@@ -890,7 +893,7 @@
       "reports": [],
       "around": [
         {
-          "text": "The Wawa at this site sells food and coffee. Its store page lists online ordering, curbside pickup, fuel and EV charging. Store hours on that page were blank when checked, so hours: Not yet verified. Restrooms: Not yet verified (not listed on the store page).",
+          "text": "The Wawa at this site sells food and coffee. Its store page lists online ordering, curbside pickup, fuel and EV charging. Store hours on that page were blank when checked (rechecked 2026-10-15), so hours: Not yet verified. Restrooms: Not yet verified (not listed on the store page).",
           "category": "food",
           "source": "wawa",
           "url": "https://www.wawa.com/locations/0840",
@@ -1413,12 +1416,15 @@
         },
         {
           "name": "Wawa - Tesla Supercharger, 112 Edgewood Ave, Bellmawr",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 500 kW, 8 NACS at 500 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
+          "facts": "Tesla Find Us (loc 462857) lists Wawa / Creek Road at 464 Creek Rd, Bellmawr, NJ 08031: 8 Superchargers up to 500 kW, banner \"Adapter Included For Other EVs\", 24/7. DOE AFDC 470550 lists the same stall and kW figures at 112 Edgewood Ave, Bellmawr (access_days_time \"24 hours daily\" only, no Open to all / NACS partner / Teslas only line; last confirmed 2026-10-13). Address strings differ; access labels do not agree. Tesla only or open to all EVs: Not yet verified.",
           "status": "unverified",
           "afdcIds": [
             470550
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/462857",
+          "source": "tesla-findus"
         },
         {
           "name": "Westampton, NJ - Rancocas Road - Tesla Supercharger, 570 Rancocas Road, Westampton",
@@ -1446,7 +1452,7 @@
       "reports": [],
       "around": [
         {
-          "text": "Host is ShopRite of Mount Laurel (Wakefern #594) at 1000 Nixon Drive. The Ravitz Family Markets page lists hours 7am to 10pm and names Chinese Wok plus order, pickup and delivery. Grocery food is in the store while open. Restrooms: Not yet verified (not listed on that page).",
+          "text": "Host is ShopRite of Mount Laurel (Wakefern #594) at 1000 Nixon Drive. The Ravitz Family Markets page lists hours 7am to 10pm and names Chinese Wok plus order, pickup and delivery (rechecked 2026-10-15). Grocery food is in the store while open. Restrooms: Not yet verified (not listed on that page).",
           "category": "food",
           "source": "ravitz-mt-laurel",
           "url": "https://ravitzfamilymarkets.com/shoprite-of-mount-laurel/",
@@ -1460,7 +1466,7 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "Electrify America's own site description for this location also says: \"We are currently working to bring the site back online.\" The locator lists all six chargers and shows the site status as AVAILABLE, so the two disagree. Check the EA app for live status before you plan around Moorestown. The Marlton Commons and Somerdale backups are the fallback.",
+          "text": "Electrify America's public locator API and site page both still say \"We are currently working to bring the site back online\" while listing six 350 kW CCS chargers and status AVAILABLE (rechecked 2026-10-15 via api-prod.electrifyamerica.com location 240371 and the locator page). No dated driver report after 2026-10-01 was found (X search returned 0; PlugShare blocked automated reads; Leasehackr had no hits). Check the EA app for live status before you plan around Moorestown. The Marlton Commons and Somerdale backups are the fallback.",
           "category": "status",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/",
@@ -2180,12 +2186,15 @@
         },
         {
           "name": "Wawa - Tesla Supercharger, 88 Centennial Ave, Piscataway",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
+          "facts": "Tesla Find Us (loc 15015) lists 88 Centennial Avenue, Piscataway, NJ 08854: 12 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", 24/7. DOE AFDC 456082 lists 12 CCS at 325 kW and 12 NACS at 325 kW at the same address (access_days_time \"24 hours daily\" only; last confirmed 2026-10-13). Banner says open to other EVs; DOE access line does not. Tesla only or open to all EVs: Not yet verified.",
           "status": "unverified",
           "afdcIds": [
             456082
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/15015",
+          "source": "tesla-findus"
         },
         {
           "name": "Woodrow Wilson Service Plaza, 75 New Jersey Turnpike, Hamilton Township",
@@ -2203,10 +2212,10 @@
       "reports": [],
       "around": [
         {
-          "text": "Host is Walmart Supercenter #3078 with grocery and a bakery. An Aug 17, 2024 archive of the walmart.com store page listed daily hours from 6am until 11pm and named Electrify America on site. Live walmart.com page blocked automated reads on 2026-10-15, so treat those hours as archive-only. Restrooms: Not yet verified (not listed on the archived store page).",
+          "text": "Host is Walmart Supercenter #3078 with grocery and a bakery. An Aug 17, 2024 Internet Archive capture of the walmart.com store page listed daily hours from 6am until 11pm and named Electrify America on site; that capture does not list restrooms. Live walmart.com page blocked automated reads on 2026-10-15 (rechecked), so treat those hours as archive-only. Restrooms: Not yet verified.",
           "category": "food",
           "source": "walmart-3078",
-          "url": "https://www.walmart.com/store/3078-east-brunswick-nj",
+          "url": "https://web.archive.org/web/20240817170726/https://www.walmart.com/store/3078-east-brunswick-nj/",
           "checkedOn": "2026-10-15"
         },
         {
@@ -2537,12 +2546,15 @@
         },
         {
           "name": "Crosspointe Town Square - Tesla Supercharger, 15 Woodbridge Center Dr, Woodbridge Township",
-          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-15. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
+          "facts": "Tesla Find Us (loc 405054) lists Crosspointe Town Square at 15 Woodbridge Center Dr, Woodbridge Township, NJ 07095: 16 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", 24/7. DOE AFDC 471136 lists 16 CCS at 325 kW and 16 NACS at 325 kW at the same address (access_days_time \"24 hours daily\" only; date_last_confirmed null in the 2026-10-15 DOE pull). Banner says open to other EVs; DOE access line does not. Tesla only or open to all EVs: Not yet verified.",
           "status": "unverified",
           "afdcIds": [
             471136
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/405054",
+          "source": "tesla-findus"
         },
         {
           "name": "ESSEX COUNTY ADMIN DC 1, 5 13th Ave JUROR LOT Howard Street or South O, Newark",
@@ -2723,12 +2735,15 @@
         },
         {
           "name": "Newark, NJ - Tesla Supercharger, 281 Ferry St, Newark",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
+          "facts": "Tesla Find Us (loc 437003) lists Ferry Street Plaza at 281 Ferry St, Newark, NJ 07105: 16 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", plus \"Pricing for Non-Tesla\", 24/7. DOE AFDC 422574 lists 16 NACS at 325 kW and notes \"NACS partner enabled\" (last confirmed 2026-06-18). Partner wording matches a \"NACS adapter needed\" banner, not \"Adapter Included\". Labels disagree. Tesla only or open to all EVs: Not yet verified.",
           "status": "unverified",
           "afdcIds": [
             422574
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/437003",
+          "source": "tesla-findus"
         },
         {
           "name": "PANYNJ PN WC TRUCK 1, 272 Marlin Street, Newark",
@@ -2812,12 +2827,15 @@
         },
         {
           "name": "Twin City Shopping Center - Tesla Supercharger, 2-36 Garfield Ave, Jersey City",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
+          "facts": "Tesla Find Us (loc 27400) lists Twin City Shopping Center at 2-36 Garfield Ave, Jersey City, NJ 07305: banner \"Adapter Included For Other EVs\", 24/7 (stall/kW line partial on the page render). DOE AFDC 451972 lists 12 CCS at 325 kW and 12 NACS at 325 kW at the same address (access_days_time \"24 hours daily\" only; last confirmed 2026-10-13). Banner says open to other EVs; DOE access line does not. Tesla only or open to all EVs: Not yet verified.",
           "status": "unverified",
           "afdcIds": [
             451972
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/27400",
+          "source": "tesla-findus"
         },
         {
           "name": "Union, NJ - Tesla Supercharger, 1750 Route 22 East, Union",
@@ -2867,10 +2885,10 @@
       "reports": [],
       "around": [
         {
-          "text": "Mall food court is upper level center court by Entrance C. Restrooms are throughout the mall corridors (accessible restrooms listed on the About page). Simon About also says the EV chargers in the Cohoes-facing lot are available 24 hours a day, 7 days a week.",
+          "text": "Mall food court is upper level center court by Entrance C. Restrooms are throughout the mall corridors (accessible restrooms listed on the About page). Simon About also says the EV chargers in the Cohoes-facing lot are available 24 hours a day, 7 days a week. Live simon.com About redirected or blocked automated reads on 2026-10-15; cited from Internet Archive snapshot dated 2025-12-06.",
           "category": "food",
-          "source": "simon-jersey-gardens-about",
-          "url": "https://www.simon.com/mall/the-mills-at-jersey-gardens/about",
+          "source": "simon-jersey-gardens-about-archive",
+          "url": "https://web.archive.org/web/20251206184646/https://www.simon.com/mall/the-mills-at-jersey-gardens/about",
           "checkedOn": "2026-10-15"
         },
         {
