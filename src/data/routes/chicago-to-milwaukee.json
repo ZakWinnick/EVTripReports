@@ -29,12 +29,12 @@
     },
     {
       "label": "DC fast sites listed",
-      "value": "48",
+      "value": "49",
       "unit": ""
     },
     {
       "label": "Checked against the network",
-      "value": "18",
+      "value": "19",
       "unit": ""
     }
   ],
@@ -78,6 +78,42 @@
     "reddit": {
       "name": "Reddit driver reports",
       "url": "https://www.reddit.com/"
+    },
+    "plugshare-186872": {
+      "name": "PlugShare Target Division/Larrabee (Chicago) location 186872",
+      "url": "https://www.plugshare.com/location/186872"
+    },
+    "plugshare-337826": {
+      "name": "PlugShare Westfield Old Orchard Skokie location 337826",
+      "url": "https://www.plugshare.com/location/337826"
+    },
+    "plugshare-355429": {
+      "name": "PlugShare Woodman's Food Market Kenosha Supercharger location 355429",
+      "url": "https://www.plugshare.com/location/355429"
+    },
+    "plugshare-641864": {
+      "name": "PlugShare EVgo McDonald's Layton Milwaukee location 641864",
+      "url": "https://www.plugshare.com/location/641864"
+    },
+    "westfield-hours": {
+      "name": "Westfield Old Orchard opening hours",
+      "url": "https://www.westfield.com/en/united-states/oldorchard/opening-hours"
+    },
+    "mcdonalds-976": {
+      "name": "McDonald's #976 Layton Ave Milwaukee location page",
+      "url": "https://www.mcdonalds.com/us/en-us/location/wi/milwaukee/191-w-layton-ave/976.html"
+    },
+    "woodmans-kenosha": {
+      "name": "Woodman's Markets Kenosha store page",
+      "url": "https://www.woodmans-food.com/store-locations/kenosha/"
+    },
+    "woodmans-kenosha-map": {
+      "name": "Woodman's Kenosha store map (PDF)",
+      "url": "https://www.woodmans-food.com/wp-content/uploads/sites/392/2024/08/store-map.pdf"
+    },
+    "target-2613": {
+      "name": "Target Chicago Gold Coast / Division & Larrabee store T2613",
+      "url": "https://www.target.com/sl/chicago-gold-coast/2613"
     }
   },
   "stops": [
@@ -155,7 +191,7 @@
           "name": "BOA Logan Square IL4-313 (Chicago, IL)",
           "network": "Electrify America",
           "address": "3350 W Diversey Ave, Chicago, IL 60647",
-          "facts": "EA's locator lists 4 chargers, CCS at 350 kW on all 4. DOE lists the same port count. About 5 miles along the corridor, Bank of America on West Diversey.",
+          "facts": "EA's locator lists 4 CCS chargers (page did not show kW on 2026-10-16). DOE lists the same port count and power_kw_max 350 kW (AFDC pull 2026-10-16). About 5 miles along the corridor, Bank of America on West Diversey.",
           "access": "Open to all CCS EVs. NACS cars need an adapter.",
           "status": "verified",
           "source": "ea-locator",
@@ -170,8 +206,8 @@
           "name": "Chicago, IL - West Addison Street - Tesla Supercharger",
           "network": "Tesla Supercharger",
           "address": "2939 West Addison Street Chicago, IL 60618",
-          "facts": "Tesla Find Us lists the site at 2939 West Addison Street Chicago, IL 60618. Tesla Find Us confirms access: \"Adapter Included For Other EVs\". Stall count and kW are DOE figures only (20 NACS at up to 325 kW); Tesla's page did not show them. About 5 miles along the corridor at Target on West Addison. Find Us shows Adapter Included For Other EVs.",
-          "access": "Open to all EVs. Tesla Find Us banner: Adapter Included For Other EVs; the adapter is at the stall.",
+          "facts": "Tesla Find Us confirms 20 Superchargers at 2939 West Addison Street Chicago, IL 60618. Tesla Find Us confirms access: \"Adapter Included For Other EVs\". Stall count and kW are DOE figures only (20 NACS at up to 325 kW); Tesla's page did not show them. About 5 miles along the corridor at Target on West Addison. Find Us shows Adapter Included For Other EVs.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
           "teslaAccess": "open",
           "status": "verified",
           "source": "tesla-findus",
@@ -212,7 +248,7 @@
           "name": "Target T2781 (Chicago, IL)",
           "network": "Electrify America",
           "address": "1101 W Jackson Blvd., Chicago, IL 60607",
-          "facts": "EA's locator lists 3 chargers, CCS at 350 kW on all 3. DOE lists the same port count.",
+          "facts": "EA's locator lists 3 CCS chargers (page did not show kW on 2026-10-16). DOE lists the same port count and power_kw_max 350 kW (AFDC pull 2026-10-16). 1101 W Jackson Blvd, Chicago.",
           "access": "Open to all CCS EVs. NACS cars need an adapter.",
           "status": "verified",
           "source": "ea-locator",
@@ -347,13 +383,30 @@
           "checkedOn": "2026-10-16"
         }
       ],
-      "reports": [],
+      "reports": [
+        {
+          "source": "reddit",
+          "url": "https://www.reddit.com/r/chicago/comments/1u3crcv/chicago_ev_drivers_against_waymo/or62per/",
+          "date": "2026-06-12",
+          "summary": "Chicago driver: Waymo cars charge at the Target on Division and Larrabee, and those EA chargers are busier during the day because of it."
+        }
+      ],
       "around": [
         {
-          "text": "Target store T2613 (Chicago Gold Coast / Larrabee): Target's store page lists main hours 8am to 10pm (read 2026-10-16). Public restrooms: Not yet verified on Target's page; treat as Not yet verified until a dated driver report or host confirmation.",
-          "source": "target",
-          "url": "https://www.target.com/sl/chicago-south-loop/2613",
-          "checkedOn": "2026-10-16"
+          "text": "Host is Target store T2613 (Chicago Gold Coast / Division & Larrabee) at 1200 N Larrabee St. Target's store page lists main hours 8am to 10pm daily (read 2026-10-16). Starbucks inside lists 8am to 8pm. The store page does not list restrooms.",
+          "category": "food",
+          "source": "target-2613",
+          "url": "https://www.target.com/sl/chicago-gold-coast/2613",
+          "checkedOn": "2026-10-16",
+          "site": "Target T2613 (Chicago, IL)"
+        },
+        {
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Target EA site (location 186872, address shown as 600 W Division St on the same store block), and a successful check-in is dated 2026-09-20 (PlugShare location page, checked 2026-10-16). The Target store page does not list restrooms.",
+          "category": "restroom",
+          "source": "plugshare-186872",
+          "url": "https://www.plugshare.com/location/186872",
+          "checkedOn": "2026-10-16",
+          "site": "Target T2613 (Chicago, IL)"
         },
         {
           "text": "EA site note: Located at the entrance on the left side of the Target parking lot.",
@@ -432,7 +485,7 @@
           "name": "Highland Park, IL - Skokie Valley Road - Tesla Supercharger",
           "network": "Tesla Supercharger",
           "address": "2099 Skokie Valley Road Highland Park, IL 60035",
-          "facts": "Tesla Find Us lists the site at 2099 Skokie Valley Road Highland Park, IL 60035. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (12 NACS at up to 250 kW); Tesla's page did not show them. Highland Park Skokie Valley Road Supercharger, about 10 miles farther. Find Us shows NACS adapter needed for non-Tesla EVs.",
+          "facts": "Tesla Find Us confirms 12 Superchargers at 2099 Skokie Valley Road Highland Park, IL 60035. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (12 NACS at up to 250 kW); Tesla's page did not show them. Highland Park Skokie Valley Road Supercharger, about 10 miles farther. Find Us shows NACS adapter needed for non-Tesla EVs.",
           "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
           "teslaAccess": "open",
           "status": "verified",
@@ -524,16 +577,33 @@
           "driverReports": []
         }
       ],
-      "reports": [],
+      "reports": [
+        {
+          "source": "reddit",
+          "url": "https://www.reddit.com/r/PorscheMacan/comments/1pvhelu/macan_ev_does_not_charge_at_home_but_ok_at/oy4dtqm/",
+          "date": "2026-07-17",
+          "summary": "Chicagoland Porsche Macan EV driver: home charger failed after a trip, but charging worked at Electrify America at Old Orchard."
+        }
+      ],
       "around": [
         {
-          "text": "Westfield Old Orchard lists EV charging (including Electrify America) on its center page. Mall hours: Not yet verified on westfield.com (hours page not readable on 2026-10-16). Address on Westfield: 4905 Old Orchard Center, Skokie.",
-          "source": "westfield",
-          "url": "https://www.westfield.com/en/united-states/oldorchard",
-          "checkedOn": "2026-10-16"
+          "text": "Host is Westfield Old Orchard at 4905 Old Orchard Center, Skokie. Westfield's opening-hours page lists Mon to Thu 10:00 AM to 8:00 PM, Fri and Sat 10:00 AM to 9:00 PM, and Sun 10:00 AM to 7:00 PM (read 2026-10-16). Westfield's center page lists EV charging including Electrify America. The hours page does not list restrooms.",
+          "category": "food",
+          "source": "westfield-hours",
+          "url": "https://www.westfield.com/en/united-states/oldorchard/opening-hours",
+          "checkedOn": "2026-10-16",
+          "site": "Westfield Old Orchard (Skokie, IL)"
         },
         {
-          "text": "EA site note: Located at the parking lot nearer to Orchard Blvd traffic. Public restrooms at the mall: Not yet verified with a dated driver report.",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this EA site, and a successful check-in is dated 2026-09-29 (PlugShare location page, checked 2026-10-16). Westfield's hours page does not list restrooms.",
+          "category": "restroom",
+          "source": "plugshare-337826",
+          "url": "https://www.plugshare.com/location/337826",
+          "checkedOn": "2026-10-16",
+          "site": "Westfield Old Orchard (Skokie, IL)"
+        },
+        {
+          "text": "EA site note: Located at the parking lot nearer to Orchard Blvd traffic.",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/il/skokie/4905-old-orchard-shopping-center/210319/",
           "checkedOn": "2026-10-16"
@@ -554,31 +624,28 @@
       "towns": "Kenosha, WI",
       "mile": 53,
       "milepostNote": "Measured along OSRM's route from the start: 53.3 miles. The site is about 0.3 mile from that route line. Northbound leave I-94 at exit 342, WIS 158 (Wikipedia, Interstate 94 in Wisconsin).",
-      "why": "Tesla Find Us banner: NACS adapter needed for non-Tesla EVs, so it is open to all EVs. Stall count and kW (12 stalls at up to 250 kW) are DOE figures only. Mid-corridor between Skokie and Milwaukee. Pleasant Prairie's Tesla site just before it is Tesla only. Meijer Oak Creek EA is the next CCS-native stop toward Milwaukee.",
+      "why": "Tesla Find Us confirms this Kenosha Supercharger at Woodman's Food Market is open to non-Tesla EVs with a NACS adapter, mid-corridor between Skokie and Milwaukee. Pleasant Prairie's Tesla site just before it is Tesla only. Meijer Oak Creek EA is the next CCS-native stop toward Milwaukee.",
       "primary": {
-        "name": "Kenosha, WI - Tesla Supercharger",
+        "name": "Kenosha, WI - Tesla Supercharger (Woodman's)",
         "network": "Tesla Supercharger",
         "address": "7145 120th Avenue Kenosha, WI 53142",
         "exit": "Exit 342, WIS 158 (Kenosha)",
         "stalls": {
           "value": "12 stalls",
           "status": "verified",
-          "source": "afdc",
-          "url": "https://afdc.energy.gov/stations/#/station/203042",
-          "note": "Stall count and kW are DOE figures only (12 stalls at up to 250 kW); Tesla's page did not show them."
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger"
         },
         "power": {
-          "value": "Up to 250 kW",
-          "status": "verified",
-          "source": "afdc",
-          "url": "https://afdc.energy.gov/stations/#/station/203042",
-          "note": "Stall count and kW are DOE figures only (12 stalls at up to 250 kW); Tesla's page did not show them."
-        },
-        "access": {
-          "value": "Open to all EVs. Tesla Find Us banner: NACS adapter needed for non-Tesla EVs.",
+          "value": "Up to 250.0 kW",
           "status": "verified",
           "source": "tesla-findus",
           "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger"
+        },
+        "access": {
+          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "status": "verified",
+          "source": "tesla-findus"
         },
         "teslaAccess": "open",
         "price": {
@@ -591,8 +658,7 @@
         ],
         "driverReports": [],
         "checkedOn": "2026-10-16",
-        "source": "tesla-findus",
-        "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger"
+        "source": "tesla-findus"
       },
       "backups": [
         {
@@ -731,12 +797,35 @@
           "checkedOn": "2026-10-16"
         }
       ],
-      "reports": [],
+      "reports": [
+        {
+          "source": "reddit",
+          "url": "https://www.reddit.com/r/teslamotors/comments/shz2x4/anyone_know_how_tesla_is_coming_up_with_the_cost/hvu0vi1/",
+          "date": "2022-02-06",
+          "summary": "Tesla driver: short stop at the Kenosha Supercharger at Woodman's; noted the site and that a bathroom stop was needed."
+        }
+      ],
       "around": [
         {
-          "text": "Tesla Find Us lists this Kenosha site available 24/7 with the banner \"NACS adapter needed for non-Tesla EVs\". DOE access note also says NACS partner enabled. Host/business restrooms next to the stalls: Not yet verified.",
-          "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger",
+          "text": "Host is Woodman's Food Market at 7145 120th Ave, Kenosha (same address as the Supercharger). Woodman's Kenosha store page lists grocery open 24 hours, with holiday closures noted (read 2026-10-16). Tesla Find Us lists the Supercharger available 24/7 with \"NACS adapter needed for non-Tesla EVs\".",
+          "category": "food",
+          "source": "woodmans-kenosha",
+          "url": "https://www.woodmans-food.com/store-locations/kenosha/",
+          "checkedOn": "2026-10-16",
+          "site": "Woodman's Food Market (Kenosha, WI)"
+        },
+        {
+          "text": "Restrooms: Woodman's Kenosha store map (PDF on woodmans-food.com) labels RESTROOMS inside the store (read 2026-10-16). PlugShare's amenity row for this site does not show a restrooms icon.",
+          "category": "restroom",
+          "source": "woodmans-kenosha-map",
+          "url": "https://www.woodmans-food.com/wp-content/uploads/sites/392/2024/08/store-map.pdf",
+          "checkedOn": "2026-10-16",
+          "site": "Woodman's Food Market (Kenosha, WI)"
+        },
+        {
+          "text": "PlugShare lists this Supercharger at Woodman's Food Market (location 355429), open 24/7, 12 NACS at 250 kW.",
+          "source": "plugshare-355429",
+          "url": "https://www.plugshare.com/location/355429",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -873,13 +962,23 @@
       "reports": [],
       "around": [
         {
-          "text": "EVgo at McDonald's #976 on West Layton Avenue. McDonald's host hours and restrooms: Not yet verified (mcdonalds.com blocked the fetch on 2026-10-16).",
-          "source": "evgo",
-          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/",
-          "checkedOn": "2026-10-16"
+          "text": "Host is McDonald's #976 at 191 West Layton Ave. McDonald's location page lists the restaurant and lobby open 24 hours Monday to Sunday, and the drive-thru open 24 hours (read 2026-10-16). The page does not list restrooms.",
+          "category": "food",
+          "source": "mcdonalds-976",
+          "url": "https://www.mcdonalds.com/us/en-us/location/wi/milwaukee/191-w-layton-ave/976.html",
+          "checkedOn": "2026-10-16",
+          "site": "McDonalds #976 Layton"
         },
         {
-          "text": "EVgo's page lists three 350 kW posts with simultaneous dual cables, including NACS on one post.",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this EVgo site, and a successful check-in is dated 2026-10-05 (PlugShare location page, checked 2026-10-16). The McDonald's page does not list restrooms.",
+          "category": "restroom",
+          "source": "plugshare-641864",
+          "url": "https://www.plugshare.com/location/641864",
+          "checkedOn": "2026-10-16",
+          "site": "McDonalds #976 Layton"
+        },
+        {
+          "text": "EVgo's page lists three 350 kW posts with simultaneous dual cables, including NACS on one post. PlugShare also notes the site is on the GM Energy Network at the far west end of the McDonald's lot.",
           "source": "evgo",
           "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/",
           "checkedOn": "2026-10-16"
@@ -911,6 +1010,10 @@
     {
       "text": "EVgo's Pilot Travel Center listing in Franksville (DOE station 371899) returned 404 on EVgo's locator on 2026-10-16, so it is not used as a primary.",
       "source": "evgo"
+    },
+    {
+      "text": "Hours and restrooms on this guide: Target T2613 hours from Target's store page; Westfield hours from Westfield's opening-hours page; Woodman's Kenosha grocery open 24 hours from Woodman's store page; McDonald's Layton lobby 24 hours from McDonald's location page. Restrooms at Target, Westfield, and McDonald's Layton are Driver-reported from PlugShare amenity icons plus a dated check-in, not a host fact. Woodman's Kenosha restrooms are labeled on Woodman's own store map PDF.",
+      "source": "woodmans-kenosha"
     }
   ],
   "arrival": {

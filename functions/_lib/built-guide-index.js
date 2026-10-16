@@ -72,5 +72,13 @@ export default [
     "start": "East LA Interchange",
     "end": "Front Street, downtown San Diego",
     "miles": "116"
+  },
+  {
+    "slug": "chicago-to-milwaukee",
+    "title": "Chicago to Milwaukee",
+    "highway": "I-94",
+    "start": "I-90/94 Kennedy Expressway near Ohio Street, Chicago",
+    "end": "I-94 near downtown Milwaukee",
+    "miles": "87"
   }
 ];

@@ -352,7 +352,7 @@ test('dallas-to-austin route JSON contains no em dash or en dash in any string',
   await assertRouteJsonHasNoDashes('dallas-to-austin');
 });
 
-test('Chicago to Milwaukee passes the primary gate and stays off the public lists', async () => {
+test('Chicago to Milwaukee passes the primary gate and is on the public lists', async () => {
   const raw = await readFile(new URL('../src/data/routes/chicago-to-milwaukee.json', import.meta.url), 'utf8');
   const routeData = JSON.parse(raw);
   const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
@@ -366,11 +366,11 @@ test('Chicago to Milwaukee passes the primary gate and stays off the public list
     title: 'Chicago to Milwaukee',
     highway: 'I-94',
     miles: 87,
-    status: 'verifying',
+    status: 'live',
   });
   assert.equal(primaryPublishBlock(routeData), null);
   assert.equal(exportStatus('live', routeData), 'live');
-  assert.equal(exportStatus(meta.status, routeData), 'verifying');
+  assert.equal(exportStatus(meta.status, routeData), 'live');
 
   assert.equal(routeData.stops.length, 4);
   for (const stop of routeData.stops) {
@@ -382,10 +382,10 @@ test('Chicago to Milwaukee passes the primary gate and stays off the public list
 
   const guides = await liveBuiltGuides();
   const index = await liveBuiltGuideIndex();
-  assert.equal(guides.some((guide) => guide.slug === 'chicago-to-milwaukee'), false);
-  assert.equal(index.some((guide) => guide.slug === 'chicago-to-milwaukee'), false);
+  assert.equal(guides.some((guide) => guide.slug === 'chicago-to-milwaukee'), true);
+  assert.equal(index.some((guide) => guide.slug === 'chicago-to-milwaukee'), true);
   const xml = buildSitemapXml(guidesForSitemap(guides, []));
-  assert.equal(xml.includes('chicago-to-milwaukee'), false);
+  assert.equal(xml.includes('chicago-to-milwaukee'), true);
 
   const files = await readdir(new URL('../src/data/routes/', import.meta.url));
   const routeBySlug = {};
@@ -394,13 +394,17 @@ test('Chicago to Milwaukee passes the primary gate and stays off the public list
     routeBySlug[data.slug] = data;
   }
   const home = visibleHomeRoutes(list, routeBySlug);
-  assert.equal(home.some((route) => route.slug === 'chicago-to-milwaukee'), false);
+  assert.equal(home.some((route) => route.slug === 'chicago-to-milwaukee'), true);
+  assert.equal(home.every((route) => route.status === 'live'), true);
 
   const html = guideMain(routeData);
   assert.match(html, /id="stop-chicago"/);
   assert.match(html, /id="stop-milwaukee"/);
+  assert.match(html, /Driver-reported/);
+  assert.match(html, /Woodman/);
   assert.equal(/rangeway|ampiq/i.test(raw), false);
   assert.equal(/rangeway|ampiq/i.test(html), false);
+  assert.doesNotMatch(html, /—|–/);
 });
 
 test('chicago-to-milwaukee route JSON contains no em dash or en dash in any string', async () => {
