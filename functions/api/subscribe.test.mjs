@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { newsletterForm } from '../../src/lib/newsletter.js';
+import { mountNewsletterForms } from '../../src/lib/turnstile-client.js';
 import { onRequestGet, onRequestPost } from './subscribe.js';
 
 const KEY = 'test-buttondown-key';
@@ -236,36 +237,32 @@ test('upstream failure stays JSON and hides the key', async () => {
 test('footer and guide pages both render the signup', () => {
   const layout = readFileSync(new URL('../../src/layouts/Base.astro', import.meta.url), 'utf8');
   const guide = readFileSync(new URL('../../src/lib/render-guide.js', import.meta.url), 'utf8');
+  const client = readFileSync(new URL('../../src/lib/turnstile-client.js', import.meta.url), 'utf8');
   assert.match(layout, /newsletterForm\('newsletter-footer'\)/);
   assert.match(guide, /newsletterForm\('newsletter-guide'\)/);
-  assert.match(layout, /action: 'newsletter_signup'/);
+  assert.match(layout, /mountNewsletterForms\(\)/);
+  assert.match(client, /action: 'newsletter_signup'/);
 });
 
 test('newsletter forms and the route updates band stay hidden unless signup is open', () => {
   const layout = readFileSync(new URL('../../src/layouts/Base.astro', import.meta.url), 'utf8');
   const guide = readFileSync(new URL('../../src/lib/render-guide.js', import.meta.url), 'utf8');
   const css = readFileSync(new URL('../../src/styles/global.css', import.meta.url), 'utf8');
+  const client = readFileSync(new URL('../../src/lib/turnstile-client.js', import.meta.url), 'utf8');
 
   assert.match(layout, /class="wrap foot__signup newsletter-band" hidden/);
   assert.match(guide, /<section class="band band--tight newsletter-band" hidden><div class="wrap"><h2 class="h2">Route updates<\/h2>/);
-  assert.match(layout, /function setOpen\(open\)/);
-  assert.match(layout, /form\.closest\('\.newsletter-band'\)/);
-  assert.match(layout, /form\.hidden = !open/);
-  assert.match(layout, /band\.hidden = !open/);
-  assert.match(layout, /setOpen\(false\)/);
-  assert.match(layout, /if \(!body \|\| body\.open !== true\) return;\s*setOpen\(true\);/);
+  assert.match(client, /function setOpen\(open\)/);
+  assert.match(client, /form\.closest\('\.newsletter-band'\)/);
+  assert.match(client, /form\.hidden = !open/);
+  assert.match(client, /band\.hidden = !open/);
+  assert.match(client, /setOpen\(false\)/);
+  assert.match(client, /if \(!body \|\| body\.open !== true\) return;\s*setOpen\(true\);/);
   assert.match(css, /\.newsletter-band\[hidden\],\s*form\.newsletter\[hidden\] \{ display: none !important; \}/);
   assert.doesNotMatch(layout, /BUTTONDOWN/);
-  assert.match(layout, /slot\.hidden = false/);
-  assert.match(layout, /action: 'newsletter_signup'/);
+  assert.match(client, /slot\.hidden = false/);
+  assert.match(client, /action: 'newsletter_signup'/);
 });
-
-function newsletterScript() {
-  const layout = readFileSync(new URL('../../src/layouts/Base.astro', import.meta.url), 'utf8');
-  const match = layout.match(/<script is:inline>([\s\S]*?)<\/script>/);
-  assert.ok(match);
-  return match[1];
-}
 
 function classesOf(node) {
   return String(node.className || '').split(/\s+/).filter(Boolean);
@@ -386,13 +383,14 @@ async function runNewsletterScript(fetchImpl, fn) {
   const urls = [];
   globalThis.window = globalThis;
   delete globalThis.turnstile;
+  delete globalThis.__etrTurnstile;
   globalThis.document = page.document;
   globalThis.fetch = (url, init) => {
     urls.push({ url: String(url), init });
     return fetchImpl(url, init);
   };
   try {
-    new Function(newsletterScript())();
+    mountNewsletterForms();
     await fn({ ...page, renders, urls });
   } finally {
     globalThis.fetch = previous.fetch;
@@ -482,10 +480,11 @@ test('Turnstile still renders only after signup is open', async () => {
     script.onload();
     await flush();
     assert.equal(page.renders.length, 2);
-    assert.deepEqual(page.renders.map((call) => call.opts), [
-      { sitekey: 'site-key', action: 'newsletter_signup' },
-      { sitekey: 'site-key', action: 'newsletter_signup' },
+    assert.deepEqual(page.renders.map((call) => ({ sitekey: call.opts.sitekey, action: call.opts.action, appearance: call.opts.appearance })), [
+      { sitekey: 'site-key', action: 'newsletter_signup', appearance: 'always' },
+      { sitekey: 'site-key', action: 'newsletter_signup', appearance: 'always' },
     ]);
+    assert.equal(page.renders[0].slot === page.renders[1].slot, false);
     assert.equal(page.guideSlot.hidden, false);
     assert.equal(page.footerSlot.hidden, false);
   });
