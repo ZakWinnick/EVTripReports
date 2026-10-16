@@ -92,8 +92,8 @@
       "url": "https://www.plugshare.com/location/347586"
     },
     "ocparks-capistrano-beach": {
-      "name": "OC Parks, Capistrano Beach Park (hours and amenities)",
-      "url": "https://www.ocparks.com/beaches/capistrano-beach"
+      "name": "OC Parks, Capistrano Beach Park (hours, amenities, alerts)",
+      "url": "https://parks.oc.gov/beaches/capistrano-beach"
     },
     "walmart-2242": {
       "name": "Walmart store page, Supercenter #2242, 440 N Euclid St, Anaheim",
@@ -102,6 +102,30 @@
     "walmart-2494": {
       "name": "Walmart store page, Supercenter #2494, 2100 Vista Way, Oceanside",
       "url": "https://www.walmart.com/store/2494-oceanside-ca"
+    },
+    "parks-ca-doheny": {
+      "name": "California State Parks, Doheny State Beach (hours, facilities, fees, notices)",
+      "url": "https://www.parks.ca.gov/?page_id=645"
+    },
+    "osrm-foot": {
+      "name": "OSRM foot routing (FOSSGIS, OpenStreetMap data)",
+      "url": "https://routing.openstreetmap.de/"
+    },
+    "wendys-3760-midway": {
+      "name": "Wendy's location page, 3760 Midway Drive, San Diego",
+      "url": "https://locations.wendys.com/united-states/ca/san-diego/3760-midway-drive"
+    },
+    "vons-3645-midway": {
+      "name": "Vons store page, 3645 Midway Dr, San Diego",
+      "url": "https://local.vons.com/ca/san-diego/3645-midway-dr.html"
+    },
+    "sd-restroom-map": {
+      "name": "City of San Diego, Map of Public Restrooms (status and hours per restroom)",
+      "url": "https://www.sandiego.gov/map-public-restrooms"
+    },
+    "plugshare-351856": {
+      "name": "PlugShare location 351856, Irvine Spectrum (Irvine, CA) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/351856"
     }
   },
   "stops": [
@@ -540,7 +564,20 @@
         "afdcIds": [
           202161
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/351856",
+            "date": "2026-10-13",
+            "summary": "Successful check-in, Kia EV6, 152 kW: \"Weekday 9:30am still have 3 available.\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/351856",
+            "date": "2026-09-27",
+            "summary": "Successful check-in, Mercedes EQE 350+ SUV. No kW or comment listed."
+          }
+        ],
         "checkedOn": "2026-10-16",
         "source": "ea-locator"
       },
@@ -885,6 +922,14 @@
           "checkedOn": "2026-10-16"
         },
         {
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at the Irvine Spectrum garage site, and a successful check-in is dated 2026-10-13 (PlugShare location page, checked 2026-10-16). Irvine Spectrum Center's services page points guests to its chat to find restrooms and does not map them.",
+          "category": "restroom",
+          "source": "plugshare-351856",
+          "url": "https://www.plugshare.com/location/351856",
+          "checkedOn": "2026-10-16",
+          "site": "Irvine Spectrum (Irvine, CA)"
+        },
+        {
           "text": "IONNA's Laguna Hills page lists a restaurant, restrooms and shopping at the Rechargery on Alicia Parkway.",
           "category": "food",
           "source": "ionna",
@@ -1102,18 +1147,26 @@
       "reports": [],
       "around": [
         {
-          "text": "No host business at this site. EA's site note puts the chargers on Las Vegas Street, behind the United States Post Office, and EA's page names no host. Nearest restrooms: Not yet verified.",
+          "text": "No host business at this site (EA site note). EA puts the site on Las Vegas Street, behind the United States Post Office, and names no host.",
           "category": "site",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/capistrano-beach/25825-las-vegas/219010/",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Closest public restroom with posted hours we could source: Capistrano Beach Park (OC Parks), 35005 Beach Rd, Capo Beach. OC Parks lists portable restrooms and park hours of 6:00 AM to 10:00 PM daily. It is about 1.1 miles from the EA site by road (OSRM), roughly a 24 minute walk, so plan to drive over and back.",
+          "text": "Nearest official public restroom: Doheny State Beach (California State Parks), entrance at 25300 Dana Point Harbor Dr. State Parks lists restrooms and park hours of 6:00 AM to 10:00 PM daily. The entrance is about 0.7 mile on foot from the EA site (about 15 minutes, OSRM foot routing) or 1.0 mile by road, and driving in costs the posted day-use fee of $15 per vehicle. Current State Parks notices: a campground modernization project (temporary campground closure expected between 2027 and 2029) and Capistrano Beach sand nourishment work. Neither notice closes the day-use beach.",
+          "category": "restroom",
+          "site": "Dana Point Station (Dana Point, CA)",
+          "source": "parks-ca-doheny",
+          "url": "https://www.parks.ca.gov/?page_id=645",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Second option: Capistrano Beach Park (OC Parks), 35005 Beach Rd, about 1.1 miles by road. OC Parks lists restrooms and portable restrooms and hours of 6:00 AM to 10:00 PM daily. Alerts on the OC Parks page: the parking lot is closed due to coastal flooding, and sand placement that began Monday, Oct. 12 may limit access to parts of the beach.",
           "category": "restroom",
           "site": "Capistrano Beach Park",
           "source": "ocparks-capistrano-beach",
-          "url": "https://www.ocparks.com/beaches/capistrano-beach",
+          "url": "https://parks.oc.gov/beaches/capistrano-beach",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -1862,10 +1915,32 @@
       "reports": [],
       "around": [
         {
-          "text": "EVgo's March 2026 posts on the opening say the hub is near shopping, restaurants, hair salons and gyms. Restrooms and hours of nearby businesses: Not yet verified.",
+          "text": "No host business at this site. EVgo's page for the hub lists the address and chargers and names no host business.",
+          "category": "site",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/san-diego/87120/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Wendy's, 3760 Midway Drive, is about 75 meters on foot from the EVgo hub (OSRM foot routing). Wendy's location page lists restaurant and drive-thru hours of 8:00 AM to 12:00 AM daily. The page does not list restrooms.",
           "category": "food",
-          "source": "evgo-midway-post",
-          "url": "https://www.linkedin.com/posts/evgo_fastcharging-activity-7442610284596465666-4FJx",
+          "source": "wendys-3760-midway",
+          "url": "https://locations.wendys.com/united-states/ca/san-diego/3760-midway-drive",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Vons, 3645 Midway Dr, is in Point Loma Plaza with the EA backup, about 0.3 mile on foot (about 6 minutes, OSRM foot routing). Vons' store page lists store hours of 6:00 AM to 12:00 AM daily. The page does not list restrooms.",
+          "category": "food",
+          "source": "vons-3645-midway",
+          "url": "https://local.vons.com/ca/san-diego/3645-midway-dr.html",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Nearest official public restroom: Bill Cleator Community Park comfort station, 2312 Famosa St. The City of San Diego restroom map lists it as open, 7:00 AM to dusk, cleaned daily. It is about 1.7 miles by road (about 5 minutes, OSRM), so drive over. After dark, the map lists the Mission Bay Park South Shores comfort station (South Shores Park Driveway) as open 24 hours, about 2.2 miles by road. No closure is listed for either.",
+          "category": "restroom",
+          "site": "EVgo, 3757 Midway Dr",
+          "source": "sd-restroom-map",
+          "url": "https://www.sandiego.gov/map-public-restrooms",
           "checkedOn": "2026-10-16"
         },
         {
