@@ -1060,3 +1060,79 @@ test('the CLI writes plan JSON from two files and does not need a database', asy
   assert.equal(plan.stops[0].primary.name, 'Walmart Alpha');
   await rm(dir, { recursive: true, force: true });
 });
+
+// Restroom honesty: only a host or network page makes a restroom "sourced". Driver reports
+// (PlugShare, Reddit, X, forums) stay in the plan, labeled as driver reports.
+function restroomTip(plan) {
+  return plan.tips.find((tip) => /restroom note/.test(tip.text))?.text || '';
+}
+
+test('a driver report about restrooms never counts as a sourced restroom note', () => {
+  const route = sampleRoute();
+  route.sources.reddit = { name: 'Reddit', url: 'https://www.reddit.com/' };
+  route.stops[0].primary.driverReports.push({
+    source: 'reddit',
+    url: 'https://www.reddit.com/r/electricvehicles/comments/abc/',
+    date: '2026-09-20',
+    summary: 'Stopped here mostly for the Walmart restrooms and snacks.',
+  });
+  route.stops[0].around.push({
+    text: 'PlugShare users list restrooms and grocery at this Walmart (crowd-sourced icons). Walmart has not confirmed restrooms.',
+    category: 'food',
+    source: 'plugshare-123',
+    url: 'https://www.plugshare.com/location/123',
+    checkedOn: '2026-10-16',
+  });
+  route.stops[0].around.push({
+    text: 'Store hours and restrooms: Not yet verified.',
+    category: 'food',
+    source: 'ea-locator',
+    url: 'https://www.electrifyamerica.com/locate-charger/alpha/',
+    checkedOn: '2026-10-16',
+  });
+  const plan = buildPlan(order({ notes: '' }), route);
+  const tip = restroomTip(plan);
+  assert.doesNotMatch(tip, /Sourced restroom notes: .*Walmart Alpha/);
+  assert.match(tip, /^No sourced restroom note at any stop\./);
+  assert.match(tip, /Driver reports or PlugShare listings mention restrooms at Walmart Alpha/);
+  assert.match(tip, /not host or network facts/);
+  const restroom = plan.stops[0].primary.facts.find((fact) => fact.label === 'Restroom');
+  assert.match(restroom.note, /^Driver report/);
+  assert.match(planMarkdown(plan), /- Restroom: .*\(Driver report, not a network fact\.\)/);
+});
+
+test('a host page about restrooms is the sourced note and takes the Restroom line over a driver report', () => {
+  const route = sampleRoute();
+  route.sources['walmart-alpha'] = { name: 'Walmart Alpha store page', url: 'https://www.walmart.com/store/1' };
+  route.stops[0].around.push({
+    text: 'Walmart Alpha store page lists customer restrooms near the front entrance and hours of 6am to 11pm.',
+    category: 'restroom',
+    source: 'walmart-alpha',
+    url: 'https://www.walmart.com/store/1',
+    checkedOn: '2026-10-16',
+  });
+  const plan = buildPlan(order({ notes: '' }), route);
+  const tip = restroomTip(plan);
+  assert.match(tip, /^Sourced restroom notes: Walmart Alpha\./);
+  assert.doesNotMatch(tip, /No sourced restroom note at [^.]*Walmart Alpha/);
+  const restroom = plan.stops[0].primary.facts.find((fact) => fact.label === 'Restroom');
+  assert.match(restroom.value, /customer restrooms/);
+  assert.equal(restroom.source, 'walmart-alpha');
+  assert.match(restroom.note, /^Route note/);
+  const moved = plan.stops[0].food.find((item) => item.text === 'Convenience store with a restroom.');
+  assert.ok(moved, 'displaced driver report stays in the plan');
+  assert.match(moved.note, /^Driver report/);
+});
+
+test('LV to SLC plan does not count the Cedar City Reddit report as a sourced restroom note', async () => {
+  const route = JSON.parse(await readFile(path.join(root, 'src/data/routes/las-vegas-to-salt-lake-city.json'), 'utf8'));
+  const plan = buildPlan({ ...FAKE_ORDER, slug: route.slug, start: route.startLabel, end: route.endLabel }, route);
+  const tip = restroomTip(plan);
+  assert.ok(tip, 'restroom honesty tip present');
+  const sourced = (tip.match(/^Sourced restroom notes: ([^.]*(?:\.[^ ][^.]*)*)\./) || [])[1] || '';
+  assert.equal(/Cedar City/.test(sourced), false, tip);
+  assert.match(tip, /No sourced restroom note at [^.]*Walmart 1438 \(Cedar City, UT\)/);
+  const cedar = plan.stops.find((stop) => /Cedar City/.test(stop.primary?.name || ''));
+  const restroom = cedar?.primary?.facts?.find((fact) => fact.label === 'Restroom');
+  if (restroom) assert.match(restroom.note, /^Driver report/);
+});

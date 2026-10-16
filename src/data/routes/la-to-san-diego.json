@@ -3,7 +3,7 @@
   "title": "LA to San Diego",
   "highway": "I-5",
   "direction": "southbound",
-  "summary": "I-5 from the East LA Interchange to Front Street in downtown San Diego, through Anaheim, Irvine, Dana Point, Camp Pendleton and Oceanside. Four primaries are Electrify America sites with 6 to 12 chargers at 350 kW and the last is EVgo's 200 kW hub on Midway Drive, all confirmed on the network's own locator. Tesla sites carry a Tesla only or open to all EVs flag only where Tesla's locator and DOE agree.",
+  "summary": "I-5 from the East LA Interchange to Front Street in downtown San Diego, through Anaheim, Irvine, Dana Point, Camp Pendleton and Oceanside. Four primaries are Electrify America sites with 6 to 12 chargers at 350 kW and the last is EVgo's 200 kW hub on Midway Drive, all confirmed on the network's own locator. 23 of 26 Tesla sites carry an access flag from Tesla Find Us (13 open to all EVs, 10 Tesla only). Irvine Spectrum, Carlsbad Paseo Del Norte and Oceanside Mission Ave stay Not yet verified.",
   "checked": "2026-10-16",
   "startLabel": "East LA Interchange",
   "startNote": "Mileage starts where I-5 leaves US 101 at the south end of the East Los Angeles Interchange (I-5 mile 133.37) and ends at I-5 exit 17, Front Street, in downtown San Diego (mile 16.82). The 115.58 miles is OSRM's driving distance on I-5 between those two points, shown as 116. The exit list mileposts give 116.55. Stop miles are each site's nearest point on that route.",
@@ -90,6 +90,10 @@
     "plugshare-347586": {
       "name": "PlugShare location 347586, Walmart 2494 (Oceanside, CA) (driver check-ins, crowd-sourced amenities)",
       "url": "https://www.plugshare.com/location/347586"
+    },
+    "ocparks-capistrano-beach": {
+      "name": "OC Parks, Capistrano Beach Park (hours and amenities)",
+      "url": "https://www.ocparks.com/beaches/capistrano-beach"
     }
   },
   "stops": [
@@ -710,8 +714,12 @@
             467576
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us shows \"Adapter Included For Other EVs\" but DOE gives no access note (\"24 hours daily\"), so the two do not agree. DOE last confirmed 2026-09-14.",
-          "status": "unverified"
+          "facts": "Tesla Find Us (loc 404959) lists 24372 Rockfield Blvd, Lake Forest, CA 92630: 16 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", 24/7 (checked 2026-10-16; the page timed out on a later retry the same day). Open to all EVs; the NACS adapter is included at the stall. DOE lists 16 CCS and 16 NACS at 325 kW, which fits an included adapter (DOE last confirmed 2026-09-14).",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/404959",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "IRVINE COMPANY 950 DCFC 1, 950 Spectrum Center Dr, Irvine",
@@ -780,8 +788,11 @@
               "summary": "Driver photo post says the Irvine Spectrum Supercharger is on the second floor of the parking structure, with 16 stalls."
             }
           ],
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only the address and hours on 2026-10-16, with no access note. DOE last confirmed 2026-06-18.",
-          "status": "unverified"
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-16 and timed out on a later retry the same day, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
+          "status": "unverified",
+          "checkedOn": "2026-10-16",
+          "url": "https://afdc.energy.gov/stations/#/station/371838",
+          "source": "afdc"
         },
         {
           "name": "Irvine, CA, 13672 Jamboree Rd, Irvine",
@@ -1072,10 +1083,18 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on Las Vegas Street, behind the United States Post Office. Food, restrooms and host hours: Not yet verified. EA's page names no host business.",
+          "text": "No host business at this site. EA's site note puts the chargers on Las Vegas Street, behind the United States Post Office, and EA's page names no host. Nearest restrooms: Not yet verified.",
           "category": "site",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/capistrano-beach/25825-las-vegas/219010/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Closest public restroom with posted hours we could source: Capistrano Beach Park (OC Parks), 35005 Beach Rd, Capo Beach. OC Parks lists portable restrooms and park hours of 6:00 AM to 10:00 PM daily. It is about 1.1 miles from the EA site by road (OSRM), roughly a 24 minute walk, so plan to drive over and back.",
+          "category": "restroom",
+          "site": "Capistrano Beach Park",
+          "source": "ocparks-capistrano-beach",
+          "url": "https://www.ocparks.com/beaches/capistrano-beach",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -1274,8 +1293,11 @@
             194089
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only the address and hours on 2026-10-16, with no access note. DOE last confirmed 2026-06-18.",
-          "status": "unverified"
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on two tries 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
+          "status": "unverified",
+          "checkedOn": "2026-10-16",
+          "url": "https://afdc.energy.gov/stations/#/station/194089",
+          "source": "afdc"
         },
         {
           "name": "Club Wyndham Oceanside Pier Resort, 333 North Myers Street, Oceanside",
@@ -1301,8 +1323,11 @@
             374981
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 20 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us showed \"NACS adapter needed for non-Tesla EVs\" but no site name or address on 2026-10-16, so the page could not be tied to this site. DOE last confirmed 2026-06-18.",
-          "status": "unverified"
+          "facts": "Tesla Supercharger. DOE lists 20 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. On 2026-10-16 Find Us showed \"NACS adapter needed for non-Tesla EVs\" but no site name or address, so it is not tied to this site, and a later retry timed out. DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
+          "status": "unverified",
+          "checkedOn": "2026-10-16",
+          "url": "https://afdc.energy.gov/stations/#/station/374981",
+          "source": "afdc"
         },
         {
           "name": "PRP OCEANSIDE A01, 1928 S Moreno St, Oceanside",
@@ -1841,7 +1866,7 @@
       "source": "afdc"
     },
     {
-      "text": "22 Tesla sites on this route are flagged from Tesla Find Us where DOE's access note agrees: 12 open to all EVs with a NACS adapter, 10 Tesla only. 4 stay Not yet verified because Tesla's page rendered only in part or DOE gave no access note. Checked twice on 2026-10-16. Several Tesla only sites in Buena Park, Mission Viejo and downtown San Diego list 72 kW, not 250 kW.",
+      "text": "23 of 26 Tesla sites on this route carry an access flag from Tesla Find Us (13 open to all EVs, 10 Tesla only). Irvine Spectrum, Carlsbad Paseo Del Norte and Oceanside Mission Ave stay Not yet verified: Tesla's page did not load in full on 2026-10-16. DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18). That note alone does not set a flag. Several Tesla only sites in Buena Park, Mission Viejo and downtown San Diego list 72 kW, not 250 kW.",
       "source": "tesla-findus"
     },
     {
@@ -1857,7 +1882,7 @@
       "source": "afdc"
     },
     {
-      "text": "Food, restroom and store hour notes are Not yet verified at the two Walmart stops and at Dana Point Station. Walmart store pages returned 403 on 2026-10-16, and Wayback Machine captures of those pages show Walmart's block page. EA's page names no host business at Dana Point Station. EA's site notes say where the chargers sit.",
+      "text": "Food, restroom and store hour notes are Not yet verified at the two Walmart stops. Walmart store pages returned 403 on 2026-10-16, and Wayback Machine captures of those pages show Walmart's block page. Dana Point Station has no host business (EA's site note: behind the Post Office on Las Vegas Street), and the nearest restrooms are Not yet verified. Capistrano Beach Park, about 1.1 miles away by road, lists portable restrooms and hours of 6:00 AM to 10:00 PM daily on its OC Parks page (checked 2026-10-16).",
       "source": "ea-locator"
     }
   ],

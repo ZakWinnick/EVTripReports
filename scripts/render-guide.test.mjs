@@ -330,8 +330,9 @@ function buttonRow(html, name) {
 
 test('verified Tesla access statements render the matching tag', async () => {
   const expectedCounts = {
-    'dc-to-nyc': { open: 49, 'tesla-only': 14, none: 6 },
-    'las-vegas-to-salt-lake-city': { open: 11, 'tesla-only': 5, none: 13 },
+    'dc-to-nyc': { open: 54, 'tesla-only': 14, none: 1 },
+    'las-vegas-to-salt-lake-city': { open: 13, 'tesla-only': 5, none: 11 },
+    'la-to-san-diego': { open: 13, 'tesla-only': 10, none: 3 },
   };
   const tags = {
     open: '<span class="tag tag--open">Open to all EVs</span>',
