@@ -1,0 +1,1767 @@
+{
+  "slug": "la-to-san-diego",
+  "title": "LA to San Diego",
+  "highway": "I-5",
+  "direction": "southbound",
+  "summary": "I-5 from the East LA Interchange to Front Street in downtown San Diego, through Anaheim, Irvine, Dana Point, Camp Pendleton and Oceanside. Four primaries are Electrify America sites with 6 to 12 chargers at 350 kW and the last is EVgo's 200 kW hub on Midway Drive, all confirmed on the network's own locator. Tesla sites carry a Tesla only or open to all EVs flag only where Tesla's locator and DOE agree.",
+  "checked": "2026-10-16",
+  "startLabel": "East LA Interchange",
+  "startNote": "Mileage starts where I-5 leaves US 101 at the south end of the East Los Angeles Interchange (I-5 mile 133.37) and ends at I-5 exit 17, Front Street, in downtown San Diego (mile 16.82). The 115.58 miles is OSRM's driving distance on I-5 between those two points, shown as 116. The exit list mileposts give 116.55. Stop miles are each site's nearest point on that route.",
+  "originLegs": [
+    {
+      "start": "Los Angeles",
+      "miles": 3.78,
+      "source": "osrm",
+      "url": "https://router.project-osrm.org/route/v1/driving/-118.2429212,34.0536961;-118.206183,34.025483",
+      "checkedOn": "2026-10-16",
+      "estimate": true,
+      "note": "Estimate. Driving distance from Los Angeles City Hall to I-5 at the East Los Angeles Interchange."
+    }
+  ],
+  "endLabel": "Front Street, downtown San Diego",
+  "stats": [
+    {
+      "label": "East LA Interchange to Front Street",
+      "value": "116",
+      "unit": "mi",
+      "source": "osrm",
+      "note": "OSRM driving distance on I-5, 115.58 miles, checked 2026-10-16."
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "123",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "46",
+      "unit": ""
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "evgo-midway-post": {
+      "name": "EVgo post on the 3757 Midway Dr opening (LinkedIn, March 2026)",
+      "url": "https://www.linkedin.com/posts/evgo_fastcharging-activity-7442610284596465666-4FJx"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
+    },
+    "ionna": {
+      "name": "IONNA Rechargery locator",
+      "url": "https://www.ionna.com/rechargeries/find-a-rechargery/"
+    },
+    "irvine-spectrum-hours": {
+      "name": "Irvine Spectrum Center hours",
+      "url": "https://www.irvinespectrumcenter.com/hours"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
+    },
+    "wiki-i5-ca": {
+      "name": "Interstate 5 in California, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_5_in_California"
+    }
+  },
+  "stops": [
+    {
+      "id": "anaheim",
+      "name": "Anaheim",
+      "towns": "Buena Park and Anaheim, CA",
+      "mile": 21,
+      "milepostNote": "Measured along OSRM's route from the start: 20.8 miles. The site is about 0.1 mile from that route line. OSRM's southbound route leaves I-5 at exit 112, Euclid Street, 0.5 mile from the site, and rejoins I-5 south from the Euclid Street on-ramp.",
+      "why": "The Electrify America site at the Walmart on Euclid Street has 10 chargers at 350 kW, 0.5 mile from I-5 exit 112. At 21 miles from the East LA Interchange it suits a car that leaves LA low. EA's Target site in Buena Park, about 4 miles back, is the verified backup, and the Tesla site at Anaheim Plaza next door is open to all EVs with a NACS adapter.",
+      "primary": {
+        "name": "Walmart 2242 (Anaheim, CA)",
+        "network": "Electrify America",
+        "address": "440 N. Euclid St., Anaheim, CA 92801",
+        "exit": "Exit 112, Euclid Street",
+        "stalls": {
+          "value": "10 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/anaheim/440-n-euclid-st/100038/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/anaheim/440-n-euclid-st/100038/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          155557
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Target T2082 (Buena Park, CA)",
+          "network": "Electrify America",
+          "address": "7530 Orangethorpe Avenue, Buena Park, CA 90621",
+          "facts": "EA's locator lists 6 chargers, CCS at 350 kW on all 6. DOE lists the same port count. About 4 miles before Anaheim, 0.6 mile off the route on Orangethorpe Avenue.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/buena-park/7530-orangethorpe-avenue/200053/",
+          "afdcIds": [
+            151971
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Anaheim, CA - North Euclid Street - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "680 N Euclid St, Anaheim, CA 92801",
+          "facts": "Tesla Find Us confirms access at 680 N Euclid St Anaheim, CA 92801: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled. Next door to the Walmart, at Anaheim Plaza on the same block of Euclid Street.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/416752",
+          "afdcIds": [
+            451130
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Anaheim, CA - 1734 W Lincoln Ave - Tesla Supercharger, 1734 W Lincoln Ave, Anaheim",
+          "afdcIds": [
+            418081
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 1734 W Lincoln Ave Anaheim, CA 92801: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 20 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/31521",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Anaheim, CA - E Katella Ave - Tesla Supercharger, 2404 East Katella Avenue, Anaheim",
+          "afdcIds": [
+            153433
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 2404 E Katella Ave Anaheim, CA 92806: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/anaheimeastkatellasupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Anaheim, CA - W Lincoln Ave - Tesla Supercharger, 1128 W Lincoln Ave, Anaheim",
+          "afdcIds": [
+            238199
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 1128 W Lincoln Ave Anaheim, CA 92805: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/AnaheimCAQ42022",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Buena Park, CA - Beach Boulevard - Tesla Supercharger, 6940 Beach Boulevard, Buena Park",
+          "afdcIds": [
+            153453
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 24 stalls, up to 72 kW, at 6940 Beach Boulevard Buena Park, CA 90621. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 24 NACS at 150 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/buenaparkcabeachboulevarsdupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Anaheim Plaza",
+          "facts": "EVgo's page lists 1 DC stall on 1 charger: 1 at 50 kW with CCS and CHAdeMO. DOE lists the same port count. DOE lists this site as temporarily unavailable.",
+          "status": "conflict",
+          "afdcIds": [
+            228373
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/anaheim/470/"
+        },
+        {
+          "name": "Brookhurst Community Center",
+          "facts": "EVgo's page lists 4 DC stalls on 4 chargers: 4 at 50 kW with CCS and CHAdeMO. DOE lists the same port count. DOE lists this site as temporarily unavailable.",
+          "status": "conflict",
+          "afdcIds": [
+            228044
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/anaheim/2179/"
+        },
+        {
+          "name": "Courtyard Anaheim Buena Park",
+          "facts": "EVgo's page lists 2 DC stalls on 2 chargers: 2 at 50 kW with CCS and CHAdeMO. DOE lists the same port count. DOE lists this site as temporarily unavailable.",
+          "status": "conflict",
+          "afdcIds": [
+            228703
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/buena-park/21955/"
+        },
+        {
+          "name": "99 Ranch - Anaheim, 651 North Euclid Street, Anaheim",
+          "facts": "DOE lists 6 CHAdeMO at 75 kW, 6 CCS at 75 kW on EVCS. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            447277
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "BoA CA7-164 (Anaheim, CA), 1685 E Katella Ave, Anaheim",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 7 CCS at 150 kW on Electrify America. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            170303
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Buena Park Downtown, 8191-8371 La Palma Ave, Buena Park",
+          "facts": "DOE lists 4 CHAdeMO at 50 kW, 4 CCS at 50 kW on a non-networked operator. DOE last confirmed 2026-06-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            163743
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Buena Park Nissan, 6501 Auto Center Dr, Buena Park",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on a non-networked operator. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            39872
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF ANAHEIM DCFC 1, 125 W Center Street Promenade, Anaheim",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            421226
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CITY OF ANAHEIM DCFC 2, 125 W Center Street Promenade, Anaheim",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            421231
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY 2025.2, 700 N Brookhurst St, Anaheim",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            158845
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "H&S ENERGY H&S 2025, 700 N Brookhurst St, Anaheim",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            176218
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IN-N-OUT EUCLID 01, 540 N Euclid St, Anaheim",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            389362
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IN-N-OUT EUCLID 02, 540 N Euclid St, Anaheim",
+          "facts": "DOE lists 1 CCS at 125 kW, 1 NACS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            389525
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IN-N-OUT EUCLID 03, 540 N Euclid St, Anaheim",
+          "facts": "DOE lists 1 CCS at 125 kW, 1 NACS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            389526
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IN-N-OUT EUCLID 04, 540 N Euclid St, Anaheim",
+          "facts": "DOE lists 1 CCS at 125 kW, 1 NACS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            389365
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IN-N-OUT EUCLID 05, 540 N Euclid St, Anaheim",
+          "facts": "DOE lists 1 CCS at 125 kW, 1 NACS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            389366
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KEN GRODY FORD DC SVC LOT PL, 7717- 7703 Commonwealth Ave, Buena Park",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            367706
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KEN GRODY FORD DC1 PL, 7717- 7703 Commonwealth Ave, Buena Park",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            375300
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KEN GRODY FORD DC3 PL, 7717- 7703 Commonwealth Ave, Buena Park",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            367707
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "KPC Anaheim Medical Center, 1017 S Anaheim Blvd, Anaheim",
+          "facts": "DOE lists 4 CHAdeMO at 50 kW, 4 CCS at 50 kW on EVCS. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            221414
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "US Bank Buena Park - La Palma, 8460 La Palma Avenue, Buena Park",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on EVCS. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            389028
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are on the left side of the parking lot, close to the Fashion Q store. Walmart store hours and restrooms: Not yet verified. The walmart.com store page returned 403 on 2026-10-16.",
+          "category": "food",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/anaheim/440-n-euclid-st/100038/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Buena Park, CA",
+          "lat": 33.8675,
+          "lng": -117.9981,
+          "radius": 4
+        },
+        {
+          "name": "Anaheim, CA",
+          "lat": 33.8366,
+          "lng": -117.9143,
+          "radius": 6
+        }
+      ]
+    },
+    {
+      "id": "irvine",
+      "name": "Irvine Spectrum",
+      "towns": "Irvine, Lake Forest, Laguna Hills and Mission Viejo, CA",
+      "mile": 38,
+      "milepostNote": "Measured along OSRM's route from the start: 38.3 miles. The site is about 0.3 mile from that route line. OSRM's southbound route leaves I-5 at exit 94B, Alton Parkway, and reaches the garage by Spectrum Center Drive, 0.8 mile. OSRM's route back south uses I-405 south from Irvine Center Drive, which joins I-5 at the El Toro Y about 3 miles on.",
+      "why": "The Electrify America site at Irvine Spectrum Center has 6 chargers at 350 kW in the parking garage, about 0.8 mile from I-5 exit 94B. The center has food and shopping. EA's Target site in Mission Viejo (6 chargers at 350 kW) and IONNA's Laguna Hills site (6 CCS and 4 NACS, 400 kW), both on Alicia Parkway about 4.5 miles south, are verified backups. IONNA lists restrooms.",
+      "primary": {
+        "name": "Irvine Spectrum (Irvine, CA)",
+        "network": "Electrify America",
+        "address": "670 Spectrum Center Dr, Irvine, CA 92618",
+        "exit": "Exit 94B, Alton Parkway",
+        "stalls": {
+          "value": "6 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/irvine/670-spectrum-center-dr/100029/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/irvine/670-spectrum-center-dr/100029/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          202161
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Target T0300 (Mission Viejo, CA)",
+          "network": "Electrify America",
+          "address": "24500 Alicia Pkwy, Mission Viejo, CA 92691",
+          "facts": "EA's locator lists 6 chargers, CCS at 350 kW on all 6. DOE lists the same port count. On Alicia Parkway in Mission Viejo, about 4.5 miles south and 0.1 mile off the route.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/mission-viejo/24500-alicia-pkwy/210024/",
+          "afdcIds": [
+            190066
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Laguna Hills, CA Rechargery Relay - Alicia Pkwy",
+          "network": "IONNA",
+          "address": "24892 Alicia Pkwy, Laguna Hills, CA 92653",
+          "facts": "IONNA's locator lists 6 CCS and 4 NACS connectors at up to 400 kW. DOE lists the same (6 CCS at 400 kW, 4 NACS at 400 kW). Price shown on IONNA's page: $0.20/kWh plus tax. Amenities listed by IONNA: restaurant, restrooms, shopping. On Alicia Parkway, across from EA's Mission Viejo Target site, 0.2 mile off the route.",
+          "access": "Open to all EVs with CCS or NACS.",
+          "status": "verified",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ca/laguna-hills/24892-alicia-pkwy-92653/",
+          "afdcIds": [
+            470660
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Lake Forest, CA - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "24301 Muirlands Boulevard, Lake Forest, CA 92630",
+          "facts": "Tesla Find Us confirms access at 24301 Muirlands Boulevard Lake Forest, CA 92630: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 24 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled. On Muirlands Boulevard in Lake Forest, about 2.5 miles south of the Spectrum.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/26461",
+          "afdcIds": [
+            256048
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Courtyard by Marriott, Irvine Spectrum",
+          "facts": "EVgo's page lists 2 DC stalls on 2 chargers: 2 at 50 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228406
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/irvine/27116/"
+        },
+        {
+          "name": "Irvine, CA - 5396 Walnut Avenue - Tesla Supercharger, 5396 Walnut Ave, Irvine",
+          "afdcIds": [
+            306843
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 5396 Walnut Ave Irvine, CA 92604: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/28696",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Irvine, CA - Culver Drive - Tesla Supercharger, 14346 Culver Drive, Irvine",
+          "afdcIds": [
+            187957
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 14346 Culver Drive Irvine, CA 92604. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 16 NACS at 250 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/EastIrvineCAsupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Irvine, CA - Walnut Ave - Tesla Supercharger, 5406 Walnut Avenue, Irvine",
+          "afdcIds": [
+            169966
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 5406 Walnut Ave Irvine, CA 92604. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 8 NACS at 250 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/irvinecawalnutavesupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Laguna Hills, CA - Tesla Supercharger, 25248 Cabot Rd, Laguna Hills",
+          "afdcIds": [
+            296741
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 25248 Cabot Rd Laguna Hills, CA 92653. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 16 NACS at 250 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/26184",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Mission Viejo, CA - Crown Valley Parkway - Tesla Supercharger, 27741 Crown Valley Parkway, Mission Viejo",
+          "afdcIds": [
+            236864
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 24 stalls, up to 250 kW, at 27741 Crown Valley Parkway Mission Viejo, CA 92691. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 24 NACS at 250 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/15383",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Mission Viejo, CA - Tesla Supercharger, 555 The Shops at Mission Viejo, Mission Viejo",
+          "afdcIds": [
+            154798
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 10 stalls, up to 72 kW, at 555 The Shops at Mission Viejo Mission Viejo, CA 92691. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 10 NACS at 150 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/missionviejocasupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Shops at Mission Viejo (Mission Viejo, CA)",
+          "facts": "EA's locator lists 4 chargers, CCS at 350 kW on all 4. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            155195
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/mission-viejo/555-shops-blvd/200038/"
+        },
+        {
+          "name": "The Shops at Mission Viejo",
+          "facts": "EVgo's page lists 2 DC stalls on 2 chargers: 2 at 50 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228270
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/mission-viejo/354/"
+        },
+        {
+          "name": "CircleK - Mission Veijo, 26052 Marguerite Pkwy, Mission Viejo",
+          "facts": "DOE lists 4 CCS at 180 kW on Circle K. DOE last confirmed 2025-05-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            330196
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cypress Village - Irvine Company (Irvine, CA), 14001 Jeffrey Rd, Irvine",
+          "facts": "DOE lists 4 CCS at 350 kW on Electrify America. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            183747
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Hunter Court Shopping Center - Tesla Supercharger, 24372 Rockfield Blvd, Lake Forest",
+          "afdcIds": [
+            467576
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us shows \"Adapter Included For Other EVs\" but DOE gives no access note (\"24 hours daily\"), so the two do not agree. DOE last confirmed 2026-09-14.",
+          "status": "unverified"
+        },
+        {
+          "name": "IRVINE COMPANY 950 DCFC 1, 950 Spectrum Center Dr, Irvine",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            159172
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IRVINE COMPANY 950 DCFC 2, 950 Spectrum Center Dr, Irvine",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            176729
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IRVINE COMPANY 950 DCFC 3, 121 Fortune Dr, Irvine",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            206741
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IRVINE COMPANY LOS OLIV DCFC 1, 8505 Irvine Center Dr, Irvine",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            174168
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IRVINE COMPANY TMP DCFC K 01, 13762 Jamboree Rd, Irvine",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175400
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IRVINE COMPANY TMP DCFC K 02, 13762 Jamboree Rd, Irvine",
+          "facts": "DOE lists 1 CCS at 50 kW, 1 NACS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175399
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Irvine, CA - Spectrum Center Drive - Tesla Supercharger, 950 Spectrum Center Drive, Irvine",
+          "afdcIds": [
+            371838
+          ],
+          "driverReports": [
+            {
+              "source": "x",
+              "url": "https://x.com/jppandesv/status/1861468579486732721",
+              "date": "2024-11-26",
+              "summary": "Driver photo post says the Irvine Spectrum Supercharger is on the second floor of the parking structure, with 16 stalls."
+            }
+          ],
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only the address and hours on 2026-10-16, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Irvine, CA, 13672 Jamboree Rd, Irvine",
+          "facts": "DOE lists 10 NACS at 300 kW on Rivian Adventure Network. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            460771
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "LA Fitness - Irvine Jamboree, 2880 Michelle Dr, Irvine",
+          "facts": "DOE lists 4 CHAdeMO at 50 kW, 4 CCS at 50 kW on EVCS. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            323278
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "NORMREEVESHONDA NORM REEVES FC, 16 Auto Center Dr, Irvine",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            178355
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Norm Reeves Genesis Irvine, 14 Auto Center Dr, Irvine",
+          "facts": "DOE lists 4 CCS at 75 kW on Loop. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            398608
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Norm Reeves Honda Superstore Irvine, 16 Auto Center Dr, Irvine",
+          "facts": "DOE lists 2 CCS at 75 kW on Loop. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            348891
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "US Bank Laguna Hills, 23511 Paseo De Valencia, Laguna Hills",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on EVCS. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            348800
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are inside the parking garage, at the southern corner. Irvine Spectrum Center lists retail hours of 10am to 9pm Sunday to Thursday and 10am to 10pm Friday and Saturday, with counter-service food from 11am. Restrooms: Not yet verified.",
+          "category": "food",
+          "source": "irvine-spectrum-hours",
+          "url": "https://www.irvinespectrumcenter.com/hours",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "IONNA's Laguna Hills page lists a restaurant, restrooms and shopping at the Rechargery on Alicia Parkway.",
+          "category": "food",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ca/laguna-hills/24892-alicia-pkwy-92653/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Irvine, CA",
+          "lat": 33.65,
+          "lng": -117.743,
+          "radius": 5
+        },
+        {
+          "name": "Lake Forest, CA",
+          "lat": 33.625,
+          "lng": -117.7,
+          "radius": 4
+        },
+        {
+          "name": "Laguna Hills, CA",
+          "lat": 33.598,
+          "lng": -117.7,
+          "radius": 4
+        },
+        {
+          "name": "Mission Viejo, CA",
+          "lat": 33.562,
+          "lng": -117.668,
+          "radius": 4
+        }
+      ]
+    },
+    {
+      "id": "dana-point",
+      "name": "Dana Point",
+      "towns": "San Juan Capistrano, Capistrano Beach and San Clemente, CA",
+      "mile": 53,
+      "milepostNote": "Measured along OSRM's route from the start: 53.1 miles. The site is about 0.4 mile from that route line. OSRM's southbound route leaves I-5 at exit 79 (SR 1, Pacific Coast Highway and Camino Las Ramblas) and follows PCH to Las Vegas Street, about 0.9 mile. It rejoins I-5 south from PCH.",
+      "why": "The last stop before Camp Pendleton, where DOE lists no DC site within 1.5 miles of I-5 for about 21 miles. Electrify America's Dana Point Station on Las Vegas Street in Capistrano Beach has 12 chargers at 350 kW, about 0.9 mile from I-5 exit 79. DOE lists it open since June 10, 2026. EVgo's San Clemente site (10 stalls) and San Juan Capistrano site (8 stalls) are verified backups.",
+      "primary": {
+        "name": "Dana Point Station (Dana Point, CA)",
+        "network": "Electrify America",
+        "address": "25825 Las Vegas, Capistrano Beach, CA 92624",
+        "exit": "Exit 79, SR 1 (Pacific Coast Highway) and Camino Las Ramblas",
+        "stalls": {
+          "value": "12 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/capistrano-beach/25825-las-vegas/219010/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 12",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/capistrano-beach/25825-las-vegas/219010/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          460874
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Ocean View Plaza",
+          "network": "EVgo",
+          "address": "638 Camino de los Mares, San Clemente, CA 92673",
+          "facts": "EVgo's page lists 10 DC stalls on 6 chargers: 4 at 350 kW with two CCS cables (EVgo marks both cables usable at once); 2 at 100 kW with CCS and CHAdeMO. DOE lists the same port count. At Ocean View Plaza on Camino de los Mares in San Clemente, about 1.5 miles south, 0.2 mile off the route.",
+          "access": "Open to all EVs that use CCS or CHAdeMO, per EVgo. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/san-clemente/73843/",
+          "afdcIds": [
+            373121
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Plaza Del Obispo",
+          "network": "EVgo",
+          "address": "31874 Del Obispo St, San Juan Capistrano, CA 92675",
+          "facts": "EVgo's page lists 8 DC stalls on 4 chargers: 4 at 350 kW with two CCS cables (EVgo marks both cables usable at once). DOE lists the same port count. On Del Obispo Street in San Juan Capistrano, about 2.5 miles before Dana Point Station.",
+          "access": "Open to all EVs that use CCS, per EVgo. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/san-juan-capistrano/66369/",
+          "afdcIds": [
+            349448
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "San Juan Capistrano, CA -  Verdugo Street - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "26701 Verdugo St, San Juan Capistrano, CA 92675",
+          "facts": "Tesla Find Us confirms access at 26701 Verdugo St San Juan Capistrano, CA 92675: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled. On Verdugo Street in San Juan Capistrano, about 3 miles before Dana Point Station.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/25715",
+          "afdcIds": [
+            352632
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "San Clemente, CA - Tesla Supercharger, 101 West Avenida Vista Hermosa, San Clemente",
+          "afdcIds": [
+            102059
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 49 stalls, up to 250 kW, at 101 West Avenida Vista Hermosa San Clemente, CA 92672-7706. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 49 NACS at 250 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/sanclementesupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "San Juan Capistrano, CA - Tesla Supercharger, 31971 Camino Capistrano, San Juan Capistrano",
+          "afdcIds": [
+            102062
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 7 stalls, up to 125 kW, at 31971 Camino Capistrano San Juan Capistrano, CA 92675-3217. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 7 NACS at 125 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/sanjuancapistranosupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "DC OSC DC 5, 101 W Avenida Vista Hermosa, San Clemente",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175889
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC OSC DC 6, 101 W Avenida Vista Hermosa, San Clemente",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175888
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC OSC DC1, 101 W Avenida Vista Hermosa, San Clemente",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175890
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC OSC DC2, 101 W Avenida Vista Hermosa, San Clemente",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175894
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC OSC DC3, 101 W Avenida Vista Hermosa, San Clemente",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175891
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DC OSC DC4, 101 W Avenida Vista Hermosa, San Clemente",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            158699
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "San Clemente Hub, 422 Avenida De La Estrella, San Clemente",
+          "facts": "DOE lists 14 CCS at 360 kW on Shell Recharge. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            428591
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are on Las Vegas Street, behind the United States Post Office. Food, restrooms and host hours: Not yet verified. EA's page names no host business.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/capistrano-beach/25825-las-vegas/219010/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "San Juan Capistrano, CA",
+          "lat": 33.5017,
+          "lng": -117.6625,
+          "radius": 4
+        },
+        {
+          "name": "Capistrano Beach, CA",
+          "lat": 33.465,
+          "lng": -117.672,
+          "radius": 3
+        },
+        {
+          "name": "San Clemente, CA",
+          "lat": 33.427,
+          "lng": -117.612,
+          "radius": 5
+        }
+      ]
+    },
+    {
+      "id": "oceanside",
+      "name": "Oceanside",
+      "towns": "Oceanside and Carlsbad, CA",
+      "mile": 81,
+      "milepostNote": "Measured along OSRM's route from the start: 81.2 miles. The site is about 0.4 mile from that route line. OSRM's southbound route leaves I-5 at exit 51B for SR 78 east, then takes SR 78 exit 1, Jefferson Street, to Vista Way, about 1.5 miles. OSRM's route back joins I-5 south from Las Flores Drive.",
+      "why": "The first stop after Camp Pendleton. The Electrify America site at the Walmart on Vista Way has 10 chargers at 350 kW, about 1.5 miles from I-5 by way of SR 78. The Tesla site next door at 2170 Vista Way is open to all EVs with a NACS adapter. EVgo's Albertsons site in Carlsbad, about 2 miles south, has 6 stalls up to 350 kW and is the verified non-Tesla backup.",
+      "primary": {
+        "name": "Walmart 2494 (Oceanside, CA)",
+        "network": "Electrify America",
+        "address": "2100 Vista Way, Oceanside, CA 92054",
+        "exit": "Exit 51B, SR 78 east (Vista Way), then SR 78 exit 1, Jefferson Street",
+        "stalls": {
+          "value": "10 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/oceanside/2100-vista-way/100041/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/oceanside/2100-vista-way/100041/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          201037
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/lyftdrivers/comments/1ka3kgn/i_need_help_please/mpk9e0o/",
+            "date": "2025-04-28",
+            "summary": "San Diego rideshare driver recommends the Walmart EA site in Oceanside by I-5 because it usually has a charger free."
+          }
+        ],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Oceanside, CA - Vista Way - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "2170 Vista Way, Oceanside, CA 92054",
+          "facts": "Tesla Find Us confirms access at 2170 Vista Way Oceanside, CA 92054: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 24 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled. Next door to the Walmart on Vista Way.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/413725",
+          "afdcIds": [
+            446598
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Albertsons Carlsbad #2343 - 985 Tamarack Ave",
+          "network": "EVgo",
+          "address": "985 Tamarack Ave, Carlsbad, CA 92008",
+          "facts": "EVgo's page lists 6 DC stalls on 6 chargers: 4 at 350 kW with CCS and CHAdeMO; 2 at 100 kW with CCS and CHAdeMO. DOE lists the same port count. At the Albertsons on Tamarack Avenue in Carlsbad, about 2 miles south and 0.2 mile off the route.",
+          "access": "Open to all EVs that use CCS or CHAdeMO, per EVgo. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/carlsbad/81499/",
+          "afdcIds": [
+            416905
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Carlsbad Premium Outlets (Carlsbad, CA)",
+          "network": "Electrify America",
+          "address": "5620 Paseo Del Norte, Carlsbad, CA 92008",
+          "facts": "EA's locator lists 3 chargers, all CCS: 2 at 350 kW, 1 at 150 kW. DOE lists the same port count. At Carlsbad Premium Outlets, about 4 miles south, 0.2 mile off the route.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/carlsbad/5620-paseo-del-norte/200150/",
+          "afdcIds": [
+            168207
+          ],
+          "driverReports": [
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/electricvehicles/comments/1bvmoik/ford_will_delay_some_north_american_ev_production/ky182df/",
+              "date": "2024-04-04",
+              "summary": "Driver says a stop in Carlsbad took an hour because the 150 kW EA charger was giving about 80 kW."
+            }
+          ],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Carlsbad Premium Outlets",
+          "facts": "EVgo's page lists 2 DC stalls on 2 chargers: 2 at 50 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228221
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/carlsbad/297/"
+        },
+        {
+          "name": "Oceanside, CA - Mission Ave - Tesla Supercharger, 1527 Mission Ave, Oceanside",
+          "afdcIds": [
+            417113
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 1527 Mission Ave Oceanside, CA 92057: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 20 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/4006859",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Best Western Oceanside Inn, 1680 Oceanside Blvd, Oceanside",
+          "facts": "DOE lists 12 CHAdeMO at 50 kW, 12 CCS at 50 kW on Evolv Charging. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            470284
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Carlsbad, CA - Paseo Del Norte - Tesla Supercharger, 5620 Paseo Del Norte, Carlsbad",
+          "afdcIds": [
+            194089
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only the address and hours on 2026-10-16, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Club Wyndham Oceanside Pier Resort, 333 North Myers Street, Oceanside",
+          "facts": "DOE lists this as temporarily unavailable: 1 CCS at 30 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            458094
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Holiday Inn Oceanside, 1401 Carmelo Dr, San Diego",
+          "facts": "DOE lists 2 CCS at 95 kW on EVCS. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            333227
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Oceanside, CA - Tesla Supercharger, 1006 Mission Ave, Oceanside",
+          "afdcIds": [
+            374981
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 20 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us showed \"NACS adapter needed for non-Tesla EVs\" but no site name or address on 2026-10-16, so the page could not be tied to this site. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "PRP OCEANSIDE A01, 1928 S Moreno St, Oceanside",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175535
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PRP OCEANSIDE A02, 1928 S Moreno St, Oceanside",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            155419
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "US Bank Oceanside, 840 S Coast Hwy, Oceanside",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on EVCS. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            348770
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are in the southeastern corner of the lot, along Ronald Packard Parkway (SR 78). Walmart store hours and restrooms: Not yet verified. The walmart.com store page returned 403 on 2026-10-16.",
+          "category": "food",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/oceanside/2100-vista-way/100041/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Oceanside, CA",
+          "lat": 33.1959,
+          "lng": -117.3795,
+          "radius": 5
+        },
+        {
+          "name": "Carlsbad, CA",
+          "lat": 33.1581,
+          "lng": -117.3506,
+          "radius": 5
+        }
+      ]
+    },
+    {
+      "id": "san-diego",
+      "name": "San Diego",
+      "towns": "La Jolla, Point Loma and Midway, San Diego, CA",
+      "mile": 113,
+      "milepostNote": "Measured along OSRM's route from the start: 112.6 miles. The site is about 0.9 mile from that route line. OSRM's southbound route leaves I-5 at exit 20 (I-8 east, with a southbound ramp to Rosecrans Street) and reaches Midway Drive by Rosecrans Street, about 1.8 miles. OSRM's route back joins I-5 south from Pacific Highway.",
+      "why": "The EVgo hub at 3757 Midway Drive, open since January 2, 2026 per DOE, is the biggest site near the end of the route. EVgo's locator lists 14 chargers with two CCS cables each at 200 kW, about 1.8 miles off I-5 by way of Rosecrans Street. EA's Point Loma Plaza site on the same street and EVgo's Rosecrans Plaza site are verified backups. La Jolla, about 8 miles back, has EVgo and EA sites listed below.",
+      "primary": {
+        "name": "EVgo, 3757 Midway Dr",
+        "network": "EVgo",
+        "address": "3757 Midway Dr, San Diego, CA 92110",
+        "exit": "Exit 20, I-8 east (southbound ramp to Rosecrans Street)",
+        "stalls": {
+          "value": "14 chargers, 28 CCS cables",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/san-diego/87120/"
+        },
+        "power": {
+          "value": "200 kW, CCS on all 14 chargers. EVgo's March 2026 post says 200 kW simultaneous charging on all 28 stalls.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/san-diego/87120/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs, per EVgo. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "evgo"
+        },
+        "price": {
+          "value": "Shown in the EVgo app and on the charger. EVgo does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "evgo"
+        },
+        "afdcIds": [
+          448537
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "evgo"
+      },
+      "backups": [
+        {
+          "name": "Regency Point Loma Plaza (San Diego, CA)",
+          "network": "Electrify America",
+          "address": "3645 Midway Dr, San Diego, CA 92110",
+          "facts": "EA's locator lists 4 chargers, CCS at 350 kW on all 4. DOE lists the same port count. On Midway Drive at Kemper Street, about 0.1 mile from the EVgo hub.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/san-diego/3645-midway-dr/210408/",
+          "afdcIds": [
+            255543
+          ],
+          "driverReports": [
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/sandiego/comments/1shbdl6/34_charging_spots_taken_by_waymos/",
+              "date": "2026-04-10",
+              "summary": "Post from San Diego says 3 of the 4 chargers at the Point Loma EA site were taken by Waymo robotaxis."
+            }
+          ],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Rosecrans Plaza",
+          "network": "EVgo",
+          "address": "3156 Sports Arena Blvd, San Diego, CA 92110",
+          "facts": "EVgo's page lists 6 DC stalls on 6 chargers: 6 at 50 kW with CCS and CHAdeMO. DOE lists the same port count. On Sports Arena Boulevard, about 0.3 mile from the EVgo hub. All six chargers are 50 kW.",
+          "access": "Open to all EVs that use CCS or CHAdeMO, per EVgo. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/san-diego/22587/",
+          "afdcIds": [
+            227983
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "San Diego, CA - Rosecrans St - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "3550 Rosecrans St, San Diego, CA 92110",
+          "facts": "Tesla Find Us confirms access at 3550 Rosecrans St San Diego, CA 92110: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Tesla's page lists 16 stalls, up to 325 kW. The count matches DOE. DOE's access note: 24 hours daily. NACS partner enabled. On Rosecrans Street, about 0.4 mile from the route.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/4005156",
+          "afdcIds": [
+            391768
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Caltrans District 11 Headquarters",
+          "facts": "EVgo's page lists 6 DC stalls on 6 chargers: 6 at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228707
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/san-diego/26160/"
+        },
+        {
+          "name": "San Diego, CA - A Street - Tesla Supercharger, 1350 6th Avenue, San Diego",
+          "afdcIds": [
+            102061
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 16 stalls, up to 72 kW, at 1350 6th Avenue San Diego, CA 92101. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 16 NACS at 75 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/sandiegosupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "San Diego, CA - Morena Blvd - Tesla Supercharger, 845 Morena Blvd, San Diego",
+          "afdcIds": [
+            404785
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 845 Morena Blvd San Diego, CA 92110: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/414218",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "San Diego, CA - Regents Road - Tesla Supercharger, 7708 Regents Road, San Diego",
+          "afdcIds": [
+            395879
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 7708 Regents Road San Diego, CA 92122: \"NACS adapter needed for non-Tesla EVs\". Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/17117",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "San Diego, CA - Villa La Jolla Drive - Tesla Supercharger, 8657 Villa La Jolla Drive, San Diego",
+          "afdcIds": [
+            372612
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 8657 Villa La Jolla Drive San Diego, CA 92037. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 16 NACS at 250 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-16",
+          "url": "https://www.tesla.com/findus/location/supercharger/20287",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Shops at La Jolla Village",
+          "facts": "EVgo's page lists 6 DC stalls on 6 chargers: 4 at 350 kW with CCS and CHAdeMO; 2 at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            416945
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ca/la-jolla/81540/"
+        },
+        {
+          "name": "Westfield UTC (San Diego, CA)",
+          "facts": "EA's locator lists 4 chargers, CCS at 350 kW on all 4. DOE lists the same port count. At Westfield UTC in La Jolla, about 1 mile off the route.",
+          "status": "verified",
+          "afdcIds": [
+            279327
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/san-diego/4545-la-jolla-village-dr/210034/"
+        },
+        {
+          "name": "ACE PARKING EE STATION 8, 3365 Admiral Boland Way, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            446559
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Best Rest Motel, 1955 San Diego Ave, San Diego",
+          "facts": "DOE lists 12 CCS at 100 kW on Evolv Charging. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            470283
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IQHQ STATION 10, 925 West G Street, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            420739
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IQHQ STATION 11, 823 Pacific Hwy, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            420742
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IQHQ STATION 13, 925 West G Street, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            428626
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IQHQ STATION 14, 823 Pacific Hwy, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            420729
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IQHQ STATION 15, 925 West G Street, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            420744
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IQHQ STATION 16, 925 West G Street, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            420743
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "IQHQ STATION 9, 925 West G Street, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            420740
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mission Bay, 1775 E Mission Bay Dr, San Diego",
+          "facts": "DOE lists 6 CHAdeMO at 50 kW, 6 CCS at 50 kW on Evolv Charging. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            470318
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OLD TOWN SD A01, 2645 San Diego Avenue, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            469724
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OLD TOWN SD A02, 2645 San Diego Avenue, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            469725
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "OLD TOWN SD A03, 2645 San Diego Avenue, San Diego",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            469726
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Pebblebrook Hotels Westin San Diego, 910 Broadway Cir, San Diego",
+          "facts": "DOE lists 12 CHAdeMO at 100 kW, 12 CCS at 100 kW on Evolv Charging. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            470332
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Scripps Research Lab, 10332 John Jay Hopkins Dr, San Diego",
+          "facts": "DOE lists 1 CCS at 9.6 kW on EVgateway. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            333861
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD - P707 DCFC, 3671 Voigt Dr, La Jolla",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62.5 kW on ChargePoint. DOE last confirmed 2026-07-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            323234
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-ATHENA DC1-1, 9417 Medical Center Drive East, La Jolla",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            194974
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-ATHENA DC1-2, 9417 Medical Center Drive East, La Jolla",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            194977
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-ATHENA DC1-3, 9417 Medical Center Drive East, La Jolla",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            194973
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-ATHENA DC1-4, 9417 Medical Center Drive East, La Jolla",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            194975
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-ATHENA DC1-5, 9417 Medical Center Drive East, La Jolla",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            194976
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-ECUP DC 1, 3683 Voigt Dr, San Diego",
+          "facts": "DOE lists 1 CCS at 102 kW, 1 NACS at 102 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            176042
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-ECUP DC 2, 3683 Voigt Dr, San Diego",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            158759
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-NV WST DC1-1, 9335 Athena Circle, La Jolla",
+          "facts": "DOE lists 1 CCS at 50 kW, 1 NACS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            203368
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-NV WST DC1-2, 9335 Athena Circle, La Jolla",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            203367
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-P707 DC 1, UCSD Health La Jolla Station, La Jolla",
+          "facts": "DOE lists 1 CCS at 31 kW, 1 NACS at 31 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            203349
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-SOUTH DC 3-1, 3101 Biomedical Sciences Way, La Jolla",
+          "facts": "DOE lists 1 CCS at 125 kW, 1 NACS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            176101
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UCSD CP-SOUTH DC 3-2, 3101 Biomedical Sciences Way, La Jolla",
+          "facts": "DOE lists 1 CCS at 125 kW, 1 NACS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            158792
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EVgo's March 2026 post on the opening says the hub is near shopping, restaurants, hair salons and gyms, and that all 28 stalls offer 200 kW simultaneous charging. EVgo's locator header lists 27 stalls. Restrooms and hours of nearby businesses: Not yet verified.",
+          "category": "food",
+          "source": "evgo-midway-post",
+          "url": "https://www.linkedin.com/posts/evgo_fastcharging-activity-7442610284596465666-4FJx",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "EA's site note for Point Loma Plaza: chargers are by Kemper Street, across from JOANN Fabric and Crafts.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ca/san-diego/3645-midway-dr/210408/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "La Jolla, CA",
+          "lat": 32.87,
+          "lng": -117.23,
+          "radius": 4
+        },
+        {
+          "name": "Point Loma, San Diego, CA",
+          "lat": 32.753,
+          "lng": -117.21,
+          "radius": 4
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "Camp Pendleton: DOE lists no open DC site within 1.5 miles of I-5 from mile 58 in San Clemente to mile 78 in Oceanside, about 21 miles. Leave Dana Point or San Clemente with enough charge to reach Oceanside.",
+      "source": "afdc"
+    },
+    {
+      "text": "22 Tesla sites on this route are flagged from Tesla Find Us where DOE's access note agrees: 12 open to all EVs with a NACS adapter, 10 Tesla only. 4 stay Not yet verified because Tesla's page rendered only in part or DOE gave no access note. Checked 2026-10-16. Several Tesla only sites in Buena Park, Mission Viejo and downtown San Diego list 72 kW, not 250 kW.",
+      "source": "tesla-findus"
+    },
+    {
+      "text": "Electrify America and EVgo chargers on this route are CCS. NACS cars need an adapter. The EVgo sites in San Clemente, Carlsbad and La Jolla also have CHAdeMO on some chargers.",
+      "source": "ea-locator"
+    },
+    {
+      "text": "EVgo's locator lists 14 chargers with two CCS cables each at the Midway Drive hub and a header of 27 stalls. EVgo's March 2026 post and DOE both say 28. Treat it as 14 chargers until EVgo's pages agree.",
+      "source": "evgo"
+    },
+    {
+      "text": "Only sites near each stop are listed. The stretches from the East LA Interchange to Buena Park, Santa Ana and Tustin, and Encinitas to Del Mar have many more DC sites in DOE that this guide does not check.",
+      "source": "afdc"
+    },
+    {
+      "text": "Food and restroom notes are Not yet verified at the two Walmart stops and at Dana Point Station. Walmart store pages returned 403 on 2026-10-16. EA's site notes say where the chargers sit.",
+      "source": "ea-locator"
+    }
+  ],
+  "arrival": "Downtown San Diego, the airport, Coronado and points south of exit 17 are not in this guide. The last stop is the EVgo hub on Midway Drive, about 3 miles before the end of the route."
+}
