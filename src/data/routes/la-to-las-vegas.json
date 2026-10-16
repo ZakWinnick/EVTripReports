@@ -126,12 +126,6 @@
           {
             "source": "plugshare",
             "url": "https://www.plugshare.com/location/186196",
-            "date": "2026-10-02",
-            "summary": "Works well."
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/186196",
             "date": "2026-09-28",
             "summary": "You have to go the wrong way in the lane to back in."
           }
@@ -247,14 +241,7 @@
           "afdcIds": [
             169469
           ],
-          "driverReports": [
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/285659",
-              "date": "2026-10-14",
-              "summary": "Lots of chargers, handy location for shopping"
-            }
-          ]
+          "driverReports": []
         },
         {
           "name": "Victorville, Roy Rogers Drive (Desert Sky Plaza)",
@@ -589,12 +576,6 @@
               "url": "https://www.plugshare.com/location/10838",
               "date": "2026-05-23",
               "summary": "Derated charging. Pulling ~60ish kw from an older dispenser."
-            },
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/10838",
-              "date": "2026-01-02",
-              "summary": "Could not activate"
             }
           ]
         }
@@ -895,7 +876,7 @@
               "source": "plugshare",
               "url": "https://www.plugshare.com/location/1294824",
               "date": "2026-09-27",
-              "summary": "Charged on 7B. No issues"
+              "summary": "Charged on stall 7B with no issues."
             },
             {
               "source": "plugshare",
@@ -974,7 +955,7 @@
               "source": "plugshare",
               "url": "https://www.plugshare.com/location/1598063",
               "date": "2026-09-29",
-              "summary": "$.30/kwh at 2pm on 9/29"
+              "summary": "Price was $.30/kwh at 2pm on 9/29."
             }
           ]
         }
@@ -1103,12 +1084,6 @@
             "url": "https://www.plugshare.com/location/338611",
             "date": "2026-10-09",
             "summary": "Paying was a nightmare. Swipe, insert and tap did not work. Luckily I checked my Chevrolet app and I could pay via there. Wasted a good 15 min trying to pay."
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/338611",
-            "date": "2026-09-26",
-            "summary": "No issues whatsoever."
           }
         ]
       },
@@ -1127,18 +1102,6 @@
             459665
           ],
           "driverReports": [
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/1289303",
-              "date": "2026-09-10",
-              "summary": "So so many stations"
-            },
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/1289303",
-              "date": "2026-09-04",
-              "summary": "New, clean, lots of services"
-            },
             {
               "source": "x",
               "url": "https://x.com/TheZacher/status/2056868728743338004",
@@ -1167,12 +1130,6 @@
             102319
           ],
           "driverReports": [
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/58299",
-              "date": "2026-09-12",
-              "summary": "Could not activate"
-            },
             {
               "source": "x",
               "url": "https://x.com/whatsinside/status/2037558023712047480",
