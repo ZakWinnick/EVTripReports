@@ -297,6 +297,61 @@ test('LA to San Diego passes the primary gate and is on the public lists', async
   assert.equal(/rangeway|ampiq/i.test(html), false);
 });
 
+test('Dallas to Austin passes the primary gate and stays off the public lists', async () => {
+  const raw = await readFile(new URL('../src/data/routes/dallas-to-austin.json', import.meta.url), 'utf8');
+  const routeData = JSON.parse(raw);
+  const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
+  const meta = list.find((r) => r.slug === 'dallas-to-austin');
+  assert.equal(routeData.slug, 'dallas-to-austin');
+  assert.equal(routeData.title, 'Dallas to Austin');
+  assert.equal(routeData.highway, 'I-35');
+  assert.equal(routeData.checked, '2026-10-16');
+  assert.deepEqual(meta, {
+    slug: 'dallas-to-austin',
+    title: 'Dallas to Austin',
+    highway: 'I-35',
+    miles: 192,
+    status: 'verifying',
+  });
+  assert.equal(primaryPublishBlock(routeData), null);
+  assert.equal(exportStatus('live', routeData), 'live');
+  assert.equal(exportStatus(meta.status, routeData), 'verifying');
+
+  assert.equal(routeData.stops.length, 6);
+  for (const stop of routeData.stops) {
+    assert.ok(stop.backups.some((backup) => backup.status === 'verified'), `${stop.id} verified backup`);
+    for (const key of ['stalls', 'power', 'access']) {
+      assert.equal(stop.primary[key].status, 'verified', `${stop.id} ${key}`);
+    }
+  }
+
+  const guides = await liveBuiltGuides();
+  const index = await liveBuiltGuideIndex();
+  assert.equal(guides.some((guide) => guide.slug === 'dallas-to-austin'), false);
+  assert.equal(index.some((guide) => guide.slug === 'dallas-to-austin'), false);
+  const xml = buildSitemapXml(guidesForSitemap(guides, []));
+  assert.equal(xml.includes('dallas-to-austin'), false);
+
+  const files = await readdir(new URL('../src/data/routes/', import.meta.url));
+  const routeBySlug = {};
+  for (const file of files.filter((name) => name.endsWith('.json'))) {
+    const data = JSON.parse(await readFile(new URL(`../src/data/routes/${file}`, import.meta.url), 'utf8'));
+    routeBySlug[data.slug] = data;
+  }
+  const home = visibleHomeRoutes(list, routeBySlug);
+  assert.equal(home.some((route) => route.slug === 'dallas-to-austin'), false);
+
+  const html = guideMain(routeData);
+  assert.match(html, /id="stop-dallas"/);
+  assert.match(html, /id="stop-austin"/);
+  assert.equal(/rangeway|ampiq/i.test(raw), false);
+  assert.equal(/rangeway|ampiq/i.test(html), false);
+});
+
+test('dallas-to-austin route JSON contains no em dash or en dash in any string', async () => {
+  await assertRouteJsonHasNoDashes('dallas-to-austin');
+});
+
 test('la-to-san-diego route JSON contains no em dash or en dash in any string', async () => {
   await assertRouteJsonHasNoDashes('la-to-san-diego');
 });
