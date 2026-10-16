@@ -1,11 +1,4 @@
 ---
-import Base from '../../layouts/Base.astro';
-import GuideFinder from '../../components/GuideFinder.astro';
-import builtGuideIndex from '../../../functions/_lib/built-guide-index.js';
-import { guideIndexList } from '../../lib/guide-index.js';
+// The route directory has been retired; show the single product example instead.
+return Astro.redirect('/sample-plan/', 308);
 ---
-<Base title="EV road-trip field guides" description="Find a free EV charging guide for your next road trip. See covered endpoints, charging options, source links, and the dates station facts were checked." path="/guides/">
-  <section class="band"><div class="wrap"><p class="eyebrow">Free guides</p><h1 class="h1">Choose your route.</h1><p class="lede" style="margin-top:22px">Charging locations, access requirements, backup options, and dated driver reports.</p><p class="small muted" style="margin-top:16px">Each guide covers the endpoints shown below. Corridor mileage may not include the drive from your home or onward to your destination.</p>
-    <GuideFinder target="guides-index" /><ul class="index-list" id="guides-index"><Fragment set:html={guideIndexList(builtGuideIndex)} /></ul>
-  </div></section>
-</Base>

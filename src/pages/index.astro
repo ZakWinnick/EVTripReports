@@ -11,11 +11,11 @@ const stop = plan.stops.find((s: any) => s.charging);
 const strategy = plan.strategy.stops.find((s: any) => s.stopId === stop.id);
 const backup = stop.backups[0];
 const homeLd = { '@context': 'https://schema.org', '@graph': [
-  { '@type': 'WebSite', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'Custom EV trip planning and independent charging guides.' },
+  { '@type': 'WebSite', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'Personal EV trip planning for any route.' },
   { '@type': 'Organization', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'A travel agent for EVs.' },
 ] };
 ---
-<Base title="EV road-trip guides and custom plans" description="Free EV charging guides and custom trip plans. Compare stations, access requirements, backups, and dated source information before your next drive.">
+<Base title="Custom EV road-trip plans" description="Custom EV trip plans for your car, route, and dates. See a sample plan with charging stops, available backups, and dated sources.">
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(homeLd)}></script>
   <div class="trip-home">
     <section class="trip-opening">
@@ -41,7 +41,7 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
           <div class="document-bottom"><span>Illustrative trip, not a current recommendation.</span><a href="/sample-plan/#assumptions">Read assumptions</a></div>
         </div>
       </div>
-      <div class="trip-wrap opening-bottom"><span>Your car. Your dates. Any route.</span><a href="/guides/">Planning it yourself? Browse the free guides <span aria-hidden="true">↗</span></a></div>
+      <div class="trip-wrap opening-bottom"><span>Your car. Your dates. Any route.</span><a href="/sample-plan/">See a complete sample plan <span aria-hidden="true">↗</span></a></div>
     </section>
 
     <section id="inside-plan" class="inside-plan trip-wrap">

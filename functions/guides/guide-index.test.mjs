@@ -13,19 +13,6 @@ import {
   routeDistance,
 } from '../../src/lib/guide-index.js';
 
-const INDEX_PAGE = `<!doctype html><html><head><link rel="canonical" href="https://evtripreports.com/guides/"></head><body><ul class="index-list" id="guides-index"><li>built placeholder</li></ul></body></html>`;
-
-function assets(map) {
-  return {
-    async fetch(input) {
-      const url = new URL(typeof input === 'string' ? input : input.url);
-      const hit = map[url.pathname];
-      if (!hit) return new Response('missing', { status: 404, headers: { 'content-type': 'text/html' } });
-      return new Response(hit.body, { status: hit.status || 200, headers: hit.headers || { 'content-type': 'text/html; charset=utf-8' } });
-    },
-  };
-}
-
 function db(rows, { fail = false } = {}) {
   const state = { sql: '' };
   return {
@@ -50,33 +37,6 @@ function db(rows, { fail = false } = {}) {
       };
     },
     sql: () => state.sql,
-  };
-}
-
-class ListRewriter {
-  on(_selector, handler) {
-    this.handler = handler;
-    return this;
-  }
-  transform(response) {
-    let html = '';
-    this.handler.element({
-      setInnerContent(value) {
-        html = value;
-      },
-    });
-    const type = response.headers?.get?.('content-type') || 'text/html';
-    return new Response(html, { status: 200, headers: { 'content-type': type } });
-  }
-}
-
-function indexContext({ url, path, rows, fail = false, map }) {
-  const database = db(rows || [], { fail });
-  return {
-    request: new Request(url),
-    params: path === undefined ? {} : { path },
-    env: { DB: rows || fail ? { prepare: database.prepare.bind(database) } : undefined, ASSETS: assets(map) },
-    database,
   };
 }
 
@@ -204,147 +164,37 @@ test('guides index is /guides and /guides/, not a slug', () => {
   assert.equal(isGuidesIndex({ path: ['la-to-sf', 'stalls'] }, { url: 'https://evtripreports.com/guides/' }), false);
 });
 
-test('page, nav, and footer point at the guides index', async () => {
+test('the site offers the sample plan instead of a guide directory', async () => {
   const page = await readFile(new URL('../../src/pages/guides/index.astro', import.meta.url), 'utf8');
+  assert.match(page, /Astro.redirect\('\/sample-plan\/', 308\)/);
+  for (const path of ['src/layouts/Base.astro', 'src/pages/index.astro', 'src/pages/plans.astro', 'src/pages/404.astro']) {
+    const source = await readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
+    assert.doesNotMatch(source, /href[=:][^\n]*['"]\/guides\//, path);
+    assert.doesNotMatch(source, /id="(?:guides-list|guides-index|corridors)"/, path);
+  }
   const layout = await readFile(new URL('../../src/layouts/Base.astro', import.meta.url), 'utf8');
-  const missing = await readFile(new URL('../../src/pages/404.astro', import.meta.url), 'utf8');
-  const guide = await readFile(new URL('../../src/lib/render-guide.js', import.meta.url), 'utf8');
-  assert.match(page, /id="guides-index"/);
-  assert.match(page, /path="\/guides\/"/);
-  assert.equal(page.includes('—'), false);
-  assert.equal(page.includes('Rangeway'), false);
-  assert.equal(layout.includes('href="/#guides"'), false);
-  assert.match(layout, /href: '\/guides\/', label: 'Guides'/);
-  assert.match(layout, /<a href="\/guides\/">Guides<\/a>/);
-  assert.match(missing, /href="\/guides\/"/);
-  assert.equal(guide.includes('href="/#guides"'), false);
-  assert.match(guide, /href="\/guides\/"/);
+  assert.match(layout, /href: '\/sample-plan\/', label: 'Sample plan'/);
 });
 
-test('/guides and /guides/ serve the index, including a live D1 route', async () => {
-  globalThis.HTMLRewriter = ListRewriter;
+test('retired directory URLs redirect to the sample without reading route data', async () => {
   const { onRequestGet } = await import('./[[path]].js');
-  const map = {
-    '/guides/index.html': {
-      body: INDEX_PAGE,
-      headers: { 'content-type': 'text/html; charset=utf-8', 'x-etr-guide': '1' },
-    },
-    '/404.html': { body: '<html>No stop here.</html>' },
-    '/guides/la-to-sf/index.html': { body: '<html><link rel="canonical" href="https://evtripreports.com/guides/la-to-sf/"></html>' },
-  };
-  const denver = {
-    slug: 'denver-to-albuquerque',
-    title: 'Denver to Albuquerque',
-    highway: 'I-25',
-    status: 'live',
-    json: JSON.stringify({
-      slug: 'denver-to-albuquerque',
-      title: 'Denver to Albuquerque',
-      highway: 'I-25',
-      startLabel: 'I-25 at Colfax',
-      endLabel: 'Central Albuquerque',
-      stats: [{ label: 'Denver to Albuquerque', value: '449', unit: 'mi' }],
-    }),
-  };
-  const vegasUpdate = {
-    slug: 'la-to-las-vegas',
-    title: 'LA to Las Vegas',
-    highway: 'I-15',
-    status: 'live',
-    json: JSON.stringify({
-      slug: 'la-to-las-vegas',
-      title: 'LA to Las Vegas',
-      highway: 'I-15',
-      startLabel: 'I-10 junction, Ontario',
-      endLabel: 'Tropicana Ave, Las Vegas',
-      stats: [{ label: 'Miles', value: '230', unit: 'mi' }],
-    }),
-  };
-  const rows = [
-    denver,
-    vegasUpdate,
-    { slug: 'still-checking', title: 'Still checking', highway: 'I-40', status: 'verifying', json: JSON.stringify({ title: 'Still checking', startLabel: 'A', endLabel: 'B' }) },
-    { slug: 'not a slug', title: 'Bad', highway: 'I-1', status: 'live', json: JSON.stringify({ title: 'Bad' }) },
-    { slug: 'bad-json', title: 'Bad json', highway: 'I-1', status: 'live', json: '{oops' },
-    { slug: 'no-miles', title: 'Austin to Dallas', highway: 'I-35', status: 'live', json: JSON.stringify({ title: 'Austin to Dallas', startLabel: 'Austin', endLabel: 'Dallas', stats: [{ label: 'Sites', value: '4', unit: '' }] }) },
-  ];
-
-  const slashless = await onRequestGet(indexContext({
-    url: 'https://evtripreports.com/guides?utm=1',
-    map,
-  }));
-  assert.equal(slashless.status, 308);
-  assert.equal(slashless.headers.get('location'), 'https://evtripreports.com/guides/?utm=1');
-
-  for (const [url, path] of [
-    ['https://evtripreports.com/guides/', []],
-    ['https://evtripreports.com/guides/index.html', 'index.html'],
+  for (const [path, params] of [
+    ['/guides', {}],
+    ['/guides/', { path: [] }],
+    ['/guides/index.html', { path: 'index.html' }],
   ]) {
-    const ctx = indexContext({ url, path, rows, map });
-    const res = await onRequestGet(ctx);
-    assert.equal(res.status, 200, url);
-    assert.equal(res.headers.get('x-etr-guide'), null, url);
-    assert.match(res.headers.get('content-type'), /text\/html/);
-    const html = await res.text();
-    assert.match(ctx.database.sql(), /status = 'live'/);
-    assert.match(ctx.database.sql(), /json IS NOT NULL/);
-    const added = card(html, 'denver-to-albuquerque');
-    assert.match(added, /Denver to Albuquerque/);
-    assert.match(added, /I-25 at Colfax/);
-    assert.match(added, /Central Albuquerque/);
-    assert.match(added, /449 mi/);
-    assert.match(added, /Read the guide/);
-    const vegas = card(html, 'la-to-las-vegas');
-    assert.match(vegas, /230 mi/);
-    assert.equal(vegas.includes('224 mi'), false);
-    const austin = card(html, 'no-miles');
-    assert.match(austin, /Austin/);
-    assert.match(austin, /Dallas/);
-    assert.equal(austin.includes('Distance'), false);
-    assert.equal(html.includes('Still checking'), false);
-    assert.equal(html.includes('bad-json'), false);
-    assert.equal(html.includes('built placeholder'), false);
-    assert.match(html, /href="\/guides\/la-to-sf\/"/);
+    const res = await onRequestGet({
+      request: new Request(`https://evtripreports.com${path}?utm=example`),
+      params,
+      env: {
+        DB: { prepare() { throw new Error('Directory must not read D1'); } },
+        ASSETS: { fetch() { throw new Error('Directory must not fetch an index'); } },
+      },
+    });
+    assert.equal(res.status, 308, path);
+    assert.equal(res.headers.get('location'), 'https://evtripreports.com/sample-plan/?utm=example', path);
+    assert.equal(res.headers.get('x-content-type-options'), 'nosniff');
   }
-
-  const plain = await onRequestGet(indexContext({
-    url: 'https://evtripreports.com/guides/',
-    path: [],
-    map,
-  }));
-  assert.equal(plain.status, 200);
-  assert.match(await plain.text(), /built placeholder/);
-  assert.match(plain.headers.get('content-type'), /text\/html/);
-
-  const down = await onRequestGet(indexContext({
-    url: 'https://evtripreports.com/guides/',
-    path: [],
-    rows: [],
-    fail: true,
-    map,
-  }));
-  assert.equal(down.status, 200);
-  assert.match(await down.text(), /built placeholder/);
-
-  const missing = await onRequestGet(indexContext({
-    url: 'https://evtripreports.com/guides/not-a-route/',
-    path: ['not-a-route'],
-    rows,
-    map,
-  }));
-  assert.equal(missing.status, 404);
-  assert.match(await missing.text(), /No stop here/);
-
-  const built = await onRequestGet(indexContext({
-    url: 'https://evtripreports.com/guides/la-to-sf/',
-    path: ['la-to-sf'],
-    rows,
-    map,
-  }));
-  assert.equal(built.status, 200);
-  const builtHtml = await built.text();
-  assert.match(builtHtml, /guides\/la-to-sf/);
-  assert.equal(builtHtml.includes('denver-to-albuquerque'), false);
 });
 
 test('the homepage route list keeps live rows and drops verifying rows', async () => {

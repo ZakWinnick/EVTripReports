@@ -4,7 +4,7 @@ Static site for evtripreports.com, built with Astro and hosted on Cloudflare Pag
 
 ## How it's built
 
-- Guide content lives in D1 (table `routes`, schema in `schema-routes.sql`). Publishing a new guide or an update is a row write: `functions/guides/[[path]].js` renders the D1 version on each request with the same renderer the build uses (`src/lib/render-guide.js`), and `functions/index.js` updates the home page cards. No deploy needed.
+- Guide content lives in D1 (table `routes`, schema in `schema-routes.sql`). Existing guide URLs remain available for reference. Publishing an update is a row write: `functions/guides/[[path]].js` renders the D1 version on each request with the same renderer the build uses (`src/lib/render-guide.js`). D1 content updates need no deploy. The homepage is a built overview of the service; `/guides/` redirects to the single sample plan.
 - The JSON in `src/data/routes/` is the built-in fallback, served when D1 has no row or isn't reachable.
 - Route guides are generated from that JSON at build time. One file per route. Every station fact carries a `status` (`verified`, `conflict`, `unverified`, `unpublished`) and a `source` key that points into the file's `sources` map.
 - `src/data/routes.json` lists all routes and whether each is live.
@@ -188,8 +188,8 @@ Do this in the Cloudflare dashboard for the D1 database already bound to the Pag
 2. Paste `schema-routes.sql` and run it. It only creates `routes` when the table is missing. Plan-request tables in `schema.sql` stay as they are.
 3. On your machine, from this repo, run `node scripts/export-routes-sql.mjs > routes.sql`. That file is generated locally. It is not committed.
 4. Paste `routes.sql` into the same D1 console and run it. D1 rejects a single statement over 100KB. The export script skips a route and prints a SKIP line if that happens.
-5. Insert every published route in that one run. `functions/index.js` replaces the whole homepage card list when the table has any rows. A partial load hides the guides that are only in the build.
-6. A row is what the site serves only when `status` is `live` and `json` is set. The export writes `live` when `src/data/routes.json` says `live` (or the older `live-ready` label) and every primary's stalls, power, and access are `verified`. A disclosed conflict on a backup or other site does not block that. Unverified, unpublished, or conflicting stalls, power, or access on a primary stays `verifying`. The build does the same: only routes that pass that gate get `/guides/<slug>/` and `/data/<slug>.json`. `verifying` is left off the homepage, the guides index, and the sitemap, and that URL 404s.
+5. Insert the researched routes intended for the existing reference URLs. They are not presented as a directory or as choices on the planning page.
+6. A row is what the site serves only when `status` is `live` and `json` is set. The export writes `live` when `src/data/routes.json` says `live` (or the older `live-ready` label) and every primary's stalls, power, and access are `verified`. A disclosed conflict on a backup or other site does not block that. Unverified, unpublished, or conflicting stalls, power, or access on a primary stays `verifying`. The build does the same: only routes that pass that gate get `/guides/<slug>/` and `/data/<slug>.json`. `verifying` is left off the sitemap, and that URL 404s.
 7. Confirm a guide on the preview URL, then an unknown path such as `/guides/not-a-route/`. The guide should be the D1 copy. The unknown path should be the 404 page with status 404.
 
 The JSON in `src/data/routes/` stays in git. It is the fallback when D1 has no row, and it is what the Monday station check reads until `functions/data/[file].js` finds a live row.

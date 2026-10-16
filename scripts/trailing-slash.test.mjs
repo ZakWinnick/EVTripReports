@@ -112,7 +112,7 @@ test('built html has no slashless internal page links, and noindex pages omit ca
   assert.match(aboutHtml, /rel="canonical" href="https:\/\/evtripreports\.com\/about\/"/);
   assert.match(aboutHtml, /property="og:url" content="https:\/\/evtripreports\.com\/about\/"/);
   assert.match(aboutHtml, /href="\/about\/" aria-current="page"/);
-  assert.match(aboutHtml, /href="\/guides\/"/);
+  assert.match(aboutHtml, /href="\/sample-plan\/"/);
   assert.equal(aboutHtml.includes('fonts.googleapis.com'), false);
 });
 
@@ -132,7 +132,7 @@ test('a featured guide link keeps the slash before the stop anchor', () => {
 
 test('nav current matches a slash or slashless page value against the slash href', async () => {
   const layout = await read('src/layouts/Base.astro');
-  assert.match(layout, /href: '\/guides\/'/);
+  assert.match(layout, /href: '\/sample-plan\/'/);
   assert.match(layout, /href: '\/plans\/'/);
   assert.match(layout, /href: '\/find-my-plans\/'/);
   assert.match(layout, /const current = String\(currentProp \|\| Astro\.url\.pathname\)/);

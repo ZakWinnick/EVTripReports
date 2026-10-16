@@ -268,7 +268,7 @@ export function guideStructuredData(route, pageUrl) {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Guides', item: 'https://evtripreports.com/guides/' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://evtripreports.com/' },
           { '@type': 'ListItem', position: 2, name: route.highway, item: url },
         ],
       },
@@ -405,7 +405,7 @@ export function guideMain(route) {
   route = forDisplay(route);
   const S = route.sources;
   return `<section class="guide-hero"><div class="wrap">
-<div class="guide-hero__top"><p class="eyebrow"><a href="/guides/">Route guides</a> / ${esc(route.highway)}</p><div class="guide-tools"><button type="button" data-print>Print guide ↗</button></div></div>
+<div class="guide-hero__top"><p class="eyebrow"><a href="/">EV Trip Reports</a> / ${esc(route.highway)}</p><div class="guide-tools"><button type="button" data-print>Print guide ↗</button></div></div>
 <h1 class="h1">${esc(route.title)}</h1><p class="lede" style="margin-top:20px">${esc(route.summary)}</p>
 <div class="guide-boundary"><span><strong>Coverage:</strong> ${esc(route.startLabel)} → ${esc(route.endLabel)}</span><span class="boundary-distance">${esc(route.stats[0].value)} corridor miles · ${route.stops.length} charging areas</span></div>
 <p class="checked-note">Station facts checked ${esc(fmtDate(route.checked))}. Checked specifications are not live availability. <a href="/methodology/">How we check</a></p></div></section>

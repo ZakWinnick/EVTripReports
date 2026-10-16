@@ -376,8 +376,8 @@ test('guide pages expose breadcrumb and article structured data, and the route g
   const types = data['@graph'].map((node) => node['@type']);
   assert.deepEqual(types, ['BreadcrumbList', 'Article']);
   const crumbs = data['@graph'][0].itemListElement;
-  assert.equal(crumbs[0].name, 'Guides');
-  assert.equal(crumbs[0].item, 'https://evtripreports.com/guides/');
+  assert.equal(crumbs[0].name, 'Home');
+  assert.equal(crumbs[0].item, 'https://evtripreports.com/');
   assert.equal(crumbs[1].name, 'I-1');
   assert.equal(crumbs[1].item, 'https://evtripreports.com/guides/test-route/');
   const article = data['@graph'][1];

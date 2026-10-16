@@ -68,11 +68,12 @@ test('the command line lists, checks, and exits 2 when blocked', async () => {
   }
 });
 
-test('the built plans page lists the live corridors and not the hidden one', async () => {
+test('the built plans page offers any trip without a route catalog', async () => {
   const html = await readFile(path.join(root, 'dist/plans/index.html'), 'utf8');
-  const section = html.slice(html.indexOf('Some roads we’ve researched'));
-  for (const line of ['Los Angeles to Las Vegas', 'Dallas to Austin', 'Washington, DC to New York City']) assert.ok(section.includes(line), line);
-  assert.equal(/Chicago/.test(section.slice(0, 3000)), false);
+  assert.equal(html.includes('id="corridors"'), false);
+  assert.equal(html.includes('href="/guides/'), false);
+  assert.match(html, /href="\/sample-plan\/"/);
+  assert.match(html, /Any trip/);
   assert.match(html, /name="startBattery"/);
   assert.match(html, /name="departTime"/);
   assert.equal(html.includes('\u2014') || html.includes('\u2013'), false);

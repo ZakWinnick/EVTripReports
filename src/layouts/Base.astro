@@ -25,7 +25,6 @@ const navCurrent = (href: string) => {
   return page === link ? 'page' : undefined;
 };
 const links = [
-  { href: '/guides/', label: 'Guides' },
   { href: '/plans/', label: 'Custom plans' },
   { href: '/sample-plan/', label: 'Sample plan' },
   { href: '/methodology/', label: 'How we check' },
@@ -94,10 +93,9 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find my plans' }
       <div class="wrap foot__grid">
         <div>
           <strong style="color: var(--ink)">EV Trip Reports</strong><br />
-          EV charging guides and custom trip plans.<br />Independent guides. No paid charging-network placement.
+          Custom EV road-trip planning.<br />Independent research. No paid charging-network placement.
         </div>
         <nav aria-label="Footer">
-          <a href="/guides/">Guides</a>
           <a href="/plans/">Custom plans</a>
           <a href="/sample-plan/">Sample plan</a>
           <a href="/find-my-plans/">Find my plans</a>

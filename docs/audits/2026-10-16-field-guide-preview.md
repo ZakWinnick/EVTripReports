@@ -1,3 +1,5 @@
+> Current product direction: promote custom planning and one sample plan only. The guide directory and planning-page route catalog are retired. `/guides/` redirects to `/sample-plan/`; existing individual guide URLs and research remain available for references. Earlier design notes below describe superseded iterations.
+
 # Field-guide redesign: local review
 
 Local preview: http://127.0.0.1:4321/

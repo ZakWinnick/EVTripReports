@@ -3,7 +3,7 @@ import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 
 const HOME_DESCRIPTION =
-  'Free EV charging guides and custom trip plans. Compare stations, access requirements, backups, and dated source information before your next drive.';
+  'Custom EV trip plans for your car, route, and dates. See a sample plan with charging stops, available backups, and dated sources.';
 const PLANS_DESCRIPTION =
   'Get an EV trip plan for your car, adapter, and dates. Compare $19, $39, and $79 plans, see a sample, and tell us where you want to go.';
 
@@ -29,7 +29,7 @@ test('home title, descriptions, and home structured data', async () => {
   const home = await source('../src/pages/index.astro');
   const plans = await source('../src/pages/plans.astro');
   const layout = await source('../src/layouts/Base.astro');
-  assert.match(home, /title="EV road-trip guides and custom plans"/);
+  assert.match(home, /title="Custom EV road-trip plans"/);
   assert.match(home, new RegExp(`description="${HOME_DESCRIPTION.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
   assert.ok(HOME_DESCRIPTION.length <= 160, HOME_DESCRIPTION.length);
   assert.match(plans, new RegExp(`description="${PLANS_DESCRIPTION.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
