@@ -12,6 +12,7 @@ import {
 } from './_lib/sitemap.js';
 
 const BUILT_SLUGS = [
+  'dc-to-nyc',
   'la-to-las-vegas',
   'la-to-phoenix',
   'la-to-sf',
@@ -60,12 +61,12 @@ test('built guide list matches the publish gate', async () => {
     guides.map((guide) => guide.slug),
     BUILT_SLUGS,
   );
-  assert.equal(guides.some((guide) => guide.slug === 'dc-to-nyc'), false);
+  assert.equal(guides.some((guide) => guide.slug === 'dc-to-nyc'), true);
   assert.equal(guides.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), false);
   assert.equal(guides.some((guide) => guide.slug === 'la-to-san-diego'), false);
   assert.deepEqual(
     guides.map((guide) => guide.lastmod),
-    ['2026-10-14', '2026-10-14', '2026-10-15', '2026-10-15', '2026-10-15', '2026-10-15'],
+    ['2026-10-15', '2026-10-14', '2026-10-14', '2026-10-15', '2026-10-15', '2026-10-15', '2026-10-15'],
   );
 });
 
