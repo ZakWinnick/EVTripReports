@@ -15,6 +15,8 @@ import { sendMail } from '../_lib/fastmail.js';
 import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { verifyTurnstile } from '../_lib/turnstile.js';
 import { refFor } from '../_lib/stripe.js';
+import { CORRIDORS, UNSUPPORTED_MESSAGE, matchOrder } from '../../src/lib/corridors.js';
+import { packNotes, portKnown } from '../../src/lib/order-flags.js';
 
 const REQUIRED = ['name', 'email', 'tier', 'car', 'port', 'start', 'end', 'depart'];
 const MAX = 2000;
@@ -46,6 +48,36 @@ export async function onRequestPost({ request, env, waitUntil }) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email))) return json({ error: 'That email address does not look right.' }, 400);
 
   const clip = (v) => String(v ?? '').slice(0, MAX);
+
+  // Optional: start battery percent and departure clock time (local to the start place).
+  const batteryRaw = String(data.startBattery ?? '').replace('%', '').trim();
+  let startBattery = null;
+  if (batteryRaw) {
+    startBattery = Number(batteryRaw);
+    if (!Number.isInteger(startBattery) || startBattery < 1 || startBattery > 100) {
+      return json({ error: 'Start battery must be a whole number from 1 to 100.' }, 400);
+    }
+  }
+  let depart = clip(data.depart).trim();
+  const timeRaw = String(data.departTime ?? '').trim();
+  if (timeRaw) {
+    if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(timeRaw)) return json({ error: 'Departure time must look like 08:30.' }, 400);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(depart)) return json({ error: 'Pick a departure date to go with the departure time.' }, 400);
+    depart = `${depart}T${timeRaw}`;
+  }
+
+  // A buyer must not pay for a trip we cannot plan. Plans run in the direction of the corridor only.
+  const corridor = matchOrder({ start: data.start, end: data.end });
+  if (corridor.status === 'unmatched') {
+    return json({ error: UNSUPPORTED_MESSAGE, corridors: CORRIDORS.map((item) => item.title) }, 422);
+  }
+  if (corridor.status === 'reverse') {
+    return json({
+      error: `We plan ${corridor.title} in that direction only, so we cannot plan this trip yet. If you want the drive the other way, write to admin@evtripreports.com before you pay.`,
+      corridors: CORRIDORS.map((item) => item.title),
+    }, 422);
+  }
+
   const memberships = Array.isArray(data.memberships) ? data.memberships.map(clip).join('; ') : clip(data.memberships);
 
   const saved = await env.DB.prepare(
@@ -53,7 +85,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new')`
   ).bind(
     new Date().toISOString(), clip(data.name), clip(data.email), clip(data.tier), clip(data.car), clip(data.port),
-    clip(data.start), clip(data.end), clip(data.depart), clip(data.return), clip(data.passengers), memberships, clip(data.notes)
+    clip(data.start), clip(data.end), depart, clip(data.return), clip(data.passengers), memberships, packNotes(clip(data.notes), startBattery)
   ).run();
   const requestId = saved?.meta?.last_row_id;
 
@@ -69,7 +101,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
       `Car: ${clip(data.car)}`,
       `Port/adapter: ${clip(data.port)}`,
       `Route: ${clip(data.start)} to ${clip(data.end)}`,
-      `Leaving: ${clip(data.depart)}${data.return ? `, back ${clip(data.return)}` : ''}`,
+      `Corridor: ${corridor.title}${corridor.startMatch === 'near' || corridor.endMatch === 'near' ? ' (start or end is near the end point)' : ''}`,
+      `Leaving: ${depart.replace('T', ' at ')}${data.return ? `, back ${clip(data.return)} (the way back is built by hand)` : ''}`,
+      `Start battery: ${startBattery == null ? 'not given' : `${startBattery}%`}`,
+      ...(portKnown(data.port) ? [] : ['Charge port: NOT SURE. Ask the customer before building.']),
       `Passengers: ${clip(data.passengers) || 'not given'}`,
       `Memberships: ${memberships || 'none listed'}`,
       '',

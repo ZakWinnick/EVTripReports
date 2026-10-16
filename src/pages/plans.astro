@@ -1,6 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
 import { tiers, priceLabel } from '../data/plans.js';
+import routes from '../data/routes.json';
+import { plannableList } from '../lib/corridors.js';
+// Only live guides are offered. A hidden (verifying) route never shows here.
+const liveSlugs = new Set(routes.filter((route) => route.status === 'live').map((route) => route.slug));
+const corridors = plannableList().filter((corridor) => liveSlugs.has(corridor.slug));
 const rows: [string, boolean, boolean, boolean][] = [
   ['Primary charger and backup at every stop', true, true, true],
   ['Every stop re-checked against the network before delivery', true, true, true],
@@ -15,6 +20,7 @@ const faq = [
   { q: 'How is this different from ABRP?', a: 'A Better Routeplanner is the right tool for battery math and routing, and you should keep it for the drive. A plan is what you read before you leave. It is built for your port, adapter, and memberships, checked against each network\'s own locator, with a backup at every stop.' },
   { q: 'What if a charger is down when I get there?', a: 'Every stop in your plan has a backup, and we tell you how far it is. We also flag sites where drivers have recently reported broken stalls, so you can plan to arrive with extra range.' },
   { q: 'Does any charging network pay you?', a: 'No. No network pays for placement or coverage. If we ever add affiliate links for hotels or gear, they will be marked on the page.' },
+  { q: 'Which trips can you plan?', a: 'The corridors listed under Trips we can plan, in the direction shown. If your trip runs the other way or is on another road, we cannot plan it yet, and the form will say so before you pay.' },
   { q: 'What do you need from me?', a: 'Your car, its charge port and any adapter you carry, your charging memberships, where you\'re starting and ending, and your dates. Notes about kids, pets, or a must-stop diner help too.' },
   { q: 'When do I get my plan?', a: 'Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days. The clock starts when we have both the payment and the trip form. A person reviews the plan before it is sent.' },
   { q: 'Why the form before payment?', a: 'The Stripe page records the charge. It does not record your car, adapter, route, or dates. Send those first. Checkout then opens for the plan you picked, and Stripe brings you back here.' },
@@ -68,6 +74,18 @@ const faq = [
     </div>
   </section>
 
+  <section id="corridors" class="band band--tight">
+    <div class="wrap">
+      <h2 class="h2">Trips we can plan</h2>
+      <p class="lede" style="margin-top:12px">We plan these corridors, in the direction shown. A start or end in the same metro area usually works. A trip the other way, or on another road, we cannot plan yet. If yours is close, write to <a href="mailto:admin@evtripreports.com">admin@evtripreports.com</a> before you pay.</p>
+      <ul class="corridors">
+        {corridors.map((corridor) => (
+          <li><a href={`/guides/${corridor.slug}/`}>{corridor.from} to {corridor.to}</a> <span class="small muted">{corridor.highway}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
   <section id="request" class="band band--tight">
     <div class="wrap req">
       <div>
@@ -92,7 +110,7 @@ const faq = [
             <option>NACS port (Tesla-style)</option>
             <option>NACS port, with a CCS adapter</option>
             <option>Not sure</option>
-          </select></label>
+          </select><span class="small muted">Not sure is fine. We ask you before we build.</span></label>
         </div>
         <div class="grid2">
           <label>Starting from<input name="start" placeholder="Pasadena, CA" required /></label>
@@ -101,6 +119,10 @@ const faq = [
         <div class="grid2">
           <label>Leaving<input name="depart" type="date" required /></label>
           <label>Coming back (optional)<input name="return" type="date" /></label>
+        </div>
+        <div class="grid2">
+          <label>Leaving at (optional)<input name="departTime" type="time" /><span class="small muted">Local time where you start.</span></label>
+          <label>Battery when you leave, % (optional)<input name="startBattery" type="number" inputmode="numeric" min="1" max="100" step="1" placeholder="80" /></label>
         </div>
         <label>Passengers<input name="passengers" placeholder="2 adults, 1 kid, 1 dog" /></label>
         <fieldset>
@@ -306,6 +328,8 @@ const faq = [
 
 <style>
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .corridors { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; max-width: 820px; }
+  @media (max-width: 560px) { .corridors { grid-template-columns: 1fr; } }
   .cmp { margin-top: 32px; }
   .cmp__row { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: center; }
   .cmp__hdr { border-bottom: 1px solid var(--ink); align-items: end; padding-bottom: 20px; }

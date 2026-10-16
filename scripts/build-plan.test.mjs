@@ -6,7 +6,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { parsePlan, renderPlan } from '../src/lib/render-plan.js';
-import { UNKNOWN, buildPlan, draftRecord, planMarkdown, tierOf } from './build-plan.mjs';
+import { OrderBlockedError, UNKNOWN, buildPlan, draftRecord, planMarkdown, tierOf } from './build-plan.mjs';
 import { FAKE_ORDER, runDryRun } from './dry-run-order.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -353,11 +353,18 @@ test('missing battery, clock, and port stay unverified instead of being filled i
   const dated = buildPlan(order({ startBattery: undefined, depart: '2026-11-02' }), sampleRoute());
   assert.equal(dated.stops[0].primary.facts.find((fact) => fact.label === 'Arrival battery').value, UNKNOWN);
   assert.match(dated.stops[0].primary.facts.find((fact) => fact.label === 'Drive time').value, /Departure clock time: Not yet verified/);
-  const closed = buildPlan(order({ adapter: 'Not sure', tier: '$19' }), sampleRoute());
-  assert.equal(closed.stops.length, 0);
-  assert.equal(closed.port, UNKNOWN);
-  assert.match(closed.summary, /Not yet verified/);
-  assert.ok(closed.tips.some((tip) => /No charging stops were chosen/.test(tip.text)));
+});
+
+test('a "Not sure" port never produces a paid plan with no stops', () => {
+  for (const tier of ['$19', '$39', '$79']) {
+    for (const adapter of ['Not sure', '', 'unknown']) {
+      assert.throws(
+        () => buildPlan(order({ adapter, tier }), sampleRoute()),
+        (error) => error instanceof OrderBlockedError && error.code === 'needs-customer-question' && /Needs customer question/.test(error.message),
+        `${tier} ${adapter}`,
+      );
+    }
+  }
 });
 
 test('copy stays specific, and the same order produces the same plan', () => {
@@ -642,7 +649,8 @@ test('warnings stay out of food and restroom lists, and a restroom about another
   }];
   const split = buildPlan(order(), route).stops[0];
   assert.ok(split.food.every((item) => !/charging options/.test(item.text)));
-  assert.ok(split.primaryCautions.some((item) => /charging options/.test(item.text) && /Driver report/.test(item.note) && item.checkedOn === '2026-05-02' && item.url.includes('plugshare.com')));
+  assert.equal(split.primaryCautions.some((item) => /charging options/.test(item.text)), false);
+  assert.ok(split.driverNotes.some((item) => /charging options/.test(item.text) && /Driver report/.test(item.note) && item.checkedOn === '2026-05-02' && item.url.includes('plugshare.com')));
   assert.ok(split.backupCautions.some((item) => /Queued/.test(item.text)));
   assert.equal(split.primaryCautions.some((item) => item.status === 'verified'), false);
 });
@@ -891,16 +899,43 @@ test('contingency names the next verified station in each direction, and says on
   assert.equal(plan.contingency.filter((item) => item.title === 'Weather or heat').length, 0);
 });
 
-test('direction wording follows the trip, and a named origin that matches the first point has no origin leg', async () => {
+test('a reverse-direction order is refused for every tier, and a forward order builds', async () => {
   const vegas = JSON.parse(await readFile(path.join(root, 'src/data/routes/la-to-las-vegas.json'), 'utf8'));
-  const back = buildPlan({ ...FAKE_ORDER, tier: '$79', start: 'Las Vegas, NV', end: 'Los Angeles, CA' }, vegas);
-  assert.ok(back.tips.some((tip) => tip.text.startsWith('Southbound,')));
-  assert.equal(back.tips.some((tip) => tip.text.startsWith('Northbound,')), false);
+  for (const tier of ['$19', '$39', '$79']) {
+    for (const [start, end] of [['Las Vegas, NV', 'Los Angeles, CA'], ['vegas', 'LA'], ['Henderson, NV', 'Pasadena, CA']]) {
+      assert.throws(
+        () => buildPlan({ ...FAKE_ORDER, tier, start, end }, vegas),
+        (error) => error instanceof OrderBlockedError && error.code === 'needs-manual-build' && /Needs manual build: reverse direction/.test(error.message),
+        `${tier} ${start} to ${end}`,
+      );
+    }
+  }
+  const forward = buildPlan({ ...FAKE_ORDER, tier: '$79', start: 'Pasadena, CA', end: 'Las Vegas, NV' }, vegas);
+  assert.ok(forward.tips.some((tip) => tip.text.startsWith('Northbound,')));
+  assert.equal(forward.tips.some((tip) => tip.text.startsWith('Southbound,')), false);
+  // An order for a different corridor than the route file is refused too.
+  assert.throws(
+    () => buildPlan({ ...FAKE_ORDER, start: 'Seattle, WA', end: 'Portland, OR' }, vegas),
+    (error) => error instanceof OrderBlockedError && /not la-to-las-vegas/.test(error.message),
+  );
+});
+
+test('a named origin that matches the first point has no origin leg', async () => {
   const tahoe = JSON.parse(await readFile(path.join(root, 'src/data/routes/sf-to-tahoe.json'), 'utf8'));
   const plan = buildPlan(order({ slug: 'sf-to-tahoe', start: 'San Francisco, CA', end: 'Truckee, CA', notes: '' }), tahoe);
   assert.equal(plan.originLeg, undefined);
   assert.doesNotMatch(plan.summary, /first-stop numbers are optimistic/);
   assert.equal(tahoe.direction, 'eastbound');
+});
+
+test('the start battery tag from the intake form is read and never printed', async () => {
+  const vegas = JSON.parse(await readFile(path.join(root, 'src/data/routes/la-to-las-vegas.json'), 'utf8'));
+  const plan = buildPlan({ ...FAKE_ORDER, startBattery: undefined, depart: '2026-11-02T07:30', notes: '[Start battery: 65%]\nOne dog.' }, vegas);
+  assert.match(plan.summary, /Start battery: 65%/);
+  assert.match(plan.summary, /at 07:30/);
+  assert.ok(plan.tips.some((tip) => tip.text === 'Order note: One dog.'));
+  assert.doesNotMatch(JSON.stringify(plan), /\[Start battery/);
+  assert.notEqual(plan.stops[0].primary.facts.find((fact) => fact.label === 'Arrival battery').value, UNKNOWN);
 });
 
 test('a stored plan renders the same HTML, and new sections appear only when the plan has them', async () => {
@@ -1254,4 +1289,24 @@ test('LV to SLC Salt Lake City primary is the Target EVgo site with a host-sourc
   assert.ok(hours, 'Target hours note');
   assert.match(hours.text, /7am to 10pm daily/);
   assert.equal(JSON.stringify(stop.primaryCautions || []).includes("Sam's Club"), false);
+});
+
+test('positive driver notes are filed as Driver notes, and problems stay under Cautions', () => {
+  const route = sampleRoute();
+  route.stops[0].primary.driverReports = [
+    { source: 'plugshare', url: 'https://www.plugshare.com/location/21', date: '2026-08-16', summary: 'I love the charging options here, with restaurants across the street.', category: 'food' },
+    { source: 'x', url: 'https://x.com/example/status/1', date: '2026-04-21', summary: 'Pulled a steady 148 kW for about 15 minutes. Lots of restaurants nearby.', category: 'food' },
+    { source: 'plugshare', url: 'https://www.plugshare.com/location/22', date: '2026-08-17', summary: 'Two chargers not working and a long wait for the restaurants.', category: 'food' },
+  ];
+  const stop = buildPlan(order(), route).stops[0];
+  assert.equal(stop.driverNotes.length, 2);
+  assert.ok(stop.driverNotes.every((item) => /Driver report/.test(item.note) && item.url && item.checkedOn));
+  const cautionText = JSON.stringify([stop.cautions || [], stop.primaryCautions || [], stop.otherCautions || []]);
+  assert.doesNotMatch(cautionText, /I love the charging options/);
+  assert.doesNotMatch(cautionText, /148 kW/);
+  assert.match(cautionText, /not working/);
+  const plan = buildPlan(order(), route);
+  const html = renderPlan(plan);
+  assert.match(html, /Driver notes/);
+  assert.match(planMarkdown(plan), /Driver notes:/);
 });

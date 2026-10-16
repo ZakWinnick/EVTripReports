@@ -275,6 +275,7 @@ function stopSection(stop, index, sources, plan) {
   const places = [
     placeSection('Food', stop.food || stop.meals, sources),
     placeSection('Lodging', stop.hotels || stop.lodging, sources),
+    placeSection('Driver notes', stop.driverNotes, sources),
     cautionSections(stop, sources),
   ].join('');
   const others = Array.isArray(stop.other) && stop.other.length
