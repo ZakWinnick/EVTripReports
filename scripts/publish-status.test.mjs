@@ -150,6 +150,31 @@ test('DC to NYC passes the primary gate and stays off the public lists', async (
   assert.equal(raw.includes('Rangeway'), false);
 });
 
+test('dc-to-nyc route JSON contains no em dash or en dash in any string', async () => {
+  const raw = await readFile(new URL('../src/data/routes/dc-to-nyc.json', import.meta.url), 'utf8');
+  const route = JSON.parse(raw);
+  const dash = /[\u2013\u2014]|\\u201[34]/i;
+  assert.equal(dash.test(raw), false);
+
+  const visit = (value, where) => {
+    if (typeof value === 'string') {
+      assert.equal(dash.test(value), false, where);
+      return;
+    }
+    if (Array.isArray(value)) {
+      value.forEach((item, index) => visit(item, `${where}[${index}]`));
+      return;
+    }
+    if (value && typeof value === 'object') {
+      for (const [key, child] of Object.entries(value)) {
+        assert.equal(dash.test(key), false, `${where} key`);
+        visit(child, `${where}.${key}`);
+      }
+    }
+  };
+  visit(route, 'dc-to-nyc');
+});
+
 test('routes already marked live still pass the primary gate', async () => {
   const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
   const files = await readdir(new URL('../src/data/routes/', import.meta.url));
