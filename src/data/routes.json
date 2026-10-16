@@ -46,7 +46,7 @@
     "title": "Washington, DC to NYC",
     "highway": "I-95",
     "miles": 223,
-    "status": "verifying"
+    "status": "live"
   },
   {
     "slug": "las-vegas-to-salt-lake-city",

@@ -94,7 +94,7 @@ test('LA to Phoenix primaries pass and the three noted differences stay conflict
   assert.doesNotMatch(cards, /Coming soon/);
 });
 
-test('DC to NYC passes the primary gate and stays off the public lists', async () => {
+test('DC to NYC passes the primary gate and is on the public lists', async () => {
   const routeData = JSON.parse(await readFile(new URL('../src/data/routes/dc-to-nyc.json', import.meta.url), 'utf8'));
   const raw = await readFile(new URL('../src/data/routes/dc-to-nyc.json', import.meta.url), 'utf8');
   const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
@@ -103,13 +103,13 @@ test('DC to NYC passes the primary gate and stays off the public lists', async (
   assert.equal(routeData.title, 'Washington, DC to NYC');
   assert.equal(routeData.highway, 'I-95');
   assert.equal(routeData.checked, '2026-10-15');
-  assert.equal(meta.status, 'verifying');
+  assert.equal(meta.status, 'live');
   assert.equal(meta.title, 'Washington, DC to NYC');
   assert.equal(meta.highway, 'I-95');
   assert.equal(meta.miles, 223);
   assert.equal(primaryPublishBlock(routeData), null);
   assert.equal(exportStatus('live', routeData), 'live');
-  assert.equal(exportStatus(meta.status, routeData), 'verifying');
+  assert.equal(exportStatus(meta.status, routeData), 'live');
 
   assert.equal(routeData.stops.length, 5);
   for (const stop of routeData.stops) {
@@ -127,10 +127,10 @@ test('DC to NYC passes the primary gate and stays off the public lists', async (
 
   const guides = await liveBuiltGuides();
   const index = await liveBuiltGuideIndex();
-  assert.equal(guides.some((guide) => guide.slug === 'dc-to-nyc'), false);
-  assert.equal(index.some((guide) => guide.slug === 'dc-to-nyc'), false);
+  assert.equal(guides.some((guide) => guide.slug === 'dc-to-nyc'), true);
+  assert.equal(index.some((guide) => guide.slug === 'dc-to-nyc'), true);
   const xml = buildSitemapXml(guidesForSitemap(guides, []));
-  assert.equal(xml.includes('dc-to-nyc'), false);
+  assert.equal(xml.includes('dc-to-nyc'), true);
 
   const files = await readdir(new URL('../src/data/routes/', import.meta.url));
   const routeBySlug = {};
@@ -139,7 +139,7 @@ test('DC to NYC passes the primary gate and stays off the public lists', async (
     routeBySlug[data.slug] = data;
   }
   const home = visibleHomeRoutes(list, routeBySlug);
-  assert.equal(home.some((route) => route.slug === 'dc-to-nyc'), false);
+  assert.equal(home.some((route) => route.slug === 'dc-to-nyc'), true);
   assert.equal(home.every((route) => route.status === 'live'), true);
 
   const html = guideMain(routeData);

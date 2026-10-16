@@ -48,5 +48,13 @@ export default [
     "start": "George Washington Bridge",
     "end": "Exit 19, Foxborough",
     "miles": "197"
+  },
+  {
+    "slug": "dc-to-nyc",
+    "title": "Washington, DC to NYC",
+    "highway": "I-95",
+    "start": "I-95 at the Capital Beltway",
+    "end": "George Washington Bridge",
+    "miles": "223"
   }
 ];
