@@ -2,6 +2,7 @@
   "slug": "sf-to-tahoe",
   "title": "SF to Lake Tahoe",
   "highway": "I-80",
+  "direction": "eastbound",
   "summary": "I-80 from San Francisco to Truckee. The pass is the point of this drive: Donner Summit is 7,239 ft westbound. Primaries are Electrify America sites confirmed on EA's locator. Sierra sites that are DOE-only stay in the list, unverified.",
   "checked": "2026-10-15",
   "startLabel": "US 101, San Francisco",

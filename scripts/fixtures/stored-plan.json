@@ -1,0 +1,171 @@
+{
+  "title": "Sample stored plan",
+  "summary": "Detailed plan ($39) for a 2024 Hyundai Ioniq 5. Sample to Sample. Charge at Walmart Alpha to 50%. Estimated arrival at the end is 20% around 10:00, above the 10% reserve.",
+  "tier": "Detailed plan ($39)",
+  "car": "2024 Hyundai Ioniq 5",
+  "port": "CCS port, with a NACS adapter",
+  "highway": "I-5",
+  "checked": "2026-10-15",
+  "dataChecked": "2026-10-01 to 2026-10-15",
+  "depart": "2026-11-02T08:00:00-08:00",
+  "timeZone": "America/Los_Angeles",
+  "startLabel": "Start",
+  "endLabel": "End",
+  "startNote": "Mileage starts at the junction.",
+  "stats": [
+    {
+      "label": "Start to end",
+      "value": "100",
+      "unit": "mi",
+      "source": "wiki",
+      "url": "https://en.wikipedia.org/wiki/Example",
+      "checkedOn": "2026-10-15",
+      "sourceName": "Example route notes"
+    }
+  ],
+  "sources": {
+    "wiki": {
+      "name": "Example route notes",
+      "url": "https://en.wikipedia.org/wiki/Example"
+    }
+  },
+  "assumptions": [
+    "A reserve of 10% is held back. An arrival under that reserve is flagged."
+  ],
+  "strategy": {
+    "text": "Charge at Walmart Alpha to 50%. Estimated arrival at the end is 20% around 10:00, above the 10% reserve.",
+    "reservePercent": 10,
+    "stops": [],
+    "destination": {
+      "mile": 100,
+      "arrivePercent": 20,
+      "arriveClock": "10:00",
+      "belowReserve": false,
+      "ranOut": false
+    }
+  },
+  "stops": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "mile": 40,
+      "towns": "Alpha, CA",
+      "milepostNote": "Exit 40",
+      "why": "First verified stop after the grade. No verified backup at Alpha yet. Charge to a higher level at the previous stop.",
+      "note": "No verified backup at Alpha yet. Charge to a higher level at the previous stop.",
+      "headline": false,
+      "charging": false,
+      "primary": {
+        "name": "Walmart Alpha",
+        "network": {
+          "value": "Electrify America",
+          "status": "verified",
+          "url": "https://www.electrifyamerica.com/locate-charger/alpha/",
+          "checkedOn": "2026-10-15",
+          "source": "wiki",
+          "sourceName": "Example route notes"
+        },
+        "address": {
+          "value": "1 Main St",
+          "status": "verified",
+          "url": "https://www.electrifyamerica.com/locate-charger/alpha/",
+          "checkedOn": "2026-10-15"
+        },
+        "exit": {
+          "value": "Exit 40",
+          "status": "verified",
+          "url": "https://www.electrifyamerica.com/locate-charger/alpha/",
+          "checkedOn": "2026-10-15"
+        },
+        "stalls": {
+          "value": "8",
+          "status": "verified",
+          "url": "https://www.electrifyamerica.com/locate-charger/alpha/",
+          "checkedOn": "2026-10-15"
+        },
+        "power": {
+          "value": "350 kW CCS",
+          "status": "verified",
+          "url": "https://www.electrifyamerica.com/locate-charger/alpha/",
+          "checkedOn": "2026-10-15"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "url": "https://www.electrifyamerica.com/locate-charger/alpha/",
+          "checkedOn": "2026-10-15"
+        },
+        "price": {
+          "value": "Shown in the app.",
+          "status": "unpublished",
+          "url": "https://www.electrifyamerica.com/locate-charger/alpha/",
+          "checkedOn": "2026-10-15"
+        },
+        "facts": [
+          {
+            "label": "Charging",
+            "value": "Optional. This plan does not charge here."
+          },
+          {
+            "label": "Arrival battery",
+            "value": "Estimate: about 64% on arrival.",
+            "note": "Estimate. Assumptions are listed on this plan."
+          }
+        ]
+      },
+      "backups": [
+        {
+          "name": "Tesla Alpha",
+          "facts": "12 stalls, up to 250 kW.",
+          "status": "verified",
+          "network": "Tesla Supercharger",
+          "address": "2 Main St",
+          "teslaAccess": "open",
+          "url": "https://www.tesla.com/findus/location/supercharger/alpha",
+          "checkedOn": "2026-10-15",
+          "source": "wiki",
+          "sourceName": "Example route notes"
+        }
+      ],
+      "food": [
+        {
+          "name": "Cafe",
+          "text": "Food court across the lot.",
+          "url": "https://www.plugshare.com/location/2",
+          "checkedOn": "2026-08-01",
+          "note": "Driver report. Not a network fact.",
+          "source": "wiki",
+          "sourceName": "Example route notes"
+        }
+      ],
+      "cautions": [
+        {
+          "name": "Walmart Alpha",
+          "text": "One charger was out of service.",
+          "url": "https://www.plugshare.com/location/1",
+          "checkedOn": "2026-10-01",
+          "note": "Driver report. Not a network fact.",
+          "source": "wiki",
+          "sourceName": "Example route notes"
+        }
+      ]
+    }
+  ],
+  "contingency": [
+    {
+      "title": "Stall full or offline",
+      "text": "If Walmart Alpha is full or offline, use Tesla Alpha.",
+      "url": "https://www.tesla.com/findus/location/supercharger/alpha",
+      "checkedOn": "2026-10-15",
+      "source": "wiki"
+    }
+  ],
+  "tips": [
+    {
+      "text": "Skip Tesla Only Alpha at Alpha: Tesla only.",
+      "url": "https://www.tesla.com/findus/location/supercharger/alpha-only",
+      "checkedOn": "2026-10-15",
+      "source": "wiki"
+    }
+  ]
+}

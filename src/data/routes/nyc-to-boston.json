@@ -2,10 +2,22 @@
   "slug": "nyc-to-boston",
   "title": "NYC to Boston",
   "highway": "I-95",
+  "direction": "northbound",
   "summary": "I-95 from the George Washington Bridge to Foxborough. Primaries are Electrify America sites confirmed on EA's locator, including the Waterford site that lists CCS and NACS at 400 kW. Boston itself is past the last stop.",
   "checked": "2026-10-15",
   "startLabel": "George Washington Bridge",
   "startNote": "Mileage is New York 23.50 miles (George Washington Bridge to the Connecticut line), plus Connecticut 111.57, plus Rhode Island 42.36, plus Massachusetts to exit 19 at mile 19.215. That sum is 196.6 miles, shown as 197.",
+  "originLegs": [
+    {
+      "start": "New York",
+      "miles": 11.25,
+      "source": "osrm",
+      "url": "http://router.project-osrm.org/route/v1/driving/-74.005939,40.7127395;-73.9480027,40.8508319",
+      "checkedOn": "2026-10-16",
+      "estimate": true,
+      "note": "Estimate. Driving distance from New York City Hall to the George Washington Bridge."
+    }
+  ],
   "endLabel": "Exit 19, Foxborough",
   "stats": [
     {
@@ -34,6 +46,10 @@
     "ea-locator": {
       "name": "Electrify America locator",
       "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
     },
     "wiki-i95-ny": {
       "name": "Interstate 95 in New York (Wikipedia)",

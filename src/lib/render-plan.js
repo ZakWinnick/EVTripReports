@@ -243,7 +243,7 @@ function stopSection(stop, index, sources, plan) {
   const places = [
     placeSection('Food', stop.food || stop.meals, sources),
     placeSection('Lodging', stop.hotels || stop.lodging, sources),
-    placeSection('Cautions', stop.cautions, sources),
+    cautionSections(stop, sources),
   ].join('');
   const others = Array.isArray(stop.other) && stop.other.length
     ? `<details class="other"><summary>Other sites nearby (${stop.other.length})</summary>${backupList(stop.other, sources, plan)}</details>`
@@ -264,7 +264,7 @@ function stopSection(stop, index, sources, plan) {
         }</div>`
       : ''
   }</header>
-${stop.why ? `<p class="stop__why">${esc(stop.why)}</p>` : ''}
+${stop.why ? `<p class="stop__why">${esc(stop.why)}</p>` : ''}${stop.note && !(stop.why || '').includes(stop.note) ? `\n<p class="stop__why">${esc(stop.note)}</p>` : ''}
 ${stop.charging === true ? `<p class="small muted" style="margin-top:8px">Charge at this stop.</p>` : ''}
 ${stop.charging === false ? `<p class="small muted" style="margin-top:8px">Optional stop. This plan does not charge here.</p>` : ''}
 ${
@@ -289,6 +289,27 @@ ${
 function stopsHtml(stops, sources, plan) {
   if (!Array.isArray(stops) || !stops.length) return '';
   return stops.map((stop, index) => stopSection(stop || {}, index, sources, plan)).join('\n');
+}
+
+function cautionSections(stop, sources) {
+  if (stop?.primaryCautions || stop?.backupCautions || stop?.otherCautions) {
+    return [
+      placeSection('Primary cautions', stop.primaryCautions, sources),
+      placeSection('Backup cautions', stop.backupCautions, sources),
+      placeSection('Other cautions', stop.otherCautions, sources),
+    ].join('');
+  }
+  return placeSection('Cautions', stop?.cautions, sources);
+}
+
+function originHtml(plan, sources) {
+  const leg = plan?.originLeg;
+  if (!leg || typeof leg !== 'object') return '';
+  const miles = leg.miles == null ? '' : `${leg.miles} miles`;
+  const from = leg.from || 'the start';
+  const to = leg.to || plan.startLabel || 'the route start';
+  const lead = leg.estimate ? `Estimate: ${miles} from ${from} to ${to}, before the route mile marks.` : `${miles} from ${from} to ${to}, before the route mile marks.`;
+  return `\n<p class="small muted" style="margin-top:8px">${esc(lead)} ${factBits(leg, sources)}</p>`;
 }
 
 function contingencyHtml(items, sources) {
@@ -369,7 +390,7 @@ export function renderPlan(plan, ctx = {}) {
 ${plan.summary ? `<p class="lede" style="margin-top:18px">${esc(plan.summary)}</p>` : ''}
 ${bits ? `<p class="small muted" style="margin-top:14px">${esc(bits)}</p>` : ''}
 ${checked ? `<p class="small muted" style="margin-top:8px">Station facts checked ${esc(checked)}. Each fact below links its source and shows the date that fact was checked.</p>` : ''}
-${plan.dataChecked ? `<p class="small muted" style="margin-top:8px">Data checked ${esc(plan.dataChecked)}.</p>` : ''}
+${plan.dataChecked ? `<p class="small muted" style="margin-top:8px">Data checked ${esc(plan.dataChecked)}.</p>` : ''}${originHtml(plan, sources)}
 ${topFacts ? `<div class="panel primary" style="margin-top:28px">${`<dl class="sheet">${topFacts}</dl>`}</div>` : ''}
 <div style="margin-top:40px">${planStats(plan.stats, sources)}</div>
 </div></section>

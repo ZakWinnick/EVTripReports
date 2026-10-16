@@ -16,6 +16,8 @@ export const MPH = 65;
 export const MILES_PER_PERCENT = 2.5;
 export const RANGE_MILES = MILES_PER_PERCENT * 100;
 export const RESERVE_PERCENT = 10;
+export const TARGET_ARRIVAL = 15;
+export const CHARGE_LIMIT = 90;
 export const PACK_KWH = 75;
 export const CURVE_TO_80 = 0.7;
 export const CURVE_ABOVE_80 = 0.35;
@@ -57,6 +59,7 @@ const HOST_NAMES = {
   'f150lightningforum.com': 'F150 Lightning Forum',
   'cybertruckownersclub.com': 'Cybertruck Owners Club',
   'afdc.energy.gov': 'DOE Alternative Fuels Data Center',
+  'router.project-osrm.org': 'OpenStreetMap OSRM',
 };
 
 const BANNED = /\b(fast|slow)\b/i;
@@ -93,6 +96,7 @@ export function buildPlan(order, route) {
   const depart = normalizeDepart(departValue(input), zone);
   const startBattery = startPercent(input);
   const energy = vehicleEnergy(input);
+  const chargeLimit = chargeLimitOf(input);
   const origin = originLeg(input, route);
   const milesTotal = routeMiles(route);
   const level = tier.id;
@@ -104,11 +108,18 @@ export function buildPlan(order, route) {
     depart,
     startBattery,
     energy,
+    chargeLimit,
+    chargeLimitIsDefault: chargeLimitIsDefault(input),
     origin,
     milesTotal,
     zone,
     profile,
+    order: input,
   };
+  if (origin?.source) {
+    ctx.used.add(origin.source);
+    if (origin.url) ctx.urls.set(origin.source, origin.url);
+  }
 
   const chosen = [];
   const skipped = [];
@@ -124,31 +135,27 @@ export function buildPlan(order, route) {
   }
 
   const prepared = chosen.map((entry) => prepareStop(entry, ctx));
-  const strategy = level === 'basic' ? null : buildStrategy(prepared, ctx);
-  const stops = prepared.map((entry) => renderStop(entry, strategy, ctx));
 
   const tips = [];
   const notes = cleanCopy(input.notes ?? '');
   if (notes) tips.push({ text: `Order note: ${notes}` });
-  if (chosen.length) tips.push({ text: amenityHonesty(chosen, route) });
+  if (chosen.length) tips.push({ text: amenityHonesty(chosen, route, input) });
   if (level === 'basic') tips.push({ text: estimatedLine(mileageAssumption(input, route, origin)) });
   if (!profile.hasPlug) tips.push({ text: `Port or adapter: ${UNKNOWN}. No charging stops were chosen.` });
   for (const skip of skipped) tips.push({ text: `Skipped ${skip.name}: ${cleanCopy(skip.reason)}` });
+  const teslaSkips = [];
   for (const entry of chosen) {
-    for (const skippedTesla of entry.teslaOnly || []) {
-      const tip = { text: cleanCopy(`Skip ${skippedTesla.name} at ${entry.stop.name}: Tesla only.`) };
-      if (skippedTesla.source) tip.source = skippedTesla.source;
-      if (skippedTesla.url) tip.url = skippedTesla.url;
-      if (skippedTesla.checkedOn) tip.checkedOn = skippedTesla.checkedOn;
-      if (tip.source) ctx.used.add(tip.source);
-      if (tip.url) ctx.urls.set(tip.source, tip.url);
-      tips.push(tip);
-    }
+    for (const skippedTesla of entry.teslaOnly || []) teslaSkips.push(skippedTesla);
   }
+  const teslaTip = teslaOnlyTip(teslaSkips, route, ctx);
+  if (teslaTip) tips.push(teslaTip);
+  const direction = tripDirection(input, route);
   if (level === 'full') {
     for (const tip of route.tips || []) {
-      const text = cleanCopy(tip?.text || '');
-      if (!text || BANNED.test(text)) continue;
+      let text = cleanCopy(tip?.text || '');
+      if (!text || BANNED.test(text) || isBlanketClaim(text)) continue;
+      if (/tesla-only sites/i.test(text) && teslaSkips.length) continue;
+      text = applyDirection(text, direction);
       const source = tip.source || '';
       const url = httpUrl(tip.url) || httpUrl(route.sources?.[source]?.url);
       const checkedOn = day(tip.checkedOn) || day(route.checked);
@@ -159,10 +166,15 @@ export function buildPlan(order, route) {
       }
       tips.push({ text, source, url, checkedOn });
     }
+    const counted = eaProblemTip(route, ctx);
+    if (counted) tips.push(counted);
   }
 
-  const contingency = level === 'full' ? buildContingency(stops, ctx) : null;
-  const assumptions = level === 'basic' ? null : buildAssumptions(input, route, origin, energy, zone);
+  const strategy = level === 'basic' ? null : buildStrategy(prepared, ctx);
+  ctx.prepared = prepared;
+  const stops = prepared.map((entry) => renderStop(entry, strategy, ctx));
+  const contingency = level === 'full' ? buildContingency(stops, strategy, ctx) : null;
+  const assumptions = level === 'basic' ? null : buildAssumptions(input, route, origin, energy, zone, ctx);
   const stats = planStats(route, ctx);
   const sources = sourceMap(route, ctx);
 
@@ -191,10 +203,11 @@ export function buildPlan(order, route) {
       miles: origin.miles,
       from: origin.from,
       to: origin.to,
-      status: 'verified',
       url: origin.url,
       checkedOn: origin.checkedOn,
+      ...(origin.estimate ? { estimate: true } : { status: 'verified' }),
       ...(origin.source ? { source: origin.source } : {}),
+      ...(origin.note ? { note: origin.note } : {}),
     };
   }
   if (stats.length) plan.stats = stats;
@@ -253,7 +266,7 @@ export function planSummary(plan) {
 
 export function planMarkdown(plan) {
   const lines = [`# ${plan.title || 'Plan'}`, '', plan.summary || '', ''];
-  if (plan.strategy?.text) lines.push(plan.strategy.text, '');
+  if (plan.strategy?.text && !(plan.summary || '').includes(plan.strategy.text)) lines.push(plan.strategy.text, '');
   if (plan.dataChecked) lines.push(`Data checked: ${plan.dataChecked}`, '');
   if (plan.assumptions?.length) {
     lines.push('## Estimate assumptions');
@@ -276,7 +289,18 @@ export function planMarkdown(plan) {
       lines.push('Backups:');
       for (const backup of stop.backups) lines.push(`- ${backup.name}: ${backup.facts || ''}`);
     } else if (stop.note) lines.push(stop.note);
-    if (stop.cautions?.length) {
+    const cautionGroups = [
+      ['Cautions, primary', stop.primaryCautions],
+      ['Cautions, backup', stop.backupCautions],
+      ['Cautions, other', stop.otherCautions],
+    ];
+    if (cautionGroups.some(([, items]) => items?.length)) {
+      for (const [label, items] of cautionGroups) {
+        if (!items?.length) continue;
+        lines.push(`${label}:`);
+        for (const item of items) lines.push(`- ${item.name}: ${item.text}`);
+      }
+    } else if (stop.cautions?.length) {
       lines.push('Cautions:');
       for (const item of stop.cautions) lines.push(`- ${item.name}: ${item.text}`);
     }
@@ -329,14 +353,15 @@ function buildSummary({ vehicle, profile, tier, route, stops, depart, startBatte
     `Start battery: ${battery}.`,
     departSentence(depart),
   ].filter(Boolean);
-  if (from && to) parts.push(`${from} to ${to}.`);
+  if (from && to && !sameTrip(route.title, from, to)) parts.push(`${from} to ${to}.`);
   const passengers = cleanCopy(order.passengers ?? '');
   if (passengers) parts.push(`Passengers: ${passengers}.`);
   parts.push(stopsSentence(stops, route.highway));
   const mileage = mileageSentence(order, route, origin, milesTotal);
   if (mileage) parts.push(mileage);
-  if (strategy?.text) parts.push(strategy.text);
-  else if (tier.id !== 'basic' && (startBattery == null || milesTotal == null)) parts.push(`Charging strategy: ${UNKNOWN}.`);
+  const optimistic = !origin && placesDiffer(from, route.startLabel || '');
+  if (strategy?.text && !optimistic) parts.push(strategy.text);
+  else if (!strategy && tier.id !== 'basic' && (startBattery == null || milesTotal == null)) parts.push(`Charging strategy: ${UNKNOWN}.`);
   if (dataChecked) parts.push(`Data checked ${dataChecked}.`);
   return cleanCopy(parts.join(' '));
 }
@@ -355,11 +380,13 @@ function mileageSentence(order, route, origin, milesTotal) {
   const orderStart = cleanCopy(order.start ?? order.startPlace ?? '');
   const miles = milesTotal == null ? '' : `${trimNum(milesTotal)} miles`;
   if (origin) {
-    const leg = `${trimNum(origin.miles)} miles from ${origin.from || orderStart || 'the start'} to ${origin.to || startLabel}`;
+    const kind = origin.estimate ? 'an estimated ' : '';
+    const leg = `${kind}${trimNum(origin.miles)} miles from ${origin.from || orderStart || 'the start'} to ${origin.to || startLabel}`;
     return miles ? `Mileage includes ${leg}, then ${miles} on the route.` : `Mileage includes ${leg}.`;
   }
   if (orderStart && placesDiffer(orderStart, startLabel)) {
-    return miles ? `Mileage counted from ${startLabel}, ${miles}.` : `Mileage counted from ${startLabel}.`;
+    const counted = miles ? `Mileage starts at ${startLabel}, the route's first point, ${miles}.` : `Mileage starts at ${startLabel}, the route's first point.`;
+    return `${counted} The distance from ${orderStart} is not in this plan, so the first-stop numbers are optimistic.`;
   }
   return miles ? `${miles}.` : '';
 }
@@ -368,27 +395,37 @@ function mileageAssumption(order, route, origin) {
   const startLabel = cleanCopy(route.startLabel || 'the route start');
   const orderStart = cleanCopy(order.start ?? order.startPlace ?? '');
   if (origin) {
-    return `Mileage includes ${trimNum(origin.miles)} miles from ${origin.from || orderStart || 'the start'} to ${origin.to || startLabel} before the route mile marks. Starting battery at the route start is reduced for that leg.`;
+    const kind = origin.estimate ? 'an estimated ' : '';
+    const cite = origin.estimate
+      ? ` ${origin.note || 'Estimate.'} Source checked ${origin.checkedOn}.`
+      : '';
+    return `Mileage includes ${kind}${trimNum(origin.miles)} miles from ${origin.from || orderStart || 'the start'} to ${origin.to || startLabel}, before the route mile marks.${cite} Starting battery at the route start is reduced for that leg. Clock times include that drive.`;
   }
-  if (orderStart && placesDiffer(orderStart, startLabel)) return `Mileage counted from ${startLabel}.`;
+  if (orderStart && placesDiffer(orderStart, startLabel)) {
+    return `Mileage starts at ${startLabel}, the route's first point. The distance from ${orderStart} is not in this plan, so the first-stop numbers are optimistic.`;
+  }
   return '';
 }
 
 function placesDiffer(orderStart, routeStart) {
-  const a = orderStart.toLowerCase();
-  const b = routeStart.toLowerCase();
+  const a = placeKey(orderStart);
+  const b = placeKey(routeStart);
   if (!a || !b) return false;
-  return !a.includes(b) && !b.includes(a);
+  if (a === b || a.includes(b) || b.includes(a)) return false;
+  return true;
 }
 
-function buildAssumptions(order, route, origin, energy, zone) {
+function buildAssumptions(order, route, origin, energy, zone, ctx) {
   const lines = [];
   const mileage = mileageAssumption(order, route, origin);
   if (mileage) lines.push(mileage);
   lines.push(energy.rangeAssumed
     ? `Battery percent is an estimate at ${trimNum(energy.rangeMiles / 100)} miles per percent of charge, ${trimNum(energy.rangeMiles)} miles from 100% to 0%. It is not a tested range for this vehicle.`
     : `Battery percent uses the order's stated range of ${trimNum(energy.rangeMiles)} miles from 100% to 0%.`);
-  lines.push(`A reserve of ${RESERVE_PERCENT}% is held back. An arrival under that reserve is flagged.`);
+  lines.push(`A reserve of ${RESERVE_PERCENT}% is the hard floor. The plan targets at least ${TARGET_ARRIVAL}% on arrival at each stop and at the end. An arrival under the reserve, or a ${TARGET_ARRIVAL}% target that cannot be met, is flagged.`);
+  lines.push(ctx?.chargeLimitIsDefault
+    ? `The charge limit for this plan is ${ctx.chargeLimit}%. A daily-use plan stops there unless the order sets a charge limit.`
+    : `The order sets a charge limit of ${ctx.chargeLimit}%.`);
   lines.push(energy.packAssumed
     ? `Charge time uses the stop's verified kW. Average power is assumed at ${Math.round(CURVE_TO_80 * 100)}% of that kW up to ${TAPER_AT}% state of charge, and ${Math.round(CURVE_ABOVE_80 * 100)}% of that kW above ${TAPER_AT}%, on a ${trimNum(energy.packKwh)} kWh pack. The pack size is not on the order. This is not a measured charge curve.`
     : `Charge time uses the stop's verified kW and the order's stated pack of ${trimNum(energy.packKwh)} kWh. Average power is assumed at ${Math.round(CURVE_TO_80 * 100)}% of that kW up to ${TAPER_AT}% state of charge, and ${Math.round(CURVE_ABOVE_80 * 100)}% of that kW above ${TAPER_AT}%. This is not a measured charge curve.`);
@@ -425,7 +462,7 @@ function prepareStop(entry, ctx) {
   const exitOk = sheet.exit?.status === 'verified';
   const backupOk = backup?.status === 'verified';
   const name = cleanCopy(stop.name || stop.id || 'Stop');
-  const note = backupOk ? '' : `No verified backup at ${name} yet. Charge to a higher level at the previous stop.`;
+  const note = backupOk ? '' : `No verified backup at ${name} yet.`;
   return {
     entry,
     stop,
@@ -446,11 +483,11 @@ function prepareStop(entry, ctx) {
 }
 
 function renderStop(prepared, strategy, ctx) {
-  const { stop, sheet, backup, alternatives, guidePrimaryUsed, name, note, headline } = prepared;
+  const { stop, sheet, backup, alternatives, guidePrimaryUsed, name, headline } = prepared;
   const sim = strategy?.byId?.[stop.id] || null;
+  const note = backupAdvice(prepared, strategy, ctx);
   const whyBits = [whyFor(stop, sheet, guidePrimaryUsed)];
   if (!prepared.exitOk) whyBits.push('Exit not yet verified.');
-  if (note) whyBits.push(note);
   const out = {
     id: stop.id,
     name,
@@ -469,6 +506,7 @@ function renderStop(prepared, strategy, ctx) {
     if (sim) {
       out.charging = sim.charging;
       if (sim.belowReserve) out.belowReserve = true;
+      if (sim.belowTarget) out.belowTarget = true;
       if (sim.charging) {
         sheet.target = { value: `Estimate: charge to ${sim.departPct}%.`, note: ESTIMATE_NOTE };
         facts.push(
@@ -497,6 +535,9 @@ function renderStop(prepared, strategy, ctx) {
     if (amenities.food.length) out.food = amenities.food;
     if (amenities.hotels.length) out.hotels = amenities.hotels;
     if (amenities.cautions.length) out.cautions = amenities.cautions;
+    if (amenities.primaryCautions.length) out.primaryCautions = amenities.primaryCautions;
+    if (amenities.backupCautions.length) out.backupCautions = amenities.backupCautions;
+    if (amenities.otherCautions.length) out.otherCautions = amenities.otherCautions;
   }
 
   if (ctx.level === 'full' && sim?.charging && alternatives.length) {
@@ -511,21 +552,32 @@ function renderStop(prepared, strategy, ctx) {
   return out;
 }
 
+function backupAdvice(prepared, strategy, ctx) {
+  const base = prepared.note;
+  if (!base || ctx.level === 'basic' || !strategy?.byId) return base;
+  const ordered = [...(ctx.prepared || [])].sort((a, b) => a.mile - b.mile);
+  const index = ordered.findIndex((item) => item.stop.id === prepared.stop.id);
+  const prev = index > 0 ? ordered[index - 1] : null;
+  if (prev && strategy.byId[prev.stop.id]?.charging) {
+    return `${base} Charge to a higher level at the previous stop.`;
+  }
+  return base;
+}
+
 function buildStrategy(prepared, ctx) {
   if (ctx.startBattery == null || ctx.milesTotal == null) return null;
   const soc0 = ctx.origin
     ? ctx.startBattery - (ctx.origin.miles / ctx.energy.rangeMiles) * 100
     : ctx.startBattery;
   const ordered = prepared.map((item, index) => ({ ...item, index })).sort((a, b) => a.mile - b.mile || a.index - b.index);
-  const picked = selectCharges(ordered, soc0, ctx.energy.rangeMiles, ctx.milesTotal);
+  const picked = chooseCharges(ordered, soc0, ctx.energy.rangeMiles, ctx.milesTotal, ctx.chargeLimit);
   const chargeIds = new Set(picked.map((item) => item.stop.id));
   const byId = {};
   let prevMile = 0;
   let prevMin = 0;
   let prevName = ctx.origin
-    ? (ctx.origin.from || cleanCopy(ctx.orderStart || '') || cleanCopy(ctx.route.startLabel || 'the start'))
+    ? (ctx.origin.from || cleanCopy(ctx.route.startLabel || 'the start'))
     : cleanCopy(ctx.route.startLabel || 'the route start');
-  if (!ctx.origin) prevName = cleanCopy(ctx.route.startLabel || 'the route start');
   let soc = soc0;
   const originMiles = ctx.origin?.miles || 0;
   for (const item of ordered) {
@@ -535,15 +587,21 @@ function buildStrategy(prepared, ctx) {
     const arrival = soc - ((item.mile - prevMile) / ctx.energy.rangeMiles) * 100;
     const charging = chargeIds.has(item.stop.id);
     const nextMile = nextChargeMile(ordered, item, chargeIds, ctx.milesTotal);
-    const rawTarget = RESERVE_PERCENT + ((nextMile - item.mile) / ctx.energy.rangeMiles) * 100;
-    const departPct = Math.min(100, ceilPct(rawTarget));
     const arrivePct = arrival < 0 ? null : Math.round(arrival);
     const belowReserve = arrival < RESERVE_PERCENT - 1e-6;
     const ranOut = arrival < 0;
+    const belowTarget = arrivePct != null && arrivePct < TARGET_ARRIVAL && !belowReserve && !ranOut;
+    let departPct = null;
     let chargeMinutes = 0;
     if (charging && !ranOut) {
       const from = arrivePct == null ? 0 : arrivePct;
-      chargeMinutes = chargeMinutesBetween(from, departPct, item.kw, ctx.energy.packKwh);
+      const needed = ceilPct(TARGET_ARRIVAL + ((nextMile - item.mile) / ctx.energy.rangeMiles) * 100);
+      const capped = Math.min(ctx.chargeLimit, needed);
+      if (from >= capped) departPct = from;
+      else {
+        departPct = capped;
+        chargeMinutes = chargeMinutesBetween(from, departPct, item.kw, ctx.energy.packKwh);
+      }
     }
     const arriveClock = clockLabel(ctx.depart, arriveMin);
     const departClock = charging ? clockLabel(ctx.depart, arriveMin + chargeMinutes) : null;
@@ -555,10 +613,12 @@ function buildStrategy(prepared, ctx) {
       arriveClock,
       departClock,
       belowReserve,
+      belowTarget,
       ranOut,
       driveMinutes,
       fromName: prevName,
       kw: item.kw,
+      chargeLimit: ctx.chargeLimit,
     };
     prevMile = item.mile;
     prevMin = arriveMin + (charging ? chargeMinutes : 0);
@@ -569,12 +629,16 @@ function buildStrategy(prepared, ctx) {
   const destMinutes = Math.round((Math.max(0, destLeg) / MPH) * 60);
   const destArrival = soc - (Math.max(0, destLeg) / ctx.energy.rangeMiles) * 100;
   const destPct = destArrival < 0 ? null : Math.round(destArrival);
+  const destBelowReserve = destArrival < RESERVE_PERCENT - 1e-6;
+  const destRanOut = destArrival < 0;
   const destination = {
     mile: ctx.milesTotal,
     arrivePercent: destPct,
     arriveClock: clockLabel(ctx.depart, prevMin + destMinutes),
-    belowReserve: destArrival < RESERVE_PERCENT - 1e-6,
-    ranOut: destArrival < 0,
+    belowReserve: destBelowReserve,
+    belowTarget: destPct != null && destPct < TARGET_ARRIVAL && !destBelowReserve && !destRanOut,
+    ranOut: destRanOut,
+    chargeLimit: ctx.chargeLimit,
   };
   const text = strategyText(prepared, byId, destination, ctx);
   return {
@@ -582,15 +646,19 @@ function buildStrategy(prepared, ctx) {
     public: {
       text,
       reservePercent: RESERVE_PERCENT,
+      targetPercent: TARGET_ARRIVAL,
+      chargeLimit: ctx.chargeLimit,
       stops: prepared.filter((item) => byId[item.stop.id]?.charging).map((item) => ({
         stopId: item.stop.id,
         name: item.sheet.name,
+        mile: item.mile,
         arrivePercent: byId[item.stop.id].arrivePct,
         departPercent: byId[item.stop.id].departPct,
         chargeMinutes: byId[item.stop.id].chargeMinutes,
         arriveClock: byId[item.stop.id].arriveClock,
         departClock: byId[item.stop.id].departClock,
         belowReserve: byId[item.stop.id].belowReserve,
+        belowTarget: byId[item.stop.id].belowTarget,
       })),
       destination,
     },
@@ -603,10 +671,18 @@ function nextChargeMile(ordered, item, chargeIds, dest) {
   return later ? later.mile : dest;
 }
 
-function selectCharges(ordered, soc0, range, dest) {
+function chooseCharges(ordered, soc0, range, dest, maxSoc) {
+  const strict = searchCharges(ordered, soc0, range, dest, TARGET_ARRIVAL, maxSoc);
+  if (strict) return strict;
+  const reserve = searchCharges(ordered, soc0, range, dest, RESERVE_PERCENT, maxSoc);
+  if (reserve) return reserve;
+  return fallbackCharges(ordered, soc0, range, RESERVE_PERCENT, maxSoc);
+}
+
+function chargeSearch(ordered, soc0, range, floor, maxSoc) {
   const n = ordered.length;
-  const startReach = maxLeg(soc0, range);
-  const fullReach = maxLeg(100, range);
+  const startReach = maxLeg(soc0, range, floor);
+  const fullReach = maxLeg(maxSoc, range, floor);
   const best = Array(n).fill(null);
   const scoreOf = (list) => {
     let member = 0;
@@ -640,34 +716,46 @@ function selectCharges(ordered, soc0, range, dest) {
       }
     }
   }
+  return { best, startReach, fullReach, better, scoreOf };
+}
+
+function searchCharges(ordered, soc0, range, dest, floor, maxSoc) {
+  const { best, startReach, fullReach, better, scoreOf } = chargeSearch(ordered, soc0, range, floor, maxSoc);
   let win = dest <= startReach + 1e-6 ? scoreOf([]) : null;
-  for (let i = 0; i < n; i += 1) {
+  for (let i = 0; i < ordered.length; i += 1) {
     if (!best[i]) continue;
     if (dest - ordered[i].mile <= fullReach + 1e-6 && better(best[i], win)) win = best[i];
   }
-  if (win) return win.list.map((index) => ordered[index]);
+  if (!win) return null;
+  return win.list.map((index) => ordered[index]);
+}
+
+function fallbackCharges(ordered, soc0, range, floor, maxSoc) {
+  const { best, better } = chargeSearch(ordered, soc0, range, floor, maxSoc);
   let far = null;
-  for (let i = 0; i < n; i += 1) {
+  for (let i = 0; i < ordered.length; i += 1) {
     if (!best[i]) continue;
     const last = ordered[best[i].list[best[i].list.length - 1]];
     const farLast = far ? ordered[far.list[far.list.length - 1]] : null;
     if (!far || last.mile > farLast.mile || (last.mile === farLast.mile && better(best[i], far))) far = best[i];
   }
   if (far) return far.list.map((index) => ordered[index]);
-  return n ? [ordered[0]] : [];
+  return ordered.length ? [ordered[0]] : [];
 }
 
-function maxLeg(soc, range) {
-  return Math.max(0, ((soc - RESERVE_PERCENT) / 100) * range);
+function maxLeg(soc, range, floor) {
+  return Math.max(0, ((soc - floor) / 100) * range);
 }
 
-function strategyText(prepared, byId, destination, ctx) {
+function strategyText(prepared, byId, destination) {
   const charging = prepared.filter((item) => byId[item.stop.id]?.charging);
   const end = destinationPhrase(destination);
   if (!charging.length) return `No charging stop. ${end}`;
   const bits = charging.map((item) => {
     const sim = byId[item.stop.id];
-    const flag = sim.belowReserve ? ', below the 10% reserve' : '';
+    const flag = sim.belowReserve
+      ? `, below the ${RESERVE_PERCENT}% reserve`
+      : (sim.belowTarget ? `, short of the ${TARGET_ARRIVAL}% arrival target` : '');
     return `${item.sheet.name} to ${sim.departPct}%${flag}`;
   });
   const where = bits.length === 1 ? `Charge at ${bits[0]}.` : `Charge at ${bits.join(', then ')}.`;
@@ -676,20 +764,16 @@ function strategyText(prepared, byId, destination, ctx) {
 
 function destinationPhrase(destination) {
   const clock = destination.arriveClock ? ` around ${destination.arriveClock}` : '';
-  if (destination.ranOut) return `Estimated arrival at the end${clock}: the assumed range runs out, below the ${RESERVE_PERCENT}% reserve.`;
-  const where = reservePhrase(destination.arrivePercent);
-  return `Estimated arrival at the end is ${destination.arrivePercent}%${clock}, ${where}.`;
-}
-
-function reservePhrase(pct) {
-  if (pct < RESERVE_PERCENT) return `below the ${RESERVE_PERCENT}% reserve`;
-  if (pct === RESERVE_PERCENT) return `at the ${RESERVE_PERCENT}% reserve`;
-  return `above the ${RESERVE_PERCENT}% reserve`;
+  if (destination.ranOut) return `Estimated arrival at the end${clock}: the assumed range runs out, below the ${RESERVE_PERCENT}% reserve. The ${TARGET_ARRIVAL}% arrival target cannot be met.`;
+  if (destination.belowReserve) return `Estimated arrival at the end is ${destination.arrivePercent}%${clock}, below the ${RESERVE_PERCENT}% reserve. The ${TARGET_ARRIVAL}% arrival target cannot be met.`;
+  if (destination.belowTarget) return `Estimated arrival at the end is ${destination.arrivePercent}%${clock}, above the ${RESERVE_PERCENT}% reserve. The ${TARGET_ARRIVAL}% arrival target cannot be met within the ${destination.chargeLimit}% charge limit.`;
+  return `Estimated arrival at the end is ${destination.arrivePercent}%${clock}, at or above the ${TARGET_ARRIVAL}% arrival target.`;
 }
 
 function arrivalText(sim) {
-  if (sim.ranOut) return `Estimate: the assumed range runs out before this stop, below the ${RESERVE_PERCENT}% reserve.`;
-  if (sim.belowReserve) return `Estimate: about ${sim.arrivePct}% on arrival, below the ${RESERVE_PERCENT}% reserve.`;
+  if (sim.ranOut) return `Estimate: the assumed range runs out before this stop, below the ${RESERVE_PERCENT}% reserve. The ${TARGET_ARRIVAL}% arrival target cannot be met.`;
+  if (sim.belowReserve) return `Estimate: about ${sim.arrivePct}% on arrival, below the ${RESERVE_PERCENT}% reserve. The ${TARGET_ARRIVAL}% arrival target cannot be met.`;
+  if (sim.belowTarget) return `Estimate: about ${sim.arrivePct}% on arrival, above the ${RESERVE_PERCENT}% reserve. The ${TARGET_ARRIVAL}% arrival target cannot be met within the ${sim.chargeLimit}% charge limit.`;
   return `Estimate: about ${sim.arrivePct}% on arrival.`;
 }
 
@@ -733,77 +817,123 @@ function chargeMinutesBetween(fromPct, toPct, kw, pack) {
   return Math.max(1, Math.round(minutes));
 }
 
-function buildContingency(stops, ctx) {
+function buildContingency(stops, strategy, ctx) {
   const items = [];
   const charging = stops.filter((stop) => stop.charging);
-  const stall = [];
+  const subjects = charging.length ? charging : stops.slice(0, 1);
+  const nowhere = [];
   if (!charging.length) {
-    const fallback = stops.find((stop) => stop.backups?.some((backup) => backup.status === 'verified'));
-    if (fallback) {
-      stall.push(sourcedItem(
-        'Stall full or offline',
-        `No charging stop is planned. If you need one, ${fallback.primary.name} has verified backup ${fallback.backups[0].name}.`,
-        fallback.backups[0],
-      ));
-    }
-  }
-  for (const stop of charging) {
-    const backup = stop.backups?.find((item) => item.status === 'verified');
-    const alts = (stop.other || []).map((item) => item.name).filter(Boolean);
-    if (backup) {
-      const extra = alts.length ? ` Other verified sites here: ${alts.join(', ')}.` : '';
-      stall.push(sourcedItem('Stall full or offline', `If ${stop.primary.name} is full or offline, use ${backup.name}.${extra}`, backup));
-    } else if (alts.length) {
-      stall.push(sourcedItem('Stall full or offline', `If ${stop.primary.name} is full or offline, use ${alts[0]}.`, stop.other[0]));
+    const only = subjects[0];
+    if (!only) {
+      items.push({ title: 'Stall full or offline', text: 'No charging stop is planned, and this route has no verified station to name.' });
     } else {
-      stall.push({ title: 'Stall full or offline', text: stop.note || `No verified backup at ${stop.name} yet. Charge to a higher level at the previous stop.` });
-    }
-  }
-  items.push(...stall);
-
-  const pool = charging.length ? charging : stops;
-  for (const stop of pool) {
-    for (const caution of stop.cautions || []) {
-      if (!/\b(heat|throttl|weather|wind|snow|cold)\b/i.test(caution.text)) continue;
-      items.push(sourcedItem('Weather or heat', `${caution.name}: ${caution.text}`, caution));
-      break;
-    }
-    if (items.some((item) => item.title === 'Weather or heat')) break;
-  }
-
-  const first = charging[0];
-  if (first) {
-    const earlier = stops.filter((stop) => stop.mile < first.mile && stop.headline === true);
-    const pick = earlier.length ? earlier[earlier.length - 1] : null;
-    if (pick) {
-      items.push(sourcedItem(
-        'Low battery fallback',
-        `If you would reach ${first.primary.name} under the ${RESERVE_PERCENT}% reserve, charge earlier at ${pick.primary.name} (mile ${pick.mile}).`,
-        pick.primary.stalls,
-      ));
-    } else {
-      items.push({
-        title: 'Low battery fallback',
-        text: `${first.primary.name} is the first verified stop this plan can use. If arrival would be under the ${RESERVE_PERCENT}% reserve, the stop is flagged.`,
-      });
+      const line = stallSentence(only, stops, true);
+      if (line.none) {
+        items.push({ title: 'Stall full or offline', text: `No alternative verified station for ${only.name}.` });
+      } else {
+        items.push(sourcedItem('Stall full or offline', line.text, line.source));
+      }
     }
   } else {
-    const pick = stops.find((stop) => stop.headline === true) || stops[0];
-    if (pick) {
-      items.push(sourcedItem(
-        'Low battery fallback',
-        `If the battery would fall under the ${RESERVE_PERCENT}% reserve, charge at ${pick.primary.name} (mile ${pick.mile}).`,
-        pick.primary.stalls,
-      ));
+    for (const stop of charging) {
+      const line = stallSentence(stop, stops, false);
+      if (line.none) nowhere.push(stop.name);
+      else items.push(sourcedItem('Stall full or offline', line.text, line.source));
+    }
+    if (nowhere.length) {
+      items.push({
+        title: 'Stall full or offline',
+        text: `No alternative verified station for ${joinAnd(nowhere)}.`,
+      });
     }
   }
+
+  const seenCaution = new Set();
+  for (const stop of stops) {
+    const pool = [
+      ...(stop.primaryCautions || []),
+      ...(stop.backupCautions || []),
+      ...(stop.otherCautions || []),
+    ];
+    for (const caution of pool) {
+      if (!/\b(heat|throttl\w*|queue|queued)\b/i.test(caution.text || '')) continue;
+      if (!caution.url || !caution.checkedOn) continue;
+      const key = `${caution.name}:${caution.text}`.toLowerCase();
+      if (seenCaution.has(key)) continue;
+      seenCaution.add(key);
+      items.push(sourcedItem('Caution', `${caution.name}: ${caution.text}`, caution));
+    }
+  }
+
+  items.push(lowBatteryItem(stops, strategy));
   for (const item of items) {
-    if (item.source) {
+    if (item?.source) {
       ctx.used.add(item.source);
       if (item.url) ctx.urls.set(item.source, item.url);
     }
   }
-  return items;
+  return items.filter(Boolean);
+}
+
+function stallSentence(stop, stops, noCharge) {
+  const backup = stop.backups?.find((item) => item.status === 'verified') || null;
+  const { behind, ahead } = routeNeighbors(stops, stop.mile);
+  if (!backup && !behind && !ahead) return { none: true, text: '', source: null };
+  const lead = noCharge
+    ? `No charging stop is planned. If ${stop.primary.name} at ${stop.name} (mile ${stop.mile}) is full or offline`
+    : `If ${stop.primary.name} at ${stop.name} (mile ${stop.mile}) is full or offline`;
+  const onSite = backup
+    ? `the verified backup at this stop is ${backup.name}`
+    : 'there is no verified backup at this stop';
+  const aheadText = ahead
+    ? `The next verified station ahead is ${ahead.primary.name} at ${ahead.name}, ${trimNum(ahead.mile - stop.mile)} miles ahead on the route.`
+    : `No verified station is ahead of ${stop.name} on this route.`;
+  const behindText = behind
+    ? `The next verified station behind is ${behind.primary.name} at ${behind.name}, ${trimNum(stop.mile - behind.mile)} miles back on the route.`
+    : `No verified station is behind ${stop.name} on this route.`;
+  return {
+    none: false,
+    text: `${lead}, ${onSite}. ${aheadText} ${behindText}`,
+    source: backup || ahead?.primary?.stalls || behind?.primary?.stalls || null,
+  };
+}
+
+function lowBatteryItem(stops, strategy) {
+  let anchorMile = strategy?.public?.destination?.mile;
+  let anchorLabel = 'the end';
+  let lowest = strategy?.public?.destination?.arrivePercent;
+  if (lowest == null) lowest = 101;
+  for (const stop of stops) {
+    const pct = strategy?.byId?.[stop.id]?.arrivePct;
+    if (pct != null && pct < lowest) {
+      lowest = pct;
+      anchorMile = stop.mile;
+      anchorLabel = `${stop.primary.name} at ${stop.name}`;
+    }
+  }
+  if (anchorMile == null) {
+    return { title: 'Low battery fallback', text: 'No verified stop is on this plan to use as a low battery fallback.' };
+  }
+  const { behind, ahead } = routeNeighbors(stops, anchorMile);
+  if (!behind && !ahead) {
+    return {
+      title: 'Low battery fallback',
+      text: `No other verified station on this route for a low battery near ${anchorLabel}.`,
+    };
+  }
+  const bits = [`Low battery near ${anchorLabel}.`];
+  if (behind) bits.push(`The nearest verified stop behind is ${behind.primary.name} at ${behind.name}, ${trimNum(anchorMile - behind.mile)} miles back on the route.`);
+  else bits.push('No verified stop is behind that point.');
+  if (ahead) bits.push(`The nearest verified stop ahead is ${ahead.primary.name} at ${ahead.name}, ${trimNum(ahead.mile - anchorMile)} miles ahead on the route.`);
+  else bits.push('No verified stop is ahead of that point.');
+  const source = behind?.primary?.stalls || ahead?.primary?.stalls || null;
+  return sourcedItem('Low battery fallback', bits.join(' '), source);
+}
+
+function routeNeighbors(stops, mile) {
+  const behind = [...stops].filter((stop) => stop.mile < mile).sort((a, b) => b.mile - a.mile)[0] || null;
+  const ahead = [...stops].filter((stop) => stop.mile > mile).sort((a, b) => a.mile - b.mile)[0] || null;
+  return { behind, ahead };
 }
 
 function sourcedItem(title, text, from) {
@@ -814,7 +944,7 @@ function sourcedItem(title, text, from) {
   return item;
 }
 
-function amenityHonesty(chosen, route) {
+function amenityHonesty(chosen, route, order) {
   const restrooms = [];
   const pets = [];
   const seenR = new Set();
@@ -827,23 +957,23 @@ function amenityHonesty(chosen, route) {
     seen.add(key);
     list.push(clean);
   };
-  const consider = (text, url, date, source, place) => {
+  const consider = (text, url, date, source, place, stopName) => {
     if (!text || BANNED.test(text)) return;
     const link = httpUrl(url) || httpUrl(route.sources?.[source]?.url);
     if (!link || !day(date)) return;
-    if (CAUTION_RE.test(text)) return;
+    if (CAUTION_RE.test(text) || isChargerReview(text)) return;
     if (RESTROOM_RE.test(text)) add(restrooms, seenR, place);
-    if (PET_RE.test(text)) add(pets, seenP, place);
+    if (PET_RE.test(text)) add(pets, seenP, stopName || place);
   };
   for (const entry of chosen) {
     const stations = [entry.stop.primary, ...(entry.stop.backups || []), ...(entry.stop.other || [])].filter(Boolean);
     for (const station of stations) {
       for (const report of station.driverReports || []) {
-        consider(report.summary, report.url, report.date, report.source, station.name);
+        consider(report.summary, report.url, report.date, report.source, station.name, entry.stop.name);
       }
     }
     for (const report of entry.stop.reports || []) {
-      consider(report.text, report.url, report.date || report.checkedOn, report.source, report.site || entry.stop.name);
+      consider(report.text, report.url, report.date || report.checkedOn, report.source, report.site || entry.stop.name, entry.stop.name);
     }
   }
   const missing = [];
@@ -854,7 +984,9 @@ function amenityHonesty(chosen, route) {
   }
   const have = restrooms.length ? `Sourced restroom notes: ${restrooms.join(', ')}.` : 'No sourced restroom note at any stop.';
   const lack = missing.length ? ` No sourced restroom note at ${joinList(missing)}.` : '';
-  const pet = pets.length ? ` Sourced pet notes: ${pets.join(', ')}.` : ' No sourced pet info at any stop.';
+  const pet = orderHasPet(order)
+    ? (pets.length ? ` Sourced pet notes: ${pets.join(', ')}.` : ' No sourced pet info at any stop.')
+    : '';
   return cleanCopy(`${have}${lack}${pet}`);
 }
 
@@ -876,7 +1008,9 @@ function amenityBlocks(stop, sheet, ctx) {
     const key = `${section}:${note.text.toLowerCase()}`;
     if (seen.has(key)) return;
     seen.add(key);
-    bucket.push(noteItem(placeName(note.place, section), note, ctx));
+    const item = noteItem(placeName(note.place, section), note, ctx);
+    if (note.role) item.role = note.role;
+    bucket.push(item);
   };
   const take = (item, text, url, source, checkedOn, place, kind) => {
     const clean = cleanCopy(text);
@@ -886,8 +1020,10 @@ function amenityBlocks(stop, sheet, ctx) {
     if (!link || !date) return;
     const category = categoryOf(item, clean);
     if (!category || category === 'pet') return;
+    const shown = (category === 'food' || category === 'restroom') ? stripPlacePrefix(clean, place) : clean;
+    if (!shown) return;
     const aboutPrimary = namesMatch(place, sheet.name);
-    const note = { text: clean, url: link, source: source || '', checkedOn: date, kind, place };
+    const note = { text: shown, url: link, source: source || '', checkedOn: date, kind, place, role: cautionRole(place, sheet, stop) };
     if (category === 'caution') {
       push(cautions, note, 'Cautions');
       return;
@@ -930,15 +1066,52 @@ function amenityBlocks(stop, sheet, ctx) {
     const match = bestStation(item.text, stations) || bestStation(item.site, stations);
     take(item, item.text || item.value, item.url, item.source, item.checkedOn || item.date, match?.name || '', 'route');
   }
-  return { food, hotels, cautions, restroom };
+  const withoutRole = (item) => {
+    const copy = { ...item };
+    delete copy.role;
+    return copy;
+  };
+  const primaryCautions = cautions.filter((item) => item.role === 'primary').map(withoutRole);
+  const backupCautions = cautions.filter((item) => item.role === 'backup').map(withoutRole);
+  const otherCautions = cautions.filter((item) => item.role !== 'primary' && item.role !== 'backup').map(withoutRole);
+  return {
+    food,
+    hotels,
+    cautions: [...primaryCautions, ...backupCautions, ...otherCautions],
+    primaryCautions,
+    backupCautions,
+    otherCautions,
+    restroom,
+  };
+}
+
+function cautionRole(place, sheet, stop) {
+  if (namesMatch(place, sheet.name)) return 'primary';
+  if ((stop.backups || []).some((backup) => namesMatch(place, backup.name))) return 'backup';
+  return 'other';
+}
+
+function stripPlacePrefix(text, place) {
+  let out = cleanCopy(text);
+  if (place) {
+    const escaped = cleanCopy(place).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    out = out.replace(new RegExp(`^${escaped}(?:\\s+tesla\\s+site)?\\s*:\\s*`, 'i'), '');
+  }
+  out = out.replace(/^[A-Za-z0-9][^:]{0,80}?\bTesla site:\s*/i, '');
+  return cleanCopy(out);
 }
 
 function categoryOf(item, text) {
   const declared = String(item?.category || item?.type || '').trim().toLowerCase();
   const inferred = inferCategory(text);
   if (inferred === 'caution') return 'caution';
-  if (['food', 'restroom', 'overnight', 'caution', 'pet'].includes(declared)) return declared;
-  return inferred;
+  const category = ['food', 'restroom', 'overnight', 'caution', 'pet'].includes(declared) ? declared : inferred;
+  if ((category === 'food' || category === 'restroom') && isChargerReview(text)) return 'caution';
+  return category;
+}
+
+function isChargerReview(text) {
+  return /\b(kW|kilowatts?|charg(?:e|ing|ers?)|pedestal|dispenser|session|superchargers?|plugs?|charging options)\b/i.test(text);
 }
 
 function inferCategory(text) {
@@ -1542,16 +1715,22 @@ function resolveTimeZone(order, route) {
 }
 
 function originLeg(order, route) {
-  const candidates = [];
-  for (const key of ['originLeg', 'approach']) {
-    if (route[key] && typeof route[key] === 'object') candidates.push(route[key]);
-  }
   const orderStart = cleanCopy(order.start ?? order.startPlace ?? '');
   const routeStart = cleanCopy(route.startLabel || '');
+  const candidates = [];
+  if (Array.isArray(route.originLegs)) {
+    for (const leg of route.originLegs) {
+      const startName = leg?.start || leg?.from || '';
+      if (orderStart && legMatches(orderStart, startName)) candidates.push(leg);
+    }
+  }
+  for (const key of ['originLeg', 'approach']) {
+    if (route[key] && typeof route[key] === 'object' && !Array.isArray(route[key])) candidates.push(route[key]);
+  }
   for (const stat of route.stats || []) {
     const label = String(stat?.label || '');
     if (String(stat?.unit || '').toLowerCase() !== 'mi') continue;
-    if (orderStart && routeStart && label.toLowerCase().includes(orderStart.toLowerCase()) && label.toLowerCase().includes(routeStart.toLowerCase())) {
+    if (orderStart && routeStart && placeKey(label).includes(placeKey(orderStart)) && placeKey(label).includes(placeKey(routeStart))) {
       candidates.push({ miles: Number(stat.value), source: stat.source, url: stat.url, checkedOn: stat.checkedOn, from: orderStart, to: routeStart });
     }
   }
@@ -1561,16 +1740,197 @@ function originLeg(order, route) {
     const url = httpUrl(leg.url) || httpUrl(route.sources?.[source]?.url);
     const checkedOn = day(leg.checkedOn) || day(route.checked);
     if (!Number.isFinite(miles) || miles < 0 || !url || !checkedOn) continue;
+    const note = cleanCopy(leg.note || '');
     return {
       miles,
       url,
       checkedOn,
       source,
-      from: cleanCopy(leg.from || orderStart),
+      estimate: leg.estimate === true,
+      from: cleanCopy(leg.from || leg.start || orderStart),
       to: cleanCopy(leg.to || routeStart),
+      ...(note ? { note } : {}),
     };
   }
   return null;
+}
+
+function legMatches(orderStart, legStart) {
+  const a = placeKey(orderStart);
+  const b = placeKey(legStart);
+  if (!a || !b) return false;
+  return a === b || a.includes(b) || b.includes(a);
+}
+
+const PLACE_ALIASES = new Map([
+  ['la', 'los angeles'],
+  ['los angeles', 'los angeles'],
+  ['sf', 'san francisco'],
+  ['san francisco', 'san francisco'],
+  ['nyc', 'new york'],
+  ['new york', 'new york'],
+  ['new york city', 'new york'],
+]);
+
+function placeKey(value) {
+  let text = cleanCopy(value).toLowerCase().replace(/\./g, '');
+  text = text.replace(/,/g, ' ').replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  text = text.replace(/\s+(ca|az|nv|ny|wa|or|ma|ct|ri|tx|fl|il|pa|nj|va|md|co|ut|id|nm|ok|california|nevada|arizona|washington|oregon|new york)$/, '');
+  text = text.trim();
+  return PLACE_ALIASES.get(text) || text;
+}
+
+function sameTrip(title, from, to) {
+  const match = cleanCopy(title).match(/^(.+?)\s+to\s+(.+)$/i);
+  if (!match || !from || !to) return false;
+  return placeKey(match[1]) === placeKey(from) && placeKey(match[2]) === placeKey(to);
+}
+
+const FLIP_DIRECTION = {
+  northbound: 'southbound',
+  southbound: 'northbound',
+  eastbound: 'westbound',
+  westbound: 'eastbound',
+  northeast: 'southwest',
+  northwest: 'southeast',
+  southeast: 'northwest',
+  southwest: 'northeast',
+};
+
+function tripDirection(order, route) {
+  const stored = cleanCopy(route.direction || '').toLowerCase();
+  if (!FLIP_DIRECTION[stored]) return '';
+  return tripIsReverse(order, route) ? FLIP_DIRECTION[stored] : stored;
+}
+
+function tripIsReverse(order, route) {
+  const start = placeKey(order.start ?? order.startPlace ?? '');
+  const end = placeKey(order.end ?? order.endPlace ?? '');
+  const match = cleanCopy(route.title || '').match(/^(.+?)\s+to\s+(.+)$/i);
+  if (!start || !end || !match) return false;
+  return start === placeKey(match[2]) && end === placeKey(match[1]);
+}
+
+function applyDirection(text, direction) {
+  if (!direction) return text;
+  const label = direction.charAt(0).toUpperCase() + direction.slice(1);
+  return text.replace(/^(Northbound|Southbound|Eastbound|Westbound|Northeast|Northwest|Southeast|Southwest)\b/, label);
+}
+
+function isBlanketClaim(text) {
+  return /\bevery\b.+\b(site|charger|stall)/i.test(text) || /at least one charger down/i.test(text);
+}
+
+function teslaOnlyTip(skips, route, ctx) {
+  if (!skips.length) return null;
+  const tip = { text: `Tesla-only sites this car cannot use: ${joinAnd(skips.map((item) => item.name))}.` };
+  const first = skips.find((item) => item.url && item.checkedOn) || skips[0];
+  if (first.source) tip.source = first.source;
+  if (first.url) tip.url = first.url;
+  if (first.checkedOn) tip.checkedOn = first.checkedOn;
+  const also = [];
+  const seen = new Set([first.url].filter(Boolean));
+  for (const item of skips) {
+    if (item.source) {
+      ctx.used.add(item.source);
+      if (item.url) ctx.urls.set(item.source, item.url);
+    }
+    if (!item.url || seen.has(item.url)) continue;
+    seen.add(item.url);
+    also.push({
+      url: item.url,
+      name: cleanCopy(route.sources?.[item.source]?.name || 'Source'),
+      ...(item.source ? { source: item.source } : {}),
+    });
+  }
+  if (also.length) tip.also = also;
+  return tip;
+}
+
+function eaProblemTip(route, ctx) {
+  const downRe = /\b(out of service|offline|broken|charger down|chargers down)\b/i;
+  const eaRe = /electrify america|\bEA\b/;
+  const bySite = new Map();
+  const add = (site, text, url, date, source) => {
+    const cleanSite = cleanCopy(site || '');
+    const cleanText = cleanCopy(text || '');
+    if (!cleanSite || !cleanText || !downRe.test(cleanText) || !eaRe.test(`${cleanSite} ${cleanText}`)) return;
+    const link = httpUrl(url) || httpUrl(route.sources?.[source]?.url);
+    const checkedOn = day(date);
+    if (!link || !checkedOn) return;
+    const key = cleanSite.toLowerCase();
+    const row = bySite.get(key) || { name: cleanSite, dates: [], url: link, source: source || '', checkedOn };
+    row.dates.push(checkedOn);
+    bySite.set(key, row);
+  };
+  for (const stop of route.stops || []) {
+    for (const report of stop.reports || []) {
+      add(report.site, report.text, report.url, report.date || report.checkedOn, report.source);
+    }
+    for (const station of [stop.primary, ...(stop.backups || []), ...(stop.other || [])]) {
+      if (!station) continue;
+      const network = typeof station.network === 'string' ? station.network : '';
+      if (!eaRe.test(network)) continue;
+      for (const report of station.driverReports || []) {
+        add(station.name, `${network}. ${report.summary || ''}`, report.url, report.date, report.source);
+      }
+    }
+  }
+  if (!bySite.size) return null;
+  const rows = [...bySite.values()];
+  const dates = rows.flatMap((row) => row.dates).sort();
+  const range = dates[0] === dates[dates.length - 1] ? dates[0] : `${dates[0]} to ${dates[dates.length - 1]}`;
+  const noun = rows.length === 1 ? 'site' : 'sites';
+  const first = rows[0];
+  const tip = {
+    text: `Driver reports (${range}) mention a charger out of service, offline, or broken at ${rows.length} Electrify America ${noun} on this route: ${joinAnd(rows.map((row) => row.name))}. This is a count of those reports, not a live check of every stall.`,
+    url: first.url,
+    checkedOn: first.checkedOn,
+  };
+  if (first.source) tip.source = first.source;
+  const also = [];
+  const seen = new Set([first.url]);
+  for (const row of rows) {
+    if (row.source) {
+      ctx.used.add(row.source);
+      if (row.url) ctx.urls.set(row.source, row.url);
+    }
+    if (!row.url || seen.has(row.url)) continue;
+    seen.add(row.url);
+    also.push({ url: row.url, name: cleanCopy(route.sources?.[row.source]?.name || 'Source'), ...(row.source ? { source: row.source } : {}) });
+  }
+  if (also.length) tip.also = also;
+  if (tip.source) {
+    ctx.used.add(tip.source);
+    if (tip.url) ctx.urls.set(tip.source, tip.url);
+  }
+  return tip;
+}
+
+function joinAnd(items) {
+  if (items.length <= 1) return items[0] || '';
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]}`;
+}
+
+function orderHasPet(order) {
+  const blob = `${order?.notes || ''} ${order?.passengers || ''} ${order?.pets || ''}`;
+  return PET_RE.test(blob);
+}
+
+function chargeLimitOf(order) {
+  const raw = order.chargeLimit ?? order.maxCharge ?? order.maxSoc;
+  if (raw == null || raw === '') return CHARGE_LIMIT;
+  const n = Number(String(raw).replace('%', '').trim());
+  if (!Number.isFinite(n) || n < TARGET_ARRIVAL || n > 100) return CHARGE_LIMIT;
+  return Math.round(n);
+}
+
+function chargeLimitIsDefault(order) {
+  const raw = order.chargeLimit ?? order.maxCharge ?? order.maxSoc;
+  if (raw == null || raw === '') return true;
+  const n = Number(String(raw).replace('%', '').trim());
+  return !Number.isFinite(n) || n < TARGET_ARRIVAL || n > 100;
 }
 
 function routeMiles(route) {
