@@ -107,6 +107,26 @@
     "usps-zip": {
       "name": "USPS ZIP Code lookup by address",
       "url": "https://tools.usps.com/zip-code-lookup.htm?byaddress"
+    },
+    "plugshare-169544": {
+      "name": "PlugShare location 169544, Walmart 2009 (Abingdon, MD) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/169544"
+    },
+    "plugshare-193079": {
+      "name": "PlugShare location 193079, Walmart 3078 (East Brunswick, NJ) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/193079"
+    },
+    "plugshare-190888": {
+      "name": "PlugShare location 190888, listed as Wawa New Castle (1) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/190888"
+    },
+    "plugshare-340823": {
+      "name": "PlugShare location 340823, listed as Wawa New Castle (2), Tesla Supercharger (driver check-ins)",
+      "url": "https://www.plugshare.com/location/340823"
+    },
+    "de-parcels": {
+      "name": "Delaware FirstMap, State Parcels and statewide address locator",
+      "url": "https://enterprise.firstmap.delaware.gov/arcgis/rest/services/PlanningCadastre/DE_StateParcels/MapServer"
     }
   },
   "stops": [
@@ -148,6 +168,30 @@
           167597
         ],
         "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169544",
+            "date": "2026-10-11",
+            "summary": "Successful check-in, 2015 VW e-Golf: \"Yes twice\". A second successful check-in by the same driver the same day."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169544",
+            "date": "2026-09-27",
+            "summary": "Successful check-in, 2023 Mustang Mach-E, 118 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169544",
+            "date": "2026-09-11",
+            "summary": "Successful check-in, 2024 Chevrolet Silverado EV: \"Fast…convenient\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169544",
+            "date": "2026-09-10",
+            "summary": "Successful check-in, 162 kW. No car or comment listed."
+          },
           {
             "source": "reddit",
             "url": "https://www.reddit.com/r/Ioniq5/comments/1dybkfa/i_took_my_i5_on_a_4th_of_july_weekend_road_trip/",
@@ -446,6 +490,13 @@
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/md/abingdon/401-constant-friendship-blvd/100277/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "PlugShare users list shopping, WiFi, grocery, dining, restrooms, and EV parking as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-169544",
+          "url": "https://www.plugshare.com/location/169544",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -469,7 +520,7 @@
       "towns": "New Castle, Newark, and Wilmington, DE, and Elkton, MD",
       "mile": 96,
       "milepostNote": "Measured along OSRM's route from the start: 95.5 miles. OSRM leaves I-295 for US 13 North, about 2 miles from the site. Exit confirmed 2026-10-15: OSRM's route to the Wawa leaves I-295 on the ramp signed US 13 North, Wilmington, and the Wikipedia exit list for I-295 shows that exit as unnumbered, US 13 and US 40 toward Wilmington, New Castle Airport and Dover. From that ramp OSRM drives about 1.5 miles to the Wawa, which is on US 13 (DuPont Highway) at Memorial Drive. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-75.56265,39.70932 . Wikipedia: https://en.wikipedia.org/wiki/Interstate_295_(Delaware%E2%80%93Pennsylvania)",
-      "why": "The Electrify America site at the New Castle Wawa is 6 stalls at 350 kW, on US 13 a couple of miles from the I-95 and I-295 split. The ShopRite EVgo site in Wilmington is the verified backup. The Applegreen site at the Biden Center on I-95 and the Elkton exit 109 sites (bp pulse, Flying J, IONNA) are listed from DOE and are not verified.",
+      "why": "The Electrify America site at the New Castle Wawa is 6 stalls at 350 kW, on US 13 a couple of miles from the I-95 and I-295 split. A Tesla Supercharger open to non-Tesla EVs with a NACS adapter is in the same Wawa lot. The ShopRite EVgo site in Wilmington is the verified backup. The Applegreen site at the Biden Center on I-95 and the Elkton exit 109 sites (bp pulse, Flying J, IONNA) are listed from DOE and are not verified.",
       "primary": {
         "name": "Wawa Store 840 (New Castle, DE)",
         "network": "Electrify America",
@@ -502,6 +553,36 @@
         ],
         "driverReports": [
           {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/190888",
+            "date": "2026-10-15",
+            "summary": "Successful check-in, 2017 Chevrolet Bolt EV, 55 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/190888",
+            "date": "2026-10-14",
+            "summary": "Successful check-in, 2025 Chevrolet Equinox EV, 76 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/190888",
+            "date": "2026-10-13",
+            "summary": "Successful check-in, 2024 Kia EV9, 91 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/190888",
+            "date": "2026-10-11",
+            "summary": "Successful check-in, 2025 Chevrolet Equinox EV, 87 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/190888",
+            "date": "2026-10-08",
+            "summary": "Successful check-in, 2026 Chevrolet Equinox EV: \"Works great but got around 88kw while charging from 31percent\""
+          },
+          {
             "source": "reddit",
             "url": "https://www.reddit.com/r/Ioniq5/comments/1dybkfa/i_took_my_i5_on_a_4th_of_july_weekend_road_trip/",
             "date": "2024-07-08",
@@ -526,7 +607,7 @@
             "summary": "Primary pick on that corridor is the Wilmington DE Wawa EA; notes a Tesla Supercharger in the same parking lot for adapter-eligible cars. Uses Abingdon Walmart EA if this one is full."
           }
         ],
-        "checkedOn": "2026-10-15",
+        "checkedOn": "2026-10-16",
         "source": "ea-locator"
       },
       "backups": [
@@ -711,12 +792,43 @@
         },
         {
           "name": "New Castle, DE - North Dupont Highway - Tesla Supercharger, 4000 North Dupont Highway, New Castle",
-          "facts": "Tesla Find Us confirms access at 4000 North Dupont Highway New Castle, DE 19720. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "facts": "Tesla Find Us confirms access at 4000 North Dupont Highway New Castle, DE 19720. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW and notes NACS partner enabled. Same Wawa lot as the Electrify America primary (Delaware parcel 1000530111). PlugShare lists it as Wawa New Castle (2).",
           "status": "verified",
           "afdcIds": [
             196520
           ],
-          "driverReports": [],
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/340823",
+              "date": "2026-09-30",
+              "summary": "Successful check-in, Tesla Model Y, 208 kW. No comment."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/340823",
+              "date": "2026-09-26",
+              "summary": "Successful check-in, Tesla Model 3, 74 kW. No comment."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/340823",
+              "date": "2026-09-09",
+              "summary": "Successful check-in, Chevrolet Bolt EV with NACS: \"Typical short cord for Tesla. Took some maneuvering to plug in my NACS Chevy Bolt\""
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/340823",
+              "date": "2026-07-10",
+              "summary": "Successful check-in, Tesla Model Y, 193 kW. No comment."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/340823",
+              "date": "2026-06-16",
+              "summary": "Successful check-in, 2021 VW ID.4, 101 kW. No comment."
+            }
+          ],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/NewCastleDESupercharger",
           "source": "tesla-findus",
@@ -909,6 +1021,27 @@
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/de/new-castle/4000-n-dupont-hwy/100276/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "PlugShare users list restrooms, dining, EV parking, and shopping at this Wawa, and PlugShare shows store hours of 5am to 10pm (crowd-sourced, checked 2026-10-16). EA and DOE list the chargers as open 24 hours. Wawa has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-190888",
+          "url": "https://www.plugshare.com/location/190888",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Address: PlugShare lists this Electrify America site as \"Wawa New Castle (1)\" at 159 Memorial Dr. EA's locator and API (site 100276) and DOE list it at 4000 N. DuPont Hwy, and USPS confirms 4000 N DuPont Hwy, New Castle, DE 19720-6314 as a deliverable address while 159 Memorial Dr is not (checked 2026-10-16). Use the DuPont Highway address. On PlugShare, 4000 N DuPont Hwy is \"Wawa New Castle (2)\", the Tesla Supercharger in the same lot.",
+          "category": "site",
+          "source": "usps-zip",
+          "url": "https://tools.usps.com/zip-code-lookup.htm?byaddress",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Delaware's state parcel map puts the EA chargers, the Tesla Supercharger, and the statewide address point for 4000 N DuPont Hwy on one parcel (PIN 1000530111, New Castle County). 159 Memorial Dr has no address point there (checked 2026-10-16).",
+          "category": "site",
+          "source": "de-parcels",
+          "url": "https://enterprise.firstmap.delaware.gov/arcgis/rest/services/PlanningCadastre/DE_StateParcels/MapServer",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -1579,6 +1712,36 @@
           167237
         ],
         "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/193079",
+            "date": "2026-09-26",
+            "summary": "Successful check-in, 2022 Chevrolet Bolt EUV, 50 kW: \"Working great\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/193079",
+            "date": "2026-09-05",
+            "summary": "Successful check-in, 2022 Hyundai Ioniq 5, 242 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/193079",
+            "date": "2026-08-23",
+            "summary": "Successful check-in, 2023 Chevrolet Bolt EUV. No kW or comment listed."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/193079",
+            "date": "2026-08-23",
+            "summary": "Successful check-in, 2022 VW ID.4, 130 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/193079",
+            "date": "2026-08-09",
+            "summary": "Successful check-in, 2022 Hyundai Kona Electric, 74 kW: \"2022 Kona EV started at 26%.\""
+          },
           {
             "source": "reddit",
             "url": "https://www.reddit.com/r/VWiD4Owners/comments/1git6t2/electrify_america_charging_station_kindly_updated/",
@@ -2265,6 +2428,13 @@
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/nj/east-brunswick/290-nj-18/100281/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "PlugShare users list restrooms, EV parking, dining, shopping, and grocery as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-193079",
+          "url": "https://www.plugshare.com/location/193079",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [

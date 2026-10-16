@@ -129,6 +129,39 @@ test('identical reports on two stations at one stop render once', () => {
   assert.equal(sources.split('https://example.com/shared').length - 1, 1);
 });
 
+test('Sources for this stop lists each URL once when a named source and driver reports share it', async () => {
+  const cutoff = driverReportCutoff();
+  const plug = 'https://www.plugshare.com/location/1';
+  const route = fixture([
+    { source: 'plugshare', url: plug, date: addDays(cutoff, 30), summary: 'First check-in found both stalls working.' },
+    { source: 'plugshare', url: plug, date: addDays(cutoff, 10), summary: 'Second check-in found one stall still in use.' },
+  ]);
+  route.sources['plugshare-1'] = { name: 'PlugShare location 1 (driver check-ins, crowd-sourced amenities)', url: plug };
+  route.sources['plugshare-copy'] = { name: 'Same PlugShare page under a second id', url: plug };
+  route.stops[0].around = [
+    { text: 'PlugShare users list restrooms (crowd-sourced icons).', category: 'food', source: 'plugshare-1', url: plug, checkedOn: '2026-10-16' },
+    { text: 'Second note citing the same page.', category: 'site', source: 'plugshare-copy', url: plug, checkedOn: '2026-10-16' },
+  ];
+  const html = guideMain(route);
+  const sources = html.slice(html.indexOf('Sources for this stop')).split('</ul>')[0];
+  assert.equal(sources.split(`href="${plug}"`).length - 1, 1);
+  assert.match(sources, /PlugShare location 1 \(driver check-ins, crowd-sourced amenities\)/);
+  assert.doesNotMatch(sources, /Driver report, PlugShare/);
+  assert.match(sources, /Electrify America locator/);
+  // Both check-ins still show under Driver reports.
+  const block = reportsBlock(html);
+  assert.match(block, /First check-in/);
+  assert.match(block, /Second check-in/);
+  // No stored route repeats a URL in any stop's source list.
+  for (const f of (await readdir(new URL('../src/data/routes/', import.meta.url))).filter((n) => n.endsWith('.json'))) {
+    const r = JSON.parse(await readFile(new URL(`../src/data/routes/${f}`, import.meta.url), 'utf8'));
+    for (const part of guideMain(r).split('<h3 class="h3 sub">Sources for this stop</h3>').slice(1)) {
+      const urls = [...part.split('</ul>')[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+      assert.equal(new Set(urls).size, urls.length, `${f} repeats a source URL: ${urls.filter((u, i) => urls.indexOf(u) !== i)}`);
+    }
+  }
+});
+
 test('corridor guides keep stored reports and hide ones older than 3 years', async () => {
   const cutoff = driverReportCutoff();
   const phoenix = JSON.parse(await readFile(new URL('../src/data/routes/la-to-phoenix.json', import.meta.url), 'utf8'));
