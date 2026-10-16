@@ -74,6 +74,14 @@
     "wiki-i5-ca": {
       "name": "Interstate 5 in California, exit list (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Interstate_5_in_California"
+    },
+    "evgo-midway-x": {
+      "name": "EVgo post on the 3757 Midway Dr opening (X, March 25, 2026)",
+      "url": "https://x.com/evgonetwork/status/2036825711546093636"
+    },
+    "irvine-spectrum-services": {
+      "name": "Irvine Spectrum Center services",
+      "url": "https://www.irvinespectrumcenter.com/guest-services/services"
     }
   },
   "stops": [
@@ -787,10 +795,17 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are inside the parking garage, at the southern corner. Irvine Spectrum Center lists retail hours of 10am to 9pm Sunday to Thursday and 10am to 10pm Friday and Saturday, with counter-service food from 11am. Restrooms: Not yet verified.",
+          "text": "EA's site note: chargers are inside the parking garage, at the southern corner. Irvine Spectrum Center lists retail hours of 10am to 9pm Sunday to Thursday and 10am to 10pm Friday and Saturday, with counter-service food from 11am.",
           "category": "food",
           "source": "irvine-spectrum-hours",
           "url": "https://www.irvinespectrumcenter.com/hours",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Restrooms: Irvine Spectrum Center's services page tells guests to ask its At Your Service chat where the restrooms are, and lists Guest Services desks by the Giant Wheel and the Carousel. The page does not say which restrooms are closest to the garage.",
+          "category": "site",
+          "source": "irvine-spectrum-services",
+          "url": "https://www.irvinespectrumcenter.com/guest-services/services",
           "checkedOn": "2026-10-16"
         },
         {
@@ -1285,7 +1300,7 @@
           "url": "https://www.evgo.com/find-a-charger/ca/san-diego/87120/"
         },
         "power": {
-          "value": "200 kW, CCS on all 14 chargers. EVgo's March 2026 post says 200 kW simultaneous charging on all 28 stalls.",
+          "value": "200 kW, CCS on all 14 chargers. EVgo's March 25, 2026 posts on X and LinkedIn say 200 kW simultaneous charging on all 28 stalls.",
           "status": "verified",
           "source": "evgo",
           "url": "https://www.evgo.com/find-a-charger/ca/san-diego/87120/"
@@ -1707,7 +1722,7 @@
       "reports": [],
       "around": [
         {
-          "text": "EVgo's March 2026 post on the opening says the hub is near shopping, restaurants, hair salons and gyms, and that all 28 stalls offer 200 kW simultaneous charging. EVgo's locator header lists 27 stalls. Restrooms and hours of nearby businesses: Not yet verified.",
+          "text": "EVgo's March 2026 posts on the opening say the hub is near shopping, restaurants, hair salons and gyms. Restrooms and hours of nearby businesses: Not yet verified.",
           "category": "food",
           "source": "evgo-midway-post",
           "url": "https://www.linkedin.com/posts/evgo_fastcharging-activity-7442610284596465666-4FJx",
@@ -1743,7 +1758,7 @@
       "source": "afdc"
     },
     {
-      "text": "22 Tesla sites on this route are flagged from Tesla Find Us where DOE's access note agrees: 12 open to all EVs with a NACS adapter, 10 Tesla only. 4 stay Not yet verified because Tesla's page rendered only in part or DOE gave no access note. Checked 2026-10-16. Several Tesla only sites in Buena Park, Mission Viejo and downtown San Diego list 72 kW, not 250 kW.",
+      "text": "22 Tesla sites on this route are flagged from Tesla Find Us where DOE's access note agrees: 12 open to all EVs with a NACS adapter, 10 Tesla only. 4 stay Not yet verified because Tesla's page rendered only in part or DOE gave no access note. Checked twice on 2026-10-16. Several Tesla only sites in Buena Park, Mission Viejo and downtown San Diego list 72 kW, not 250 kW.",
       "source": "tesla-findus"
     },
     {
@@ -1751,7 +1766,7 @@
       "source": "ea-locator"
     },
     {
-      "text": "EVgo's locator lists 14 chargers with two CCS cables each at the Midway Drive hub and a header of 27 stalls. EVgo's March 2026 post and DOE both say 28. Treat it as 14 chargers until EVgo's pages agree.",
+      "text": "Midway Drive hub: EVgo's locator lists 14 chargers with two CCS cables each at 200 kW. EVgo's own posts on X and LinkedIn (March 25, 2026) and DOE (last confirmed 2026-10-14) say 28 stalls. Only the locator page header says 27, rechecked 2026-10-16. Plan on 14 chargers and 28 cables.",
       "source": "evgo"
     },
     {
@@ -1759,7 +1774,7 @@
       "source": "afdc"
     },
     {
-      "text": "Food and restroom notes are Not yet verified at the two Walmart stops and at Dana Point Station. Walmart store pages returned 403 on 2026-10-16. EA's site notes say where the chargers sit.",
+      "text": "Food, restroom and store hour notes are Not yet verified at the two Walmart stops and at Dana Point Station. Walmart store pages returned 403 on 2026-10-16, and Wayback Machine captures of those pages show Walmart's block page. EA's page names no host business at Dana Point Station. EA's site notes say where the chargers sit.",
       "source": "ea-locator"
     }
   ],
