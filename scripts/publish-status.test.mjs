@@ -188,7 +188,7 @@ test('Las Vegas to Salt Lake City passes the primary gate and stays off the publ
   assert.equal(routeData.slug, 'las-vegas-to-salt-lake-city');
   assert.equal(routeData.title, 'Las Vegas to Salt Lake City');
   assert.equal(routeData.highway, 'I-15');
-  assert.equal(routeData.checked, '2026-10-16');
+  assert.equal(routeData.checked, '2026-10-15');
   assert.deepEqual(meta, {
     slug: 'las-vegas-to-salt-lake-city',
     title: 'Las Vegas to Salt Lake City',
