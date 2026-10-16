@@ -212,7 +212,7 @@
       "towns": "Hillsboro, TX",
       "mile": 57,
       "milepostNote": "Measured along OSRM's route from the start: 56.9 miles. The site is about 0.1 mile from that route line. Southbound leave I-35 at exit 370, US 77 / Spur 579.",
-      "why": "Tesla Find Us lists this site open to non-Tesla EVs with a NACS adapter, 24 stalls on DOE, right at the I-35 / US 77 interchange. Mid-corridor stop before Waco. The Italy Love's Tesla site, about 16 miles back, is Tesla only per Find Us.",
+      "why": "Open to all EVs. Tesla Find Us banner: Adapter Included For Other EVs; the adapter is at the stall. Stall count and kW are DOE figures only (24 stalls at up to 325 kW); Tesla's page did not show them. Right at the I-35 / US 77 interchange. Mid-corridor stop before Waco. The Italy Love's Tesla site, about 16 miles back, is Tesla only per Find Us.",
       "primary": {
         "name": "Hillsboro, TX - Tesla Supercharger",
         "network": "Tesla Supercharger",
@@ -221,19 +221,22 @@
         "stalls": {
           "value": "24 stalls",
           "status": "verified",
-          "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus/location/supercharger/32743"
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations/#/station/447388",
+          "note": "Stall count and kW are DOE figures only (24 stalls at up to 325 kW); Tesla's page did not show them."
         },
         "power": {
           "value": "Up to 325 kW",
           "status": "verified",
-          "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus/location/supercharger/32743"
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations/#/station/447388",
+          "note": "Stall count and kW are DOE figures only (24 stalls at up to 325 kW); Tesla's page did not show them."
         },
         "access": {
-          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "value": "Open to all EVs. Tesla Find Us banner: Adapter Included For Other EVs; the adapter is at the stall.",
           "status": "verified",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/32743"
         },
         "teslaAccess": "open",
         "price": {
@@ -246,6 +249,7 @@
         ],
         "driverReports": [],
         "checkedOn": "2026-10-16",
+        "url": "https://www.tesla.com/findus/location/supercharger/32743",
         "source": "tesla-findus"
       },
       "backups": [
@@ -535,7 +539,7 @@
       "towns": "Temple, TX",
       "mile": 124,
       "milepostNote": "Measured along OSRM's route from the start: 123.7 miles. The site is about 0.1 mile from that route line. Southbound use the General Bruce Drive frontage near exit 299 (US 190 / Loop 363).",
-      "why": "Tesla Find Us lists 68 Superchargers up to 325 kW, open to non-Tesla EVs with a NACS adapter. It is the only large DC site in the Bellmead to Round Rock gap on this corridor. Leave Waco with enough charge if you are skipping it in a non-Tesla without a NACS adapter.",
+      "why": "Tesla Find Us lists 68 Superchargers up to 325 kW. Open to all EVs. Tesla Find Us banner: Adapter Included For Other EVs; the adapter is at the stall. It is the only large DC site in the Bellmead to Round Rock gap on this corridor.",
       "primary": {
         "name": "Temple, TX - Tesla Supercharger",
         "network": "Tesla Supercharger",
@@ -554,9 +558,10 @@
           "url": "https://www.tesla.com/findus/location/supercharger/19206"
         },
         "access": {
-          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "value": "Open to all EVs. Tesla Find Us banner: Adapter Included For Other EVs; the adapter is at the stall.",
           "status": "verified",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/19206"
         },
         "teslaAccess": "open",
         "price": {
@@ -1089,11 +1094,11 @@
   ],
   "tips": [
     {
-      "text": "Temple (mile 124) is the only large DC site between Bellmead and Round Rock. Non-Tesla drivers without a NACS adapter should treat Waco EA to Round Rock EA as about 82 miles and leave Bellmead with margin.",
+      "text": "Temple (mile 124) is the only large DC site between Bellmead and Round Rock.",
       "source": "afdc"
     },
     {
-      "text": "9 Tesla sites on this route are flagged from Tesla Find Us: 5 open to all EVs with a NACS adapter, 4 Tesla only. 4 stay Not yet verified because Tesla's page rendered only in part. Checked 2026-10-16.",
+      "text": "9 Tesla sites on this route are flagged from Tesla Find Us: 5 open to all EVs, 4 Tesla only. Hillsboro and Temple: Open to all EVs. Tesla Find Us banner: Adapter Included For Other EVs; the adapter is at the stall. The other 3 open sites need a NACS adapter. 5 stay Not yet verified because Tesla's page rendered only in part: Abbott, Jarrell, Hancock Center, Canyon Ridge, and the Austin Tesla site. Checked 2026-10-16.",
       "source": "tesla-findus"
     },
     {
