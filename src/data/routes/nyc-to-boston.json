@@ -13,7 +13,7 @@
       "miles": 11.25,
       "source": "osrm",
       "url": "http://router.project-osrm.org/route/v1/driving/-74.005939,40.7127395;-73.9480027,40.8508319",
-      "checkedOn": "2026-10-16",
+      "checkedOn": "2026-10-15",
       "estimate": true,
       "note": "Estimate. Driving distance from New York City Hall to the George Washington Bridge."
     }

@@ -13,7 +13,7 @@
       "miles": 26.08,
       "source": "osrm",
       "url": "http://router.project-osrm.org/route/v1/driving/-118.2429212,34.0536961;-118.50438,34.3316",
-      "checkedOn": "2026-10-16",
+      "checkedOn": "2026-10-15",
       "estimate": true,
       "note": "Estimate. Driving distance from Los Angeles City Hall to I-5 at the Newhall Pass (SR-14)."
     }

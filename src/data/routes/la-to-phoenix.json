@@ -13,7 +13,7 @@
       "miles": 3.16,
       "source": "osrm",
       "url": "http://router.project-osrm.org/route/v1/driving/-118.2429212,34.0536961;-118.2205845,34.0316499",
-      "checkedOn": "2026-10-16",
+      "checkedOn": "2026-10-15",
       "estimate": true,
       "note": "Estimate. Driving distance from Los Angeles City Hall to the East Los Angeles Interchange."
     }

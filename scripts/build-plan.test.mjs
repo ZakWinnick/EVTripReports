@@ -684,7 +684,7 @@ test('the LA to Las Vegas dry-run order does not overstate verification or attac
   assert.equal(plan.originLeg.miles, 41.86);
   assert.equal(plan.originLeg.estimate, true);
   assert.equal(plan.originLeg.status, undefined);
-  assert.equal(plan.originLeg.checkedOn, '2026-10-16');
+  assert.equal(plan.originLeg.checkedOn, '2026-10-15');
   assert.match(plan.originLeg.url, /^http:\/\/router\.project-osrm\.org\/route\/v1\/driving\//);
   assert.equal(plan.strategy.stops.map((stop) => stop.name).join(', '), 'Barstow, 1503 East Main Street');
   assert.equal(plan.strategy.destination.arrivePercent, 15);
@@ -802,7 +802,7 @@ test('an estimated origin leg shifts the battery and the clock', () => {
     miles: 41.86,
     source: 'osrm',
     url: 'http://router.project-osrm.org/route/v1/driving/-118.24,34.05;-117.54,34.06',
-    checkedOn: '2026-10-16',
+    checkedOn: '2026-10-15',
     estimate: true,
     note: 'Estimate. Driving distance from Los Angeles City Hall.',
   }];
@@ -814,7 +814,7 @@ test('an estimated origin leg shifts the battery and the clock', () => {
   const drive = plan.stops[0].primary.facts.find((fact) => fact.label === 'Drive time').value;
   assert.match(drive, /76 minutes from Los Angeles/);
   assert.match(drive, /passing about 09:16/);
-  assert.match(plan.assumptions.join(' '), /Source checked 2026-10-16/);
+  assert.match(plan.assumptions.join(' '), /Source checked 2026-10-15/);
   assert.match(plan.summary, /an estimated 41\.9 miles/);
 });
 
@@ -891,7 +891,7 @@ test('a stored plan renders the same HTML, and new sections appear only when the
     miles: 10,
     source: 'wiki',
     url: 'https://en.wikipedia.org/wiki/Example',
-    checkedOn: '2026-10-16',
+    checkedOn: '2026-10-15',
     estimate: true,
     note: 'Estimate.',
   }];

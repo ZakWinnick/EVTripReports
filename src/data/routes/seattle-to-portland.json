@@ -13,7 +13,7 @@
       "miles": 1.17,
       "source": "osrm",
       "url": "http://router.project-osrm.org/route/v1/driving/-122.3300986,47.6038904;-122.3215,47.591",
-      "checkedOn": "2026-10-16",
+      "checkedOn": "2026-10-15",
       "estimate": true,
       "note": "Estimate. Driving distance from Seattle City Hall to I-5 at the I-90 interchange."
     }
