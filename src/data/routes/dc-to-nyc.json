@@ -3,7 +3,7 @@
   "title": "Washington, DC to NYC",
   "highway": "I-95",
   "direction": "northbound",
-  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Marlton, East Brunswick and Elizabeth. All 69 Tesla sites carry an access flag: 68 from Tesla Find Us and 1 from DOE station data where Tesla's page did not load.",
+  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Marlton, East Brunswick and Elizabeth. 68 of 69 Tesla sites carry an access flag from Tesla Find Us (54 open to all EVs, 14 Tesla only). Newark, DE on JFK Memorial Hwy stays Not yet verified.",
   "checked": "2026-10-15",
   "startLabel": "I-95 at the Capital Beltway",
   "startNote": "Mileage starts at the I-95 and I-495 split in College Park, MD (I-95 exit 27, Maryland mile 26.1) and ends at the George Washington Bridge. The 223.27 miles is OSRM's driving distance on I-95, the Delaware Memorial Bridge and the NJ Turnpike, shown as 223. OSRM's route uses the Baltimore Harbor Tunnel (I-895) in place of the Fort McHenry Tunnel (I-95). That difference has not been measured.",
@@ -883,7 +883,7 @@
         },
         {
           "name": "Newark, DE - Tesla Supercharger, 530 John F Kennedy Memorial Hwy, Newark",
-          "facts": "Tesla Supercharger at 530 John F Kennedy Memorial Hwy, Newark, DE. DOE lists 12 NACS at 150 kW. Tesla only, per DOE station data (\"Open to Teslas only\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load: Find Us for newarkdesupercharger returned 404 on 2026-10-15 and timed out on a retry 2026-10-16.",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us for newarkdesupercharger returned 404 on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "afdcIds": [
             102103
@@ -891,8 +891,7 @@
           "driverReports": [],
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/102103",
-          "source": "afdc",
-          "teslaAccess": "tesla-only"
+          "source": "afdc"
         },
         {
           "name": "Newark, DE, 132 Christiana Mall, Newark",
@@ -3176,7 +3175,7 @@
   ],
   "tips": [
     {
-      "text": "All 69 Tesla sites on this route carry an access flag (54 open to all EVs, 15 Tesla only). 68 come from Tesla Find Us, checked 2026-10-15; 63 of those also match DOE's access note, and 5 more (Bellmawr, Piscataway, Woodbridge, Newark Ferry St and Jersey City) show \"Adapter Included For Other EVs\" where DOE lists CCS connectors or \"NACS partner enabled\". Newark, DE on JFK Memorial Hwy is flagged Tesla only from DOE station data (\"Open to Teslas only\"), because its Find Us page returned 404 on 2026-10-15 and timed out on 2026-10-16.",
+      "text": "68 of 69 Tesla sites on this route carry an access flag from Tesla Find Us (54 open to all EVs, 14 Tesla only), checked 2026-10-15. 63 of those also match DOE's access note, and 5 more (Bellmawr, Piscataway, Woodbridge, Newark Ferry St and Jersey City) show \"Adapter Included For Other EVs\" where DOE lists CCS connectors or \"NACS partner enabled\". Newark, DE on JFK Memorial Hwy stays Not yet verified: Find Us returned 404 on 2026-10-15 and timed out on 2026-10-16. DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18). That note alone does not set a flag.",
       "source": "tesla-findus"
     },
     {

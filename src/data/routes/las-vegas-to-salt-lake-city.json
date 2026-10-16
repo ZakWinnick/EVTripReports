@@ -3,7 +3,7 @@
   "title": "Las Vegas to Salt Lake City",
   "highway": "I-15",
   "direction": "northbound",
-  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. Tesla sites carry a Tesla only or open to all EVs flag from Tesla's locator, or from DOE station data where Tesla's page did not load.",
+  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. 18 of 29 Tesla sites carry an access flag from Tesla Find Us (13 open to all EVs, 5 Tesla only). The other 11 stay Not yet verified.",
   "checked": "2026-10-15",
   "startLabel": "Tropicana Ave on-ramp, Las Vegas",
   "startNote": "Mileage starts at the I-15 on-ramp at Tropicana Avenue in Las Vegas (Nevada exit 37, mile 37.40), where the LA to Las Vegas guide ends, and ends at I-15 exit 306, 600 South in Salt Lake City. The 423.07 miles is OSRM's driving distance on I-15 between those two points, shown as 423. Stop miles are each site's nearest point on that route. Utah exit miles minus 115.48 line up with those stop miles at exits 10, 57, 112, 188 and 257B.",
@@ -247,12 +247,11 @@
             233392
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note.",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/233392",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         },
         {
           "name": "Mesquite, NV - Tesla Supercharger, 950 West Mesquite Boulevard, Mesquite",
@@ -267,12 +266,11 @@
               "summary": "Cybertruck driver topped up at the Mesquite v3 Supercharger from 50% to 60% before continuing to Cedar City."
             }
           ],
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note.",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/200864",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         }
       ],
       "reports": [],
@@ -866,12 +864,11 @@
             200545
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 24 NACS at 250 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note.",
+          "facts": "Tesla Supercharger. DOE lists 24 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/200545",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         },
         {
           "name": "Beaver, UT - West 1425 North - Tesla Supercharger, 314 West 1425 North, Beaver",
@@ -879,12 +876,11 @@
             422573
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note.",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/422573",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         }
       ],
       "reports": [],
@@ -1696,12 +1692,11 @@
             462735
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW and 8 NACS at 325 kW. Open to all EVs: DOE lists CCS connectors here, so the NACS adapter is included at the stall. Access per DOE station data (connector list; access note says only \"24 hours daily\", DOE last confirmed 2026-07-15), checked 2026-10-16. Tesla's page did not load on a retry 2026-10-16. On 2026-10-15 a Find Us page titled only \"Sandy, UT\" (loc 462510) showed \"Adapter Included For Other EVs\" and 8 Superchargers up to 325 kW but no street address, so it is not tied to this address.",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW and 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load on a retry 2026-10-16. On 2026-10-15 a Find Us page titled only \"Sandy, UT\" (loc 462510) showed \"Adapter Included For Other EVs\" and 8 Superchargers up to 325 kW but no street address, so it is not tied to this address. DOE's access note says only \"24 hours daily\" (DOE last confirmed 2026-07-15).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/462735",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         },
         {
           "name": "DAHLE USED SUPER CHARGER, 4545 Auto Blvd, Murray",
@@ -1826,12 +1821,11 @@
             440452
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16.",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/440452",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         },
         {
           "name": "Midvale, UT - Tesla Supercharger, 807 Fort Union Blvd, Midvale",
@@ -1839,12 +1833,11 @@
             308421
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load: Find Us returned 404 on 2026-10-15 and timed out on a retry 2026-10-16.",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us returned 404 on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/308421",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         },
         {
           "name": "Mike Hale Acura - Blink, 5601 South State Street, Murray",
@@ -1942,12 +1935,11 @@
             202618
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16.",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/202618",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         },
         {
           "name": "South Jordan, UT - Tesla Supercharger, 1309 W S Jordan Pkwy, South Jordan",
@@ -1955,12 +1947,11 @@
             311221
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16.",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/311221",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         },
         {
           "name": "South Salt Lake, UT - S Main Street - Tesla Supercharger, 2193 S Main Street, South Salt Lake",
@@ -1968,12 +1959,11 @@
             347603
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 20 NACS at 250 kW. Open to all EVs. Non-Tesla CCS cars need a NACS adapter. Access per DOE station data (\"NACS partner enabled\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16.",
+          "facts": "Tesla Supercharger. DOE lists 20 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
           "status": "unverified",
           "checkedOn": "2026-10-16",
           "url": "https://afdc.energy.gov/stations/#/station/347603",
-          "source": "afdc",
-          "teslaAccess": "open"
+          "source": "afdc"
         },
         {
           "name": "Tim Dahle Nissan Southtowne, 11155 S Jordan Gateway, South Jordan",
@@ -2118,7 +2108,7 @@
   ],
   "tips": [
     {
-      "text": "28 of 29 Tesla sites on this route carry an access flag. 18 come from Tesla Find Us (13 open to all EVs, 5 Tesla only). 10 come from DOE station data because Tesla's page did not load in full on 2026-10-15 or on a retry 2026-10-16; all 10 are open to all EVs (9 marked \"NACS partner enabled\", and Chevron in Sandy lists CCS connectors). Those 10 stay Not yet verified on the network's own locator. WinCo in Orem stays Not yet verified: Tesla's page was partial and DOE gives no access note. Where the page shows no stall count or kW, the numbers are DOE's.",
+      "text": "18 of 29 Tesla sites on this route carry an access flag from Tesla Find Us (13 open to all EVs, 5 Tesla only). 11 stay Not yet verified: Tesla's page did not load in full on 2026-10-15 or on a retry 2026-10-16. DOE lists \"NACS partner enabled\" at 9 of those (DOE last confirmed 2026-06-18), CCS connectors at Chevron in Sandy (DOE last confirmed 2026-07-15), and only \"24 hours daily\" at WinCo in Orem (DOE last confirmed 2026-08-11). Those DOE notes alone do not set a flag. Where the page shows no stall count or kW, the numbers are DOE's.",
       "source": "tesla-findus"
     },
     {
