@@ -4,36 +4,36 @@ import SamplePreview from '../components/SamplePreview.astro';
 import { tiers, priceLabel } from '../data/plans.js';
 import { titleCase } from '../lib/title-case.js';
 const rows: [string, boolean, boolean, boolean][] = [
-  ['Charging options and available backups, with gaps flagged', true, true, true],
-  ['Every stop checked against the network before delivery', true, true, true],
-  ['Built for your port, adapter, and memberships', true, true, true],
-  ['Dated driver reports where available', true, true, true],
-  ['Sourced food and restroom notes where available', false, true, true],
-  ['Lodging notes where verified', false, true, true],
-  ['Estimated battery targets and charging strategy', false, true, true],
+  ['Charging stops and backups, gaps flagged', true, true, true],
+  ['Every stop checked with the network', true, true, true],
+  ['Matched to your port, adapter, and memberships', true, true, true],
+  ['Dated driver reports', true, true, true],
+  ['Food and restroom notes', false, true, true],
+  ['Lodging notes', false, true, true],
+  ['Battery targets and charging strategy', false, true, true],
   ['Multiple days and overnight charging', false, false, true],
   ['Trip preferences and contingency notes', false, false, true],
 ];
 const faq = [
-  { q: 'How is this different from ABRP?', a: 'A Better Routeplanner is the right tool for battery math and routing, and you should keep it for the drive. A plan is what you read before you leave. It is built for your port, adapter, and memberships, checked against each network\'s own locator, with available backups and any gaps clearly flagged.' },
-  { q: 'What if a charger is down when I get there?', a: 'We identify verified backups where the research supports them and flag any stop without one. Driver reports keep their dates. Check current availability with the network before relying on a stop.' },
-  { q: 'Does any charging network pay you?', a: 'No. No network pays for placement or coverage. If we ever add affiliate links for hotels or gear, they will be marked on the page.' },
-  { q: 'Which trips can you plan?', a: 'Any trip. Tell us your start, destination, and any must-stop places. We research the route using network locators and other sources, check compatibility, and flag missing information before delivery.' },
-  { q: 'What do you need from me?', a: 'Your car, its charge port and any adapter you carry, your charging memberships, where you\'re starting and ending, and your dates. Notes about kids, pets, or a must-stop diner help too.' },
-  { q: 'When do I get my plan?', a: 'Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days. The clock starts when we have both the payment and the trip form. A person reviews the plan before it is sent.' },
-  { q: 'Why the form before payment?', a: 'The Stripe page records the charge. It does not record your car, adapter, route, or dates. Send those first. Checkout then opens for the plan you picked, and Stripe brings you back here.' },
+  { q: 'How is this different from ABRP?', a: 'Keep ABRP for the drive. A plan is what you read before you leave: built for your port, adapter, and memberships, checked with each network, with backups and gaps flagged.' },
+  { q: 'What if a charger is down when I get there?', a: 'Each stop lists a backup when we can verify one, and says so when we can\'t. Check the network\'s app before you arrive.' },
+  { q: 'Does any charging network pay you?', a: 'No. If we add affiliate links for hotels or gear, they\'ll be marked.' },
+  { q: 'Which trips can you plan?', a: 'Any trip. Tell us your start, destination, and must-stops.' },
+  { q: 'What do you need from me?', a: 'Your car, port and adapter, memberships, start, destination, and dates. Notes about kids, pets, or a favorite diner help.' },
+  { q: 'When do I get my plan?', a: 'Route and Detailed plans within 48 hours. Multi-day plans within 3 business days. The clock starts once we have payment and your trip details.' },
+  { q: 'Why the form before payment?', a: 'Stripe only records the payment. Your trip details come from the form, so we save those first.' },
 ];
 ---
 <Base title="Plan an EV road trip" description="Get an EV trip plan for your car, adapter, and dates. Compare $19, $39, and $79 plans, see a sample, and tell us where you want to go.">
   <section class="band band--tight"><div class="wrap">
-    <div id="plan-intro" class="sample-feature"><div><h1 class="h1">Let Us Plan Your EV Trip</h1><p class="lede" style="margin-top:22px">A plan for your car, adapter, and the way you like to travel. Checked charging options, available backups, and the gaps worth knowing about before you leave.</p><p class="small muted" style="margin-top:18px">Reviewed by a person. From $19. Route and detailed plans within 48 hours; multi-day plans within 3 business days after payment and complete details.</p><div class="btnrow" style="margin-top:25px"><a class="pill pill--lg" href="#compare">Compare Plans</a><a class="text-link" href="/sample-plan/">Read the Sample Plan</a></div></div><SamplePreview /></div>
-    <div id="checkout-return" class="checkout-return" hidden role="status"><h2 class="h2">Back from Checkout?</h2><p>This page cannot confirm a payment. Check for your Stripe receipt before paying again. If you submitted your trip details before checkout, you do not need to send them again.</p><p>Delivery starts once payment and complete trip details are received. When your plan is ready, use the checkout email to find it below. If you paid without sending details, email us so we can match them to your order.</p><div class="btnrow"><a class="pill" href="/find-my-plans/">Find My Plans</a><a class="text-link" href="mailto:admin@evtripreports.com?subject=Trip%20order%20help">Get Order Help</a><a class="text-link" href="/plans/">Start a Different Trip</a></div></div>
+    <div id="plan-intro" class="sample-feature"><div><h1 class="h1">Let Us Plan Your EV Trip</h1><p class="lede" style="margin-top:22px">Built for your car, adapter, and dates. Checked stops, backups, and anything we couldn’t confirm.</p><p class="small muted" style="margin-top:18px">Reviewed by a person. Delivered in 48 hours, or 3 business days for multi-day trips.</p><div class="btnrow" style="margin-top:25px"><a class="pill pill--lg" href="#compare">Compare Plans</a><a class="text-link" href="/sample-plan/">Read the Sample Plan</a></div></div><SamplePreview /></div>
+    <div id="checkout-return" class="checkout-return" hidden role="status"><h2 class="h2">Back from Checkout?</h2><p>This page cannot confirm a payment. Check for your Stripe receipt before paying again. If you sent your trip details first, you’re all set.</p><p>When your plan is ready, find it with your checkout email. Paid without sending details? Email us and we’ll match them.</p><div class="btnrow"><a class="pill" href="/find-my-plans/">Find My Plans</a><a class="text-link" href="mailto:admin@evtripreports.com?subject=Trip%20order%20help">Get Order Help</a><a class="text-link" href="/plans/">Start a Different Trip</a></div></div>
   </div></section>
 
   <section id="compare" class="band band--tight band--mist">
     <div class="wrap">
       <h2 class="h2">Compare Plans</h2>
-      <p class="lede" style="margin-top:12px">Choose what you need. We save your trip details before opening secure checkout.</p>
+      <p class="lede" style="margin-top:12px">We save your details before opening checkout.</p>
       <div class="plan-cards">{tiers.map((t) => <article class:list={['plan-card', { 'plan-card--featured': t.id === 'detailed' }]}><h3 class="h3">{titleCase(t.name)}</h3><p class="plan-card__price">{t.price}<span> / trip</span></p><p class="small muted">{t.blurb}</p><p class="small">{t.delivery}</p><a class="pill pay-link" href="#request" data-tier={t.name}>Choose {titleCase(t.name)}</a></article>)}</div>
       <details class="plan-comparison"><summary>Compare everything included</summary>
       <div class="cmp" role="table" aria-label="Plan comparison">
@@ -62,7 +62,7 @@ const faq = [
           <div role="rowheader" class="cmp__label">Delivery</div>
           {tiers.map((t) => <div role="cell" class="cmp__cell small" data-tier={t.name}>{t.delivery}</div>)}
         </div>
-      </div></details><p class="small muted" style="margin-top:20px">Battery targets are estimates on the $39 and $79 plans. Food, restrooms, lodging, and backups depend on sourced information; missing details are flagged. We recommend, but do not make bookings.</p>
+      </div></details><p class="small muted" style="margin-top:20px">Battery targets are estimates. Food, lodging, and backup notes depend on what we can source, and gaps are flagged. We don’t make bookings.</p>
     </div>
   </section>
 
@@ -70,7 +70,7 @@ const faq = [
     <div class="wrap req">
       <div>
         <h2 class="h2">Tell Us About Your Trip</h2>
-        <p id="form-lede" class="lede" style="margin-top:14px">Start with where you’re going. Then tell us about the car and the people coming along. We save the details before opening checkout.</p>
+        <p id="form-lede" class="lede" style="margin-top:14px">Route first, then the car. Payment comes last.</p>
       </div>
       <form id="intake" class="panel form" novalidate>
         <noscript><p>This form needs JavaScript for the spam check. Turn it on, or email <a href="mailto:admin@evtripreports.com">admin@evtripreports.com</a>.</p></noscript>
@@ -83,7 +83,7 @@ const faq = [
           <label>Leaving<input name="depart" type="date" required /></label>
           <label>Coming back (optional)<input name="return" type="date" /></label>
         </div>
-        <p class="small muted">Need a return trip? Tell us in the notes; we will confirm the scope before building it.</p>
+        <p class="small muted">Need a return trip? Say so in the notes.</p>
         <button class="pill pill--ghost route-check" type="button">Continue to Trip Details</button>
         <p class="route-check-message" role="status" aria-live="polite"></p>
         <div class="trip-more">
@@ -104,7 +104,7 @@ const faq = [
             <option>NACS port (Tesla-style)</option>
             <option>NACS port, with a CCS adapter</option>
             <option>Not sure</option>
-          </select><span class="small muted">Not sure is fine. We ask you before we build.</span></label>
+          </select><span class="small muted">Not sure is fine. We’ll ask.</span></label>
         </div>
         <div class="grid2">
           <label>Leaving at (optional)<input name="departTime" type="time" /><span class="small muted">Local time where you start.</span></label>
@@ -137,7 +137,7 @@ const faq = [
   <section class="band band--tight">
     <div class="wrap">
       <h2 class="h2">Questions</h2>
-      <p class="lede" style="margin-top:12px">More answers are on the <a href="/faq/">FAQ</a>, including why this is different from your car's navigation.</p>
+      <p class="lede" style="margin-top:12px">More on the <a href="/faq/">FAQ</a>.</p>
       <div class="faq">
         {faq.map((f) => (
           <details>
@@ -152,7 +152,7 @@ const faq = [
         <ul>
           <li>If we miss the delivery time, you get a full refund.</li>
           <li>If a station fact in your plan was wrong on the date we checked it, you get a full refund.</li>
-          <li>Networks change things after we check. A plan that was correct on its check date isn't refundable because a site changed later.</li>
+          <li>A plan that was correct on its check date isn't refundable because a site changed later.</li>
           <li>Ask for a refund by replying to the email your plan came in, or by writing to <a href="mailto:admin@evtripreports.com">admin@evtripreports.com</a>, within 14 days of your trip.</li>
         </ul>
       </div>

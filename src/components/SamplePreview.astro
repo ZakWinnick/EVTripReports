@@ -8,8 +8,8 @@ const strategy = plan.strategy.stops.find((s: any) => s.stopId === stop?.id);
 <div class="sample-preview">
   <div class="sample-preview__top"><span>Sample Detailed Plan, $39</span><span>Example only</span></div>
   <h3>Ontario to Las Vegas</h3>
-  <p class="sample-vehicle">Ioniq 5 with a CCS port and NACS adapter</p>
+  <p class="sample-vehicle">Ioniq 5, CCS with a NACS adapter</p>
   <div class="sample-charger"><p class="eyebrow">Charging stop at {stop?.name}, mile {stop?.mile}</p><p><strong>{stop?.primary.name}</strong></p><p>Backup: {stop?.backups?.[0]?.name || 'Not yet verified'}</p></div>
   <div class="sample-charge"><div><strong>{strategy?.arrivePercent}%</strong><span>Estimated arrival</span></div><div><strong>{strategy?.departPercent}%</strong><span>Estimated charge target</span></div></div>
-  <p class="sample-preview__foot">Example only. Assumes 250 miles of range and starts at the corridor boundary. <a href="/sample-plan/#assumptions">See assumptions</a>.</p>
+  <p class="sample-preview__foot">Assumes 250 miles of range. <a href="/sample-plan/">See the full sample</a>.</p>
 </div>

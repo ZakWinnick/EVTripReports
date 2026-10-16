@@ -4,39 +4,39 @@ import Base from '../layouts/Base.astro';
 const faq = [
   {
     q: "Why use this instead of my car's navigation?",
-    a: "Your car's navigation is the right tool while you drive, and the better ones show live stall availability. A plan covers what in-car routing doesn't: it's built around your car, adapter, and memberships. Every stop is checked against the network itself. We identify available backups and flag gaps. Detailed plans add sourced food, restroom, and lodging notes where available. It's all laid out before you leave, so you aren't deciding at 10% battery.",
+    a: "Use your navigation while you drive. A plan is for before you leave: built around your car, adapter, and memberships, with every stop checked with the network and a backup where we can verify one.",
   },
   {
     q: 'What does a custom plan include?',
-    a: "Each charging fact is checked on the network's own site and shows that date. A custom plan is built for your car, adapter, memberships, and dates. Every plan identifies charging options and available backups, with gaps flagged. The detailed plan adds estimated battery targets and sourced food, restroom, and lodging notes where available. The multi-day plan covers several days and overnight charging. Prices are $19, $39, and $79. We recommend hotels. We don't book them.",
+    a: 'Charging stops and backups for your car, each fact with its check date. The $39 plan adds battery targets plus food, restroom, and lodging notes. The $79 plan covers several days and overnight charging. We recommend hotels but don\'t book them.',
   },
   {
     q: 'Who reviews a plan before I get it?',
-    a: "We build it from the car, adapter, memberships, and dates you send, then check the stops on the network's locator. A person reviews every plan before it is sent. Nothing goes out on its own.",
+    a: 'A person. Nothing goes out on its own.',
   },
   {
     q: 'When will the plan arrive?',
-    a: 'Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days. The clock starts when we have both the payment and the trip form.',
+    a: 'Route and Detailed plans within 48 hours. Multi-day plans within 3 business days. The clock starts once we have payment and your trip details.',
   },
   {
     q: 'How do I find a plan I already bought?',
-    a: 'Open Find my plans and enter the email you used at checkout. We email a link that works once and expires in 15 minutes. It lists your approved plans. There is no password and no account.',
+    a: 'Go to Find My Plans and enter your checkout email. We send a one-time link. No password or account.',
   },
   {
     q: 'Where do the charging numbers come from?',
-    a: "Stall count, kW, who can use the site, and price come from the network's own locator, with the date we checked. If the network doesn't publish a price, we leave it unpublished. The Department of Energy database is how we find DC charging sites in a town. When the network and that database disagree, we show both. PlugShare, X, and Reddit are driver reports. They are labeled as reports and are not confirmed facts. If we haven't confirmed a fact, the page says so. We give kW and stall counts. We don't call a site fast or slow.",
+    a: "Stalls, kW, access, and price come from the network's own locator. Driver reports from PlugShare, X, and Reddit are labeled as reports. Anything unconfirmed is marked.",
   },
   {
     q: 'What if a fact in my plan was wrong?',
-    a: "If we miss the delivery time, you get a full refund. If a station fact in your plan was wrong on the date we checked it, you get a full refund. Networks change sites after we check. A plan that was correct on its check date isn't refundable because a site changed later. Reply to the email your plan came in, or write to admin@evtripreports.com, within 14 days of your trip.",
+    a: 'If a station fact was wrong on the date we checked it, or we miss the delivery time, you get a full refund. Changes a network makes after that date aren\'t covered. Write to admin@evtripreports.com within 14 days of your trip.',
   },
   {
     q: 'How do I report a wrong stall count or a closed site?',
-    a: "Email admin@evtripreports.com with the stop, the date you were there, and what you saw. A photo helps. We recheck it against the network's own locator before changing the guide.",
+    a: 'Email admin@evtripreports.com with the stop, the date, and what you saw. A photo helps.',
   },
   {
     q: 'Do you book hotels, and does any network pay you?',
-    a: "No. We don't book hotels, rental cars, or tickets. No charging network pays for placement or coverage, and none of them reviews a guide before it goes up.",
+    a: "No to both.",
   },
 ];
 ---
@@ -44,7 +44,6 @@ const faq = [
   <section class="band band--tight">
     <div class="wrap">
       <h1 class="h1">FAQ</h1>
-      <p class="lede" style="margin-top:20px">Short answers. Checking rules are on the <a href="/methodology/">methodology page</a>. Prices and the request form are on <a href="/plans/">custom plans</a>.</p>
       <div class="faq">
         {faq.map((f) => (
           <details>
@@ -65,8 +64,8 @@ const faq = [
 </Base>
 
 <style>
-  .faq { margin-top: 36px; border-top: 1px solid var(--ink); max-width: 820px; }
+  .faq { margin-top: 32px; border-top: 3px solid var(--ink); max-width: 820px; }
   .faq details { border-bottom: 1px solid var(--line); padding: 18px 0; }
-  .faq summary { cursor: pointer; font-weight: 600; font-size: 1.1rem; letter-spacing: -0.02em; }
+  .faq summary { cursor: pointer; font-weight: 800; font-size: 1.1rem; }
   .faq p { margin: 12px 0 0; color: var(--ink-2); max-width: 68ch; }
 </style>

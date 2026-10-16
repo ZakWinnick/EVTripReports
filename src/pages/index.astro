@@ -31,10 +31,10 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
     <section class="home-hero">
       <div class="wrap home-hero__grid">
         <div class="home-hero__copy">
-          <h1 class="display">Tell Us Where You’re Driving. We’ll Plan the Charging.</h1>
-          <p class="lede">A weekend away, a cross-country move, the drive to see family. You get a charging plan built for your car, your adapter, and your dates, and a person checks it before it reaches you.</p>
+          <h1 class="display">You Drive. We Plan the Charging.</h1>
+          <p class="lede">A charging plan for your car, your route, and your dates. Checked by a person before you get it.</p>
           <div class="btnrow home-hero__actions"><a class="pill pill--lg" href="/plans/#request">Plan My Trip</a><a class="text-link" href="/sample-plan/">Read the Sample Plan</a></div>
-          <p class="small muted">From $19 per plan. Any route.</p>
+          <p class="small muted">From $19. Any route.</p>
         </div>
         <figure class="roadsign">
           <div class="roadsign__panel">
@@ -49,7 +49,7 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
             </dl>
           </div>
           <div class="roadsign__posts" aria-hidden="true"><span></span><span></span></div>
-          <figcaption>From the sample plan: a 2024 Hyundai Ioniq 5 leaving Ontario with 80%. It charges once, at {stop.name}, and reaches Las Vegas with an estimated {destination.arrivePercent}%. Illustrative trip, not a current recommendation.</figcaption>
+          <figcaption>Sample trip in an Ioniq 5: one stop, at {stop.name}. Not a current recommendation.</figcaption>
         </figure>
       </div>
     </section>
@@ -58,7 +58,7 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
       <div class="wrap">
         <div class="home-plan__head">
           <h2 class="h1">What a Plan Looks Like</h2>
-          <p class="lede">A map shows you chargers. A plan tells you which one fits your car, why that stop makes sense, and where to go if it doesn’t work out. What we couldn’t confirm is written down too.</p>
+          <p class="lede">Which charger fits your car, why stop there, and where to go if it’s down.</p>
         </div>
         <div class="home-plan__grid">
           <div class="strip" aria-label={`Ontario to Las Vegas, ${total} miles. Charge at ${stop.name}; the other stops are optional.`}>
@@ -71,7 +71,7 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
               ))}
               <li class="strip__point strip__point--end" style="--at:1"><span class="strip__mile">{total}</span><span class="strip__label"><strong>Las Vegas, NV</strong><span>Arrive with about {destination.arrivePercent}%</span></span></li>
             </ol>
-            <p class="strip__key small muted">Grey stops are optional. Mile numbers count from the I-10 junction in Ontario.</p>
+            <p class="strip__key small muted">Grey stops are optional.</p>
           </div>
 
           <article class="stopcard">
@@ -84,22 +84,22 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
               <div class="gauge__bar" style={`--from:${strategy.arrivePercent}%;--to:${strategy.departPercent}%`} aria-hidden="true"></div>
               <dl class="gauge__nums"><div><dt>Arrive</dt><dd>{strategy.arrivePercent}%</dd></div><div><dt>Leave</dt><dd>{strategy.departPercent}%</dd></div></dl>
             </div>
-            <p class="small muted">Estimates assume 250 miles of range, a 75 kWh battery, and 65 mph. Weather, climbing, and load change the result.</p>
+            <p class="small muted">Estimate assumes 250 miles of range at 65 mph.</p>
             <dl class="sheet stopcard__sheet">
               <div class="sheet__row"><dt>Connection</dt><dd><span>CCS at the primary station</span></dd></div>
               <div class="sheet__row"><dt>Station power</dt><dd><span>{stop.primary.power.value}</span></dd></div>
               <div class="sheet__row"><dt>Facts checked</dt><dd><span>{fmtDate(stop.primary.network.checkedOn)}</span><a class="src" href={stop.primary.network.url} target="_blank" rel="noopener noreferrer">Source</a></dd></div>
             </dl>
             <div class="stopcard__backup">
-              <h4>If It Doesn’t Work Out: {backup.network}</h4>
+              <h4>Backup: {backup.network}</h4>
               <p>{backup.name}. {backup.access}</p>
-              <a class="src" href={backup.url} target="_blank" rel="noopener noreferrer">Station source, checked {fmtDate(backup.checkedOn)}</a>
+              <a class="src" href={backup.url} target="_blank" rel="noopener noreferrer">Source, {fmtDate(backup.checkedOn)}</a>
             </div>
             <div class="stopcard__caution">
               <h4>Before You Arrive</h4>
-              <p>Check both stations in their network apps for current status. No sourced restroom or pet-facility note at the primary charger, so confirm before counting on either.</p>
+              <p>Check both stations in their apps. Restrooms and pet areas aren’t confirmed here.</p>
             </div>
-            <a class="text-link" href="/sample-plan/">Read the Whole Sample Plan</a>
+            <a class="text-link" href="/sample-plan/">See the Full Sample Plan</a>
           </article>
         </div>
       </div>
@@ -109,7 +109,6 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
       <div class="wrap">
         <div class="home-prices__head">
           <h2 class="h1">Pick a Plan</h2>
-          <p class="lede">Tell us where you’re going, what you drive, and who’s coming along. Delivery starts after payment and complete trip details.</p>
         </div>
         <ul class="fares">
           {tiers.map((tier) => (
