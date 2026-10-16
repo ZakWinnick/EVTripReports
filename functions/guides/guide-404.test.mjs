@@ -155,4 +155,44 @@ test('guides catch-all', async () => {
   }));
   assert.equal(fromD1.status, 200);
   assert.equal(await fromD1.text(), 'rendered-from-d1');
+
+  class JsonLdRewriter {
+    constructor() {
+      this.handlers = [];
+    }
+    on(selector, handler) {
+      this.handlers.push({ selector, handler });
+      return this;
+    }
+    transform() {
+      let extra = '';
+      for (const { selector, handler } of this.handlers) {
+        handler.element({
+          setInnerContent() {},
+          setAttribute() {},
+          remove() {},
+          append(content) {
+            if (selector === 'head') extra += content;
+          },
+        });
+      }
+      return new Response(extra, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
+    }
+  }
+  globalThis.HTMLRewriter = JsonLdRewriter;
+  const withLd = await onRequestGet(context({
+    path: ['la-to-sf'],
+    db: true,
+    map: { '/guide-shell/index.html': shell, '/404.html': notFoundPage },
+  }));
+  const ld = await withLd.text();
+  assert.match(ld, /<script type="application\/ld\+json">/);
+  assert.match(ld, /BreadcrumbList/);
+  assert.match(ld, /"@type":"Article"/);
+  assert.match(ld, /LA to San Francisco/);
+  assert.match(ld, /"dateModified":"2026-10-14"/);
+  assert.match(ld, /"name":"I-5"/);
+  assert.match(ld, /EV Trip Reports/);
+  assert.equal(ld.includes('Rangeway'), false);
+  assert.equal(ld.includes('WebSite'), false);
 });

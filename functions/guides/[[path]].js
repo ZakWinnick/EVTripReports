@@ -6,7 +6,7 @@ import builtGuideIndex from '../_lib/built-guide-index.js';
 import { isBuiltGuide, isGuidesIndex, guideSlug } from '../_lib/guide-response.js';
 import { html, getRoute, listLiveGuideIndex } from '../_lib/routes.js';
 import { guideIndexList, mergeGuideIndex } from '../../src/lib/guide-index.js';
-import { guideMain, guideMeta } from '../../src/lib/render-guide.js';
+import { guideJsonLd, guideMain, guideMeta } from '../../src/lib/render-guide.js';
 
 async function notFound(env, request) {
   const headers = new Headers({
@@ -40,6 +40,7 @@ function renderFromD1(shell, route, request) {
     .on('meta[property="og:url"]', { element: (e) => e.setAttribute('content', canonical) })
     .on('link[rel="canonical"]', { element: (e) => e.setAttribute('href', canonical) })
     .on('meta[name="robots"]', { element: (e) => e.remove() })
+    .on('head', { element: (e) => e.append(guideJsonLd(route, canonical), { html: true }) })
     .on('main#main', { element: (e) => e.setInnerContent(guideMain(route), { html: true }) })
     .transform(shell);
   return new Response(out.body, { status: 200, headers: html(shell) });

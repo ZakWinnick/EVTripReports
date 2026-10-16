@@ -14,8 +14,26 @@ const routeBySlug = Object.fromEntries(Object.values(routeFiles).map((m) => {
 
 const cards = visibleHomeRoutes(routes, routeBySlug);
 const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const homeLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'EV Trip Reports',
+      url: 'https://evtripreports.com/',
+      description: 'A travel agent for EVs.',
+    },
+    {
+      '@type': 'Organization',
+      name: 'EV Trip Reports',
+      url: 'https://evtripreports.com/',
+      description: 'A travel agent for EVs.',
+    },
+  ],
+};
 ---
-<Base title="EV Trip Reports" description="A travel agent for EV road trips. Tell us where you're going and what you drive. We plan stops that work for your car, a backup for each, and on detailed plans a place to eat or sleep while you charge.">
+<Base title="A travel agent for EVs" description="A travel agent for EV road trips. Stops that work for your car, a backup for each, and a place to eat or sleep while you charge.">
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(homeLd)}></script>
   <section class="band hero">
     <div class="wrap">
       <h1 class="display">A travel agent<br />for EVs.</h1>

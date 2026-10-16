@@ -163,16 +163,16 @@ export function routeLine(route, linkBase = '') {
     `<text x="${xx}" y="${y}" font-size="${size}"${weight ? ` font-weight="${weight}"` : ''} fill="${fill}" text-anchor="${anchor}">${esc(text)}</text>`;
 
   const svg = [
-    `<svg class="route__h" viewBox="0 0 ${W} 180" role="img" aria-hidden="true">`,
+    `<svg class="route__h" viewBox="0 0 ${W} 180" aria-hidden="true">`,
     ...ticks.map((m) => `<line x1="${x(m)}" x2="${x(m)}" y1="${Y - 5}" y2="${Y + 5}" stroke="#b9bfbb" stroke-width="1"/>`),
     `<line x1="${X0}" x2="${X1}" y1="${Y}" y2="${Y}" stroke="#15191a" stroke-width="3" stroke-linecap="round"/>`,
     `<circle cx="${X0}" cy="${Y}" r="6" fill="#ffffff" stroke="#15191a" stroke-width="3"/>`,
     `<rect x="${X1 - 7}" y="${Y - 7}" width="14" height="14" fill="#15191a"/>`,
     t(X0 - 6, Y - 52, 13, '#4e5653', 'start', route.startLabel),
-    t(X0 - 6, Y - 34, 13, '#7a827e', 'start', 'mile 0'),
+    t(X0 - 6, Y - 34, 13, '#686f6c', 'start', 'mile 0'),
     t(X1 + 6, Y - 52, 13, '#4e5653', 'end', route.endLabel),
-    t(X1 + 6, Y - 34, 13, '#7a827e', 'end', `mile ${total}`),
-    ...segments.map((s) => t(s.mid, Y - 14, 12, '#7a827e', 'middle', `${s.d} mi`)),
+    t(X1 + 6, Y - 34, 13, '#686f6c', 'end', `mile ${total}`),
+    ...segments.map((s) => t(s.mid, Y - 14, 12, '#686f6c', 'middle', `${s.d} mi`)),
     ...placed.map(
       (s) =>
         `<a href="${href(s.id)}"><g class="route__stop"><circle cx="${s.cx}" cy="${Y}" r="15" fill="#1e5a3c"/>` +
@@ -213,6 +213,40 @@ export function guideMeta(route) {
     title: `${route.title} EV charging guide (${route.highway}) | EV Trip Reports`,
     description: `Stop-by-stop EV charging guide for ${route.title} on ${route.highway}. Stall counts, kW, access and prices checked against each network on ${fmtDate(route.checked)}.`,
   };
+}
+
+export function guideStructuredData(route, pageUrl) {
+  const url = String(pageUrl);
+  const meta = guideMeta(route);
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Guides', item: 'https://evtripreports.com/guides/' },
+          { '@type': 'ListItem', position: 2, name: route.highway, item: url },
+        ],
+      },
+      {
+        '@type': 'Article',
+        headline: route.title,
+        dateModified: route.checked,
+        description: meta.description,
+        mainEntityOfPage: url,
+        author: {
+          '@type': 'Organization',
+          name: 'EV Trip Reports',
+          url: 'https://evtripreports.com/',
+        },
+      },
+    ],
+  };
+}
+
+export function guideJsonLd(route, pageUrl) {
+  const json = JSON.stringify(guideStructuredData(route, pageUrl)).replace(/</g, '\\u003c');
+  return `<script type="application/ld+json">${json}</script>`;
 }
 
 function primaryRollup(p) {
