@@ -151,11 +151,11 @@ test('DC to NYC passes the primary gate and stays off the public lists', async (
   assert.equal(raw.includes('Rangeway'), false);
 });
 
-test('dc-to-nyc route JSON contains no em dash or en dash in any string', async () => {
-  const raw = await readFile(new URL('../src/data/routes/dc-to-nyc.json', import.meta.url), 'utf8');
+async function assertRouteJsonHasNoDashes(slug) {
+  const raw = await readFile(new URL(`../src/data/routes/${slug}.json`, import.meta.url), 'utf8');
   const route = JSON.parse(raw);
   const dash = /[\u2013\u2014]|\\u201[34]/i;
-  assert.equal(dash.test(raw), false);
+  assert.equal(dash.test(raw), false, slug);
 
   const visit = (value, where) => {
     if (typeof value === 'string') {
@@ -173,7 +173,77 @@ test('dc-to-nyc route JSON contains no em dash or en dash in any string', async 
       }
     }
   };
-  visit(route, 'dc-to-nyc');
+  visit(route, slug);
+}
+
+test('dc-to-nyc route JSON contains no em dash or en dash in any string', async () => {
+  await assertRouteJsonHasNoDashes('dc-to-nyc');
+});
+
+test('Las Vegas to Salt Lake City passes the primary gate and stays off the public lists', async () => {
+  const routeData = JSON.parse(await readFile(new URL('../src/data/routes/las-vegas-to-salt-lake-city.json', import.meta.url), 'utf8'));
+  const raw = await readFile(new URL('../src/data/routes/las-vegas-to-salt-lake-city.json', import.meta.url), 'utf8');
+  const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
+  const meta = list.find((r) => r.slug === 'las-vegas-to-salt-lake-city');
+  assert.equal(routeData.slug, 'las-vegas-to-salt-lake-city');
+  assert.equal(routeData.title, 'Las Vegas to Salt Lake City');
+  assert.equal(routeData.highway, 'I-15');
+  assert.equal(routeData.checked, '2026-10-15');
+  assert.deepEqual(meta, {
+    slug: 'las-vegas-to-salt-lake-city',
+    title: 'Las Vegas to Salt Lake City',
+    highway: 'I-15',
+    miles: 423,
+    status: 'verifying',
+  });
+  assert.equal(primaryPublishBlock(routeData), null);
+  assert.equal(exportStatus('live', routeData), 'live');
+  assert.equal(exportStatus(meta.status, routeData), 'verifying');
+
+  assert.equal(routeData.stops.length, 7);
+  for (const stop of routeData.stops) {
+    assert.ok(stop.id);
+    assert.ok(Array.isArray(stop.backups));
+    assert.ok(Array.isArray(stop.other));
+    assert.ok(Array.isArray(stop.around));
+    assert.ok(Array.isArray(stop.searches));
+    for (const key of ['stalls', 'power', 'access']) {
+      assert.equal(stop.primary[key].status, 'verified', `${stop.id} ${key}`);
+    }
+  }
+  assert.ok(Array.isArray(routeData.tips));
+  assert.equal(typeof routeData.arrival, 'string');
+
+  const guides = await liveBuiltGuides();
+  const index = await liveBuiltGuideIndex();
+  assert.equal(guides.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), false);
+  assert.equal(index.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), false);
+  const xml = buildSitemapXml(guidesForSitemap(guides, []));
+  assert.equal(xml.includes('las-vegas-to-salt-lake-city'), false);
+
+  const files = await readdir(new URL('../src/data/routes/', import.meta.url));
+  const routeBySlug = {};
+  for (const file of files.filter((name) => name.endsWith('.json'))) {
+    const data = JSON.parse(await readFile(new URL(`../src/data/routes/${file}`, import.meta.url), 'utf8'));
+    routeBySlug[data.slug] = data;
+  }
+  const home = visibleHomeRoutes(list, routeBySlug);
+  assert.equal(home.some((route) => route.slug === 'las-vegas-to-salt-lake-city'), false);
+  assert.equal(home.every((route) => route.status === 'live'), true);
+
+  const html = guideMain(routeData);
+  assert.match(html, /id="stop-mesquite"/);
+  assert.match(html, /id="stop-salt-lake-city"/);
+  assert.equal(html.includes('\u2014'), false);
+  assert.equal(html.includes('\u2013'), false);
+  assert.equal(html.includes('Rangeway'), false);
+  assert.equal(raw.includes('\u2014'), false);
+  assert.equal(raw.includes('\u2013'), false);
+  assert.equal(raw.includes('Rangeway'), false);
+});
+
+test('las-vegas-to-salt-lake-city route JSON contains no em dash or en dash in any string', async () => {
+  await assertRouteJsonHasNoDashes('las-vegas-to-salt-lake-city');
 });
 
 test('routes already marked live still pass the primary gate', async () => {
