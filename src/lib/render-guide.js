@@ -377,9 +377,9 @@ function arrivalNote(route) {
 export function guideMain(route) {
   const S = route.sources;
   return `<section class="band band--tight"><div class="wrap">
-<p class="muted" style="margin-bottom:14px"><a href="/guides">Guides</a> <span aria-hidden="true">/</span> ${esc(route.highway)}</p>
+<p class="muted" style="margin-bottom:14px"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> ${esc(route.highway)}</p>
 <h1 class="h1">${esc(route.title)}</h1><p class="lede" style="margin-top:18px">${esc(route.summary)}</p>
-<p class="small muted" style="margin-top:14px">Station facts checked ${esc(fmtDate(route.checked))}. Anything we couldn't confirm is labeled. <a href="/methodology">How we check</a></p>
+<p class="small muted" style="margin-top:14px">Station facts checked ${esc(fmtDate(route.checked))}. Anything we couldn't confirm is labeled. <a href="/methodology/">How we check</a></p>
 <div style="margin-top:40px">${statStrip(route.stats)}</div></div></section>
 <section class="band band--tight band--mist"><div class="wrap"><div class="panel" style="padding: clamp(18px, 3vw, 32px)">${routeLine(route)}</div>
 <p class="small muted" style="margin-top:12px">${esc(route.startNote)} Stops are placed to scale.</p></div></section>
@@ -389,7 +389,7 @@ ${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
     .join('')}</ol><p class="note" style="margin-top:28px">${esc(arrivalNote(route))}</p></div></section>
 <section class="band band--tight band--mist"><div class="wrap plan-cta"><div><h2 class="h2">Want this planned for your car?</h2>
 <p class="lede" style="margin-top:12px">Stops that work for your port and adapter, with a backup at each. Detailed plans add food and a hotel with a charger. We don't book the room. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p></div>
-<a class="pill pill--lg" href="/plans#request">Plan my trip</a></div></section>
+<a class="pill pill--lg" href="/plans/#request">Plan my trip</a></div></section>
 <section class="band band--tight newsletter-band" hidden><div class="wrap"><h2 class="h2">Route updates</h2>${newsletterForm('newsletter-guide')}</div></section>`;
 }
 
@@ -398,7 +398,7 @@ export function guideCards(routes) {
   return routes
     .map((r) =>
       r.status === 'live'
-        ? `<li><a class="panel guide guide--live" href="/guides/${esc(r.slug)}"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(
+        ? `<li><a class="panel guide guide--live" href="/guides/${esc(r.slug)}/"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(
             r.title
           )}</span><span class="small muted">${esc(r.miles)} miles, ${esc(r.stops)} charging stops</span><span class="guide__go">Read the guide</span></a></li>`
         : `<li><div class="panel guide"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(

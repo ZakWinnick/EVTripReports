@@ -98,7 +98,7 @@ export function guideIndexList(guides) {
         sheetRow('Distance', formatDistance(guide.miles)),
       ].filter(Boolean);
       const sheet = rows.length ? `<dl class="sheet">${rows.join('')}</dl>` : '';
-      return `<li><a class="panel index-row" href="/guides/${esc(guide.slug)}"><div class="index-row__head"><h2 class="guide__t">${esc(guide.title)}</h2>${highway}</div>${sheet}<span class="guide__go">Read the guide</span></a></li>`;
+      return `<li><a class="panel index-row" href="/guides/${esc(guide.slug)}/"><div class="index-row__head"><h2 class="guide__t">${esc(guide.title)}</h2>${highway}</div>${sheet}<span class="guide__go">Read the guide</span></a></li>`;
     })
     .join('');
 }

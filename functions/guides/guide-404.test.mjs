@@ -156,6 +156,18 @@ test('guides catch-all', async () => {
   assert.equal(fromD1.status, 200);
   assert.equal(await fromD1.text(), 'rendered-from-d1');
 
+  const slashless = await onRequestGet({
+    ...context({
+      path: ['la-to-sf'],
+      db: true,
+      map: { '/guide-shell/index.html': shell, '/404.html': notFoundPage },
+    }),
+    request: new Request('https://evtripreports.com/guides/la-to-sf?x=1'),
+  });
+  assert.equal(slashless.status, 308);
+  assert.equal(slashless.headers.get('location'), 'https://evtripreports.com/guides/la-to-sf/?x=1');
+  assert.equal((await slashless.text()).includes('rendered-from-d1'), false);
+
   class JsonLdRewriter {
     constructor() {
       this.handlers = [];
