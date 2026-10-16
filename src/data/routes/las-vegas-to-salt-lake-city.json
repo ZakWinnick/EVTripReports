@@ -3,7 +3,7 @@
   "title": "Las Vegas to Salt Lake City",
   "highway": "I-15",
   "direction": "northbound",
-  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. 29 of 29 Tesla sites carry an access flag from Tesla Find Us (24 open to all EVs, 5 Tesla only).",
+  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. 28 of 29 Tesla sites carry an access flag from Tesla Find Us (23 open to all EVs, 5 Tesla only). WinCo Foods in Orem stays Not yet verified.",
   "checked": "2026-10-15",
   "startLabel": "Tropicana Ave on-ramp, Las Vegas",
   "startNote": "Mileage starts at the I-15 on-ramp at Tropicana Avenue in Las Vegas (Nevada exit 37, mile 37.40), where the LA to Las Vegas guide ends, and ends at I-15 exit 306, 600 South in Salt Lake City. The 423.07 miles is OSRM's driving distance on I-15 between those two points, shown as 423. Stop miles are each site's nearest point on that route. Utah exit miles minus 115.48 line up with those stop miles at exits 10, 57, 112, 188 and 257B.",
@@ -1489,13 +1489,8 @@
             465057
           ],
           "driverReports": [],
-          "facts": "Tesla Find Us (loc 456416) lists 895 N 980 W, Orem, UT 84057 (WinCo Foods): 8 Superchargers up to 500 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 16 NACS at 500 kW (DOE last confirmed 2026-08-11). Tesla's page lists 8 Superchargers; the two counts differ.",
-          "status": "verified",
-          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
-          "teslaAccess": "open",
-          "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus/location/supercharger/456416",
-          "checkedOn": "2026-10-16"
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 500 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says only \"24 hours daily\" (DOE last confirmed 2026-08-11).",
+          "status": "unverified"
         }
       ],
       "reports": [],
@@ -2137,7 +2132,7 @@
   ],
   "tips": [
     {
-      "text": "29 of 29 Tesla sites carry an access flag from Tesla Find Us (24 open to all EVs, 5 Tesla only), checked 2026-10-16. A headed browser pass confirmed the last 10 previously unverified pages on Tesla Find Us, including Mesquite (MesquiteNVQ322 and MesquiteNVSupercharger), Beaver (beaverut525wsupercharger and 27434), Sandy Saini Charge (loc 462510, Adapter Included For Other EVs), Midvale WinCo (loc 455512) and Ari Diamonds (loc 27278), Salt Lake City Marketplace (SaltLakeCityUTSupercharger2), South Jordan (loc 27118), South Salt Lake WinCo (loc 58528), and WinCo Foods Orem (loc 456416). Where the page shows no stall count or kW, the numbers are DOE's.",
+      "text": "28 of 29 Tesla sites carry an access flag from Tesla Find Us (23 open to all EVs, 5 Tesla only), checked 2026-10-16. A headed browser pass confirmed 9 previously unverified pages on Tesla Find Us: Mesquite (MesquiteNVQ322 and MesquiteNVSupercharger), Beaver (beaverut525wsupercharger and 27434), Sandy Saini Charge (loc 462510, Adapter Included For Other EVs), Midvale WinCo (loc 455512) and Ari Diamonds (loc 27278), Salt Lake City Marketplace (SaltLakeCityUTSupercharger2), South Jordan (loc 27118) and South Salt Lake WinCo (loc 58528). WinCo Foods in Orem (loc 456416) stays Not yet verified: DOE's access note says only \"24 hours daily\" (DOE last confirmed 2026-08-11) and DOE lists 16 NACS at 500 kW where Find Us lists 8 Superchargers. Where the page shows no stall count or kW, the numbers are DOE's.",
       "source": "tesla-findus"
     },
     {
