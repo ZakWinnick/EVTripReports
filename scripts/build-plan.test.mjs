@@ -1170,5 +1170,15 @@ test('host-page store hours at the LA to San Diego Walmarts and the DC to NYC ho
     }
     const tip = restroomTip(plan);
     for (const want of stops) assert.match(tip, new RegExp(`No sourced restroom note at [^.]*${want.name.source}`));
+    assert.match(tip, /Driver reports or PlugShare listings mention restrooms/);
+    assert.match(tip, /not host or network facts/);
+    for (const want of stops) {
+      const stop = plan.stops.find((item) => want.name.test(item.primary?.name || ''));
+      const restroom = (stop.primary.facts || []).find((fact) => fact.label === 'Restroom');
+      assert.ok(restroom, `${slug}: Restroom fact for ${want.name}`);
+      assert.match(restroom.value, /Driver-reported/);
+      assert.match(restroom.note, /^Driver report/);
+      assert.match(restroom.value, /successful check-in is dated/);
+    }
   }
 });

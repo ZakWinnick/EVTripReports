@@ -3,7 +3,7 @@
   "title": "Las Vegas to Salt Lake City",
   "highway": "I-15",
   "direction": "northbound",
-  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. 18 of 29 Tesla sites carry an access flag from Tesla Find Us (13 open to all EVs, 5 Tesla only). The other 11 stay Not yet verified.",
+  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. 29 of 29 Tesla sites carry an access flag from Tesla Find Us (24 open to all EVs, 5 Tesla only).",
   "checked": "2026-10-15",
   "startLabel": "Tropicana Ave on-ramp, Las Vegas",
   "startNote": "Mileage starts at the I-15 on-ramp at Tropicana Avenue in Las Vegas (Nevada exit 37, mile 37.40), where the LA to Las Vegas guide ends, and ends at I-15 exit 306, 600 South in Salt Lake City. The 423.07 miles is OSRM's driving distance on I-15 between those two points, shown as 423. Stop miles are each site's nearest point on that route. Utah exit miles minus 115.48 line up with those stop miles at exits 10, 57, 112, 188 and 257B.",
@@ -247,11 +247,13 @@
             233392
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc MesquiteNVQ322) lists 275 Mesa Blvd, Mesquite, NV 89027 (Eureka Casino Resort): 8 Superchargers up to 250 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/233392",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/MesquiteNVQ322",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         },
         {
           "name": "Mesquite, NV - Tesla Supercharger, 950 West Mesquite Boulevard, Mesquite",
@@ -266,11 +268,13 @@
               "summary": "Cybertruck driver topped up at the Mesquite v3 Supercharger from 50% to 60% before continuing to Cedar City."
             }
           ],
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc MesquiteNVSupercharger) lists 950 West Mesquite Boulevard, Mesquite, NV 89027 (CasaBlanca Resort): 12 Superchargers up to 250 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 12 NACS at 250 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/200864",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/MesquiteNVSupercharger",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         }
       ],
       "reports": [],
@@ -290,11 +294,12 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list dining, restrooms, EV parking, shopping, and grocery as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
-          "category": "food",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-09-24 (PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours on its store page.",
+          "category": "restroom",
           "source": "plugshare-171873",
           "url": "https://www.plugshare.com/location/171873",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Walmart 3847 (Mesquite, NV)"
         },
         {
           "text": "PlugShare's station note for this site says only one plug per unit can be used at a time (crowd-sourced, checked 2026-10-16). EA's page does not say. Plan on each charger serving one car.",
@@ -528,11 +533,12 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list WiFi, grocery, restrooms, shopping, dining, and EV parking as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
-          "category": "food",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-14 (PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours on its store page.",
+          "category": "restroom",
           "source": "plugshare-169536",
           "url": "https://www.plugshare.com/location/169536",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Walmart 1439 (Washington, UT)"
         }
       ],
       "searches": [
@@ -716,11 +722,12 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list dining, grocery, shopping, EV parking, and restrooms as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-09 (PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours on its store page.",
           "category": "food",
           "source": "plugshare-171883",
           "url": "https://www.plugshare.com/location/171883",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Walmart 1438 (Cedar City, UT)"
         },
         {
           "text": "PlugShare's station note for this site says only one plug per unit can be used at a time (crowd-sourced, checked 2026-10-16). EA's page does not say. Plan on each charger serving one car.",
@@ -864,11 +871,13 @@
             200545
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 24 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc beaverut525wsupercharger) lists 1780 525 W, Beaver, UT 84713 (Beans & Brews): 24 Superchargers up to 250 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 24 NACS at 250 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/200545",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/beaverut525wsupercharger",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         },
         {
           "name": "Beaver, UT - West 1425 North - Tesla Supercharger, 314 West 1425 North, Beaver",
@@ -876,11 +885,13 @@
             422573
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load in full: Find Us showed only the address and hours on 2026-10-15 and again on a retry 2026-10-16, with no access note, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 27434) lists 314 West 1425 North, Beaver, UT 84713 (Crazy Cow Cafe): 8 Superchargers up to 325 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 8 NACS at 325 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/422573",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/27434",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         }
       ],
       "reports": [],
@@ -1478,8 +1489,13 @@
             465057
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 500 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says only \"24 hours daily\" (DOE last confirmed 2026-08-11).",
-          "status": "unverified"
+          "facts": "Tesla Find Us (loc 456416) lists 895 N 980 W, Orem, UT 84057 (WinCo Foods): 8 Superchargers up to 500 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 16 NACS at 500 kW (DOE last confirmed 2026-08-11). Tesla's page lists 8 Superchargers; the two counts differ.",
+          "status": "verified",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/456416",
+          "checkedOn": "2026-10-16"
         }
       ],
       "reports": [],
@@ -1492,11 +1508,12 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list restrooms, grocery, shopping, EV parking, and dining as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
-          "category": "food",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-04 (PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours on its store page.",
+          "category": "restroom",
           "source": "plugshare-171886",
           "url": "https://www.plugshare.com/location/171886",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Walmart 4068 (Spanish Fork, UT)"
         }
       ],
       "searches": [
@@ -1692,11 +1709,13 @@
             462735
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW and 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load on a retry 2026-10-16. On 2026-10-15 a Find Us page titled only \"Sandy, UT\" (loc 462510) showed \"Adapter Included For Other EVs\" and 8 Superchargers up to 325 kW but no street address, so it is not tied to this address. DOE's access note says only \"24 hours daily\" (DOE last confirmed 2026-07-15).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 462510) lists 694 9000 S, Sandy, UT 84070 (C-Store / Saini Charge): 8 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", 24/7 (checked 2026-10-16). Open to all EVs; the NACS adapter is included at the stall. DOE lists 8 CCS at 325 kW and 8 NACS at 325 kW, which fits an included adapter. The page also shows \"Site not owned by Tesla\" and \"Supercharger Open To Others\".",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/462735",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/462510",
+          "source": "tesla-findus",
+          "access": "Open to all EVs; the NACS adapter is included at the stall.",
+          "teslaAccess": "open"
         },
         {
           "name": "DAHLE USED SUPER CHARGER, 4545 Auto Blvd, Murray",
@@ -1821,11 +1840,13 @@
             440452
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 455512) lists 7020 South 700 West, Midvale, UT 84047 (WinCo): 16 Superchargers up to 325 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 16 NACS at 325 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/440452",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/455512",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         },
         {
           "name": "Midvale, UT - Tesla Supercharger, 807 Fort Union Blvd, Midvale",
@@ -1833,11 +1854,13 @@
             308421
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us returned 404 on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 27278) lists 807 Fort Union Blvd, Midvale, UT 84047 (Ari Diamonds): 8 Superchargers up to 250 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/308421",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/27278",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         },
         {
           "name": "Mike Hale Acura - Blink, 5601 South State Street, Murray",
@@ -1935,11 +1958,13 @@
             202618
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc SaltLakeCityUTSupercharger2) lists 1850 S 300 W, Salt Lake City, UT 84115 (Marketplace): 8 Superchargers up to 250 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/202618",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/SaltLakeCityUTSupercharger2",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         },
         {
           "name": "South Jordan, UT - Tesla Supercharger, 1309 W S Jordan Pkwy, South Jordan",
@@ -1947,11 +1972,13 @@
             311221
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 27118) lists 1309 W S Jordan Pkwy, South Jordan, UT 84095 (Carr Woodall): 12 Superchargers up to 250 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 12 NACS at 250 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/311221",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/27118",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         },
         {
           "name": "South Salt Lake, UT - S Main Street - Tesla Supercharger, 2193 S Main Street, South Salt Lake",
@@ -1959,11 +1986,13 @@
             347603
           ],
           "driverReports": [],
-          "facts": "Tesla Supercharger. DOE lists 20 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us showed only part of the page on 2026-10-15 and timed out on a retry 2026-10-16, and DOE's access note says \"NACS partner enabled\" (DOE last confirmed 2026-06-18).",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 58528) lists 2193 S Main St, South Salt Lake, UT 84115 (WinCo Foods): 20 Superchargers up to 250 kW, banner \"NACS adapter needed for non-Tesla EVs\", 24/7, also shown as \"NACS Partner Site\" (checked 2026-10-16). Open to all EVs. Non-Tesla CCS cars need a NACS adapter. DOE lists 20 NACS at 250 kW.",
+          "status": "verified",
           "checkedOn": "2026-10-16",
-          "url": "https://afdc.energy.gov/stations/#/station/347603",
-          "source": "afdc"
+          "url": "https://www.tesla.com/findus/location/supercharger/58528",
+          "source": "tesla-findus",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open"
         },
         {
           "name": "Tim Dahle Nissan Southtowne, 11155 S Jordan Gateway, South Jordan",
@@ -2108,7 +2137,7 @@
   ],
   "tips": [
     {
-      "text": "18 of 29 Tesla sites on this route carry an access flag from Tesla Find Us (13 open to all EVs, 5 Tesla only). 11 stay Not yet verified: Tesla's page did not load in full on 2026-10-15 or on a retry 2026-10-16. DOE lists \"NACS partner enabled\" at 9 of those (DOE last confirmed 2026-06-18), CCS connectors at Chevron in Sandy (DOE last confirmed 2026-07-15), and only \"24 hours daily\" at WinCo in Orem (DOE last confirmed 2026-08-11). Those DOE notes alone do not set a flag. Where the page shows no stall count or kW, the numbers are DOE's.",
+      "text": "29 of 29 Tesla sites carry an access flag from Tesla Find Us (24 open to all EVs, 5 Tesla only), checked 2026-10-16. A headed browser pass confirmed the last 10 previously unverified pages on Tesla Find Us, including Mesquite (MesquiteNVQ322 and MesquiteNVSupercharger), Beaver (beaverut525wsupercharger and 27434), Sandy Saini Charge (loc 462510, Adapter Included For Other EVs), Midvale WinCo (loc 455512) and Ari Diamonds (loc 27278), Salt Lake City Marketplace (SaltLakeCityUTSupercharger2), South Jordan (loc 27118), South Salt Lake WinCo (loc 58528), and WinCo Foods Orem (loc 456416). Where the page shows no stall count or kW, the numbers are DOE's.",
       "source": "tesla-findus"
     },
     {
@@ -2132,7 +2161,7 @@
       "source": "ea-locator"
     },
     {
-      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily and a Sam's Cafe from 10:00 AM; IONNA lists restrooms at Mesquite and Beaver. Walmart store hours and restrooms at Mesquite, Washington, Cedar City and Spanish Fork are still Not yet verified: walmart.com store pages returned 403 on 2026-10-16. PlugShare users list restrooms at all four (crowd-sourced icons), which is not the same as Walmart confirming them.",
+      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily and a Sam's Cafe from 10:00 AM; IONNA lists restrooms at Mesquite and Beaver. Walmart store hours at Mesquite, Washington, Cedar City and Spanish Fork are still Not yet verified: walmart.com store pages returned 403 on 2026-10-16. Restrooms at those four Walmart stops are Driver-reported from PlugShare amenity icons plus a dated successful check-in (Mesquite 2026-09-24, Washington 2026-10-14, Cedar City 2026-10-09, Spanish Fork 2026-10-04), not a host fact. A Reddit report also notes restrooms at Cedar City (driver report).",
       "source": "pilotflyingj-scipio"
     },
     {

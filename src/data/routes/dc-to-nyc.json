@@ -143,6 +143,10 @@
     "ravitz-marlton": {
       "name": "Ravitz Family Markets, ShopRite of Marlton",
       "url": "https://ravitzfamilymarkets.com/shoprite-of-marlton/"
+    },
+    "plugshare-1026065": {
+      "name": "PlugShare location 1026065, Marlton Commons Electrify America (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/1026065"
     }
   },
   "stops": [
@@ -508,11 +512,12 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list shopping, WiFi, grocery, dining, restrooms, and EV parking as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart's store page does not list restrooms, so restrooms stay Not yet verified.",
-          "category": "food",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-11 (PlugShare location page, checked 2026-10-16). The store page does not list restrooms.",
+          "category": "restroom",
           "source": "plugshare-169544",
           "url": "https://www.plugshare.com/location/169544",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Walmart 2009 (Abingdon, MD)"
         }
       ],
       "searches": [
@@ -891,7 +896,7 @@
         },
         {
           "name": "Newark, DE - Tesla Supercharger, 530 John F Kennedy Memorial Hwy, Newark",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. Tesla's page did not load: Find Us for newarkdesupercharger returned 404 on 2026-10-15 and again on 2026-10-16 in a normal browser visit, and a Find Us search for Newark, DE showed no result for it, and DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18).",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. Not listed on Tesla Find Us as of 2026-10-16: Find Us for newarkdesupercharger returned 404 on 2026-10-15 and again on 2026-10-16 in a normal browser visit, and a Find Us search for Newark, DE showed no result. DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18). That note alone does not set a flag.",
           "status": "unverified",
           "afdcIds": [
             102103
@@ -1046,11 +1051,12 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list restrooms, dining, EV parking, and shopping at this Wawa, and PlugShare shows store hours of 5am to 10pm (crowd-sourced, checked 2026-10-16). Wawa's store page now lists the same hours. EA and DOE list the chargers as open 24 hours. Wawa has not confirmed restrooms, so restrooms stay Not yet verified.",
-          "category": "food",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Wawa, and a successful check-in is dated 2026-10-15 (PlugShare location page, checked 2026-10-16). Wawa's store page does not list restrooms. PlugShare also shows store hours of 5am to 10pm, which now match the store page.",
+          "category": "restroom",
           "source": "plugshare-190888",
           "url": "https://www.plugshare.com/location/190888",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Wawa Store 840 (New Castle, DE)"
         },
         {
           "text": "Address: PlugShare lists this Electrify America site as \"Wawa New Castle (1)\" at 159 Memorial Dr. EA's locator and API (site 100276) and DOE list it at 4000 N. DuPont Hwy, and USPS confirms 4000 N DuPont Hwy, New Castle, DE 19720-6314 as a deliverable address while 159 Memorial Dr is not (checked 2026-10-16). Use the DuPont Highway address. On PlugShare, 4000 N DuPont Hwy is \"Wawa New Castle (2)\", the Tesla Supercharger in the same lot.",
@@ -1133,7 +1139,20 @@
         ],
         "checkedOn": "2026-10-16",
         "source": "ea-locator",
-        "driverReports": []
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/1026065",
+            "date": "2026-10-02",
+            "summary": "Successful check-in, Mercedes EQS 450 SUV, 175 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/1026065",
+            "date": "2026-09-27",
+            "summary": "Successful check-in, 2023 Kia EV6, 200 kW: \"Fast charge, no problems.\""
+          }
+        ]
       },
       "backups": [
         {
@@ -1661,6 +1680,14 @@
           "category": "food",
           "source": "ravitz-marlton",
           "url": "https://ravitzfamilymarkets.com/shoprite-of-marlton/",
+          "checkedOn": "2026-10-16",
+          "site": "Urban Edge Properties Marlton Commons (Marlton, NJ)"
+        },
+        {
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at Marlton Commons, and a successful check-in is dated 2026-10-02 (PlugShare location page 1026065, checked 2026-10-16). Host pages for Urban Edge, ShopRite of Marlton and Shake Shack do not list restrooms.",
+          "category": "restroom",
+          "source": "plugshare-1026065",
+          "url": "https://www.plugshare.com/location/1026065",
           "checkedOn": "2026-10-16",
           "site": "Urban Edge Properties Marlton Commons (Marlton, NJ)"
         },
@@ -2485,11 +2512,12 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list restrooms, EV parking, dining, shopping, and grocery as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart's store page does not list restrooms, so restrooms stay Not yet verified.",
-          "category": "food",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-09-26 (PlugShare location page, checked 2026-10-16). The store page does not list restrooms.",
+          "category": "restroom",
           "source": "plugshare-193079",
           "url": "https://www.plugshare.com/location/193079",
-          "checkedOn": "2026-10-16"
+          "checkedOn": "2026-10-16",
+          "site": "Walmart 3078 (East Brunswick, NJ)"
         }
       ],
       "searches": [
@@ -3199,7 +3227,7 @@
   ],
   "tips": [
     {
-      "text": "68 of 69 Tesla sites on this route carry an access flag from Tesla Find Us (54 open to all EVs, 14 Tesla only), checked 2026-10-15. 63 of those also match DOE's access note, and 5 more (Bellmawr, Piscataway, Woodbridge, Newark Ferry St and Jersey City) show \"Adapter Included For Other EVs\" where DOE lists CCS connectors or \"NACS partner enabled\". Newark, DE on JFK Memorial Hwy stays Not yet verified: Find Us returned 404 on 2026-10-15 and again on 2026-10-16. DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18). That note alone does not set a flag.",
+      "text": "68 of 69 Tesla sites carry an access flag from Tesla Find Us (54 open to all EVs, 14 Tesla only), checked 2026-10-15. 63 of those also match DOE's access note, and 5 more (Bellmawr, Piscataway, Woodbridge, Newark Ferry St and Jersey City) show \"Adapter Included For Other EVs\" where DOE lists CCS connectors or \"NACS partner enabled\". Newark, DE on JFK Memorial Hwy stays Not yet verified and is not listed on Tesla Find Us as of 2026-10-16 (Find Us returned 404 on 2026-10-15 and again on 2026-10-16; a Find Us search for Newark, DE showed no result). DOE's access note says \"24 hours daily. Open to Teslas only.\" (DOE last confirmed 2026-06-18). That note alone does not set a flag.",
       "source": "tesla-findus"
     },
     {
@@ -3211,7 +3239,7 @@
       "source": "afdc"
     },
     {
-      "text": "Store hours at all five primaries come from host pages, checked 2026-10-16: Abingdon and East Brunswick Walmart 6am to 11pm daily (walmart.com), New Castle Wawa 5:00 AM to 10:00 PM daily (wawa.com), Marlton ShopRite 7am to 10pm (Ravitz Family Markets), and the Elizabeth mall 10:00am to 9:00pm Monday to Saturday, 11:00am to 7:00pm Sunday (Simon, archive and search copies). Elizabeth has mall restrooms and a food court on Simon's About page. Restrooms at Abingdon, New Castle, Marlton and East Brunswick stay Not yet verified: none of those host pages lists them.",
+      "text": "Store hours at all five primaries come from host pages, checked 2026-10-16: Abingdon and East Brunswick Walmart 6am to 11pm daily (walmart.com), New Castle Wawa 5:00 AM to 10:00 PM daily (wawa.com), Marlton ShopRite 7am to 10pm (Ravitz Family Markets), and the Elizabeth mall 10:00am to 9:00pm Monday to Saturday, 11:00am to 7:00pm Sunday (Simon, archive and search copies). Elizabeth has mall restrooms and a food court on Simon's About page. Restrooms at Abingdon, New Castle, Marlton and East Brunswick are Driver-reported from PlugShare amenity icons plus a dated successful check-in (Abingdon 2026-10-11, New Castle 2026-10-15, Marlton 2026-10-02, East Brunswick 2026-09-26), not a host fact.",
       "source": "walmart-2009"
     },
     {
