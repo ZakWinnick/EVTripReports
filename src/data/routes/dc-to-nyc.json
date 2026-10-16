@@ -3,7 +3,7 @@
   "title": "Washington, DC to NYC",
   "highway": "I-95",
   "direction": "northbound",
-  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Moorestown, East Brunswick and Elizabeth. Tesla sites are listed from DOE and are not yet verified.",
+  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Moorestown, East Brunswick and Elizabeth. Tesla access flags are verified where DOE and Tesla Find Us agree (59 sites); 10 remain Not yet verified.",
   "checked": "2026-10-15",
   "startLabel": "I-95 at the Capital Beltway",
   "startNote": "Mileage starts at the I-95 and I-495 split in College Park, MD (I-95 exit 27, Maryland mile 26.1) and ends at the George Washington Bridge. The 223.27 miles is OSRM's driving distance on I-95, the Delaware Memorial Bridge and the NJ Turnpike, shown as 223. OSRM's route uses the Baltimore Harbor Tunnel (I-895) in place of the Fort McHenry Tunnel (I-95). That difference has not been measured.",
@@ -67,6 +67,26 @@
     "wiki-i95-md": {
       "name": "Interstate 95 in Maryland, exit list (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Interstate_95_in_Maryland"
+    },
+    "njta": {
+      "name": "NJ Turnpike Authority, camera list by milepost and interchange",
+      "url": "https://www.njta.gov/travel-resources/camera-list/"
+    },
+    "wiki-nj-turnpike": {
+      "name": "New Jersey Turnpike, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/New_Jersey_Turnpike"
+    },
+    "wiki-i295-de": {
+      "name": "Interstate 295 (Delaware to Pennsylvania), exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_295_(Delaware%E2%80%93Pennsylvania)"
+    },
+    "wiki-i95-de": {
+      "name": "Interstate 95 in Delaware, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_95_in_Delaware"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
     }
   },
   "stops": [
@@ -131,43 +151,55 @@
       "other": [
         {
           "name": "Aberdeen, MD - Churchville Road - Tesla Supercharger, 3710 Churchville Road, Aberdeen",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 3710 Churchville Road Aberdeen, MD 21001. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             201302
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/AbingdonMDsupercharger2",
+          "source": "tesla-findus"
         },
         {
           "name": "Aberdeen, MD - North Philadelphia Boulevard - Tesla Supercharger, 231 N Philadelphia Blvd, Aberdeen",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 231 N Philadelphia Blvd Aberdeen, MD 21001. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             318174
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26859",
+          "source": "tesla-findus"
         },
         {
           "name": "Aberdeen, MD - Tesla Supercharger, I-95, Aberdeen",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 4805 JFK Memorial Hwy Aberdeen, MD 21001. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (8 NACS at 150 kW).",
+          "status": "verified",
           "afdcIds": [
             102207
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/aberdeensupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Abingdon, MD - Woodsdale Road - Tesla Supercharger, 3500 Woodsdale Road, Abingdon",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 3500 Woodsdale Road Abingdon, MD 21009. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             201304
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/AbingdonMDsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Bel Air, MD - Tesla Supercharger, 601 Hoagie Drive, Bel Air",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla Find Us page was only partially readable on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             206276
@@ -176,7 +208,7 @@
         },
         {
           "name": "Bel Air, MD - Tobin Crossing - Tesla Supercharger, 2692 Tobin Xing, Bel Air",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla Find Us page was only partially readable on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             390397
@@ -275,12 +307,15 @@
         },
         {
           "name": "Joppatowne, MD - Tesla Supercharger, 1419 Mountain Rd, Joppatowne",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 1419 Mountain Rd Joppatowne, MD 21085. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count (8 NACS at 250 kW).",
+          "status": "verified",
           "afdcIds": [
             261451
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34290",
+          "source": "tesla-findus"
         },
         {
           "name": "Maryland House Travel Plaza, I-95, Mile Marker 82, Aberdeen",
@@ -293,7 +328,7 @@
         },
         {
           "name": "Port Deposit, MD - Tesla Supercharger, 1201 Chesapeake Overlook Pkwy, Port Deposit",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla Find Us page was only partially readable on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             320135
@@ -350,13 +385,13 @@
       "name": "New Castle",
       "towns": "New Castle, Newark, and Wilmington, DE, and Elkton, MD",
       "mile": 96,
-      "milepostNote": "Measured along OSRM's route from the start: 95.5 miles. OSRM leaves I-295 for US 13 North, about 2 miles from the site.",
+      "milepostNote": "Measured along OSRM's route from the start: 95.5 miles. OSRM leaves I-295 for US 13 North, about 2 miles from the site. Exit confirmed 2026-10-15: OSRM's route to the Wawa leaves I-295 on the ramp signed US 13 North, Wilmington, and the Wikipedia exit list for I-295 shows that exit as unnumbered, US 13 and US 40 toward Wilmington, New Castle Airport and Dover. From that ramp OSRM drives about 1.5 miles to the Wawa, which is on US 13 (DuPont Highway) at Memorial Drive. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-75.56265,39.70932 . Wikipedia: https://en.wikipedia.org/wiki/Interstate_295_(Delaware%E2%80%93Pennsylvania)",
       "why": "The Electrify America site at the New Castle Wawa is 6 stalls at 350 kW, on US 13 a couple of miles from the I-95 and I-295 split. The ShopRite EVgo site in Wilmington is the verified backup. The Applegreen site at the Biden Center on I-95 and the Elkton exit 109 sites (bp pulse, Flying J, IONNA) are listed from DOE and are not verified.",
       "primary": {
         "name": "Wawa Store 840 (New Castle, DE)",
         "network": "Electrify America",
         "address": "4000 N. DuPont Hwy, New Castle, DE 19720",
-        "exit": "Not yet verified",
+        "exit": "I-295 exit to US 13 North (no exit number)",
         "stalls": {
           "value": "6",
           "status": "verified",
@@ -418,12 +453,15 @@
         },
         {
           "name": "Bear, DE - Tesla Supercharger, 1100 Pulaski Highway, Bear",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 1100 Pulaski Highway Bear, DE 19701. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             237653
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/BearDEQ322",
+          "source": "tesla-findus"
         },
         {
           "name": "Biden Center, 520 JFK Memorial Hwy, Newark",
@@ -463,21 +501,27 @@
         },
         {
           "name": "Carneys Point, NJ - Tesla Supercharger, 327 Slapes Corner Rd, Carneys Point",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 327 Slapes Corner Rd Carneys Point, NJ 08069. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count (12 NACS at 250 kW).",
+          "status": "verified",
           "afdcIds": [
             332096
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/34939",
+          "source": "tesla-findus"
         },
         {
           "name": "Claymont, DE - Philadelphia Pike - Tesla Supercharger, 2621 Philadelphia Pike, Claymont",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 2621 Philadelphia Pike Claymont, DE 19703. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             168041
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/claymontdephiladelphiapikesupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Elkton, MD Rechargery Relay @ Wawa - Elkton Rd, 1657 Elkton Rd, Elkton",
@@ -517,16 +561,19 @@
         },
         {
           "name": "New Castle, DE - Airport Road - Tesla Supercharger, 183 Airport Rd, New Castle",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 183 Airport Rd New Castle, DE 19720. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             320137
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/36332",
+          "source": "tesla-findus"
         },
         {
           "name": "New Castle, DE - Christiana Bypass - Tesla Supercharger, 970 Christiana Bypass, New Castle",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla Find Us page was only partially readable on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             308418
@@ -535,52 +582,67 @@
         },
         {
           "name": "New Castle, DE - New Castle Avenue - Tesla Supercharger, 2160 New Castle Avenue, New Castle",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 2160 New Castle Avenue New Castle, DE 19720. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists 12 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             347605
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26865",
+          "source": "tesla-findus"
         },
         {
           "name": "New Castle, DE - North Dupont Highway - Tesla Supercharger, 4000 North Dupont Highway, New Castle",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 4000 North Dupont Highway New Castle, DE 19720. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             196520
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/NewCastleDESupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Newark, DE - Corporate Boulevard - Tesla Supercharger, 110 Corporate Blvd, Newark",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 110 Corporate Blvd Newark, DE 19702. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists 8 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             350088
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/18324",
+          "source": "tesla-findus"
         },
         {
           "name": "Newark, DE - East Chestnut Hill Road - Tesla Supercharger, 274 E Chestnut Hill Rd, Newark",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 274 E Chestnut Hill Rd Newark, DE 19713. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             256573
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26866",
+          "source": "tesla-findus"
         },
         {
           "name": "Newark, DE - Old Baltimore Pike - Tesla Supercharger, 865 Old Baltimore Pike, Newark",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 865 Old Baltimore Pike Newark, DE 19702. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             257002
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/20520",
+          "source": "tesla-findus"
         },
         {
           "name": "Newark, DE - Tesla Supercharger, 530 John F Kennedy Memorial Hwy, Newark",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"Open to Teslas only\". DOE last confirmed 2026-06-18. Tesla Find Us returned 404 (site may be closed) on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             102103
@@ -598,21 +660,27 @@
         },
         {
           "name": "North East, MD - Pulaski Highway - Tesla Supercharger, 2031 Pulaski Hwy, North East",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 2031 Pulaski Hwy North East, MD 21901. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             256575
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26861",
+          "source": "tesla-findus"
         },
         {
           "name": "Pennsville, NJ - Tesla Supercharger, 251 N Broadway, Pennsville Township",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 325 kW, at 251 N Broadway Pennsville Township, NJ 08070. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count (16 NACS at 325 kW).",
+          "status": "verified",
           "afdcIds": [
             371840
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/407479",
+          "source": "tesla-findus"
         },
         {
           "name": "Porter Chevrolet, 414 East Cleveland Avenue, Newark",
@@ -688,12 +756,15 @@
         },
         {
           "name": "Wilmington, DE - Limestone Road - Tesla Supercharger, 2030 Limestone Rd, Wilmington",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 2030 Limestone Rd Wilmington, DE 19808. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             327928
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/32690",
+          "source": "tesla-findus"
         }
       ],
       "reports": [],
@@ -738,13 +809,13 @@
       "name": "Moorestown",
       "towns": "Moorestown, Mount Laurel, Cherry Hill, Somerdale, and Deptford, NJ",
       "mile": 134,
-      "milepostNote": "Measured along OSRM's route from the start: 133.9 miles. The site is about 0.8 mile from that route line.",
+      "milepostNote": "Measured along OSRM's route from the start: 133.9 miles. The site is about 0.8 mile from that route line. Exit confirmed 2026-10-15: OSRM leaves the Turnpike on the ramp signed NJ 73, Mount Laurel, Camden, which is NJ Turnpike interchange 4 at milepost 34.5. NJTA's camera list names the NJ 73 interchange in Mount Laurel Twp. From the ramp OSRM drives about 1.4 miles on NJ 73 North and Collins Road to Nixon Drive. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-74.96451,39.93898 . NJTA: https://www.njta.gov/travel-resources/camera-list/ . Wikipedia: https://en.wikipedia.org/wiki/New_Jersey_Turnpike",
       "why": "ShopRite's Electrify America site in Moorestown is 6 stalls at 350 kW. Marlton Commons and the Somerdale Walmart are verified backups on Electrify America. The Applegreen plazas on the NJ Turnpike at Walt Whitman and James Fenimore Cooper are listed from DOE and Applegreen's map and are not verified.",
       "primary": {
         "name": "Wakefern Shoprite 594 (Moorestown, NJ)",
         "network": "Electrify America",
         "address": "1000 Nixon Dr, Moorestown, NJ 08057",
-        "exit": "Not yet verified",
+        "exit": "Exit 4, NJ 73 (Mount Laurel, Camden)",
         "stalls": {
           "value": "6",
           "status": "verified",
@@ -920,21 +991,27 @@
         },
         {
           "name": "Bellmawr, NJ - Tesla Supercharger, 12 S Black Horse Pike, Bellmawr",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 12 S Black Horse Pike Bellmawr, NJ 08031. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             390330
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/59145",
+          "source": "tesla-findus"
         },
         {
           "name": "Blackwood, NJ - Tesla Supercharger, 100 Premium Outlets Dr, Blackwood",
-          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 100 Premium Outlets Dr. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             440446
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/59126",
+          "source": "tesla-findus"
         },
         {
           "name": "Borough Hall DCFC | Borough of Audubon NJ, 606 W Nicholson Rd, Audubon",
@@ -974,12 +1051,15 @@
         },
         {
           "name": "Cherry Hill, NJ - Haddonfield Road - Tesla Supercharger, 904 Haddonfield Road, Cherry Hill",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 904 Haddonfield Rd Cherry Hill, NJ 08002. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             190474
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/cherryhillnjhaddonfieldroadsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Cherry Hill, NJ Rechargery @ Wawa - Marlton Pike East, 1824 Marlton Pike E, Cherry Hill",
@@ -992,12 +1072,15 @@
         },
         {
           "name": "Deptford, NJ - Tesla Supercharger, 1750 Deptford Center Road, Deptford",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 150 kW, at 1750 Deptford Center Road Deptford, NJ 08096. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (12 NACS at 150 kW).",
+          "status": "verified",
           "afdcIds": [
             165118
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/deptfordnjsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "DoubleTree by Hilton - Cherry Hill, 2349 Marlton Pike West, Cherry Hill",
@@ -1037,12 +1120,15 @@
         },
         {
           "name": "Gloucester City, NJ - Tesla Supercharger, 1200 Crescent Blvd, Gloucester City",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 1200 Crescent Blvd Gloucester City, NJ 08030. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists 8 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             374989
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4006009",
+          "source": "tesla-findus"
         },
         {
           "name": "Holman Ford of Maple Shade, 571 NJ-38, Maple Shade",
@@ -1085,66 +1171,87 @@
         },
         {
           "name": "Lawnside, NJ - Tesla Supercharger, 401 E Oak Ave, Lawnside",
-          "facts": "Tesla Supercharger. DOE lists 32 CCS at 325 kW, 32 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 32 stalls, up to 325 kW, at 401 E Oak Ave Lawnside, NJ 08045. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             405683
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/402407",
+          "source": "tesla-findus"
         },
         {
           "name": "Magnolia, NJ - Tesla Supercharger, 340 Evesham Ave E, Magnolia",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 340 Evesham Ave E Magnolia, NJ 08049. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             404787
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/59149",
+          "source": "tesla-findus"
         },
         {
           "name": "Maple Shade, NJ - Route 38 East - Tesla Supercharger, 600 Route 38 East, Maple Shade",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 250 kW, 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 600 Route 38 East Maple Shade, NJ 08052. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 12 CCS at 250 kW, 12 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             351246
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26769",
+          "source": "tesla-findus"
         },
         {
           "name": "Maple Shade, NJ - Tesla Supercharger, 2801 Route 73, Maple Shade",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 2801 Route 73 Maple Shade, NJ 08052. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             154201
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/mapleshadenjsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Marlton, NJ - Tesla Supercharger, 500 NJ-73, Marlton",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 150 kW, at 500 NJ-73 Marlton, NJ 08053. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (12 NACS at 150 kW).",
+          "status": "verified",
           "afdcIds": [
             149327
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/marltonnjsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Mt Laurel Township, NJ - NJ-73 - Tesla Supercharger, 915 NJ-73, Mt Laurel Township",
-          "facts": "Tesla Supercharger. DOE lists 40 CCS at 325 kW, 40 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 40 stalls, up to 325 kW, at 915 NJ-73 Mt Laurel Township, NJ 08054. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             353824
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/406608",
+          "source": "tesla-findus"
         },
         {
           "name": "Pennsauken Township, NJ - Tesla Supercharger, 2290 Clement Ave, Pennsauken Township",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 325 kW, at 2290 Clement Ave Pennsauken Township, NJ 08030. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             361248
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4008208",
+          "source": "tesla-findus"
         },
         {
           "name": "Walt Whitman Service Plaza, 700 NJ Turnpike, Cherry Hill",
@@ -1160,7 +1267,7 @@
         },
         {
           "name": "Wawa - Tesla Supercharger, 112 Edgewood Ave, Bellmawr",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 500 kW, 8 NACS at 500 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 500 kW, 8 NACS at 500 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             470550
@@ -1169,12 +1276,15 @@
         },
         {
           "name": "Westampton, NJ - Rancocas Road - Tesla Supercharger, 570 Rancocas Road, Westampton",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 570 Rancocas Road Westampton, NJ 08060. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             201930
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/westamptonnjrancocasrdsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Winner Ford - DCFC, 250 Haddonfield-Berlin Road, Cherry Hill Township",
@@ -1220,13 +1330,13 @@
       "name": "East Brunswick",
       "towns": "East Brunswick, Edison, and East Windsor, NJ",
       "mile": 182,
-      "milepostNote": "Measured along OSRM's route from the start: 181.7 miles. The site is about 0.9 mile from that route line.",
+      "milepostNote": "Measured along OSRM's route from the start: 181.7 miles. The site is about 0.9 mile from that route line. Exit confirmed 2026-10-15: OSRM leaves the Turnpike on the ramp signed NJ 18, US 1, New Brunswick, then takes NJ 18 South. That is NJ Turnpike interchange 9 (NJ 18 and CR 527, East Brunswick Twp) at milepost 83.3 per NJTA's camera list. From the ramp OSRM drives about 2 miles to Tices Lane. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-74.39923,40.45732 . NJTA: https://www.njta.gov/travel-resources/camera-list/ . Wikipedia: https://en.wikipedia.org/wiki/New_Jersey_Turnpike",
       "why": "The Walmart on NJ-18 has 10 Electrify America stalls at 350 kW. The Edison Mall site, 10 more stalls at 350 kW, is the verified backup. East Windsor and Hamilton sites are listed here too, since no stop falls between Moorestown and this one. The Applegreen plazas at Molly Pitcher, Woodrow Wilson, Richard Stockton and Joyce Kilmer are listed from DOE and Applegreen's map and are not verified.",
       "primary": {
         "name": "Walmart 3078 (East Brunswick, NJ)",
         "network": "Electrify America",
         "address": "290 NJ-18, East Brunswick, NJ 08816",
-        "exit": "Not yet verified",
+        "exit": "Exit 9, NJ 18 (New Brunswick), then NJ 18 South",
         "stalls": {
           "value": "10",
           "status": "verified",
@@ -1412,12 +1522,15 @@
         },
         {
           "name": "Cranbury, NJ - Forsgate Drive - Tesla Supercharger, 420 Forsgate Dr, Cranbury",
-          "facts": "Tesla Supercharger. DOE lists 16 CCS at 250 kW, 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 420 Forsgate Dr Cranbury, NJ 08512. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             302971
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/19511",
+          "source": "tesla-findus"
         },
         {
           "name": "Crossings at Plainsboro - DCFC, 3 Fox Run Dr, Plainsboro Township",
@@ -1439,39 +1552,51 @@
         },
         {
           "name": "East Brunswick, NJ - State Route 18 - Tesla Supercharger, 755 State Route 18, East Brunswick",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 150 kW, at 755 State Route 18 East Brunswick, NJ 08816. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (16 NACS at 150 kW).",
+          "status": "verified",
           "afdcIds": [
             149306
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/eastbrunswickstateroute18supercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "East Windsor, NJ - Tesla Supercharger, 610 NJ-33, East Windsor",
-          "facts": "Tesla Supercharger. DOE lists 32 CCS at 325 kW, 32 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 610 NJ-33 East Windsor, NJ 08520. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 32 CCS at 325 kW, 32 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             404789
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/4007754",
+          "source": "tesla-findus"
         },
         {
           "name": "Edison, NJ - Tesla Supercharger, 55 Parsonage Rd., Edison",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 55 Parsonage Rd. Edison, NJ 08837-2480. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (16 NACS at 250 kW).",
+          "status": "verified",
           "afdcIds": [
             102293
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/edisonsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Edison, NJ - U.S. Route 1 - Tesla Supercharger, 580 U.S. Route 1, Edison",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 580 U.S. Route 1 Edison, NJ 08817. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             238208
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/EdisonNJSupercharger2",
+          "source": "tesla-findus"
         },
         {
           "name": "Ford Charge at Haldeman Subaru, 1207 US-130, Robbinsville Township",
@@ -1511,30 +1636,39 @@
         },
         {
           "name": "Hamilton Township, NJ - Crosswicks Hamilton Square Road - Tesla Supercharger, 3817 Crosswicks Hamilton Square Rd, Hamilton Township",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 3817 Crosswicks Hamilton Square Rd Hamilton Township, NJ 08691. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             417115
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/424861",
+          "source": "tesla-findus"
         },
         {
           "name": "Hamilton Township, NJ - Flock Road - Tesla Supercharger, 51 Flock Rd, Hamilton Township",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 51 Flock Rd Hamilton Township, NJ 08619. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             311248
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26120",
+          "source": "tesla-findus"
         },
         {
           "name": "Hamilton Township, NJ - Tesla Supercharger, 425 Market Place Blvd, Hamilton Township",
-          "facts": "Tesla Supercharger. DOE lists 6 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 6 stalls, up to 150 kW, at 425 Market Place Blvd Hamilton Township, NJ 08691-2110. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (6 NACS at 150 kW).",
+          "status": "verified",
           "afdcIds": [
             102295
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/hamiltontownshipnjsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Isles - Perry Street Headquarters, 265 Allen Street, Trenton",
@@ -1631,12 +1765,15 @@
         },
         {
           "name": "Monroe Township, NJ - Tesla Supercharger, Route 33 & Butcher Road, Monroe Township",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at Route 33 & Butcher Road Monroe Township, NJ 08831. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             222800
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/MonroeTownshipNJSupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "NJDOT HQ DC1, Njdot, Ewing Township",
@@ -1658,39 +1795,51 @@
         },
         {
           "name": "North Brunswick Township, NJ - Tesla Supercharger, 650 Shoppes Blvd, North Brunswick Township",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 250 kW, 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 650 Shoppes Blvd North Brunswick Township, NJ 08902. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             311227
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/27409",
+          "source": "tesla-findus"
         },
         {
           "name": "North Brunswick, NJ - Tesla Supercharger, 191 Grand Avenue, North Brunswick",
-          "facts": "Tesla Supercharger. DOE lists 10 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 10 stalls, up to 150 kW, at 191 Grand Avenue North Brunswick, NJ 08902. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (10 NACS at 150 kW).",
+          "status": "verified",
           "afdcIds": [
             102297
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/northbrunswicksupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Old Bridge, NJ - Tesla Supercharger, 1453 Route 18 South, Old Bridge",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 1453 Route 18 South Old Bridge, NJ 08853. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             212752
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/OldBridgeNJSupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Old Bridge, NJ - US-9 - Tesla Supercharger, 3600 US-9, Old Bridge",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 3600 US-9 Old Bridge, NJ 08857. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             422979
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/409196",
+          "source": "tesla-findus"
         },
         {
           "name": "Precision Acura of Princeton, 3001 U.S. 1, Lawrence Township",
@@ -1733,12 +1882,15 @@
         },
         {
           "name": "Robbinsville, NJ - Tesla Supercharger, 315 Robbinsville-Allentown Road, Robbinsville",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 315 Robbinsville-Allentown Rd Robbinsville, NJ 08691. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (8 NACS at 150 kW).",
+          "status": "verified",
           "afdcIds": [
             149351
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/robbinsvillesupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Route 33 Nissan, 951 NJ-33, Trenton",
@@ -1769,12 +1921,15 @@
         },
         {
           "name": "South River, NJ - Tesla Supercharger, 656 Old Bridge Turnpike, South River",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 656 Old Bridge Turnpike South River, NJ 08882. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             233047
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/SouthRiverNJSupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "T & T Coast GMC, 2730 Route 130 North, Cranbury",
@@ -1805,7 +1960,7 @@
         },
         {
           "name": "Wawa - Tesla Supercharger, 88 Centennial Ave, Piscataway",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             456082
@@ -1859,13 +2014,13 @@
       "name": "Elizabeth",
       "towns": "Elizabeth, Newark, and Woodbridge, NJ",
       "mile": 201,
-      "milepostNote": "Measured along OSRM's route from the start: 201.2 miles. The site is about 0.5 mile from that route line.",
+      "milepostNote": "Measured along OSRM's route from the start: 201.2 miles. The site is about 0.5 mile from that route line. Exit confirmed 2026-10-15: OSRM leaves the Turnpike on the ramp signed Newark Airport, Elizabeth Seaport, which is NJ Turnpike interchange 13A at milepost 101.6 (NJTA lists interchange 13A at MM 101.6: https://www.njta.gov/camera/mm-1016-interchange-13a-exiting-tpk/ ). Wikipedia's Route 81 article puts the 13A toll plaza near The Mills at Jersey Gardens. From the ramp OSRM drives about 1.3 miles via North Avenue East and Kapkowski Road. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-74.17328,40.66244 . Wikipedia: https://en.wikipedia.org/wiki/New_Jersey_Route_81",
       "why": "The last stop before the George Washington Bridge. Jersey Gardens has 10 Electrify America stalls at 350 kW. The Wawa EVgo site on Spring Street and the Ferry Street EA site in Newark are verified backups. Tesla, ChargePoint and other sites in Elizabeth, Newark and Woodbridge are listed as DOE leads and are not verified.",
       "primary": {
         "name": "Simon Mills at Jersey Gardens (Elizabeth NJ)",
         "network": "Electrify America",
         "address": "651 Kapkowski Road, Elizabeth, NJ 07201",
-        "exit": "Not yet verified",
+        "exit": "Exit 13A, Newark Airport and Elizabeth Seaport (Route 81)",
         "stalls": {
           "value": "10",
           "status": "verified",
@@ -2052,43 +2207,55 @@
         },
         {
           "name": "Avenel, NJ - Tesla Supercharger, 930 US-1, Avenel",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 250 kW, 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 930 US-1 Avenel, NJ 07001. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 12 CCS at 250 kW, 12 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             225837
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/AvenelNJSupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Carteret, NJ - Tesla Supercharger, 793 Roosevelt Ave, Carteret",
-          "facts": "Tesla Supercharger. DOE lists 20 CCS at 325 kW, 20 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 793 Roosevelt Ave Carteret, NJ 07008. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 20 CCS at 325 kW, 20 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             440460
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/20521",
+          "source": "tesla-findus"
         },
         {
           "name": "Clark, NJ - Tesla Supercharger, 36 Valley Rd, Clark",
-          "facts": "Tesla Supercharger. DOE lists 16 CCS at 250 kW, 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 36 Valley Rd Clark, NJ 07066. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 16 CCS at 250 kW, 16 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             330974
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/36228",
+          "source": "tesla-findus"
         },
         {
           "name": "Cranford, NJ - Tesla Supercharger, 370 North Avenue East, Cranford",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 370 North Avenue East Cranford, NJ 07016. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             222334
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/CranfordNJSupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Crosspointe Town Square - Tesla Supercharger, 15 Woodbridge Center Dr, Woodbridge Township",
-          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed None. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-15. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             471136
@@ -2124,21 +2291,27 @@
         },
         {
           "name": "Elizabeth, NJ - Spring Street - Tesla Supercharger, 595 Spring St, Elizabeth",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 595 Spring St Elizabeth, NJ 07201. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             374342
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/32055",
+          "source": "tesla-findus"
         },
         {
           "name": "Elizabeth, NJ - Tesla Supercharger, 651 Kapkowski Road, Elizabeth",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 651 Kapkowski Road Elizabeth, NJ 07201. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (16 NACS at 250 kW).",
+          "status": "verified",
           "afdcIds": [
             165578
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/elizabethnjsupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Grover Cleveland Service Area, NJ Turnpike Milepost 92.9 N, Woodbridge",
@@ -2160,12 +2333,15 @@
         },
         {
           "name": "Harrison, NJ - Tesla Supercharger, 450 Bergen St, Harrison",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 450 Bergen St Harrison, NJ 07029. Open to non-Tesla EVs. The page says an adapter is included for other EVs. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             390334
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/35810",
+          "source": "tesla-findus"
         },
         {
           "name": "Holiday Inn Newark Intl Airport North, 160 Frontage Rd, Newark",
@@ -2178,21 +2354,27 @@
         },
         {
           "name": "Kearny, NJ - Harrison Avenue - Tesla Supercharger, 220 Harrison Avenue, Kearny",
-          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 325 kW, at 220 Harrison Avenue Kearny, NJ 07032. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             374990
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/406305",
+          "source": "tesla-findus"
         },
         {
           "name": "Kearny, NJ - Tesla Supercharger, 200 Harrison Avenue, Kearny",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 200 Harrison Avenue Kearny, NJ 07032. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (8 NACS at 150 kW).",
+          "status": "verified",
           "afdcIds": [
             118950
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/kearnysupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "L443 EXPPPUBLICPL01, 2285 US-22, Union",
@@ -2241,16 +2423,19 @@
         },
         {
           "name": "Newark, NJ - Lindbergh Road - Tesla Supercharger, 100 Lindbergh Rd, Newark",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 100 Lindbergh Rd Newark, NJ 07114. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             311241
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/20627",
+          "source": "tesla-findus"
         },
         {
           "name": "Newark, NJ - Tesla Supercharger, 281 Ferry St, Newark",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             422574
@@ -2295,12 +2480,15 @@
         },
         {
           "name": "Perth Amboy, NJ - Tesla Supercharger, 365 Convery Boulevard, Perth Amboy",
-          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 365 Convery Boulevard Perth Amboy, NJ 08861. Open to non-Tesla EVs. The page says an adapter is included for other EVs.",
+          "status": "verified",
           "afdcIds": [
             238580
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/PerthAmboyNJQ322",
+          "source": "tesla-findus"
         },
         {
           "name": "Route 22 Honda, 1480 North Broad Street, Hillside",
@@ -2322,16 +2510,19 @@
         },
         {
           "name": "Springfield, NJ - Cleveland Place - Tesla Supercharger, 2017 Cleveland Place, Springfield",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 2017 Cleveland Place Springfield, NJ 07081. Open to non-Tesla EVs with a NACS adapter. DOE lists the same port count (8 NACS at 250 kW).",
+          "status": "verified",
           "afdcIds": [
             165119
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/springfieldnjclevelandplacesupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Twin City Shopping Center - Tesla Supercharger, 2-36 Garfield Ave, Jersey City",
-          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. Tesla's locator was not readable on 2026-10-15.",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. DOE and Tesla Find Us access labels disagree on 2026-10-15.",
           "status": "unverified",
           "afdcIds": [
             451972
@@ -2340,12 +2531,15 @@
         },
         {
           "name": "Union, NJ - Tesla Supercharger, 1750 Route 22 East, Union",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us confirms access at 1750 Route 22 East Union, NJ 07083. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             257005
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/19245",
+          "source": "tesla-findus"
         },
         {
           "name": "Whitney Houston Service Area, 1 Vauxhall Rd, Union",
@@ -2358,12 +2552,15 @@
         },
         {
           "name": "Woodbridge Township, NJ - Tesla Supercharger, 440 King Georges Road, Woodbridge",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 440 King Georges Road Woodbridge, NJ 08857-0000. Tesla only. The page lists pricing for Tesla and does not say other EVs can charge. DOE lists the same port count (16 NACS at 250 kW).",
+          "status": "verified",
           "afdcIds": [
             102301
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/woodbridgesupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "bp Meisel Avenue, Springfield, NJ, 5 Meisel Avenue, Springfield",
@@ -2401,8 +2598,8 @@
   ],
   "tips": [
     {
-      "text": "69 Tesla sites in the stop lists are not yet verified. Tesla's locator could not be read on October 15, 2026, so their access (Tesla only or open to all EVs), stall counts and kW are DOE figures only.",
-      "source": "afdc"
+      "text": "59 Tesla sites on this route are verified on Tesla Find Us (access flag agreed with DOE). 10 Tesla sites stay Not yet verified because the Find Us page was partial, missing, or disagreed with DOE. Checked 2026-10-15.",
+      "source": "tesla-findus"
     },
     {
       "text": "Applegreen's own map and DOE disagree on the charger count at several NJ Turnpike plazas, and the map gives no kW. Both numbers are in the stop lists. Plaza chargers are not primaries until the kW is confirmed.",
