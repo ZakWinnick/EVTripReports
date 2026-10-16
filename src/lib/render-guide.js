@@ -343,7 +343,7 @@ function arrivalNote(route) {
 export function guideMain(route) {
   const S = route.sources;
   return `<section class="band band--tight"><div class="wrap">
-<p class="muted" style="margin-bottom:14px"><a href="/#guides">Guides</a> <span aria-hidden="true">/</span> ${esc(route.highway)}</p>
+<p class="muted" style="margin-bottom:14px"><a href="/guides">Guides</a> <span aria-hidden="true">/</span> ${esc(route.highway)}</p>
 <h1 class="h1">${esc(route.title)}</h1><p class="lede" style="margin-top:18px">${esc(route.summary)}</p>
 <p class="small muted" style="margin-top:14px">Station facts checked ${esc(fmtDate(route.checked))}. Anything we couldn't confirm is labeled. <a href="/methodology">How we check</a></p>
 <div style="margin-top:40px">${statStrip(route.stats)}</div></div></section>

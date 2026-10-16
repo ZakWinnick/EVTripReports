@@ -75,6 +75,7 @@ test('sitemap lists public canonical URLs and guide checked dates', () => {
     entries.map((entry) => entry.loc),
     [
       'https://evtripreports.com/',
+      'https://evtripreports.com/guides/',
       'https://evtripreports.com/plans/',
       'https://evtripreports.com/about/',
       'https://evtripreports.com/faq/',
@@ -85,7 +86,7 @@ test('sitemap lists public canonical URLs and guide checked dates', () => {
       ...BUILT_SLUGS.map((slug) => `https://evtripreports.com/guides/${slug}/`),
     ],
   );
-  for (const entry of entries.slice(0, 8)) assert.equal(entry.lastmod, null);
+  for (const entry of entries.slice(0, 9)) assert.equal(entry.lastmod, null);
   assert.equal(entries.find((entry) => entry.loc.endsWith('/guides/la-to-las-vegas/')).lastmod, '2026-10-14');
   assert.equal(entries.find((entry) => entry.loc.endsWith('/guides/la-to-sf/')).lastmod, '2026-10-15');
   const body = xml;
@@ -132,7 +133,7 @@ test('sitemap response is XML', async () => {
   assert.equal(res.status, 200);
   assert.equal(res.headers.get('content-type'), 'application/xml; charset=utf-8');
   const entries = urls(await res.text());
-  assert.equal(entries.length, 8 + BUILT_SLUGS.length);
+  assert.equal(entries.length, 9 + BUILT_SLUGS.length);
 });
 
 test('D1 checked date is what the handler publishes', async () => {

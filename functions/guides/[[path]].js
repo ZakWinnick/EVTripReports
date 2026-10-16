@@ -1,8 +1,11 @@
-// Serves /guides/<slug>/ from D1 when that guide is live there.
-// Otherwise serves the page built from src/data/routes, if that file exists.
-// Anything else is a 404. context.next() is not used: a miss was returning the homepage with status 200.
-import { getRoute, html } from '../_lib/routes.js';
-import { guideSlug, isBuiltGuide } from '../_lib/guide-response.js';
+// Serves /guides and /guides/ as the index, and /guides/<slug>/ from D1 when that
+// guide is live there. Otherwise serves the page built from src/data/routes, if
+// that file exists. Anything else is a 404. context.next() is not used: a miss
+// was returning the homepage with status 200.
+import builtGuideIndex from '../_lib/built-guide-index.js';
+import { isBuiltGuide, isGuidesIndex, guideSlug } from '../_lib/guide-response.js';
+import { html, getRoute, listLiveGuideIndex } from '../_lib/routes.js';
+import { guideIndexList, mergeGuideIndex } from '../../src/lib/guide-index.js';
 import { guideMain, guideMeta } from '../../src/lib/render-guide.js';
 
 async function notFound(env, request) {
@@ -42,8 +45,45 @@ function renderFromD1(shell, route, request) {
   return new Response(out.body, { status: 200, headers: html(shell) });
 }
 
+function indexHeaders(page) {
+  const headers = html(page);
+  headers.delete('x-etr-guide');
+  return headers;
+}
+
+async function fetchGuideIndex(env, request) {
+  for (const path of ['/guides/index.html', '/guides/', '/guides']) {
+    try {
+      const page = await env.ASSETS.fetch(new Request(new URL(path, request.url)));
+      if (!page?.ok) continue;
+      const type = page.headers?.get?.('content-type') || '';
+      if (type && !type.includes('text/html')) continue;
+      const head = (await page.clone().text()).slice(0, 12000);
+      if (!head.includes('id="guides-index"')) continue;
+      return page;
+    } catch (e) {
+      console.error('guides index read failed', e.message);
+    }
+  }
+  return null;
+}
+
+async function guideIndex(context) {
+  const { request, env } = context;
+  const page = await fetchGuideIndex(env, request);
+  if (!page) return notFound(env, request);
+  const d1 = await listLiveGuideIndex(env);
+  if (!d1.length) return new Response(page.body, { status: 200, headers: indexHeaders(page) });
+  const list = guideIndexList(mergeGuideIndex(builtGuideIndex, d1));
+  const rewritten = new HTMLRewriter()
+    .on('ul#guides-index', { element: (e) => e.setInnerContent(list, { html: true }) })
+    .transform(page);
+  return new Response(rewritten.body, { status: 200, headers: indexHeaders(page) });
+}
+
 export async function onRequestGet(context) {
   const { request, env, params } = context;
+  if (isGuidesIndex(params, request)) return guideIndex(context);
   const slug = guideSlug(params);
   if (!slug) return notFound(env, request);
 
