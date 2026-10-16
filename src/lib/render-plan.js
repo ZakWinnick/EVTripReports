@@ -243,6 +243,7 @@ function stopSection(stop, index, sources, plan) {
   const places = [
     placeSection('Food', stop.food || stop.meals, sources),
     placeSection('Lodging', stop.hotels || stop.lodging, sources),
+    placeSection('Cautions', stop.cautions, sources),
   ].join('');
   const others = Array.isArray(stop.other) && stop.other.length
     ? `<details class="other"><summary>Other sites nearby (${stop.other.length})</summary>${backupList(stop.other, sources, plan)}</details>`
@@ -264,6 +265,8 @@ function stopSection(stop, index, sources, plan) {
       : ''
   }</header>
 ${stop.why ? `<p class="stop__why">${esc(stop.why)}</p>` : ''}
+${stop.charging === true ? `<p class="small muted" style="margin-top:8px">Charge at this stop.</p>` : ''}
+${stop.charging === false ? `<p class="small muted" style="margin-top:8px">Optional stop. This plan does not charge here.</p>` : ''}
 ${
   primary
     ? `<div class="panel primary"><div class="primary__top"><div><p class="small muted" style="margin:0 0 4px">Primary charger</p><h3 class="h3">${esc(
@@ -286,6 +289,25 @@ ${
 function stopsHtml(stops, sources, plan) {
   if (!Array.isArray(stops) || !stops.length) return '';
   return stops.map((stop, index) => stopSection(stop || {}, index, sources, plan)).join('\n');
+}
+
+function contingencyHtml(items, sources) {
+  if (!Array.isArray(items) || !items.length) return '';
+  const groups = [];
+  for (const item of items) {
+    const title = item?.title || 'Contingency';
+    let group = groups.find((entry) => entry.title === title);
+    if (!group) {
+      group = { title, items: [] };
+      groups.push(group);
+    }
+    group.items.push(item);
+  }
+  const body = groups.map((group) => `<h3 class="h3">${esc(group.title)}</h3><ul class="tips">${group.items.map((item) => {
+    const text = item?.text || '';
+    return `<li>${esc(text)} ${factBits(item, sources)}</li>`;
+  }).join('')}</ul>`).join('');
+  return `<section class="band band--tight"><div class="wrap"><h2 class="h2">Contingency</h2>${body}</div></section>`;
 }
 
 function tipsHtml(tips, sources) {
@@ -347,6 +369,7 @@ export function renderPlan(plan, ctx = {}) {
 ${plan.summary ? `<p class="lede" style="margin-top:18px">${esc(plan.summary)}</p>` : ''}
 ${bits ? `<p class="small muted" style="margin-top:14px">${esc(bits)}</p>` : ''}
 ${checked ? `<p class="small muted" style="margin-top:8px">Station facts checked ${esc(checked)}. Each fact below links its source and shows the date that fact was checked.</p>` : ''}
+${plan.dataChecked ? `<p class="small muted" style="margin-top:8px">Data checked ${esc(plan.dataChecked)}.</p>` : ''}
 ${topFacts ? `<div class="panel primary" style="margin-top:28px">${`<dl class="sheet">${topFacts}</dl>`}</div>` : ''}
 <div style="margin-top:40px">${planStats(plan.stats, sources)}</div>
 </div></section>
@@ -354,6 +377,7 @@ ${route}
 ${stopsHtml(plan.stops, sources, plan)}
 ${days}
 ${placeSection('Food', plan.food || plan.meals, sources) ? `<section class="band band--tight"><div class="wrap">${placeSection('Food', plan.food || plan.meals, sources)}${placeSection('Lodging', plan.hotels || plan.lodging, sources)}</div></section>` : placeSection('Lodging', plan.hotels || plan.lodging, sources) ? `<section class="band band--tight"><div class="wrap">${placeSection('Lodging', plan.hotels || plan.lodging, sources)}</div></section>` : ''}
+${contingencyHtml(plan.contingency, sources)}
 ${tipsHtml(plan.tips || plan.notes, sources)}
 ${sourcesFooter(sources)}`;
 }

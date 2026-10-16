@@ -5,7 +5,7 @@ import { realpathSync } from 'node:fs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { buildPlan, planSummary } from './build-plan.mjs';
+import { buildPlan, planMarkdown, planSummary } from './build-plan.mjs';
 
 export const FAKE_ORDER = {
   slug: 'la-to-las-vegas',
@@ -29,6 +29,7 @@ export async function runDryRun({ root, outPath, log = () => {}, order = FAKE_OR
   await writeFile(outPath, `${JSON.stringify(plan, null, 2)}\n`);
   log('Dry run only. No database writes. No email.');
   log(planSummary(plan));
+  log(planMarkdown(plan));
   log(`Wrote ${outPath}`);
   return plan;
 }

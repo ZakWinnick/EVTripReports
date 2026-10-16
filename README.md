@@ -67,15 +67,20 @@ node scripts/build-plan.mjs --order order.json --route src/data/routes/<slug>.js
 What the draft contains:
 
 - A primary is a station whose stalls, power, and access are `verified`, each with a source link and a checked-on date. A station this car cannot use is not a primary. Tesla only stays Tesla only. An open Tesla site is used only when the order has a NACS port or a NACS adapter.
-- Unknowns are the words `Not yet verified`.
-- Each Tesla site that is used is flagged `tesla-only` or `open` (Tesla only, or open to all EVs).
+- Unknowns are the words `Not yet verified`, stored as objects with `status`, not as a bare string. The plan's `dataChecked` field is the earliest to latest `checkedOn` date in the draft.
+- Each Tesla site that is used is flagged `tesla-only` or `open` (Tesla only, or open to all EVs). Tesla-only sites this car cannot use are named on every tier.
 - Stall counts and kW. The draft does not label a site fast or slow.
-- Every included stop has one backup. If the route has no second verified station this car can use, the backup says `Not yet verified`.
-- Food, restroom, and overnight notes are included only when the route data has them, and only on the $39 and $79 plans. A driver report stays labeled as a driver report.
-- Battery percent and drive time are estimates. Each estimate starts with `Estimate:`. The assumptions are listed on the plan. $19 does not include those estimates.
-- $19 is the stops list: verified primary and one backup at each stop.
-- $39 adds the estimates and the food, restroom, and overnight notes the data actually has.
-- $79 adds the other verified sites at the stop, and contingency notes (the backup to use if the primary is full or offline, Tesla only sites to skip, and route notes that have a source).
+- A verified backup is included when the route has a second station this car can use. If it does not, the stop has no backup named `Backup`. The stop carries the note `No verified backup at <place> yet. Charge to a higher level at the previous stop.` A stop with that note, or with an unverified exit, is flagged and is not described as a verified stop.
+- The summary says `N verified stops` only when every stop has a verified exit and a verified backup. Otherwise it says how many stops and how many have a verified backup.
+- Food, restroom, and overnight notes are included only when the route data has them, and only on the $39 and $79 plans. A note is filed by its `type` or `category` when that field is set, and a warning or charger note (heat, offline, broken, queued) goes under cautions, not food or restrooms. A restroom note about a different station is not attached to the primary. A driver report stays labeled as a driver report.
+- Order notes are included once. The plan states which stops have a sourced restroom or pet note and which do not.
+- Membership pricing is noted only when the route has a sourced member price. Otherwise the membership line says `Price not published`.
+- $39 and $79 estimate a charging strategy from the order's start battery, a stated range, and a 10% reserve. They pick the smallest set of charging stops, prefer the highest verified kW, then a matching membership. Arrival, departure, charge time, and clock time include time plugged in. Every estimate starts with `Estimate:`. Assumptions are listed once on the plan and are not copied into the notes. $19 does not include those estimates. It does include one line that says what this tier does not estimate.
+- Mileage uses the order's start when the route data has a sourced distance to the route's own start. If it does not, the plan says `Mileage counted from <route start>` and does not invent that leg.
+- Departure times use `America/Los_Angeles` on California routes (`la-` and `sf-` slugs), or `timeZone` on the order or the route when that is set.
+- $19 is the stops list, plus Tesla-only warnings and the estimate line.
+- $39 adds the charging strategy, timing, backups, and the amenity notes the data actually has. Stops the strategy does not charge at are marked optional.
+- $79 adds verified alternatives at each charging stop that has them, and a contingency section for a full or offline stall, sourced heat or weather notes, and a low-battery fallback at a verified earlier site.
 
 4. Owner review uses `ADMIN_TOKEN` and does not email the customer.
 

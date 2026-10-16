@@ -14,15 +14,13 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const UNKNOWN = 'Not yet verified';
 export const MPH = 65;
 export const MILES_PER_PERCENT = 2.5;
+export const RANGE_MILES = MILES_PER_PERCENT * 100;
 export const RESERVE_PERCENT = 10;
-
-export const ASSUMPTIONS = [
-  `Drive time is an estimate at ${MPH} mph from the guide mile marks. It does not include time plugged in.`,
-  `Battery percent is an estimate at ${MILES_PER_PERCENT} miles per percent of charge, ${MILES_PER_PERCENT * 100} miles from 100% to 0%. It is not a tested range for this vehicle.`,
-  'The battery estimate subtracts miles from the stated start percent. It does not add energy from charging stops.',
-  'Clock times add the drive estimate to the departure clock. No time zone is applied.',
-  `Hills, wind, temperature, cargo, and any speed other than ${MPH} mph are not in the estimate.`,
-];
+export const PACK_KWH = 75;
+export const CURVE_TO_80 = 0.7;
+export const CURVE_ABOVE_80 = 0.35;
+export const TAPER_AT = 80;
+const ESTIMATE_NOTE = 'Estimate. Assumptions are listed on this plan.';
 
 const TIERS = {
   basic: { id: 'basic', price: '$19', label: 'Route plan' },
@@ -46,10 +44,28 @@ const TIER_ALIASES = new Map([
   ['multi-day or family', 'full'],
 ]);
 
+const HOST_NAMES = {
+  'x.com': 'X',
+  'twitter.com': 'X',
+  'tesla.com': 'Tesla',
+  'electrifyamerica.com': 'Electrify America',
+  'evgo.com': 'EVgo',
+  'wikipedia.org': 'Wikipedia',
+  'plugshare.com': 'PlugShare',
+  'rivian.com': 'Rivian',
+  'leasehackr.com': 'Leasehackr',
+  'f150lightningforum.com': 'F150 Lightning Forum',
+  'cybertruckownersclub.com': 'Cybertruck Owners Club',
+  'afdc.energy.gov': 'DOE Alternative Fuels Data Center',
+};
+
 const BANNED = /\b(fast|slow)\b/i;
 const FOOD_RE = /\bfood\b|\brestaurants?\b|\bdining\b|\bmeals?\b|food court|\barby'?s?\b/i;
 const RESTROOM_RE = /\brestrooms?\b|\bbathrooms?\b/i;
 const OVERNIGHT_RE = /\bovernight\b|\bhotels?\b|\blodging\b|\bmotels?\b/i;
+const PET_RE = /\b(dogs?|pets?)\b/i;
+const CAUTION_RE = /\b(throttl\w*|offline|broken|out of service|queued|heat|warning|fault|derat\w*)\b|\bpoor restrooms?\b|\bhad been offline\b|\bnon-teslas?\b/i;
+const SECTION_TITLES = new Set(['food', 'restroom', 'restrooms', 'overnight', 'lodging', 'cautions', 'caution', 'notes', 'note', 'backup', 'backups']);
 const MAX_NOTES = 3;
 
 export function tierOf(value) {
@@ -73,10 +89,26 @@ export function buildPlan(order, route) {
 
   const tier = tierOf(input.tier ?? input.price);
   const profile = vehicleProfile(input);
-  const depart = departValue(input);
+  const zone = resolveTimeZone(input, route);
+  const depart = normalizeDepart(departValue(input), zone);
   const startBattery = startPercent(input);
-  const used = new Set();
+  const energy = vehicleEnergy(input);
+  const origin = originLeg(input, route);
+  const milesTotal = routeMiles(route);
   const level = tier.id;
+  const ctx = {
+    used: new Set(),
+    urls: new Map(),
+    route,
+    level,
+    depart,
+    startBattery,
+    energy,
+    origin,
+    milesTotal,
+    zone,
+    profile,
+  };
 
   const chosen = [];
   const skipped = [];
@@ -84,28 +116,98 @@ export function buildPlan(order, route) {
     for (const stop of route.stops) {
       const pick = pickStop(stop, route, profile);
       if (!pick) {
-        skipped.push({ id: stop?.id || '', name: stop?.name || stop?.id || 'Stop', reason: skipReason(stop, profile) });
+        skipped.push({ id: stop?.id || '', name: cleanCopy(stop?.name || stop?.id || 'Stop'), reason: skipReason(stop, profile) });
         continue;
       }
-      chosen.push({ stop, ...pick });
+      chosen.push(pick);
     }
   }
 
-  const milesTotal = routeMiles(route);
-  const stops = chosen.map((entry, index) => {
-    const next = chosen[index + 1];
-    const stop = renderStop(entry, route, {
-      level,
-      depart,
-      startBattery,
-      milesTotal,
-      nextMile: next ? Number(next.stop.mile) : null,
-      used,
-    });
-    return stop;
-  });
+  const prepared = chosen.map((entry) => prepareStop(entry, ctx));
+  const strategy = level === 'basic' ? null : buildStrategy(prepared, ctx);
+  const stops = prepared.map((entry) => renderStop(entry, strategy, ctx));
 
-  const summary = buildSummary({
+  const tips = [];
+  const notes = cleanCopy(input.notes ?? '');
+  if (notes) tips.push({ text: `Order note: ${notes}` });
+  if (chosen.length) tips.push({ text: amenityHonesty(chosen, route) });
+  if (level === 'basic') tips.push({ text: estimatedLine(mileageAssumption(input, route, origin)) });
+  if (!profile.hasPlug) tips.push({ text: `Port or adapter: ${UNKNOWN}. No charging stops were chosen.` });
+  for (const skip of skipped) tips.push({ text: `Skipped ${skip.name}: ${cleanCopy(skip.reason)}` });
+  for (const entry of chosen) {
+    for (const skippedTesla of entry.teslaOnly || []) {
+      const tip = { text: cleanCopy(`Skip ${skippedTesla.name} at ${entry.stop.name}: Tesla only.`) };
+      if (skippedTesla.source) tip.source = skippedTesla.source;
+      if (skippedTesla.url) tip.url = skippedTesla.url;
+      if (skippedTesla.checkedOn) tip.checkedOn = skippedTesla.checkedOn;
+      if (tip.source) ctx.used.add(tip.source);
+      if (tip.url) ctx.urls.set(tip.source, tip.url);
+      tips.push(tip);
+    }
+  }
+  if (level === 'full') {
+    for (const tip of route.tips || []) {
+      const text = cleanCopy(tip?.text || '');
+      if (!text || BANNED.test(text)) continue;
+      const source = tip.source || '';
+      const url = httpUrl(tip.url) || httpUrl(route.sources?.[source]?.url);
+      const checkedOn = day(tip.checkedOn) || day(route.checked);
+      if (!url || !checkedOn) continue;
+      if (source) {
+        ctx.used.add(source);
+        ctx.urls.set(source, url);
+      }
+      tips.push({ text, source, url, checkedOn });
+    }
+  }
+
+  const contingency = level === 'full' ? buildContingency(stops, ctx) : null;
+  const assumptions = level === 'basic' ? null : buildAssumptions(input, route, origin, energy, zone);
+  const stats = planStats(route, ctx);
+  const sources = sourceMap(route, ctx);
+
+  const plan = {
+    title: cleanCopy(route.title || slug),
+    summary: '',
+    tier: `${tier.label} (${tier.price})`,
+    car: vehicle,
+    port: profile.port || UNKNOWN,
+    stops,
+    sources,
+  };
+  if (route.highway) plan.highway = cleanCopy(route.highway);
+  const checked = day(route.checked);
+  if (checked) plan.checked = checked;
+  if (depart.iso) plan.depart = depart.iso;
+  if (zone) plan.timeZone = zone;
+  const back = cleanCopy(input.returnDate ?? input.return ?? '');
+  if (back) plan.returnDate = back;
+  if (route.startLabel) plan.startLabel = cleanCopy(route.startLabel);
+  if (route.endLabel) plan.endLabel = cleanCopy(route.endLabel);
+  const startNote = cleanCopy(route.startNote || '');
+  if (startNote && !BANNED.test(startNote)) plan.startNote = startNote;
+  if (origin) {
+    plan.originLeg = {
+      miles: origin.miles,
+      from: origin.from,
+      to: origin.to,
+      status: 'verified',
+      url: origin.url,
+      checkedOn: origin.checkedOn,
+      ...(origin.source ? { source: origin.source } : {}),
+    };
+  }
+  if (stats.length) plan.stats = stats;
+  if (assumptions) plan.assumptions = assumptions;
+  if (strategy) plan.strategy = strategy.public;
+  if (contingency?.length) plan.contingency = contingency;
+  if (tips.length) plan.tips = tips;
+  if (skipped.length) plan.skipped = skipped;
+
+  stampSources(plan, sources);
+  const range = dateRange(plan);
+  if (range) plan.dataChecked = range;
+  plan.summary = buildSummary({
     vehicle,
     profile,
     tier,
@@ -115,80 +217,10 @@ export function buildPlan(order, route) {
     startBattery,
     order: input,
     milesTotal,
+    origin,
+    strategy,
+    dataChecked: range,
   });
-
-  const tips = [];
-  const notes = cleanCopy(input.notes ?? '');
-  if (notes) tips.push({ text: `Order note: ${notes}` });
-  if (!profile.hasPlug) {
-    tips.push({ text: `Port or adapter: ${UNKNOWN}. No charging stops were chosen.` });
-  }
-  for (const skip of skipped) tips.push({ text: `Skipped ${skip.name}: ${cleanCopy(skip.reason)}` });
-
-  if (level === 'detailed' || level === 'full') {
-    for (const line of ASSUMPTIONS) tips.push({ text: `Assumption: ${line}` });
-  }
-  if (level === 'full') {
-    for (const entry of chosen) {
-      const primary = entry.primary.primary.name;
-      const backup = entry.backup;
-      if (backup?.status === 'verified') {
-        const tip = {
-          text: cleanCopy(`If ${primary} is full or offline, use ${backup.name}.`),
-        };
-        if (backup.source) tip.source = backup.source;
-        if (backup.url) tip.url = backup.url;
-        if (backup.checkedOn) tip.checkedOn = backup.checkedOn;
-        tips.push(tip);
-      } else {
-        tips.push({ text: `No verified backup at ${entry.stop.name}. ${UNKNOWN}.` });
-      }
-      for (const skippedTesla of entry.teslaOnly || []) {
-        const tip = { text: cleanCopy(`Skip ${skippedTesla.name} at ${entry.stop.name}: Tesla only.`) };
-        if (skippedTesla.source) tip.source = skippedTesla.source;
-        if (skippedTesla.url) tip.url = skippedTesla.url;
-        if (skippedTesla.checkedOn) tip.checkedOn = skippedTesla.checkedOn;
-        if (tip.source) used.add(tip.source);
-        tips.push(tip);
-      }
-    }
-    for (const tip of route.tips || []) {
-      const text = cleanCopy(tip?.text || '');
-      if (!text || BANNED.test(text)) continue;
-      const source = tip.source || '';
-      const url = httpUrl(tip.url) || httpUrl(route.sources?.[source]?.url);
-      const checkedOn = day(tip.checkedOn) || day(route.checked);
-      if (!url || !checkedOn) continue;
-      if (source) used.add(source);
-      tips.push({ text, source, url, checkedOn });
-    }
-  }
-
-  const stats = planStats(route, used);
-  const sources = sourceMap(route, used);
-  const plan = {
-    title: route.title || slug,
-    summary,
-    tier: `${tier.label} (${tier.price})`,
-    car: vehicle,
-    port: profile.port || UNKNOWN,
-    stops,
-    sources,
-  };
-  if (route.highway) plan.highway = route.highway;
-  const checked = day(route.checked);
-  if (checked) plan.checked = checked;
-  if (depart) plan.depart = depart;
-  const back = cleanCopy(input.returnDate ?? input.return ?? '');
-  if (back) plan.returnDate = back;
-  if (route.startLabel) plan.startLabel = route.startLabel;
-  if (route.endLabel) plan.endLabel = route.endLabel;
-  const startNote = cleanCopy(route.startNote || '');
-  if (startNote && !BANNED.test(startNote)) plan.startNote = startNote;
-  if (stats.length) plan.stats = stats;
-  if (level === 'detailed' || level === 'full') plan.assumptions = ASSUMPTIONS.slice();
-  if (tips.length) plan.tips = tips;
-  if (skipped.length) plan.skipped = skipped;
   return plan;
 }
 
@@ -206,22 +238,92 @@ export function draftRecord(plan) {
 
 export function planSummary(plan) {
   const lines = [plan.tier, plan.summary, `Stops: ${plan.stops.length}`];
+  if (plan.dataChecked) lines.push(`Data checked: ${plan.dataChecked}`);
+  if (plan.timeZone) lines.push(`Time zone: ${plan.timeZone}`);
   plan.stops.forEach((stop, index) => {
     const backup = stop.backups?.[0];
-    const backupText = backup ? ` Backup: ${backup.name}.` : '';
-    lines.push(`${index + 1}. ${stop.name}, mile ${stop.mile}. Primary: ${stop.primary?.name}.${backupText}`);
+    const role = stop.charging === true ? ' Charge here.' : stop.charging === false ? ' Optional.' : '';
+    const backupText = backup ? ` Backup: ${backup.name}.` : stop.note ? ` ${stop.note}` : '';
+    lines.push(`${index + 1}. ${stop.name}, mile ${stop.mile}.${role} Primary: ${stop.primary?.name}.${backupText}`);
   });
   if (plan.assumptions?.length) lines.push(`Assumptions: ${plan.assumptions.length}`);
+  if (plan.contingency?.length) lines.push(`Contingency: ${plan.contingency.map((item) => item.title).join(', ')}`);
   return lines.join('\n');
 }
 
-function buildSummary({ vehicle, profile, tier, route, stops, depart, startBattery, order, milesTotal }) {
+export function planMarkdown(plan) {
+  const lines = [`# ${plan.title || 'Plan'}`, '', plan.summary || '', ''];
+  if (plan.strategy?.text) lines.push(plan.strategy.text, '');
+  if (plan.dataChecked) lines.push(`Data checked: ${plan.dataChecked}`, '');
+  if (plan.assumptions?.length) {
+    lines.push('## Estimate assumptions');
+    for (const line of plan.assumptions) lines.push(`- ${line}`);
+    lines.push('');
+  }
+  for (const stop of plan.stops || []) {
+    const role = stop.charging === true ? ', charge here' : stop.charging === false ? ', optional' : '';
+    lines.push(`## ${stop.name} (mile ${stop.mile}${role})`);
+    if (stop.headline === false) lines.push('Flagged: not a fully verified headline stop.');
+    if (stop.why) lines.push(stop.why);
+    const primary = stop.primary || {};
+    lines.push(`Primary: ${primary.name || ''}${primary.teslaAccess ? ` (Tesla flag: ${primary.teslaAccess})` : ''}`);
+    for (const key of ['network', 'address', 'exit', 'stalls', 'power', 'access', 'price']) {
+      lines.push(`- ${key}: ${fieldText(primary[key])}`);
+    }
+    if (primary.target?.value) lines.push(`- target: ${primary.target.value}`);
+    for (const fact of primary.facts || []) lines.push(`- ${fact.label}: ${fact.value}`);
+    if (stop.backups?.length) {
+      lines.push('Backups:');
+      for (const backup of stop.backups) lines.push(`- ${backup.name}: ${backup.facts || ''}`);
+    } else if (stop.note) lines.push(stop.note);
+    if (stop.cautions?.length) {
+      lines.push('Cautions:');
+      for (const item of stop.cautions) lines.push(`- ${item.name}: ${item.text}`);
+    }
+    if (stop.food?.length) {
+      lines.push('Food:');
+      for (const item of stop.food) lines.push(`- ${item.name}: ${item.text}`);
+    }
+    if (stop.hotels?.length) {
+      lines.push('Lodging:');
+      for (const item of stop.hotels) lines.push(`- ${item.name}: ${item.text}`);
+    }
+    if (stop.other?.length) {
+      lines.push('Alternatives:');
+      for (const item of stop.other) lines.push(`- ${item.name}`);
+    }
+    lines.push('');
+  }
+  if (plan.contingency?.length) {
+    lines.push('## Contingency');
+    for (const item of plan.contingency) lines.push(`- ${item.title}: ${item.text}`);
+    lines.push('');
+  }
+  if (plan.tips?.length) {
+    lines.push('## Notes');
+    for (const tip of plan.tips) lines.push(`- ${tip.text}`);
+    lines.push('');
+  }
+  if (plan.sources) {
+    lines.push('## Sources');
+    for (const source of Object.values(plan.sources)) lines.push(`- ${source.name}: ${source.url}`);
+  }
+  return lines.join('\n');
+}
+
+function fieldText(field) {
+  if (field == null) return '';
+  if (typeof field === 'string') return field;
+  return field.value || '';
+}
+
+function buildSummary({ vehicle, profile, tier, route, stops, depart, startBattery, order, milesTotal, origin, strategy, dataChecked }) {
   const from = cleanCopy(order.start ?? order.startPlace ?? '');
   const to = cleanCopy(order.end ?? order.endPlace ?? '');
   const battery = startBattery == null ? UNKNOWN : `${startBattery}%`;
   const parts = [
     `${tier.label} (${tier.price}) for a ${vehicle}.`,
-    route.title ? `${route.title}.` : '',
+    route.title ? `${cleanCopy(route.title)}.` : '',
     `Port: ${profile.port || UNKNOWN}.`,
     `Memberships: ${membershipText(order.memberships)}.`,
     `Start battery: ${battery}.`,
@@ -230,47 +332,722 @@ function buildSummary({ vehicle, profile, tier, route, stops, depart, startBatte
   if (from && to) parts.push(`${from} to ${to}.`);
   const passengers = cleanCopy(order.passengers ?? '');
   if (passengers) parts.push(`Passengers: ${passengers}.`);
-  const where = route.highway ? ` on ${route.highway}` : '';
-  const distance = milesTotal == null ? '' : `, ${milesTotal} miles`;
-  parts.push(`${stops.length} verified stops${where}${distance}.`);
+  parts.push(stopsSentence(stops, route.highway));
+  const mileage = mileageSentence(order, route, origin, milesTotal);
+  if (mileage) parts.push(mileage);
+  if (strategy?.text) parts.push(strategy.text);
+  else if (tier.id !== 'basic' && (startBattery == null || milesTotal == null)) parts.push(`Charging strategy: ${UNKNOWN}.`);
+  if (dataChecked) parts.push(`Data checked ${dataChecked}.`);
   return cleanCopy(parts.join(' '));
 }
 
-function renderStop(entry, route, ctx) {
-  const { stop, primary, backup, alternatives, guidePrimaryUsed, amenityStations } = entry;
-  const sheet = primary.primary;
-  commitSources(sheet, ctx.used);
-  if (backup?.source) ctx.used.add(backup.source);
-  const out = {
-    id: stop.id,
-    name: stop.name,
-    mile: Number(stop.mile),
-    why: whyFor(stop, sheet, guidePrimaryUsed),
-    primary: sheet,
-    backups: [backup || unverifiedBackup()],
-  };
-  if (stop.towns) out.towns = stop.towns;
-  if (stop.milepostNote) out.milepostNote = stop.milepostNote;
+function stopsSentence(stops, highway) {
+  const where = highway ? ` on ${cleanCopy(highway)}` : '';
+  const n = stops.length;
+  const backups = stops.filter((stop) => stop.backups?.some((backup) => backup.status === 'verified')).length;
+  const allVerified = n > 0 && stops.every((stop) => stop.headline === true);
+  if (allVerified) return `${n} verified stops${where}.`;
+  return `${n} stops${where}, ${backups} with a verified backup.`;
+}
 
-  if (ctx.level === 'detailed' || ctx.level === 'full') {
-    const timing = timingFacts(out.mile, ctx);
-    out.primary = { ...sheet, target: timing.leave, facts: [...(sheet.facts || []), timing.arrival, timing.drive] };
-    const notes = amenityNotes(stop, amenityStations, route);
-    const food = take(notes, 'food');
-    const hotels = take(notes, 'overnight');
-    const restrooms = take(notes, 'restroom');
-    if (food.length) out.food = food.map((note) => noteItem('Food', note, route, ctx.used));
-    if (hotels.length) out.hotels = hotels.map((note) => noteItem('Overnight', note, route, ctx.used));
-    if (restrooms.length) {
-      out.primary.facts = [...(out.primary.facts || []), ...restrooms.map((note) => restroomFact(note, route, ctx.used))];
+function mileageSentence(order, route, origin, milesTotal) {
+  const startLabel = cleanCopy(route.startLabel || 'the route start');
+  const orderStart = cleanCopy(order.start ?? order.startPlace ?? '');
+  const miles = milesTotal == null ? '' : `${trimNum(milesTotal)} miles`;
+  if (origin) {
+    const leg = `${trimNum(origin.miles)} miles from ${origin.from || orderStart || 'the start'} to ${origin.to || startLabel}`;
+    return miles ? `Mileage includes ${leg}, then ${miles} on the route.` : `Mileage includes ${leg}.`;
+  }
+  if (orderStart && placesDiffer(orderStart, startLabel)) {
+    return miles ? `Mileage counted from ${startLabel}, ${miles}.` : `Mileage counted from ${startLabel}.`;
+  }
+  return miles ? `${miles}.` : '';
+}
+
+function mileageAssumption(order, route, origin) {
+  const startLabel = cleanCopy(route.startLabel || 'the route start');
+  const orderStart = cleanCopy(order.start ?? order.startPlace ?? '');
+  if (origin) {
+    return `Mileage includes ${trimNum(origin.miles)} miles from ${origin.from || orderStart || 'the start'} to ${origin.to || startLabel} before the route mile marks. Starting battery at the route start is reduced for that leg.`;
+  }
+  if (orderStart && placesDiffer(orderStart, startLabel)) return `Mileage counted from ${startLabel}.`;
+  return '';
+}
+
+function placesDiffer(orderStart, routeStart) {
+  const a = orderStart.toLowerCase();
+  const b = routeStart.toLowerCase();
+  if (!a || !b) return false;
+  return !a.includes(b) && !b.includes(a);
+}
+
+function buildAssumptions(order, route, origin, energy, zone) {
+  const lines = [];
+  const mileage = mileageAssumption(order, route, origin);
+  if (mileage) lines.push(mileage);
+  lines.push(energy.rangeAssumed
+    ? `Battery percent is an estimate at ${trimNum(energy.rangeMiles / 100)} miles per percent of charge, ${trimNum(energy.rangeMiles)} miles from 100% to 0%. It is not a tested range for this vehicle.`
+    : `Battery percent uses the order's stated range of ${trimNum(energy.rangeMiles)} miles from 100% to 0%.`);
+  lines.push(`A reserve of ${RESERVE_PERCENT}% is held back. An arrival under that reserve is flagged.`);
+  lines.push(energy.packAssumed
+    ? `Charge time uses the stop's verified kW. Average power is assumed at ${Math.round(CURVE_TO_80 * 100)}% of that kW up to ${TAPER_AT}% state of charge, and ${Math.round(CURVE_ABOVE_80 * 100)}% of that kW above ${TAPER_AT}%, on a ${trimNum(energy.packKwh)} kWh pack. The pack size is not on the order. This is not a measured charge curve.`
+    : `Charge time uses the stop's verified kW and the order's stated pack of ${trimNum(energy.packKwh)} kWh. Average power is assumed at ${Math.round(CURVE_TO_80 * 100)}% of that kW up to ${TAPER_AT}% state of charge, and ${Math.round(CURVE_ABOVE_80 * 100)}% of that kW above ${TAPER_AT}%. This is not a measured charge curve.`);
+  lines.push(`Drive time is an estimate at ${MPH} mph. Clock times add drive time and charging time.`);
+  lines.push(zone
+    ? `Clock times use ${zone}.`
+    : `Clock time zone: ${UNKNOWN}. Times are added on the departure clock as written.`);
+  lines.push(`Hills, wind, temperature, cargo, and any speed other than ${MPH} mph are not in the estimate.`);
+  return lines;
+}
+
+function estimatedLine(mileageNote) {
+  const tail = 'This tier does not estimate arrival battery, charge time, or clock times.';
+  return mileageNote ? `What's estimated: ${mileageNote} ${tail}` : `What's estimated: ${tail}`;
+}
+
+function prepareStop(entry, ctx) {
+  const { stop, primary: built, backup, alternatives, guidePrimaryUsed, teslaOnly } = entry;
+  const sheet = built.primary;
+  commitSources(sheet, ctx);
+  if (backup?.source) {
+    ctx.used.add(backup.source);
+    if (backup.url) ctx.urls.set(backup.source, backup.url);
+  }
+  const member = memberPriceFact(sheet, ctx.profile.memberships);
+  if (member) sheet.facts = [...(sheet.facts || []), member];
+  if (backup?.status === 'verified') {
+    const backupMembership = membershipMatch(backup.network, ctx.profile.memberships);
+    if (backupMembership && !memberClause(backup.facts)) {
+      backup.memberPrice = { label: backupMembership, value: 'Price not published', status: 'unpublished' };
+      backup.facts = cleanCopy(`${backup.facts} ${backupMembership}: Price not published.`);
     }
   }
+  const exitOk = sheet.exit?.status === 'verified';
+  const backupOk = backup?.status === 'verified';
+  const name = cleanCopy(stop.name || stop.id || 'Stop');
+  const note = backupOk ? '' : `No verified backup at ${name} yet. Charge to a higher level at the previous stop.`;
+  return {
+    entry,
+    stop,
+    sheet,
+    backup: backupOk ? backup : null,
+    alternatives,
+    guidePrimaryUsed,
+    teslaOnly,
+    name,
+    mile: Number(stop.mile),
+    kw: kilowatts(sheet.power?.value),
+    member: Boolean(membershipMatch(sheet.network?.value, ctx.profile.memberships)),
+    flagged: !exitOk || !backupOk,
+    exitOk,
+    note,
+    headline: exitOk && backupOk,
+  };
+}
 
-  if (ctx.level === 'full' && alternatives.length) {
+function renderStop(prepared, strategy, ctx) {
+  const { stop, sheet, backup, alternatives, guidePrimaryUsed, name, note, headline } = prepared;
+  const sim = strategy?.byId?.[stop.id] || null;
+  const whyBits = [whyFor(stop, sheet, guidePrimaryUsed)];
+  if (!prepared.exitOk) whyBits.push('Exit not yet verified.');
+  if (note) whyBits.push(note);
+  const out = {
+    id: stop.id,
+    name,
+    mile: Number(stop.mile),
+    why: cleanCopy(whyBits.filter(Boolean).join(' ')),
+    primary: sheet,
+    backups: backup ? [backup] : [],
+    headline,
+  };
+  if (note) out.note = note;
+  if (stop.towns) out.towns = cleanCopy(stop.towns);
+  if (stop.milepostNote) out.milepostNote = cleanCopy(stop.milepostNote);
+
+  if (ctx.level === 'detailed' || ctx.level === 'full') {
+    const facts = [...(sheet.facts || [])];
+    if (sim) {
+      out.charging = sim.charging;
+      if (sim.belowReserve) out.belowReserve = true;
+      if (sim.charging) {
+        sheet.target = { value: `Estimate: charge to ${sim.departPct}%.`, note: ESTIMATE_NOTE };
+        facts.push(
+          { label: 'Arrival battery', value: arrivalText(sim), note: ESTIMATE_NOTE },
+          { label: 'Departure battery', value: `Estimate: ${sim.departPct}%.`, note: ESTIMATE_NOTE },
+          { label: 'Charge time', value: chargeTimeText(sim), note: ESTIMATE_NOTE },
+          { label: 'Drive time', value: driveText(sim, true), note: ESTIMATE_NOTE },
+        );
+      } else {
+        facts.push(
+          { label: 'Charging', value: 'Optional. This plan does not charge here.' },
+          { label: 'Arrival battery', value: arrivalText(sim), note: ESTIMATE_NOTE },
+          { label: 'Drive time', value: driveText(sim, false), note: ESTIMATE_NOTE },
+        );
+      }
+    } else if (ctx.startBattery == null) {
+      facts.push(
+        { label: 'Arrival battery', value: UNKNOWN },
+        { label: 'Drive time', value: driveUnknown(prepared, ctx), note: ESTIMATE_NOTE },
+      );
+    }
+    const amenities = amenityBlocks(stop, sheet, ctx);
+    if (amenities.restroom) facts.push(amenities.restroom);
+    sheet.facts = facts.length ? facts : undefined;
+    out.primary = sheet;
+    if (amenities.food.length) out.food = amenities.food;
+    if (amenities.hotels.length) out.hotels = amenities.hotels;
+    if (amenities.cautions.length) out.cautions = amenities.cautions;
+  }
+
+  if (ctx.level === 'full' && sim?.charging && alternatives.length) {
     out.other = alternatives;
-    for (const site of alternatives) if (site.source) ctx.used.add(site.source);
+    for (const site of alternatives) {
+      if (site.source) {
+        ctx.used.add(site.source);
+        if (site.url) ctx.urls.set(site.source, site.url);
+      }
+    }
   }
   return out;
+}
+
+function buildStrategy(prepared, ctx) {
+  if (ctx.startBattery == null || ctx.milesTotal == null) return null;
+  const soc0 = ctx.origin
+    ? ctx.startBattery - (ctx.origin.miles / ctx.energy.rangeMiles) * 100
+    : ctx.startBattery;
+  const ordered = prepared.map((item, index) => ({ ...item, index })).sort((a, b) => a.mile - b.mile || a.index - b.index);
+  const picked = selectCharges(ordered, soc0, ctx.energy.rangeMiles, ctx.milesTotal);
+  const chargeIds = new Set(picked.map((item) => item.stop.id));
+  const byId = {};
+  let prevMile = 0;
+  let prevMin = 0;
+  let prevName = ctx.origin
+    ? (ctx.origin.from || cleanCopy(ctx.orderStart || '') || cleanCopy(ctx.route.startLabel || 'the start'))
+    : cleanCopy(ctx.route.startLabel || 'the route start');
+  if (!ctx.origin) prevName = cleanCopy(ctx.route.startLabel || 'the route start');
+  let soc = soc0;
+  const originMiles = ctx.origin?.miles || 0;
+  for (const item of ordered) {
+    const legMiles = item.mile - prevMile + (prevMile === 0 ? originMiles : 0);
+    const driveMinutes = Math.round((legMiles / MPH) * 60);
+    const arriveMin = prevMin + driveMinutes;
+    const arrival = soc - ((item.mile - prevMile) / ctx.energy.rangeMiles) * 100;
+    const charging = chargeIds.has(item.stop.id);
+    const nextMile = nextChargeMile(ordered, item, chargeIds, ctx.milesTotal);
+    const rawTarget = RESERVE_PERCENT + ((nextMile - item.mile) / ctx.energy.rangeMiles) * 100;
+    const departPct = Math.min(100, ceilPct(rawTarget));
+    const arrivePct = arrival < 0 ? null : Math.round(arrival);
+    const belowReserve = arrival < RESERVE_PERCENT - 1e-6;
+    const ranOut = arrival < 0;
+    let chargeMinutes = 0;
+    if (charging && !ranOut) {
+      const from = arrivePct == null ? 0 : arrivePct;
+      chargeMinutes = chargeMinutesBetween(from, departPct, item.kw, ctx.energy.packKwh);
+    }
+    const arriveClock = clockLabel(ctx.depart, arriveMin);
+    const departClock = charging ? clockLabel(ctx.depart, arriveMin + chargeMinutes) : null;
+    byId[item.stop.id] = {
+      charging,
+      arrivePct,
+      departPct: charging ? departPct : null,
+      chargeMinutes,
+      arriveClock,
+      departClock,
+      belowReserve,
+      ranOut,
+      driveMinutes,
+      fromName: prevName,
+      kw: item.kw,
+    };
+    prevMile = item.mile;
+    prevMin = arriveMin + (charging ? chargeMinutes : 0);
+    prevName = item.name;
+    soc = charging && !ranOut ? departPct : arrival;
+  }
+  const destLeg = ctx.milesTotal - prevMile;
+  const destMinutes = Math.round((Math.max(0, destLeg) / MPH) * 60);
+  const destArrival = soc - (Math.max(0, destLeg) / ctx.energy.rangeMiles) * 100;
+  const destPct = destArrival < 0 ? null : Math.round(destArrival);
+  const destination = {
+    mile: ctx.milesTotal,
+    arrivePercent: destPct,
+    arriveClock: clockLabel(ctx.depart, prevMin + destMinutes),
+    belowReserve: destArrival < RESERVE_PERCENT - 1e-6,
+    ranOut: destArrival < 0,
+  };
+  const text = strategyText(prepared, byId, destination, ctx);
+  return {
+    byId,
+    public: {
+      text,
+      reservePercent: RESERVE_PERCENT,
+      stops: prepared.filter((item) => byId[item.stop.id]?.charging).map((item) => ({
+        stopId: item.stop.id,
+        name: item.sheet.name,
+        arrivePercent: byId[item.stop.id].arrivePct,
+        departPercent: byId[item.stop.id].departPct,
+        chargeMinutes: byId[item.stop.id].chargeMinutes,
+        arriveClock: byId[item.stop.id].arriveClock,
+        departClock: byId[item.stop.id].departClock,
+        belowReserve: byId[item.stop.id].belowReserve,
+      })),
+      destination,
+    },
+    text,
+  };
+}
+
+function nextChargeMile(ordered, item, chargeIds, dest) {
+  const later = ordered.find((other) => other.mile > item.mile && chargeIds.has(other.stop.id));
+  return later ? later.mile : dest;
+}
+
+function selectCharges(ordered, soc0, range, dest) {
+  const n = ordered.length;
+  const startReach = maxLeg(soc0, range);
+  const fullReach = maxLeg(100, range);
+  const best = Array(n).fill(null);
+  const scoreOf = (list) => {
+    let member = 0;
+    let kw = 0;
+    let flags = 0;
+    let miles = 0;
+    for (const index of list) {
+      if (ordered[index].member) member += 1;
+      kw += ordered[index].kw;
+      if (ordered[index].flagged) flags += 1;
+      miles += ordered[index].mile;
+    }
+    return { list, member, kw, flags, miles, count: list.length };
+  };
+  const better = (a, b) => {
+    if (!b) return true;
+    if (a.count !== b.count) return a.count < b.count;
+    if (a.kw !== b.kw) return a.kw > b.kw;
+    if (a.member !== b.member) return a.member > b.member;
+    if (a.flags !== b.flags) return a.flags < b.flags;
+    if (a.miles !== b.miles) return a.miles > b.miles;
+    return false;
+  };
+  for (let i = 0; i < n; i += 1) {
+    if (ordered[i].mile <= startReach + 1e-6) best[i] = scoreOf([i]);
+    for (let j = 0; j < i; j += 1) {
+      if (!best[j]) continue;
+      if (ordered[i].mile - ordered[j].mile <= fullReach + 1e-6) {
+        const next = scoreOf([...best[j].list, i]);
+        if (better(next, best[i])) best[i] = next;
+      }
+    }
+  }
+  let win = dest <= startReach + 1e-6 ? scoreOf([]) : null;
+  for (let i = 0; i < n; i += 1) {
+    if (!best[i]) continue;
+    if (dest - ordered[i].mile <= fullReach + 1e-6 && better(best[i], win)) win = best[i];
+  }
+  if (win) return win.list.map((index) => ordered[index]);
+  let far = null;
+  for (let i = 0; i < n; i += 1) {
+    if (!best[i]) continue;
+    const last = ordered[best[i].list[best[i].list.length - 1]];
+    const farLast = far ? ordered[far.list[far.list.length - 1]] : null;
+    if (!far || last.mile > farLast.mile || (last.mile === farLast.mile && better(best[i], far))) far = best[i];
+  }
+  if (far) return far.list.map((index) => ordered[index]);
+  return n ? [ordered[0]] : [];
+}
+
+function maxLeg(soc, range) {
+  return Math.max(0, ((soc - RESERVE_PERCENT) / 100) * range);
+}
+
+function strategyText(prepared, byId, destination, ctx) {
+  const charging = prepared.filter((item) => byId[item.stop.id]?.charging);
+  const end = destinationPhrase(destination);
+  if (!charging.length) return `No charging stop. ${end}`;
+  const bits = charging.map((item) => {
+    const sim = byId[item.stop.id];
+    const flag = sim.belowReserve ? ', below the 10% reserve' : '';
+    return `${item.sheet.name} to ${sim.departPct}%${flag}`;
+  });
+  const where = bits.length === 1 ? `Charge at ${bits[0]}.` : `Charge at ${bits.join(', then ')}.`;
+  return `${where} ${end}`;
+}
+
+function destinationPhrase(destination) {
+  const clock = destination.arriveClock ? ` around ${destination.arriveClock}` : '';
+  if (destination.ranOut) return `Estimated arrival at the end${clock}: the assumed range runs out, below the ${RESERVE_PERCENT}% reserve.`;
+  const where = reservePhrase(destination.arrivePercent);
+  return `Estimated arrival at the end is ${destination.arrivePercent}%${clock}, ${where}.`;
+}
+
+function reservePhrase(pct) {
+  if (pct < RESERVE_PERCENT) return `below the ${RESERVE_PERCENT}% reserve`;
+  if (pct === RESERVE_PERCENT) return `at the ${RESERVE_PERCENT}% reserve`;
+  return `above the ${RESERVE_PERCENT}% reserve`;
+}
+
+function arrivalText(sim) {
+  if (sim.ranOut) return `Estimate: the assumed range runs out before this stop, below the ${RESERVE_PERCENT}% reserve.`;
+  if (sim.belowReserve) return `Estimate: about ${sim.arrivePct}% on arrival, below the ${RESERVE_PERCENT}% reserve.`;
+  return `Estimate: about ${sim.arrivePct}% on arrival.`;
+}
+
+function chargeTimeText(sim) {
+  if (!sim.kw) return `Estimate: ${UNKNOWN}. Verified kW: ${UNKNOWN}.`;
+  if (!sim.chargeMinutes) return 'Estimate: under 1 minute.';
+  return `Estimate: ${sim.chargeMinutes} minutes at the verified ${trimNum(sim.kw)} kW.`;
+}
+
+function driveText(sim, charging) {
+  const clock = sim.arriveClock
+    ? (charging
+      ? `, arriving about ${sim.arriveClock}${sim.departClock ? `. Leave about ${sim.departClock}` : ''}`
+      : `, passing about ${sim.arriveClock}`)
+    : `. Departure clock time: ${UNKNOWN}`;
+  return `Estimate: ${sim.driveMinutes} minutes from ${sim.fromName} at ${MPH} mph${clock}.`;
+}
+
+function driveUnknown(prepared, ctx) {
+  const fromName = cleanCopy(ctx.route.startLabel || 'the route start');
+  const minutes = Math.round((prepared.mile / MPH) * 60);
+  const clock = clockLabel(ctx.depart, minutes);
+  if (!clock) return `Estimate: ${minutes} minutes from ${fromName} at ${MPH} mph. Departure clock time: ${UNKNOWN}.`;
+  return `Estimate: ${minutes} minutes from ${fromName} at ${MPH} mph, passing about ${clock}.`;
+}
+
+function chargeMinutesBetween(fromPct, toPct, kw, pack) {
+  if (!kw || toPct <= fromPct) return 0;
+  let minutes = 0;
+  if (fromPct < TAPER_AT) {
+    const end = Math.min(toPct, TAPER_AT);
+    const part = ((end - fromPct) / 100) * pack;
+    minutes += (part / (kw * CURVE_TO_80)) * 60;
+  }
+  if (toPct > TAPER_AT) {
+    const start = Math.max(fromPct, TAPER_AT);
+    const part = ((toPct - start) / 100) * pack;
+    minutes += (part / (kw * CURVE_ABOVE_80)) * 60;
+  }
+  if (minutes <= 0) return 0;
+  return Math.max(1, Math.round(minutes));
+}
+
+function buildContingency(stops, ctx) {
+  const items = [];
+  const charging = stops.filter((stop) => stop.charging);
+  const stall = [];
+  if (!charging.length) {
+    const fallback = stops.find((stop) => stop.backups?.some((backup) => backup.status === 'verified'));
+    if (fallback) {
+      stall.push(sourcedItem(
+        'Stall full or offline',
+        `No charging stop is planned. If you need one, ${fallback.primary.name} has verified backup ${fallback.backups[0].name}.`,
+        fallback.backups[0],
+      ));
+    }
+  }
+  for (const stop of charging) {
+    const backup = stop.backups?.find((item) => item.status === 'verified');
+    const alts = (stop.other || []).map((item) => item.name).filter(Boolean);
+    if (backup) {
+      const extra = alts.length ? ` Other verified sites here: ${alts.join(', ')}.` : '';
+      stall.push(sourcedItem('Stall full or offline', `If ${stop.primary.name} is full or offline, use ${backup.name}.${extra}`, backup));
+    } else if (alts.length) {
+      stall.push(sourcedItem('Stall full or offline', `If ${stop.primary.name} is full or offline, use ${alts[0]}.`, stop.other[0]));
+    } else {
+      stall.push({ title: 'Stall full or offline', text: stop.note || `No verified backup at ${stop.name} yet. Charge to a higher level at the previous stop.` });
+    }
+  }
+  items.push(...stall);
+
+  const pool = charging.length ? charging : stops;
+  for (const stop of pool) {
+    for (const caution of stop.cautions || []) {
+      if (!/\b(heat|throttl|weather|wind|snow|cold)\b/i.test(caution.text)) continue;
+      items.push(sourcedItem('Weather or heat', `${caution.name}: ${caution.text}`, caution));
+      break;
+    }
+    if (items.some((item) => item.title === 'Weather or heat')) break;
+  }
+
+  const first = charging[0];
+  if (first) {
+    const earlier = stops.filter((stop) => stop.mile < first.mile && stop.headline === true);
+    const pick = earlier.length ? earlier[earlier.length - 1] : null;
+    if (pick) {
+      items.push(sourcedItem(
+        'Low battery fallback',
+        `If you would reach ${first.primary.name} under the ${RESERVE_PERCENT}% reserve, charge earlier at ${pick.primary.name} (mile ${pick.mile}).`,
+        pick.primary.stalls,
+      ));
+    } else {
+      items.push({
+        title: 'Low battery fallback',
+        text: `${first.primary.name} is the first verified stop this plan can use. If arrival would be under the ${RESERVE_PERCENT}% reserve, the stop is flagged.`,
+      });
+    }
+  } else {
+    const pick = stops.find((stop) => stop.headline === true) || stops[0];
+    if (pick) {
+      items.push(sourcedItem(
+        'Low battery fallback',
+        `If the battery would fall under the ${RESERVE_PERCENT}% reserve, charge at ${pick.primary.name} (mile ${pick.mile}).`,
+        pick.primary.stalls,
+      ));
+    }
+  }
+  for (const item of items) {
+    if (item.source) {
+      ctx.used.add(item.source);
+      if (item.url) ctx.urls.set(item.source, item.url);
+    }
+  }
+  return items;
+}
+
+function sourcedItem(title, text, from) {
+  const item = { title, text: cleanCopy(text) };
+  if (from?.source) item.source = from.source;
+  if (from?.url) item.url = from.url;
+  if (from?.checkedOn) item.checkedOn = from.checkedOn;
+  return item;
+}
+
+function amenityHonesty(chosen, route) {
+  const restrooms = [];
+  const pets = [];
+  const seenR = new Set();
+  const seenP = new Set();
+  const add = (list, seen, name) => {
+    const clean = cleanCopy(name);
+    const key = clean.toLowerCase();
+    if (!clean || seen.has(key)) return;
+    if (list.some((item) => namesMatch(item, clean) || namesMatch(clean, item))) return;
+    seen.add(key);
+    list.push(clean);
+  };
+  const consider = (text, url, date, source, place) => {
+    if (!text || BANNED.test(text)) return;
+    const link = httpUrl(url) || httpUrl(route.sources?.[source]?.url);
+    if (!link || !day(date)) return;
+    if (CAUTION_RE.test(text)) return;
+    if (RESTROOM_RE.test(text)) add(restrooms, seenR, place);
+    if (PET_RE.test(text)) add(pets, seenP, place);
+  };
+  for (const entry of chosen) {
+    const stations = [entry.stop.primary, ...(entry.stop.backups || []), ...(entry.stop.other || [])].filter(Boolean);
+    for (const station of stations) {
+      for (const report of station.driverReports || []) {
+        consider(report.summary, report.url, report.date, report.source, station.name);
+      }
+    }
+    for (const report of entry.stop.reports || []) {
+      consider(report.text, report.url, report.date || report.checkedOn, report.source, report.site || entry.stop.name);
+    }
+  }
+  const missing = [];
+  for (const entry of chosen) {
+    const primary = entry.stop.primary?.name || entry.stop.name;
+    const has = restrooms.some((name) => namesMatch(name, primary));
+    if (!has) missing.push(cleanCopy(primary));
+  }
+  const have = restrooms.length ? `Sourced restroom notes: ${restrooms.join(', ')}.` : 'No sourced restroom note at any stop.';
+  const lack = missing.length ? ` No sourced restroom note at ${joinList(missing)}.` : '';
+  const pet = pets.length ? ` Sourced pet notes: ${pets.join(', ')}.` : ' No sourced pet info at any stop.';
+  return cleanCopy(`${have}${lack}${pet}`);
+}
+
+function joinList(items) {
+  if (items.length <= 1) return items[0] || '';
+  if (items.length === 2) return `${items[0]} or ${items[1]}`;
+  return `${items.slice(0, -1).join(', ')}, or ${items[items.length - 1]}`;
+}
+
+function amenityBlocks(stop, sheet, ctx) {
+  const stations = [stop.primary, ...(stop.backups || []), ...(stop.other || [])].filter(Boolean);
+  const food = [];
+  const hotels = [];
+  const cautions = [];
+  let restroom = null;
+  const seen = new Set();
+  const push = (bucket, note, section) => {
+    if (bucket.length >= MAX_NOTES) return;
+    const key = `${section}:${note.text.toLowerCase()}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    bucket.push(noteItem(placeName(note.place, section), note, ctx));
+  };
+  const take = (item, text, url, source, checkedOn, place, kind) => {
+    const clean = cleanCopy(text);
+    if (!clean || BANNED.test(clean)) return;
+    const link = httpUrl(url) || httpUrl(ctx.route.sources?.[source]?.url);
+    const date = day(checkedOn) || day(ctx.route.checked);
+    if (!link || !date) return;
+    const category = categoryOf(item, clean);
+    if (!category || category === 'pet') return;
+    const aboutPrimary = namesMatch(place, sheet.name);
+    const note = { text: clean, url: link, source: source || '', checkedOn: date, kind, place };
+    if (category === 'caution') {
+      push(cautions, note, 'Cautions');
+      return;
+    }
+    if (!aboutPrimary && place) {
+      if (category === 'food') push(food, note, 'Food');
+      if (category === 'overnight') push(hotels, note, 'Lodging');
+      return;
+    }
+    if (category === 'restroom' && aboutPrimary && !restroom) {
+      const item = noteItem('Restroom', note, ctx);
+      restroom = {
+        label: 'Restroom',
+        value: item.text,
+        url: item.url,
+        checkedOn: item.checkedOn,
+        note: item.note,
+        ...(item.source ? { source: item.source } : {}),
+        ...(item.sourceName ? { sourceName: item.sourceName } : {}),
+      };
+      return;
+    }
+    if (category === 'food') push(food, note, 'Food');
+    if (category === 'overnight') push(hotels, note, 'Lodging');
+  };
+  for (const report of stop.primary?.driverReports || []) {
+    take(report, report.summary, report.url, report.source, report.date, sheet.name, 'driver');
+  }
+  for (const station of stations) {
+    if (station === stop.primary) continue;
+    for (const report of station.driverReports || []) {
+      take(report, report.summary, report.url, report.source, report.date, station.name, 'driver');
+    }
+  }
+  for (const report of stop.reports || []) {
+    const match = bestStation(report.site, stations);
+    take(report, report.text, report.url, report.source, report.date, match?.name || report.site || sheet.name, 'route');
+  }
+  for (const item of stop.around || []) {
+    const match = bestStation(item.text, stations) || bestStation(item.site, stations);
+    take(item, item.text || item.value, item.url, item.source, item.checkedOn || item.date, match?.name || '', 'route');
+  }
+  return { food, hotels, cautions, restroom };
+}
+
+function categoryOf(item, text) {
+  const declared = String(item?.category || item?.type || '').trim().toLowerCase();
+  const inferred = inferCategory(text);
+  if (inferred === 'caution') return 'caution';
+  if (['food', 'restroom', 'overnight', 'caution', 'pet'].includes(declared)) return declared;
+  return inferred;
+}
+
+function inferCategory(text) {
+  if (CAUTION_RE.test(text)) return 'caution';
+  if (OVERNIGHT_RE.test(text)) return 'overnight';
+  if (PET_RE.test(text) && !FOOD_RE.test(text) && !RESTROOM_RE.test(text)) return 'pet';
+  if (FOOD_RE.test(text)) return 'food';
+  if (RESTROOM_RE.test(text)) return 'restroom';
+  if (PET_RE.test(text)) return 'pet';
+  return '';
+}
+
+function placeName(name, section) {
+  const clean = cleanCopy(name);
+  if (!clean || SECTION_TITLES.has(clean.toLowerCase())) return 'This stop';
+  if (clean.toLowerCase() === section.toLowerCase()) return 'This stop';
+  return clean;
+}
+
+function namesMatch(site, stationName) {
+  return matchScore(site, stationName) > 0;
+}
+
+function matchScore(site, stationName) {
+  const stopWords = new Set(['the', 'and', 'site', 'road', 'street', 'avenue', 'blvd', 'drive', 'with', 'for', 'from']);
+  const tokens = (value) => cleanCopy(value).toLowerCase().split(/[^a-z0-9]+/).filter((part) => part.length > 2 && !stopWords.has(part));
+  const a = tokens(site);
+  const b = new Set(tokens(stationName));
+  if (!a.length || !b.size) return 0;
+  const hits = a.filter((part) => b.has(part));
+  if (!hits.length) return 0;
+  if (hits.length >= 2 || a.length === 1) return hits.length;
+  return 0;
+}
+
+function bestStation(site, stations) {
+  let best = null;
+  let bestScore = 0;
+  let ties = 0;
+  for (const station of stations) {
+    const score = matchScore(site, station?.name);
+    if (score > bestScore) {
+      best = station;
+      bestScore = score;
+      ties = 1;
+    } else if (score === bestScore && score > 0) ties += 1;
+  }
+  if (!best || ties > 1) return null;
+  return best;
+}
+
+function noteItem(name, note, ctx) {
+  if (note.source) {
+    ctx.used.add(note.source);
+    if (note.url) ctx.urls.set(note.source, note.url);
+  }
+  const item = {
+    name,
+    text: note.text,
+    url: note.url,
+    checkedOn: note.checkedOn,
+    note: note.kind === 'driver' ? 'Driver report. Not a network fact.' : 'Route note. Not a network fact.',
+  };
+  if (note.source) item.source = note.source;
+  const label = ctx.route.sources?.[note.source]?.name;
+  if (label) item.sourceName = cleanCopy(label);
+  return item;
+}
+
+function memberPriceFact(sheet, memberships) {
+  const membership = membershipMatch(sheet.network?.value, memberships);
+  if (!membership) return null;
+  const price = sheet.price;
+  const clause = price?.status === 'verified' ? memberClause(price.value) : '';
+  if (clause && price?.url && price?.checkedOn) {
+    return {
+      label: membership,
+      value: clause,
+      status: 'verified',
+      url: price.url,
+      checkedOn: price.checkedOn,
+      ...(price.source ? { source: price.source } : {}),
+    };
+  }
+  return { label: membership, value: 'Price not published', status: 'unpublished' };
+}
+
+function memberClause(text) {
+  const parts = String(text || '').split(/(?<=\.)\s+/);
+  for (const part of parts) {
+    if (!/\b(members?|membership|pass\+)\b/i.test(part)) continue;
+    if (/non-tesla/i.test(part) && !/\bmembers?\b|\bpass\+/i.test(part.split(/non-tesla/i)[1] || '')) continue;
+    const money = part.match(/\$\d+(?:\.\d+)?(?:\s*\/\s*kWh)?/i);
+    if (!money) continue;
+    return cleanCopy(part);
+  }
+  return '';
+}
+
+function membershipMatch(network, memberships) {
+  const net = String(network || '');
+  for (const membership of memberships || []) {
+    if (/electrify america/i.test(membership) && /electrify america/i.test(net)) return membership;
+    if (/\bevgo\b/i.test(membership) && /\bevgo\b/i.test(net)) return membership;
+    if (/tesla supercharging/i.test(membership) && /tesla|supercharger/i.test(net)) return membership;
+    if (/rivian/i.test(membership) && /rivian/i.test(net)) return membership;
+    if (/chargepoint/i.test(membership) && /chargepoint/i.test(net)) return membership;
+  }
+  return '';
 }
 
 function pickStop(stop, route, profile) {
@@ -294,11 +1071,11 @@ function pickStop(stop, route, profile) {
   if (!ready.length) return null;
   const [first, second, ...rest] = ready;
   return {
+    stop,
     primary: first,
     backup: second ? second.backup : null,
     alternatives: rest.map((item) => item.backup),
     guidePrimaryUsed: first.role === 'guide',
-    amenityStations: [first.station, ...(second ? [second.station] : [])],
     teslaOnly,
   };
 }
@@ -317,9 +1094,7 @@ function tryGuidePrimary(station, route, profile) {
 function tryListed(station, route, profile) {
   if (!station || station.status !== 'verified') return null;
   if (!usable(station, profile)) return null;
-  if (station.stalls && station.power && station.access) {
-    return tryGuidePrimary(station, route, profile);
-  }
+  if (station.stalls && station.power && station.access) return tryGuidePrimary(station, route, profile);
   const parsed = structuredFromFacts(station.facts);
   const url = httpUrl(station.url) || httpUrl(route.sources?.[station.source]?.url);
   const checkedOn = day(station.checkedOn) || day(route.checked);
@@ -334,15 +1109,15 @@ function tryListed(station, route, profile) {
   if (source) {
     stalls.source = source;
     power.source = source;
-    if (accessValue) access.source = source;
+    access.source = source;
   }
-  const primary = toPrimary(station, route, { stalls, power, access, listedFacts: String(station.facts).trim() });
+  const primary = toPrimary(station, route, { stalls, power, access, listedFacts: cleanCopy(station.facts) });
   return { primary, backup: toBackup(station, primary) };
 }
 
 function toPrimary(station, route, parts) {
   const primary = {
-    name: station.name || 'Stop',
+    name: cleanCopy(station.name) || 'Stop',
     network: sourcedText(station.network, station, route, parts.stalls),
     address: sourcedText(station.address, station, route, parts.stalls),
     exit: sourcedText(station.exit, station, route, parts.stalls),
@@ -357,9 +1132,11 @@ function toPrimary(station, route, parts) {
   if (checkedOn) primary.checkedOn = checkedOn;
   for (const key of ['hours', 'connectors', 'plugs']) {
     if (station[key] == null || station[key] === '') continue;
-    primary[key] = typeof station[key] === 'object' ? presentFact(station[key], station, route) : String(station[key]);
+    primary[key] = typeof station[key] === 'object' && !Array.isArray(station[key])
+      ? presentFact(station[key], station, route)
+      : sourcedText(station[key], station, route, parts.stalls);
   }
-  if (parts.listedFacts) {
+  if (parts.listedFacts && !BANNED.test(parts.listedFacts)) {
     primary.facts = [{
       label: 'Locator facts',
       value: parts.listedFacts,
@@ -374,12 +1151,12 @@ function toPrimary(station, route, parts) {
 
 function toBackup(station, primary) {
   const backup = {
-    name: station.name || primary.name,
+    name: cleanCopy(station.name || primary.name) || 'Stop',
     facts: factsLine(station, primary),
     status: 'verified',
   };
-  const network = typeof station.network === 'string' ? station.network : primary.network?.value;
-  const address = typeof station.address === 'string' ? station.address : primary.address?.value;
+  const network = typeof station.network === 'string' ? cleanCopy(station.network) : primary.network?.value;
+  const address = typeof station.address === 'string' ? cleanCopy(station.address) : primary.address?.value;
   if (network && network !== UNKNOWN) backup.network = network;
   if (address && address !== UNKNOWN) backup.address = address;
   const access = primary.access?.value;
@@ -391,17 +1168,13 @@ function toBackup(station, primary) {
   return backup;
 }
 
-function unverifiedBackup() {
-  return { name: 'Backup', facts: UNKNOWN, status: 'unverified' };
-}
-
 function factsLine(station, primary) {
-  if (typeof station.facts === 'string' && station.facts.trim() && !BANNED.test(station.facts)) return station.facts.trim();
+  if (typeof station.facts === 'string' && station.facts.trim() && !BANNED.test(station.facts)) return cleanCopy(station.facts);
   const stalls = primary.stalls?.value;
   const power = primary.power?.value;
   if (stalls && stalls !== UNKNOWN && power && power !== UNKNOWN) {
     const left = /\bstalls?\b|\bchargers?\b/i.test(stalls) ? stalls : `${stalls} stalls`;
-    return `${left}. ${String(power).replace(/\.$/, '')}.`;
+    return cleanCopy(`${left}. ${String(power).replace(/\.$/, '')}.`);
   }
   return UNKNOWN;
 }
@@ -412,9 +1185,10 @@ function whyFor(stop, primary, guidePrimaryUsed) {
     if (kept && !BANNED.test(kept)) return kept;
   } else if (stop.primary?.name) {
     const flag = teslaFlag(stop.primary);
-    if (flag === 'tesla-only') return cleanCopy(`Guide primary ${stop.primary.name} is Tesla only. This plan uses ${primary.name}.`);
-    if (flag === 'open') return cleanCopy(`Guide primary ${stop.primary.name} needs a NACS adapter this order does not list. This plan uses ${primary.name}.`);
-    return cleanCopy(`Guide primary ${stop.primary.name} is not verified for this car. This plan uses ${primary.name}.`);
+    const guideName = cleanCopy(stop.primary.name);
+    if (flag === 'tesla-only') return cleanCopy(`Guide primary ${guideName} is Tesla only. This plan uses ${primary.name}.`);
+    if (flag === 'open') return cleanCopy(`Guide primary ${guideName} needs a NACS adapter this order does not list. This plan uses ${primary.name}.`);
+    return cleanCopy(`Guide primary ${guideName} is not verified for this car. This plan uses ${primary.name}.`);
   }
   const stalls = primary.stalls?.value;
   const power = primary.power?.value;
@@ -422,125 +1196,11 @@ function whyFor(stop, primary, guidePrimaryUsed) {
   return cleanCopy(`${primary.name}: ${left}, ${String(power).replace(/\.$/, '')}.`);
 }
 
-function timingFacts(mile, ctx) {
-  const drive = driveEstimate(mile, ctx.depart);
-  const arrival = arrivalEstimate(mile, ctx.startBattery);
-  const gap = ctx.nextMile == null ? (ctx.milesTotal == null ? null : ctx.milesTotal - mile) : ctx.nextMile - mile;
-  const leaveValue = leaveEstimate(gap, ctx.startBattery != null);
-  return {
-    leave: { value: leaveValue, note: 'Estimate. Assumptions are listed on this plan.' },
-    arrival: { label: 'Arrival battery', value: arrival, note: 'Estimate. Assumptions are listed on this plan.' },
-    drive: { label: 'Drive time', value: drive, note: 'Estimate. Assumptions are listed on this plan.' },
-  };
-}
-
-function driveEstimate(mile, depart) {
-  const minutes = Math.round((mile / MPH) * 60);
-  const clock = depart ? addClock(depart, minutes) : null;
-  if (clock) return `Estimate: ${minutes} minutes from the start at ${MPH} mph, arriving about ${clock}.`;
-  if (!depart) return `Estimate: ${minutes} minutes from the start at ${MPH} mph. Departure clock time: ${UNKNOWN}.`;
-  if (!/T\d{2}:\d{2}|\s\d{2}:\d{2}/.test(depart)) {
-    return `Estimate: ${minutes} minutes from the start at ${MPH} mph. Departure clock time: ${UNKNOWN}.`;
-  }
-  return `Estimate: ${minutes} minutes from the start at ${MPH} mph.`;
-}
-
-function arrivalEstimate(mile, startBattery) {
-  if (startBattery == null) return UNKNOWN;
-  const left = startBattery - mile / MILES_PER_PERCENT;
-  if (left < 0) return `Estimate: the assumed range runs out before this stop, ${Math.round(mile)} miles from the start.`;
-  return `Estimate: about ${Math.round(left)}% on arrival, before charging.`;
-}
-
-function leaveEstimate(gap, startKnown) {
-  if (!startKnown || gap == null || !Number.isFinite(gap) || gap < 0) return UNKNOWN;
-  const pct = Math.ceil(gap / MILES_PER_PERCENT + RESERVE_PERCENT);
-  if (pct > 100) {
-    return `Estimate: the next ${Math.round(gap)} miles is past the assumed range even from 100%, plus a ${RESERVE_PERCENT}% buffer.`;
-  }
-  return `Estimate: leave with at least ${pct}% for the next ${Math.round(gap)} miles, plus a ${RESERVE_PERCENT}% buffer.`;
-}
-
-function addClock(depart, minutes) {
-  const match = String(depart).match(/^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/);
-  if (!match) return null;
-  const start = Date.UTC(+match[1], +match[2] - 1, +match[3], +match[4], +match[5]);
-  const end = new Date(start + minutes * 60 * 1000);
-  const hh = String(end.getUTCHours()).padStart(2, '0');
-  const mm = String(end.getUTCMinutes()).padStart(2, '0');
-  const startDay = Date.UTC(+match[1], +match[2] - 1, +match[3]);
-  const endDay = Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate());
-  return `${hh}:${mm}${endDay === startDay ? '' : ' the next day'}`;
-}
-
-function amenityNotes(stop, stations, route) {
-  const notes = [];
-  const seen = new Set();
-  const push = (text, url, source, checkedOn, kind) => {
-    const clean = String(text ?? '').replace(/\s+/g, ' ').trim();
-    if (!clean || BANNED.test(clean)) return;
-    const key = clean.toLowerCase();
-    if (seen.has(key)) return;
-    const link = httpUrl(url) || httpUrl(route.sources?.[source]?.url);
-    const date = day(checkedOn) || day(route.checked);
-    if (!link || !date) return;
-    const category = noteCategory(clean);
-    if (!category) return;
-    seen.add(key);
-    notes.push({ text: clean, url: link, source: source || '', checkedOn: date, kind, category });
-  };
-  for (const item of stop.around || []) push(item?.text || item?.value, item?.url, item?.source, item?.checkedOn || item?.date, 'route');
-  for (const item of stop.reports || []) push(item?.text, item?.url, item?.source, item?.date, 'route');
-  for (const station of stations || []) {
-    for (const item of station?.driverReports || []) push(item?.summary, item?.url, item?.source, item?.date, 'driver');
-  }
-  return notes;
-}
-
-function noteCategory(text) {
-  if (OVERNIGHT_RE.test(text)) return 'overnight';
-  if (FOOD_RE.test(text)) return 'food';
-  if (RESTROOM_RE.test(text)) return 'restroom';
-  return '';
-}
-
-function take(notes, category) {
-  return notes.filter((note) => note.category === category).slice(0, MAX_NOTES);
-}
-
-function noteItem(name, note, route, used) {
-  if (note.source) used.add(note.source);
-  const item = {
-    name,
-    text: note.text,
-    url: note.url,
-    checkedOn: note.checkedOn,
-    note: note.kind === 'driver' ? 'Driver report. Not a network fact.' : 'Route note. Not a network fact.',
-  };
-  if (note.source) item.source = note.source;
-  const label = route.sources?.[note.source]?.name;
-  if (label) item.sourceName = label;
-  return item;
-}
-
-function restroomFact(note, route, used) {
-  const item = noteItem('Restroom', note, route, used);
-  return {
-    label: 'Restroom',
-    value: item.text,
-    url: item.url,
-    checkedOn: item.checkedOn,
-    note: item.note,
-    ...(item.source ? { source: item.source } : {}),
-    ...(item.sourceName ? { sourceName: item.sourceName } : {}),
-  };
-}
-
 function presentFact(fact, station, route) {
   if (!fact || typeof fact !== 'object' || Array.isArray(fact)) return { value: UNKNOWN, status: 'unverified' };
-  const value = String(fact.value ?? '').trim();
+  const value = cleanCopy(fact.value ?? '');
   const status = fact.status || '';
-  if (!value || !status) return { value: UNKNOWN, status: 'unverified' };
+  if (!value || !status || value === UNKNOWN) return { value: UNKNOWN, status: 'unverified' };
   const source = String(fact.source || station.source || '').trim();
   const checkedOn = day(fact.checkedOn) || day(station.checkedOn) || day(route.checked);
   const url = httpUrl(fact.url) || siblingUrl(station, source) || httpUrl(route.sources?.[source]?.url) || '';
@@ -554,12 +1214,13 @@ function presentFact(fact, station, route) {
 }
 
 function sourcedText(value, station, route, stalls) {
-  const shown = String(value ?? '').trim();
-  if (!shown || shown === UNKNOWN) return UNKNOWN;
+  if (value && typeof value === 'object' && !Array.isArray(value)) return presentFact(value, station, route);
+  const shown = cleanCopy(value ?? '');
+  if (!shown || shown === UNKNOWN) return { value: UNKNOWN, status: 'unverified' };
   const source = station.source || stalls?.source || station.stalls?.source || '';
   const url = httpUrl(station.url) || httpUrl(stalls?.url) || httpUrl(station.stalls?.url) || httpUrl(route.sources?.[source]?.url) || '';
   const checkedOn = day(station.checkedOn) || stalls?.checkedOn || day(route.checked);
-  if (!url || !checkedOn) return UNKNOWN;
+  if (!url || !checkedOn) return { value: UNKNOWN, status: 'unverified' };
   const out = { value: shown, status: 'verified', url, checkedOn };
   if (source) out.source = source;
   return out;
@@ -583,16 +1244,16 @@ function measuredOk(fact) {
 }
 
 function accessSentence(station) {
-  if (typeof station.access === 'string' && station.access.trim() && station.access.trim() !== UNKNOWN) {
-    return station.access.trim();
+  if (typeof station.access === 'string' && station.access.trim() && cleanCopy(station.access) !== UNKNOWN) {
+    return cleanCopy(station.access);
   }
   if (station.access && typeof station.access === 'object') {
-    const value = String(station.access.value || '').trim();
+    const value = cleanCopy(station.access.value || '');
     if (value && value !== UNKNOWN) return value;
   }
   const parts = String(station.facts || '').split(/(?<=\.)\s+/);
   const hit = parts.find((part) => /tesla only|open to|does not say other evs/i.test(part));
-  return hit ? hit.replace(/\.$/, '').trim() : '';
+  return hit ? cleanCopy(hit.replace(/\.$/, '')) : '';
 }
 
 function structuredFromFacts(facts) {
@@ -605,45 +1266,109 @@ function structuredFromFacts(facts) {
   return { stalls: stalls[1], power: upTo ? `Up to ${upTo[1]} kW` : `${kw[1]} kW` };
 }
 
-function commitSources(primary, used) {
+function commitSources(primary, ctx) {
   for (const key of ['network', 'address', 'exit', 'stalls', 'power', 'access', 'price', 'hours', 'connectors', 'plugs']) {
     const fact = primary?.[key];
-    if (fact && typeof fact === 'object' && fact.source) used.add(fact.source);
+    if (fact && typeof fact === 'object' && fact.source) {
+      ctx.used.add(fact.source);
+      if (fact.url) ctx.urls.set(fact.source, fact.url);
+    }
   }
-  for (const fact of primary?.facts || []) if (fact?.source) used.add(fact.source);
+  for (const fact of primary?.facts || []) {
+    if (fact?.source) {
+      ctx.used.add(fact.source);
+      if (fact.url) ctx.urls.set(fact.source, fact.url);
+    }
+  }
 }
 
-function planStats(route, used) {
+function planStats(route, ctx) {
   const stats = [];
   for (const stat of route.stats || []) {
     if (!stat || typeof stat !== 'object') continue;
-    const label = String(stat.label ?? '');
-    const value = String(stat.value ?? '');
-    const note = stat.note ? String(stat.note) : '';
+    const label = cleanCopy(stat.label ?? '');
+    const value = cleanCopy(stat.value ?? '');
+    const note = stat.note ? cleanCopy(stat.note) : '';
     if (BANNED.test(label) || BANNED.test(value) || BANNED.test(note)) continue;
     const source = stat.source || '';
     const url = httpUrl(stat.url) || httpUrl(route.sources?.[source]?.url);
     const checkedOn = day(stat.checkedOn) || day(route.checked);
     if (!url || !checkedOn || !source) continue;
-    if (!Number.isFinite(Number(value.replace(/,/g, '')))) continue;
+    if (!Number.isFinite(Number(String(value).replace(/,/g, '')))) continue;
     const out = { label, value, source, url, checkedOn };
-    if (stat.unit) out.unit = String(stat.unit);
+    if (stat.unit) out.unit = cleanCopy(stat.unit);
     if (note) out.note = note;
-    used.add(source);
+    ctx.used.add(source);
+    ctx.urls.set(source, url);
     stats.push(out);
   }
   return stats;
 }
 
-function sourceMap(route, used) {
+function sourceMap(route, ctx) {
   const out = {};
-  for (const [id, source] of Object.entries(route.sources || {})) {
-    if (!used.has(id)) continue;
-    const url = httpUrl(source?.url);
+  for (const id of ctx.used) {
+    const source = route.sources?.[id];
+    const url = httpUrl(source?.url) || httpUrl(ctx.urls.get(id)) || '';
     if (!url) continue;
-    out[id] = { name: source.name || id, url };
+    const name = cleanCopy(source?.name) || nameFromUrl(url) || nameFromId(id);
+    out[id] = { name, url };
   }
   return out;
+}
+
+function stampSources(node, sources) {
+  if (!node || typeof node !== 'object') return;
+  if (Array.isArray(node)) {
+    node.forEach((item) => stampSources(item, sources));
+    return;
+  }
+  if (typeof node.source === 'string' && sources[node.source] && !node.sourceName) {
+    node.sourceName = sources[node.source].name;
+  }
+  for (const value of Object.values(node)) {
+    if (value && typeof value === 'object') stampSources(value, sources);
+  }
+}
+
+function dateRange(plan) {
+  const dates = [];
+  const walk = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (Array.isArray(node)) {
+      node.forEach(walk);
+      return;
+    }
+    for (const [key, value] of Object.entries(node)) {
+      if ((key === 'checkedOn' || key === 'checked') && typeof value === 'string') {
+        const found = day(value);
+        if (found) dates.push(found);
+      } else if (value && typeof value === 'object') walk(value);
+    }
+  };
+  walk(plan);
+  if (!dates.length) return '';
+  dates.sort();
+  return dates[0] === dates[dates.length - 1] ? dates[0] : `${dates[0]} to ${dates[dates.length - 1]}`;
+}
+
+function nameFromUrl(url) {
+  let host = '';
+  try {
+    host = new URL(url).hostname.replace(/^www\./, '').toLowerCase();
+  } catch {
+    return '';
+  }
+  if (HOST_NAMES[host]) return HOST_NAMES[host];
+  const label = host.split('.')[0];
+  if (!label) return '';
+  if (label === 'x') return 'X';
+  return label.charAt(0).toUpperCase() + label.slice(1);
+}
+
+function nameFromId(id) {
+  if (id === 'x') return 'X';
+  return id;
 }
 
 function vehicleProfile(order) {
@@ -658,7 +1383,16 @@ function vehicleProfile(order) {
   const nacsAdapter = !unsure && !noAdapter && /\bnacs adapter\b/.test(portNorm);
   const ccsAdapter = !unsure && !noAdapter && /\bccs adapter\b/.test(portNorm);
   const hasPlug = Boolean(nativeNacs || nativeCcs || nacsAdapter || ccsAdapter);
-  return { port: unsure ? '' : port, car, nativeNacs, nativeCcs, nacsAdapter, ccsAdapter, hasPlug };
+  return {
+    port: unsure ? '' : port,
+    car,
+    nativeNacs,
+    nativeCcs,
+    nacsAdapter,
+    ccsAdapter,
+    hasPlug,
+    memberships: membershipList(order.memberships),
+  };
 }
 
 function usable(station, profile) {
@@ -684,7 +1418,7 @@ function teslaOnlyNote(station, route, profile) {
   const checkedOn = day(station.checkedOn) || day(station.stalls?.checkedOn) || day(route.checked);
   if (!station.name || !url || !checkedOn) return null;
   return {
-    name: station.name,
+    name: cleanCopy(station.name),
     source: station.source || station.stalls?.source || '',
     url,
     checkedOn,
@@ -727,10 +1461,15 @@ function skipReason(stop, profile) {
   return 'No verified station this car can use.';
 }
 
-function membershipText(value) {
-  if (value == null) return UNKNOWN;
+function membershipList(value) {
+  if (value == null) return [];
   const raw = Array.isArray(value) ? value : String(value).split(/[;,]/);
-  const items = raw.map((item) => cleanCopy(item)).filter((item) => item && !/^none( listed)?$/i.test(item));
+  return raw.map((item) => cleanCopy(item)).filter((item) => item && !/^none( listed)?$/i.test(item));
+}
+
+function membershipText(value) {
+  const items = membershipList(value);
+  if (value == null) return UNKNOWN;
   if (!items.length) return 'none listed';
   return items.join(', ');
 }
@@ -743,16 +1482,95 @@ function startPercent(order) {
   return Math.round(n);
 }
 
+function vehicleEnergy(order) {
+  const range = positiveNumber(order.rangeMiles ?? order.range);
+  const pack = positiveNumber(order.batteryKwh ?? order.packKwh ?? order.usableKwh);
+  const eff = positiveNumber(order.efficiency ?? order.milesPerKwh);
+  let rangeMiles = range;
+  let packKwh = pack;
+  if (rangeMiles == null && packKwh != null && eff != null) rangeMiles = packKwh * eff;
+  const rangeAssumed = rangeMiles == null;
+  const packAssumed = packKwh == null && eff == null;
+  if (rangeMiles == null) rangeMiles = RANGE_MILES;
+  if (packKwh == null && eff != null) packKwh = rangeMiles / eff;
+  if (packKwh == null) packKwh = PACK_KWH;
+  return { rangeMiles, packKwh, rangeAssumed, packAssumed };
+}
+
+function positiveNumber(value) {
+  if (value == null || value === '') return null;
+  const n = Number(value);
+  if (!Number.isFinite(n) || n <= 0) return null;
+  return n;
+}
+
 function departValue(order) {
   return cleanCopy(order.depart ?? order.departure ?? order.departureTime ?? '');
 }
 
 function departSentence(depart) {
-  if (!depart) return `Departure: ${UNKNOWN}.`;
-  const match = depart.match(/^(\d{4}-\d{2}-\d{2})(?:[T ](\d{2}:\d{2}))?/);
-  if (!match) return `Departure: ${depart}.`;
-  if (match[2]) return `Leaving ${match[1]} at ${match[2]}.`;
-  return `Leaving ${match[1]}. Departure clock time: ${UNKNOWN}.`;
+  if (!depart?.date && !depart?.raw) return `Departure: ${UNKNOWN}.`;
+  if (!depart.date) return `Departure: ${depart.raw}.`;
+  if (!depart.time) return `Leaving ${depart.date}. Departure clock time: ${UNKNOWN}.`;
+  const zone = depart.timeZone ? ` ${depart.timeZone}` : '';
+  return `Leaving ${depart.date} at ${depart.time}${zone}.`;
+}
+
+function normalizeDepart(raw, timeZone) {
+  const text = cleanCopy(raw);
+  if (!text) return { raw: '', date: '', time: '', iso: '', timeZone: timeZone || '' };
+  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?/);
+  if (!match) return { raw: text, date: '', time: '', iso: text, timeZone: timeZone || '' };
+  const date = `${match[1]}-${match[2]}-${match[3]}`;
+  const time = match[4] ? `${match[4]}:${match[5]}` : '';
+  if (!time) return { raw: text, date, time: '', iso: date, timeZone: timeZone || '' };
+  if (!timeZone) return { raw: text, date, time, iso: `${date}T${time}`, timeZone: '' };
+  const offset = offsetFor(date, time, timeZone);
+  return { raw: text, date, time, iso: `${date}T${time}:00${offset}`, timeZone };
+}
+
+function resolveTimeZone(order, route) {
+  const explicit = cleanCopy(order.timeZone || order.timezone || order.tz || '');
+  if (explicit) return explicit;
+  const routeZone = cleanCopy(route.timeZone || '');
+  if (routeZone) return routeZone;
+  const slug = String(route.slug || '');
+  if (/^(la|sf)-/.test(slug)) return 'America/Los_Angeles';
+  const blob = `${slug} ${route.startLabel || ''} ${route.title || ''} ${order.start || ''}`.toLowerCase();
+  if (/\b(california|los angeles|san francisco)\b/.test(blob)) return 'America/Los_Angeles';
+  return '';
+}
+
+function originLeg(order, route) {
+  const candidates = [];
+  for (const key of ['originLeg', 'approach']) {
+    if (route[key] && typeof route[key] === 'object') candidates.push(route[key]);
+  }
+  const orderStart = cleanCopy(order.start ?? order.startPlace ?? '');
+  const routeStart = cleanCopy(route.startLabel || '');
+  for (const stat of route.stats || []) {
+    const label = String(stat?.label || '');
+    if (String(stat?.unit || '').toLowerCase() !== 'mi') continue;
+    if (orderStart && routeStart && label.toLowerCase().includes(orderStart.toLowerCase()) && label.toLowerCase().includes(routeStart.toLowerCase())) {
+      candidates.push({ miles: Number(stat.value), source: stat.source, url: stat.url, checkedOn: stat.checkedOn, from: orderStart, to: routeStart });
+    }
+  }
+  for (const leg of candidates) {
+    const miles = Number(leg.miles ?? leg.value);
+    const source = leg.source || '';
+    const url = httpUrl(leg.url) || httpUrl(route.sources?.[source]?.url);
+    const checkedOn = day(leg.checkedOn) || day(route.checked);
+    if (!Number.isFinite(miles) || miles < 0 || !url || !checkedOn) continue;
+    return {
+      miles,
+      url,
+      checkedOn,
+      source,
+      from: cleanCopy(leg.from || orderStart),
+      to: cleanCopy(leg.to || routeStart),
+    };
+  }
+  return null;
 }
 
 function routeMiles(route) {
@@ -767,9 +1585,85 @@ function copyAlso(fact) {
   for (const extra of fact.also) {
     const url = httpUrl(extra?.url);
     if (!url) continue;
-    also.push({ url, name: extra.name || extra.sourceName || 'Source', ...(extra.source ? { source: extra.source } : {}) });
+    also.push({ url, name: cleanCopy(extra.name || extra.sourceName || 'Source'), ...(extra.source ? { source: extra.source } : {}) });
   }
   return also.length ? also : null;
+}
+
+function clockLabel(depart, minutes) {
+  if (!depart?.time) return null;
+  const [year, month, dayOf] = depart.date.split('-').map(Number);
+  const [hour, minute] = depart.time.split(':').map(Number);
+  const utc = depart.timeZone
+    ? wallToUtc(year, month, dayOf, hour, minute, depart.timeZone)
+    : Date.UTC(year, month - 1, dayOf, hour, minute);
+  return formatClock(new Date(utc + minutes * 60 * 1000), depart.timeZone || 'UTC', depart.date);
+}
+
+function wallToUtc(year, month, dayOf, hour, minute, timeZone) {
+  let utc = Date.UTC(year, month - 1, dayOf, hour, minute);
+  const fmt = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  });
+  for (let i = 0; i < 4; i += 1) {
+    const parts = Object.fromEntries(fmt.formatToParts(new Date(utc)).map((part) => [part.type, part.value]));
+    const asUtc = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour === 24 ? 0 : +parts.hour, +parts.minute);
+    const wanted = Date.UTC(year, month - 1, dayOf, hour, minute);
+    const diff = wanted - asUtc;
+    if (diff === 0) return utc;
+    utc += diff;
+  }
+  return utc;
+}
+
+function offsetFor(date, time, timeZone) {
+  const [year, month, dayOf] = date.split('-').map(Number);
+  const [hour, minute] = time.split(':').map(Number);
+  const utc = wallToUtc(year, month, dayOf, hour, minute, timeZone);
+  const wallAsUtc = Date.UTC(year, month - 1, dayOf, hour, minute);
+  const offMin = Math.round((wallAsUtc - utc) / 60000);
+  const sign = offMin >= 0 ? '+' : '-';
+  const abs = Math.abs(offMin);
+  return `${sign}${String(Math.floor(abs / 60)).padStart(2, '0')}:${String(abs % 60).padStart(2, '0')}`;
+}
+
+function formatClock(date, timeZone, startDate) {
+  const fmt = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  });
+  const parts = Object.fromEntries(fmt.formatToParts(date).map((part) => [part.type, part.value]));
+  const hour = parts.hour === '24' ? '00' : parts.hour;
+  const dayText = `${parts.year}-${parts.month}-${parts.day}`;
+  return `${hour}:${parts.minute}${dayText === startDate ? '' : ' the next day'}`;
+}
+
+function kilowatts(value) {
+  const text = String(value || '');
+  const upTo = text.match(/up to\s+(\d+(?:\.\d+)?)\s*kW/i);
+  const kw = text.match(/(\d+(?:\.\d+)?)\s*kW/i);
+  const n = Number((upTo || kw)?.[1]);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function ceilPct(value) {
+  return Math.min(100, Math.max(0, Math.ceil(value - 1e-9)));
+}
+
+function trimNum(value) {
+  const n = Math.round(Number(value) * 10) / 10;
+  return Number.isInteger(n) ? String(n) : String(n);
 }
 
 function day(value) {
