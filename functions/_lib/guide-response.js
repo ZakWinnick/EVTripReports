@@ -10,6 +10,28 @@ function pathParts(params) {
   return parts.map((part) => String(part || '').replace(/^\/+|\/+$/g, '')).filter(Boolean);
 }
 
+// /guides and /guides/<slug> are the same pages as the trailing-slash URLs.
+// Send the slashless form to the slash form, which is the canonical URL.
+// /guides/index.html is not redirected: the guide function reads that asset path.
+export function guideSlashRedirect(request) {
+  let url;
+  try {
+    url = new URL(request?.url || '');
+  } catch {
+    return null;
+  }
+  const path = url.pathname;
+  if (!path || path.endsWith('/')) return null;
+  if (path === '/guides') {
+    url.pathname = '/guides/';
+  } else {
+    const match = path.match(/^\/guides\/([a-z0-9]+(?:-[a-z0-9]+)*)$/);
+    if (!match || !SLUG.test(match[1])) return null;
+    url.pathname = `/guides/${match[1]}/`;
+  }
+  return Response.redirect(url.toString(), 308);
+}
+
 export function guideSlug(params) {
   const parts = pathParts(params);
   if (parts.length !== 1) return null;

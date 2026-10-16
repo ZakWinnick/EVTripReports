@@ -1,9 +1,10 @@
-// Serves /guides and /guides/ as the index, and /guides/<slug>/ from D1 when that
-// guide is live there. Otherwise serves the page built from src/data/routes, if
-// that file exists. Anything else is a 404. context.next() is not used: a miss
-// was returning the homepage with status 200.
+// Serves /guides/ as the index, and /guides/<slug>/ from D1 when that guide is
+// live there. Slashless /guides and /guides/<slug> 308 to those URLs first.
+// Otherwise serves the page built from src/data/routes, if that file exists.
+// Anything else is a 404. context.next() is not used: a miss was returning the
+// homepage with status 200.
 import builtGuideIndex from '../_lib/built-guide-index.js';
-import { isBuiltGuide, isGuidesIndex, guideSlug } from '../_lib/guide-response.js';
+import { isBuiltGuide, isGuidesIndex, guideSlug, guideSlashRedirect } from '../_lib/guide-response.js';
 import { html, getRoute, listLiveGuideIndex } from '../_lib/routes.js';
 import { guideIndexList, mergeGuideIndex } from '../../src/lib/guide-index.js';
 import { guideMain, guideMeta } from '../../src/lib/render-guide.js';
@@ -83,6 +84,8 @@ async function guideIndex(context) {
 
 export async function onRequestGet(context) {
   const { request, env, params } = context;
+  const slash = guideSlashRedirect(request);
+  if (slash) return slash;
   if (isGuidesIndex(params, request)) return guideIndex(context);
   const slug = guideSlug(params);
   if (!slug) return notFound(env, request);
