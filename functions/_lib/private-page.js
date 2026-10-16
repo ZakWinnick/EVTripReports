@@ -1,14 +1,16 @@
 // Shared response for private plan pages: noindex, no-referrer, not cached.
 import { esc } from '../../src/lib/render-guide.js';
+import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 
 export function privateHeaders() {
-  return new Headers({
-    'content-type': 'text/html; charset=utf-8',
-    'cache-control': 'private, no-store',
-    'x-robots-tag': 'noindex, nofollow',
-    'referrer-policy': 'no-referrer',
-    'x-content-type-options': 'nosniff',
-  });
+  return applySecurityHeaders(
+    {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'private, no-store',
+      'x-robots-tag': 'noindex, nofollow',
+    },
+    { referrer: 'no-referrer' },
+  );
 }
 
 function bareDocument(title, main) {

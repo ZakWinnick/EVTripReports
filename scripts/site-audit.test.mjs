@@ -64,7 +64,7 @@ test('mobile menu, skip link, and form autocomplete', async () => {
   const body = layout.slice(layout.indexOf('<body>'));
   assert.match(body, /<body>\s*<a class="skip" href="#main">Skip to content<\/a>/);
   assert.match(layout, /<details class="menu">\s*<summary>Menu<\/summary>/);
-  assert.match(layout, /href: '\/find-my-plans', label: 'Find my plans'/);
+  assert.match(layout, /href: '\/find-my-plans\/', label: 'Find my plans'/);
   assert.match(layout, /<nav class="nav__links" aria-label="Main">/);
   assert.match(css, /@media \(max-width: 760px\) \{[\s\S]*\.nav__links \{ display: none; \}[\s\S]*\.menu \{ display: block;/);
   assert.match(css, /^\.menu \{ display: none;/m);

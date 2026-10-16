@@ -28,7 +28,7 @@ const faq = [
       <div id="paid-thanks" class="note" hidden>
         <h2 class="h2">Payment received.</h2>
         <p style="margin:12px 0 0">Thanks. If the trip form is already in, a person reviews the plan and it goes out on that tier's delivery time. If you paid before sending the form, use it below. The receipt doesn't include your car, route, or dates.</p>
-        <p style="margin:12px 0 0">When the plan is approved, open <a href="/find-my-plans">Find my plans</a> and use the email from checkout. We email a link that works once.</p>
+        <p style="margin:12px 0 0">When the plan is approved, open <a href="/find-my-plans/">Find my plans</a> and use the email from checkout. We email a link that works once.</p>
       </div>
       <p class="note" style="margin-top:28px">Send the trip details, then pay. A plan is $19, $39, or $79. After payment, Stripe returns you to this page.</p>
     </div>
@@ -75,6 +75,7 @@ const faq = [
         <p id="form-lede" class="lede" style="margin-top:14px">This is step one. We save it, then open checkout for the plan you chose. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days.</p>
       </div>
       <form id="intake" class="panel form" novalidate>
+        <noscript><p>This form needs JavaScript for the spam check. Turn it on, or email <a href="mailto:admin@evtripreports.com">admin@evtripreports.com</a>.</p></noscript>
         <div class="grid2">
           <label>Your name<input name="name" autocomplete="name" required /></label>
           <label>Email<input name="email" type="email" autocomplete="email" required /></label>
@@ -115,7 +116,7 @@ const faq = [
         <div id="turnstile-slot" hidden></div>
         <div class="btnrow">
           <button class="pill pill--lg" type="submit">Save details and pay $19</button>
-          <span class="small muted">By sending, you agree to the <a href="/terms">terms</a> and <a href="/privacy">privacy policy</a>.</span>
+          <span class="small muted">By sending, you agree to the <a href="/terms/">terms</a> and <a href="/privacy/">privacy policy</a>.</span>
         </div>
         <p class="form__msg" role="status" aria-live="polite"></p>
       </form>
@@ -150,7 +151,7 @@ const faq = [
   <section class="band band--tight">
     <div class="wrap">
       <h2 class="h2">Questions</h2>
-      <p class="lede" style="margin-top:12px">More answers are on the <a href="/faq">FAQ</a>, including why this is different from your car's navigation.</p>
+      <p class="lede" style="margin-top:12px">More answers are on the <a href="/faq/">FAQ</a>, including why this is different from your car's navigation.</p>
       <div class="faq">
         {faq.map((f) => (
           <details>
@@ -166,7 +167,7 @@ const faq = [
           <li>If we miss the delivery time, you get a full refund.</li>
           <li>If a station fact in your plan was wrong on the date we checked it, you get a full refund.</li>
           <li>Networks change things after we check. A plan that was correct on its check date isn't refundable because a site changed later.</li>
-          <li>Ask for a refund by replying to the email your plan came in, within 14 days of your trip.</li>
+          <li>Ask for a refund by replying to the email your plan came in, or write to <a href="mailto:admin@evtripreports.com">admin@evtripreports.com</a>, within 14 days of your trip.</li>
         </ul>
       </div>
     </div>

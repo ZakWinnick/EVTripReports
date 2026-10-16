@@ -15,7 +15,7 @@ export function newsletterForm(id) {
 </div>
 <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label>
 <div class="newsletter__slot" hidden></div>
-<p class="newsletter__note" id="${id}-note">${NOTE} <a href="/privacy">Privacy</a></p>
+<p class="newsletter__note" id="${id}-note">${NOTE} <a href="/privacy/">Privacy</a></p>
 <p class="newsletter__msg" role="status" aria-live="polite"></p>
 </form>`;
 }
