@@ -2,10 +2,22 @@
   "slug": "seattle-to-portland",
   "title": "Seattle to Portland",
   "highway": "I-5",
+  "direction": "southbound",
   "summary": "I-5 from the I-90 interchange to the Interstate Bridge. Washington mileposts decrease as you drive south. Centralia and Chehalis have DOE listings, and none of those was confirmed on a network locator, so they are not a primary stop.",
   "checked": "2026-10-15",
   "startLabel": "I-5 at I-90",
   "startNote": "Mileage starts at I-5 exit 164A (I-90, mile 164.55) and ends at the Washington line, mile 0, the Interstate Bridge. That is 164.55 miles, shown as 165. North Portland sites in the last stop sit just south of the bridge.",
+  "originLegs": [
+    {
+      "start": "Seattle",
+      "miles": 1.17,
+      "source": "osrm",
+      "url": "http://router.project-osrm.org/route/v1/driving/-122.3300986,47.6038904;-122.3215,47.591",
+      "checkedOn": "2026-10-15",
+      "estimate": true,
+      "note": "Estimate. Driving distance from Seattle City Hall to I-5 at the I-90 interchange."
+    }
+  ],
   "endLabel": "Interstate Bridge",
   "stats": [
     {
@@ -34,6 +46,10 @@
     "ea-locator": {
       "name": "Electrify America locator",
       "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
     },
     "wiki-i5-wa": {
       "name": "Interstate 5 in Washington, exit list (Wikipedia)",

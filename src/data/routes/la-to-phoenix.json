@@ -2,10 +2,22 @@
   "slug": "la-to-phoenix",
   "title": "LA to Phoenix",
   "highway": "I-10",
+  "direction": "eastbound",
   "summary": "I-10 from the East LA interchange to Buckeye. Blythe's primary is EVCS at US Bank, 100 Hobsonway: 2 stalls, each with CCS and CHAdeMO, up to 50 kW. Ehrenberg's Tesla sites were checked on Tesla's locator.",
   "checked": "2026-10-14",
   "startLabel": "East LA Interchange",
   "startNote": "Mileage starts at I-10 exit 16B, the west end of the East Los Angeles Interchange (mile 16.23), and ends at Watson Road in Buckeye (Arizona mile 117.01). California to the state line is 243.31 − 16.23 = 227.08 miles, plus 117.01 in Arizona, which is 344.09 and shown as 344.",
+  "originLegs": [
+    {
+      "start": "Los Angeles",
+      "miles": 3.16,
+      "source": "osrm",
+      "url": "http://router.project-osrm.org/route/v1/driving/-118.2429212,34.0536961;-118.2205845,34.0316499",
+      "checkedOn": "2026-10-15",
+      "estimate": true,
+      "note": "Estimate. Driving distance from Los Angeles City Hall to the East Los Angeles Interchange."
+    }
+  ],
   "endLabel": "Watson Road, Buckeye",
   "stats": [
     {
@@ -50,6 +62,10 @@
     "afdc-348909": {
       "name": "DOE station record 348909, US Bank Blythe",
       "url": "https://developer.nlr.gov/api/alt-fuel-stations/v1/348909.json"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
     },
     "wiki-i10-ca": {
       "name": "Interstate 10 in California, exit list (Wikipedia)",

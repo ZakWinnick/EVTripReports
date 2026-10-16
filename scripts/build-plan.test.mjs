@@ -6,7 +6,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { parsePlan, renderPlan } from '../src/lib/render-plan.js';
-import { UNKNOWN, buildPlan, draftRecord, tierOf } from './build-plan.mjs';
+import { UNKNOWN, buildPlan, draftRecord, planMarkdown, tierOf } from './build-plan.mjs';
 import { FAKE_ORDER, runDryRun } from './dry-run-order.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -233,11 +233,13 @@ test('the $19 list has no timing or amenity notes, and flags a stop with no back
   assert.equal(plan.stops[0].headline, true);
   assert.equal(plan.stops[1].backups.length, 0);
   assert.equal(plan.stops[1].headline, false);
-  assert.equal(plan.stops[1].note, 'No verified backup at Beta yet. Charge to a higher level at the previous stop.');
+  assert.equal(plan.stops[1].note, 'No verified backup at Beta yet.');
+  assert.equal(plan.stops[1].why.includes('No verified backup'), false);
   assert.equal(plan.stops.some((stop) => stop.backups.some((backup) => backup.name === 'Backup')), false);
   const tips = plan.tips.map((tip) => tip.text).join(' ');
   assert.match(tips, /Skipped Closed: Guide primary Closed Supercharger is Tesla only/);
-  assert.match(tips, /Skip Tesla Only Alpha at Alpha: Tesla only/);
+  assert.match(tips, /Tesla-only sites this car cannot use: Tesla Only Alpha/);
+  assert.doesNotMatch(tips, /Skip Tesla Only Alpha/);
   assert.match(tips, /What's estimated:/);
   assert.doesNotMatch(plan.summary, /verified stops/);
   assert.match(plan.summary, /2 stops on I-5, 1 with a verified backup/);
@@ -283,7 +285,7 @@ test('the $79 plan adds contingency from verified sites, and alternatives only a
   const plan = buildPlan(order({ tier: '$79' }), sampleRoute());
   assert.equal(plan.stops[0].other, undefined);
   const tips = plan.tips.map((tip) => tip.text);
-  assert.ok(tips.some((tip) => tip.includes('Skip Tesla Only Alpha at Alpha: Tesla only.')));
+  assert.ok(tips.some((tip) => tip.includes('Tesla-only sites this car cannot use: Tesla Only Alpha.')));
   assert.ok(tips.some((tip) => tip === 'Leave a buffer before the pass.'));
   assert.equal(tips.some((tip) => /fast|slow/i.test(tip)), false);
   assert.equal(tips.some((tip) => tip.startsWith('Assumption:')), false);
@@ -533,9 +535,11 @@ test('charging uses the fewest stops, then the highest verified kW, then a membe
   assert.deepEqual(full.stops.find((stop) => stop.id === 'late').other.map((site) => site.name), ['Late EA more']);
   assert.equal(full.stops.find((stop) => stop.id === 'early').other, undefined);
   assert.ok(full.contingency.some((item) => item.title === 'Stall full or offline' && /Late Tesla/.test(item.text)));
-  assert.ok(full.contingency.some((item) => item.title === 'Low battery fallback' && /Early EA/.test(item.text)));
+  assert.ok(full.contingency.some((item) => item.title === 'Low battery fallback' && /Late Tesla/.test(item.text) && /No verified stop is ahead/.test(item.text)));
+  assert.equal(full.contingency.filter((item) => item.title === 'Weather or heat').length, 0);
 
   const tied = longRoute();
+  tied.stats[0].value = '200';
   tied.stops[1].primary.power.value = '150 kW';
   const memberWins = buildPlan(order({ memberships: ['Electrify America Pass+'] }), tied);
   assert.equal(memberWins.strategy.stops[0].name, 'Early EA');
@@ -570,8 +574,12 @@ test('mileage uses a sourced origin leg and does not invent one', () => {
 
   const plain = buildPlan(order({ start: 'Los Angeles, CA', end: 'Las Vegas, NV' }), sampleRoute());
   assert.equal(plain.originLeg, undefined);
-  assert.match(plain.summary, /Mileage counted from Start/);
+  assert.match(plain.summary, /Mileage starts at Start, the route's first point, 100 miles/);
+  assert.match(plain.summary, /first-stop numbers are optimistic/);
+  assert.doesNotMatch(plain.summary, /No charging stop/);
   assert.equal(plain.stops[0].primary.facts.find((fact) => fact.label === 'Arrival battery').value, 'Estimate: about 64% on arrival.');
+  const md = planMarkdown(shifted);
+  assert.equal(md.split(shifted.strategy.text).length - 1, 1);
 });
 
 test('warnings stay out of food and restroom lists, and a restroom about another site stays off the primary', () => {
@@ -603,6 +611,24 @@ test('warnings stay out of food and restroom lists, and a restroom about another
   assert.ok(alpha.food.every((item) => !/offline/.test(item.text) && !/heat throttling/.test(item.text)));
   assert.ok(alpha.food.every((item) => item.name !== 'Food'));
   assert.equal(alpha.cautions.filter((item) => item.name === 'Cautions').length, 0);
+  route.stops[0].primary.driverReports.push({
+    source: 'plugshare',
+    url: 'https://www.plugshare.com/location/11',
+    date: '2026-05-02',
+    summary: 'I love the charging options and the restaurants.',
+    category: 'food',
+  });
+  route.stops[0].backups[0].driverReports = [{
+    source: 'plugshare',
+    url: 'https://www.plugshare.com/location/12',
+    date: '2026-05-03',
+    summary: 'Queued for a stall.',
+  }];
+  const split = buildPlan(order(), route).stops[0];
+  assert.ok(split.food.every((item) => !/charging options/.test(item.text)));
+  assert.ok(split.primaryCautions.some((item) => /charging options/.test(item.text) && /Driver report/.test(item.note) && item.checkedOn === '2026-05-02' && item.url.includes('plugshare.com')));
+  assert.ok(split.backupCautions.some((item) => /Queued/.test(item.text)));
+  assert.equal(split.primaryCautions.some((item) => item.status === 'verified'), false);
 });
 
 test('an arrival under the reserve is flagged', () => {
@@ -647,31 +673,48 @@ test('the LA to Las Vegas dry-run order does not overstate verification or attac
   const plan = buildPlan(FAKE_ORDER, route);
   assert.match(plan.summary, /5 stops on I-15, 4 with a verified backup/);
   assert.doesNotMatch(plan.summary, /5 verified stops/);
-  assert.match(plan.summary, /Mileage counted from I-10 junction, Ontario/);
-  assert.match(plan.summary, /Charge at Ultra Gas and Mart to 45%/);
+  assert.match(plan.summary, /an estimated 41\.9 miles from Los Angeles to I-10 junction, Ontario/);
+  assert.doesNotMatch(plan.summary, /Los Angeles, CA to Las Vegas/);
+  assert.match(plan.summary, /Charge at Barstow, 1503 East Main Street to 77%/);
+  assert.doesNotMatch(plan.summary, /Charge at Ultra Gas and Mart/);
   assert.match(plan.summary, /America\/Los_Angeles/);
   assert.match(plan.summary, /Data checked /);
   assert.equal(plan.timeZone, 'America/Los_Angeles');
   assert.equal(plan.depart, '2026-11-02T08:00:00-08:00');
-  assert.equal(plan.originLeg, undefined);
-  assert.equal(plan.strategy.stops.map((stop) => stop.name).join(', '), 'Ultra Gas and Mart');
+  assert.equal(plan.originLeg.miles, 41.86);
+  assert.equal(plan.originLeg.estimate, true);
+  assert.equal(plan.originLeg.status, undefined);
+  assert.equal(plan.originLeg.checkedOn, '2026-10-15');
+  assert.match(plan.originLeg.url, /^http:\/\/router\.project-osrm\.org\/route\/v1\/driving\//);
+  assert.equal(plan.strategy.stops.map((stop) => stop.name).join(', '), 'Barstow, 1503 East Main Street');
+  assert.equal(plan.strategy.destination.arrivePercent, 15);
+  assert.equal(plan.strategy.targetPercent, 15);
+  assert.equal(plan.strategy.chargeLimit, 90);
+  const barstow = plan.stops.find((stop) => stop.id === 'barstow');
+  assert.equal(barstow.charging, true);
+  assert.equal(barstow.primary.facts.find((fact) => fact.label === 'Arrival battery').value, 'Estimate: about 36% on arrival.');
+  assert.equal(barstow.primary.facts.find((fact) => fact.label === 'Departure battery').value, 'Estimate: 77%.');
+  assert.equal(barstow.primary.facts.find((fact) => fact.label === 'Charge time').value, 'Estimate: 8 minutes at the verified 325 kW.');
+  const valley = plan.stops.find((stop) => stop.id === 'victor-valley');
+  assert.match(valley.primary.facts.find((fact) => fact.label === 'Drive time').value, /70 minutes from Los Angeles/);
+  assert.match(valley.primary.facts.find((fact) => fact.label === 'Drive time').value, /passing about 09:10/);
+  assert.match(barstow.primary.facts.find((fact) => fact.label === 'Drive time').value, /arriving about 09:42/);
+  assert.match(barstow.primary.facts.find((fact) => fact.label === 'Drive time').value, /Leave about 09:50/);
   const baker = plan.stops.find((stop) => stop.id === 'baker');
-  assert.equal(baker.charging, true);
-  assert.equal(baker.primary.facts.find((fact) => fact.label === 'Arrival battery').value, 'Estimate: about 25% on arrival.');
-  assert.equal(baker.primary.facts.find((fact) => fact.label === 'Departure battery').value, 'Estimate: 45%.');
-  assert.equal(baker.primary.facts.find((fact) => fact.label === 'Charge time').value, 'Estimate: 4 minutes at the verified 350 kW.');
-  assert.match(baker.primary.facts.find((fact) => fact.label === 'Drive time').value, /arriving about 10:06/);
-  assert.match(baker.primary.facts.find((fact) => fact.label === 'Drive time').value, /Leave about 10:10/);
+  assert.equal(baker.charging, false);
   assert.equal(baker.primary.facts.find((fact) => fact.label === 'Electrify America Pass+').value, 'Price not published');
-  assert.ok(baker.cautions.some((item) => /heat throttling/.test(item.text)));
-  assert.ok(baker.cautions.some((item) => /had been offline/i.test(item.text)));
-  assert.ok(!baker.food || baker.food.every((item) => !/offline/i.test(item.text)));
+  assert.ok(baker.primaryCautions.some((item) => /heat throttling/.test(item.text)));
+  assert.ok(baker.backupCautions.some((item) => /had been offline/i.test(item.text)));
+  assert.ok(baker.food.some((item) => /Arby's and a food court/.test(item.text)));
+  assert.ok(baker.food.every((item) => !/Tesla site:/.test(item.text) && !/offline/i.test(item.text) && !/\bkW\b/.test(item.text)));
   assert.equal(JSON.stringify(baker.primary.facts).includes('Poor restrooms'), false);
   const yermo = plan.stops.find((stop) => stop.id === 'yermo');
   assert.equal(yermo.charging, false);
   assert.equal(yermo.headline, false);
   assert.equal(yermo.backups.length, 0);
   assert.equal(yermo.note, 'No verified backup at Yermo yet. Charge to a higher level at the previous stop.');
+  assert.equal(yermo.why.includes('No verified backup'), false);
+  assert.equal(planMarkdown(plan).split(yermo.note).length - 1, 1);
   assert.equal(yermo.primary.exit.value, UNKNOWN);
   assert.equal(yermo.primary.exit.status, 'unverified');
   const primm = plan.stops.find((stop) => stop.id === 'primm');
@@ -693,15 +736,182 @@ test('the LA to Las Vegas dry-run order does not overstate verification or attac
   const basic = buildPlan({ ...FAKE_ORDER, tier: '$19' }, route);
   assert.match(basic.summary, /5 stops on I-15, 4 with a verified backup/);
   assert.doesNotMatch(basic.summary, /Charge at/);
-  assert.ok(basic.tips.some((tip) => tip.text.startsWith("What's estimated:") && /Mileage counted from I-10 junction, Ontario/.test(tip.text)));
-  assert.ok(basic.tips.some((tip) => /Tesla only/.test(tip.text)));
+  assert.equal(basic.stops.find((stop) => stop.id === 'yermo').note, 'No verified backup at Yermo yet.');
+  assert.ok(basic.tips.some((tip) => tip.text.startsWith("What's estimated:") && /estimated 41\.9 miles from Los Angeles/.test(tip.text)));
+  assert.ok(basic.tips.some((tip) => /Tesla-only sites this car cannot use:/.test(tip.text)));
+  assert.equal(basic.tips.filter((tip) => /Skip .+ Tesla only/.test(tip.text)).length, 0);
   assert.equal(basic.stops[0].charging, undefined);
 
   const full = buildPlan({ ...FAKE_ORDER, tier: '$79' }, route);
-  assert.ok(full.contingency.some((item) => item.title === 'Stall full or offline' && /Mojave Pointe/.test(item.text)));
-  assert.ok(full.contingency.some((item) => item.title === 'Weather or heat' && /heat throttling/.test(item.text)));
-  assert.ok(full.contingency.some((item) => item.title === 'Low battery fallback' && /Barstow/.test(item.text)));
+  const stall = full.contingency.find((item) => item.title === 'Stall full or offline' && /Barstow, 1503 East Main Street/.test(item.text));
+  assert.match(stall.text, /Walmart Barstow/);
+  assert.match(stall.text, /miles ahead on the route/);
+  assert.match(stall.text, /miles back on the route/);
+  assert.equal(full.contingency.filter((item) => item.title === 'Weather or heat').length, 0);
+  assert.ok(full.contingency.some((item) => item.title === 'Caution' && /heat throttling/.test(item.text)));
+  assert.ok(full.contingency.some((item) => item.title === 'Low battery fallback' && /Prizm Outlets/.test(item.text) && /No verified stop is ahead/.test(item.text)));
+  assert.doesNotMatch(full.tips.map((tip) => tip.text).join('\n'), /Every EA site/);
+  assert.ok(full.tips.some((tip) => /Electrify America/.test(tip.text) && /Driver reports \(/.test(tip.text) && /\d{4}-\d{2}-\d{2}/.test(tip.text)));
+  assert.ok(full.tips.some((tip) => tip.text.startsWith('Northbound,')));
+  assert.equal(full.tips.filter((tip) => /Tesla-only sites on this route/.test(tip.text)).length, 0);
   assert.equal(full.stops.filter((stop) => stop.charging && stop.other?.length).length >= 0, true);
+  assert.equal(planMarkdown(full).split(full.strategy.text).length - 1, 1);
+});
+
+test('the plan holds a 15% arrival target inside the charge limit', () => {
+  const route = sampleRoute();
+  route.stops = [route.stops[0]];
+  route.stops[0].mile = 20;
+  route.stats[0].value = '230';
+  const capped = buildPlan(order(), route);
+  assert.equal(capped.strategy.chargeLimit, 90);
+  assert.equal(capped.stops[0].charging, true);
+  assert.equal(capped.stops[0].primary.target.value, 'Estimate: charge to 90%.');
+  assert.equal(capped.strategy.destination.arrivePercent, 6);
+  assert.equal(capped.strategy.destination.belowReserve, true);
+  assert.match(capped.strategy.text, /15% arrival target cannot be met/);
+  assert.match(capped.assumptions.join(' '), /charge limit for this plan is 90%/);
+
+  const open = buildPlan(order({ chargeLimit: 100 }), route);
+  assert.equal(open.strategy.chargeLimit, 100);
+  assert.equal(open.strategy.destination.arrivePercent, 15);
+  assert.equal(open.strategy.destination.belowTarget, false);
+  assert.match(open.assumptions.join(' '), /order sets a charge limit of 100%/);
+
+  route.stats[0].value = '215';
+  const short = buildPlan(order(), route);
+  assert.equal(short.strategy.destination.arrivePercent, 12);
+  assert.equal(short.strategy.destination.belowTarget, true);
+  assert.equal(short.strategy.destination.belowReserve, false);
+  assert.match(short.strategy.text, /cannot be met within the 90% charge limit/);
+
+  const two = sampleRoute();
+  two.stats[0].value = '250';
+  two.stops[0].mile = 50;
+  two.stops[1].mile = 120;
+  two.stops = two.stops.slice(0, 2);
+  const both = buildPlan(order({ startBattery: 40 }), two);
+  assert.deepEqual(both.strategy.stops.map((stop) => stop.name), ['Walmart Alpha', 'Beta EA']);
+  assert.equal(both.strategy.destination.arrivePercent, 15);
+});
+
+test('an estimated origin leg shifts the battery and the clock', () => {
+  const route = sampleRoute();
+  route.originLegs = [{
+    start: 'Los Angeles',
+    miles: 41.86,
+    source: 'osrm',
+    url: 'http://router.project-osrm.org/route/v1/driving/-118.24,34.05;-117.54,34.06',
+    checkedOn: '2026-10-15',
+    estimate: true,
+    note: 'Estimate. Driving distance from Los Angeles City Hall.',
+  }];
+  route.sources.osrm = { name: 'OpenStreetMap OSRM', url: 'http://router.project-osrm.org/' };
+  const plan = buildPlan(order({ start: 'Los Angeles, CA', end: 'End' }), route);
+  assert.equal(plan.originLeg.estimate, true);
+  assert.equal(plan.originLeg.status, undefined);
+  assert.equal(plan.stops[0].primary.facts.find((fact) => fact.label === 'Arrival battery').value, 'Estimate: about 47% on arrival.');
+  const drive = plan.stops[0].primary.facts.find((fact) => fact.label === 'Drive time').value;
+  assert.match(drive, /76 minutes from Los Angeles/);
+  assert.match(drive, /passing about 09:16/);
+  assert.match(plan.assumptions.join(' '), /Source checked 2026-10-15/);
+  assert.match(plan.summary, /an estimated 41\.9 miles/);
+});
+
+test('a higher charge is named only when the previous stop is a charging stop', () => {
+  const route = longRoute();
+  const after = structuredClone(route.stops[0]);
+  after.id = 'after';
+  after.name = 'After';
+  after.mile = 200;
+  after.backups = [];
+  after.other = [];
+  after.primary.name = 'After EA';
+  route.stops.push(after);
+  const detailed = buildPlan(order(), route);
+  assert.equal(detailed.stops.find((stop) => stop.id === 'late').charging, true);
+  assert.equal(detailed.stops.find((stop) => stop.id === 'after').note, 'No verified backup at After yet. Charge to a higher level at the previous stop.');
+  const basic = buildPlan(order({ tier: '$19' }), route);
+  assert.equal(basic.stops.find((stop) => stop.id === 'after').note, 'No verified backup at After yet.');
+
+  const lonely = longRoute();
+  lonely.stops[1].backups = [];
+  const late = buildPlan(order(), lonely).stops.find((stop) => stop.id === 'late');
+  assert.equal(late.charging, true);
+  assert.equal(late.note, 'No verified backup at Late yet.');
+});
+
+test('pet lines appear only when the order has a pet, and name the stops that have them', () => {
+  const quiet = buildPlan(order({ notes: 'Window seat.', passengers: '2 adults' }), sampleRoute());
+  assert.equal(quiet.tips.some((tip) => /pet info|Sourced pet/.test(tip.text)), false);
+  const route = sampleRoute();
+  route.stops[0].reports.push({
+    date: '2026-06-01',
+    source: 'wiki',
+    site: 'Walmart Alpha',
+    text: 'Dog friendly patio outside the store.',
+  });
+  const line = buildPlan(order(), route).tips.find((tip) => /pet/.test(tip.text)).text;
+  assert.match(line, /Sourced pet notes: Alpha/);
+  assert.doesNotMatch(line, /No sourced pet info/);
+});
+
+test('contingency names the next verified station in each direction, and says once when there is none', () => {
+  const route = sampleRoute();
+  route.stops = [route.stops[0]];
+  route.stops[0].backups = [];
+  route.stops[0].other = [];
+  route.stats[0].value = '50';
+  const plan = buildPlan(order({ tier: '$79', notes: '' }), route);
+  const stalls = plan.contingency.filter((item) => item.title === 'Stall full or offline');
+  assert.equal(stalls.length, 1);
+  assert.match(stalls[0].text, /No alternative verified station for Alpha/);
+  assert.equal(plan.contingency.filter((item) => item.title === 'Weather or heat').length, 0);
+});
+
+test('direction wording follows the trip, and a named origin that matches the first point has no origin leg', async () => {
+  const vegas = JSON.parse(await readFile(path.join(root, 'src/data/routes/la-to-las-vegas.json'), 'utf8'));
+  const back = buildPlan({ ...FAKE_ORDER, tier: '$79', start: 'Las Vegas, NV', end: 'Los Angeles, CA' }, vegas);
+  assert.ok(back.tips.some((tip) => tip.text.startsWith('Southbound,')));
+  assert.equal(back.tips.some((tip) => tip.text.startsWith('Northbound,')), false);
+  const tahoe = JSON.parse(await readFile(path.join(root, 'src/data/routes/sf-to-tahoe.json'), 'utf8'));
+  const plan = buildPlan(order({ slug: 'sf-to-tahoe', start: 'San Francisco, CA', end: 'Truckee, CA', notes: '' }), tahoe);
+  assert.equal(plan.originLeg, undefined);
+  assert.doesNotMatch(plan.summary, /first-stop numbers are optimistic/);
+  assert.equal(tahoe.direction, 'eastbound');
+});
+
+test('a stored plan renders the same HTML, and new sections appear only when the plan has them', async () => {
+  const stored = JSON.parse(await readFile(path.join(root, 'scripts/fixtures/stored-plan.json'), 'utf8'));
+  const snap = (await readFile(path.join(root, 'scripts/fixtures/stored-plan.snapshot.html'), 'utf8')).replace(/\n$/, '');
+  assert.equal(renderPlan(stored), snap);
+  const route = sampleRoute();
+  route.originLegs = [{
+    start: 'Los Angeles',
+    miles: 10,
+    source: 'wiki',
+    url: 'https://en.wikipedia.org/wiki/Example',
+    checkedOn: '2026-10-15',
+    estimate: true,
+    note: 'Estimate.',
+  }];
+  route.stops[0].primary.driverReports.push({
+    source: 'plugshare',
+    url: 'https://www.plugshare.com/location/11',
+    date: '2026-05-02',
+    summary: 'Heat throttling on the dispenser.',
+  });
+  route.stops[0].backups[0].driverReports = [{
+    source: 'plugshare',
+    url: 'https://www.plugshare.com/location/12',
+    date: '2026-05-03',
+    summary: 'Queued for a stall.',
+  }];
+  const html = renderPlan(buildPlan(order({ start: 'Los Angeles, CA', end: 'End' }), route));
+  assert.match(html, /Estimate: 10 miles from Los Angeles to Start, before the route mile marks/);
+  assert.match(html, /Primary cautions/);
+  assert.match(html, /Backup cautions/);
+  assert.doesNotMatch(html, /<h3 class="h3 sub">Cautions<\/h3>/);
 });
 
 test('buildPlan does not call the network', () => {

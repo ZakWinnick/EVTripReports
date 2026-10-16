@@ -2,10 +2,22 @@
   "slug": "la-to-sf",
   "title": "LA to San Francisco",
   "highway": "I-5",
+  "direction": "northbound",
   "summary": "I-5 up the San Joaquin Valley, then I-580 over Altamont into the East Bay. The verified stops are the ones whose primary charger was on the network's own locator. Town searches for this corridor were completed from the DOE California file.",
   "checked": "2026-10-15",
   "startLabel": "I-5 at SR-14",
   "startNote": "Mileage starts at I-5 exit 164 (SR-14, mile 162.24) and ends at I-580 exit 48 (El Charro Road, mile 48.24). I-5 from SR-14 to the I-580 junction is 446.35 − 162.24 = 284.11 miles. I-580 from its east end at mile 81.12 back to exit 48 is 32.88 miles. Total 316.99, shown as 317. The I-580/I-680 exit in Dublin has no milepost in the exit list, so it is not the endpoint.",
+  "originLegs": [
+    {
+      "start": "Los Angeles",
+      "miles": 26.08,
+      "source": "osrm",
+      "url": "http://router.project-osrm.org/route/v1/driving/-118.2429212,34.0536961;-118.50438,34.3316",
+      "checkedOn": "2026-10-15",
+      "estimate": true,
+      "note": "Estimate. Driving distance from Los Angeles City Hall to I-5 at the Newhall Pass (SR-14)."
+    }
+  ],
   "endLabel": "Livermore outlets, exit 48",
   "stats": [
     {
@@ -56,6 +68,10 @@
     "reddit-kettleman-2023": {
       "name": "r/electricvehicles, Kettleman City wait",
       "url": "https://www.reddit.com/r/electricvehicles/comments/184gypb/la_to_san_franciscobay_area_1125_3_hour_wait_at/"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
     },
     "plugshare": {
       "name": "PlugShare",

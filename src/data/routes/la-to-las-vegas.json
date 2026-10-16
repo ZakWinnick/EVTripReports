@@ -2,10 +2,22 @@
   "slug": "la-to-las-vegas",
   "title": "LA to Las Vegas",
   "highway": "I-15",
+  "direction": "northbound",
   "summary": "The desert run everyone makes. Charging is dense now, but the big sites cluster, and Baker on a Sunday afternoon is still Baker.",
   "checked": "2026-10-14",
   "startLabel": "I-10 junction, Ontario",
   "startNote": "Mileage starts where most LA drivers join I-15: the I-10 junction at exit 109.",
+  "originLegs": [
+    {
+      "start": "Los Angeles",
+      "miles": 41.86,
+      "source": "osrm",
+      "url": "http://router.project-osrm.org/route/v1/driving/-118.2429212,34.0536961;-117.54463,34.06726",
+      "checkedOn": "2026-10-15",
+      "estimate": true,
+      "note": "Estimate. Driving distance from Los Angeles City Hall to the I-10 and I-15 junction."
+    }
+  ],
   "endLabel": "Tropicana Ave, Las Vegas",
   "stats": [
     {
@@ -72,6 +84,10 @@
     "plugshare": {
       "name": "PlugShare",
       "url": "https://www.plugshare.com/"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
     },
     "rivian": {
       "name": "Rivian charging map",
