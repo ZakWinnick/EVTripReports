@@ -78,6 +78,22 @@
     "reddit": {
       "name": "Reddit driver reports",
       "url": "https://www.reddit.com/"
+    },
+    "woodmans": {
+      "name": "Woodman's Markets",
+      "url": "https://www.woodmans-food.com/store-locations/kenosha/"
+    },
+    "mcdonalds": {
+      "name": "McDonald's restaurant locator",
+      "url": "https://www.mcdonalds.com/us/en-us/location/wi/milwaukee/191-w-layton-ave/976.html"
+    },
+    "restaurantji": {
+      "name": "Restaurantji listing",
+      "url": "https://www.restaurantji.com/wi/milwaukee/mcdonalds-17/"
+    },
+    "forum-foodeist": {
+      "name": "Foodeist listing (map data, not a McDonald's statement)",
+      "url": "https://foodeist.com/place/mcdonalds-milwaukee-wi"
     }
   },
   "stops": [
@@ -350,15 +366,21 @@
       "reports": [],
       "around": [
         {
-          "text": "Target store T2613 (Chicago Gold Coast / Larrabee): Target's store page lists main hours 8am to 10pm (read 2026-10-16). Public restrooms: Not yet verified on Target's page; treat as Not yet verified until a dated driver report or host confirmation.",
+          "text": "Target store T2613 (Chicago Gold Coast, 1200 N Larrabee St): Target's store page lists store hours 8am to 10pm every day, with the Starbucks Cafe 8am to 8pm (read 2026-10-16). Public restrooms: Not yet verified. The store page does not mention them and no dated driver report was found.",
           "source": "target",
-          "url": "https://www.target.com/sl/chicago-south-loop/2613",
+          "url": "https://www.target.com/sl/chicago-gold-coast/2613",
           "checkedOn": "2026-10-16"
         },
         {
           "text": "EA site note: Located at the entrance on the left side of the Target parking lot.",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/il/chicago/1200-n-larrabee-st/200016/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Charger hours: DOE lists this site open 24 hours daily (last confirmed 2026-10-16).",
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations/#/station/149766",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -527,15 +549,21 @@
       "reports": [],
       "around": [
         {
-          "text": "Westfield Old Orchard lists EV charging (including Electrify America) on its center page. Mall hours: Not yet verified on westfield.com (hours page not readable on 2026-10-16). Address on Westfield: 4905 Old Orchard Center, Skokie.",
+          "text": "Westfield Old Orchard's hours page lists Monday to Thursday 10am to 8pm, Friday and Saturday 10am to 9pm, and Sunday 10am to 7pm (read 2026-10-16). Westfield's services page lists EV charging, parking and mobility services, with no restroom entry. Restrooms: Not yet verified, and no dated driver report was found. Address on Westfield: 4905 Old Orchard Center, Skokie.",
           "source": "westfield",
-          "url": "https://www.westfield.com/en/united-states/oldorchard",
+          "url": "https://www.westfield.com/en/united-states/oldorchard/opening-hours",
           "checkedOn": "2026-10-16"
         },
         {
           "text": "EA site note: Located at the parking lot nearer to Orchard Blvd traffic. Public restrooms at the mall: Not yet verified with a dated driver report.",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/il/skokie/4905-old-orchard-shopping-center/210319/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Charger hours: DOE lists this site open 24 hours daily (last confirmed 2026-10-16).",
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations/#/station/199185",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -734,9 +762,21 @@
       "reports": [],
       "around": [
         {
-          "text": "Tesla Find Us lists this Kenosha site available 24/7 with the banner \"NACS adapter needed for non-Tesla EVs\". DOE access note also says NACS partner enabled. Host/business restrooms next to the stalls: Not yet verified.",
+          "text": "Tesla Find Us lists this Kenosha site available 24/7 with the banner \"NACS adapter needed for non-Tesla EVs\". DOE access note also says NACS partner enabled.",
           "source": "tesla-findus",
           "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "The Supercharger is at Woodman's Food Market, 7145 120th Ave, the same address as Woodman's Kenosha page (read 2026-10-16). Woodman's lists the grocery store open 24 hours, with closures from 2:00 pm Thanksgiving to 6:00 am the next day, from 6:00 pm Dec 24 to 6:00 am Dec 26, and from 8:00 pm Dec 31 to 9:00 am Jan 1.",
+          "source": "woodmans",
+          "url": "https://www.woodmans-food.com/store-locations/kenosha/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Woodman's Kenosha store map (PDF on woodmans-food.com, file last modified 2024-12-16) marks restrooms inside the store.",
+          "source": "woodmans",
+          "url": "https://www.woodmans-food.com/wp-content/uploads/sites/392/2024/08/store-map.pdf",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -873,15 +913,27 @@
       "reports": [],
       "around": [
         {
-          "text": "EVgo at McDonald's #976 on West Layton Avenue. McDonald's host hours and restrooms: Not yet verified (mcdonalds.com blocked the fetch on 2026-10-16).",
-          "source": "evgo",
-          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/",
+          "text": "EVgo at McDonald's #976, 191 W Layton Ave. McDonald's own location page for this restaurant opened on 2026-10-16 but showed no hours and did not list restrooms. Host hours and restrooms: Not yet verified on a McDonald's page.",
+          "source": "mcdonalds",
+          "url": "https://www.mcdonalds.com/us/en-us/location/wi/milwaukee/191-w-layton-ave/976.html",
           "checkedOn": "2026-10-16"
         },
         {
           "text": "EVgo's page lists three 350 kW posts with simultaneous dual cables, including NACS on one post.",
           "source": "evgo",
           "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Hours, corroboration only: Restaurantji lists this McDonald's open 24 hours every day, and DOE lists the chargers open 24 hours daily (confirmed 2026-10-15).",
+          "source": "restaurantji",
+          "url": "https://www.restaurantji.com/wi/milwaukee/mcdonalds-17/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Restrooms, listing only: Foodeist's map-data listing shows a Restroom amenity and a wheelchair accessible restroom at this McDonald's. It is not a McDonald's statement, and no dated driver report was found.",
+          "source": "forum-foodeist",
+          "url": "https://foodeist.com/place/mcdonalds-milwaukee-wi",
           "checkedOn": "2026-10-16"
         }
       ],
