@@ -13,6 +13,7 @@
 // The widget action is newsletter_signup, so a plan-form token cannot be reused here.
 // If TURNSTILE_SECRET is unset, signup still works (it still needs the Buttondown key).
 
+import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { verifyTurnstile } from '../_lib/turnstile.js';
 
 const BUTTONDOWN = 'https://api.buttondown.com/v1/subscribers';
@@ -21,7 +22,10 @@ const TAG = 'site-signup';
 const ALREADY = new Set(['email_already_exists', 'subscriber_already_exists']);
 
 const json = (body, status = 200) =>
-  new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
+  new Response(JSON.stringify(body), {
+    status,
+    headers: applySecurityHeaders({ 'content-type': 'application/json', 'cache-control': 'no-store' }),
+  });
 
 function signupOpen(env) {
   return Boolean(env.BUTTONDOWN_API_KEY);

@@ -706,7 +706,7 @@ test('pages and schema mention the portal and do not add a new secret', () => {
   const schema = readFileSync(new URL('../../schema-portal.sql', import.meta.url), 'utf8');
   const find = readFileSync(new URL('../../src/pages/find-my-plans.astro', import.meta.url), 'utf8');
   assert.match(footer, /href="\/find-my-plans\/"/);
-  assert.match(plans, /id="paid-thanks"[\s\S]*href="\/find-my-plans"/);
+  assert.match(plans, /id="paid-thanks"[\s\S]*href="\/find-my-plans\/"/);
   assert.match(find, /action: 'find_plans'/);
   for (const name of ['plan_links', 'portal_signins', 'portal_sessions', 'portal_rate_limits']) {
     assert.match(schema, new RegExp(`CREATE TABLE IF NOT EXISTS ${name}`));

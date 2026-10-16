@@ -28,7 +28,11 @@ const faq = [
   },
   {
     q: 'What if a fact in my plan was wrong?',
-    a: "If we miss the delivery time, you get a full refund. If a station fact in your plan was wrong on the date we checked it, you get a full refund. Networks change sites after we check. A plan that was correct on its check date isn't refundable because a site changed later. Reply to the email your plan came in, within 14 days of your trip.",
+    a: "If we miss the delivery time, you get a full refund. If a station fact in your plan was wrong on the date we checked it, you get a full refund. Networks change sites after we check. A plan that was correct on its check date isn't refundable because a site changed later. Reply to the email your plan came in, or write to admin@evtripreports.com, within 14 days of your trip.",
+  },
+  {
+    q: 'How do I report a wrong stall count or a closed site?',
+    a: "Email admin@evtripreports.com with the stop, the date you were there, and what you saw. A photo helps. We recheck it against the network's own locator before changing the guide.",
   },
   {
     q: 'Do you book hotels, and does any network pay you?',
@@ -45,7 +49,14 @@ const faq = [
         {faq.map((f) => (
           <details>
             <summary>{f.q}</summary>
-            <p>{f.a}</p>
+            <p>
+              {f.a.split('admin@evtripreports.com').map((part, i, all) => (
+                <>
+                  {part}
+                  {i < all.length - 1 && <a href="mailto:admin@evtripreports.com">admin@evtripreports.com</a>}
+                </>
+              ))}
+            </p>
           </details>
         ))}
       </div>

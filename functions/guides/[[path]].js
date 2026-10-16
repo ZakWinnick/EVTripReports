@@ -7,27 +7,27 @@ import builtGuideIndex from '../_lib/built-guide-index.js';
 import { isBuiltGuide, isGuidesIndex, guideSlug, guideSlashRedirect } from '../_lib/guide-response.js';
 import { html, getRoute, listLiveGuideIndex } from '../_lib/routes.js';
 import { guideIndexList, mergeGuideIndex } from '../../src/lib/guide-index.js';
-import { guideJsonLd, guideMain, guideMeta } from '../../src/lib/render-guide.js';
+import { esc, guideJsonLd, guideMain, guideMeta } from '../../src/lib/render-guide.js';
+import { applySecurityHeaders } from '../../src/lib/security-headers.js';
+
+function notFoundHeaders(init) {
+  const headers = applySecurityHeaders(init);
+  headers.set('content-type', 'text/html; charset=utf-8');
+  headers.set('cache-control', 'no-store');
+  headers.set('x-robots-tag', 'noindex');
+  return headers;
+}
 
 async function notFound(env, request) {
-  const headers = new Headers({
-    'content-type': 'text/html; charset=utf-8',
-    'cache-control': 'no-store',
-    'x-robots-tag': 'noindex',
-  });
   try {
     const page = await env.ASSETS.fetch(new Request(new URL('/404.html', request.url)));
     if (page && page.ok) {
-      const h = new Headers(page.headers);
-      h.set('content-type', 'text/html; charset=utf-8');
-      h.set('cache-control', 'no-store');
-      h.set('x-robots-tag', 'noindex');
-      return new Response(page.body, { status: 404, headers: h });
+      return new Response(page.body, { status: 404, headers: notFoundHeaders(page.headers) });
     }
   } catch (e) {
     console.error('404 page missing', e.message);
   }
-  return new Response('Page not found', { status: 404, headers });
+  return new Response('Page not found', { status: 404, headers: notFoundHeaders() });
 }
 
 function renderFromD1(shell, route, request) {
@@ -38,10 +38,14 @@ function renderFromD1(shell, route, request) {
     .on('meta[name="description"]', { element: (e) => e.setAttribute('content', meta.description) })
     .on('meta[property="og:title"]', { element: (e) => e.setAttribute('content', meta.title) })
     .on('meta[property="og:description"]', { element: (e) => e.setAttribute('content', meta.description) })
-    .on('meta[property="og:url"]', { element: (e) => e.setAttribute('content', canonical) })
-    .on('link[rel="canonical"]', { element: (e) => e.setAttribute('href', canonical) })
     .on('meta[name="robots"]', { element: (e) => e.remove() })
-    .on('head', { element: (e) => e.append(guideJsonLd(route, canonical), { html: true }) })
+    .on('head', {
+      element: (e) => {
+        e.append(`<link rel="canonical" href="${esc(canonical)}">`, { html: true });
+        e.append(`<meta property="og:url" content="${esc(canonical)}">`, { html: true });
+        e.append(guideJsonLd(route, canonical), { html: true });
+      },
+    })
     .on('main#main', { element: (e) => e.setInnerContent(guideMain(route), { html: true }) })
     .transform(shell);
   return new Response(out.body, { status: 200, headers: html(shell) });

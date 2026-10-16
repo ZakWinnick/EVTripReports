@@ -6,6 +6,49 @@ import { newsletterForm } from './newsletter.js';
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ESC[c]);
 
+// Network and DOE names use an en dash between the town and the site.
+// Swap that for the ASCII hyphen those names already use elsewhere.
+// Driver-report quotes stay verbatim.
+const SPACED_DASH = / [\u2013\u2014] /g;
+
+export function normalizeDisplayDashes(value) {
+  return String(value ?? '').replace(SPACED_DASH, ' - ');
+}
+
+function isDriverQuote(node, key) {
+  if (!node || typeof node !== 'object') return false;
+  if (key === 'summary' && typeof node.url === 'string' && typeof node.source === 'string' && typeof node.date === 'string') return true;
+  if (key === 'text' && typeof node.who === 'string' && typeof node.date === 'string') return true;
+  return false;
+}
+
+function normalizeDisplayNode(node) {
+  if (Array.isArray(node)) {
+    for (const item of node) normalizeDisplayNode(item);
+    return;
+  }
+  if (!node || typeof node !== 'object') return;
+  for (const [key, value] of Object.entries(node)) {
+    if (typeof value === 'string') {
+      if (!isDriverQuote(node, key)) node[key] = normalizeDisplayDashes(value);
+    } else if (value && typeof value === 'object') {
+      normalizeDisplayNode(value);
+    }
+  }
+}
+
+function forDisplay(value) {
+  const copy = structuredClone(value);
+  normalizeDisplayNode(copy);
+  return copy;
+}
+
+function slashLinkBase(linkBase) {
+  const base = String(linkBase ?? '');
+  if (!base || base.endsWith('/') || base.startsWith('#')) return base;
+  return `${base}/`;
+}
+
 export const fmtDate = (d) =>
   d ? new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : '';
 
@@ -141,11 +184,12 @@ export function routeTotal(route) {
 }
 
 export function routeLine(route, linkBase = '') {
+  route = forDisplay(route);
   const stops = route.stops;
   const total = routeTotal(route);
   const W = 1000, X0 = 36, X1 = 964, Y = 96;
   const x = (m) => X0 + (m / total) * (X1 - X0);
-  const href = (id) => esc(`${linkBase}#stop-${id}`);
+  const href = (id) => esc(`${slashLinkBase(linkBase)}#stop-${id}`);
 
   const placed = stops.map((s, i) => {
     const prev = stops[i - 1];
@@ -375,6 +419,7 @@ function arrivalNote(route) {
 }
 
 export function guideMain(route) {
+  route = forDisplay(route);
   const S = route.sources;
   return `<section class="band band--tight"><div class="wrap">
 <p class="muted" style="margin-bottom:14px"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> ${esc(route.highway)}</p>
@@ -395,7 +440,7 @@ ${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
 
 // Home page guide cards. `routes` is a list of { slug, title, highway, status, miles, stops }.
 export function guideCards(routes) {
-  return routes
+  return forDisplay(routes)
     .map((r) =>
       r.status === 'live'
         ? `<li><a class="panel guide guide--live" href="/guides/${esc(r.slug)}/"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(

@@ -214,7 +214,7 @@ test('page, nav, and footer point at the guides index', async () => {
   assert.equal(page.includes('—'), false);
   assert.equal(page.includes('Rangeway'), false);
   assert.equal(layout.includes('href="/#guides"'), false);
-  assert.match(layout, /href: '\/guides', label: 'Guides'/);
+  assert.match(layout, /href: '\/guides\/', label: 'Guides'/);
   assert.match(layout, /<a href="\/guides\/">Guides<\/a>/);
   assert.match(missing, /href="\/guides\/"/);
   assert.equal(guide.includes('href="/#guides"'), false);

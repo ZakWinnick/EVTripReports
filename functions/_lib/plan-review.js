@@ -1,6 +1,7 @@
 // Admin review of plan requests. Nothing in this file emails a customer.
 // ADMIN_TOKEN is a Pages secret. The customer is never a recipient.
 // Approval returns a 32-byte access code once. Only its SHA-256 hash is stored.
+import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { newToken, sha256Hex } from './tokens.js';
 
 const QUEUE = new Set(['new', 'review']);
@@ -12,7 +13,7 @@ const MAX_SOURCES = 40;
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
-    headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
+    headers: applySecurityHeaders({ 'content-type': 'application/json', 'cache-control': 'no-store' }),
   });
 
 function safeEqual(a, b) {

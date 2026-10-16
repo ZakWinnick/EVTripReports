@@ -6,6 +6,7 @@ import { verifyTurnstile } from './turnstile.js';
 import { newToken, sha256Hex, TOKEN_RE } from './tokens.js';
 import { parsePlan, renderPlan, unavailablePlan } from '../../src/lib/render-plan.js';
 import { esc, fmtDate } from '../../src/lib/render-guide.js';
+import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { privateHeaders, privateNotFound, renderPrivatePage } from './private-page.js';
 
 export const SIGNIN_TTL_MS = 15 * 60 * 1000;
@@ -23,7 +24,7 @@ const PLANS_COOKIE = 'etr_plans';
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
-    headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
+    headers: applySecurityHeaders({ 'content-type': 'application/json', 'cache-control': 'no-store' }),
   });
 
 function normalizeEmail(value) {
@@ -205,7 +206,7 @@ function planCards(plans) {
     const detail = [plan.car, when].filter(Boolean).join('. ');
     return `<div class="panel"><span class="guide__hw">${esc(plan.tier || 'Plan')}</span><span class="guide__t">${esc(plan.start_place)} to ${esc(plan.end_place)}</span>${
       detail ? `<span class="small muted">${esc(detail)}</span>` : ''
-    }<a class="pill" href="/plan/${esc(plan.token)}">Open plan</a></div>`;
+    }<a class="pill" href="/plan/${esc(plan.token)}/">Open plan</a></div>`;
   }).join('');
   return `<section class="band band--tight"><div class="wrap"><h1 class="h1">Your plans.</h1><p class="lede" style="margin-top:18px">Approved plans for this email. Each link is private.</p><div class="stack">${cards}</div></div></section>`;
 }

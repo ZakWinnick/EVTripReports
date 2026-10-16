@@ -12,13 +12,17 @@
 // If TURNSTILE_SECRET is unset, the form still accepts requests (it still needs D1).
 // Set both the site key and the secret before expecting the widget to be enforced.
 import { sendMail } from '../_lib/fastmail.js';
+import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { verifyTurnstile } from '../_lib/turnstile.js';
 
 const REQUIRED = ['name', 'email', 'tier', 'car', 'port', 'start', 'end', 'depart'];
 const MAX = 2000;
 
 const json = (body, status = 200) =>
-  new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
+  new Response(JSON.stringify(body), {
+    status,
+    headers: applySecurityHeaders({ 'content-type': 'application/json', 'cache-control': 'no-store' }),
+  });
 
 export async function onRequestGet({ env }) {
   return json({ turnstileSiteKey: env.TURNSTILE_SITE_KEY || null });

@@ -360,3 +360,47 @@ test('guide pages expose breadcrumb and article structured data, and the route g
   assert.equal(line.includes('role="img"'), false);
   assert.equal(line.includes('#7a827e'), false);
 });
+
+function outsideDriverQuotes(html) {
+  return html.replace(/<p class="report__text">[\s\S]*?<\/p>/g, '');
+}
+
+test('rendered routes use a hyphen in station names and leave driver-report quotes verbatim', async () => {
+  const dir = new URL('../src/data/routes/', import.meta.url);
+  const files = (await readdir(dir)).filter((name) => name.endsWith('.json'));
+  assert.ok(files.length >= 8, String(files.length));
+  for (const name of files) {
+    const route = JSON.parse(await readFile(new URL(name, dir), 'utf8'));
+    const outside = outsideDriverQuotes(guideMain(route));
+    assert.equal(outside.includes('\u2013'), false, `${name} en dash`);
+    assert.equal(outside.includes('\u2014'), false, `${name} em dash`);
+  }
+
+  const named = fixture([]);
+  named.stops[0].primary.name = 'Bakersfield, CA \u2013 Copus Road - Tesla Supercharger';
+  named.stops[0].other = [
+    {
+      name: 'Tejon Ranch, CA \u2014 Outlets at Tejon Pkwy - Tesla Supercharger',
+      facts: '20 stalls',
+      status: 'unverified',
+      url: '',
+    },
+  ];
+  const html = guideMain(named);
+  assert.match(html, /Bakersfield, CA - Copus Road - Tesla Supercharger/);
+  assert.match(html, /Tejon Ranch, CA - Outlets at Tejon Pkwy - Tesla Supercharger/);
+  assert.equal(outsideDriverQuotes(html).includes('\u2013'), false);
+  assert.equal(outsideDriverQuotes(html).includes('\u2014'), false);
+
+  const quoted = guideMain(
+    fixture([
+      {
+        source: 'reddit',
+        url: 'https://example.com/dash',
+        date: '2026-10-01',
+        summary: 'Driver wrote the site as Town \u2013 Name and also used an em dash \u2014 here.',
+      },
+    ]),
+  );
+  assert.match(quoted, /Town \u2013 Name and also used an em dash \u2014 here\./);
+});

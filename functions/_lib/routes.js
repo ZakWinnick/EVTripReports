@@ -1,6 +1,7 @@
 // Guide content stored in D1 (table `routes`). Publishing a guide or an update is a row write;
 // the site picks it up on the next request. Without the DB binding or a row, the built version is served.
 import { guideIndexRecord } from '../../src/lib/guide-index.js';
+import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { SLUG } from './guide-response.js';
 
 export async function getRoute(env, slug) {
@@ -69,5 +70,5 @@ export const html = (res) => {
   const h = new Headers(res.headers);
   h.set('content-type', 'text/html; charset=utf-8');
   h.set('cache-control', 'public, max-age=0, s-maxage=300');
-  return h;
+  return applySecurityHeaders(h);
 };
