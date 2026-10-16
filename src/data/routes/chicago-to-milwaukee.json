@@ -3,7 +3,7 @@
   "title": "Chicago to Milwaukee",
   "highway": "I-94",
   "direction": "northbound",
-  "summary": "I-90/94 and I-94 from near downtown Chicago to downtown Milwaukee through Skokie, the Tri-State, Kenosha and Oak Creek. Primaries mix Electrify America (Target and Westfield Old Orchard at 350 kW), an open Tesla Supercharger in Kenosha, and EVgo on Layton Avenue in Milwaukee. Longest primary gap is Skokie to Kenosha, about 38 miles.",
+  "summary": "I-90/94 and I-94 from near downtown Chicago to downtown Milwaukee through Skokie, the Tri-State, Kenosha and Oak Creek. Primaries mix Electrify America (Target and Westfield Old Orchard at 350 kW), an open Tesla Supercharger in Kenosha, and Electrify America at Meijer Oak Creek. Longest primary gap is Skokie to Kenosha, about 38 miles.",
   "checked": "2026-10-16",
   "startLabel": "I-90/94 Kennedy Expressway near Ohio Street, Chicago",
   "startNote": "Mileage starts where northbound traffic is on I-90/94 near Ohio Street in Chicago (OSRM point -87.6455, 41.8920) and ends on I-94 near downtown Milwaukee (-87.9165, 43.0389). The 87.13 miles is OSRM's driving distance between those two points, shown as 87. Stop miles are each site's nearest point on that route. Wikipedia exit lists for Interstate 94 in Illinois and Wisconsin are cited for exit numbers.",
@@ -75,6 +75,18 @@
       "name": "Westfield Old Orchard",
       "url": "https://www.westfield.com/en/united-states/oldorchard"
     },
+    "reddit-oldorchard-macys": {
+      "name": "Reddit r/EdgewaterRogersPark: Macy's Old Orchard restrooms (driver/visitor report)",
+      "url": "https://www.reddit.com/r/EdgewaterRogersPark/comments/1iq40ey/macys_old_orchard_now_open_without_running_water/"
+    },
+    "meijer": {
+      "name": "Meijer (PR Newswire release on two new Ohio supercenters, not the Oak Creek store)",
+      "url": "https://www.prnewswire.com/news-releases/meijer-opens-new-supercenters-in-warren-and-wooster-today-301826245.html"
+    },
+    "forum-refuge-fiveguys-oakcreek": {
+      "name": "REFUGE Restrooms: Five Guys at Town Square Way, Oak Creek (plaza corroboration, not Meijer)",
+      "url": "https://www.refugerestrooms.org/restrooms/50610"
+    },
     "reddit": {
       "name": "Reddit driver reports",
       "url": "https://www.reddit.com/"
@@ -82,18 +94,6 @@
     "woodmans": {
       "name": "Woodman's Markets",
       "url": "https://www.woodmans-food.com/store-locations/kenosha/"
-    },
-    "mcdonalds": {
-      "name": "McDonald's restaurant locator",
-      "url": "https://www.mcdonalds.com/us/en-us/location/wi/milwaukee/191-w-layton-ave/976.html"
-    },
-    "restaurantji": {
-      "name": "Restaurantji listing",
-      "url": "https://www.restaurantji.com/wi/milwaukee/mcdonalds-17/"
-    },
-    "forum-foodeist": {
-      "name": "Foodeist listing (map data, not a McDonald's statement)",
-      "url": "https://foodeist.com/place/mcdonalds-milwaukee-wi"
     }
   },
   "stops": [
@@ -549,13 +549,28 @@
       "reports": [],
       "around": [
         {
-          "text": "Westfield Old Orchard's hours page lists Monday to Thursday 10am to 8pm, Friday and Saturday 10am to 9pm, and Sunday 10am to 7pm (read 2026-10-16). Westfield's services page lists EV charging, parking and mobility services, with no restroom entry. Restrooms: Not yet verified, and no dated driver report was found. Address on Westfield: 4905 Old Orchard Center, Skokie.",
+          "text": "Westfield Old Orchard's hours page lists Monday to Thursday 10am to 8pm, Friday and Saturday 10am to 9pm, and Sunday 10am to 7pm (read 2026-10-16). Westfield's services page lists parking and mobility services, with no restroom entry. Address on Westfield: 4905 Old Orchard Center, Skokie.",
+          "category": "food",
           "source": "westfield",
           "url": "https://www.westfield.com/en/united-states/oldorchard/opening-hours",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "EA site note: Located at the parking lot nearer to Orchard Blvd traffic. Public restrooms at the mall: Not yet verified with a dated driver report.",
+          "text": "Westfield's services page lists EV charging, parking and mobility services.",
+          "source": "westfield",
+          "url": "https://www.westfield.com/en/united-states/oldorchard/opening-hours",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Restrooms, Driver-reported: On 2025-02-15, a Reddit post in r/EdgewaterRogersPark said Macy's at Old Orchard mall told staff and customers to use hand sanitizer in the bathroom during a water outage (\"wash their hands in the bathroom\"). A same-day comment said \"The restrooms at that Macy's are nasty anyway\" after using the ladies room. Label as Driver-reported, not a Westfield or EA fact. Link dated 2025-02-15.",
+          "category": "restroom",
+          "source": "reddit-oldorchard-macys",
+          "url": "https://www.reddit.com/r/EdgewaterRogersPark/comments/1iq40ey/macys_old_orchard_now_open_without_running_water/",
+          "checkedOn": "2026-10-16",
+          "site": "Westfield Old Orchard (Skokie, IL)"
+        },
+        {
+          "text": "EA site note: Located at the parking lot nearer to Orchard Blvd traffic.",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/il/skokie/4905-old-orchard-shopping-center/210319/",
           "checkedOn": "2026-10-16"
@@ -650,21 +665,6 @@
           "url": "https://www.tesla.com/findus/location/supercharger/18738",
           "afdcIds": [
             254098
-          ],
-          "driverReports": [],
-          "checkedOn": "2026-10-16"
-        },
-        {
-          "name": "Meijer 283 (Oak Creek, WI)",
-          "network": "Electrify America",
-          "address": "171 W Town Square Way, Oak Creek, WI 53154",
-          "facts": "EA's locator lists 6 chargers, CCS at 150 kW on all 6. DOE lists the same port count. Meijer Oak Creek, about 23 miles past Kenosha. EA lists 6 chargers at 150 kW on the locator page (API also showed 300 kW; page figure used).",
-          "access": "Open to all CCS EVs. NACS cars need an adapter.",
-          "status": "verified",
-          "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/wi/oak-creek/171-w-town-square-way/216021/",
-          "afdcIds": [
-            279341
           ],
           "driverReports": [],
           "checkedOn": "2026-10-16"
@@ -791,57 +791,59 @@
     },
     {
       "id": "milwaukee",
-      "name": "Milwaukee",
-      "towns": "Milwaukee, WI",
-      "mile": 82,
-      "milepostNote": "Measured along OSRM's route from the start: 81.6 miles. The site is about 0.6 mile from that route line. Northbound leave I-94 at exit 317, Layton Avenue (Wikipedia, Interstate 94 in Wisconsin). OSRM ends downtown about 5.5 miles past this exit.",
-      "why": "EVgo at McDonald's on Layton has three 350 kW dual-cable chargers (CCS and NACS) on EVgo's locator, the last CCS-native stop before downtown Milwaukee. Meijer Oak Creek's EA is the backup about 5 miles earlier.",
+      "name": "Oak Creek",
+      "towns": "Oak Creek, WI",
+      "mile": 77,
+      "milepostNote": "Measured along OSRM's route from the start: about 76.7 miles driving to the Meijer lot (estimate; prior McDonald's Layton primary was 81.6). Northbound leave I-94 toward Oak Creek / Town Square Way. OSRM ends downtown about 10 miles past this stop.",
+      "why": "Electrify America at Meijer Oak Creek has 6 chargers at 150 kW on EA's locator, about 5 miles before the old Layton EVgo stop. Restrooms at this stop are Not yet verified. McDonald's Layton EVgo (350 kW with NACS) stays as the strong backup.",
       "primary": {
-        "name": "McDonalds #976 Layton",
-        "network": "EVgo",
-        "address": "191 West Layton Ave, Milwaukee, WI 53207",
-        "exit": "Exit 317, CTH-Y (Layton Avenue)",
+        "name": "Meijer 283 (Oak Creek, WI)",
+        "network": "Electrify America",
+        "address": "171 W Town Square Way, Oak Creek, WI 53154",
+        "exit": "I-94 toward Oak Creek / Town Square Way (about 5 miles before Layton Avenue exit 317)",
         "stalls": {
-          "value": "3 chargers (6 ports on DOE)",
+          "value": "6 chargers",
           "status": "verified",
-          "source": "evgo",
-          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/"
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wi/oak-creek/171-w-town-square-way/216021/"
         },
         "power": {
-          "value": "Up to 350 kW",
-          "status": "verified",
-          "source": "evgo",
-          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/"
-        },
-        "access": {
-          "value": "Open to all CCS and NACS EVs. This site lists NACS cables on EVgo's page.",
-          "status": "verified",
-          "source": "evgo"
-        },
-        "price": {
-          "value": "Shown in the EVgo app and on the charger.",
-          "status": "unpublished",
-          "source": "evgo"
-        },
-        "afdcIds": [
-          373084
-        ],
-        "driverReports": [],
-        "checkedOn": "2026-10-16",
-        "source": "evgo"
-      },
-      "backups": [
-        {
-          "name": "Meijer 283 (Oak Creek, WI)",
-          "network": "Electrify America",
-          "address": "171 W Town Square Way, Oak Creek, WI 53154",
-          "facts": "EA's locator lists 6 chargers, CCS at 150 kW on all 6. DOE lists the same port count. Meijer Oak Creek, about 5.4 miles before Layton on the corridor. EA page lists 6x150 kW CCS.",
-          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "value": "150 kW, CCS on all 6",
           "status": "verified",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/wi/oak-creek/171-w-town-square-way/216021/",
+          "note": "EA page lists 6x150 kW CCS (API also showed 300 kW; page figure used)."
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          279341
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator",
+        "url": "https://www.electrifyamerica.com/locate-charger/wi/oak-creek/171-w-town-square-way/216021/"
+      },
+      "backups": [
+        {
+          "name": "McDonalds #976 Layton",
+          "network": "EVgo",
+          "address": "191 West Layton Ave, Milwaukee, WI 53207",
+          "facts": "EVgo's locator lists 3 chargers at 350 kW, dual-cable (CCS and NACS). DOE lists 6 ports. About 5 miles farther north on the corridor at Layton Avenue. Former primary; restrooms still Not yet verified (no dated driver report as of 2026-10-16).",
+          "access": "Open to all CCS and NACS EVs. This site lists NACS cables on EVgo's page.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/",
           "afdcIds": [
-            279341
+            373084
           ],
           "driverReports": [],
           "checkedOn": "2026-10-16"
@@ -850,7 +852,7 @@
           "name": "Oak Creek, WI - Tesla Supercharger",
           "network": "Tesla Supercharger",
           "address": "171 West Town Square Way Oak Creek, WI 53154-6801",
-          "facts": "Tesla Find Us confirms 10 Superchargers up to 150 kW at 171 West Town Square Way Oak Creek, WI 53154-6801. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. Same Meijer lot as the EA site. Find Us shows Pricing for Tesla (Tesla only), 10 stalls up to 150 kW.",
+          "facts": "Tesla Find Us confirms 10 Superchargers up to 150 kW at 171 West Town Square Way Oak Creek, WI 53154-6801. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. Same Meijer lot as the EA primary. Find Us shows Pricing for Tesla (Tesla only), 10 stalls up to 150 kW.",
           "access": "Tesla only",
           "teslaAccess": "tesla-only",
           "status": "verified",
@@ -913,35 +915,36 @@
       "reports": [],
       "around": [
         {
-          "text": "EVgo at McDonald's #976, 191 W Layton Ave. McDonald's own location page for this restaurant opened on 2026-10-16 but showed no hours and did not list restrooms. Host hours and restrooms: Not yet verified on a McDonald's page.",
-          "source": "mcdonalds",
-          "url": "https://www.mcdonalds.com/us/en-us/location/wi/milwaukee/191-w-layton-ave/976.html",
+          "text": "Meijer Oak Creek, 171 W Town Square Way. EA's locator lists 6 CCS chargers at 150 kW. Chargers are in the Meijer lot (same address as the Tesla-only Supercharger on Find Us).",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wi/oak-creek/171-w-town-square-way/216021/",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "EVgo's page lists three 350 kW posts with simultaneous dual cables, including NACS on one post.",
-          "source": "evgo",
-          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/",
+          "text": "Restrooms: Not yet verified for Meijer Oak Creek. Meijer's May 16, 2023 PR Newswire release about its new Warren and Wooster, Ohio supercenters mentions family restrooms with height-adjustable changing tables at those two stores only. It does not name the Oak Creek store, so it is not a source for this stop. meijer.com store pages were blocked (403) on 2026-10-16.",
+          "source": "meijer",
+          "url": "https://www.prnewswire.com/news-releases/meijer-opens-new-supercenters-in-warren-and-wooster-today-301826245.html",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Hours, corroboration only: Restaurantji lists this McDonald's open 24 hours every day, and DOE lists the chargers open 24 hours daily (confirmed 2026-10-15).",
-          "source": "restaurantji",
-          "url": "https://www.restaurantji.com/wi/milwaukee/mcdonalds-17/",
+          "text": "Plaza corroboration only (not Meijer): REFUGE lists restrooms at Five Guys, 160 W Town Square Way, Oak Creek, created 2019-06-23 (\"Two single, locking bathrooms... clean and well stocked\"). Same Town Square Way plaza as Meijer. Do not cite as a Meijer fact.",
+          "category": "food",
+          "source": "forum-refuge-fiveguys-oakcreek",
+          "url": "https://www.refugerestrooms.org/restrooms/50610",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Restrooms, listing only: Foodeist's map-data listing shows a Restroom amenity and a wheelchair accessible restroom at this McDonald's. It is not a McDonald's statement, and no dated driver report was found.",
-          "source": "forum-foodeist",
-          "url": "https://foodeist.com/place/mcdonalds-milwaukee-wi",
+          "text": "Charger hours: DOE lists this site (AFDC 279341) open 24 hours daily (last confirmed 2026-10-16). Host store hours: Not yet verified.",
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations/#/station/279341",
           "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
         {
-          "name": "Milwaukee Layton",
-          "lat": 42.959,
-          "lng": -87.914,
+          "name": "Oak Creek Meijer",
+          "lat": 42.884,
+          "lng": -87.913,
           "radius": 3
         }
       ]
