@@ -3,6 +3,7 @@
 // Approval returns a 32-byte access code once. Only its SHA-256 hash is stored.
 import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { newToken, sha256Hex } from './tokens.js';
+import { parseNotes, reviewFlags } from '../../src/lib/order-flags.js';
 
 const QUEUE = new Set(['new', 'review']);
 const DECISIONS = new Set(['approved', 'rejected-for-redo']);
@@ -117,6 +118,16 @@ async function paymentsFor(db, ids) {
   return map;
 }
 
+// Adds the order checks the queue shows: flags, the matched corridor, and the start battery from the form.
+// A blocking flag (port unknown, reverse direction, no matching corridor) means no plan is built until a person sorts it out.
+// notes comes back without the start-battery tag the intake form adds.
+function withChecks(row) {
+  const check = reviewFlags(row);
+  const out = { ...row, notes: parseNotes(row.notes).notes, startBattery: check.startBattery, flags: check.flags, corridor: check.corridor };
+  if (check.blocked) out.blocked = true;
+  return out;
+}
+
 async function listQueue(db) {
   const rows = await db.prepare(
     `SELECT ${REQUEST_COLS} FROM plan_requests WHERE status IN ('new', 'review', 'rejected-for-redo') ORDER BY created_at ASC, id ASC`
@@ -124,8 +135,10 @@ async function listQueue(db) {
   const list = rows.results || [];
   const payments = await paymentsFor(db, list.map((row) => row.id));
   const requests = list.map((row) => {
-    const base = { ...row, payment: payments.get(row.id) ?? null };
-    return row.status === 'rejected-for-redo' ? { ...base, queueLabel: 'Needs redo' } : base;
+    const base = { ...withChecks(row), payment: payments.get(row.id) ?? null };
+    if (row.status === 'rejected-for-redo') return { ...base, queueLabel: 'Needs redo' };
+    const blocking = base.flags.find((flag) => flag.blocking);
+    return blocking ? { ...base, queueLabel: blocking.label } : base;
   });
   return json({ requests });
 }
@@ -219,7 +232,7 @@ export async function onRequest(context) {
     const row = await getRequest(env.DB, id);
     if (!row) return json({ error: 'No plan request with that id.' }, 404);
     const payment = (await paymentsFor(env.DB, [id])).get(id) ?? null;
-    return json({ request: row, payment, drafts: await draftsFor(env.DB, id) });
+    return json({ request: withChecks(row), payment, drafts: await draftsFor(env.DB, id) });
   }
 
   if (method === 'POST' && parts.length === 2 && parts[1] === 'draft') return saveDraft(env.DB, id, data);

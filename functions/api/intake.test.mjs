@@ -20,3 +20,97 @@ test('intake still succeeds when D1 reports no row id', async () => {
 test('intake stays closed without the database', async () => {
   assert.equal((await post(form, {})).status, 503);
 });
+
+function capture() {
+  const rows = [];
+  return {
+    rows,
+    DB: { prepare() { return { bind(...args) { rows.push(args); return { async run() { return { success: true, meta: { last_row_id: 7 } }; } }; } }; } },
+  };
+}
+
+test('intake refuses a trip we cannot plan, before any row is written', async () => {
+  const seen = capture();
+  const res = await post({ ...form, start: 'Chicago, IL', end: 'Milwaukee, WI' }, { DB: seen.DB });
+  assert.equal(res.status, 422);
+  const body = await res.json();
+  assert.match(body.error, /cannot plan that trip yet/);
+  assert.ok(body.corridors.includes('LA to Las Vegas'));
+  assert.equal(body.corridors.includes('Chicago to Milwaukee'), false);
+  assert.equal(seen.rows.length, 0);
+});
+
+test('intake refuses a reverse-direction trip and names the corridor', async () => {
+  const seen = capture();
+  const res = await post({ ...form, start: 'Las Vegas, NV', end: 'Los Angeles, CA' }, { DB: seen.DB });
+  assert.equal(res.status, 422);
+  assert.match((await res.json()).error, /LA to Las Vegas in that direction only/);
+  assert.equal(seen.rows.length, 0);
+});
+
+test('intake accepts a start in the same metro area, and Portland Maine is not Portland Oregon', async () => {
+  assert.equal((await post({ ...form, start: 'Pasadena, CA' }, capture())).status, 200);
+  const wrong = await post({ ...form, start: 'Seattle, WA', end: 'Portland, ME' }, capture());
+  assert.equal(wrong.status, 422);
+});
+
+test('intake stores the start battery in the notes and the departure time with the date', async () => {
+  const seen = capture();
+  const res = await post({ ...form, startBattery: '85', departTime: '07:30', notes: 'One dog.' }, seen);
+  assert.equal(res.status, 200);
+  const [row] = seen.rows;
+  assert.equal(row[8], '2026-11-02T07:30');
+  assert.equal(row[12], '[Start battery: 85%]\nOne dog.');
+});
+
+test('intake leaves the notes and date alone when battery and time are blank', async () => {
+  const seen = capture();
+  await post({ ...form, startBattery: '', departTime: '', notes: 'Hi' }, seen);
+  assert.equal(seen.rows[0][8], '2026-11-02');
+  assert.equal(seen.rows[0][12], 'Hi');
+});
+
+test('intake rejects a bad battery or time', async () => {
+  for (const bad of [{ startBattery: '0' }, { startBattery: '101' }, { startBattery: 'full' }, { startBattery: '55.5' }, { departTime: '25:00' }, { departTime: '8am' }]) {
+    const seen = capture();
+    const res = await post({ ...form, ...bad }, seen);
+    assert.equal(res.status, 400, JSON.stringify(bad));
+    assert.equal(seen.rows.length, 0);
+  }
+  assert.equal((await post({ ...form, depart: 'next friday', departTime: '08:00' }, capture())).status, 400);
+});
+
+test('the owner email says when the port is not known, and which corridor and battery', async () => {
+  const bodies = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init = {}) => {
+    if (String(url).includes('/session')) {
+      return new Response(JSON.stringify({ apiUrl: 'https://api.example.invalid/jmap', primaryAccounts: { 'urn:ietf:params:jmap:submission': 'a1' } }), { status: 200 });
+    }
+    const payload = JSON.parse(init.body);
+    bodies.push(init.body);
+    const first = payload.methodCalls[0][0];
+    const responses = first === 'Identity/get'
+      ? [['Identity/get', { list: [{ id: 'i1', email: 'admin@evtripreports.com' }] }, 'i'], ['Mailbox/query', { ids: ['d1'] }, 'm']]
+      : [['Email/set', {}, 'e'], ['EmailSubmission/set', { created: { sub: {} } }, 's']];
+    return new Response(JSON.stringify({ methodResponses: responses }), { status: 200 });
+  };
+  try {
+    const pending = [];
+    const res = await onRequestPost({
+      request: new Request('https://evtripreports.com/api/intake', { method: 'POST', body: JSON.stringify({ ...form, port: 'Not sure', startBattery: '60', departTime: '09:15', return: '2026-11-05' }) }),
+      env: { DB: db(9), FASTMAIL_TOKEN: 'x' },
+      waitUntil(p) { pending.push(p); },
+    });
+    assert.equal(res.status, 200);
+    await Promise.all(pending);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+  const mail = bodies.join('\n');
+  assert.match(mail, /Charge port: NOT SURE/);
+  assert.match(mail, /Corridor: LA to Las Vegas/);
+  assert.match(mail, /Leaving: 2026-11-02 at 09:15/);
+  assert.match(mail, /Start battery: 60%/);
+  assert.match(mail, /the way back is built by hand/);
+});

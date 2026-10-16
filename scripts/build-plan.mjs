@@ -10,6 +10,8 @@ import { realpathSync } from 'node:fs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { corridorBySlug, matchOrder } from '../src/lib/corridors.js';
+import { parseNotes } from '../src/lib/order-flags.js';
 
 export const UNKNOWN = 'Not yet verified';
 export const MPH = 65;
@@ -68,8 +70,11 @@ const RESTROOM_RE = /\brestrooms?\b|\bbathrooms?\b/i;
 const OVERNIGHT_RE = /\bovernight\b|\bhotels?\b|\blodging\b|\bmotels?\b/i;
 const PET_RE = /\b(dogs?|pets?)\b/i;
 const CAUTION_RE = /\b(throttl\w*|offline|broken|out of service|queued|heat|warning|fault|derat\w*)\b|\bpoor restrooms?\b|\bhad been offline\b|\bnon-teslas?\b/i;
-const SECTION_TITLES = new Set(['food', 'restroom', 'restrooms', 'overnight', 'lodging', 'cautions', 'caution', 'notes', 'note', 'backup', 'backups']);
+const SECTION_TITLES = new Set(['driver notes', 'food', 'restroom', 'restrooms', 'overnight', 'lodging', 'cautions', 'caution', 'notes', 'note', 'backup', 'backups']);
 const MAX_NOTES = 3;
+// A charger review that reports a problem is a caution. One that does not (praise, a speed reading, a place to eat nearby)
+// is a driver note. Filing praise under Cautions told the reader something was wrong when nothing was.
+const PROBLEM_RE = /\b(not working|doesn'?t work|didn'?t work|wouldn'?t (?:start|charge)|won'?t (?:start|charge)|failed|failure|stuck|unreliable|issues?|problems?|crowded|long (?:wait|line|queue)|waited|wait time|avoid|dirty|capped|limited to|only (?:\d+ )?(?:stalls?|chargers?|kw)\b|bad|poor|worst|terrible|awful|disappointing|frustrat\w*|unsafe|sketchy|blocked|ice[ds]?)\b/i;
 
 export function tierOf(value) {
   const key = String(value ?? '').trim().toLowerCase().replace(/\s+/g, ' ');
@@ -78,9 +83,27 @@ export function tierOf(value) {
   return TIERS[id];
 }
 
+// Thrown when an order must not get an automatic plan. A person has to act first.
+//   needs-customer-question: the charge port or adapter is not known (the form's "Not sure").
+//   needs-manual-build: the trip runs the other way from the corridor, or matches a different corridor.
+// No partial or forward-only plan is produced in either case.
+export class OrderBlockedError extends Error {
+  constructor(code, message) {
+    super(message);
+    this.name = 'OrderBlockedError';
+    this.code = code;
+  }
+}
+
 export function buildPlan(order, route) {
-  const input = order && typeof order === 'object' && !Array.isArray(order) ? order : null;
-  if (!input) throw new Error('Order must be an object.');
+  const raw = order && typeof order === 'object' && !Array.isArray(order) ? order : null;
+  if (!raw) throw new Error('Order must be an object.');
+  // The intake form keeps the start battery as a tag on the first line of the notes. Read it, and never print the tag.
+  const parsedNotes = parseNotes(raw.notes);
+  const input = { ...raw, notes: parsedNotes.notes };
+  if (input.startBattery == null && input.start_battery == null && input.battery == null && parsedNotes.startBattery != null) {
+    input.startBattery = parsedNotes.startBattery;
+  }
   if (!route || typeof route !== 'object' || Array.isArray(route)) throw new Error('Route data must be an object.');
   if (!Array.isArray(route.stops)) throw new Error('Route data has no stops.');
 
@@ -92,6 +115,16 @@ export function buildPlan(order, route) {
 
   const tier = tierOf(input.tier ?? input.price);
   const profile = vehicleProfile(input);
+  if (!profile.hasPlug) {
+    throw new OrderBlockedError('needs-customer-question', `Needs customer question: the charge port or adapter is "${cleanCopy(input.adapter ?? input.port ?? '') || 'empty'}". Ask the customer, then build. No plan was made.`);
+  }
+  const trip = matchOrder({ start: input.start ?? input.startPlace ?? '', end: input.end ?? input.endPlace ?? '' });
+  if (trip.status === 'reverse' || tripIsReverse(input, route)) {
+    throw new OrderBlockedError('needs-manual-build', `Needs manual build: reverse direction. ${cleanCopy(route.title || slug)} is only built as written, so stop order, mile marks, charging math and clock times would all be wrong. No plan was made.`);
+  }
+  if (trip.status === 'forward' && corridorBySlug(slug) && trip.slug !== slug) {
+    throw new OrderBlockedError('needs-manual-build', `Needs manual build: the order runs ${trip.title}, not ${slug}. Pick the right route file. No plan was made.`);
+  }
   const zone = resolveTimeZone(input, route);
   const depart = normalizeDepart(departValue(input), zone);
   const startBattery = startPercent(input);
@@ -305,6 +338,10 @@ export function planMarkdown(plan) {
     if (stop.food?.length) {
       lines.push('Food:');
       for (const item of stop.food) lines.push(`- ${item.name}: ${item.text}`);
+    }
+    if (stop.driverNotes?.length) {
+      lines.push('Driver notes:');
+      for (const item of stop.driverNotes) lines.push(`- ${item.name}: ${item.text}`);
     }
     if (stop.hotels?.length) {
       lines.push('Lodging:');
@@ -559,6 +596,7 @@ function renderStop(prepared, strategy, ctx) {
     out.primary = sheet;
     if (amenities.food.length) out.food = amenities.food;
     if (amenities.hotels.length) out.hotels = amenities.hotels;
+    if (amenities.driverNotes.length) out.driverNotes = amenities.driverNotes;
     if (amenities.cautions.length) out.cautions = amenities.cautions;
     if (amenities.primaryCautions.length) out.primaryCautions = amenities.primaryCautions;
     if (amenities.backupCautions.length) out.backupCautions = amenities.backupCautions;
@@ -1082,6 +1120,7 @@ function amenityBlocks(stop, sheet, ctx) {
   const food = [];
   const hotels = [];
   const cautions = [];
+  const driverNotes = [];
   let restroom = null;
   let restroomNote = null;
   const seen = new Set();
@@ -1110,6 +1149,10 @@ function amenityBlocks(stop, sheet, ctx) {
     const note = { text: shown, url: link, source: source || '', checkedOn: date, kind: noteKind, place, role: cautionRole(place, sheet, stop) };
     if (category === 'caution') {
       push(cautions, note, 'Cautions');
+      return;
+    }
+    if (category === 'note') {
+      push(driverNotes, note, 'Driver notes');
       return;
     }
     if (!aboutPrimary && place) {
@@ -1165,6 +1208,7 @@ function amenityBlocks(stop, sheet, ctx) {
   return {
     food,
     hotels,
+    driverNotes: driverNotes.map(withoutRole),
     cautions: [...primaryCautions, ...backupCautions, ...otherCautions],
     primaryCautions,
     backupCautions,
@@ -1194,7 +1238,7 @@ function categoryOf(item, text) {
   const inferred = inferCategory(text);
   if (inferred === 'caution') return 'caution';
   const category = ['food', 'restroom', 'overnight', 'caution', 'pet'].includes(declared) ? declared : inferred;
-  if ((category === 'food' || category === 'restroom') && isChargerReview(text)) return 'caution';
+  if ((category === 'food' || category === 'restroom') && isChargerReview(text)) return PROBLEM_RE.test(text) ? 'caution' : 'note';
   return category;
 }
 

@@ -289,3 +289,33 @@ test('the header token works and the review code never imports mail', async () =
   assert.equal(src.includes('sendMail') || src.includes('fastmail'), false);
   assert.equal(route.includes('sendMail') || route.includes('fastmail'), false);
 });
+
+test('the queue flags orders that need a person before a plan is built', async () => {
+  const db = memoryDb(seed());
+  const base = { created_at: '2026-10-16T01:00:00.000Z', name: 'Eve', email: 'eve@example.com', tier: 'Detailed plan', car: '2024 Ioniq 5', port: 'CCS port, no adapter', start_place: 'Los Angeles, CA', end_place: 'Las Vegas, NV', depart: '2026-11-04T08:00', return_date: '', passengers: '', memberships: '', notes: '[Start battery: 90%]\nOne dog.', status: 'new' };
+  db.requests.push(
+    { ...base, id: 10 },
+    { ...base, id: 11, port: 'Not sure' },
+    { ...base, id: 12, start_place: 'Las Vegas, NV', end_place: 'Los Angeles, CA' },
+    { ...base, id: 13, start_place: 'Boise, ID', end_place: 'Reno, NV' },
+  );
+  const body = await (await call({ path: '', db })).json();
+  const by = (id) => body.requests.find((row) => row.id === id);
+  assert.equal(by(10).queueLabel, undefined);
+  assert.equal(by(10).blocked, undefined);
+  assert.equal(by(10).startBattery, 90);
+  assert.equal(by(10).notes, 'One dog.');
+  assert.equal(by(10).corridor.slug, 'la-to-las-vegas');
+  assert.match(by(11).queueLabel, /^Needs customer question/);
+  assert.equal(by(11).blocked, true);
+  assert.match(by(12).queueLabel, /^Needs manual build: reverse direction/);
+  assert.equal(by(12).corridor.status, 'reverse');
+  assert.match(by(13).queueLabel, /^Needs manual check/);
+  // Redo keeps its label, and the flags stay visible.
+  db.requests.find((row) => row.id === 11).status = 'rejected-for-redo';
+  const redo = (await (await call({ path: '', db })).json()).requests.find((row) => row.id === 11);
+  assert.equal(redo.queueLabel, 'Needs redo');
+  assert.equal(redo.flags[0].code, 'port-unknown');
+  const one = await (await call({ path: '/12', db })).json();
+  assert.equal(one.request.flags[0].code, 'reverse-direction');
+});
