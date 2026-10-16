@@ -14,7 +14,15 @@ export default [
     "lastmod": "2026-10-14"
   },
   {
+    "slug": "la-to-san-diego",
+    "lastmod": "2026-10-16"
+  },
+  {
     "slug": "la-to-sf",
+    "lastmod": "2026-10-15"
+  },
+  {
+    "slug": "las-vegas-to-salt-lake-city",
     "lastmod": "2026-10-15"
   },
   {

@@ -180,7 +180,7 @@ test('dc-to-nyc route JSON contains no em dash or en dash in any string', async 
   await assertRouteJsonHasNoDashes('dc-to-nyc');
 });
 
-test('Las Vegas to Salt Lake City passes the primary gate and stays off the public lists', async () => {
+test('Las Vegas to Salt Lake City passes the primary gate and is on the public lists', async () => {
   const routeData = JSON.parse(await readFile(new URL('../src/data/routes/las-vegas-to-salt-lake-city.json', import.meta.url), 'utf8'));
   const raw = await readFile(new URL('../src/data/routes/las-vegas-to-salt-lake-city.json', import.meta.url), 'utf8');
   const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
@@ -194,11 +194,11 @@ test('Las Vegas to Salt Lake City passes the primary gate and stays off the publ
     title: 'Las Vegas to Salt Lake City',
     highway: 'I-15',
     miles: 423,
-    status: 'verifying',
+    status: 'live',
   });
   assert.equal(primaryPublishBlock(routeData), null);
   assert.equal(exportStatus('live', routeData), 'live');
-  assert.equal(exportStatus(meta.status, routeData), 'verifying');
+  assert.equal(exportStatus(meta.status, routeData), 'live');
 
   assert.equal(routeData.stops.length, 7);
   for (const stop of routeData.stops) {
@@ -216,10 +216,10 @@ test('Las Vegas to Salt Lake City passes the primary gate and stays off the publ
 
   const guides = await liveBuiltGuides();
   const index = await liveBuiltGuideIndex();
-  assert.equal(guides.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), false);
-  assert.equal(index.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), false);
+  assert.equal(guides.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), true);
+  assert.equal(index.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), true);
   const xml = buildSitemapXml(guidesForSitemap(guides, []));
-  assert.equal(xml.includes('las-vegas-to-salt-lake-city'), false);
+  assert.equal(xml.includes('las-vegas-to-salt-lake-city'), true);
 
   const files = await readdir(new URL('../src/data/routes/', import.meta.url));
   const routeBySlug = {};
@@ -228,7 +228,7 @@ test('Las Vegas to Salt Lake City passes the primary gate and stays off the publ
     routeBySlug[data.slug] = data;
   }
   const home = visibleHomeRoutes(list, routeBySlug);
-  assert.equal(home.some((route) => route.slug === 'las-vegas-to-salt-lake-city'), false);
+  assert.equal(home.some((route) => route.slug === 'las-vegas-to-salt-lake-city'), true);
   assert.equal(home.every((route) => route.status === 'live'), true);
 
   const html = guideMain(routeData);
@@ -246,7 +246,7 @@ test('las-vegas-to-salt-lake-city route JSON contains no em dash or en dash in a
   await assertRouteJsonHasNoDashes('las-vegas-to-salt-lake-city');
 });
 
-test('LA to San Diego passes the primary gate and stays off the public lists', async () => {
+test('LA to San Diego passes the primary gate and is on the public lists', async () => {
   const raw = await readFile(new URL('../src/data/routes/la-to-san-diego.json', import.meta.url), 'utf8');
   const routeData = JSON.parse(raw);
   const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
@@ -260,11 +260,11 @@ test('LA to San Diego passes the primary gate and stays off the public lists', a
     title: 'LA to San Diego',
     highway: 'I-5',
     miles: 116,
-    status: 'verifying',
+    status: 'live',
   });
   assert.equal(primaryPublishBlock(routeData), null);
   assert.equal(exportStatus('live', routeData), 'live');
-  assert.equal(exportStatus(meta.status, routeData), 'verifying');
+  assert.equal(exportStatus(meta.status, routeData), 'live');
 
   assert.equal(routeData.stops.length, 5);
   for (const stop of routeData.stops) {
@@ -276,10 +276,10 @@ test('LA to San Diego passes the primary gate and stays off the public lists', a
 
   const guides = await liveBuiltGuides();
   const index = await liveBuiltGuideIndex();
-  assert.equal(guides.some((guide) => guide.slug === 'la-to-san-diego'), false);
-  assert.equal(index.some((guide) => guide.slug === 'la-to-san-diego'), false);
+  assert.equal(guides.some((guide) => guide.slug === 'la-to-san-diego'), true);
+  assert.equal(index.some((guide) => guide.slug === 'la-to-san-diego'), true);
   const xml = buildSitemapXml(guidesForSitemap(guides, []));
-  assert.equal(xml.includes('la-to-san-diego'), false);
+  assert.equal(xml.includes('la-to-san-diego'), true);
 
   const files = await readdir(new URL('../src/data/routes/', import.meta.url));
   const routeBySlug = {};
@@ -288,7 +288,7 @@ test('LA to San Diego passes the primary gate and stays off the public lists', a
     routeBySlug[data.slug] = data;
   }
   const home = visibleHomeRoutes(list, routeBySlug);
-  assert.equal(home.some((route) => route.slug === 'la-to-san-diego'), false);
+  assert.equal(home.some((route) => route.slug === 'la-to-san-diego'), true);
 
   const html = guideMain(routeData);
   assert.match(html, /id="stop-anaheim"/);

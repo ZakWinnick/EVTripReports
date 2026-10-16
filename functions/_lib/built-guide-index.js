@@ -56,5 +56,21 @@ export default [
     "start": "I-95 at the Capital Beltway",
     "end": "George Washington Bridge",
     "miles": "223"
+  },
+  {
+    "slug": "las-vegas-to-salt-lake-city",
+    "title": "Las Vegas to Salt Lake City",
+    "highway": "I-15",
+    "start": "Tropicana Ave on-ramp, Las Vegas",
+    "end": "600 South, Salt Lake City",
+    "miles": "423"
+  },
+  {
+    "slug": "la-to-san-diego",
+    "title": "LA to San Diego",
+    "highway": "I-5",
+    "start": "East LA Interchange",
+    "end": "Front Street, downtown San Diego",
+    "miles": "116"
   }
 ];

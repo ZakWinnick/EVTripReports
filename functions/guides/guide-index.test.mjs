@@ -168,7 +168,7 @@ test('built guide index matches the publish gate', async () => {
   );
   assert.deepEqual(
     index.map((guide) => guide.slug),
-    ['la-to-las-vegas', 'la-to-sf', 'sf-to-tahoe', 'la-to-phoenix', 'seattle-to-portland', 'nyc-to-boston', 'dc-to-nyc'],
+    ['la-to-las-vegas', 'la-to-sf', 'sf-to-tahoe', 'la-to-phoenix', 'seattle-to-portland', 'nyc-to-boston', 'dc-to-nyc', 'las-vegas-to-salt-lake-city', 'la-to-san-diego'],
   );
   const vegas = index.find((guide) => guide.slug === 'la-to-las-vegas');
   assert.equal(vegas.title, 'LA to Las Vegas');
