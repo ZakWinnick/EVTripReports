@@ -80,10 +80,10 @@
       "url": "https://www.reddit.com/r/EdgewaterRogersPark/comments/1iq40ey/macys_old_orchard_now_open_without_running_water/"
     },
     "meijer": {
-      "name": "Meijer (corporate / PR Newswire store amenities)",
+      "name": "Meijer (PR Newswire release on two new Ohio supercenters, not the Oak Creek store)",
       "url": "https://www.prnewswire.com/news-releases/meijer-opens-new-supercenters-in-warren-and-wooster-today-301826245.html"
     },
-    "refuge-fiveguys-oakcreek": {
+    "forum-refuge-fiveguys-oakcreek": {
       "name": "REFUGE Restrooms: Five Guys at Town Square Way, Oak Creek (plaza corroboration, not Meijer)",
       "url": "https://www.refugerestrooms.org/restrooms/50610"
     },
@@ -668,21 +668,6 @@
           ],
           "driverReports": [],
           "checkedOn": "2026-10-16"
-        },
-        {
-          "name": "Meijer 283 (Oak Creek, WI)",
-          "network": "Electrify America",
-          "address": "171 W Town Square Way, Oak Creek, WI 53154",
-          "facts": "EA's locator lists 6 chargers, CCS at 150 kW on all 6. DOE lists the same port count. Meijer Oak Creek, about 23 miles past Kenosha. EA lists 6 chargers at 150 kW on the locator page (API also showed 300 kW; page figure used).",
-          "access": "Open to all CCS EVs. NACS cars need an adapter.",
-          "status": "verified",
-          "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/wi/oak-creek/171-w-town-square-way/216021/",
-          "afdcIds": [
-            279341
-          ],
-          "driverReports": [],
-          "checkedOn": "2026-10-16"
         }
       ],
       "other": [
@@ -810,7 +795,7 @@
       "towns": "Oak Creek, WI",
       "mile": 77,
       "milepostNote": "Measured along OSRM's route from the start: about 76.7 miles driving to the Meijer lot (estimate; prior McDonald's Layton primary was 81.6). Northbound leave I-94 toward Oak Creek / Town Square Way. OSRM ends downtown about 10 miles past this stop.",
-      "why": "Electrify America at Meijer Oak Creek has 6 chargers at 150 kW on EA's locator, a supermarket host with sourced restrooms, about 5 miles before the old Layton EVgo stop. McDonald's Layton EVgo (350 kW with NACS) stays as the strong backup.",
+      "why": "Electrify America at Meijer Oak Creek has 6 chargers at 150 kW on EA's locator, about 5 miles before the old Layton EVgo stop. Restrooms at this stop are Not yet verified. McDonald's Layton EVgo (350 kW with NACS) stays as the strong backup.",
       "primary": {
         "name": "Meijer 283 (Oak Creek, WI)",
         "network": "Electrify America",
@@ -936,22 +921,20 @@
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Restrooms, host-sourced (chain): Meijer's May 16, 2023 PR Newswire release on new supercenters describes family restrooms with changing tables as part of Meijer store amenities (\"height-adjustable changing tables in the family restrooms\"). Meijer is a supermarket host. This is a corporate host statement about Meijer stores, not the Oak Creek store page (meijer.com store pages were blocked 403 on 2026-10-16).",
-          "category": "restroom",
+          "text": "Restrooms: Not yet verified for Meijer Oak Creek. Meijer's May 16, 2023 PR Newswire release about its new Warren and Wooster, Ohio supercenters mentions family restrooms with height-adjustable changing tables at those two stores only. It does not name the Oak Creek store, so it is not a source for this stop. meijer.com store pages were blocked (403) on 2026-10-16.",
           "source": "meijer",
           "url": "https://www.prnewswire.com/news-releases/meijer-opens-new-supercenters-in-warren-and-wooster-today-301826245.html",
-          "checkedOn": "2026-10-16",
-          "site": "Meijer 283 (Oak Creek, WI)"
+          "checkedOn": "2026-10-16"
         },
         {
           "text": "Plaza corroboration only (not Meijer): REFUGE lists restrooms at Five Guys, 160 W Town Square Way, Oak Creek, created 2019-06-23 (\"Two single, locking bathrooms... clean and well stocked\"). Same Town Square Way plaza as Meijer. Do not cite as a Meijer fact.",
           "category": "food",
-          "source": "refuge-fiveguys-oakcreek",
+          "source": "forum-refuge-fiveguys-oakcreek",
           "url": "https://www.refugerestrooms.org/restrooms/50610",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Charger hours: DOE lists the Meijer Oak Creek EA site (AFDC 279341) in the corridor pull; EA locator shows the site. Confirm access_days_time on publish. Checked 2026-10-16.",
+          "text": "Charger hours: DOE lists this site (AFDC 279341) open 24 hours daily (last confirmed 2026-10-16). Host store hours: Not yet verified.",
           "source": "afdc",
           "url": "https://afdc.energy.gov/stations/#/station/279341",
           "checkedOn": "2026-10-16"
