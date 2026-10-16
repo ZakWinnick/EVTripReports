@@ -103,6 +103,10 @@
     "simon-jersey-gardens-hours": {
       "name": "Simon, The Mills at Jersey Gardens Hours",
       "url": "https://www.simon.com/mall/the-mills-at-jersey-gardens/hours"
+    },
+    "usps-zip": {
+      "name": "USPS ZIP Code lookup by address",
+      "url": "https://tools.usps.com/zip-code-lookup.htm?byaddress"
     }
   },
   "stops": [
@@ -940,11 +944,11 @@
       "towns": "Moorestown, Mount Laurel, Cherry Hill, Somerdale, and Deptford, NJ",
       "mile": 134,
       "milepostNote": "Measured along OSRM's route from the start: 133.9 miles. The site is about 0.8 mile from that route line. Exit confirmed 2026-10-15: OSRM leaves the Turnpike on the ramp signed NJ 73, Mount Laurel, Camden, which is NJ Turnpike interchange 4 at milepost 34.5. NJTA's camera list names the NJ 73 interchange in Mount Laurel Twp. From the ramp OSRM drives about 1.4 miles on NJ 73 North and Collins Road to Nixon Drive. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-74.96451,39.93898 . NJTA: https://www.njta.gov/travel-resources/camera-list/ . Wikipedia: https://en.wikipedia.org/wiki/New_Jersey_Turnpike",
-      "why": "ShopRite's Electrify America site in Moorestown is 6 stalls at 350 kW. Marlton Commons and the Somerdale Walmart are verified backups on Electrify America. The Applegreen plazas on the NJ Turnpike at Walt Whitman and James Fenimore Cooper are listed from DOE and Applegreen's map and are not verified. EA's own site description says the site is being brought back online, so confirm in the EA app before you rely on it.",
+      "why": "ShopRite's Electrify America site on Nixon Drive is 6 stalls at 350 kW. EA lists it as Moorestown; USPS and the county put it in Mount Laurel. Marlton Commons and the Somerdale Walmart are verified backups on Electrify America. The Applegreen plazas on the NJ Turnpike at Walt Whitman and James Fenimore Cooper are listed from DOE and Applegreen's map and are not verified. EA's own site description still says the site is being brought back online, though a PlugShare driver logged a 154 kW session there on Oct 10, 2026. That is a driver report, so confirm in the EA app before you rely on it.",
       "primary": {
         "name": "Wakefern Shoprite 594 (Moorestown, NJ)",
         "network": "Electrify America",
-        "address": "1000 Nixon Dr, Moorestown, NJ 08057",
+        "address": "1000 Nixon Dr, Mount Laurel, NJ 08054",
         "exit": "Exit 4, NJ 73 (Mount Laurel, Camden)",
         "stalls": {
           "value": "6",
@@ -972,6 +976,36 @@
           418044
         ],
         "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/741932",
+            "date": "2026-10-10",
+            "summary": "Successful check-in, 2023 Ioniq 5, 154 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/741932",
+            "date": "2026-09-05",
+            "summary": "Problem check-in, 2022 Bolt EUV. No comment, so the problem is not described."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/741932",
+            "date": "2026-08-30",
+            "summary": "Successful check-in, Bolt EUV. Notes there are two ShopRites in Mt Laurel: this one is Electrify America, the other is EVgo."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/741932",
+            "date": "2026-08-28",
+            "summary": "Successful check-in, EV9, 214 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/741932",
+            "date": "2026-08-22",
+            "summary": "Successful check-in, EV9, 180 kW. Driver called it a good place to stop with no issues charging."
+          },
           {
             "source": "reddit",
             "url": "https://www.reddit.com/r/electricvehicles/comments/1s3o9jr/east_coast_ev_ownership_and_road_trips/ocnhosw/",
@@ -1466,10 +1500,17 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "Electrify America's public locator API and site page both still say \"We are currently working to bring the site back online\" while listing six 350 kW CCS chargers and status AVAILABLE (locator page rechecked 2026-10-15; api-prod.electrifyamerica.com location 240371 rechecked 2026-10-15 and 2026-10-16). DOE lists the site as available with 6 DC ports, last confirmed 2026-10-16, but EA's own note has not changed, so treat status as Not yet verified. No dated driver report after 2026-10-01 was found (X search returned 0 again on 2026-10-16; PlugShare blocked automated reads; Leasehackr had no hits). Check the EA app for live status before you plan around Moorestown. The Marlton Commons and Somerdale backups are the fallback.",
+          "text": "Electrify America's public locator API and site page still say \"We are currently working to bring the site back online\" while listing six 350 kW CCS chargers and status AVAILABLE (locator page rechecked 2026-10-15; api-prod.electrifyamerica.com location 240371 rechecked 2026-10-15 and 2026-10-16). DOE lists the site as available with 6 DC ports, last confirmed 2026-10-16. Driver report: a PlugShare check-in dated 2026-10-10 logged a successful session at 154 kW (2023 Ioniq 5), and 4 of the 5 most recent PlugShare check-ins, 2026-08-22 to 2026-10-10, were successful; the 2026-09-05 check-in reported a problem without details (PlugShare location 741932, read 2026-10-16). That points to the site charging cars on Oct 10, but it is a driver report, not network verification, and EA's own note has not changed, so status stays Not yet verified. Check the EA app for live status before you plan around Moorestown. The Marlton Commons and Somerdale backups are the fallback.",
           "category": "status",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Address: USPS lists 1000 Nixon Dr, Mount Laurel, NJ 08054 as the deliverable address, and the Burlington County parcel (Block 1200.01, Lot 1, 1000-1240 Nixon Dr) is in Mount Laurel Township (checked 2026-10-16). EA and DOE list the site as Moorestown, NJ 08057, so search Moorestown in the EA app.",
+          "category": "site",
+          "source": "usps-zip",
+          "url": "https://tools.usps.com/zip-code-lookup.htm?byaddress",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -2950,7 +2991,7 @@
       "source": "ea-locator"
     },
     {
-      "text": "Moorestown: EA's locator description says \"We are currently working to bring the site back online\" while the status field reads AVAILABLE. Not resolved as of 2026-10-15. The route stays verifying.",
+      "text": "Moorestown: EA's locator description says \"We are currently working to bring the site back online\" while the status field reads AVAILABLE. Not resolved by EA as of 2026-10-16. A PlugShare driver report logged a successful 154 kW session on 2026-10-10; that is a driver report, not a network check. The route stays verifying.",
       "source": "ea-locator"
     }
   ],

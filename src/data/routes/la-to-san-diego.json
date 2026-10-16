@@ -82,6 +82,14 @@
     "irvine-spectrum-services": {
       "name": "Irvine Spectrum Center services",
       "url": "https://www.irvinespectrumcenter.com/guest-services/services"
+    },
+    "plugshare-186198": {
+      "name": "PlugShare location 186198, Walmart 2242 (Anaheim, CA) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/186198"
+    },
+    "plugshare-347586": {
+      "name": "PlugShare location 347586, Walmart 2494 (Oceanside, CA) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/347586"
     }
   },
   "stops": [
@@ -122,7 +130,38 @@
         "afdcIds": [
           155557
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186198",
+            "date": "2026-09-19",
+            "summary": "Successful check-in, Ioniq 5, 178 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186198",
+            "date": "2026-09-10",
+            "summary": "Successful check-in, Ioniq 6: \"Station 4 started smoothly.\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186198",
+            "date": "2026-07-26",
+            "summary": "Successful check-in, Solterra, 91 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186198",
+            "date": "2026-07-21",
+            "summary": "Successful check-in. No car, kW, or comment listed."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/186198",
+            "date": "2026-07-14",
+            "summary": "Successful check-in, BMW i4. No kW or comment listed."
+          }
+        ],
         "checkedOn": "2026-10-16",
         "source": "ea-locator"
       },
@@ -418,6 +457,13 @@
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/anaheim/440-n-euclid-st/100038/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "PlugShare users list grocery, dining, shopping, and restrooms as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-186198",
+          "url": "https://www.plugshare.com/location/186198",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -1093,6 +1139,36 @@
         ],
         "driverReports": [
           {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/347586",
+            "date": "2026-09-25",
+            "summary": "Successful check-in, Lucid Air, 125 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/347586",
+            "date": "2026-09-12",
+            "summary": "Successful check-in, Toyota C-HR, 139 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/347586",
+            "date": "2026-08-23",
+            "summary": "Successful check-in, Bolt EV, 53 kW. Driver noted 63 cents per kWh."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/347586",
+            "date": "2026-08-21",
+            "summary": "Successful check-in, Ioniq 5, 243 kW: \"Difficult to back in due to parking lot traffic.\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/347586",
+            "date": "2026-08-18",
+            "summary": "Successful check-in, BMW i3, 47 kW. Charger 03 would not connect; charger 04 worked."
+          },
+          {
             "source": "reddit",
             "url": "https://www.reddit.com/r/lyftdrivers/comments/1ka3kgn/i_need_help_please/mpk9e0o/",
             "date": "2025-04-28",
@@ -1263,6 +1339,13 @@
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/oceanside/2100-vista-way/100041/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "PlugShare users list restrooms, shopping, grocery, and dining as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-347586",
+          "url": "https://www.plugshare.com/location/347586",
           "checkedOn": "2026-10-16"
         }
       ],
