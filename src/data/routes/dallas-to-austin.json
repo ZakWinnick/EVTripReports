@@ -1,0 +1,1113 @@
+{
+  "slug": "dallas-to-austin",
+  "title": "Dallas to Austin",
+  "highway": "I-35",
+  "direction": "southbound",
+  "summary": "I-35E and I-35 from downtown Dallas to 12th Street in Austin, through Hillsboro, Waco, Temple and Round Rock. Primaries mix IONNA, Tesla (open where Find Us confirms), and Electrify America sites with 6 to 10 chargers at 350 kW on EA's locator. Tesla sites carry a Tesla only or open to all EVs flag only where Tesla's locator was readable.",
+  "checked": "2026-10-16",
+  "startLabel": "I-35E at South R.L. Thornton Freeway, Dallas",
+  "startNote": "Mileage starts where southbound traffic is on I-35E at the South R.L. Thornton Freeway near downtown Dallas (OSRM point -96.806249, 32.765412) and ends at the I-35 off-ramp to East 12th Street in Austin (-97.731208, 30.275783). The 192.29 miles is OSRM's driving distance between those two points, shown as 192. Stop miles are each site's nearest point on that route. Wikipedia exit mileposts on I-35E and I-35 are cited for exit numbers.",
+  "originLegs": [
+    {
+      "start": "Dallas",
+      "miles": 1.06,
+      "source": "osrm",
+      "url": "https://router.project-osrm.org/route/v1/driving/-96.7970,32.7767;-96.806249,32.765412",
+      "checkedOn": "2026-10-16",
+      "estimate": true,
+      "note": "Estimate. Driving distance from Dallas City Hall area to I-35E at the South R.L. Thornton Freeway start point."
+    }
+  ],
+  "endLabel": "East 12th Street, downtown Austin",
+  "stats": [
+    {
+      "label": "Dallas I-35E to Austin 12th Street",
+      "value": "192",
+      "unit": "mi",
+      "source": "osrm",
+      "note": "OSRM driving distance on I-35E/I-35, 192.29 miles, checked 2026-10-16."
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "55",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "14",
+      "unit": ""
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
+    },
+    "ionna": {
+      "name": "IONNA Rechargery locator",
+      "url": "https://www.ionna.com/rechargeries/find-a-rechargery/"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
+    },
+    "wiki-i35-tx": {
+      "name": "Interstate 35 in Texas, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_35_in_Texas"
+    },
+    "wiki-i35e-tx": {
+      "name": "Interstate 35E (Texas), exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_35E_(Texas)"
+    }
+  },
+  "stops": [
+    {
+      "id": "dallas",
+      "name": "Dallas",
+      "towns": "Dallas, TX",
+      "mile": 2,
+      "milepostNote": "Measured along OSRM's route from the start: 2.2 miles. The site is about 0.2 mile from that route line. OSRM's southbound route leaves I-35E at exit 425B, Beckley Avenue / 12th Street, about 0.5 mile from the site.",
+      "why": "IONNA's Rechargery Relay on West 12th Street has 8 chargers (6 CCS, 2 NACS) at up to 400 kW, confirmed on IONNA's own page, with restrooms listed. It suits a car that leaves Dallas low. EVgo at Wynnewood Village and the open Tesla site at Fuel City are the verified backups.",
+      "primary": {
+        "name": "Dallas, TX Rechargery Relay - W 12th St",
+        "network": "IONNA",
+        "address": "238 W 12th St, Dallas, TX 75203",
+        "exit": "Exit 425B, Beckley Avenue / 12th Street",
+        "stalls": {
+          "value": "8 chargers (6 CCS, 2 NACS)",
+          "status": "verified",
+          "source": "ionna",
+          "url": "https://www.ionna.com/rechargery/dallas-tx-rechargery-relay-w-12th-st/"
+        },
+        "power": {
+          "value": "Up to 400 kW, CCS and NACS",
+          "status": "verified",
+          "source": "ionna",
+          "url": "https://www.ionna.com/rechargery/dallas-tx-rechargery-relay-w-12th-st/"
+        },
+        "access": {
+          "value": "Open to all EVs. CCS and NACS on site.",
+          "status": "verified",
+          "source": "ionna"
+        },
+        "price": {
+          "value": "$0.20/kWh Plus Tax on IONNA's page, checked 2026-10-16.",
+          "status": "verified",
+          "source": "ionna",
+          "url": "https://www.ionna.com/rechargery/dallas-tx-rechargery-relay-w-12th-st/"
+        },
+        "afdcIds": [
+          471298
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/NissanAriya/comments/1b5osxf/range_rant/kta3dy7/",
+            "date": "2024-03-04",
+            "summary": "Ariya Engage driver on a Dallas to Austin trip: topped up at an EVgo south of Dallas (about DeSoto), charged at the Waco EA to about 95%, then topped at an EVgo near Pflugerville before downtown Austin. On a later run charged only once at EA Waco."
+          }
+        ],
+        "checkedOn": "2026-10-16",
+        "source": "ionna"
+      },
+      "backups": [
+        {
+          "name": "Wynnewood Village",
+          "network": "EVgo",
+          "address": "655 W Illinois Ave, Dallas, TX 75224",
+          "facts": "EVgo's locator lists 3 chargers with dual CCS cables at 350 kW each (6 CCS cables, simultaneous). DOE lists 6 DC ports. The network cable count matches DOE's port count.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter unless a NACS cable is listed.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/tx/dallas/89042/",
+          "afdcIds": [
+            451725
+          ],
+          "driverReports": [
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/NissanAriya/comments/1b5osxf/range_rant/kta3dy7/",
+              "date": "2024-03-04",
+              "summary": "Ariya Engage driver on a Dallas to Austin trip: topped up at an EVgo south of Dallas (about DeSoto), charged at the Waco EA to about 95%, then topped at an EVgo near Pflugerville before downtown Austin. On a later run charged only once at EA Waco."
+            }
+          ],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Dallas, TX - South Riverfront Boulevard - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "801 S Riverfront Blvd Dallas, TX 75207",
+          "facts": "Tesla Find Us confirms 34 Superchargers at 801 S Riverfront Blvd Dallas, TX 75207. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (34 NACS at up to 325 kW); Tesla's page did not show them. About 2 miles north, at Fuel City on South Riverfront Boulevard.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/DallasTXCentralQ322",
+          "afdcIds": [
+            227379
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Whataburger-Exxon, 3799 N Houston School Rd, Lancaster",
+          "facts": "DOE lists 4 CHAdeMO at 100 kW, 2 CCS at 350 kW, 2 CCS at 100 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            373021
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cracker Barrel, 1421 N Interstate 35 E, Desoto",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            228191
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "IONNA's page lists restrooms at this Rechargery Relay. Price was $0.20/kWh plus tax on 2026-10-16.",
+          "source": "ionna",
+          "url": "https://www.ionna.com/rechargery/dallas-tx-rechargery-relay-w-12th-st/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Host hours and food at nearby shops: Not yet verified.",
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Dallas south I-35E",
+          "lat": 32.741,
+          "lng": -96.826,
+          "radius": 4
+        }
+      ]
+    },
+    {
+      "id": "hillsboro",
+      "name": "Hillsboro",
+      "towns": "Hillsboro, TX",
+      "mile": 57,
+      "milepostNote": "Measured along OSRM's route from the start: 56.9 miles. The site is about 0.1 mile from that route line. Southbound leave I-35 at exit 370, US 77 / Spur 579.",
+      "why": "Tesla Find Us lists this site open to non-Tesla EVs with a NACS adapter, 24 stalls on DOE, right at the I-35 / US 77 interchange. Mid-corridor stop before Waco. The Italy Love's Tesla site, about 16 miles back, is Tesla only per Find Us.",
+      "primary": {
+        "name": "Hillsboro, TX - Tesla Supercharger",
+        "network": "Tesla Supercharger",
+        "address": "165 Hwy-77 Hillsboro, TX 76645",
+        "exit": "Exit 370, US 77 / Spur 579",
+        "stalls": {
+          "value": "24 stalls",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/32743"
+        },
+        "power": {
+          "value": "Up to 325 kW",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/32743"
+        },
+        "access": {
+          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "status": "verified",
+          "source": "tesla-findus"
+        },
+        "teslaAccess": "open",
+        "price": {
+          "value": "Non-Tesla pricing is shown in the Tesla app and can change by time of day.",
+          "status": "unpublished",
+          "source": "tesla-findus"
+        },
+        "afdcIds": [
+          447388
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "tesla-findus"
+      },
+      "backups": [
+        {
+          "name": "Italy, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "1021 Dale Evans Drive Italy, TX 76651",
+          "facts": "Tesla Find Us confirms 10 Superchargers up to 150 kW at 1021 Dale Evans Drive Italy, TX 76651. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. About 16 miles before Hillsboro, at Love's on Dale Evans Drive.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/italytexassupercharger",
+          "afdcIds": [
+            102437
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Bucees Hillsboro MB.HPC, 165 State Highway 77, Hillsboro",
+          "facts": "DOE lists 10 CCS at 400 kW, 10 NACS at 400 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            458980
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "TA State Highway 77, Hillsboro, TX, 160 State Highway 77, Hillsboro",
+          "facts": "DOE lists 4 CCS at 400 kW, 8 NACS at 400 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            453481
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Abbott, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "I-35, Abbott, TX 76621",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at up to 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/abbotttxsupercharger",
+          "afdcIds": [
+            201925
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Bucees Hillsboro MB.HPC, 165 State Highway 77, Hillsboro",
+          "facts": "DOE lists 10 CCS at 400 kW, 10 NACS at 400 kW. At the Buc-ee's / TA cluster next to the Supercharger. Not checked on the operator's locator. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            458980
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "TA State Highway 77, Hillsboro, TX, 160 State Highway 77, Hillsboro",
+          "facts": "DOE lists 4 CCS at 400 kW, 8 NACS at 400 kW. At the Buc-ee's / TA cluster next to the Supercharger. Not checked on the operator's locator. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            453481
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "Buc-ee's Hillsboro sits next to this Supercharger cluster. Host hours and restrooms: Not yet verified on a host page (buc-ees.com location page 404'd on 2026-10-16).",
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Hillsboro",
+          "lat": 32.011,
+          "lng": -97.13,
+          "radius": 4
+        }
+      ]
+    },
+    {
+      "id": "waco",
+      "name": "Waco",
+      "towns": "Bellmead and Waco, TX",
+      "mile": 89,
+      "milepostNote": "Measured along OSRM's route from the start: 88.8 miles. The site is about 0.2 mile from that route line. Southbound leave I-35 at exit 338A, US 84 (Waco Drive / Bellmead Drive).",
+      "why": "Electrify America at Walmart 1254 has 6 chargers at 350 kW, confirmed on EA's locator. Midpoint of the corridor and the CCS stop Dallas to Austin drivers keep naming. IONNA at Casey's on Bagby Avenue and the Lorena Tesla site (open) are the strongest backups.",
+      "primary": {
+        "name": "Walmart 1254 (Bellmead, TX)",
+        "network": "Electrify America",
+        "address": "1521 N Interstate 35 Frontage Rd, Bellmead, TX 76705",
+        "exit": "Exit 338A, US 84 (Waco Drive / Bellmead Drive)",
+        "stalls": {
+          "value": "6 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/bellmead/1521-n-interstate-35-frontage-rd/100164/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/bellmead/1521-n-interstate-35-frontage-rd/100164/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          122241
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/NissanAriya/comments/1b5osxf/range_rant/kta3dy7/",
+            "date": "2024-03-04",
+            "summary": "Ariya Engage driver on a Dallas to Austin trip: topped up at an EVgo south of Dallas (about DeSoto), charged at the Waco EA to about 95%, then topped at an EVgo near Pflugerville before downtown Austin. On a later run charged only once at EA Waco."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/etron/comments/1akcjx5/what_range_is_your_2021_etron_getting_both_at_80/kp6ylvw/",
+            "date": "2024-02-06",
+            "summary": "e-tron driver: drove Dallas to Austin and stopped in Waco to charge at Electrify America."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1cqfu4g/mercedes_chargepoint_bucees_temple_tx/l3t0c9y/",
+            "date": "2024-05-13",
+            "summary": "Driver comparing Mercedes charging at Buc-ee's Temple with the Electrify America site in Waco (Beaver Nuggets joke). Confirms both stops are in the active driver conversation for this corridor."
+          }
+        ],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Waco, TX Rechargery @ Casey's - Bagby Ave",
+          "network": "IONNA",
+          "address": "6201 Bagby Ave, Waco, TX 76712",
+          "facts": "IONNA's locator lists 10 chargers (6 CCS, 4 NACS) at up to 400 kW. Price $0.39/kWh Plus Tax. Amenities: Casey's Pizza, Market, Restrooms. DOE lists the same port count. About 8.5 miles past the Walmart EA, west of I-35 on Bagby Avenue at Casey's.",
+          "access": "Open to all EVs. CCS and NACS on site.",
+          "status": "verified",
+          "source": "ionna",
+          "url": "https://www.ionna.com/rechargery/waco-currently-cefco/",
+          "afdcIds": [
+            448531
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Waco, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "701 N I-35 Bellmead, TX 76705-2894",
+          "facts": "Tesla Find Us confirms 22 Superchargers up to 250 kW at 701 N I-35 Bellmead, TX 76705-2894. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. About 1.4 miles south of the Walmart, at Collin Street Bakery on N I-35.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/wacotxsupercharger",
+          "afdcIds": [
+            102425
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Lorena, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "12016 I-35 Lorena, TX 76655",
+          "facts": "Tesla Find Us confirms 20 Superchargers at 12016 I-35 Lorena, TX 76655. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (20 NACS at up to 325 kW); Tesla's page did not show them. About 15.6 miles past Bellmead, open to non-Tesla EVs per Find Us.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/32724",
+          "afdcIds": [
+            371844
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Waco, TX",
+          "network": "Rivian Adventure Network",
+          "address": "1821 S Valley Mills Dr., Waco, TX 76711",
+          "facts": "DOE lists 6 DC ports at 1821 S Valley Mills Dr. Rivian's charging map was not re-fetched for stall and kW detail on 2026-10-16; treat DOE as the lead until the Rivian map is checked.",
+          "access": "DOE lists it as public. Open to non-Rivian EVs is Not yet verified on Rivian's map this pass.",
+          "status": "unverified",
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations/#/station/445830",
+          "afdcIds": [
+            445830
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Baylor University, 901 S University Parks Dr, Waco",
+          "facts": "DOE lists 2 CCS at 240 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            356172
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "University Kia, 2718 La Salle Ave, Waco",
+          "facts": "DOE lists 1 CCS at 24 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            256119
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Waco Hyundai, 4200 South Jack Kultgen Expressway, Waco",
+          "facts": "DOE lists 2 CCS at 120 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            460821
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Hewitt, TX Rechargery Relay @ Circle K - Spring Valley, 720 Spring Valley, Hewitt",
+          "facts": "DOE lists 3 CCS at 400 kW, 1 NACS at 400 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            466789
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's locator: chargers are in the Walmart parking lot close to the Pickup area. Walmart store hours and restrooms: Not yet verified (walmart.com returned a bot check on 2026-10-16).",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/bellmead/1521-n-interstate-35-frontage-rd/100164/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "IONNA Casey's backup lists Casey's Pizza, market, and restrooms on IONNA's page.",
+          "source": "ionna",
+          "url": "https://www.ionna.com/rechargery/waco-currently-cefco/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Bellmead",
+          "lat": 31.595,
+          "lng": -97.108,
+          "radius": 5
+        },
+        {
+          "name": "Waco",
+          "lat": 31.549,
+          "lng": -97.146,
+          "radius": 6
+        }
+      ]
+    },
+    {
+      "id": "temple",
+      "name": "Temple",
+      "towns": "Temple, TX",
+      "mile": 124,
+      "milepostNote": "Measured along OSRM's route from the start: 123.7 miles. The site is about 0.1 mile from that route line. Southbound use the General Bruce Drive frontage near exit 299 (US 190 / Loop 363).",
+      "why": "Tesla Find Us lists 68 Superchargers up to 325 kW, open to non-Tesla EVs with a NACS adapter. It is the only large DC site in the Bellmead to Round Rock gap on this corridor. Leave Waco with enough charge if you are skipping it in a non-Tesla without a NACS adapter.",
+      "primary": {
+        "name": "Temple, TX - Tesla Supercharger",
+        "network": "Tesla Supercharger",
+        "address": "4155 N General Bruce Dr Temple, TX 76501",
+        "exit": "Exit 299, Future I-14 / US 190 / Loop 363 (General Bruce Drive frontage)",
+        "stalls": {
+          "value": "68 stalls",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/19206"
+        },
+        "power": {
+          "value": "Up to 325 kW",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/19206"
+        },
+        "access": {
+          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "status": "verified",
+          "source": "tesla-findus"
+        },
+        "teslaAccess": "open",
+        "price": {
+          "value": "Non-Tesla pricing is shown in the Tesla app and can change by time of day.",
+          "status": "unpublished",
+          "source": "tesla-findus"
+        },
+        "afdcIds": [
+          253761
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "tesla-findus"
+      },
+      "backups": [
+        {
+          "name": "Lorena, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "12016 I-35 Lorena, TX 76655",
+          "facts": "Tesla Find Us confirms 20 Superchargers at 12016 I-35 Lorena, TX 76655. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (20 NACS at up to 325 kW); Tesla's page did not show them. About 19 miles before Temple, open to non-Tesla EVs per Find Us.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/32724",
+          "afdcIds": [
+            371844
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Jarrell, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "11810 I-35, Jarrell, TX 76537",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at up to 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16. About 29 miles past Temple toward Round Rock.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/32760",
+          "afdcIds": [
+            262352
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [],
+      "reports": [],
+      "around": [
+        {
+          "text": "Temple's Supercharger is on N General Bruce Drive, the I-35 frontage. Food and restrooms nearby: Not yet verified on a host page this pass.",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/19206",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Temple",
+          "lat": 31.098,
+          "lng": -97.388,
+          "radius": 5
+        }
+      ]
+    },
+    {
+      "id": "round-rock",
+      "name": "Round Rock",
+      "towns": "Round Rock and Georgetown, TX",
+      "mile": 171,
+      "milepostNote": "Measured along OSRM's route from the start: 171.0 miles. The site is about 0.2 mile from that route line. Southbound leave I-35 near exits 253 to 254 (US 79 / Old Settlers Boulevard).",
+      "why": "Electrify America at Round Rock Premium Outlets has 10 chargers at 350 kW, confirmed on EA's locator. Last big CCS stop before Austin. The University Commons Tesla site next door is open to non-Tesla EVs.",
+      "primary": {
+        "name": "Round Rock Premium Outlets (Round Rock, TX)",
+        "network": "Electrify America",
+        "address": "4401 N. I-35, Round Rock, TX 78664",
+        "exit": "Exit 253, US 79 (Palm Valley Boulevard) / exit 254 Old Settlers Boulevard",
+        "stalls": {
+          "value": "10 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/round-rock/4401-n-i-35/100165/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/round-rock/4401-n-i-35/100165/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          121841
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/NissanAriya/comments/1b5osxf/range_rant/kta3dy7/",
+            "date": "2024-03-04",
+            "summary": "Ariya Engage driver on a Dallas to Austin trip: topped up at an EVgo south of Dallas (about DeSoto), charged at the Waco EA to about 95%, then topped at an EVgo near Pflugerville before downtown Austin. On a later run charged only once at EA Waco."
+          }
+        ],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "University Commons - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "200 University Blvd Round Rock, TX 78665",
+          "facts": "Tesla Find Us confirms 20 Superchargers at 200 University Blvd Round Rock, TX 78665. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (20 NACS at up to 325 kW); Tesla's page did not show them. Next to the outlets cluster, University Commons, open to non-Tesla EVs per Find Us.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/58802",
+          "afdcIds": [
+            457046
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Simon Lakeline Mall (Cedar Park, TX)",
+          "network": "Electrify America",
+          "address": "11200 Lakeline Mall Dr, Cedar Park, TX 78613",
+          "facts": "EA's locator lists 6 chargers, CCS at 350 kW on all 6. DOE lists the same port count. About 7.5 miles west of I-35 at Lakeline Mall in Cedar Park. Out of the way, but a verified EA backup.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/cedar-park/11200-lakeline-mall-dr/220028/",
+          "afdcIds": [
+            438005
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Round Rock, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "110 North Interstate Highway 35 Round Rock, TX 78681",
+          "facts": "Tesla Find Us confirms 16 Superchargers up to 250 kW at 110 North Interstate Highway 35 Round Rock, TX 78681. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. About 4 miles south of the outlets on N IH-35. Tesla only per Find Us.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/RoundRockTXSupercharger",
+          "afdcIds": [
+            200615
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "TXB #65 STATION 1, 1402 Williams Dr, Georgetown",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            194112
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "TXB #65 STATION 2, 1402 Williams Dr, Georgetown",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            194113
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Georgetown, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "1015 W University Ave Georgetown, TX 78628",
+          "facts": "Tesla Find Us confirms 16 Superchargers up to 250 kW at 1015 W University Ave Georgetown, TX 78628. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/11753",
+          "afdcIds": [
+            259733
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Mac Haik Georgetown Ford, 7201 I-35 N Frontage Rd, Georgetown",
+          "facts": "DOE lists 4 CCS at 180 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            456550
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mercedes-Benz - Georgetown, 7401 S I-35 Frontage Rd, Georgetown",
+          "facts": "DOE lists 3 CCS at 62.5 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            224150
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Round Rock Premium Outlets MB.HPC, 4401 I 35 N Frontage Rd., Round Rock",
+          "facts": "DOE lists 10 CCS at 400 kW, 10 NACS at 400 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            395341
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ROUND ROCK HYUN INVENTORY, 2405 North Interstate Highway 35, Round Rock",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            331565
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ROUND ROCK HYUN NEW CAR DELIVER, 2307 I 35 N Frontage Rd, Round Rock",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            331018
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "244 GRR-DCFRONT2, 2201 N Mays St, Round Rock",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            351979
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "244 GRR-DCFRONT1, 2201 N Mays St, Round Rock",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            351980
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "244 GRR-DCINVENTORY, 2201 North Mays Street, Round Rock",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            352017
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Wingate Round Rock, 1209 I 35 N Frontage Rd, Round Rock",
+          "facts": "DOE lists 4 CCS at 150 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            429830
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's locator: chargers sit in the middle of the Round Rock Premium Outlets lot, near N Interstate 35 Frontage Road. Center-wide hours were not readable on premiumoutlets.com (bot check). Individual Nike Factory Store hours on Premium Outlets pages (web search lead) match Mon-Sat 10am to 8 or 9pm and Sun 11am to 7pm; treat as Not yet verified until the center hours page loads.",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/round-rock/4401-n-i-35/100165/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Round Rock",
+          "lat": 30.567,
+          "lng": -97.69,
+          "radius": 5
+        }
+      ]
+    },
+    {
+      "id": "austin",
+      "name": "Austin",
+      "towns": "Austin, TX",
+      "mile": 190,
+      "milepostNote": "Measured along OSRM's route from the start: 190.5 miles. The site is about 0.3 mile from that route line. Southbound leave I-35 near exit 236 (Dean Keeton / 32nd-38th), then use Red River Street to the Hancock Center.",
+      "why": "Electrify America at Regency Hancock Center has 6 chargers at 350 kW, confirmed on EA's locator, about 2 miles before the route end at 12th Street. EVgo Tech Ridge and Norwood Plaza are verified CCS backups farther north.",
+      "primary": {
+        "name": "Regency Hancock Center (Austin, TX)",
+        "network": "Electrify America",
+        "address": "1000 E 41st St, Austin, TX 78751",
+        "exit": "Exit 236, Dean Keeton Street / 32nd-38th streets (then Red River Street)",
+        "stalls": {
+          "value": "6 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/austin/1000-e-41st-st/220019/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/austin/1000-e-41st-st/220019/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          449153
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Simon Lakeline Mall (Cedar Park, TX)",
+          "network": "Electrify America",
+          "address": "11200 Lakeline Mall Dr, Cedar Park, TX 78613",
+          "facts": "EA's locator lists 6 chargers, CCS at 350 kW on all 6. DOE lists the same port count. About 7.5 miles west of I-35 at Lakeline Mall in Cedar Park.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/cedar-park/11200-lakeline-mall-dr/220028/",
+          "afdcIds": [
+            438005
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Tech Ridge Center",
+          "network": "EVgo",
+          "address": "500 Canyon Ridge Dr, Austin, TX 78753",
+          "facts": "EVgo's locator lists 4 chargers: two dual-cable 350 kW (CCS and NACS) and two 100 kW CCS/CHAdeMO. DOE lists 6 DC ports. Port accounting differs by how dual-cable cabinets are counted; both sources agree it is a multi-cabinet 350 kW site. About 8 miles north at Tech Ridge Center on Canyon Ridge Drive.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter unless a NACS cable is listed.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/tx/austin/81484/",
+          "afdcIds": [
+            416892
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Norwood Plaza",
+          "network": "EVgo",
+          "address": "1030 Norwood Park Blvd, Austin, TX 78753",
+          "facts": "EVgo's locator lists 4 chargers: two dual-cable 350 kW CCS and two 100 kW CCS/CHAdeMO. DOE lists 6 DC ports. Port accounting differs by cabinet vs cable; both sources agree on a 350 kW capable site. About 3 miles north at Norwood Plaza.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter unless a NACS cable is listed.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/tx/austin/52767/",
+          "afdcIds": [
+            314494
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Hancock Center - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "914 E 41st St, Austin, TX 78751",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at up to 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16. Same Hancock Center property. Access flag Not yet verified on Find Us this pass.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/32768",
+          "afdcIds": [
+            457049
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Austin, TX - West Canyon Ridge Drive - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "500 W Canyon Ridge Dr, Austin, TX 78753",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at up to 72 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/austintxcenturyoakssupercharger",
+          "afdcIds": [
+            405679
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Smoothie King Tech Ridge Charging Station, 12314 N Interstate Hwy 35, Austin",
+          "facts": "DOE lists 2 CCS at 20.2 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            417830
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mercedes Benz of Austin - Public, 6637 Airport Blvd, Austin",
+          "facts": "DOE lists 3 CCS at 240 kW, 3 NACS at 240 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            429904
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Austin, TX - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "6406 N. Interstate 35 Frontage Road, Austin, TX 78752",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/None",
+          "afdcIds": [
+            102424
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "PIE AE SALTILLO DCFC 4, 901 E 5th St, Austin",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            155494
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PIE AE TRAVIS CO DC 1, 316 W 8th St, Austin",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            174566
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PIE AE SALTILLO DCFC 3, 901 E 5th St, Austin",
+          "facts": "DOE lists 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            175562
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PIE AE SALTILLO DCFC 2, 901 E 5th St, Austin",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            175563
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PIE AE SALTILLO DCFC 1, 901 E 5th St, Austin",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            175564
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "301 E 8th St, 301 E 8th St, Austin",
+          "facts": "DOE lists 4 CCS at 120 kW, 4 CCS at 60 kW. DOE last confirmed date not re-checked beyond the 2026-10-16 pull.",
+          "status": "unverified",
+          "afdcIds": [
+            455731
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's locator: chargers are on the west side of Regency Hancock Center parking lot, off Red River Street. Center hours and restrooms: Not yet verified on a host page this pass.",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/tx/austin/1000-e-41st-st/220019/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Austin Hancock",
+          "lat": 30.302,
+          "lng": -97.72,
+          "radius": 4
+        },
+        {
+          "name": "Tech Ridge",
+          "lat": 30.407,
+          "lng": -97.673,
+          "radius": 3
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "Temple (mile 124) is the only large DC site between Bellmead and Round Rock. Non-Tesla drivers without a NACS adapter should treat Waco EA to Round Rock EA as about 82 miles and leave Bellmead with margin.",
+      "source": "afdc"
+    },
+    {
+      "text": "9 Tesla sites on this route are flagged from Tesla Find Us: 5 open to all EVs with a NACS adapter, 4 Tesla only. 4 stay Not yet verified because Tesla's page rendered only in part. Checked 2026-10-16.",
+      "source": "tesla-findus"
+    },
+    {
+      "text": "Electrify America chargers on this route are CCS at 350 kW. NACS cars need an adapter. IONNA Dallas and Waco list both CCS and NACS. EVgo Tech Ridge lists a dual-cable NACS charger.",
+      "source": "ea-locator"
+    },
+    {
+      "text": "Walmart Bellmead hours and restrooms are Not yet verified (walmart.com bot check). Round Rock Premium Outlets center hours page also bot-checked; shopping is on EA's site note. IONNA pages list restrooms at Dallas W 12th and at Casey's Waco.",
+      "source": "ea-locator"
+    },
+    {
+      "text": "Only sites near each stop are listed. DOE has many more DC sites in Dallas, Austin, and off the I-35 corridor that this guide does not check.",
+      "source": "afdc"
+    }
+  ],
+  "arrival": "Downtown Austin south of exit 234C (12th Street), the airport, and points south of I-35 are not in this guide. The last stop is EA at Hancock Center, about 2 miles before the route end."
+}
