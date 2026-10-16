@@ -11,25 +11,25 @@ import Base from '../layouts/Base.astro';
       <p>You can read every guide without an account.</p>
       <p>Tinylytics (tinylytics.app) counts visits. Their documentation says a visit record keeps the page address, the referrer when the browser sends one, the country, and a shortened browser string. On October 16, 2026 we loaded our pages in a fresh browser and checked: the Tinylytics script set no cookie and stored nothing in the browser.</p>
       <p>Cloudflare Web Analytics counts visits too. Its beacon loads from static.cloudflareinsights.com. In the same check it set no cookie either.</p>
-      <p>The typeface is Geist, served from this site, so no font request goes to a third party.</p>
+      <p>The typeface is Overpass, self-hosted, so no font request goes to a third party.</p>
 
       <h2>Requesting a Plan</h2>
       <p>When you request a plan, we collect what you put in the form: your name, email, car, charge port and adapter, route, dates, passengers, memberships, and notes. We use those details to build your plan and to email it to you. The details are stored with our hosting provider, Cloudflare.</p>
       <p>Cloudflare Turnstile is on for this form. It checks that a person sent the request.</p>
       <p>Payment is taken by Stripe on its own page, after you send the form. We never see your card number. Stripe keeps the payment record, such as the amount, your email, and the plan, and we can see it in our Stripe account.</p>
-      <p>AI tools help research and draft plans, so your trip details may be processed by an AI provider for that purpose. We don't use your details for anything else.</p>
+      <p>AI tools help research and draft plans, so your trip details may be processed by an AI provider for that purpose. We don’t use your details for anything else.</p>
 
       <h2>Finding a Plan</h2>
-      <p>An approved plan is on a private link. We store a hash of that link, not the link itself. Find my plans emails a one-time link to the address you used at checkout. That link expires in 15 minutes and works once. We store a hash of it, that email address, the time it was sent, and the time it was used. The same Turnstile check runs on that form. The page does not say whether an email has a plan. Using the link sets two cookies that last 15 minutes: one keeps you signed in, and one holds the private links to your plans. Both are marked HttpOnly and Secure and are only sent to the Find my plans pages. They are the only cookies this site sets.</p>
+      <p>An approved plan is on a private link. We store a hash of that link, not the link itself. Find My Plans emails a one-time link to the address you used at checkout. That link expires in 15 minutes and works once. We store a hash of it, that email address, the time it was sent, and the time it was used. The same Turnstile check runs on that form. The page does not say whether an email has a plan. Using the link sets two cookies that last 15 minutes: one keeps you signed in, and one holds the private links to your plans. Both are marked HttpOnly and Secure and are only sent to the Find My Plans pages. They are the only cookies this site sets.</p>
 
       <h2>Newsletter</h2>
       <p>Signup is closed. If we open it, the form sends your email to Buttondown. Buttondown stores it and sends the updates after you confirm. You can unsubscribe from any of those emails.</p>
 
       <h2>What We Don’t Do</h2>
       <ul>
-        <li>We don't sell or rent your information.</li>
-        <li>We don't share it with charging networks, hotels, or advertisers.</li>
-        <li>We don't add you to the newsletter unless you ask.</li>
+        <li>We don’t sell or rent your information.</li>
+        <li>We don’t share it with charging networks, hotels, or advertisers.</li>
+        <li>We don’t add you to the newsletter unless you ask.</li>
       </ul>
 
       <h2>Your Choices</h2>

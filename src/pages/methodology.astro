@@ -2,15 +2,15 @@
 import Base from '../layouts/Base.astro';
 import Tag from '../components/Tag.astro';
 ---
-<Base title="How we check" description="Where every station fact on EV Trip Reports comes from, how it is checked before a plan is delivered, and what the status labels mean.">
+<Base title="How We Check" description="Where every station fact on EV Trip Reports comes from, how it is checked before a plan is delivered, and what the status labels mean.">
   <section class="band band--tight">
     <div class="wrap prose">
       <h1 class="h1">How We Check</h1>
-      <p class="lede" style="margin-top:20px">Every station fact has a source and a check date. Anything we couldn't confirm says so.</p>
+      <p class="lede" style="margin-top:20px">Every station fact has a source and a check date. Anything we couldn’t confirm says so.</p>
 
       <h2>Sources, in Order of Authority</h2>
       <ol>
-        <li><strong>The network's own locator.</strong> Tesla, Electrify America, EVgo, IONNA, and the rest. It sets stalls, kW, access, and price.</li>
+        <li><strong>The network’s own locator.</strong> Tesla, Electrify America, EVgo, IONNA, and the rest. It sets stalls, kW, access, and price.</li>
         <li><strong>The Department of Energy station database.</strong> We use it to find every DC fast site near a stop. When it disagrees with the network, the network wins and we note the difference.</li>
         <li><strong>Driver reports</strong> from Reddit, PlugShare, owner forums, and X. Quoted briefly, linked, and dated. A report never overrides the network.</li>
         <li><strong>Other aggregators</strong> are leads only. We trace them to a primary source and never cite them.</li>
@@ -18,7 +18,7 @@ import Tag from '../components/Tag.astro';
 
       <h2>Rules</h2>
       <ul>
-        <li>We give kW and stall counts. We don't call sites "fast" or "slow."</li>
+        <li>We give kW and stall counts. We don’t call sites "fast" or "slow."</li>
         <li>When sources disagree, we show both or mark the fact unverified.</li>
         <li>No guesswork. Unknowns say "Not yet verified."</li>
         <li>Every Tesla site is marked Tesla only or open to all EVs.</li>
@@ -26,10 +26,10 @@ import Tag from '../components/Tag.astro';
 
       <h2>What the Labels Mean</h2>
       <dl class="labels">
-        <div><dt><Tag status="verified" /></dt><dd>Checked on the network's own locator on the date shown.</dd></div>
-        <div><dt><Tag status="conflict" /></dt><dd>The network and the DOE database disagree. We show the network's number.</dd></div>
+        <div><dt><Tag status="verified" /></dt><dd>Checked on the network’s own locator on the date shown.</dd></div>
+        <div><dt><Tag status="conflict" /></dt><dd>The network and the DOE database disagree. We show the network’s number.</dd></div>
         <div><dt><Tag status="unverified" /></dt><dd>From the DOE database or a driver report only.</dd></div>
-        <div><dt><Tag status="unpublished" /></dt><dd>The network doesn't publish it, usually price. Check its app.</dd></div>
+        <div><dt><Tag status="unpublished" /></dt><dd>The network doesn’t publish it, usually price. Check its app.</dd></div>
         <div><dt><Tag status="tesla-only" /></dt><dd>Tesla vehicles only, per Tesla.</dd></div>
         <div><dt><Tag status="open" /></dt><dd>Tesla lists the site as open to other EVs. CCS cars need a NACS adapter.</dd></div>
       </dl>
@@ -37,11 +37,11 @@ import Tag from '../components/Tag.astro';
       <h2>Before a Plan Reaches You</h2>
       <ol>
         <li>Stops are matched to your port, adapter, and memberships.</li>
-        <li>Each stop is checked on the network's locator and dated.</li>
+        <li>Each stop is checked on the network’s locator and dated.</li>
         <li>Anything unconfirmed is marked "Not yet verified."</li>
         <li>A person reviews the plan.</li>
       </ol>
-      <p>A check date isn't live status. Check the network's app before you arrive.</p>
+      <p>A check date isn’t live status. Check the network’s app before you arrive.</p>
     </div>
   </section>
 </Base>
