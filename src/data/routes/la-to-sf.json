@@ -158,12 +158,6 @@
             {
               "source": "plugshare",
               "url": "https://www.plugshare.com/location/1548276",
-              "date": "2026-10-12",
-              "summary": "Good fast charging"
-            },
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/1548276",
               "date": "2026-10-05",
               "summary": "Just got the message the site opened today. Visit with caution as the EA app still shows it is not open."
             }
@@ -221,13 +215,7 @@
               "source": "plugshare",
               "url": "https://www.plugshare.com/location/431578",
               "date": "2026-10-08",
-              "summary": "Charger 4 is out of order."
-            },
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/431578",
-              "date": "2026-08-10",
-              "summary": "Very slow fast charging"
+              "summary": "Charger 4 is out of order at this site."
             },
             {
               "source": "plugshare",
@@ -617,12 +605,6 @@
               "url": "https://www.plugshare.com/location/186194",
               "date": "2026-10-14",
               "summary": "Full at 8:45am + 1 car waiting In use"
-            },
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/186194",
-              "date": "2026-10-05",
-              "summary": "Worked great."
             },
             {
               "source": "plugshare",
@@ -1041,7 +1023,7 @@
             "source": "plugshare",
             "url": "https://www.plugshare.com/location/321832",
             "date": "2026-10-02",
-            "summary": "One charger is down."
+            "summary": "One charger is down at this site."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -1450,12 +1432,6 @@
           {
             "source": "plugshare",
             "url": "https://www.plugshare.com/location/320380",
-            "date": "2026-08-30",
-            "summary": "Broken hardware"
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/320380",
             "date": "2026-08-28",
             "summary": "Charger 01 is out. Line was ~1 car deep the entire time we were there, Thursday in August around 3pm. Phone (AT&T) had weird reception that came and went despite 2 bars. Used target wifi to initiate charge."
           },
@@ -1746,12 +1722,6 @@
           {
             "source": "plugshare",
             "url": "https://www.plugshare.com/location/190892",
-            "date": "2026-08-28",
-            "summary": "Always a great place to stop and charge on my way through to Sacramento."
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/190892",
             "date": "2026-08-16",
             "summary": "No wait just before noon on a Saturday. Cut off after 7 minutes (at 44%), had to restart charging."
           },
@@ -1759,7 +1729,7 @@
             "source": "plugshare",
             "url": "https://www.plugshare.com/location/190892",
             "date": "2026-03-07",
-            "summary": "03 Said error and not working"
+            "summary": "Stall 03 said error and is not working."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -1951,20 +1921,7 @@
         "afdcIds": [
           121788
         ],
-        "driverReports": [
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/71744",
-            "date": "2026-01-23",
-            "summary": "Broken hardware"
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/71744",
-            "date": "2025-12-01",
-            "summary": "Broken hardware"
-          }
-        ],
+        "driverReports": [],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
@@ -1987,12 +1944,6 @@
               "url": "https://www.plugshare.com/location/350447",
               "date": "2026-08-22",
               "summary": "One of three stations broken. Others in use. Often the case here. Look elsewhere. Broken hardware"
-            },
-            {
-              "source": "plugshare",
-              "url": "https://www.plugshare.com/location/350447",
-              "date": "2026-08-21",
-              "summary": "Could not activate"
             },
             {
               "source": "plugshare",
@@ -2032,7 +1983,7 @@
               "source": "plugshare",
               "url": "https://www.plugshare.com/location/255117",
               "date": "2025-04-27",
-              "summary": "Station 2 is broken"
+              "summary": "Station 2 is broken at this site."
             }
           ],
           "checkedOn": "2026-10-15"

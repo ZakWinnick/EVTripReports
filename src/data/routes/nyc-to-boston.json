@@ -1206,7 +1206,7 @@
             "source": "plugshare",
             "url": "https://www.plugshare.com/location/186874",
             "date": "2026-07-03",
-            "summary": "1 of 4 chargers down"
+            "summary": "1 of 4 chargers is down at this site."
           },
           {
             "source": "plugshare",
@@ -1692,18 +1692,6 @@
             "url": "https://www.plugshare.com/location/298366",
             "date": "2026-10-12",
             "summary": "Station 1 does NOT work, even if it looks like it does"
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/298366",
-            "date": "2026-04-13",
-            "summary": "Fastest charging I’ve ever had at an Electrify America station"
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/298366",
-            "date": "2025-12-26",
-            "summary": "23° battery preconditioned"
           }
         ],
         "checkedOn": "2026-10-15",

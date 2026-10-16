@@ -25,6 +25,44 @@ const ext = (url, text, cls = '') =>
 
 const REPORT_LABEL = { plugshare: 'PlugShare', x: 'X', reddit: 'Reddit', forum: 'Forum' };
 
+// Kept notes say what happened. Under 30 characters, or a question that does not
+// report an outcome, is dropped at render time.
+export const MIN_DRIVER_REPORT_CHARS = 30;
+
+const QUESTION_START =
+  /^(do|does|did|is|are|was|were|can|could|would|will|has|have|had|anyone|any|what|when|where|why|how|which)\b/i;
+const THANKS = /^(thanks?(?:\s+you)?|thank you|ty)[.!\s]*$/i;
+const UPDATE_ASK =
+  /\b(would love an update|any update|please update|let me know|just wondering|just curious|traveling through|passing through)\b/i;
+const LEAD_FACT =
+  /\b(slow|fast|down|broken|fail(?:ed)?|error|offline|derat\w*|wait(?:ed|ing)?|queue|full|packed|busy|iced|blocked|stalls?|chargers?|dispensers?|connectors?|\d+\s*kW|\$\s*\d)\b/i;
+
+export function isBareDriverQuestion(summary) {
+  const text = String(summary ?? '').replace(/\s+/g, ' ').trim();
+  if (!text.includes('?')) return false;
+  const parts = text.split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean);
+  return parts.length > 0 && parts.every(isNonReportSentence);
+}
+
+function isNonReportSentence(sentence) {
+  const s = sentence.trim();
+  if (THANKS.test(s)) return true;
+  if (QUESTION_START.test(s)) return true;
+  if (/\?\s*$/.test(s)) {
+    const comma = s.indexOf(',');
+    const lead = comma === -1 ? '' : s.slice(0, comma).trim();
+    if (lead.length >= 8 && LEAD_FACT.test(lead) && !QUESTION_START.test(lead)) return false;
+    return true;
+  }
+  if (UPDATE_ASK.test(s) && !/\d/.test(s)) return true;
+  return false;
+}
+
+export function driverReportSummaryOk(summary) {
+  const text = String(summary ?? '').trim();
+  return text.length >= MIN_DRIVER_REPORT_CHARS && !isBareDriverQuestion(text);
+}
+
 // A report dated on this day is exactly 3 years old, so it still shows.
 export function driverReportCutoff(now = new Date()) {
   return new Date(Date.UTC(now.getUTCFullYear() - 3, now.getUTCMonth(), now.getUTCDate())).toISOString().slice(0, 10);
@@ -36,7 +74,9 @@ function recentReportDate(date, cutoff) {
 
 function stationDriverReports(station) {
   if (!station || !Array.isArray(station.driverReports)) return [];
-  return station.driverReports.filter((r) => r && r.url && r.date && r.summary && REPORT_LABEL[r.source]);
+  return station.driverReports.filter(
+    (r) => r && r.url && r.date && REPORT_LABEL[r.source] && driverReportSummaryOk(r.summary)
+  );
 }
 
 function collectDriverReports(stop, cutoff) {
