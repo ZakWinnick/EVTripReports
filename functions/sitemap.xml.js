@@ -4,6 +4,13 @@ import { applySecurityHeaders } from '../src/lib/security-headers.js';
 import builtGuides from './_lib/built-guides.js';
 import { buildSitemapXml, guidesForSitemap, loadD1Guides } from './_lib/sitemap.js';
 
+// HEAD has to be answered here. Pages Functions only run onRequestGet for GET,
+// so without this a HEAD request fell through to the static 404 page.
+export async function onRequestHead(context) {
+  const res = await onRequestGet(context);
+  return new Response(null, { status: res.status, headers: res.headers });
+}
+
 export async function onRequestGet(context) {
   const d1 = await loadD1Guides(context.env);
   const xml = buildSitemapXml(guidesForSitemap(builtGuides, d1));
