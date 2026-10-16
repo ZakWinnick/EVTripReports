@@ -1,0 +1,19 @@
+---
+// Full-width photo band. Images are self-hosted in public/images (CSP allows only 'self').
+// Each source is cropped to 2.4:1 at 1000 and 2000 px wide.
+interface Props { name: string; alt: string; credit: string; href: string; eager?: boolean; }
+const { name, alt, credit, href, eager = false } = Astro.props;
+---
+<figure class="photoband">
+  <img
+    src={`/images/${name}-2000.webp`}
+    srcset={`/images/${name}-1000.webp 1000w, /images/${name}-2000.webp 2000w`}
+    sizes="100vw"
+    width="2000"
+    height="833"
+    alt={alt}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+  />
+  <figcaption class="wrap">Photo: <a href={href} target="_blank" rel="noopener noreferrer">{credit}</a> on Unsplash</figcaption>
+</figure>

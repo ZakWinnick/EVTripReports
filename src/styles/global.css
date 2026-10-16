@@ -257,3 +257,9 @@ form.newsletter[hidden] { display: none !important; }
 }
 
 [hidden] { display: none !important; }
+
+/* Photo bands */
+.photoband { margin: 0; }
+.photoband img { width: 100%; height: clamp(200px, 32vw, 460px); object-fit: cover; background: var(--mist); }
+.photoband figcaption { padding-top: 8px; padding-bottom: 8px; font-size: 0.78rem; color: var(--ink-3); text-align: right; }
+.photoband figcaption a { color: inherit; }

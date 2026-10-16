@@ -1,6 +1,6 @@
 /* Homepage. The guide sign is the one loud element; everything after it is quiet paper. */
 
-.home-hero { padding: clamp(40px, 6vw, 84px) 0 clamp(48px, 6vw, 80px); border-bottom: 1px solid var(--line); }
+.home-hero { padding: clamp(40px, 6vw, 84px) 0 clamp(48px, 6vw, 80px); }
 .home-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
 .home-hero__copy .display { max-width: 11.5em; }
 .home-hero__copy .lede { margin-top: 24px; max-width: 32em; }

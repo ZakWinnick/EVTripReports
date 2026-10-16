@@ -2,6 +2,7 @@
 // Home: one sample trip told the way the road tells it. A guide sign for the
 // destination, then a strip map of the corridor beside the stop that matters.
 import Base from '../layouts/Base.astro';
+import PhotoBand from '../components/PhotoBand.astro';
 import '../styles/trip-home.css';
 import route from '../data/routes/la-to-las-vegas.json';
 import { samplePlan } from '../lib/sample-plan.js';
@@ -53,6 +54,8 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
         </figure>
       </div>
     </section>
+
+    <PhotoBand name="desert-highway" alt="Empty two-lane highway across a desert valley" credit="Peter Mizsak" href="https://unsplash.com/photos/highway-in-desert-oAYBm7nuIWY" eager />
 
     <section id="inside-plan" class="home-plan">
       <div class="wrap">
