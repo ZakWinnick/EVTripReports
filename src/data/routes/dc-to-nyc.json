@@ -3,7 +3,7 @@
   "title": "Washington, DC to NYC",
   "highway": "I-95",
   "direction": "northbound",
-  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Moorestown, East Brunswick and Elizabeth. Tesla access flags are verified where DOE and Tesla Find Us agree (59 sites); 10 remain Not yet verified.",
+  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Moorestown, East Brunswick and Elizabeth. Tesla access flags are verified where DOE and Tesla Find Us agree (63 sites); 6 remain Not yet verified.",
   "checked": "2026-10-15",
   "startLabel": "I-95 at the Capital Beltway",
   "startNote": "Mileage starts at the I-95 and I-495 split in College Park, MD (I-95 exit 27, Maryland mile 26.1) and ends at the George Washington Bridge. The 223.27 miles is OSRM's driving distance on I-95, the Delaware Memorial Bridge and the NJ Turnpike, shown as 223. OSRM's route uses the Baltimore Harbor Tunnel (I-895) in place of the Fort McHenry Tunnel (I-95). That difference has not been measured.",
@@ -87,6 +87,22 @@
     "tesla-findus": {
       "name": "Tesla Find Us",
       "url": "https://www.tesla.com/findus"
+    },
+    "walmart-3078": {
+      "name": "Walmart Supercenter #3078, East Brunswick (store page via Internet Archive)",
+      "url": "https://www.walmart.com/store/3078-east-brunswick-nj"
+    },
+    "ravitz-mt-laurel": {
+      "name": "Ravitz Family Markets, ShopRite of Mount Laurel",
+      "url": "https://ravitzfamilymarkets.com/shoprite-of-mount-laurel/"
+    },
+    "simon-jersey-gardens-about": {
+      "name": "Simon, The Mills at Jersey Gardens About",
+      "url": "https://www.simon.com/mall/the-mills-at-jersey-gardens/about"
+    },
+    "simon-jersey-gardens-hours": {
+      "name": "Simon, The Mills at Jersey Gardens Hours",
+      "url": "https://www.simon.com/mall/the-mills-at-jersey-gardens/hours"
     }
   },
   "stops": [
@@ -199,21 +215,27 @@
         },
         {
           "name": "Bel Air, MD - Tesla Supercharger, 601 Hoagie Drive, Bel Air",
-          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla Find Us page was only partially readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 8 stalls, up to 250 kW, at 601 Hoagie Drive, Bel Air, MD 21014. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             206276
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/BelAirMDSupercharger",
+          "source": "tesla-findus"
         },
         {
           "name": "Bel Air, MD - Tobin Crossing - Tesla Supercharger, 2692 Tobin Xing, Bel Air",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla Find Us page was only partially readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 325 kW, at 2692 Tobin Xing, Bel Air, MD 21015. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 325 kW.",
+          "status": "verified",
           "afdcIds": [
             390397
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/32750",
+          "source": "tesla-findus"
         },
         {
           "name": "Belcamp, MD, 1321 Riverside Parkway, Belcamp",
@@ -328,12 +350,15 @@
         },
         {
           "name": "Port Deposit, MD - Tesla Supercharger, 1201 Chesapeake Overlook Pkwy, Port Deposit",
-          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla Find Us page was only partially readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 16 stalls, up to 250 kW, at 1201 Chesapeake Overlook Pkwy, Port Deposit, MD 21904. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             320135
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/32161",
+          "source": "tesla-findus"
         },
         {
           "name": "Preston Ford of Aberdeen - DCFC, 505 South Philadelphia Boulevard, Aberdeen",
@@ -364,7 +389,15 @@
         }
       ],
       "reports": [],
-      "around": [],
+      "around": [
+        {
+          "text": "Host is Walmart Supercenter #2009. Grocery and packaged food are inside the store while it is open. Store hours and restrooms: Not yet verified. The live walmart.com store page blocked automated reads on 2026-10-15, so hours and restrooms are not cited from the host page.",
+          "category": "food",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/md/abingdon/401-constant-friendship-blvd/100277/",
+          "checkedOn": "2026-10-15"
+        }
+      ],
       "searches": [
         {
           "name": "Abingdon, MD",
@@ -573,12 +606,15 @@
         },
         {
           "name": "New Castle, DE - Christiana Bypass - Tesla Supercharger, 970 Christiana Bypass, New Castle",
-          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla Find Us page was only partially readable on 2026-10-15.",
-          "status": "unverified",
+          "facts": "Tesla Find Us lists 12 stalls, up to 250 kW, at 970 Christiana Bypass, New Castle, DE 19702. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW.",
+          "status": "verified",
           "afdcIds": [
             308418
           ],
-          "driverReports": []
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/26863",
+          "source": "tesla-findus"
         },
         {
           "name": "New Castle, DE - New Castle Avenue - Tesla Supercharger, 2160 New Castle Avenue, New Castle",
@@ -770,7 +806,7 @@
       "reports": [],
       "around": [
         {
-          "text": "The Wawa at this site sells food and coffee. Its store page lists online ordering and curbside pickup. Restrooms: Not yet verified.",
+          "text": "The Wawa at this site sells food and coffee. Its store page lists online ordering, curbside pickup, fuel and EV charging. Store hours on that page were blank when checked, so hours: Not yet verified. Restrooms: Not yet verified (not listed on the store page).",
           "category": "food",
           "source": "wawa",
           "url": "https://www.wawa.com/locations/0840",
@@ -1297,7 +1333,15 @@
         }
       ],
       "reports": [],
-      "around": [],
+      "around": [
+        {
+          "text": "Host is ShopRite of Mount Laurel (Wakefern #594) at 1000 Nixon Drive. The Ravitz Family Markets page lists hours 7am to 10pm and names Chinese Wok plus order, pickup and delivery. Grocery food is in the store while open. Restrooms: Not yet verified (not listed on that page).",
+          "category": "food",
+          "source": "ravitz-mt-laurel",
+          "url": "https://ravitzfamilymarkets.com/shoprite-of-mount-laurel/",
+          "checkedOn": "2026-10-15"
+        }
+      ],
       "searches": [
         {
           "name": "Moorestown, NJ",
@@ -1981,7 +2025,15 @@
         }
       ],
       "reports": [],
-      "around": [],
+      "around": [
+        {
+          "text": "Host is Walmart Supercenter #3078 with grocery and a bakery. An Aug 17, 2024 archive of the walmart.com store page listed daily hours from 6am until 11pm and named Electrify America on site. Live walmart.com page blocked automated reads on 2026-10-15, so treat those hours as archive-only. Restrooms: Not yet verified (not listed on the archived store page).",
+          "category": "food",
+          "source": "walmart-3078",
+          "url": "https://www.walmart.com/store/3078-east-brunswick-nj",
+          "checkedOn": "2026-10-15"
+        }
+      ],
       "searches": [
         {
           "name": "East Brunswick, NJ",
@@ -2573,7 +2625,22 @@
         }
       ],
       "reports": [],
-      "around": [],
+      "around": [
+        {
+          "text": "Mall food court is upper level center court by Entrance C. Restrooms are throughout the mall corridors (accessible restrooms listed on the About page). Simon About also says the EV chargers in the Cohoes-facing lot are available 24 hours a day, 7 days a week.",
+          "category": "food",
+          "source": "simon-jersey-gardens-about",
+          "url": "https://www.simon.com/mall/the-mills-at-jersey-gardens/about",
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "Mall regular hours: Monday to Saturday 10:00am to 9:00pm, Sunday 11:00am to 7:00pm. Read from Simon Hours via Internet Archive snapshot dated 2026-01-30 (live simon.com pages blocked automated reads on 2026-10-15).",
+          "category": "food",
+          "source": "simon-jersey-gardens-hours",
+          "url": "https://www.simon.com/mall/the-mills-at-jersey-gardens/hours",
+          "checkedOn": "2026-10-15"
+        }
+      ],
       "searches": [
         {
           "name": "Elizabeth, NJ",
@@ -2598,7 +2665,7 @@
   ],
   "tips": [
     {
-      "text": "59 Tesla sites on this route are verified on Tesla Find Us (access flag agreed with DOE). 10 Tesla sites stay Not yet verified because the Find Us page was partial, missing, or disagreed with DOE. Checked 2026-10-15.",
+      "text": "63 Tesla sites on this route are verified on Tesla Find Us (access flag agreed with DOE). 6 Tesla sites stay Not yet verified because the Find Us page was partial, missing, or disagreed with DOE. Checked 2026-10-15.",
       "source": "tesla-findus"
     },
     {
@@ -2610,7 +2677,7 @@
       "source": "afdc"
     },
     {
-      "text": "Food and restroom notes are Not yet verified at every stop except the New Castle Wawa food note. Restrooms are most likely inside the host store at each site. Hours are not confirmed.",
+      "text": "Food and restroom notes are filled for all five primaries (checked 2026-10-15). Elizabeth has mall restrooms and a food court on Simon pages. Moorestown hours come from Ravitz Family Markets. New Castle, Abingdon and East Brunswick restrooms stay Not yet verified on host pages. Walmart and some Simon live pages blocked automated reads; East Brunswick hours and Elizabeth hours cite archives where noted.",
       "source": "ea-locator"
     },
     {
