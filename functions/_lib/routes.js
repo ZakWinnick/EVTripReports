@@ -18,7 +18,7 @@ export async function listRoutes(env) {
   if (!env.DB) return null;
   try {
     const r = await env.DB.prepare('SELECT slug, title, highway, status, json, sort FROM routes ORDER BY sort, title').all();
-    return (r.results || []).map((x) => {
+    return (r.results || []).filter((x) => x.status === 'live').map((x) => {
       const j = x.json ? JSON.parse(x.json) : null;
       return { slug: x.slug, title: x.title, highway: x.highway, status: x.status, miles: j ? j.stats[0].value : null, stops: j ? j.stops.length : null };
     });

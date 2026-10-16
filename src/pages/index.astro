@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { routeLine, statStrip, guideCards } from '../lib/render-guide.js';
-import { exportStatus } from '../lib/publish-status.js';
+import { visibleHomeRoutes } from '../lib/publish-status.js';
 import featured from '../data/routes/la-to-las-vegas.json';
 import routes from '../data/routes.json';
 import { tiers, priceLabel } from '../data/plans.js';
@@ -12,11 +12,7 @@ const routeBySlug = Object.fromEntries(Object.values(routeFiles).map((m) => {
   return [route.slug, route];
 }));
 
-const cards = routes.map((r: any) => ({
-  ...r,
-  status: exportStatus(r.status, routeBySlug[r.slug]),
-  stops: routeBySlug[r.slug]?.stops.length,
-}));
+const cards = visibleHomeRoutes(routes, routeBySlug);
 const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 <Base title="EV Trip Reports" description="A travel agent for EV road trips. Tell us where you're going and what you drive. We plan stops that work for your car, a backup for each, and on detailed plans a place to eat or sleep while you charge.">
@@ -50,7 +46,7 @@ const checkedLabel = new Date(featured.checked + 'T12:00:00Z').toLocaleDateStrin
   <section id="guides" class="band">
     <div class="wrap">
       <h2 class="h2">Route guides</h2>
-      <p class="lede" style="margin-top:12px">A guide is linked once the primary charger at every stop has been checked on the network's locator. Unconfirmed facts stay labeled on the page. Unpublished routes are marked coming soon.</p>
+      <p class="lede" style="margin-top:12px">A guide is linked once the primary charger at every stop has been checked on the network's locator. Unconfirmed facts stay labeled on the page.</p>
       <ul class="guides" id="guides-list"><Fragment set:html={guideCards(cards)} /></ul>
     </div>
   </section>

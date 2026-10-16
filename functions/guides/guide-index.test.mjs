@@ -3,7 +3,7 @@ import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 import builtGuideIndex from '../_lib/built-guide-index.js';
 import { isGuidesIndex } from '../_lib/guide-response.js';
-import { listLiveGuideIndex } from '../_lib/routes.js';
+import { listLiveGuideIndex, listRoutes } from '../_lib/routes.js';
 import { liveBuiltGuideIndex, liveBuiltGuides } from '../../src/lib/live-guides.js';
 import {
   formatDistance,
@@ -326,6 +326,40 @@ test('/guides and /guides/ serve the index, including a live D1 route', async ()
   const builtHtml = await built.text();
   assert.match(builtHtml, /guides\/la-to-sf/);
   assert.equal(builtHtml.includes('denver-to-albuquerque'), false);
+});
+
+test('the homepage route list keeps live rows and drops verifying rows', async () => {
+  const rows = await listRoutes({
+    DB: {
+      prepare() {
+        return {
+          async all() {
+            return {
+              results: [
+                {
+                  slug: 'dc-to-nyc',
+                  title: 'Washington, DC to NYC',
+                  highway: 'I-95',
+                  status: 'verifying',
+                  json: JSON.stringify({ stats: [{ value: '223' }], stops: [{}, {}, {}, {}, {}] }),
+                  sort: 70,
+                },
+                {
+                  slug: 'la-to-sf',
+                  title: 'LA to San Francisco',
+                  highway: 'I-5',
+                  status: 'live',
+                  json: JSON.stringify({ stats: [{ value: '317' }], stops: [{}, {}] }),
+                  sort: 20,
+                },
+              ],
+            };
+          },
+        };
+      },
+    },
+  });
+  assert.deepEqual(rows.map((route) => route.slug), ['la-to-sf']);
 });
 
 test('a D1 miss still leaves the built index list', async () => {
