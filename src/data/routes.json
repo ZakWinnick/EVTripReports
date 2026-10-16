@@ -40,5 +40,12 @@
     "highway": "I-95",
     "miles": 197,
     "status": "live"
+  },
+  {
+    "slug": "dc-to-nyc",
+    "title": "Washington, DC to NYC",
+    "highway": "I-95",
+    "miles": 223,
+    "status": "verifying"
   }
 ]

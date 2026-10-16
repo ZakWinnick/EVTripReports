@@ -30,3 +30,18 @@ export function exportStatus(listedStatus, route) {
   if (primaryPublishBlock(route)) return 'verifying';
   return 'live';
 }
+
+// Homepage cards. A route is listed only when routes.json approves it and the
+// primary gate passes. Verifying routes stay off the homepage.
+export function visibleHomeRoutes(list, routeBySlug) {
+  return (Array.isArray(list) ? list : [])
+    .map((item) => {
+      const route = routeBySlug?.[item?.slug];
+      return {
+        ...item,
+        status: exportStatus(item?.status, route),
+        stops: Array.isArray(route?.stops) ? route.stops.length : item?.stops,
+      };
+    })
+    .filter((item) => item.status === 'live');
+}

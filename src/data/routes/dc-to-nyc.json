@@ -1,0 +1,2425 @@
+{
+  "slug": "dc-to-nyc",
+  "title": "Washington, DC to NYC",
+  "highway": "I-95",
+  "direction": "northbound",
+  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Moorestown, East Brunswick and Elizabeth. Tesla sites are listed from DOE and are not yet verified.",
+  "checked": "2026-10-15",
+  "startLabel": "I-95 at the Capital Beltway",
+  "startNote": "Mileage starts at the I-95 and I-495 split in College Park, MD (I-95 exit 27, Maryland mile 26.1) and ends at the George Washington Bridge. The 223.27 miles is OSRM's driving distance on I-95, the Delaware Memorial Bridge and the NJ Turnpike, shown as 223. OSRM's route uses the Baltimore Harbor Tunnel (I-895) in place of the Fort McHenry Tunnel (I-95). That difference has not been measured.",
+  "originLegs": [
+    {
+      "start": "Washington",
+      "miles": 15.49,
+      "source": "osrm",
+      "url": "https://router.project-osrm.org/route/v1/driving/-77.0091,38.8899;-76.940476,39.022627",
+      "checkedOn": "2026-10-15",
+      "estimate": true,
+      "note": "Estimate. Driving distance from the U.S. Capitol to the I-95 and I-495 split in College Park."
+    }
+  ],
+  "endLabel": "George Washington Bridge",
+  "stats": [
+    {
+      "label": "Capital Beltway split to George Washington Bridge",
+      "value": "223",
+      "unit": "mi",
+      "source": "osrm",
+      "note": "OSRM driving distance, 223.27 miles, checked 2026-10-15.",
+      "url": "http://router.project-osrm.org/"
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "208",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "33",
+      "unit": ""
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "applegreen": {
+      "name": "Applegreen Electric network map",
+      "url": "https://www.applegreenelectric.com/our-network"
+    },
+    "wawa": {
+      "name": "Wawa store page, 4000 N Dupont Hwy, New Castle",
+      "url": "https://www.wawa.com/locations/0840"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
+    },
+    "wiki-i95-md": {
+      "name": "Interstate 95 in Maryland, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_95_in_Maryland"
+    }
+  },
+  "stops": [
+    {
+      "id": "abingdon",
+      "name": "Abingdon",
+      "towns": "Abingdon, Aberdeen, and Bel Air, MD",
+      "mile": 50,
+      "milepostNote": "I-95 exit 77, mile 76.1. 76.1 minus 26.1 is 50.0. OSRM's route puts the site at 49.7 miles.",
+      "why": "First stop north of Baltimore. The Electrify America site at the Abingdon Walmart is 8 stalls at 350 kW, under 2 miles from I-95 exit 77 by OSRM. Rosedale is the verified backup, on the Baltimore side. Tesla, Rivian, Blink and ChargePoint sites in Abingdon and Aberdeen are listed below as DOE leads and are not verified.",
+      "primary": {
+        "name": "Walmart 2009 (Abingdon, MD)",
+        "network": "Electrify America",
+        "address": "401 Constant Friendship Blvd., Abingdon, MD 21009",
+        "exit": "Exit 77, MD 24 (Emmorton Road)",
+        "stalls": {
+          "value": "8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/md/abingdon/401-constant-friendship-blvd/100277/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/md/abingdon/401-constant-friendship-blvd/100277/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          167597
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Walmart 3489 (Rosedale, MD)",
+          "network": "Electrify America",
+          "address": "6420 Petrie Way Rd, Rosedale, MD 21030",
+          "facts": "4 chargers: 4 CCS at 350 kW. DOE lists the same port count. About 13 miles (straight line) back toward Baltimore, off I-895 and US 40.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/md/rosedale/6420-petrie-way-rd/210108/",
+          "afdcIds": [
+            192945
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "Aberdeen, MD - Churchville Road - Tesla Supercharger, 3710 Churchville Road, Aberdeen",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            201302
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Aberdeen, MD - North Philadelphia Boulevard - Tesla Supercharger, 231 N Philadelphia Blvd, Aberdeen",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            318174
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Aberdeen, MD - Tesla Supercharger, I-95, Aberdeen",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            102207
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Abingdon, MD - Woodsdale Road - Tesla Supercharger, 3500 Woodsdale Road, Abingdon",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            201304
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Bel Air, MD - Tesla Supercharger, 601 Hoagie Drive, Bel Air",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            206276
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Bel Air, MD - Tobin Crossing - Tesla Supercharger, 2692 Tobin Xing, Bel Air",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            390397
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Belcamp, MD, 1321 Riverside Parkway, Belcamp",
+          "facts": "DOE lists 4 CCS at 300 kW, 2 NACS at 300 kW on Rivian. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            391313
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVROADWAY BOX HILL DC 1, 3473 Merchant Boulevard, Abingdon",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            181874
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVROADWAY BOX HILL DC 2, 3473 Merchant Boulevard, Abingdon",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            181766
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVROADWAY BOX HILL DC 3, 3459 Merchant Boulevard, Abingdon",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            195735
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVROADWAY BOX HILL DC 4, 3491 Merchant Boulevard, Abingdon",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            164792
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVsmart - BGE - DHR Harford DSS, 2 S Bond St, Bel Air",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on SWTCH. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            201914
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVsmart - BGE - HCC, 401 Thomas Run Rd, Bel Air",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on SWTCH. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            214917
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVsmart - BGE - HDG City Hall, 711 Pennington Ave, Havre De Grace",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on SWTCH. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            156160
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVsmart - BGE - Harford County Govt, 220 S Main St, Bel Air",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on SWTCH. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            156164
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EVsmart - BGE - Ripken Stadium, 873 Long Dr, Aberdeen",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on SWTCH. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            155229
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Joppatowne, MD - Tesla Supercharger, 1419 Mountain Rd, Joppatowne",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            261451
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Maryland House Travel Plaza, I-95, Mile Marker 82, Aberdeen",
+          "facts": "DOE lists 6 CHAdeMO at 50 kW, 6 CCS at 50 kW on non-networked. DOE last confirmed 2024-11-06. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            104138
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Port Deposit, MD - Tesla Supercharger, 1201 Chesapeake Overlook Pkwy, Port Deposit",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            320135
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Preston Ford of Aberdeen - DCFC, 505 South Philadelphia Boulevard, Aberdeen",
+          "facts": "DOE lists 6 CCS at 120 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            460560
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Preston Motor - DCFC, 101 North Philadelphia Boulevard, Aberdeen",
+          "facts": "DOE lists 2 CCS at 120 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            383933
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Royal Farms - Joppa, MD - RFS 001, 2620 Mountain Road, Joppa",
+          "facts": "DOE lists 2 CCS at 60 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            309966
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Abingdon, MD",
+          "lat": 39.4673,
+          "lng": -76.2994,
+          "radius": 8
+        },
+        {
+          "name": "Aberdeen, MD",
+          "lat": 39.5096,
+          "lng": -76.1641,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "id": "new-castle",
+      "name": "New Castle",
+      "towns": "New Castle, Newark, and Wilmington, DE, and Elkton, MD",
+      "mile": 96,
+      "milepostNote": "Measured along OSRM's route from the start: 95.5 miles. OSRM leaves I-295 for US 13 North, about 2 miles from the site.",
+      "why": "The Electrify America site at the New Castle Wawa is 6 stalls at 350 kW, on US 13 a couple of miles from the I-95 and I-295 split. The ShopRite EVgo site in Wilmington is the verified backup. The Applegreen site at the Biden Center on I-95 and the Elkton exit 109 sites (bp pulse, Flying J, IONNA) are listed from DOE and are not verified.",
+      "primary": {
+        "name": "Wawa Store 840 (New Castle, DE)",
+        "network": "Electrify America",
+        "address": "4000 N. DuPont Hwy, New Castle, DE 19720",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/de/new-castle/4000-n-dupont-hwy/100276/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/de/new-castle/4000-n-dupont-hwy/100276/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          165405
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "ShopRite 1St. State - Wakefern #538",
+          "network": "EVgo",
+          "address": "1600 W Newport Pike, Wilmington, DE 19804",
+          "facts": "4 stalls: 1 charger at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count. On W Newport Pike in Wilmington, about 3.5 miles (straight line) from the Wawa.",
+          "access": "Open to all EVs that use CCS or CHAdeMO, per EVgo.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/de/wilmington/53856/",
+          "afdcIds": [
+            298580
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "Wawa Claymont #0854, 2621 Philadelphia Pike, Claymont",
+          "facts": "EVgo lists 4 stalls at 2621 Philadelphia Pike, Claymont: 1 charger at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            373117
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/de/claymont/73839/"
+        },
+        {
+          "name": "Bear, DE - Tesla Supercharger, 1100 Pulaski Highway, Bear",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            237653
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Biden Center, 520 JFK Memorial Hwy, Newark",
+          "facts": "DOE lists 12 CCS at 400 kW, 12 NACS at 400 kW on Applegreen Electric. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            451852
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Budget Inn, 3 Memorial Dr, New Castle",
+          "facts": "DOE lists 2 CHAdeMO at 90 kW, 2 CCS at 90 kW on Universal EV Charging. DOE last confirmed 2026-07-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            462911
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Candlewood Suites Newark South - University Area, an IHG Hotel, 1101 S College Ave, Newark",
+          "facts": "DOE lists 1 CHAdeMO at 90 kW, 1 CCS at 90 kW on Universal EV Charging. DOE last confirmed 2026-07-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            462921
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Carman Ford Lincoln - DCFC, 193 South Dupont Highway, New Castle",
+          "facts": "DOE lists 6 CCS at 120 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            374517
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Carneys Point, NJ - Tesla Supercharger, 327 Slapes Corner Rd, Carneys Point",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            332096
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Claymont, DE - Philadelphia Pike - Tesla Supercharger, 2621 Philadelphia Pike, Claymont",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            168041
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Elkton, MD Rechargery Relay @ Wawa - Elkton Rd, 1657 Elkton Rd, Elkton",
+          "facts": "DOE lists 6 CCS at 400 kW, 4 NACS at 400 kW on IONNA. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            448358
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Flying J 875, 221 Belle Hill Road, Elkton",
+          "facts": "DOE lists 8 CCS at 350 kW on EVgo. DOE last confirmed 2026-10-15. EVgo's locator had no page for this site on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            445848
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GPM INVESTMENTS 287 DC1, 906 S Dupont Hwy, New Castle",
+          "facts": "DOE lists 1 CCS at 125 kW, 1 NACS at 125 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            335741
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GPM INVESTMENTS 287 DC2, 906 S Dupont Hwy, New Castle",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            335743
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "New Castle, DE - Airport Road - Tesla Supercharger, 183 Airport Rd, New Castle",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            320137
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "New Castle, DE - Christiana Bypass - Tesla Supercharger, 970 Christiana Bypass, New Castle",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            308418
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "New Castle, DE - New Castle Avenue - Tesla Supercharger, 2160 New Castle Avenue, New Castle",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            347605
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "New Castle, DE - North Dupont Highway - Tesla Supercharger, 4000 North Dupont Highway, New Castle",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            196520
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Newark, DE - Corporate Boulevard - Tesla Supercharger, 110 Corporate Blvd, Newark",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            350088
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Newark, DE - East Chestnut Hill Road - Tesla Supercharger, 274 E Chestnut Hill Rd, Newark",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            256573
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Newark, DE - Old Baltimore Pike - Tesla Supercharger, 865 Old Baltimore Pike, Newark",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            257002
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Newark, DE - Tesla Supercharger, 530 John F Kennedy Memorial Hwy, Newark",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            102103
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Newark, DE, 132 Christiana Mall, Newark",
+          "facts": "DOE lists 6 CCS at 300 kW on Rivian. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            391278
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "North East, MD - Pulaski Highway - Tesla Supercharger, 2031 Pulaski Hwy, North East",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            256575
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Pennsville, NJ - Tesla Supercharger, 251 N Broadway, Pennsville Township",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            371840
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Porter Chevrolet, 414 East Cleveland Avenue, Newark",
+          "facts": "DOE lists 2 CCS at 60 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            310894
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Porter Ford, 600 Ogletown Road, Newark",
+          "facts": "DOE lists 4 CCS at 120 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            310057
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Porter Nissan, 300 E Cleveland Ave, Newark",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW on non-networked. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            46558
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Preston Chrysler Dodge Jeep Ram of Wilmington - DCFC, 3807 Kirkwood Highway, Wilmington",
+          "facts": "DOE lists 2 CCS at 180 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            376331
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Royal Farms - North East, MD - RFS 096, 500 Mechanics Valley Road, North East",
+          "facts": "DOE lists 2 CCS at 60 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            309971
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Sheridan Ford, 4001 Kirkwood Hwy, Wilmington",
+          "facts": "DOE lists 4 CCS at 240 kW on Ford Charge. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            358310
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Sheridan Nissan, 114 S Dupont Hwy, New Castle",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on In-Charge. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            449389
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "TA Elkton Road, Elkton, MD, 1400 Elkton Road, Elkton",
+          "facts": "DOE lists this as temporarily unavailable: 8 CCS at 400 kW, 4 NACS at 400 kW on bp pulse. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            387078
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Wilmington, DE - Limestone Road - Tesla Supercharger, 2030 Limestone Rd, Wilmington",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            327928
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "The Wawa at this site sells food and coffee. Its store page lists online ordering and curbside pickup. Restrooms: Not yet verified.",
+          "category": "food",
+          "source": "wawa",
+          "url": "https://www.wawa.com/locations/0840",
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "searches": [
+        {
+          "name": "New Castle, DE",
+          "lat": 39.662,
+          "lng": -75.5663,
+          "radius": 8
+        },
+        {
+          "name": "Newark, DE",
+          "lat": 39.6837,
+          "lng": -75.7497,
+          "radius": 8
+        },
+        {
+          "name": "Elkton, MD",
+          "lat": 39.6068,
+          "lng": -75.8333,
+          "radius": 8
+        },
+        {
+          "name": "Wilmington, DE",
+          "lat": 39.7391,
+          "lng": -75.5398,
+          "radius": 6
+        }
+      ]
+    },
+    {
+      "id": "moorestown",
+      "name": "Moorestown",
+      "towns": "Moorestown, Mount Laurel, Cherry Hill, Somerdale, and Deptford, NJ",
+      "mile": 134,
+      "milepostNote": "Measured along OSRM's route from the start: 133.9 miles. The site is about 0.8 mile from that route line.",
+      "why": "ShopRite's Electrify America site in Moorestown is 6 stalls at 350 kW. Marlton Commons and the Somerdale Walmart are verified backups on Electrify America. The Applegreen plazas on the NJ Turnpike at Walt Whitman and James Fenimore Cooper are listed from DOE and Applegreen's map and are not verified.",
+      "primary": {
+        "name": "Wakefern Shoprite 594 (Moorestown, NJ)",
+        "network": "Electrify America",
+        "address": "1000 Nixon Dr, Moorestown, NJ 08057",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          418044
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Urban Edge Properties Marlton Commons (Marlton, NJ)",
+          "network": "Electrify America",
+          "address": "307 Rte 70 W, Marlton, NJ 08053",
+          "facts": "6 chargers: 6 CCS at 350 kW. DOE lists the same port count. About 3.5 miles (straight line) away on Route 70 in Marlton.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/marlton/307-rte-70-w/240408/",
+          "afdcIds": [
+            457280
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Walmart 4456 (Somerdale, NJ)",
+          "network": "Electrify America",
+          "address": "1 Coopertowne Blvd, Somerdale, NJ 08083",
+          "facts": "8 chargers: 8 CCS at 350 kW. DOE lists the same port count. About 6.5 miles (straight line) back toward Delaware, off US 30.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/somerdale/1-coopertowne-blvd/100280/",
+          "afdcIds": [
+            153204
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "ACME Woodbury #3970, 631 Mantua Pike, West Deptford",
+          "facts": "EVgo lists 2 stalls at 631 Mantua Pike, West Deptford: 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            416902
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/west-deptford/81494/"
+        },
+        {
+          "name": "Macerich Deptford Mall (Deptford, NJ), 1750 Deptford Center Rd, Deptford",
+          "facts": "Electrify America lists 4 chargers at 1750 Deptford Center Rd: 4 CCS at 350 kW. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            214919
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/deptford/1750-deptford-center-rd/210194/"
+        },
+        {
+          "name": "ShopRite of Mount Laurel, 127 Ark Rd, Mount Laurel",
+          "facts": "EVgo lists 6 stalls at 127 Ark Rd, Mount Laurel: 6 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            237071
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/mount-laurel/2040/"
+        },
+        {
+          "name": "Simon Gloucester Premium Outlets (Blackwood, NJ), 100 Premium Outlets Dr, Blackwood",
+          "facts": "Electrify America lists 6 chargers at 100 Premium Outlets Dr: 6 CCS at 350 kW. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            355721
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/blackwood/100-premium-outlets-dr/240312/"
+        },
+        {
+          "name": "Target T1085 (Cherry Hill, NJ), 2137 NJ-38, Cherry Hill",
+          "facts": "Electrify America lists 3 chargers at 2137 NJ-38: 3 CCS at 350 kW; also 1 Level 2 J1772 connector (240 V, 30 A), not counted as a stall. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            149262
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/cherry-hill/2137-nj-38/200115/"
+        },
+        {
+          "name": "The Shoppes at Cinnaminson, 127 Route 130 S, Cinnaminson",
+          "facts": "EVgo lists 4 stalls at 127 Route 130 S, Cinnaminson: 2 chargers at 350 kW with CCS and CHAdeMO; 1 charger at 100 kW with CHAdeMO and CCS; 1 charger at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            373094
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/cinnaminson/73814/"
+        },
+        {
+          "name": "Westville Town Center, 165 Broadway, Westville",
+          "facts": "EVgo lists 2 stalls at 165 Broadway, Westville: 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            236710
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/westville/48122/"
+        },
+        {
+          "name": "BURNS FRONT A, 601 NJ-70, Evesham",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            311179
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "BURNS FRONT B, 500 Rte 70 W, Evesham",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            311461
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Barlow Chevrolet, 6057 Route 130 S, Delran",
+          "facts": "DOE lists 1 CCS at 25 kW on non-networked. DOE last confirmed 2025-05-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            121589
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Bellmawr, NJ - Tesla Supercharger, 12 S Black Horse Pike, Bellmawr",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            390330
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Blackwood, NJ - Tesla Supercharger, 100 Premium Outlets Dr, Blackwood",
+          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            440446
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Borough Hall DCFC | Borough of Audubon NJ, 606 W Nicholson Rd, Audubon",
+          "facts": "DOE lists this as planned, not open: 2 CCS at 120 kW on Vialynk. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            469754
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Burlington County Bridge - DCFC, 1208 Market Street, Palmyra",
+          "facts": "DOE lists 2 CHAdeMO at 180 kW, 2 CCS at 180 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            357916
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "COLLINGSWOOD NJ CWOOD DCFC1, 611 N Atlantic Ave, Collingswood",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            263021
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "COLLINGSWOOD NJ CWOOD DCFC2, 611 N Atlantic Ave, Collingswood",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            263022
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cherry Hill, NJ - Haddonfield Road - Tesla Supercharger, 904 Haddonfield Road, Cherry Hill",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            190474
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cherry Hill, NJ Rechargery @ Wawa - Marlton Pike East, 1824 Marlton Pike E, Cherry Hill",
+          "facts": "DOE lists 6 CCS at 400 kW, 2 NACS at 400 kW on IONNA. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            454145
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Deptford, NJ - Tesla Supercharger, 1750 Deptford Center Road, Deptford",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            165118
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DoubleTree by Hilton - Cherry Hill, 2349 Marlton Pike West, Cherry Hill",
+          "facts": "DOE lists 2 CCS at 150 kW, 2 NACS at 150 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            171369
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ELITE ACURA CPE 1, 2840 NJ-73, Maple Shade",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            417683
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Echelon Ford Inc, 4 S White Horse Pike, Stratford",
+          "facts": "DOE lists 2 CCS at 120 kW on Ford Charge. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            434844
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Genesis of Cherry Hill - Showroom, 451 New Jersey 73, Marlton",
+          "facts": "DOE lists 2 CCS at 120 kW, 2 CCS at 60 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            321013
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Gloucester City, NJ - Tesla Supercharger, 1200 Crescent Blvd, Gloucester City",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            374989
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Holman Ford of Maple Shade, 571 NJ-38, Maple Shade",
+          "facts": "DOE lists 2 CCS at 130 kW on Ford Charge. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            358291
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "James Fenimore Cooper Service Plaza, 1400 NJ Turnpike, Mt. Laurel Township",
+          "facts": "Applegreen Electric's network map lists 8 chargers here and gives no kW. DOE lists 4 CCS at 400 kW. DOE last confirmed 2026-03-12. The two counts differ; kW is Not yet verified.",
+          "status": "conflict",
+          "afdcIds": [
+            384161
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "applegreen",
+          "url": "https://www.applegreenelectric.com/our-network"
+        },
+        {
+          "name": "LIBERTY TOYOTA STATION 1, 4397 U.S. 130, Burlington",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            332325
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "LIBERTY TOYOTA STATION 2, 4397 U.S. 130, Burlington",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            332326
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Lawnside, NJ - Tesla Supercharger, 401 E Oak Ave, Lawnside",
+          "facts": "Tesla Supercharger. DOE lists 32 CCS at 325 kW, 32 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            405683
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Magnolia, NJ - Tesla Supercharger, 340 Evesham Ave E, Magnolia",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            404787
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Maple Shade, NJ - Route 38 East - Tesla Supercharger, 600 Route 38 East, Maple Shade",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 250 kW, 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            351246
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Maple Shade, NJ - Tesla Supercharger, 2801 Route 73, Maple Shade",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            154201
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Marlton, NJ - Tesla Supercharger, 500 NJ-73, Marlton",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            149327
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mt Laurel Township, NJ - NJ-73 - Tesla Supercharger, 915 NJ-73, Mt Laurel Township",
+          "facts": "Tesla Supercharger. DOE lists 40 CCS at 325 kW, 40 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            353824
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Pennsauken Township, NJ - Tesla Supercharger, 2290 Clement Ave, Pennsauken Township",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            361248
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walt Whitman Service Plaza, 700 NJ Turnpike, Cherry Hill",
+          "facts": "Applegreen Electric's network map lists 8 chargers here and gives no kW. DOE lists 8 CCS at 400 kW. DOE last confirmed 2026-03-12. Counts match.",
+          "status": "unverified",
+          "afdcIds": [
+            384162
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "applegreen",
+          "url": "https://www.applegreenelectric.com/our-network"
+        },
+        {
+          "name": "Wawa - Tesla Supercharger, 112 Edgewood Ave, Bellmawr",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 500 kW, 8 NACS at 500 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            470550
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Westampton, NJ - Rancocas Road - Tesla Supercharger, 570 Rancocas Road, Westampton",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            201930
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Winner Ford - DCFC, 250 Haddonfield-Berlin Road, Cherry Hill Township",
+          "facts": "DOE lists 4 CCS at 120 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            396230
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Moorestown, NJ",
+          "lat": 39.969,
+          "lng": -74.9488,
+          "radius": 8
+        },
+        {
+          "name": "Cherry Hill, NJ",
+          "lat": 39.9348,
+          "lng": -75.0307,
+          "radius": 8
+        },
+        {
+          "name": "Somerdale, NJ",
+          "lat": 39.8426,
+          "lng": -75.0232,
+          "radius": 6
+        },
+        {
+          "name": "Deptford, NJ",
+          "lat": 39.824,
+          "lng": -75.1177,
+          "radius": 6
+        }
+      ]
+    },
+    {
+      "id": "east-brunswick",
+      "name": "East Brunswick",
+      "towns": "East Brunswick, Edison, and East Windsor, NJ",
+      "mile": 182,
+      "milepostNote": "Measured along OSRM's route from the start: 181.7 miles. The site is about 0.9 mile from that route line.",
+      "why": "The Walmart on NJ-18 has 10 Electrify America stalls at 350 kW. The Edison Mall site, 10 more stalls at 350 kW, is the verified backup. East Windsor and Hamilton sites are listed here too, since no stop falls between Moorestown and this one. The Applegreen plazas at Molly Pitcher, Woodrow Wilson, Richard Stockton and Joyce Kilmer are listed from DOE and Applegreen's map and are not verified.",
+      "primary": {
+        "name": "Walmart 3078 (East Brunswick, NJ)",
+        "network": "Electrify America",
+        "address": "290 NJ-18, East Brunswick, NJ 08816",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/east-brunswick/290-nj-18/100281/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/east-brunswick/290-nj-18/100281/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          167237
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/VWiD4Owners/comments/1git6t2/electrify_america_charging_station_kindly_updated/",
+            "date": "2024-11-03",
+            "summary": "Commenter calls the East Brunswick EA site a crucial station for NJ Turnpike travelers and says it had been out of commission for a stretch before it was rebuilt."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Milbrook Edison Mall (Edison, NJ)",
+          "network": "Electrify America",
+          "address": "765-775 US-1 S, Edison, NJ 08817",
+          "facts": "10 chargers: 10 CCS at 350 kW. DOE lists the same port count. About 4 miles (straight line) north on US 1.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/edison/765-775-us-1-s/140012/",
+          "afdcIds": [
+            428734
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "Quaker Bridge Mall, 3320 US Highway 1, Lawrence Township",
+          "facts": "EVgo lists 2 stalls at 3320 US Highway 1, Lawrence Township: 1 charger at 50 kW with CHAdeMO and CCS; 1 charger at 50 kW with CCS and CHAdeMO. Also lists 1 Level 2 charger, not counted as a stall. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            228491
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/lawrence-township/582/"
+        },
+        {
+          "name": "Simon - Quaker Bridge Mall (Lawrenceville, NJ), 150 Quakerbridge Mall, Lawrenceville",
+          "facts": "Electrify America lists 4 chargers at 150 Quakerbridge Mall: 4 CCS at 350 kW. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            184915
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/lawrenceville/150-quakerbridge-mall/210177/"
+        },
+        {
+          "name": "Target T2853 (North Brunswick, NJ), 101 Grand Ave, North Brunswick Township",
+          "facts": "Electrify America lists 10 chargers at 101 Grand Ave: 10 CCS at 350 kW. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            448009
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/north-brunswick-township/101-grand-ave/240385/"
+        },
+        {
+          "name": "Windsor Corner (East Windsor, NJ), 440 US 130, East Windsor",
+          "facts": "Electrify America lists 6 chargers at 440 US 130: 6 CCS at 350 kW. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            417770
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/east-windsor/440-us-130/240159/"
+        },
+        {
+          "name": "AAF OLD BRIDGE A1, 3698 US-9, Old Bridge",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            471368
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "AAF OLD BRIDGE A2, 3698 US-9, Old Bridge",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            471369
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "AAF OLD BRIDGE A3, 3698 US-9, Old Bridge",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            470828
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "AAF OLD BRIDGE A4, 3698 US-9, Old Bridge",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            470829
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Acme Nissan, 2050 US Highway 130, South Brunswick",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on non-networked. DOE last confirmed 2024-02-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            45688
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ChargeSmart EV - Midstate Mall, 300 NJ-18, East Brunswick",
+          "facts": "DOE lists this as temporarily unavailable: 4 CCS at 240 kW, 4 NACS at 240 kW on ChargeSmart EV. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            387129
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ChargeSmart EV - Old Bridge Turnpike, 300 NJ 18, East Brunswick",
+          "facts": "DOE lists this as temporarily unavailable: 4 CCS at 240 kW, 4 NACS at 240 kW on ChargeSmart EV. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            387130
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Ciocca Ford Lincoln of Lawrenceville, 2920 Brunswick Pike, Lawrence Township",
+          "facts": "DOE lists 6 CCS at 120 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            429859
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Coleman Cadillac, 300 Renaissance Blvd, Lawrenceville",
+          "facts": "DOE lists 1 CCS at 50 kW on EV Connect. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            314194
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cranbury, NJ - Forsgate Drive - Tesla Supercharger, 420 Forsgate Dr, Cranbury",
+          "facts": "Tesla Supercharger. DOE lists 16 CCS at 250 kW, 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            302971
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Crossings at Plainsboro - DCFC, 3 Fox Run Dr, Plainsboro Township",
+          "facts": "DOE lists this as temporarily unavailable: 1 CCS at 120 kW, 1 NACS at 120 kW on ChargeSmart EV. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            421803
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DAYTONSHOP LOT 1, 2291 U.S. 130, South Brunswick Township",
+          "facts": "DOE lists 1 CCS at 40 kW, 1 NACS at 40 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            327220
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "East Brunswick, NJ - State Route 18 - Tesla Supercharger, 755 State Route 18, East Brunswick",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            149306
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "East Windsor, NJ - Tesla Supercharger, 610 NJ-33, East Windsor",
+          "facts": "Tesla Supercharger. DOE lists 32 CCS at 325 kW, 32 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            404789
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Edison, NJ - Tesla Supercharger, 55 Parsonage Rd., Edison",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            102293
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Edison, NJ - U.S. Route 1 - Tesla Supercharger, 580 U.S. Route 1, Edison",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            238208
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Ford Charge at Haldeman Subaru, 1207 US-130, Robbinsville Township",
+          "facts": "DOE lists 2 CCS at 120 kW on Ford Charge. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            416825
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "GATEWAY KIA NB CPE250 STATION1, 720 Carolier Lane, North Brunswick Township",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            456705
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "HK 1 HK SP1, 2624 Hamilton Blvd, South Plainfield",
+          "facts": "DOE lists 1 CCS at 23.9 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            300483
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Haldeman Ford, 607 NJ-33, Hamilton Township",
+          "facts": "DOE lists 2 CCS at 120 kW on Ford Charge. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            439501
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Hamilton Township, NJ - Crosswicks Hamilton Square Road - Tesla Supercharger, 3817 Crosswicks Hamilton Square Rd, Hamilton Township",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            417115
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Hamilton Township, NJ - Flock Road - Tesla Supercharger, 51 Flock Rd, Hamilton Township",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            311248
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Hamilton Township, NJ - Tesla Supercharger, 425 Market Place Blvd, Hamilton Township",
+          "facts": "Tesla Supercharger. DOE lists 6 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            102295
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Isles - Perry Street Headquarters, 265 Allen Street, Trenton",
+          "facts": "DOE lists 2 CHAdeMO at 50 kW, 2 CCS at 50 kW on FLO. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            390187
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Joyce Kilmer Travel Plaza, NJ Turnpike Mile 8 N, East Brunswick",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on Applegreen Electric. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            397998
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "L708 PL202X1B 1, 1101 US-9, Old Bridge",
+          "facts": "DOE lists 2 CCS at 200 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            361726
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MERCERCOUNTYNJ ADMIN DC 1, 640 S Broad St, Trenton",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            357744
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MERCERCOUNTYNJ ADMIN DC2, 640 S Broad St, Trenton",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            357745
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MERCERCOUNTYNJ ARENA DC1, 80 Hamilton Avenue, Trenton",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            357749
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MERCERCOUNTYNJ ARENA DC2, 80 Hamilton Avenue, Trenton",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            357750
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Malouf Chevrolet-Cadillac, 1975 US Highway 1, North Brunswick",
+          "facts": "DOE lists 1 CCS at 50 kW on EV Connect. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            321520
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Manhattan Comfort, 319 Ridge Rd, Dayton",
+          "facts": "DOE lists 4 CCS at 30 kW on EVgateway. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            406096
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Molly Pitcher Service Area, NJ Turnpike Milepost 71.7 S, East Windsor",
+          "facts": "Applegreen Electric's network map lists 8 chargers here and gives no kW. DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW. DOE last confirmed 2026-03-12. The two counts differ; kW is Not yet verified.",
+          "status": "conflict",
+          "afdcIds": [
+            451861
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "applegreen",
+          "url": "https://www.applegreenelectric.com/our-network"
+        },
+        {
+          "name": "Monroe Township, NJ - Tesla Supercharger, Route 33 & Butcher Road, Monroe Township",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            222800
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "NJDOT HQ DC1, Njdot, Ewing Township",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            469678
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "NJDOT HQ DC2, Njdot, Ewing Township",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            469679
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "North Brunswick Township, NJ - Tesla Supercharger, 650 Shoppes Blvd, North Brunswick Township",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 250 kW, 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            311227
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "North Brunswick, NJ - Tesla Supercharger, 191 Grand Avenue, North Brunswick",
+          "facts": "Tesla Supercharger. DOE lists 10 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            102297
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Old Bridge, NJ - Tesla Supercharger, 1453 Route 18 South, Old Bridge",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            212752
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Old Bridge, NJ - US-9 - Tesla Supercharger, 3600 US-9, Old Bridge",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            422979
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Precision Acura of Princeton, 3001 U.S. 1, Lawrence Township",
+          "facts": "DOE lists 2 CCS at 60 kW, 1 CCS at 30 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            326191
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ROUTE 1 HYUNDAI CPE-250-02, 3905 US 1, South Brunswick Township",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            260859
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ROUTE 1 HYUNDAI RT1-01, 3913 US-1, South Brunswick Township",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            260860
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Richard Stockton Travel Plaza, NJ Turnpike Post 58 S, Hamilton Township",
+          "facts": "Applegreen Electric's network map lists 8 chargers here and gives no kW. DOE lists 4 CCS at 400 kW. DOE last confirmed 2026-03-12. The two counts differ; kW is Not yet verified.",
+          "status": "conflict",
+          "afdcIds": [
+            397997
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "applegreen",
+          "url": "https://www.applegreenelectric.com/our-network"
+        },
+        {
+          "name": "Robbinsville, NJ - Tesla Supercharger, 315 Robbinsville-Allentown Road, Robbinsville",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            149351
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Route 33 Nissan, 951 NJ-33, Trenton",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on non-networked. DOE last confirmed 2025-07-03. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            397598
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Rutgers University - RUNet Field Offices, 63 Rd 1, Piscataway",
+          "facts": "DOE lists 1 CHAdeMO at 44 kW on non-networked. DOE last confirmed 2023-12-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            76682
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "South Brunswick, NJ Rechargery Relay @ Wawa - Rt 27, 3222 Rt 27, South Brunswick",
+          "facts": "DOE lists 6 CCS at 400 kW, 4 NACS at 400 kW on IONNA. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            463477
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "South River, NJ - Tesla Supercharger, 656 Old Bridge Turnpike, South River",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            233047
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "T & T Coast GMC, 2730 Route 130 North, Cranbury",
+          "facts": "DOE lists 1 CCS at 50 kW on EV Connect. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            416567
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "WOODBRIDGE TWP DCFC ISELIN (1), 275 NJ-27, Woodbridge Township",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            447801
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "WOODBRIDGE TWP DCFC ISELIN (2), 275 NJ-27, Woodbridge Township",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            447800
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Wawa - Tesla Supercharger, 88 Centennial Ave, Piscataway",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            456082
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Woodrow Wilson Service Plaza, 75 New Jersey Turnpike, Hamilton Township",
+          "facts": "Applegreen Electric's network map lists 4 chargers here and gives no kW. DOE lists 4 CCS at 400 kW. DOE last confirmed 2026-03-12. Counts match.",
+          "status": "unverified",
+          "afdcIds": [
+            384164
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "applegreen",
+          "url": "https://www.applegreenelectric.com/our-network"
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "East Brunswick, NJ",
+          "lat": 40.4276,
+          "lng": -74.4157,
+          "radius": 8
+        },
+        {
+          "name": "Edison, NJ",
+          "lat": 40.5187,
+          "lng": -74.4121,
+          "radius": 6
+        },
+        {
+          "name": "East Windsor, NJ",
+          "lat": 40.2565,
+          "lng": -74.5266,
+          "radius": 8
+        },
+        {
+          "name": "Hamilton, NJ",
+          "lat": 40.2143,
+          "lng": -74.6853,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "id": "elizabeth",
+      "name": "Elizabeth",
+      "towns": "Elizabeth, Newark, and Woodbridge, NJ",
+      "mile": 201,
+      "milepostNote": "Measured along OSRM's route from the start: 201.2 miles. The site is about 0.5 mile from that route line.",
+      "why": "The last stop before the George Washington Bridge. Jersey Gardens has 10 Electrify America stalls at 350 kW. The Wawa EVgo site on Spring Street and the Ferry Street EA site in Newark are verified backups. Tesla, ChargePoint and other sites in Elizabeth, Newark and Woodbridge are listed as DOE leads and are not verified.",
+      "primary": {
+        "name": "Simon Mills at Jersey Gardens (Elizabeth NJ)",
+        "network": "Electrify America",
+        "address": "651 Kapkowski Road, Elizabeth, NJ 07201",
+        "exit": "Not yet verified",
+        "stalls": {
+          "value": "10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/elizabeth/651-kapkowski-road/100282/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 10",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/elizabeth/651-kapkowski-road/100282/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          164538
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Wawa Elizabeth #8320",
+          "network": "EVgo",
+          "address": "595 Spring St, Elizabeth, NJ 07201",
+          "facts": "4 stalls: 1 charger at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count. On Spring Street in Elizabeth, about 1.6 miles (straight line) from Jersey Gardens.",
+          "access": "Open to all EVs that use CCS or CHAdeMO, per EVgo.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/elizabeth/74414/",
+          "afdcIds": [
+            374358
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Ferry Plaza (UBP) (Newark, NJ)",
+          "network": "Electrify America",
+          "address": "311 Ferry Street, Newark, NJ 07105",
+          "facts": "4 chargers: 4 CCS at 350 kW. DOE lists the same port count. In Newark on Ferry Street, about 4.7 miles (straight line) north.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/newark/311-ferry-street/210176/",
+          "afdcIds": [
+            194698
+          ],
+          "driverReports": [
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/Newark/comments/1k1go4x/where_are_fast_charging_stations_for_evs_between/",
+              "date": "2025-04-17",
+              "summary": "Commenter says the Ferry Street EA site in Newark is hidden behind a bank and usually has a shorter wait."
+            }
+          ],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "ACME Markets - Clark, 1060 Raritan Rd, Clark",
+          "facts": "EVgo lists 4 stalls at 1060 Raritan Rd, Clark: 4 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            231118
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/clark/47858/"
+        },
+        {
+          "name": "BOA Union Center NJ6-241 (Union, NJ), 1930 Morris Ave, Union",
+          "facts": "Electrify America lists 6 chargers at 1930 Morris Ave: 6 CCS at 350 kW. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            462667
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/union/1930-morris-ave/220347/"
+        },
+        {
+          "name": "Convery Plaza Shopping Center, 365 Convery Blvd, Perth Amboy",
+          "facts": "EVgo lists 4 stalls at 365 Convery Blvd, Perth Amboy: 1 charger at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            238821
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/perth-amboy/49978/"
+        },
+        {
+          "name": "Courtyard by Marriott West Orange, 8 Rooney Cir, West Orange",
+          "facts": "EVgo lists 4 stalls at 8 Rooney Cir, West Orange: 1 charger at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            235995
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/west-orange/48173/"
+        },
+        {
+          "name": "ShopRite Carteret - Wakefern #511, 801 Roosevelt Ave, Carteret",
+          "facts": "EVgo lists 4 stalls at 801 Roosevelt Ave, Carteret: 1 charger at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            260888
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/carteret/53119/"
+        },
+        {
+          "name": "UBP Bloomfield Crossing (Bloomfield, NJ), 736 Belleville Ave #36, Bloomfield",
+          "facts": "Electrify America lists 4 chargers at 736 Belleville Ave #36: 4 CCS at 350 kW. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            223791
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/bloomfield/736-belleville-ave-36/210488/"
+        },
+        {
+          "name": "Union Crescent Plaza, 2255 Springfield Ave, Vauxhall",
+          "facts": "EVgo lists 4 stalls at 2255 Springfield Ave, Vauxhall: 2 chargers at 350 kW with CCS and CHAdeMO; 1 charger at 100 kW with CCS and CHAdeMO; 1 charger at 100 kW with CHAdeMO and CCS. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            373077
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/nj/vauxhall/73796/"
+        },
+        {
+          "name": "Urban Edge Kearny Commons (Kearny, NJ), 175 Passaic Ave, Kearny",
+          "facts": "Electrify America lists 6 chargers at 175 Passaic Ave: 6 CCS at 350 kW. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            464955
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/kearny/175-passaic-ave/220346/"
+        },
+        {
+          "name": "Walmart 5447 (Kearny, NJ), 150 Harrison Ave, Kearny",
+          "facts": "Electrify America lists 3 chargers at 150 Harrison Ave: 3 CCS at 350 kW; also 1 Level 2 J1772 connector (240 V, 30 A), not counted as a stall. DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            152423
+          ],
+          "driverReports": [
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/Newark/comments/1k1go4x/where_are_fast_charging_stations_for_evs_between/",
+              "date": "2025-04-17",
+              "summary": "Commenter says the Kearny Walmart EA site gets packed, with rarely an open charger, because it is in the Walmart lot."
+            }
+          ],
+          "checkedOn": "2026-10-15",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/kearny/150-harrison-ave/200104/"
+        },
+        {
+          "name": "Avenel, NJ - Tesla Supercharger, 930 US-1, Avenel",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 250 kW, 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            225837
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Carteret, NJ - Tesla Supercharger, 793 Roosevelt Ave, Carteret",
+          "facts": "Tesla Supercharger. DOE lists 20 CCS at 325 kW, 20 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            440460
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Clark, NJ - Tesla Supercharger, 36 Valley Rd, Clark",
+          "facts": "Tesla Supercharger. DOE lists 16 CCS at 250 kW, 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            330974
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Cranford, NJ - Tesla Supercharger, 370 North Avenue East, Cranford",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            222334
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Crosspointe Town Square - Tesla Supercharger, 15 Woodbridge Center Dr, Woodbridge Township",
+          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed None. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            471136
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ESSEX COUNTY ADMIN DC 1, 5 13th Ave JUROR LOT Howard Street or South O, Newark",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            302525
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ESSEX COUNTY EMPLOY LOT DC1, 40 w market street, Newark",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            312845
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EV Edison Charging Hub, 78 John Miller Way, Kearny",
+          "facts": "DOE lists 30 CCS at 180 kW on non-networked. DOE last confirmed 2026-04-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            450926
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Elizabeth, NJ - Spring Street - Tesla Supercharger, 595 Spring St, Elizabeth",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            374342
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Elizabeth, NJ - Tesla Supercharger, 651 Kapkowski Road, Elizabeth",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            165578
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Grover Cleveland Service Area, NJ Turnpike Milepost 92.9 N, Woodbridge",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on Applegreen Electric. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            451863
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "HUDSON TOYOTA CPE250 #2, 617 NJ-440, Jersey City",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            238873
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Harrison, NJ - Tesla Supercharger, 450 Bergen St, Harrison",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            390334
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Holiday Inn Newark Intl Airport North, 160 Frontage Rd, Newark",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 180 kW, 1 CCS at 180 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            170137
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Kearny, NJ - Harrison Avenue - Tesla Supercharger, 220 Harrison Avenue, Kearny",
+          "facts": "Tesla Supercharger. DOE lists 16 CCS at 325 kW, 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            374990
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Kearny, NJ - Tesla Supercharger, 200 Harrison Avenue, Kearny",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 150 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            118950
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "L443 EXPPPUBLICPL01, 2285 US-22, Union",
+          "facts": "DOE lists 2 CCS at 160 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            405338
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MAXONEXPRESS SALES FRONT, 2329 US-22, Union",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            329501
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "NJCU LOT 4 CST LOT 4 ECV1, 2039 John F. Kennedy Blvd, Jersey City",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            450314
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "NJCU LOT 4 CST LOT 4 ECV2, 2039 John F. Kennedy Blvd, Jersey City",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            450313
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Newark Airport Cell Phone Lot (Zapp), 3 Brewster Rd, Newark",
+          "facts": "DOE lists 8 CCS at 150 kW on non-networked. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            448764
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Newark, NJ - Lindbergh Road - Tesla Supercharger, 100 Lindbergh Rd, Newark",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            311241
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Newark, NJ - Tesla Supercharger, 281 Ferry St, Newark",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            422574
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PANYNJ PN WC TRUCK 1, 272 Marlin Street, Newark",
+          "facts": "DOE lists 1 CHAdeMO at 100 kW, 1 CCS at 174.8 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            450181
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PANYNJ PN WC TRUCK 2, 272 Marlin St, Newark",
+          "facts": "DOE lists 1 CHAdeMO at 100 kW, 1 CCS at 174.8 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            450178
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PANYNJ PN WC TRUCK 3, 272 Marlin Street, Newark",
+          "facts": "DOE lists 1 CHAdeMO at 100 kW, 1 CCS at 174.8 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            450179
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PANYNJ PN WC TRUCK 4, 272 Marlin Street, Newark",
+          "facts": "DOE lists 1 CHAdeMO at 100 kW, 1 CCS at 174.8 kW on ChargePoint. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            450180
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Perth Amboy, NJ - Tesla Supercharger, 365 Convery Boulevard, Perth Amboy",
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 250 kW, 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            238580
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Route 22 Honda, 1480 North Broad Street, Hillside",
+          "facts": "DOE lists 2 CCS at 60 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            382793
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Sansone Kia, 90-100 US-1 N, Avenel",
+          "facts": "DOE lists this as temporarily unavailable: 1 CCS at 25 kW on non-networked. DOE last confirmed 2026-10-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            234961
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Springfield, NJ - Cleveland Place - Tesla Supercharger, 2017 Cleveland Place, Springfield",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            165119
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Twin City Shopping Center - Tesla Supercharger, 2-36 Garfield Ave, Jersey City",
+          "facts": "Tesla Supercharger. DOE lists 12 CCS at 325 kW, 12 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-10-13. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            451972
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Union, NJ - Tesla Supercharger, 1750 Route 22 East, Union",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE notes \"NACS partner enabled\". DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            257005
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Whitney Houston Service Area, 1 Vauxhall Rd, Union",
+          "facts": "DOE lists 2 CCS at 400 kW, 2 NACS at 400 kW on Applegreen Electric. DOE last confirmed 2026-03-12. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            451857
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Woodbridge Township, NJ - Tesla Supercharger, 440 King Georges Road, Woodbridge",
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. DOE last confirmed 2026-06-18. Tesla's locator was not readable on 2026-10-15.",
+          "status": "unverified",
+          "afdcIds": [
+            102301
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "bp Meisel Avenue, Springfield, NJ, 5 Meisel Avenue, Springfield",
+          "facts": "DOE lists 2 CHAdeMO at 100 kW, 2 CCS at 175 kW on bp pulse. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            259709
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [],
+      "searches": [
+        {
+          "name": "Elizabeth, NJ",
+          "lat": 40.664,
+          "lng": -74.2107,
+          "radius": 8
+        },
+        {
+          "name": "Newark, NJ",
+          "lat": 40.7357,
+          "lng": -74.1724,
+          "radius": 6
+        },
+        {
+          "name": "Woodbridge, NJ",
+          "lat": 40.5576,
+          "lng": -74.2846,
+          "radius": 6
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "69 Tesla sites in the stop lists are not yet verified. Tesla's locator could not be read on October 15, 2026, so their access (Tesla only or open to all EVs), stall counts and kW are DOE figures only.",
+      "source": "afdc"
+    },
+    {
+      "text": "Applegreen's own map and DOE disagree on the charger count at several NJ Turnpike plazas, and the map gives no kW. Both numbers are in the stop lists. Plaza chargers are not primaries until the kW is confirmed.",
+      "source": "applegreen"
+    },
+    {
+      "text": "Exit 109 in Elkton, MD, between Abingdon and New Castle, has a bp pulse site, a Flying J EVgo listing and an IONNA site in DOE. None are verified. EVgo's locator had no page for the Flying J listing on October 15, 2026.",
+      "source": "afdc"
+    },
+    {
+      "text": "Food and restroom notes are Not yet verified at every stop except the New Castle Wawa food note. Restrooms are most likely inside the host store at each site. Hours are not confirmed.",
+      "source": "ea-locator"
+    },
+    {
+      "text": "Electrify America's chargers on this route are CCS. NACS cars need an adapter.",
+      "source": "ea-locator"
+    }
+  ],
+  "arrival": "Manhattan and the other boroughs are not in this guide. The last stop is Elizabeth, NJ, about 22 miles before the George Washington Bridge. The NYC to Boston guide starts at that bridge."
+}
