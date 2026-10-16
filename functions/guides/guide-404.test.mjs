@@ -156,6 +156,15 @@ test('guides catch-all', async () => {
   assert.equal(fromD1.status, 200);
   assert.equal(await fromD1.text(), 'rendered-from-d1');
 
+  const noindexShell = { body: shell.body, headers: { 'content-type': 'text/html; charset=utf-8', 'x-robots-tag': 'noindex, nofollow' } };
+  const indexable = await onRequestGet(context({
+    path: ['la-to-sf'],
+    db: true,
+    map: { '/guide-shell/index.html': noindexShell, '/404.html': notFoundPage },
+  }));
+  assert.equal(indexable.status, 200);
+  assert.equal(indexable.headers.get('x-robots-tag'), null);
+
   const slashless = await onRequestGet({
     ...context({
       path: ['la-to-sf'],

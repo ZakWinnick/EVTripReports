@@ -114,8 +114,10 @@ test('the function helper and _headers carry the same CSP', async () => {
   assert.match(file, /\/portal-shell\/\*\n {2}X-Robots-Tag: noindex, nofollow/);
   assert.match(file, /\/guide-shell\/\*\n {2}X-Robots-Tag: noindex, nofollow/);
   assert.match(file, /\/404\.html\n {2}X-Robots-Tag: noindex, nofollow/);
+  assert.match(file, /\/404\n {2}X-Robots-Tag: noindex, nofollow/);
   assert.match(file, /\/404\/\*\n {2}X-Robots-Tag: noindex, nofollow/);
   assert.match(file, /\/data\/\*\n {2}X-Robots-Tag: noindex/);
+  assert.match(file, /\/api\/\*\n {2}X-Robots-Tag: noindex, nofollow/);
   assert.equal(file.toLowerCase().includes('strict-transport-security'), false);
 
   const shared = applySecurityHeaders({ 'content-type': 'text/html' });

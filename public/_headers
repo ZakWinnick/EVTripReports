@@ -21,11 +21,17 @@
 /404.html
   X-Robots-Tag: noindex, nofollow
 
+/404
+  X-Robots-Tag: noindex, nofollow
+
 /404/*
   X-Robots-Tag: noindex, nofollow
 
 /data/*
   X-Robots-Tag: noindex
+
+/api/*
+  X-Robots-Tag: noindex, nofollow
 
 /guides/*
   X-Etr-Guide: 1
