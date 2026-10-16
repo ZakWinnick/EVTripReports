@@ -893,11 +893,11 @@
       "reports": [],
       "around": [
         {
-          "text": "The Wawa at this site sells food and coffee. Its store page lists online ordering, curbside pickup, fuel and EV charging. Store hours on that page were blank when checked (rechecked 2026-10-15), so hours: Not yet verified. Restrooms: Not yet verified (not listed on the store page).",
+          "text": "The Wawa at this site sells food and coffee. Its store page lists online ordering, curbside pickup, fuel and EV charging. Store hours on that page were blank when checked (rechecked 2026-10-15 and 2026-10-16), so hours: Not yet verified. Restrooms: Not yet verified (not listed on the store page).",
           "category": "food",
           "source": "wawa",
           "url": "https://www.wawa.com/locations/0840",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
         },
         {
           "text": "EA site note: chargers are in the Wawa lot, on the left side of the store.",
@@ -1452,7 +1452,7 @@
       "reports": [],
       "around": [
         {
-          "text": "Host is ShopRite of Mount Laurel (Wakefern #594) at 1000 Nixon Drive. The Ravitz Family Markets page lists hours 7am to 10pm and names Chinese Wok plus order, pickup and delivery (rechecked 2026-10-15). Grocery food is in the store while open. Restrooms: Not yet verified (not listed on that page).",
+          "text": "Host is ShopRite of Mount Laurel (Wakefern #594) at 1000 Nixon Drive. The Ravitz Family Markets page lists hours 7am to 10pm and names Chinese Wok plus order, pickup and delivery (rechecked 2026-10-15). ShopRite's own store page blocked automated reads on 2026-10-16. Grocery food is in the store while open. Restrooms: Not yet verified (not listed on that page).",
           "category": "food",
           "source": "ravitz-mt-laurel",
           "url": "https://ravitzfamilymarkets.com/shoprite-of-mount-laurel/",
@@ -1466,11 +1466,11 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "Electrify America's public locator API and site page both still say \"We are currently working to bring the site back online\" while listing six 350 kW CCS chargers and status AVAILABLE (rechecked 2026-10-15 via api-prod.electrifyamerica.com location 240371 and the locator page). No dated driver report after 2026-10-01 was found (X search returned 0; PlugShare blocked automated reads; Leasehackr had no hits). Check the EA app for live status before you plan around Moorestown. The Marlton Commons and Somerdale backups are the fallback.",
+          "text": "Electrify America's public locator API and site page both still say \"We are currently working to bring the site back online\" while listing six 350 kW CCS chargers and status AVAILABLE (locator page rechecked 2026-10-15; api-prod.electrifyamerica.com location 240371 rechecked 2026-10-15 and 2026-10-16). DOE lists the site as available with 6 DC ports, last confirmed 2026-10-16, but EA's own note has not changed, so treat status as Not yet verified. No dated driver report after 2026-10-01 was found (X search returned 0 again on 2026-10-16; PlugShare blocked automated reads; Leasehackr had no hits). Check the EA app for live status before you plan around Moorestown. The Marlton Commons and Somerdale backups are the fallback.",
           "category": "status",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
