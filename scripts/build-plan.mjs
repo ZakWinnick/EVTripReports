@@ -282,7 +282,7 @@ export function planMarkdown(plan) {
     lines.push(`Primary: ${primary.name || ''}${primary.teslaAccess ? ` (Tesla flag: ${primary.teslaAccess})` : ''}`);
     lines.push(...primaryFieldLines(primary));
     if (primary.target?.value) lines.push(`- target: ${primary.target.value}`);
-    for (const fact of primary.facts || []) lines.push(`- ${fact.label}: ${fact.value}`);
+    for (const fact of primary.facts || []) lines.push(`- ${fact.label}: ${fact.value}${/^Driver report/.test(fact.note || '') ? ' (Driver report, not a network fact.)' : ''}`);
     if (stop.backups?.length) {
       lines.push('Backups:');
       for (const backup of stop.backups) lines.push(`- ${backup.name}: ${backup.facts || ''}`);
@@ -969,10 +969,32 @@ function sourcedItem(title, text, from) {
   return item;
 }
 
+// Driver and crowd-sourced evidence (PlugShare, Reddit, X, forums) never counts as a sourced
+// restroom note. It stays in the plan as a labeled driver report; only host or network pages
+// (an around-the-stop note or a route note from a non-driver source) make a restroom "sourced".
+const DRIVER_SOURCE_RE = /^(plugshare|reddit|x|forum)(?:\b|[-_])/i;
+const DRIVER_HOST_RE = /(^|\.)(plugshare\.com|reddit\.com|x\.com|twitter\.com)$/i;
+const RESTROOM_UNSURE_RE = /\bnot yet verified\b|\bnot (?:confirmed|listed|shown|stated)\b|\b(?:has|have|had|did|does|do)(?: not|n't) (?:confirm|list|mention|show|say)\b|\bwhether\b|\bunknown\b|\bneither\b|\bno (?:public )?restrooms?\b|\bwithout (?:a )?restrooms?\b/i;
+
+export function isDriverEvidence(source, url) {
+  if (DRIVER_SOURCE_RE.test(String(source || ''))) return true;
+  try {
+    return DRIVER_HOST_RE.test(new URL(String(url || '')).hostname);
+  } catch {
+    return false;
+  }
+}
+
+function sentencesOf(text) {
+  return cleanCopy(text).split(/(?<=[.!?])\s+/).map((part) => part.trim()).filter(Boolean);
+}
+
 function amenityHonesty(chosen, route, order) {
   const restrooms = [];
+  const driverRestrooms = [];
   const pets = [];
   const seenR = new Set();
+  const seenD = new Set();
   const seenP = new Set();
   const add = (list, seen, name) => {
     const clean = cleanCopy(name);
@@ -982,37 +1004,71 @@ function amenityHonesty(chosen, route, order) {
     seen.add(key);
     list.push(clean);
   };
-  const consider = (text, url, date, source, place, stopName) => {
-    if (!text || BANNED.test(text)) return;
+  const usable = (text, url, date, source) => {
+    if (!text || BANNED.test(text)) return false;
     const link = httpUrl(url) || httpUrl(route.sources?.[source]?.url);
-    if (!link || !day(date)) return;
+    return Boolean(link && day(date));
+  };
+  const restroomSentence = (text) =>
+    sentencesOf(text).some(
+      (part) => RESTROOM_RE.test(part) && !RESTROOM_UNSURE_RE.test(part) && !CAUTION_RE.test(part) && !isChargerReview(part)
+    );
+  const considerDriver = (text, url, date, source, place, stopName) => {
+    if (!usable(text, url, date, source)) return;
     if (CAUTION_RE.test(text) || isChargerReview(text)) return;
-    if (RESTROOM_RE.test(text)) add(restrooms, seenR, place);
+    if (RESTROOM_RE.test(text)) add(driverRestrooms, seenD, place);
     if (PET_RE.test(text)) add(pets, seenP, stopName || place);
+  };
+  const atPrimary = new Set();
+  const considerHost = (text, url, date, source, place, stopName, { pets: countPets = true, primaryName = '' } = {}) => {
+    if (!usable(text, url, date, source)) return;
+    const link = httpUrl(url) || httpUrl(route.sources?.[source]?.url);
+    if (isDriverEvidence(source, link)) {
+      if (countPets) considerDriver(text, url, date, source, place, stopName);
+      else if (!CAUTION_RE.test(text) && !isChargerReview(text) && RESTROOM_RE.test(text)) add(driverRestrooms, seenD, place);
+      return;
+    }
+    if (restroomSentence(text)) {
+      add(restrooms, seenR, place);
+      if (primaryName && cleanCopy(place) === cleanCopy(primaryName)) atPrimary.add(cleanCopy(primaryName));
+    }
+    if (countPets && !CAUTION_RE.test(text) && !isChargerReview(text) && PET_RE.test(text)) add(pets, seenP, stopName || place);
   };
   for (const entry of chosen) {
     const stations = [entry.stop.primary, ...(entry.stop.backups || []), ...(entry.stop.other || [])].filter(Boolean);
     for (const station of stations) {
       for (const report of station.driverReports || []) {
-        consider(report.summary, report.url, report.date, report.source, station.name, entry.stop.name);
+        considerDriver(report.summary, report.url, report.date, report.source, station.name, entry.stop.name);
       }
     }
+    const primaryName = entry.stop.primary?.name || entry.stop.name;
     for (const report of entry.stop.reports || []) {
-      consider(report.text, report.url, report.date || report.checkedOn, report.source, report.site || entry.stop.name, entry.stop.name);
+      const match = bestStation(report.site, stations);
+      considerHost(report.text, report.url, report.date || report.checkedOn, report.source, match?.name || report.site || entry.stop.name, entry.stop.name, { primaryName });
+    }
+    for (const item of entry.stop.around || []) {
+      const text = item.text || item.value;
+      const match = bestStation(text, stations) || bestStation(item.site, stations);
+      considerHost(text, item.url, item.checkedOn || item.date || route.checked, item.source, match?.name || item.site || primaryName, entry.stop.name, { pets: false, primaryName });
     }
   }
+  // A primary counts as covered only when a host or network note is about that exact site,
+  // not a backup or another site in the same town.
   const missing = [];
   for (const entry of chosen) {
-    const primary = entry.stop.primary?.name || entry.stop.name;
-    const has = restrooms.some((name) => namesMatch(name, primary));
-    if (!has) missing.push(cleanCopy(primary));
+    const primary = cleanCopy(entry.stop.primary?.name || entry.stop.name);
+    if (!atPrimary.has(primary)) missing.push(primary);
   }
   const have = restrooms.length ? `Sourced restroom notes: ${restrooms.join(', ')}.` : 'No sourced restroom note at any stop.';
-  const lack = missing.length ? ` No sourced restroom note at ${joinList(missing)}.` : '';
+  const lack = restrooms.length && missing.length ? ` No sourced restroom note at ${joinList(missing)}.` : '';
+  const driverOnly = driverRestrooms.filter((name) => !restrooms.some((item) => namesMatch(item, name) || namesMatch(name, item)));
+  const driver = driverOnly.length
+    ? ` Driver reports or PlugShare listings mention restrooms at ${joinAnd(driverOnly)}. Those are driver reports, not host or network facts.`
+    : '';
   const pet = orderHasPet(order)
     ? (pets.length ? ` Sourced pet notes: ${pets.join(', ')}.` : ' No sourced pet info at any stop.')
     : '';
-  return cleanCopy(`${have}${lack}${pet}`);
+  return cleanCopy(`${have}${lack}${driver}${pet}`);
 }
 
 function joinList(items) {
@@ -1027,6 +1083,7 @@ function amenityBlocks(stop, sheet, ctx) {
   const hotels = [];
   const cautions = [];
   let restroom = null;
+  let restroomNote = null;
   const seen = new Set();
   const push = (bucket, note, section) => {
     if (bucket.length >= MAX_NOTES) return;
@@ -1048,7 +1105,9 @@ function amenityBlocks(stop, sheet, ctx) {
     const shown = (category === 'food' || category === 'restroom') ? stripPlacePrefix(clean, place) : clean;
     if (!shown) return;
     const aboutPrimary = namesMatch(place, sheet.name);
-    const note = { text: shown, url: link, source: source || '', checkedOn: date, kind, place, role: cautionRole(place, sheet, stop) };
+    // PlugShare, Reddit, X and forum material is a driver report wherever it sits in the route data.
+    const noteKind = kind === 'driver' || isDriverEvidence(source, link) ? 'driver' : kind;
+    const note = { text: shown, url: link, source: source || '', checkedOn: date, kind: noteKind, place, role: cautionRole(place, sheet, stop) };
     if (category === 'caution') {
       push(cautions, note, 'Cautions');
       return;
@@ -1058,7 +1117,11 @@ function amenityBlocks(stop, sheet, ctx) {
       if (category === 'overnight') push(hotels, note, 'Lodging');
       return;
     }
-    if (category === 'restroom' && aboutPrimary && !restroom) {
+    if (category === 'restroom' && aboutPrimary && (!restroom || (restroomNote.kind === 'driver' && noteKind !== 'driver'))) {
+      // A host or network note takes the Restroom line over a driver report. The displaced
+      // driver report stays in the plan as a labeled driver note.
+      if (restroom) push(food, restroomNote, 'Food');
+      restroomNote = note;
       const item = noteItem('Restroom', note, ctx);
       restroom = {
         label: 'Restroom',

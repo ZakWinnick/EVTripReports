@@ -3,7 +3,7 @@
   "title": "Washington, DC to NYC",
   "highway": "I-95",
   "direction": "northbound",
-  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Moorestown, East Brunswick and Elizabeth. Tesla access flags are verified where DOE and Tesla Find Us agree (63 sites); 6 remain Not yet verified.",
+  "summary": "I-95 from the Capital Beltway split in College Park to the George Washington Bridge, over the Delaware Memorial Bridge and the NJ Turnpike. Primaries are Electrify America sites confirmed on EA's locator: Abingdon, New Castle, Marlton, East Brunswick and Elizabeth. All 69 Tesla sites carry an access flag: 68 from Tesla Find Us and 1 from DOE station data where Tesla's page did not load.",
   "checked": "2026-10-15",
   "startLabel": "I-95 at the Capital Beltway",
   "startNote": "Mileage starts at the I-95 and I-495 split in College Park, MD (I-95 exit 27, Maryland mile 26.1) and ends at the George Washington Bridge. The 223.27 miles is OSRM's driving distance on I-95, the Delaware Memorial Bridge and the NJ Turnpike, shown as 223. OSRM's route uses the Baltimore Harbor Tunnel (I-895) in place of the Fort McHenry Tunnel (I-95). That difference has not been measured.",
@@ -127,6 +127,14 @@
     "de-parcels": {
       "name": "Delaware FirstMap, State Parcels and statewide address locator",
       "url": "https://enterprise.firstmap.delaware.gov/arcgis/rest/services/PlanningCadastre/DE_StateParcels/MapServer"
+    },
+    "uedge-marlton": {
+      "name": "Urban Edge Properties, Marlton Commons property page",
+      "url": "https://uedge.com/property/marlton-commons"
+    },
+    "shakeshack-marlton": {
+      "name": "Shake Shack Marlton location page (hours)",
+      "url": "https://shakeshack.com/location/marlton-nj"
     }
   },
   "stops": [
@@ -875,15 +883,16 @@
         },
         {
           "name": "Newark, DE - Tesla Supercharger, 530 John F Kennedy Memorial Hwy, Newark",
-          "facts": "Tesla Supercharger at 530 John F Kennedy Memorial Hwy, Newark, DE. DOE lists 12 NACS at 150 kW and notes \"Open to Teslas only\" (last confirmed 2026-06-18). Tesla Find Us for newarkdesupercharger returned 404 on 2026-10-15 (rechecked same day). Tesla only or open to all EVs: Not yet verified (no live Find Us page to agree with DOE).",
+          "facts": "Tesla Supercharger at 530 John F Kennedy Memorial Hwy, Newark, DE. DOE lists 12 NACS at 150 kW. Tesla only, per DOE station data (\"Open to Teslas only\", DOE last confirmed 2026-06-18), checked 2026-10-16. Tesla's page did not load: Find Us for newarkdesupercharger returned 404 on 2026-10-15 and timed out on a retry 2026-10-16.",
           "status": "unverified",
           "afdcIds": [
             102103
           ],
           "driverReports": [],
-          "checkedOn": "2026-10-15",
-          "url": "https://www.tesla.com/findus/location/supercharger/newarkdesupercharger",
-          "source": "tesla-findus"
+          "checkedOn": "2026-10-16",
+          "url": "https://afdc.energy.gov/stations/#/station/102103",
+          "source": "afdc",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Newark, DE, 132 Christiana Mall, Newark",
@@ -1072,28 +1081,28 @@
       ]
     },
     {
-      "id": "moorestown",
-      "name": "Moorestown",
-      "towns": "Moorestown, Mount Laurel, Cherry Hill, Somerdale, and Deptford, NJ",
-      "mile": 134,
-      "milepostNote": "Measured along OSRM's route from the start: 133.9 miles. The site is about 0.8 mile from that route line. Exit confirmed 2026-10-15: OSRM leaves the Turnpike on the ramp signed NJ 73, Mount Laurel, Camden, which is NJ Turnpike interchange 4 at milepost 34.5. NJTA's camera list names the NJ 73 interchange in Mount Laurel Twp. From the ramp OSRM drives about 1.4 miles on NJ 73 North and Collins Road to Nixon Drive. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-74.96451,39.93898 . NJTA: https://www.njta.gov/travel-resources/camera-list/ . Wikipedia: https://en.wikipedia.org/wiki/New_Jersey_Turnpike",
-      "why": "ShopRite's Electrify America site on Nixon Drive is 6 stalls at 350 kW. EA lists it as Moorestown; USPS and the county put it in Mount Laurel. Marlton Commons and the Somerdale Walmart are verified backups on Electrify America. The Applegreen plazas on the NJ Turnpike at Walt Whitman and James Fenimore Cooper are listed from DOE and Applegreen's map and are not verified. EA's own site description still says the site is being brought back online, though a PlugShare driver logged a 154 kW session there on Oct 10, 2026. That is a driver report, so confirm in the EA app before you rely on it.",
+      "id": "marlton",
+      "name": "Marlton",
+      "towns": "Marlton, Mount Laurel, Moorestown, Cherry Hill, Somerdale, and Deptford, NJ",
+      "mile": 133,
+      "milepostNote": "Measured along OSRM's route from the start: 132.9 miles at the closest point on the route line. The site is about 2.6 miles (straight line) from that line. Exit checked 2026-10-16: OSRM leaves the Turnpike at Interchange 4 (NJ 73, Mount Laurel, Camden), takes NJ 73 South toward Marlton and the ramp to NJ 70 West, about 4 miles to the lot, and returns to the Turnpike at Interchange 4. The detour adds about 7.7 miles round trip, about 4 more than the Moorestown backup. OSRM: https://router.project-osrm.org/route/v1/driving/-75.010055,39.877385;-74.93017,39.89586;-74.899311,39.974952?steps=true . NJTA: https://www.njta.gov/travel-resources/camera-list/ . Wikipedia: https://en.wikipedia.org/wiki/New_Jersey_Turnpike",
+      "why": "Electrify America's site at Marlton Commons, the ShopRite and Kohl's center at Routes 70 and 73, has 6 chargers at 350 kW, all listed AVAILABLE on EA's locator with no outage note (checked 2026-10-16). It replaced the Moorestown ShopRite as the primary on 2026-10-16 because EA's own note there still says that site is being brought back online, even though a PlugShare driver logged a 154 kW session there on Oct 10, 2026. Moorestown, 0.8 mile off the Turnpike, and the Somerdale Walmart are the backups. The Applegreen plazas on the NJ Turnpike at Walt Whitman and James Fenimore Cooper are listed from DOE and Applegreen's map and are not verified.",
       "primary": {
-        "name": "Wakefern Shoprite 594 (Moorestown, NJ)",
+        "name": "Urban Edge Properties Marlton Commons (Marlton, NJ)",
         "network": "Electrify America",
-        "address": "1000 Nixon Dr, Mount Laurel, NJ 08054",
-        "exit": "Exit 4, NJ 73 (Mount Laurel, Camden)",
+        "address": "307 Rte 70 W, Marlton, NJ 08053",
+        "exit": "Exit 4, NJ 73 (Mount Laurel, Camden), then NJ 73 South and NJ 70 West",
         "stalls": {
           "value": "6",
           "status": "verified",
           "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/"
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/marlton/307-rte-70-w/240408/"
         },
         "power": {
           "value": "350 kW, CCS on all 6",
           "status": "verified",
           "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/"
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/marlton/307-rte-70-w/240408/"
         },
         "access": {
           "value": "Open to all CCS EVs",
@@ -1106,70 +1115,70 @@
           "source": "ea-locator"
         },
         "afdcIds": [
-          418044
+          457280
         ],
-        "driverReports": [
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/741932",
-            "date": "2026-10-10",
-            "summary": "Successful check-in, 2023 Ioniq 5, 154 kW. No comment."
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/741932",
-            "date": "2026-09-05",
-            "summary": "Problem check-in, 2022 Bolt EUV. No comment, so the problem is not described."
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/741932",
-            "date": "2026-08-30",
-            "summary": "Successful check-in, Bolt EUV. Notes there are two ShopRites in Mt Laurel: this one is Electrify America, the other is EVgo."
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/741932",
-            "date": "2026-08-28",
-            "summary": "Successful check-in, EV9, 214 kW. No comment."
-          },
-          {
-            "source": "plugshare",
-            "url": "https://www.plugshare.com/location/741932",
-            "date": "2026-08-22",
-            "summary": "Successful check-in, EV9, 180 kW. Driver called it a good place to stop with no issues charging."
-          },
-          {
-            "source": "reddit",
-            "url": "https://www.reddit.com/r/electricvehicles/comments/1s3o9jr/east_coast_ev_ownership_and_road_trips/ocnhosw/",
-            "date": "2026-03-26",
-            "summary": "Recommends the Mount Laurel/Moorestown ShopRite EA heading north; lots of other stores in the center. Only favors EA here with a free charging plan, says the Magic Dock Tesla Supercharger at the Grand Hotel nearby is cheaper with about 40 stalls."
-          }
-        ],
-        "checkedOn": "2026-10-15",
-        "source": "ea-locator"
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator",
+        "driverReports": []
       },
       "backups": [
         {
-          "name": "Urban Edge Properties Marlton Commons (Marlton, NJ)",
+          "name": "Wakefern Shoprite 594 (Moorestown, NJ)",
           "network": "Electrify America",
-          "address": "307 Rte 70 W, Marlton, NJ 08053",
-          "facts": "6 chargers: 6 CCS at 350 kW. DOE lists the same port count. About 3.5 miles (straight line) away on Route 70 in Marlton.",
+          "address": "1000 Nixon Dr, Mount Laurel, NJ 08054",
+          "facts": "6 chargers: 6 CCS at 350 kW on EA's locator. EA's own site note still says \"We are currently working to bring the site back online\" while the status reads AVAILABLE (EA API location 240371 rechecked 2026-10-16). A PlugShare driver logged a 154 kW session on 2026-10-10, a driver report only. About 0.8 mile off the route at Turnpike Interchange 4, closer than Marlton. EA lists it as Moorestown; USPS puts 1000 Nixon Dr in Mount Laurel.",
           "access": "Open to all CCS EVs.",
-          "status": "verified",
+          "status": "conflict",
           "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/nj/marlton/307-rte-70-w/240408/",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/",
           "afdcIds": [
-            457280
+            418044
           ],
-          "driverReports": [],
-          "checkedOn": "2026-10-15"
+          "driverReports": [
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/741932",
+              "date": "2026-10-10",
+              "summary": "Successful check-in, 2023 Ioniq 5, 154 kW. No comment."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/741932",
+              "date": "2026-09-05",
+              "summary": "Problem check-in, 2022 Bolt EUV. No comment, so the problem is not described."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/741932",
+              "date": "2026-08-30",
+              "summary": "Successful check-in, Bolt EUV. Notes there are two ShopRites in Mt Laurel: this one is Electrify America, the other is EVgo."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/741932",
+              "date": "2026-08-28",
+              "summary": "Successful check-in, EV9, 214 kW. No comment."
+            },
+            {
+              "source": "plugshare",
+              "url": "https://www.plugshare.com/location/741932",
+              "date": "2026-08-22",
+              "summary": "Successful check-in, EV9, 180 kW. Driver called it a good place to stop with no issues charging."
+            },
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/electricvehicles/comments/1s3o9jr/east_coast_ev_ownership_and_road_trips/ocnhosw/",
+              "date": "2026-03-26",
+              "summary": "Recommends the Mount Laurel/Moorestown ShopRite EA heading north; lots of other stores in the center. Only favors EA here with a free charging plan, says the Magic Dock Tesla Supercharger at the Grand Hotel nearby is cheaper with about 40 stalls."
+            }
+          ],
+          "checkedOn": "2026-10-16"
         },
         {
           "name": "Walmart 4456 (Somerdale, NJ)",
           "network": "Electrify America",
           "address": "1 Coopertowne Blvd, Somerdale, NJ 08083",
-          "facts": "8 chargers: 8 CCS at 350 kW. DOE lists the same port count. About 6.5 miles (straight line) back toward Delaware, off US 30.",
+          "facts": "8 chargers: 8 CCS at 350 kW. DOE lists the same port count. About 5.7 miles (straight line) west of Marlton, back toward Delaware, off US 30.",
           "access": "Open to all CCS EVs.",
           "status": "verified",
           "source": "ea-locator",
@@ -1583,15 +1592,16 @@
         },
         {
           "name": "Wawa - Tesla Supercharger, 112 Edgewood Ave, Bellmawr",
-          "facts": "Tesla Find Us (loc 462857) lists Wawa / Creek Road at 464 Creek Rd, Bellmawr, NJ 08031: 8 Superchargers up to 500 kW, banner \"Adapter Included For Other EVs\", 24/7. DOE AFDC 470550 lists the same stall and kW figures at 112 Edgewood Ave, Bellmawr (access_days_time \"24 hours daily\" only, no Open to all / NACS partner / Teslas only line; last confirmed 2026-10-13). Address strings differ; access labels do not agree. Tesla only or open to all EVs: Not yet verified.",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 462857) lists Wawa / Creek Road at 464 Creek Rd, Bellmawr, NJ 08031: 8 Superchargers up to 500 kW, banner \"Adapter Included For Other EVs\", 24/7 (checked 2026-10-15; the page timed out on a retry 2026-10-16). Open to all EVs; the NACS adapter is included at the stall. DOE AFDC 470550 lists the same 8 stalls at 500 kW at 112 Edgewood Ave, Bellmawr, with CCS and NACS connectors, which fits an included adapter (DOE last confirmed 2026-10-13). The Census geocoder puts both addresses within about 100 m of DOE's point, the same corner lot.",
+          "status": "verified",
           "afdcIds": [
             470550
           ],
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/462857",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Westampton, NJ - Rancocas Road - Tesla Supercharger, 570 Rancocas Road, Westampton",
@@ -1619,28 +1629,49 @@
       "reports": [],
       "around": [
         {
-          "text": "Host is ShopRite of Mount Laurel (Wakefern #594) at 1000 Nixon Drive. The Ravitz Family Markets page lists hours 7am to 10pm and names Chinese Wok plus order, pickup and delivery (rechecked 2026-10-15). ShopRite's own store page blocked automated reads on 2026-10-16. Grocery food is in the store while open. Restrooms: Not yet verified (not listed on that page).",
+          "text": "EA's site note: chargers are in the north-east parking lot of Marlton Commons.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nj/marlton/307-rte-70-w/240408/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Host is Marlton Commons, an Urban Edge center at Routes 70 and 73 anchored by ShopRite, Kohl's and PetSmart, with WineWorks, Shake Shack and honeygrow (Urban Edge property page, checked 2026-10-16). Center hours and restrooms: Not yet verified (not on that page).",
+          "category": "food",
+          "source": "uedge-marlton",
+          "url": "https://uedge.com/property/marlton-commons",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Shake Shack Marlton, 321 Route 70 West, lists dine-in hours of 10:00 AM to 10:00 PM Sunday to Thursday and 10:00 AM to 11:00 PM Friday and Saturday (checked 2026-10-16). Its page puts it about 45 m from EA's listed site point. Restrooms: Not yet verified (not listed on that page).",
+          "category": "food",
+          "source": "shakeshack-marlton",
+          "url": "https://shakeshack.com/location/marlton-nj",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Moorestown backup: Host is ShopRite of Mount Laurel (Wakefern #594) at 1000 Nixon Drive. The Ravitz Family Markets page lists hours 7am to 10pm and names Chinese Wok plus order, pickup and delivery (rechecked 2026-10-15). ShopRite's own store page blocked automated reads on 2026-10-16. Grocery food is in the store while open. Restrooms: Not yet verified (not listed on that page).",
           "category": "food",
           "source": "ravitz-mt-laurel",
           "url": "https://ravitzfamilymarkets.com/shoprite-of-mount-laurel/",
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "EA site note: chargers are in the north-east corner of the ShopRite lot, along Nixon Dr.",
+          "text": "Moorestown backup: EA's site note says the chargers are in the north-east corner of the ShopRite lot, along Nixon Dr.",
           "category": "site",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/",
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "Electrify America's public locator API and site page still say \"We are currently working to bring the site back online\" while listing six 350 kW CCS chargers and status AVAILABLE (locator page rechecked 2026-10-15; api-prod.electrifyamerica.com location 240371 rechecked 2026-10-15 and 2026-10-16). DOE lists the site as available with 6 DC ports, last confirmed 2026-10-16. Driver report: a PlugShare check-in dated 2026-10-10 logged a successful session at 154 kW (2023 Ioniq 5), and 4 of the 5 most recent PlugShare check-ins, 2026-08-22 to 2026-10-10, were successful; the 2026-09-05 check-in reported a problem without details (PlugShare location 741932, read 2026-10-16). That points to the site charging cars on Oct 10, but it is a driver report, not network verification, and EA's own note has not changed, so status stays Not yet verified. Check the EA app for live status before you plan around Moorestown. The Marlton Commons and Somerdale backups are the fallback.",
+          "text": "Moorestown backup status: Electrify America's public locator API and site page still say \"We are currently working to bring the site back online\" while listing six 350 kW CCS chargers and status AVAILABLE (locator page rechecked 2026-10-15; api-prod.electrifyamerica.com location 240371 rechecked 2026-10-15 and twice on 2026-10-16, last at 2:22 AM PT). DOE lists the site as available with 6 DC ports, last confirmed 2026-10-16. Driver report: a PlugShare check-in dated 2026-10-10 logged a successful session at 154 kW (2023 Ioniq 5), and 4 of the 5 most recent PlugShare check-ins, 2026-08-22 to 2026-10-10, were successful; the 2026-09-05 check-in reported a problem without details (PlugShare location 741932, read 2026-10-16). That points to the site charging cars on Oct 10, but it is a driver report, not network verification, and EA's own note has not changed. That is why Moorestown moved from primary to backup on 2026-10-16. Check the EA app before you count on it.",
           "category": "status",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/nj/moorestown/1000-nixon-dr/240371/",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Address: USPS lists 1000 Nixon Dr, Mount Laurel, NJ 08054 as the deliverable address, and the Burlington County parcel (Block 1200.01, Lot 1, 1000-1240 Nixon Dr) is in Mount Laurel Township (checked 2026-10-16). EA and DOE list the site as Moorestown, NJ 08057, so search Moorestown in the EA app.",
+          "text": "Moorestown backup address: USPS lists 1000 Nixon Dr, Mount Laurel, NJ 08054 as the deliverable address, and the Burlington County parcel (Block 1200.01, Lot 1, 1000-1240 Nixon Dr) is in Mount Laurel Township (checked 2026-10-16). EA and DOE list the site as Moorestown, NJ 08057, so search Moorestown in the EA app.",
           "category": "site",
           "source": "usps-zip",
           "url": "https://tools.usps.com/zip-code-lookup.htm?byaddress",
@@ -1680,7 +1711,7 @@
       "towns": "East Brunswick, Edison, and East Windsor, NJ",
       "mile": 182,
       "milepostNote": "Measured along OSRM's route from the start: 181.7 miles. The site is about 0.9 mile from that route line. Exit confirmed 2026-10-15: OSRM leaves the Turnpike on the ramp signed NJ 18, US 1, New Brunswick, then takes NJ 18 South. That is NJ Turnpike interchange 9 (NJ 18 and CR 527, East Brunswick Twp) at milepost 83.3 per NJTA's camera list. From the ramp OSRM drives about 2 miles to Tices Lane. OSRM: https://router.project-osrm.org/route/v1/driving/-76.940476,39.022627;-74.39923,40.45732 . NJTA: https://www.njta.gov/travel-resources/camera-list/ . Wikipedia: https://en.wikipedia.org/wiki/New_Jersey_Turnpike",
-      "why": "The Walmart on NJ-18 has 10 Electrify America stalls at 350 kW. The Edison Mall site, 10 more stalls at 350 kW, is the verified backup. East Windsor and Hamilton sites are listed here too, since no stop falls between Moorestown and this one. The Applegreen plazas at Molly Pitcher, Woodrow Wilson, Richard Stockton and Joyce Kilmer are listed from DOE and Applegreen's map and are not verified.",
+      "why": "The Walmart on NJ-18 has 10 Electrify America stalls at 350 kW. The Edison Mall site, 10 more stalls at 350 kW, is the verified backup. East Windsor and Hamilton sites are listed here too, since no stop falls between Marlton and this one. The Applegreen plazas at Molly Pitcher, Woodrow Wilson, Richard Stockton and Joyce Kilmer are listed from DOE and Applegreen's map and are not verified.",
       "primary": {
         "name": "Walmart 3078 (East Brunswick, NJ)",
         "network": "Electrify America",
@@ -2390,15 +2421,16 @@
         },
         {
           "name": "Wawa - Tesla Supercharger, 88 Centennial Ave, Piscataway",
-          "facts": "Tesla Find Us (loc 15015) lists 88 Centennial Avenue, Piscataway, NJ 08854: 12 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", 24/7. DOE AFDC 456082 lists 12 CCS at 325 kW and 12 NACS at 325 kW at the same address (access_days_time \"24 hours daily\" only; last confirmed 2026-10-13). Banner says open to other EVs; DOE access line does not. Tesla only or open to all EVs: Not yet verified.",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 15015) lists 88 Centennial Avenue, Piscataway, NJ 08854: 12 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", 24/7 (checked 2026-10-15; the page timed out on a retry 2026-10-16). Open to all EVs; the NACS adapter is included at the stall. DOE AFDC 456082 lists 12 CCS and 12 NACS at 325 kW at the same address, which fits an included adapter (DOE last confirmed 2026-10-13).",
+          "status": "verified",
           "afdcIds": [
             456082
           ],
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/15015",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Woodrow Wilson Service Plaza, 75 New Jersey Turnpike, Hamilton Township",
@@ -2757,15 +2789,16 @@
         },
         {
           "name": "Crosspointe Town Square - Tesla Supercharger, 15 Woodbridge Center Dr, Woodbridge Township",
-          "facts": "Tesla Find Us (loc 405054) lists Crosspointe Town Square at 15 Woodbridge Center Dr, Woodbridge Township, NJ 07095: 16 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", 24/7. DOE AFDC 471136 lists 16 CCS at 325 kW and 16 NACS at 325 kW at the same address (access_days_time \"24 hours daily\" only; date_last_confirmed null in the 2026-10-15 DOE pull). Banner says open to other EVs; DOE access line does not. Tesla only or open to all EVs: Not yet verified.",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 405054) lists Crosspointe Town Square at 15 Woodbridge Center Dr, Woodbridge Township, NJ 07095: 16 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", 24/7 (checked 2026-10-15; the page timed out on a retry 2026-10-16). Open to all EVs; the NACS adapter is included at the stall. DOE AFDC 471136 lists 16 CCS and 16 NACS at 325 kW at the same address, which fits an included adapter (DOE gives no last-confirmed date).",
+          "status": "verified",
           "afdcIds": [
             471136
           ],
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/405054",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "ESSEX COUNTY ADMIN DC 1, 5 13th Ave JUROR LOT Howard Street or South O, Newark",
@@ -2946,15 +2979,16 @@
         },
         {
           "name": "Newark, NJ - Tesla Supercharger, 281 Ferry St, Newark",
-          "facts": "Tesla Find Us (loc 437003) lists Ferry Street Plaza at 281 Ferry St, Newark, NJ 07105: 16 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", plus \"Pricing for Non-Tesla\", 24/7. DOE AFDC 422574 lists 16 NACS at 325 kW and notes \"NACS partner enabled\" (last confirmed 2026-06-18). Partner wording matches a \"NACS adapter needed\" banner, not \"Adapter Included\". Labels disagree. Tesla only or open to all EVs: Not yet verified.",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 437003) lists Ferry Street Plaza at 281 Ferry St, Newark, NJ 07105: 16 Superchargers up to 325 kW, banner \"Adapter Included For Other EVs\", plus \"Pricing for Non-Tesla\", 24/7 (checked 2026-10-15; the page timed out on a retry 2026-10-16). Open to all EVs; Tesla says the NACS adapter is included. DOE AFDC 422574 lists 16 NACS at 325 kW and \"NACS partner enabled\" (DOE last confirmed 2026-06-18), which also means open to non-Teslas but reads like bring-your-own adapter. Carry your NACS adapter if you have one.",
+          "status": "verified",
           "afdcIds": [
             422574
           ],
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/437003",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "PANYNJ PN WC TRUCK 1, 272 Marlin Street, Newark",
@@ -3038,15 +3072,16 @@
         },
         {
           "name": "Twin City Shopping Center - Tesla Supercharger, 2-36 Garfield Ave, Jersey City",
-          "facts": "Tesla Find Us (loc 27400) lists Twin City Shopping Center at 2-36 Garfield Ave, Jersey City, NJ 07305: banner \"Adapter Included For Other EVs\", 24/7 (stall/kW line partial on the page render). DOE AFDC 451972 lists 12 CCS at 325 kW and 12 NACS at 325 kW at the same address (access_days_time \"24 hours daily\" only; last confirmed 2026-10-13). Banner says open to other EVs; DOE access line does not. Tesla only or open to all EVs: Not yet verified.",
-          "status": "unverified",
+          "facts": "Tesla Find Us (loc 27400) lists Twin City Shopping Center at 2-36 Garfield Ave, Jersey City, NJ 07305: banner \"Adapter Included For Other EVs\", 24/7 (checked 2026-10-15; the stall and kW line was partial, and the page timed out on a retry 2026-10-16). Open to all EVs; the NACS adapter is included at the stall. DOE AFDC 451972 lists 12 CCS and 12 NACS at 325 kW at the same address, which fits an included adapter (DOE last confirmed 2026-10-13). Stall count and kW are DOE figures only.",
+          "status": "verified",
           "afdcIds": [
             451972
           ],
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/27400",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Union, NJ - Tesla Supercharger, 1750 Route 22 East, Union",
@@ -3141,7 +3176,7 @@
   ],
   "tips": [
     {
-      "text": "63 Tesla sites on this route are verified on Tesla Find Us (access flag agreed with DOE). 6 Tesla sites stay Not yet verified because the Find Us page was partial, missing, or disagreed with DOE. Checked 2026-10-15.",
+      "text": "All 69 Tesla sites on this route carry an access flag (54 open to all EVs, 15 Tesla only). 68 come from Tesla Find Us, checked 2026-10-15; 63 of those also match DOE's access note, and 5 more (Bellmawr, Piscataway, Woodbridge, Newark Ferry St and Jersey City) show \"Adapter Included For Other EVs\" where DOE lists CCS connectors or \"NACS partner enabled\". Newark, DE on JFK Memorial Hwy is flagged Tesla only from DOE station data (\"Open to Teslas only\"), because its Find Us page returned 404 on 2026-10-15 and timed out on 2026-10-16.",
       "source": "tesla-findus"
     },
     {
@@ -3153,7 +3188,7 @@
       "source": "afdc"
     },
     {
-      "text": "Food and restroom notes are filled for all five primaries (checked 2026-10-15). Elizabeth has mall restrooms and a food court on Simon pages. Moorestown hours come from Ravitz Family Markets. New Castle, Abingdon and East Brunswick restrooms stay Not yet verified on host pages. Walmart and some Simon live pages blocked automated reads; East Brunswick hours and Elizabeth hours cite archives where noted.",
+      "text": "Food and restroom notes are filled for all five primaries (checked 2026-10-15). Elizabeth has mall restrooms and a food court on Simon pages. Marlton hours come from Shake Shack's page for its spot in the center; Marlton restrooms stay Not yet verified. New Castle, Abingdon and East Brunswick restrooms stay Not yet verified on host pages. Walmart and some Simon live pages blocked automated reads; East Brunswick hours and Elizabeth hours cite archives where noted.",
       "source": "ea-locator"
     },
     {
@@ -3161,7 +3196,7 @@
       "source": "ea-locator"
     },
     {
-      "text": "Moorestown: EA's locator description says \"We are currently working to bring the site back online\" while the status field reads AVAILABLE. Not resolved by EA as of 2026-10-16. A PlugShare driver report logged a successful 154 kW session on 2026-10-10; that is a driver report, not a network check. The route stays verifying.",
+      "text": "Moorestown is now a backup, not the primary. EA's locator description there still says \"We are currently working to bring the site back online\" while the status field reads AVAILABLE, unchanged as of 2:22 AM PT on 2026-10-16. A PlugShare driver report logged a successful 154 kW session on 2026-10-10; that is a driver report, not a network check. Marlton Commons, 6 chargers at 350 kW with no EA outage note, took its place as the primary. From New Castle it is about 42 miles to Marlton and about 55 miles on to East Brunswick (OSRM).",
       "source": "ea-locator"
     }
   ],
