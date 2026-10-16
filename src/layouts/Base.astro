@@ -13,8 +13,9 @@ interface Props {
   referrer?: string;
 }
 const { title, description, path = '', noindex = false, robots = 'noindex', analytics = true, referrer = '' } = Astro.props;
-const fullTitle = title === 'EV Trip Reports' ? title : `${title} | EV Trip Reports`;
+const fullTitle = `${title} | EV Trip Reports`;
 const canonical = new URL(path || Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL('/og.png', Astro.site).toString();
 const current = Astro.url.pathname.replace(/\/$/, '');
 const links = [
   { href: '/guides', label: 'Guides' },
@@ -23,6 +24,7 @@ const links = [
   { href: '/methodology', label: 'How we check' },
   { href: '/about', label: 'About' },
 ];
+const menuLinks = [...links, { href: '/find-my-plans', label: 'Find my plans' }];
 ---
 <!doctype html>
 <html lang="en">
@@ -38,6 +40,13 @@ const links = [
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="EV Trip Reports. A travel agent for EVs." />
+    <meta property="og:site_name" content="EV Trip Reports" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,6 +56,7 @@ const links = [
     {analytics && <script is:inline src="https://tinylytics.app/embed/yTazdLcW53ZLKkX41y8k.js" defer></script>}
   </head>
   <body>
+    <a class="skip" href="#main">Skip to content</a>
     <header class="nav">
       <div class="wrap nav__in">
         <a class="brand" href="/" aria-label="EV Trip Reports home">
@@ -58,6 +68,14 @@ const links = [
             <a href={l.href} aria-current={current === l.href ? 'page' : undefined}>{l.label}</a>
           ))}
         </nav>
+        <details class="menu">
+          <summary>Menu</summary>
+          <nav aria-label="Menu">
+            {menuLinks.map((l) => (
+              <a href={l.href} aria-current={current === l.href ? 'page' : undefined}>{l.label}</a>
+            ))}
+          </nav>
+        </details>
         <a class="pill" href="/plans#request">Plan my trip</a>
       </div>
     </header>

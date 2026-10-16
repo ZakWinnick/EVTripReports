@@ -2,7 +2,7 @@
 // Build-time version of each guide. When a live row exists in D1,
 // functions/guides/[[path]].js serves that instead, with the same renderer.
 import Base from '../../layouts/Base.astro';
-import { guideMain, guideMeta } from '../../lib/render-guide.js';
+import { guideMain, guideMeta, guideStructuredData } from '../../lib/render-guide.js';
 import { exportStatus } from '../../lib/publish-status.js';
 
 export async function getStaticPaths() {
@@ -18,7 +18,9 @@ export async function getStaticPaths() {
 
 const { route } = Astro.props as { route: any };
 const meta = guideMeta(route);
+const canonical = new URL(`/guides/${route.slug}/`, Astro.site).toString();
 ---
 <Base title={meta.title.replace(' | EV Trip Reports', '')} description={meta.description}>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(guideStructuredData(route, canonical)).replaceAll('<', '\\u003c')}></script>
   <Fragment set:html={guideMain(route)} />
 </Base>

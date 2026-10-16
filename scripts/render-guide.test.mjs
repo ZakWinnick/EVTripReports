@@ -4,9 +4,12 @@ import { readdir, readFile } from 'node:fs/promises';
 import {
   driverReportCutoff,
   driverReportSummaryOk,
+  guideJsonLd,
   guideMain,
+  guideStructuredData,
   isBareDriverQuestion,
   MIN_DRIVER_REPORT_CHARS,
+  routeLine,
 } from '../src/lib/render-guide.js';
 
 function addDays(iso, days) {
@@ -238,4 +241,32 @@ test('every stored driver report is specific enough to keep', async () => {
   assert.ok(summaries.some((summary) => summary.includes('Charged on stall 7B')));
   assert.ok(summaries.some((summary) => summary.includes('Derated to 180')));
   assert.ok(summaries.some((summary) => summary.includes('Charger 4 is out of order')));
+});
+
+test('guide pages expose breadcrumb and article structured data, and the route graphic keeps one accessible name', () => {
+  const route = fixture([]);
+  route.slug = 'test-route';
+  route.title = 'Start to End';
+  const data = guideStructuredData(route, 'https://evtripreports.com/guides/test-route/');
+  assert.equal(data['@context'], 'https://schema.org');
+  const types = data['@graph'].map((node) => node['@type']);
+  assert.deepEqual(types, ['BreadcrumbList', 'Article']);
+  const crumbs = data['@graph'][0].itemListElement;
+  assert.equal(crumbs[0].name, 'Guides');
+  assert.equal(crumbs[0].item, 'https://evtripreports.com/guides/');
+  assert.equal(crumbs[1].name, 'I-1');
+  assert.equal(crumbs[1].item, 'https://evtripreports.com/guides/test-route/');
+  const article = data['@graph'][1];
+  assert.equal(article.headline, 'Start to End');
+  assert.equal(article.dateModified, '2026-10-14');
+  assert.equal(article.author.name, 'EV Trip Reports');
+  assert.equal(article.author['@type'], 'Organization');
+  const script = guideJsonLd(route, 'https://evtripreports.com/guides/test-route/');
+  assert.match(script, /^<script type="application\/ld\+json">/);
+  assert.equal(script.includes('Rangeway'), false);
+  assert.equal(script.includes('WebSite'), false);
+  const line = routeLine(route);
+  assert.match(line, /<svg class="route__h"[^>]*aria-hidden="true"/);
+  assert.equal(line.includes('role="img"'), false);
+  assert.equal(line.includes('#7a827e'), false);
 });
