@@ -98,6 +98,22 @@
     "samsclub-6686": {
       "name": "Sam's Club 6686, Salt Lake City",
       "url": "https://www.samsclub.com/club/6686"
+    },
+    "plugshare-171873": {
+      "name": "PlugShare location 171873, Walmart 3847 (Mesquite, NV) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/171873"
+    },
+    "plugshare-169536": {
+      "name": "PlugShare location 169536, Walmart 1439 (Washington, UT) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/169536"
+    },
+    "plugshare-171883": {
+      "name": "PlugShare location 171883, Walmart 1438 (Cedar City, UT) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/171883"
+    },
+    "plugshare-171886": {
+      "name": "PlugShare location 171886, Walmart 4068 (Spanish Fork, UT) (driver check-ins, crowd-sourced amenities)",
+      "url": "https://www.plugshare.com/location/171886"
     }
   },
   "stops": [
@@ -139,6 +155,36 @@
           165281
         ],
         "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171873",
+            "date": "2026-10-09",
+            "summary": "Problem check-in, 2023 Nissan Ariya. No comment, so the problem is not described."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171873",
+            "date": "2026-09-24",
+            "summary": "Successful check-in, 2022 Rivian R1T, 202 kW: \"Right plugs cooling isn’t working, limited to 35 kw. Used left and got full speed for entire session.\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171873",
+            "date": "2026-09-19",
+            "summary": "Successful check-in, Tesla Model Y on a CCS adapter, 126 kW. Tried several chargers and never got much above 125 kW; noted you can charge while towing from the back side of the chargers if no cars block it."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171873",
+            "date": "2026-09-11",
+            "summary": "Successful check-in, 2022 Kia EV6, 224 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171873",
+            "date": "2026-08-21",
+            "summary": "Successful check-in, 2024 Chevrolet Equinox EV, 140 kW. No comment."
+          },
           {
             "source": "reddit",
             "url": "https://www.reddit.com/r/electricvehicles/comments/1rvb1pe/four_days_in_it_feels_like_having_an_ev_is_a_lot/obeqgeh/",
@@ -236,6 +282,20 @@
           "source": "ionna",
           "url": "https://www.ionna.com/ev-charging-stations/nv/mesquite/920-w-mesquite-blvd-89027/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "PlugShare users list dining, restrooms, EV parking, shopping, and grocery as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-171873",
+          "url": "https://www.plugshare.com/location/171873",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "PlugShare's station note for this site says only one plug per unit can be used at a time (crowd-sourced, checked 2026-10-16). EA's page does not say. Plan on each charger serving one car.",
+          "category": "site",
+          "source": "plugshare-171873",
+          "url": "https://www.plugshare.com/location/171873",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -291,6 +351,36 @@
           146946
         ],
         "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169536",
+            "date": "2026-10-14",
+            "summary": "Successful check-in, 2017 Chevrolet Bolt EV. No kW or comment listed."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169536",
+            "date": "2026-10-09",
+            "summary": "Successful check-in, 2024 Kia EV9. No kW or comment listed."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169536",
+            "date": "2026-09-28",
+            "summary": "Problem check-in, 2025 Lucid Air: \"disconnected twice after pairing\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169536",
+            "date": "2026-09-28",
+            "summary": "Successful check-in by the same Lucid Air driver, 200 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/169536",
+            "date": "2026-09-19",
+            "summary": "Successful check-in, 2024 Chevrolet Blazer EV, 142 kW. No comment."
+          },
           {
             "source": "reddit",
             "url": "https://www.reddit.com/r/Rivian/comments/173sqve/first_offroad_excursion/k6eflyd/",
@@ -422,6 +512,13 @@
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/washington/625-w-telegraph-st/100098/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "PlugShare users list WiFi, grocery, restrooms, shopping, dining, and EV parking as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-169536",
+          "url": "https://www.plugshare.com/location/169536",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -483,6 +580,36 @@
           135873
         ],
         "driverReports": [
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171883",
+            "date": "2026-10-09",
+            "summary": "Successful check-in, 2023 Ford F-150 Lightning, 117 kW: \"Right side charge port only charged at 60kw, but left side charged at 117. Better but still well below normal for most “hyper fast” EA chargers\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171883",
+            "date": "2026-09-26",
+            "summary": "Successful check-in, 2025 Mustang Mach-E, 59 kW: went from 12% to 77% in 62 minutes on a 350 kW charger, versus 10% to 80% in 37 minutes at the previous stop."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171883",
+            "date": "2026-09-12",
+            "summary": "Successful check-in, 2022 Kia EV6, 179 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171883",
+            "date": "2026-09-11",
+            "summary": "Successful check-in, 2022 Kia EV6, 167 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171883",
+            "date": "2026-09-11",
+            "summary": "Info check-in, 2025 VW ID. Buzz: \"Kinda weird set up here. It has a left & right “nozzle”, but only 1 can be used at a time.\""
+          },
           {
             "source": "reddit",
             "url": "https://www.reddit.com/r/leaf/comments/1iwc1ib/the_leaf_is_an_great_commuter_ev_but_not_really/mf0h87p/",
@@ -573,6 +700,20 @@
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/cedar-city/1330-south-providence-center-drive/100097/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "PlugShare users list dining, grocery, shopping, EV parking, and restrooms as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-171883",
+          "url": "https://www.plugshare.com/location/171883",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "PlugShare's station note for this site says only one plug per unit can be used at a time (crowd-sourced, checked 2026-10-16). EA's page does not say. Plan on each charger serving one car.",
+          "category": "site",
+          "source": "plugshare-171883",
+          "url": "https://www.plugshare.com/location/171883",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -943,6 +1084,36 @@
         ],
         "driverReports": [
           {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171886",
+            "date": "2026-10-04",
+            "summary": "Successful check-in, 2023 BMW iX, 165 kW: \"Very good experience, easy to use.\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171886",
+            "date": "2026-10-02",
+            "summary": "Successful check-in, 2022 Chevrolet Bolt EUV, 53 kW. No comment."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171886",
+            "date": "2026-09-26",
+            "summary": "Successful check-in, 2022 Chevrolet Bolt EUV, 50 kW: \"Popular place - got 50kw on a bolt.\""
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171886",
+            "date": "2026-09-25",
+            "summary": "Successful check-in, 2024 Ford F-150 Lightning. No kW or comment listed."
+          },
+          {
+            "source": "plugshare",
+            "url": "https://www.plugshare.com/location/171886",
+            "date": "2026-09-23",
+            "summary": "Successful check-in, 2022 VW ID.4, 84 kW. No comment."
+          },
+          {
             "source": "reddit",
             "url": "https://www.reddit.com/r/EquinoxEv/comments/1sm11ob/vegas_road_trip_or_not/ogdo447/",
             "date": "2026-04-15",
@@ -1299,6 +1470,13 @@
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/spanish-fork/1206-n-canyon-creek-pkwy/100103/",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "PlugShare users list restrooms, grocery, shopping, EV parking, and dining as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "category": "food",
+          "source": "plugshare-171886",
+          "url": "https://www.plugshare.com/location/171886",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -1900,6 +2078,10 @@
       "source": "ea-locator"
     },
     {
+      "text": "Driver reports from Mesquite and Cedar City (PlugShare, checked 2026-10-16): the station notes for both say only one plug per unit can be used at a time, and a Cedar City check-in on 2026-09-11 said the same. Check-ins on 2026-09-24 at Mesquite (35 kW) and 2026-10-09 at Cedar City (60 kW) found the right-side cable well under the left. If the kW is low, switch to the other cable or another charger before you settle in.",
+      "source": "plugshare-171883"
+    },
+    {
       "text": "Between Beaver (mile 228) and Scipio (mile 304) DOE lists no DC site within 4 miles of I-15. That is about 76 miles. Plan to leave Beaver with enough charge to reach Scipio.",
       "source": "afdc"
     },
@@ -1912,7 +2094,7 @@
       "source": "ea-locator"
     },
     {
-      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily and a Sam's Cafe from 10:00 AM; IONNA lists restrooms at Mesquite and Beaver. Walmart store hours and restrooms at Mesquite, Washington, Cedar City and Spanish Fork are still Not yet verified: walmart.com store pages returned 403 on 2026-10-16.",
+      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily and a Sam's Cafe from 10:00 AM; IONNA lists restrooms at Mesquite and Beaver. Walmart store hours and restrooms at Mesquite, Washington, Cedar City and Spanish Fork are still Not yet verified: walmart.com store pages returned 403 on 2026-10-16. PlugShare users list restrooms at all four (crowd-sourced icons), which is not the same as Walmart confirming them.",
       "source": "pilotflyingj-scipio"
     },
     {

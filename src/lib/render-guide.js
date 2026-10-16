@@ -346,12 +346,19 @@ function stopSection(route, s, i) {
   const legacyReports = legacyDriverReports(s, cutoff);
   legacyReports.forEach((r) => r.source && ids.add(r.source));
   s.around.forEach((a) => ids.add(a.source));
-  const sources = [...ids].map((id) => S[id]).filter(Boolean);
-  const seenReportUrls = new Set();
+  // One line per URL in "Sources for this stop": a named source (for example a PlugShare
+  // location cited by an around-the-stop note) wins over a driver report with the same link.
+  const seenSourceUrls = new Set();
+  const sources = [];
+  for (const x of [...ids].map((id) => S[id]).filter(Boolean)) {
+    if (x.url && seenSourceUrls.has(x.url)) continue;
+    if (x.url) seenSourceUrls.add(x.url);
+    sources.push(x);
+  }
   const reportSources = [];
   for (const r of driverReports) {
-    if (seenReportUrls.has(r.url)) continue;
-    seenReportUrls.add(r.url);
+    if (seenSourceUrls.has(r.url)) continue;
+    seenSourceUrls.add(r.url);
     reportSources.push({ name: `Driver report, ${REPORT_LABEL[r.source]}: ${r.about}`, url: r.url });
   }
   const backupHtml = s.backups.length
