@@ -68,5 +68,12 @@
     "highway": "I-35",
     "miles": 192,
     "status": "verifying"
+  },
+  {
+    "slug": "chicago-to-milwaukee",
+    "title": "Chicago to Milwaukee",
+    "highway": "I-94",
+    "miles": 87,
+    "status": "verifying"
   }
 ]

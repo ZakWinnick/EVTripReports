@@ -1,0 +1,916 @@
+{
+  "slug": "chicago-to-milwaukee",
+  "title": "Chicago to Milwaukee",
+  "highway": "I-94",
+  "direction": "northbound",
+  "summary": "I-90/94 and I-94 from near downtown Chicago to downtown Milwaukee through Skokie, the Tri-State, Kenosha and Oak Creek. Primaries mix Electrify America (Target and Westfield Old Orchard at 350 kW), an open Tesla Supercharger in Kenosha, and EVgo on Layton Avenue in Milwaukee. Longest primary gap is Skokie to Kenosha, about 38 miles.",
+  "checked": "2026-10-16",
+  "startLabel": "I-90/94 Kennedy Expressway near Ohio Street, Chicago",
+  "startNote": "Mileage starts where northbound traffic is on I-90/94 near Ohio Street in Chicago (OSRM point -87.6455, 41.8920) and ends on I-94 near downtown Milwaukee (-87.9165, 43.0389). The 87.13 miles is OSRM's driving distance between those two points, shown as 87. Stop miles are each site's nearest point on that route. Wikipedia exit lists for Interstate 94 in Illinois and Wisconsin are cited for exit numbers.",
+  "originLegs": [
+    {
+      "start": "Chicago",
+      "miles": 1.37,
+      "source": "osrm",
+      "url": "https://router.project-osrm.org/route/v1/driving/-87.6298,41.8837;-87.6455,41.8920",
+      "checkedOn": "2026-10-16",
+      "estimate": true,
+      "note": "Estimate. Driving distance from Chicago City Hall area to I-90/94 near Ohio Street."
+    }
+  ],
+  "endLabel": "I-94 near downtown Milwaukee",
+  "stats": [
+    {
+      "label": "Chicago Kennedy to Milwaukee downtown",
+      "value": "87",
+      "unit": "mi",
+      "source": "osrm",
+      "note": "OSRM driving distance on I-90/94 and I-94, 87.13 miles, checked 2026-10-16."
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "49",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "19",
+      "unit": ""
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
+    },
+    "wiki-i94-il": {
+      "name": "Interstate 94 in Illinois, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_94_in_Illinois"
+    },
+    "wiki-i94-wi": {
+      "name": "Interstate 94 in Wisconsin, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_94_in_Wisconsin"
+    },
+    "target": {
+      "name": "Target store locator",
+      "url": "https://www.target.com/store-locator/find-stores"
+    },
+    "westfield": {
+      "name": "Westfield Old Orchard",
+      "url": "https://www.westfield.com/en/united-states/oldorchard"
+    },
+    "reddit": {
+      "name": "Reddit driver reports",
+      "url": "https://www.reddit.com/"
+    }
+  },
+  "stops": [
+    {
+      "id": "chicago",
+      "name": "Chicago",
+      "towns": "Chicago, IL",
+      "mile": 0,
+      "milepostNote": "Measured along OSRM's route from the start: 0.0 miles. The site is about 0.85 mile from that route line near 1200 N Larrabee. Northbound leave I-90/94 toward downtown exits around Ohio Street (Exit 50B on Wikipedia's I-94 in Illinois list) and surface streets to Larrabee.",
+      "why": "Electrify America at Target T2613 has 6 chargers at 350 kW on EA's locator, right at the start of the I-94 run. Costco Lincoln Park's EA (10x350) is the strong backup about 4 miles farther north. Open Tesla at Addison is a third option.",
+      "primary": {
+        "name": "Target T2613 (Chicago, IL)",
+        "network": "Electrify America",
+        "address": "1200 N Larrabee St, Chicago, IL 60610",
+        "exit": "Ohio Street / downtown Kennedy (OSRM start near Exit 50B area; site is about 0.9 mile off I-90/94 at Larrabee)",
+        "stalls": {
+          "value": "6 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/chicago/1200-n-larrabee-st/200016/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/chicago/1200-n-larrabee-st/200016/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          149766
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "Costco Lincoln Park (Chicago, IL)",
+          "network": "Electrify America",
+          "address": "2746 N Clybourn Ave, Chicago, IL 60614",
+          "facts": "EA's locator lists 10 chargers, CCS at 350 kW on all 10. DOE lists the same port count. About 3.6 miles farther north on the corridor, in the Costco Lincoln Park lot on Clybourn. 10 chargers at 350 kW on EA's locator.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/chicago/2746-n-clybourn-ave/701401/",
+          "afdcIds": [
+            421384
+          ],
+          "driverReports": [
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/Rivian/comments/1qu4o5n/rivian_was_added_to_costcos_auto_program/o39709d/",
+              "date": "2026-02-03",
+              "summary": "Rivian driver note: Chicago Lincoln Park Costco has 10 Electrify America chargers at up to 350 kW; EA membership plans are not honored there."
+            },
+            {
+              "source": "reddit",
+              "url": "https://www.reddit.com/r/AskChicago/comments/1t1uory/hows_everyone_dealing_with_the_current_gas_prices/ojjaq5f/",
+              "date": "2026-05-02",
+              "summary": "Chicago driver: mostly uses Electrify America at Costco in Lincoln Park for public charging."
+            }
+          ],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "BOA Logan Square IL4-313 (Chicago, IL)",
+          "network": "Electrify America",
+          "address": "3350 W Diversey Ave, Chicago, IL 60647",
+          "facts": "EA's locator lists 4 chargers up to 0 kW CCS. DOE lists the same port count. About 5 miles along the corridor, Bank of America on West Diversey.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/chicago/3350-w-diversey-ave/210127/",
+          "afdcIds": [
+            191563
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Chicago, IL - West Addison Street - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "2939 West Addison Street Chicago, IL 60618",
+          "facts": "Tesla Find Us confirms 20 Superchargers at 2939 West Addison Street Chicago, IL 60618. Tesla Find Us confirms access: \"Adapter Included For Other EVs\". Stall count and kW are DOE figures only (20 NACS at up to 325 kW); Tesla's page did not show them. About 5 miles along the corridor at Target on West Addison. Find Us shows Adapter Included For Other EVs.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/27479",
+          "afdcIds": [
+            429744
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Whole Foods Chicago & State",
+          "network": "EVgo",
+          "address": "3 W Chicago Ave, Chicago, IL 60654",
+          "facts": "EVgo's locator lists 4 chargers: CHAdeMO/CCS at 100 kW, CCS/CHAdeMO at 100 kW, CCS/CHAdeMO at 100 kW, CCS/CHAdeMO at 100 kW. DOE lists the same port count.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter unless a NACS cable is listed.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/il/chicago/81526/",
+          "afdcIds": [
+            416932
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "433 W Van Buren St, 433 W Van Buren St, Chicago",
+          "facts": "DOE lists 4 CCS at 120 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            451616
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Target T2781 (Chicago, IL)",
+          "network": "Electrify America",
+          "address": "1101 W Jackson Blvd., Chicago, IL 60607",
+          "facts": "EA's locator lists 3 chargers up to 0 kW CCS. DOE lists the same port count.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/chicago/1101-w-jackson-blvd/200015/",
+          "afdcIds": [
+            146617
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Chicago, IL - North Halsted - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "1457 North Halstead Ave, Chicago, IL 60610",
+          "facts": "Tesla Supercharger. DOE lists 10 NACS at up to 75 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/northhalstedsupercharger",
+          "afdcIds": [
+            122296
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Nortown Auto, 1315 W North Ave, Chicago",
+          "facts": "DOE lists 4 CCS at 360 kW, 6 CCS at 240 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            463298
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Hyatt Place Chicago and Wicker Park, 1551 W North Ave, Chicago",
+          "facts": "DOE lists 4 CCS at 160.3 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            448406
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Shell Armitage, 1768 W Armitage Ave, Chicago",
+          "facts": "DOE lists 4 CCS at 240 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            446875
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "1160 W Diversey Pkwy, 1160 W Diversey Pkwy, Chicago",
+          "facts": "DOE lists 4 CCS at 180 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            452622
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Chicago, IL - Elston Avenue - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "2656 North Elston Avenue, Chicago, IL 60647",
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at up to 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/ChicagoILBucktownsupercharger",
+          "afdcIds": [
+            190810
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Jewel-Osco",
+          "network": "EVgo",
+          "address": "3400 N Western Ave, Chicago, IL 60618",
+          "facts": "EVgo's locator lists 1 chargers: CHAdeMO/CCS at 50 kW. DOE lists the same port count.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter unless a NACS cable is listed.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/il/chicago/215/",
+          "afdcIds": [
+            228123
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Kennedy Plaza, 3300 West Belmont Avenue, Chicago",
+          "facts": "DOE lists 6 CCS at 180 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            448461
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Berman Nissan - Chicago, 3456 N Kedzie Ave, Chicago",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            98760
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Shell N Kimball Ave, 3200 N Kimball Ave, Chicago",
+          "facts": "DOE lists 4 CCS at 220.3 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            448405
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Whole Foods Sauganash (CIC)",
+          "network": "EVgo",
+          "address": "6020 N Cicero Ave, Chicago, IL 60646",
+          "facts": "EVgo's locator lists 4 chargers: CHAdeMO/CCS at 350 kW, CCS/CHAdeMO at 350 kW, CHAdeMO/CCS at 100 kW, CCS/CHAdeMO at 100 kW. DOE lists the same port count.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter unless a NACS cable is listed.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/il/chicago/73770/",
+          "afdcIds": [
+            373052
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "Target store T2613 (Chicago Gold Coast / Larrabee): Target's store page lists main hours 8am to 10pm (read 2026-10-16). Public restrooms: Not yet verified on Target's page; treat as Not yet verified until a dated driver report or host confirmation.",
+          "source": "target",
+          "url": "https://www.target.com/sl/chicago-south-loop/2613",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "EA site note: Located at the entrance on the left side of the Target parking lot.",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/chicago/1200-n-larrabee-st/200016/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Chicago near Kennedy",
+          "lat": 41.9035,
+          "lng": -87.6435,
+          "radius": 3
+        }
+      ]
+    },
+    {
+      "id": "skokie",
+      "name": "Skokie",
+      "towns": "Skokie, IL",
+      "mile": 15,
+      "milepostNote": "Measured along OSRM's route from the start: 15.4 miles. The site is about 0.4 mile from that route line. Northbound leave I-94 (Edens) at exit 35, Old Orchard Road (Wikipedia, Interstate 94 in Illinois).",
+      "why": "Electrify America at Westfield Old Orchard has 6 chargers at 350 kW on EA's locator, a natural North Shore stop. Highland Park's open Tesla and EA Bank of America are the next verified options about 10 miles farther.",
+      "primary": {
+        "name": "Westfield Old Orchard (Skokie, IL)",
+        "network": "Electrify America",
+        "address": "4905 Old Orchard Shopping Center, Skokie, IL 60077",
+        "exit": "Exit 35, Old Orchard Road (Edens Expressway / I-94)",
+        "stalls": {
+          "value": "6 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/skokie/4905-old-orchard-shopping-center/210319/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 6",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/skokie/4905-old-orchard-shopping-center/210319/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          199185
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "BOA Highland Park IL4-245 (Highland Park, IL)",
+          "network": "Electrify America",
+          "address": "1921 Saint Johns Ave, Highland Park, IL 60035",
+          "facts": "EA's locator lists 4 chargers, CCS at 350 kW on all 4. DOE lists the same port count. About 9 miles farther north, Bank of America on Saint Johns Avenue in Highland Park.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/highland-park/1921-saint-johns-ave/240136/",
+          "afdcIds": [
+            279321
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Highland Park, IL - Skokie Valley Road - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "2099 Skokie Valley Road Highland Park, IL 60035",
+          "facts": "Tesla Find Us confirms 12 Superchargers at 2099 Skokie Valley Road Highland Park, IL 60035. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (12 NACS at up to 250 kW); Tesla's page did not show them. Highland Park Skokie Valley Road Supercharger, about 10 miles farther. Find Us shows NACS adapter needed for non-Tesla EVs.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/HighlandParkILsupercharger",
+          "afdcIds": [
+            195696
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Skokie, IL - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "5507 Touhy Avenue Skokie, IL 60077",
+          "facts": "Tesla Find Us confirms 20 Superchargers up to 72 kW at 5507 Touhy Avenue Skokie, IL 60077. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. Village Crossing on Touhy Avenue. Find Us shows Pricing for Tesla (Tesla only).",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/skokiesupercharger",
+          "afdcIds": [
+            102167
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Northbrook, IL - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "840-109 Willow Road Northbrook, IL 60062",
+          "facts": "Tesla Find Us confirms 8 Superchargers up to 250 kW at 840-109 Willow Road Northbrook, IL 60062. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. Willow Festival, about 4 miles north of Old Orchard. Find Us shows Pricing for Tesla.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/northbrookilsupercharger",
+          "afdcIds": [
+            154658
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Zeigler Cadillac of Lincolnwood Dealership, 7373 N Cicero Ave, Lincolnwood",
+          "facts": "DOE lists 1 CCS at 50 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            312597
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Martin Nissan, 5240 Golf Rd, Skokie",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            47133
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Napleton Cadillac Of Northbrook, 100 Skokie Blvd, Northbrook",
+          "facts": "DOE lists 1 CCS at 50 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            347576
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "2699 Skokie Valley Rd, 2699 Skokie Valley Rd​., Highland Park",
+          "facts": "DOE lists 1 CHAdeMO at 25 kW, 1 CCS at 25 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            327127
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "K53 Kunes Lakes Chevrolet, 1 Sherwood Terrace, Lake Bluff",
+          "facts": "DOE lists 2 CCS at 120 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            451818
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "Westfield Old Orchard lists EV charging (including Electrify America) on its center page. Mall hours: Not yet verified on westfield.com (hours page not readable on 2026-10-16). Address on Westfield: 4905 Old Orchard Center, Skokie.",
+          "source": "westfield",
+          "url": "https://www.westfield.com/en/united-states/oldorchard",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "EA site note: Located at the parking lot nearer to Orchard Blvd traffic. Public restrooms at the mall: Not yet verified with a dated driver report.",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/il/skokie/4905-old-orchard-shopping-center/210319/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Skokie Old Orchard",
+          "lat": 42.06,
+          "lng": -87.75,
+          "radius": 4
+        }
+      ]
+    },
+    {
+      "id": "kenosha",
+      "name": "Kenosha",
+      "towns": "Kenosha, WI",
+      "mile": 53,
+      "milepostNote": "Measured along OSRM's route from the start: 53.3 miles. The site is about 0.3 mile from that route line. Northbound leave I-94 at exit 342, WIS 158 (Wikipedia, Interstate 94 in Wisconsin).",
+      "why": "Tesla Find Us confirms this Kenosha Supercharger is open to non-Tesla EVs with a NACS adapter, mid-corridor between Skokie and Milwaukee. Pleasant Prairie's Tesla site just before it is Tesla only. Meijer Oak Creek EA is the next CCS-native stop toward Milwaukee.",
+      "primary": {
+        "name": "Kenosha, WI - Tesla Supercharger",
+        "network": "Tesla Supercharger",
+        "address": "7145 120th Avenue Kenosha, WI 53142",
+        "exit": "Exit 342, WIS 158 (Kenosha)",
+        "stalls": {
+          "value": "12 stalls",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger"
+        },
+        "power": {
+          "value": "Up to 250.0 kW",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger"
+        },
+        "access": {
+          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "status": "verified",
+          "source": "tesla-findus"
+        },
+        "teslaAccess": "open",
+        "price": {
+          "value": "Non-Tesla pricing is shown in the Tesla app and can change by time of day.",
+          "status": "unpublished",
+          "source": "tesla-findus"
+        },
+        "afdcIds": [
+          203042
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "tesla-findus"
+      },
+      "backups": [
+        {
+          "name": "Pleasant Prairie, WI - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "11211 120th Ave Pleasant Prairie, WI 53158-1703",
+          "facts": "Tesla Find Us confirms 8 Superchargers up to 150 kW at 11211 120th Ave Pleasant Prairie, WI 53158-1703. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. Pleasant Prairie Premium Outlets, about 3.5 miles before Kenosha. Find Us shows Pricing for Tesla (Tesla only), hours 5am to 11pm.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/pleasantprairiesupercharger",
+          "afdcIds": [
+            102502
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Waukegan, IL - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "4011 Fountain Square Place, Waukegan, IL 60085",
+          "facts": "Tesla Supercharger. DOE lists 20 NACS at up to 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16. Waukegan Fountain Square, about 16 miles before Kenosha. Find Us rendered only in part; access Not yet verified from Tesla's page.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/18738",
+          "afdcIds": [
+            254098
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Meijer 283 (Oak Creek, WI)",
+          "network": "Electrify America",
+          "address": "171 W Town Square Way, Oak Creek, WI 53154",
+          "facts": "EA's locator lists 6 chargers, CCS at 150 kW on all 6. DOE lists the same port count. Meijer Oak Creek, about 23 miles past Kenosha. EA lists 6 chargers at 150 kW on the locator page (API also showed 300 kW; page figure used).",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wi/oak-creek/171-w-town-square-way/216021/",
+          "afdcIds": [
+            279341
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "Kwik Trip #296, 10215 120th Ave, Pleasant Prairie",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            440440
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Gordie Boucher Ford of Kenosha, 7820 120th Avenue, Bristol",
+          "facts": "DOE lists 4 CCS at 120 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            456730
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Lynch Chevrolet of Kenosha, 10901 75th St, Pleasant Prairie",
+          "facts": "DOE lists 2 CCS at 50 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            261307
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ROSEN GROUP ROSENHYD L3 A, 6701 120th Ave, Kenosha",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            421188
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ROSEN GROUP ROSENHYD L3 B, 6701 120th Ave, Kenosha",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            421187
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RACINE HYUNDAI LVL 3 EAST SIDE, 13313 Washington Ave, Mount Pleasant",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            257951
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Ozinga BTCP 0001, 611 S Sylvania Ave, Sturtevant",
+          "facts": "DOE lists 1 CHAdeMO at 100 kW, 1 CCS at 100 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            217113
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Pilot Travel Center 324, 13712 Northwestern Avenue, Franksville",
+          "facts": "DOE lists 6 CCS at 350 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            371899
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "A&W - Tesla Supercharger (Welch's)",
+          "network": "Tesla Supercharger",
+          "address": "13520 Northwestern Ave, Franksville, WI 53126",
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at up to 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us page for this site rendered only in part as of 2026-10-16.",
+          "access": "Not yet verified.",
+          "status": "unverified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/490761",
+          "afdcIds": [
+            462298
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "Tesla Find Us lists this Kenosha site available 24/7 with the banner \"NACS adapter needed for non-Tesla EVs\". DOE access note also says NACS partner enabled. Host/business restrooms next to the stalls: Not yet verified.",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Kenosha",
+          "lat": 42.56,
+          "lng": -87.935,
+          "radius": 4
+        }
+      ]
+    },
+    {
+      "id": "milwaukee",
+      "name": "Milwaukee",
+      "towns": "Milwaukee, WI",
+      "mile": 82,
+      "milepostNote": "Measured along OSRM's route from the start: 81.6 miles. The site is about 0.6 mile from that route line. Northbound leave I-94 at exit 317, Layton Avenue (Wikipedia, Interstate 94 in Wisconsin). OSRM ends downtown about 5.5 miles past this exit.",
+      "why": "EVgo at McDonald's on Layton has three 350 kW dual-cable chargers (CCS and NACS) on EVgo's locator, the last CCS-native stop before downtown Milwaukee. Meijer Oak Creek's EA is the backup about 5 miles earlier.",
+      "primary": {
+        "name": "McDonalds #976 Layton",
+        "network": "EVgo",
+        "address": "191 West Layton Ave, Milwaukee, WI 53207",
+        "exit": "Exit 317, CTH-Y (Layton Avenue)",
+        "stalls": {
+          "value": "3 chargers (6 ports on DOE)",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/"
+        },
+        "power": {
+          "value": "Up to 350 kW",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/"
+        },
+        "access": {
+          "value": "Open to all CCS and NACS EVs. This site lists NACS cables on EVgo's page.",
+          "status": "verified",
+          "source": "evgo"
+        },
+        "price": {
+          "value": "Shown in the EVgo app and on the charger.",
+          "status": "unpublished",
+          "source": "evgo"
+        },
+        "afdcIds": [
+          373084
+        ],
+        "driverReports": [],
+        "checkedOn": "2026-10-16",
+        "source": "evgo"
+      },
+      "backups": [
+        {
+          "name": "Meijer 283 (Oak Creek, WI)",
+          "network": "Electrify America",
+          "address": "171 W Town Square Way, Oak Creek, WI 53154",
+          "facts": "EA's locator lists 6 chargers, CCS at 150 kW on all 6. DOE lists the same port count. Meijer Oak Creek, about 5.4 miles before Layton on the corridor. EA page lists 6x150 kW CCS.",
+          "access": "Open to all CCS EVs. NACS cars need an adapter.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/wi/oak-creek/171-w-town-square-way/216021/",
+          "afdcIds": [
+            279341
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Oak Creek, WI - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "171 West Town Square Way Oak Creek, WI 53154-6801",
+          "facts": "Tesla Find Us confirms 10 Superchargers up to 150 kW at 171 West Town Square Way Oak Creek, WI 53154-6801. Tesla Find Us shows pricing for Tesla and no non-Tesla access banner. Same Meijer lot as the EA site. Find Us shows Pricing for Tesla (Tesla only), 10 stalls up to 150 kW.",
+          "access": "Tesla only",
+          "teslaAccess": "tesla-only",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/oakcreekwisupercharger",
+          "afdcIds": [
+            102499
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "other": [
+        {
+          "name": "ROSEN HYUNDAI LVL 3.2, 6133 S 27th St, Greenfield",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            303057
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ROSEN HYUNDAI LVL 3.1, 6133 S 27th St, Greenfield",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            303058
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Rosen Kia Milwaukee, 5565 S 27th St, Milwaukee",
+          "facts": "DOE lists 1 CCS at 30 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            225252
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Gigahub W Edgerton Avenue, Milwaukee, WI, 501 W Edgerton Avenue, Milwaukee",
+          "facts": "DOE lists 4 CCS at 150 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            383880
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Lake Ford - DCFC, 4201 South 27th Street, Milwaukee",
+          "facts": "DOE lists 6 CCS at 180 kW. DOE pull checked 2026-10-16.",
+          "status": "unverified",
+          "afdcIds": [
+            351440
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EVgo at McDonald's #976 on West Layton Avenue. McDonald's host hours and restrooms: Not yet verified (mcdonalds.com blocked the fetch on 2026-10-16).",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "EVgo's page lists three 350 kW posts with simultaneous dual cables, including NACS on one post.",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/wi/milwaukee/73804/",
+          "checkedOn": "2026-10-16"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Milwaukee Layton",
+          "lat": 42.959,
+          "lng": -87.914,
+          "radius": 3
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "This is a short corridor (about 87 miles). Many cars can run Chicago to Milwaukee without charging if they leave with a healthy state of charge. The stops are for top-ups, traffic delays, or a low departure.",
+      "source": "osrm"
+    },
+    {
+      "text": "I-94 through Illinois uses the Tri-State Tollway north of the Edens. Budget for tolls or a transponder. Exit numbers below cite Wikipedia's I-94 Illinois and Wisconsin lists.",
+      "source": "wiki-i94-il"
+    },
+    {
+      "text": "Tesla sites on this route are flagged from Tesla Find Us where the page was readable: Kenosha and Highland Park and Addison show open-to-all banners; Skokie, Northbrook, Pleasant Prairie and Oak Creek show Pricing for Tesla. Partial Find Us pages stay Not yet verified. Checked 2026-10-16.",
+      "source": "tesla-findus"
+    },
+    {
+      "text": "EVgo's Pilot Travel Center listing in Franksville (DOE station 371899) returned 404 on EVgo's locator on 2026-10-16, so it is not used as a primary.",
+      "source": "evgo"
+    }
+  ],
+  "arrival": {
+    "label": "Downtown Milwaukee",
+    "note": "OSRM ends on I-94 near the Marquette Interchange area. Continue on local streets to your destination. Mitchell International Airport is south of downtown via I-94 exit 318 (WIS 119) if that is your end point instead."
+  }
+}

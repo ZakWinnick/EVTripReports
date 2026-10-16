@@ -67,6 +67,7 @@ test('built guide list matches the publish gate', async () => {
   assert.equal(guides.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), true);
   assert.equal(guides.some((guide) => guide.slug === 'la-to-san-diego'), true);
   assert.equal(guides.some((guide) => guide.slug === 'dallas-to-austin'), false);
+  assert.equal(guides.some((guide) => guide.slug === 'chicago-to-milwaukee'), false);
   assert.deepEqual(
     guides.map((guide) => guide.lastmod),
     ['2026-10-15', '2026-10-14', '2026-10-14', '2026-10-16', '2026-10-15', '2026-10-15', '2026-10-15', '2026-10-15', '2026-10-15'],

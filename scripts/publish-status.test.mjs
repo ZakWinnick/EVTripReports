@@ -352,6 +352,61 @@ test('dallas-to-austin route JSON contains no em dash or en dash in any string',
   await assertRouteJsonHasNoDashes('dallas-to-austin');
 });
 
+test('Chicago to Milwaukee passes the primary gate and stays off the public lists', async () => {
+  const raw = await readFile(new URL('../src/data/routes/chicago-to-milwaukee.json', import.meta.url), 'utf8');
+  const routeData = JSON.parse(raw);
+  const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
+  const meta = list.find((r) => r.slug === 'chicago-to-milwaukee');
+  assert.equal(routeData.slug, 'chicago-to-milwaukee');
+  assert.equal(routeData.title, 'Chicago to Milwaukee');
+  assert.equal(routeData.highway, 'I-94');
+  assert.equal(routeData.checked, '2026-10-16');
+  assert.deepEqual(meta, {
+    slug: 'chicago-to-milwaukee',
+    title: 'Chicago to Milwaukee',
+    highway: 'I-94',
+    miles: 87,
+    status: 'verifying',
+  });
+  assert.equal(primaryPublishBlock(routeData), null);
+  assert.equal(exportStatus('live', routeData), 'live');
+  assert.equal(exportStatus(meta.status, routeData), 'verifying');
+
+  assert.equal(routeData.stops.length, 4);
+  for (const stop of routeData.stops) {
+    assert.ok(stop.backups.some((backup) => backup.status === 'verified'), `${stop.id} verified backup`);
+    for (const key of ['stalls', 'power', 'access']) {
+      assert.equal(stop.primary[key].status, 'verified', `${stop.id} ${key}`);
+    }
+  }
+
+  const guides = await liveBuiltGuides();
+  const index = await liveBuiltGuideIndex();
+  assert.equal(guides.some((guide) => guide.slug === 'chicago-to-milwaukee'), false);
+  assert.equal(index.some((guide) => guide.slug === 'chicago-to-milwaukee'), false);
+  const xml = buildSitemapXml(guidesForSitemap(guides, []));
+  assert.equal(xml.includes('chicago-to-milwaukee'), false);
+
+  const files = await readdir(new URL('../src/data/routes/', import.meta.url));
+  const routeBySlug = {};
+  for (const file of files.filter((name) => name.endsWith('.json'))) {
+    const data = JSON.parse(await readFile(new URL(`../src/data/routes/${file}`, import.meta.url), 'utf8'));
+    routeBySlug[data.slug] = data;
+  }
+  const home = visibleHomeRoutes(list, routeBySlug);
+  assert.equal(home.some((route) => route.slug === 'chicago-to-milwaukee'), false);
+
+  const html = guideMain(routeData);
+  assert.match(html, /id="stop-chicago"/);
+  assert.match(html, /id="stop-milwaukee"/);
+  assert.equal(/rangeway|ampiq/i.test(raw), false);
+  assert.equal(/rangeway|ampiq/i.test(html), false);
+});
+
+test('chicago-to-milwaukee route JSON contains no em dash or en dash in any string', async () => {
+  await assertRouteJsonHasNoDashes('chicago-to-milwaukee');
+});
+
 test('la-to-san-diego route JSON contains no em dash or en dash in any string', async () => {
   await assertRouteJsonHasNoDashes('la-to-san-diego');
 });
