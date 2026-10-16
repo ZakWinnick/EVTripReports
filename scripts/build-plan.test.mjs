@@ -1137,7 +1137,7 @@ test('LV to SLC plan does not count the Cedar City Reddit report as a sourced re
   if (restroom) assert.match(restroom.note, /^Driver report/);
 });
 
-test('host-page store hours at the LA to San Diego Walmarts and the DC to NYC hosts reach the plan with link and date', async () => {
+test('host-page store hours at the LA to San Diego, DC to NYC and LV to SLC hosts reach the plan with link and date', async () => {
   const cases = [
     { slug: 'la-to-san-diego', battery: 15, stops: [
       { name: /Walmart 2242/, url: 'https://www.walmart.com/store/2242-anaheim-ca', hours: /6am to 11pm, Monday to Sunday/ },
@@ -1148,6 +1148,13 @@ test('host-page store hours at the LA to San Diego Walmarts and the DC to NYC ho
       { name: /Wawa Store 840/, url: 'https://www.wawa.com/locations/0840', hours: /5:00 AM to 10:00 PM, Monday to Sunday/ },
       { name: /Urban Edge Properties Marlton Commons/, url: 'https://ravitzfamilymarkets.com/shoprite-of-marlton/', hours: /7am to 10pm/ },
       { name: /Walmart 3078/, url: 'https://www.walmart.com/store/3078-east-brunswick-nj', hours: /6am to 11pm, Monday to Sunday/ },
+    ] },
+    { slug: 'las-vegas-to-salt-lake-city', battery: 20, stops: [
+      { name: /Walmart 3847/, url: 'https://www.walmart.com/store/3847-mesquite-nv', hours: /6am to 11pm, Monday to Sunday/ },
+      { name: /Walmart 1439/, url: 'https://www.walmart.com/store/1439-washington-ut', hours: /6am to 11pm, Monday to Sunday/ },
+      // The dated Reddit report on the primary takes the Restroom line first; it is still a driver report.
+      { name: /Walmart 1438/, url: 'https://www.walmart.com/store/1438-cedar-city-ut', hours: /6am to 11pm, Monday to Sunday/, restroomValue: /Walmart lots with restrooms/ },
+      { name: /Walmart 4068/, url: 'https://www.walmart.com/store/4068-spanish-fork-ut', hours: /6am to 11pm, Monday to Sunday/ },
     ] },
   ];
   for (const { slug, battery, stops } of cases) {
@@ -1176,9 +1183,22 @@ test('host-page store hours at the LA to San Diego Walmarts and the DC to NYC ho
       const stop = plan.stops.find((item) => want.name.test(item.primary?.name || ''));
       const restroom = (stop.primary.facts || []).find((fact) => fact.label === 'Restroom');
       assert.ok(restroom, `${slug}: Restroom fact for ${want.name}`);
-      assert.match(restroom.value, /Driver-reported/);
+      assert.match(restroom.value, want.restroomValue || /Driver-reported/);
       assert.match(restroom.note, /^Driver report/);
-      assert.match(restroom.value, /successful check-in is dated/);
+      if (!want.restroomValue) assert.match(restroom.value, /successful check-in is dated/);
     }
   }
+});
+
+test('LV to SLC Beaver primary gets its Restroom line from the Flying J store page', async () => {
+  const route = JSON.parse(await readFile(path.join(root, 'src/data/routes/las-vegas-to-salt-lake-city.json'), 'utf8'));
+  const plan = buildPlan({ ...FAKE_ORDER, tier: '$79', notes: '', startBattery: 20, slug: route.slug, start: route.startLabel, end: route.endLabel }, route);
+  const beaver = plan.stops.find((stop) => /Days Inn Beaver/.test(stop.primary?.name || ''));
+  assert.ok(beaver, 'Beaver stop in plan');
+  const restroom = (beaver.primary.facts || []).find((fact) => fact.label === 'Restroom');
+  assert.ok(restroom, 'Restroom fact at Beaver');
+  assert.equal(restroom.url, 'https://locations.pilotflyingj.com/us/ut/beaver/653-w-1400-n');
+  assert.equal(restroom.checkedOn, '2026-10-16');
+  assert.match(restroom.value, /clean restrooms/);
+  assert.match(restroom.note, /^Route note/);
 });

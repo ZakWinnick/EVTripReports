@@ -114,6 +114,22 @@
     "plugshare-171886": {
       "name": "PlugShare location 171886, Walmart 4068 (Spanish Fork, UT) (driver check-ins, crowd-sourced amenities)",
       "url": "https://www.plugshare.com/location/171886"
+    },
+    "walmart-3847": {
+      "name": "Walmart store page, Supercenter #3847, 1120 W Pioneer Blvd, Mesquite",
+      "url": "https://www.walmart.com/store/3847-mesquite-nv"
+    },
+    "walmart-1439": {
+      "name": "Walmart store page, Supercenter #1439, 625 W Telegraph St, Washington",
+      "url": "https://www.walmart.com/store/1439-washington-ut"
+    },
+    "walmart-1438": {
+      "name": "Walmart store page, Supercenter #1438, 1330 S Providence Center Dr, Cedar City",
+      "url": "https://www.walmart.com/store/1438-cedar-city-ut"
+    },
+    "walmart-4068": {
+      "name": "Walmart store page, Supercenter #4068, 1206 N Canyon Creek Pkwy, Spanish Fork",
+      "url": "https://www.walmart.com/store/4068-spanish-fork-ut"
     }
   },
   "stops": [
@@ -280,8 +296,15 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the left side of the lot facing the building, between the Walmart and a car wash. Walmart store hours and restrooms: Not yet verified. The live walmart.com store page did not expose hours on 2026-10-15.",
+          "text": "Host is Walmart Supercenter #3847 at 1120 W Pioneer Blvd. Grocery and packaged food are inside the store while it is open. Walmart's store page lists store hours of 6am to 11pm, Monday to Sunday (checked 2026-10-16). Restrooms: Not yet verified (the store page lists no restroom info).",
           "category": "food",
+          "source": "walmart-3847",
+          "url": "https://www.walmart.com/store/3847-mesquite-nv",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "EA's site note: chargers are on the left side of the lot facing the building, between the Walmart and a car wash.",
+          "category": "site",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/nv/mesquite/1120-w-pioneer-blvd/100099/",
           "checkedOn": "2026-10-15"
@@ -294,7 +317,7 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-09-24 (PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours on its store page.",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-09-24 (PlugShare location page, checked 2026-10-16). The store page does not list restrooms.",
           "category": "restroom",
           "source": "plugshare-171873",
           "url": "https://www.plugshare.com/location/171873",
@@ -526,14 +549,21 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are by the pickup section of the store, in the lot. Walmart store hours and restrooms: Not yet verified. The live walmart.com store page did not expose hours on 2026-10-15.",
+          "text": "Host is Walmart Supercenter #1439 at 625 W Telegraph St. Grocery and packaged food are inside the store while it is open. Walmart's store page lists store hours of 6am to 11pm, Monday to Sunday (checked 2026-10-16). Restrooms: Not yet verified (the store page lists no restroom info).",
           "category": "food",
+          "source": "walmart-1439",
+          "url": "https://www.walmart.com/store/1439-washington-ut",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "EA's site note: chargers are by the pickup section of the store, in the lot.",
+          "category": "site",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/washington/625-w-telegraph-st/100098/",
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-14 (PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours on its store page.",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-14 (PlugShare location page, checked 2026-10-16). The store page does not list restrooms.",
           "category": "restroom",
           "source": "plugshare-169536",
           "url": "https://www.plugshare.com/location/169536",
@@ -715,15 +745,22 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the Auto Center side of the lot, between the Walmart and a Thai restaurant, Sweet Basil. Walmart store hours and restrooms: Not yet verified.",
+          "text": "Host is Walmart Supercenter #1438 at 1330 S Providence Center Dr. Grocery and packaged food are inside the store while it is open. Walmart's store page lists store hours of 6am to 11pm, Monday to Sunday (checked 2026-10-16). Restrooms: Not yet verified (the store page lists no restroom info).",
           "category": "food",
+          "source": "walmart-1438",
+          "url": "https://www.walmart.com/store/1438-cedar-city-ut",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "EA's site note: chargers are on the Auto Center side of the lot, between the Walmart and a Thai restaurant, Sweet Basil.",
+          "category": "site",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/cedar-city/1330-south-providence-center-drive/100097/",
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-09 (PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours on its store page.",
-          "category": "food",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-09 (PlugShare location page, checked 2026-10-16). The store page does not list restrooms.",
+          "category": "restroom",
           "source": "plugshare-171883",
           "url": "https://www.plugshare.com/location/171883",
           "checkedOn": "2026-10-16",
@@ -909,6 +946,14 @@
           "source": "pilotflyingj-beaver",
           "url": "https://locations.pilotflyingj.com/us/ut/beaver/653-w-1400-n",
           "checkedOn": "2026-10-15"
+        },
+        {
+          "text": "Restrooms: Flying J Dealer #509 at 653 W 1400 N, beside this EA site, lists the store as open 24 hours, and Pilot's travel-center copy on its store page mentions clean restrooms (checked 2026-10-16).",
+          "category": "restroom",
+          "source": "pilotflyingj-beaver",
+          "url": "https://locations.pilotflyingj.com/us/ut/beaver/653-w-1400-n",
+          "checkedOn": "2026-10-16",
+          "site": "Days Inn Beaver (Beaver, UT)"
         },
         {
           "text": "IONNA's Beaver page lists beverages, a restaurant and restrooms at the Rechargery.",
@@ -1496,14 +1541,21 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the right side of the lot when facing the Walmart. Walmart store hours and restrooms: Not yet verified.",
+          "text": "Host is Walmart Supercenter #4068 at 1206 N Canyon Creek Pkwy. Grocery and packaged food are inside the store while it is open. Walmart's store page lists store hours of 6am to 11pm, Monday to Sunday (checked 2026-10-16). Restrooms: Not yet verified (the store page lists no restroom info).",
           "category": "food",
+          "source": "walmart-4068",
+          "url": "https://www.walmart.com/store/4068-spanish-fork-ut",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "EA's site note: chargers are on the right side of the lot when facing the Walmart.",
+          "category": "site",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/spanish-fork/1206-n-canyon-creek-pkwy/100103/",
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-04 (PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours on its store page.",
+          "text": "Restrooms: Driver-reported. PlugShare's amenity icons list restrooms at this Walmart, and a successful check-in is dated 2026-10-04 (PlugShare location page, checked 2026-10-16). The store page does not list restrooms.",
           "category": "restroom",
           "source": "plugshare-171886",
           "url": "https://www.plugshare.com/location/171886",
@@ -2156,7 +2208,7 @@
       "source": "ea-locator"
     },
     {
-      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily and a Sam's Cafe from 10:00 AM; IONNA lists restrooms at Mesquite and Beaver. Walmart store hours at Mesquite, Washington, Cedar City and Spanish Fork are still Not yet verified: walmart.com store pages returned 403 on 2026-10-16. Restrooms at those four Walmart stops are Driver-reported from PlugShare amenity icons plus a dated successful check-in (Mesquite 2026-09-24, Washington 2026-10-14, Cedar City 2026-10-09, Spanish Fork 2026-10-04), not a host fact. A Reddit report also notes restrooms at Cedar City (driver report).",
+      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers, and Pilot's copy on both store pages mentions clean restrooms; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily and a Sam's Cafe from 10:00 AM; IONNA lists restrooms at Mesquite and Beaver. Walmart's store pages list store hours of 6am to 11pm daily at Mesquite (#3847), Washington (#1439), Cedar City (#1438) and Spanish Fork (#4068), checked 2026-10-16. None of the four pages lists restrooms. Restrooms at those four Walmart stops are Driver-reported from PlugShare amenity icons plus a dated successful check-in (Mesquite 2026-09-24, Washington 2026-10-14, Cedar City 2026-10-09, Spanish Fork 2026-10-04), not a host fact. A Reddit report also notes restrooms at Cedar City (driver report).",
       "source": "pilotflyingj-scipio"
     },
     {
