@@ -4,7 +4,7 @@
   "highway": "I-15",
   "direction": "northbound",
   "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. Tesla sites carry a Tesla only or open to all EVs flag only where Tesla's locator and DOE agree.",
-  "checked": "2026-10-15",
+  "checked": "2026-10-16",
   "startLabel": "Tropicana Ave on-ramp, Las Vegas",
   "startNote": "Mileage starts at the I-15 on-ramp at Tropicana Avenue in Las Vegas (Nevada exit 37, mile 37.40), where the LA to Las Vegas guide ends, and ends at I-15 exit 306, 600 South in Salt Lake City. The 423.07 miles is OSRM's driving distance on I-15 between those two points, shown as 423. Stop miles are each site's nearest point on that route. Utah exit miles minus 115.48 line up with those stop miles at exits 10, 57, 112, 188 and 257B.",
   "originLegs": [
@@ -34,7 +34,7 @@
     },
     {
       "label": "Checked against the network",
-      "value": "28",
+      "value": "31",
       "unit": ""
     }
   ],
@@ -70,6 +70,34 @@
     "wiki-i15-ut": {
       "name": "Interstate 15 in Utah, exit list (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Interstate_15_in_Utah"
+    },
+    "ionna": {
+      "name": "IONNA Rechargery locator",
+      "url": "https://www.ionna.com/rechargeries/find-a-rechargery/"
+    },
+    "creamery-beaver": {
+      "name": "The Creamery visit page, Beaver UT",
+      "url": "https://thecreameryutah.com/pages/visit-us"
+    },
+    "creamery-news": {
+      "name": "The Creamery news: EV charging at The Creamery",
+      "url": "https://thecreameryutah.com/blogs/news/now-open-electric-vehicle-charging-at-the-creamery"
+    },
+    "pilotflyingj-beaver": {
+      "name": "Flying J store page, 653 W 1400 N, Beaver",
+      "url": "https://locations.pilotflyingj.com/us/ut/beaver/653-w-1400-n"
+    },
+    "days-inn-beaver": {
+      "name": "Days Inn by Wyndham Beaver",
+      "url": "https://www.wyndhamhotels.com/days-inn/beaver-utah/days-inn-beaver-ut/overview"
+    },
+    "wendys-beaver": {
+      "name": "Wendy's, 625 W 1400 North, Beaver",
+      "url": "https://locations.wendys.com/united-states/ut/beaver/625-w-1400-north"
+    },
+    "samsclub-6686": {
+      "name": "Sam's Club 6686, Salt Lake City",
+      "url": "https://www.samsclub.com/club/6686"
     }
   },
   "stops": [
@@ -79,7 +107,7 @@
       "towns": "Mesquite and Moapa, NV",
       "mile": 83,
       "milepostNote": "Measured along OSRM's route from the start: 82.7 miles. The site is about 0.2 mile from that route line. OSRM's route from the site joins I-15 north at exit 120 (the ramp is labeled 120 in OSRM), 1.1 miles away.",
-      "why": "The first verified non-Tesla stop out of Las Vegas. The Electrify America site at the Walmart in Mesquite has 4 chargers, up to 350 kW, 1.1 miles from I-15 exit 120. Moapa, 29 miles before it, has a Tesla site and a Turn On Green site that DOE lists as unavailable. The IONNA site beside Mesquite's Tesla site is listed from DOE and is not verified.",
+      "why": "The first verified non-Tesla stop out of Las Vegas. The Electrify America site at the Walmart in Mesquite has 4 chargers, up to 350 kW, 1.1 miles from I-15 exit 120. The IONNA Rechargery on W Mesquite Blvd is the verified backup, about 0.5 mile away. Moapa, 29 miles before it, has a Tesla site and a Turn On Green site that DOE lists as unavailable.",
       "primary": {
         "name": "Walmart 3847 (Mesquite, NV)",
         "network": "Electrify America",
@@ -127,7 +155,23 @@
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
-      "backups": [],
+      "backups": [
+        {
+          "name": "Mesquite, NV Rechargery Relay - W Mesquite Blvd",
+          "network": "IONNA",
+          "address": "920 W Mesquite Blvd, Mesquite, NV 89027",
+          "facts": "IONNA's locator lists 6 CCS and 2 NACS connectors at up to 400 kW. DOE lists the same port count. Price shown on IONNA's page: $0.39/kWh plus tax. About 0.5 mile from the Walmart EA site on W Mesquite Blvd.",
+          "access": "Open to all EVs with CCS or NACS.",
+          "status": "verified",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/nv/mesquite/920-w-mesquite-blvd-89027/",
+          "afdcIds": [
+            465399
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        }
+      ],
       "other": [
         {
           "name": "Moapa, NV - Tesla Supercharger, 2300 Glendale Blvd, Moapa",
@@ -165,28 +209,33 @@
           "afdcIds": [
             200864
           ],
-          "driverReports": [],
+          "driverReports": [
+            {
+              "source": "x",
+              "url": "https://x.com/i/status/1877399588988137678",
+              "date": "2025-01-09",
+              "summary": "Cybertruck driver topped up at the Mesquite v3 Supercharger from 50% to 60% before continuing to Cedar City."
+            }
+          ],
           "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
           "status": "unverified"
-        },
-        {
-          "name": "Mesquite, NV Rechargery Relay -  W Mesquite Blvd, 920 W Mesquite Blvd, Mesquite",
-          "facts": "DOE lists 6 CCS at 400 kW, 2 NACS at 400 kW on IONNA. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
-          "status": "unverified",
-          "afdcIds": [
-            465399
-          ],
-          "driverReports": []
         }
       ],
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the left side of the lot facing the building, between the Walmart and a car wash. Store hours and restrooms: Not yet verified. The live walmart.com page returned 403 on 2026-10-15.",
+          "text": "EA's site note: chargers are on the left side of the lot facing the building, between the Walmart and a car wash. Walmart store hours and restrooms: Not yet verified. The live walmart.com store page did not expose hours on 2026-10-16.",
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/nv/mesquite/1120-w-pioneer-blvd/100099/",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "IONNA's Mesquite page lists beverages and restrooms at the Rechargery.",
+          "category": "food",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/nv/mesquite/920-w-mesquite-blvd-89027/",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -210,7 +259,7 @@
       "towns": "St. George, Washington and Toquerville, UT",
       "mile": 126,
       "milepostNote": "Measured along OSRM's route from the start: 126.5 miles. The site is about 0.3 mile from that route line. OSRM's route from the site joins I-15 north on the ramp from South Green Spring Drive, 0.4 mile away. Wikipedia lists exit 10 as Green Springs Drive.",
-      "why": "The Electrify America site at the Walmart in Washington has 4 chargers at 350 kW, 0.4 mile from I-15 exit 10. St. George's own sites are Tesla and ChargePoint, listed below. No other network site in the area is verified, so there is no backup yet.",
+      "why": "The Electrify America site at the Walmart in Washington has 4 chargers at 350 kW, 0.4 mile from I-15 exit 10. The Tesla Supercharger on Red Cliffs Drive in Washington is the verified backup for cars with a NACS adapter. St. George's other sites are Tesla and ChargePoint, listed below.",
       "primary": {
         "name": "Walmart 1439 (Washington, UT)",
         "network": "Electrify America",
@@ -258,14 +307,38 @@
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
-      "backups": [],
+      "backups": [
+        {
+          "name": "Washington, UT - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "956 W Red Cliffs Dr, Washington, UT 84780",
+          "facts": "Tesla Find Us confirms access at 956 W Red Cliffs Dr Washington, UT 84780. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled. About 0.3 mile from the Washington Walmart EA site.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/33771",
+          "afdcIds": [
+            440464
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
       "other": [
         {
           "name": "St. George, UT - Tesla Supercharger, 1091 N Bluff St, St. George",
           "afdcIds": [
             102464
           ],
-          "driverReports": [],
+          "driverReports": [
+            {
+              "source": "x",
+              "url": "https://x.com/i/status/1804591247262429461",
+              "date": "2024-06-22",
+              "summary": "Driver charged above 200 kW for most of a session at a St. George Tesla Supercharger using an a2z EV adapter."
+            }
+          ],
           "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 1091 N Bluff St St. George, UT 84770-4894. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 8 NACS at 150 kW. The count matches DOE.",
           "status": "verified",
           "checkedOn": "2026-10-15",
@@ -283,19 +356,6 @@
           "status": "verified",
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/461452",
-          "source": "tesla-findus",
-          "teslaAccess": "open"
-        },
-        {
-          "name": "Washington, UT - Tesla Supercharger, 956 W Red Cliffs Dr, Washington",
-          "afdcIds": [
-            440464
-          ],
-          "driverReports": [],
-          "facts": "Tesla Find Us confirms access at 956 W Red Cliffs Dr Washington, UT 84780. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
-          "status": "verified",
-          "checkedOn": "2026-10-15",
-          "url": "https://www.tesla.com/findus/location/supercharger/33771",
           "source": "tesla-findus",
           "teslaAccess": "open"
         },
@@ -357,11 +417,11 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are by the pickup section of the store, in the lot. Store hours and restrooms: Not yet verified. The live walmart.com page was not readable on 2026-10-15.",
+          "text": "EA's site note: chargers are by the pickup section of the store, in the lot. Walmart store hours and restrooms: Not yet verified. The live walmart.com store page did not expose hours on 2026-10-16.",
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/washington/625-w-telegraph-st/100098/",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -391,7 +451,7 @@
       "towns": "Cedar City, UT",
       "mile": 172,
       "milepostNote": "Measured along OSRM's route from the start: 172.5 miles. The site is about 0.2 mile from that route line. OSRM's ramp from the site (via Cross Hollow Road) joins I-15 north at the Utah mile that matches exit 57. Wikipedia lists exit 57 as South Main Street, SR 130.",
-      "why": "The Electrify America site at the Cedar City Walmart has 4 chargers, up to 350 kW, 0.4 mile from I-15 exit 57. One charger has a 50 kW CHAdeMO connector. Two Tesla sites and two Blink dealer sites are listed below and none is a verified backup yet.",
+      "why": "The Electrify America site at the Cedar City Walmart has 4 chargers, up to 350 kW, 0.4 mile from I-15 exit 57. One charger has a 50 kW CHAdeMO connector. Two Tesla Superchargers in town are verified backups for cars with a NACS adapter. Two Blink dealer sites are listed below and are not verified.",
       "primary": {
         "name": "Walmart 1438 (Cedar City, UT)",
         "network": "Electrify America",
@@ -440,39 +500,52 @@
             "url": "https://www.reddit.com/r/electricvehicles/comments/17ij3gd/anyone_notice_a_pronounced_effort_to_slow_the_ev/k79svzq/",
             "date": "2023-10-31",
             "summary": "Driver rated the EA sites at Scipio, Beaver, Washington and Mesquite as ok, and American Fork and Cedar City as terrible."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/i/status/1919427905190555716",
+            "date": "2025-05-05",
+            "summary": "Driver said the Cedar City Walmart Electrify America site worked really well southbound, then found chargers broken or unavailable on the return."
           }
         ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
-      "backups": [],
-      "other": [
+      "backups": [
         {
-          "name": "Cedar City, UT - South Main Street - Tesla Supercharger, 1065 South Main St, Cedar City",
+          "name": "Cedar City, UT - South Main Street - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "1065 South Main St, Cedar City, UT 84720",
+          "facts": "Tesla Find Us confirms access at 1065 South Main St Cedar City, UT 84720. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled. About 0.8 mile from the Cedar City Walmart EA site.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/27290",
           "afdcIds": [
             421675
           ],
           "driverReports": [],
-          "facts": "Tesla Find Us confirms access at 1065 South Main St Cedar City, UT 84720. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
-          "status": "verified",
-          "checkedOn": "2026-10-15",
-          "url": "https://www.tesla.com/findus/location/supercharger/27290",
-          "source": "tesla-findus",
-          "teslaAccess": "open"
+          "checkedOn": "2026-10-15"
         },
         {
-          "name": "Cedar City, UT - Tesla Supercharger, 5249 West 3650 South, Cedar City",
+          "name": "Cedar City, UT - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "5249 West 3650 South, Cedar City, UT 84720",
+          "facts": "Tesla Find Us confirms access at 5249 West 3650 South Cedar City, UT 84720. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled. West of I-15 near Cross Hollows, farther from the Walmart than the Main Street Tesla site.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/cedarcityutsupercharger",
           "afdcIds": [
             195701
           ],
           "driverReports": [],
-          "facts": "Tesla Find Us confirms access at 5249 West 3650 South Cedar City, UT 84720. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
-          "status": "verified",
-          "checkedOn": "2026-10-15",
-          "url": "https://www.tesla.com/findus/location/supercharger/cedarcityutsupercharger",
-          "source": "tesla-findus",
-          "teslaAccess": "open"
-        },
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
         {
           "name": "Cedar City Motor Company - DCFC, 1010 North Main Street, Cedar City",
           "facts": "DOE lists 4 CCS at 180 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
@@ -495,11 +568,11 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the Auto Center side of the lot, between the Walmart and a Thai restaurant, Sweet Basil. Store hours and restrooms: Not yet verified.",
+          "text": "EA's site note: chargers are on the Auto Center side of the lot, between the Walmart and a Thai restaurant, Sweet Basil. Walmart store hours and restrooms: Not yet verified.",
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/cedar-city/1330-south-providence-center-drive/100097/",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -517,7 +590,7 @@
       "towns": "Beaver, UT",
       "mile": 228,
       "milepostNote": "Measured along OSRM's route from the start: 227.5 miles. The site is about 0.2 mile from that route line. OSRM's route from the site joins I-15 north from the I-15 Business Loop ramp, 0.6 mile away, at the Utah mile that matches exit 112.",
-      "why": "The Electrify America site at the Days Inn in Beaver has 4 chargers at 350 kW, 0.6 mile from I-15 exit 112. One driver report calls it the busiest EA site on I-15. IONNA and Rivian sites sit in town and three Tesla sites at the interchange. IONNA and Rivian are not verified.",
+      "why": "The Electrify America site at the Days Inn in Beaver has 4 chargers at 350 kW, 0.6 mile from I-15 exit 112. One driver report calls it the busiest EA site on I-15. IONNA on 300 West and Rivian at The Creamery are verified backups. Three Tesla sites sit at the interchange.",
       "primary": {
         "name": "Days Inn Beaver (Beaver, UT)",
         "network": "Electrify America",
@@ -566,12 +639,56 @@
             "url": "https://www.reddit.com/r/SaltLakeCity/comments/1gqnod1/ev_charging_slc_to_st_george/lwzz6o9/",
             "date": "2024-11-13",
             "summary": "Ioniq 5 driver charged about 15 minutes each way at Beaver and Scipio and peaked at 194 kW in Beaver. They had a wait of about 10 minutes at Scipio."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/i/status/1919427905190555716",
+            "date": "2025-05-05",
+            "summary": "Driver said the Flying J Electrify America site in Beaver worked really well on a trip that also used Scipio and Cedar City."
           }
         ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
-      "backups": [],
+      "backups": [
+        {
+          "name": "Beaver, UT Rechargery Relay - 300 West",
+          "network": "IONNA",
+          "address": "1360 300 W, Beaver, UT 84713",
+          "facts": "IONNA's locator lists 6 CCS and 2 NACS connectors at up to 400 kW. DOE lists the same port count. Price shown on IONNA's page: $0.35/kWh plus tax. About 0.4 mile from the Days Inn EA site.",
+          "access": "Open to all EVs with CCS or NACS.",
+          "status": "verified",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ut/beaver/1360-300-w-84713/",
+          "afdcIds": [
+            422480
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "name": "Beaver, UT (The Creamery)",
+          "network": "Rivian Adventure Network",
+          "address": "165 South 500 West, Beaver, UT 84713",
+          "facts": "The Creamery's visit page says the site has 10 Rivian Adventure Network DC fast chargers, open 24/7. The Creamery's Dec 2025 news post says other CCS EVs can plug in directly. DOE lists 6 CCS at 300 kW and 4 NACS at 300 kW (10 ports). Rivian's public charging map page did not show site-level stall details on 2026-10-16. About 1.5 miles south of the Days Inn EA site.",
+          "access": "Open to non-Rivian EVs that use CCS, per The Creamery. NACS cars may need an adapter.",
+          "status": "verified",
+          "source": "creamery-beaver",
+          "url": "https://thecreameryutah.com/pages/visit-us",
+          "afdcIds": [
+            448017
+          ],
+          "driverReports": [
+            {
+              "source": "x",
+              "url": "https://x.com/tbirdjeff/status/2105370625615470900",
+              "date": "2026-09-30",
+              "summary": "Rivian driver on an SLC to St. George trip charged at the Rivian Adventure Network site at The Creamery in Beaver and called out short ribs, cheese and ice cream at the stop."
+            }
+          ],
+          "checkedOn": "2026-10-16"
+        }
+      ],
       "other": [
         {
           "name": "Beaver, UT - Tesla Supercharger, Littlefield Interchange, Beaver",
@@ -603,34 +720,30 @@
           "driverReports": [],
           "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
           "status": "unverified"
-        },
-        {
-          "name": "Beaver, UT Rechargery Relay - 300 West, 1360 300 W, Beaver",
-          "facts": "DOE lists 6 CCS at 400 kW, 2 NACS at 400 kW on IONNA. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
-          "status": "unverified",
-          "afdcIds": [
-            422480
-          ],
-          "driverReports": []
-        },
-        {
-          "name": "Beaver, UT, 165 South 500 West, Beaver",
-          "facts": "DOE lists 6 CCS at 300 kW, 4 NACS at 300 kW on Rivian Adventure Network. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
-          "status": "unverified",
-          "afdcIds": [
-            448017
-          ],
-          "driverReports": []
         }
       ],
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the right side of the Flying J gas station. Restrooms: Not yet verified.",
-          "category": "site",
-          "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/ut/beaver/646-w-1400-n/100627/",
-          "checkedOn": "2026-10-15"
+          "text": "EA's site note: chargers are on the right side of the Flying J gas station. Days Inn by Wyndham lists a free light breakfast, free WiFi, a gift shop and EV charging at 646 West 1400 North. Whether lobby restrooms are open to non-guests: Not yet verified.",
+          "category": "food",
+          "source": "days-inn-beaver",
+          "url": "https://www.wyndhamhotels.com/days-inn/beaver-utah/days-inn-beaver-ut/overview",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Flying J Dealer #509 at 653 W 1400 N (I-15 exit 112) lists the store as open 24 hours, with showers and an ATM. Wendy's at 625 W 1400 North lists restaurant and drive-thru hours 10:00 AM to 11:00 PM daily.",
+          "category": "food",
+          "source": "pilotflyingj-beaver",
+          "url": "https://locations.pilotflyingj.com/us/ut/beaver/653-w-1400-n",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "IONNA's Beaver page lists beverages, a restaurant and restrooms at the Rechargery.",
+          "category": "food",
+          "source": "ionna",
+          "url": "https://www.ionna.com/ev-charging-stations/ut/beaver/1360-300-w-84713/",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -654,7 +767,7 @@
       "towns": "Scipio and Nephi, UT",
       "mile": 304,
       "milepostNote": "Measured along OSRM's route from the start: 304.3 miles. The site is about 0.2 mile from that route line. OSRM's route from the site joins I-15 north from US 50, 1 mile away. Flying J's store page gives I-15, exit 188.",
-      "why": "The Electrify America site at the Flying J in Scipio has 4 chargers at 350 kW, 1 mile from I-15 exit 188. It is 77 miles after Beaver and 69 miles before Spanish Fork, with only Nephi's two Tesla sites between Scipio and Spanish Fork. A March 2026 driver report said the site was down for new equipment. EA's locator lists it available on 2026-10-15.",
+      "why": "The Electrify America site at the Flying J in Scipio has 4 chargers at 350 kW, 1 mile from I-15 exit 188. The Tesla Supercharger next to the Flying J is the verified backup for cars with a NACS adapter. It is 77 miles after Beaver and 69 miles before Spanish Fork, with only Nephi's two Tesla sites between Scipio and Spanish Fork. A March 2026 driver report said the EA site was down for new equipment. EA's locator lists it available on 2026-10-15.",
       "primary": {
         "name": "Flying J Scipio (Scipio, UT)",
         "network": "Electrify America",
@@ -703,12 +816,41 @@
             "url": "https://www.reddit.com/r/etron/comments/1rreunf/2021_etron_range_road_trip/oa1adcs/",
             "date": "2026-03-12",
             "summary": "Commenter said the Scipio EA site was down while new equipment was installed, and called Scipio to Beaver the biggest charging hole on the route, with no chargers at Fillmore or Cove Fort. EA's locator lists the site available on 2026-10-15."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/i/status/1917851995970625743",
+            "date": "2025-05-01",
+            "summary": "Driver said an Electrify America charger in Scipio repeatedly stopped after adding about 3% and reported a payment failure, and called out the gap with no charger between Nephi and Beaver."
+          },
+          {
+            "source": "x",
+            "url": "https://x.com/i/status/1919427905190555716",
+            "date": "2025-05-05",
+            "summary": "Driver said the Flying J Electrify America site in Scipio worked really well."
           }
         ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
-      "backups": [],
+      "backups": [
+        {
+          "name": "Scipio, UT - Tesla Supercharger",
+          "network": "Tesla Supercharger",
+          "address": "815 N 800 W St, Scipio, UT 84656",
+          "facts": "Tesla Find Us confirms access at 815 N 800 W St Scipio, UT 84656. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled. About 0.03 mile from the Flying J EA site, same exit 188 plaza.",
+          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "teslaAccess": "open",
+          "status": "verified",
+          "source": "tesla-findus",
+          "url": "https://www.tesla.com/findus/location/supercharger/58527",
+          "afdcIds": [
+            448072
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
       "other": [
         {
           "name": "Nephi, UT - 12502 S Main St - Tesla Supercharger, 2100 S Main St, Nephi",
@@ -735,29 +877,16 @@
           "url": "https://www.tesla.com/findus/location/supercharger/33700",
           "source": "tesla-findus",
           "teslaAccess": "open"
-        },
-        {
-          "name": "Scipio, UT - Tesla Supercharger, 815 N 800 W St, Scipio",
-          "afdcIds": [
-            448072
-          ],
-          "driverReports": [],
-          "facts": "Tesla Find Us confirms access at 815 N 800 W St Scipio, UT 84656. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
-          "status": "verified",
-          "checkedOn": "2026-10-15",
-          "url": "https://www.tesla.com/findus/location/supercharger/58527",
-          "source": "tesla-findus",
-          "teslaAccess": "open"
         }
       ],
       "reports": [],
       "around": [
         {
-          "text": "Flying J's store page lists the store as open 24 hours, on I-15 exit 188. EA's site note: chargers are at the entrance of the Flying J. Restrooms and food: Not yet verified for this store.",
+          "text": "Flying J Dealer #510 at 810 N 800 W St lists the store as open 24 hours on I-15 exit 188, with showers, an ATM and truck parking. The store page lists EV charging as not Pilot-owned. Pilot's travel-center copy on the page mentions clean restrooms. EA's site note: chargers are at the entrance of the Flying J.",
           "category": "food",
           "source": "pilotflyingj-scipio",
           "url": "https://locations.pilotflyingj.com/us/ut/scipio/810-n-800-w-st",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -1165,11 +1294,11 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the right side of the lot when facing the Walmart. Store hours and restrooms: Not yet verified.",
+          "text": "EA's site note: chargers are on the right side of the lot when facing the Walmart. Walmart store hours and restrooms: Not yet verified.",
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ut/spanish-fork/1206-n-canyon-creek-pkwy/100103/",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -1732,11 +1861,11 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the southeast side of the Sam's Club lot. Club hours and restrooms: Not yet verified.",
+          "text": "EA's site note: chargers are on the southeast side of the Sam's Club lot. Sam's Club 6686 lists club hours 9:00 AM to 8:00 PM daily at 1905 South 300 West. Restrooms for non-members: Not yet verified on the club page.",
           "category": "food",
-          "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/ut/salt-lake-city/1905-south-300-west/100085/",
-          "checkedOn": "2026-10-15"
+          "source": "samsclub-6686",
+          "url": "https://www.samsclub.com/club/6686",
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -1763,7 +1892,7 @@
   ],
   "tips": [
     {
-      "text": "16 Tesla sites on this route are flagged on Tesla Find Us where DOE's access note agrees. 13 stay Not yet verified because Tesla's page rendered only in part, returned 404, or DOE gave no access note. Checked 2026-10-15. Where the page shows no stall count or kW, the numbers are DOE's.",
+      "text": "16 Tesla sites on this route are flagged on Tesla Find Us where DOE's access note agrees (11 open to all EVs with a NACS adapter, 5 Tesla only). 13 stay Not yet verified because Tesla's page rendered only in part, returned 404, or DOE gave no access note. Retried 2026-10-16. Where the page shows no stall count or kW, the numbers are DOE's.",
       "source": "tesla-findus"
     },
     {
@@ -1771,7 +1900,7 @@
       "source": "ea-locator"
     },
     {
-      "text": "Between Beaver (mile 227) and Scipio (mile 304) DOE lists no DC site within 4 miles of I-15. That is 77 miles. Plan to leave Beaver with enough charge to reach Scipio.",
+      "text": "Between Beaver (mile 228) and Scipio (mile 304) DOE lists no DC site within 4 miles of I-15. That is about 76 miles. Plan to leave Beaver with enough charge to reach Scipio.",
       "source": "afdc"
     },
     {
@@ -1783,8 +1912,12 @@
       "source": "ea-locator"
     },
     {
-      "text": "Food and restroom notes are Not yet verified at every stop. Walmart and Sam's Club store pages were blocked on 2026-10-15. EA's site notes say what the chargers sit next to.",
-      "source": "ea-locator"
+      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily; IONNA lists restrooms at Mesquite and Beaver. Walmart store hours at Mesquite, Washington, Cedar City and Spanish Fork are still Not yet verified.",
+      "source": "pilotflyingj-scipio"
+    },
+    {
+      "text": "Every primary stop now has at least one network-verified backup: IONNA at Mesquite and Beaver, Tesla (open) at Washington, Cedar City and Scipio, Rivian at Beaver Creamery, Orem EA for Spanish Fork, and Draper EA, Midvale EA and Target EVgo for Salt Lake City.",
+      "source": "ionna"
     }
   ],
   "arrival": "Downtown Salt Lake City, the airport and the rest of the Wasatch Front north of 600 South are not in this guide. The last stop is the Sam's Club near 2100 South, about 2 miles before the end of the route."
