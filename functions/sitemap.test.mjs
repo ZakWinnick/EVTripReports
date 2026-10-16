@@ -166,3 +166,11 @@ test('robots.txt points at the sitemap', async () => {
   assert.match(robots, /Disallow: \/find-my-plans\/open\//);
   assert.match(robots, /Disallow: \/find-my-plans\/list/);
 });
+
+test('HEAD /sitemap.xml answers like GET with no body', async () => {
+  const { onRequestHead } = await import('./sitemap.xml.js');
+  const res = await onRequestHead({ env: {} });
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get('content-type'), 'application/xml; charset=utf-8');
+  assert.equal(await res.text(), '');
+});

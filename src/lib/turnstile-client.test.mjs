@@ -321,3 +321,12 @@ test('plan and find pages use the shared widget with their own actions', () => {
   assert.match(plans, /SECURITY_RETRY/);
   assert.match(find, /SECURITY_RETRY/);
 });
+
+test('the widget is compact on screens under 360px and normal otherwise', () => {
+  for (const [width, size] of [[320, 'compact'], [359, 'compact'], [360, 'normal'], [1280, 'normal'], [undefined, 'normal']]) {
+    let seen = '';
+    const win = { innerWidth: width, turnstile: { render(_slot, opts) { seen = opts.size; return 1; } } };
+    renderWidget(makeElement('div'), { sitekey: 'k', action: 'plan_request' }, win);
+    assert.equal(seen, size);
+  }
+});

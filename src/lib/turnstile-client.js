@@ -66,9 +66,12 @@ function nonempty(value) {
 export function renderWidget(slot, { sitekey, action }, win = globalThis.window) {
   revealTurnstileSlot(slot);
   let token = '';
+  // The normal widget is 300px wide and pushes the page sideways on a 320px screen.
+  const narrow = Number(win.innerWidth) > 0 && Number(win.innerWidth) < 360;
   const id = win.turnstile.render(slot, {
     sitekey,
     action,
+    size: narrow ? 'compact' : 'normal',
     appearance: 'always',
     'response-field': true,
     'response-field-name': 'cf-turnstile-response',
