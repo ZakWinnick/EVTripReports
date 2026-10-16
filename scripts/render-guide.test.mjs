@@ -4,6 +4,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import {
   driverReportCutoff,
   driverReportSummaryOk,
+  esc,
   guideMain,
   isBareDriverQuestion,
   MIN_DRIVER_REPORT_CHARS,
@@ -238,4 +239,93 @@ test('every stored driver report is specific enough to keep', async () => {
   assert.ok(summaries.some((summary) => summary.includes('Charged on stall 7B')));
   assert.ok(summaries.some((summary) => summary.includes('Derated to 180')));
   assert.ok(summaries.some((summary) => summary.includes('Charger 4 is out of order')));
+});
+
+// A verified access statement in the fact text. "Not yet verified" leaves the site unflagged
+// even when the same sentence also names Tesla only or an adapter.
+function teslaAccessFromFacts(facts) {
+  const text = String(facts || '');
+  if (/Not yet verified/i.test(text)) return null;
+  const teslaOnly = /\bTesla only\b/.test(text);
+  const openToOthers = /Open to non-Tesla EVs|Open to all EVs/i.test(text);
+  const nacsAdapter = /NACS adapter/i.test(text);
+  const adapterIncluded = /adapter is included|Adapter Included/i.test(text);
+  if (teslaOnly && !openToOthers && !nacsAdapter && !adapterIncluded) return 'tesla-only';
+  if (openToOthers && (nacsAdapter || adapterIncluded)) return 'open';
+  return null;
+}
+
+function teslaSites(route) {
+  const sites = [];
+  for (const stop of route.stops) {
+    for (const role of ['primary', 'backups', 'other']) {
+      const items = role === 'primary' ? [stop.primary] : stop[role] || [];
+      for (const item of items) {
+        if (item && /tesla/i.test(item.name || '')) sites.push(item);
+      }
+    }
+  }
+  return sites;
+}
+
+function buttonRow(html, name) {
+  const escaped = esc(name);
+  const strong = `<strong>${escaped}</strong>`;
+  const heading = `<h3 class="h3">${escaped}</h3>`;
+  const strongAt = html.indexOf(strong);
+  const headingAt = html.indexOf(heading);
+  assert.equal(strongAt === -1 && headingAt === -1, false, `missing ${name}`);
+  assert.equal(strongAt !== -1 && headingAt !== -1, false, `name in two roles ${name}`);
+  const at = strongAt === -1 ? headingAt : strongAt;
+  const marker = strongAt === -1 ? heading : strong;
+  assert.equal(html.indexOf(marker, at + marker.length), -1, `duplicate ${name}`);
+  const rest = html.slice(at, at + 900);
+  const spanAt = rest.indexOf('<span class="btnrow">');
+  const divAt = rest.indexOf('<div class="btnrow">');
+  const useSpan = spanAt !== -1 && (divAt === -1 || spanAt < divAt);
+  const start = useSpan ? spanAt : divAt;
+  assert.ok(start !== -1, `no button row ${name}`);
+  const open = useSpan ? '<span class="btnrow">' : '<div class="btnrow">';
+  const close = useSpan ? '</span></div>' : '</div></div>';
+  const end = rest.indexOf(close, start);
+  assert.ok(end !== -1, `no button row end ${name}`);
+  return rest.slice(start + open.length, end);
+}
+
+test('verified Tesla access statements render the matching tag', async () => {
+  const expectedCounts = {
+    'dc-to-nyc': { open: 49, 'tesla-only': 14, none: 6 },
+    'las-vegas-to-salt-lake-city': { open: 11, 'tesla-only': 5, none: 13 },
+  };
+  const tags = {
+    open: '<span class="tag tag--open">Open to all EVs</span>',
+    'tesla-only': '<span class="tag tag--tesla-only">Tesla only</span>',
+  };
+
+  for (const [slug, counts] of Object.entries(expectedCounts)) {
+    const route = JSON.parse(await readFile(new URL(`../src/data/routes/${slug}.json`, import.meta.url), 'utf8'));
+    const html = guideMain(route);
+    const seen = { open: 0, 'tesla-only': 0, none: 0 };
+    for (const site of teslaSites(route)) {
+      const expected = teslaAccessFromFacts(site.facts);
+      if (!expected && !/Not yet verified/i.test(site.facts || '')) {
+        assert.fail(`${slug} ${site.name} has no verified access statement`);
+      }
+      seen[expected || 'none'] += 1;
+      if (expected) assert.equal(site.teslaAccess, expected, site.name);
+      else assert.equal(site.teslaAccess, undefined, site.name);
+
+      const row = buttonRow(html, site.name);
+      if (expected) {
+        assert.equal(row.startsWith(tags[expected]), true, `${slug} ${site.name}`);
+        assert.equal(row.includes(expected === 'open' ? 'tag--tesla-only' : 'tag--open'), false, site.name);
+      } else {
+        assert.equal(row.includes('tag--open'), false, site.name);
+        assert.equal(row.includes('tag--tesla-only'), false, site.name);
+        assert.equal(row.includes('>Open to all EVs<'), false, site.name);
+        assert.equal(row.includes('>Tesla only<'), false, site.name);
+      }
+    }
+    assert.deepEqual(seen, counts, slug);
+  }
 });

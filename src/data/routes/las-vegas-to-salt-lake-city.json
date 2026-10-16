@@ -1,0 +1,1791 @@
+{
+  "slug": "las-vegas-to-salt-lake-city",
+  "title": "Las Vegas to Salt Lake City",
+  "highway": "I-15",
+  "direction": "northbound",
+  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Every primary is an Electrify America site confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. Tesla sites carry a Tesla only or open to all EVs flag only where Tesla's locator and DOE agree.",
+  "checked": "2026-10-15",
+  "startLabel": "Tropicana Ave on-ramp, Las Vegas",
+  "startNote": "Mileage starts at the I-15 on-ramp at Tropicana Avenue in Las Vegas (Nevada exit 37, mile 37.40), where the LA to Las Vegas guide ends, and ends at I-15 exit 306, 600 South in Salt Lake City. The 423.07 miles is OSRM's driving distance on I-15 between those two points, shown as 423. Stop miles are each site's nearest point on that route. Utah exit miles minus 115.48 line up with those stop miles at exits 10, 57, 112, 188 and 257B.",
+  "originLegs": [
+    {
+      "start": "Las Vegas",
+      "miles": 7.47,
+      "source": "osrm",
+      "url": "https://router.project-osrm.org/route/v1/driving/-115.1427,36.1717;-115.180484,36.105469",
+      "checkedOn": "2026-10-15",
+      "estimate": true,
+      "note": "Estimate. Driving distance from Las Vegas City Hall to the I-15 on-ramp at Tropicana Avenue."
+    }
+  ],
+  "endLabel": "600 South, Salt Lake City",
+  "stats": [
+    {
+      "label": "Tropicana Avenue to 600 South",
+      "value": "423",
+      "unit": "mi",
+      "source": "osrm",
+      "note": "OSRM driving distance on I-15, 423.07 miles, checked 2026-10-15."
+    },
+    {
+      "label": "DC fast sites listed",
+      "value": "117",
+      "unit": ""
+    },
+    {
+      "label": "Checked against the network",
+      "value": "28",
+      "unit": ""
+    }
+  ],
+  "sources": {
+    "afdc": {
+      "name": "DOE Alternative Fuels Data Center station locator",
+      "url": "https://afdc.energy.gov/stations"
+    },
+    "ea-locator": {
+      "name": "Electrify America locator",
+      "url": "https://www.electrifyamerica.com/locate-charger/"
+    },
+    "evgo": {
+      "name": "EVgo Find a Charger",
+      "url": "https://www.evgo.com/find-a-charger/"
+    },
+    "tesla-findus": {
+      "name": "Tesla Find Us",
+      "url": "https://www.tesla.com/findus"
+    },
+    "pilotflyingj-scipio": {
+      "name": "Flying J store page, 810 N 800 W, Scipio",
+      "url": "https://locations.pilotflyingj.com/us/ut/scipio/810-n-800-w-st"
+    },
+    "osrm": {
+      "name": "OpenStreetMap OSRM",
+      "url": "http://router.project-osrm.org/"
+    },
+    "wiki-i15-nv": {
+      "name": "Interstate 15 in Nevada, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_15_in_Nevada"
+    },
+    "wiki-i15-ut": {
+      "name": "Interstate 15 in Utah, exit list (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Interstate_15_in_Utah"
+    }
+  },
+  "stops": [
+    {
+      "id": "mesquite",
+      "name": "Mesquite",
+      "towns": "Mesquite and Moapa, NV",
+      "mile": 83,
+      "milepostNote": "Measured along OSRM's route from the start: 82.7 miles. The site is about 0.2 mile from that route line. OSRM's route from the site joins I-15 north at exit 120 (the ramp is labeled 120 in OSRM), 1.1 miles away.",
+      "why": "The first verified non-Tesla stop out of Las Vegas. The Electrify America site at the Walmart in Mesquite has 4 chargers, up to 350 kW, 1.1 miles from I-15 exit 120. Moapa, 29 miles before it, has a Tesla site and a Turn On Green site that DOE lists as unavailable. The IONNA site beside Mesquite's Tesla site is listed from DOE and is not verified.",
+      "primary": {
+        "name": "Walmart 3847 (Mesquite, NV)",
+        "network": "Electrify America",
+        "address": "1120 W Pioneer Blvd, Mesquite, NV 89027",
+        "exit": "Exit 120, Falcon Ridge Parkway",
+        "stalls": {
+          "value": "4 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nv/mesquite/1120-w-pioneer-blvd/100099/"
+        },
+        "power": {
+          "value": "Up to 350 kW. 2 chargers with two CCS at 350 kW; 1 charger with CCS at 150 kW and CHAdeMO at 50 kW; 1 charger with two CCS at 150 kW.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nv/mesquite/1120-w-pioneer-blvd/100099/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          165281
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1rvb1pe/four_days_in_it_feels_like_having_an_ev_is_a_lot/obeqgeh/",
+            "date": "2026-03-20",
+            "summary": "First-time EV driver stopped at the Mesquite EA site, saw about 128 kW at the start, and ate and used the restroom while charging. The charge read 60% about 20 minutes later."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1sduvib/charging_desert_usa_specific/oepblsg/",
+            "date": "2026-04-06",
+            "summary": "Commenter calls the Mesquite and Primm EA sites reliable and advises charging deep before Las Vegas, which can be a zoo."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "Moapa, NV - Tesla Supercharger, 2300 Glendale Blvd, Moapa",
+          "afdcIds": [
+            405693
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 2300 Glendale Blvd Moapa, NV 89025. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/412623",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Arco Moapa, 2300 Glendale Blvd, Moapa",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 350 kW, 1 CCS at 350 kW on Turn On Green. DOE last confirmed 2026-03-19. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            455491
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mesquite, NV - Mesa Boulevard - Tesla Supercharger, 275 Mesa Boulevard, Mesquite",
+          "afdcIds": [
+            233392
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Mesquite, NV - Tesla Supercharger, 950 West Mesquite Boulevard, Mesquite",
+          "afdcIds": [
+            200864
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Mesquite, NV Rechargery Relay -  W Mesquite Blvd, 920 W Mesquite Blvd, Mesquite",
+          "facts": "DOE lists 6 CCS at 400 kW, 2 NACS at 400 kW on IONNA. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            465399
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are on the left side of the lot facing the building, between the Walmart and a car wash. Store hours and restrooms: Not yet verified. The live walmart.com page returned 403 on 2026-10-15.",
+          "category": "food",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/nv/mesquite/1120-w-pioneer-blvd/100099/",
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Mesquite, NV",
+          "lat": 36.8055,
+          "lng": -114.0672,
+          "radius": 8
+        },
+        {
+          "name": "Moapa, NV",
+          "lat": 36.6869,
+          "lng": -114.6339,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "id": "st-george",
+      "name": "St. George",
+      "towns": "St. George, Washington and Toquerville, UT",
+      "mile": 126,
+      "milepostNote": "Measured along OSRM's route from the start: 126.5 miles. The site is about 0.3 mile from that route line. OSRM's route from the site joins I-15 north on the ramp from South Green Spring Drive, 0.4 mile away. Wikipedia lists exit 10 as Green Springs Drive.",
+      "why": "The Electrify America site at the Walmart in Washington has 4 chargers at 350 kW, 0.4 mile from I-15 exit 10. St. George's own sites are Tesla and ChargePoint, listed below. No other network site in the area is verified, so there is no backup yet.",
+      "primary": {
+        "name": "Walmart 1439 (Washington, UT)",
+        "network": "Electrify America",
+        "address": "625 W. Telegraph St., Washington, UT 84780",
+        "exit": "Exit 10, Green Springs Drive",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/washington/625-w-telegraph-st/100098/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/washington/625-w-telegraph-st/100098/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          146946
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Rivian/comments/173sqve/first_offroad_excursion/k6eflyd/",
+            "date": "2023-10-25",
+            "summary": "Rivian owner found 3 of 4 EA stalls taken in Beaver and one trickling, so went to the Washington Walmart EA site, which they called high speed."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1fusm4e/vegas_to_zionbryce_ev_advice/lq2l18q/",
+            "date": "2024-10-03",
+            "summary": "Commenter says there are Electrify America stations in Washington, UT and Mesquite, NV, and that they can get busy but not too bad."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "St. George, UT - Tesla Supercharger, 1091 N Bluff St, St. George",
+          "afdcIds": [
+            102464
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 1091 N Bluff St St. George, UT 84770-4894. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 8 NACS at 150 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/stgeorgeutsupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Toquerville, UT - Tesla Supercharger, 600 1700 N, Toquerville",
+          "afdcIds": [
+            450027
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 600 1700 N Toquerville, UT 84774. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/461452",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Washington, UT - Tesla Supercharger, 956 W Red Cliffs Dr, Washington",
+          "afdcIds": [
+            440464
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 956 W Red Cliffs Dr Washington, UT 84780. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/33771",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "61 S Main St, 61 S Main St, St. George",
+          "facts": "DOE lists 1 CCS at 40 kW on ChargeLab. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            455732
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EV EXPERIENCE FAST CHARGE 2, 145 W Brigham Rd, St. George",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            195105
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "EV EXPERIENCE FAST CHARGER1, 120 Sugar Leo Rd, St. George",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            195097
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "ST GEORGE FORD H1 - LEVEL 3, 145 S Auto Mall Dr, St. George",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            457307
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Smith's - Tesla Supercharger, 4582 S Pioneer Rd, St. George",
+          "afdcIds": [
+            462300
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us shows \"NACS adapter needed for non-Tesla EVs\" but DOE gives no access note (\"24 hours daily\"), so the two do not agree. DOE last confirmed 2026-07-15.",
+          "status": "unverified"
+        },
+        {
+          "name": "St. George, UT - South Convention Center Drive - Tesla Supercharger, 1835 S Convention Center Dr, St. George",
+          "afdcIds": [
+            195700
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are by the pickup section of the store, in the lot. Store hours and restrooms: Not yet verified. The live walmart.com page was not readable on 2026-10-15.",
+          "category": "food",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/washington/625-w-telegraph-st/100098/",
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "searches": [
+        {
+          "name": "St. George, UT",
+          "lat": 37.1041,
+          "lng": -113.5841,
+          "radius": 10
+        },
+        {
+          "name": "Washington, UT",
+          "lat": 37.1305,
+          "lng": -113.5083,
+          "radius": 6
+        },
+        {
+          "name": "Toquerville, UT",
+          "lat": 37.2503,
+          "lng": -113.2858,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "id": "cedar-city",
+      "name": "Cedar City",
+      "towns": "Cedar City, UT",
+      "mile": 172,
+      "milepostNote": "Measured along OSRM's route from the start: 172.5 miles. The site is about 0.2 mile from that route line. OSRM's ramp from the site (via Cross Hollow Road) joins I-15 north at the Utah mile that matches exit 57. Wikipedia lists exit 57 as South Main Street, SR 130.",
+      "why": "The Electrify America site at the Cedar City Walmart has 4 chargers, up to 350 kW, 0.4 mile from I-15 exit 57. One charger has a 50 kW CHAdeMO connector. Two Tesla sites and two Blink dealer sites are listed below and none is a verified backup yet.",
+      "primary": {
+        "name": "Walmart 1438 (Cedar City, UT)",
+        "network": "Electrify America",
+        "address": "1330 South Providence Center Drive, Cedar City, UT 84720",
+        "exit": "Exit 57, South Main Street (SR 130)",
+        "stalls": {
+          "value": "4 chargers",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/cedar-city/1330-south-providence-center-drive/100097/"
+        },
+        "power": {
+          "value": "Up to 350 kW. 2 chargers with two CCS at 350 kW; 1 charger with CCS at 150 kW and CHAdeMO at 50 kW; 1 charger with two CCS at 150 kW.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/cedar-city/1330-south-providence-center-drive/100097/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          135873
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/leaf/comments/1iwc1ib/the_leaf_is_an_great_commuter_ev_but_not_really/mf0h87p/",
+            "date": "2025-02-27",
+            "summary": "Leaf driver arrived at Cedar City EA at about 40% and found the CHAdeMO charger broken. They ate nearby and used a hotel's free Level 2 charger instead."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/EquinoxEv/comments/1sm11ob/vegas_road_trip_or_not/ogdo447/",
+            "date": "2026-04-15",
+            "summary": "Equinox owner charged at Cedar City and Orem on a Southern California to Salt Lake City trip, mostly in Walmart lots with restrooms and snacks. Longest wait was 10 minutes."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/17ij3gd/anyone_notice_a_pronounced_effort_to_slow_the_ev/k79svzq/",
+            "date": "2023-10-31",
+            "summary": "Driver rated the EA sites at Scipio, Beaver, Washington and Mesquite as ok, and American Fork and Cedar City as terrible."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "Cedar City, UT - South Main Street - Tesla Supercharger, 1065 South Main St, Cedar City",
+          "afdcIds": [
+            421675
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 1065 South Main St Cedar City, UT 84720. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/27290",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Cedar City, UT - Tesla Supercharger, 5249 West 3650 South, Cedar City",
+          "afdcIds": [
+            195701
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 5249 West 3650 South Cedar City, UT 84720. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/cedarcityutsupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Cedar City Motor Company - DCFC, 1010 North Main Street, Cedar City",
+          "facts": "DOE lists 4 CCS at 180 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            387332
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Stellantis, 1010 North Main Street, Cedar City",
+          "facts": "DOE lists 2 CCS at 180 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            387853
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are on the Auto Center side of the lot, between the Walmart and a Thai restaurant, Sweet Basil. Store hours and restrooms: Not yet verified.",
+          "category": "food",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/cedar-city/1330-south-providence-center-drive/100097/",
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Cedar City, UT",
+          "lat": 37.6775,
+          "lng": -113.0619,
+          "radius": 10
+        }
+      ]
+    },
+    {
+      "id": "beaver",
+      "name": "Beaver",
+      "towns": "Beaver, UT",
+      "mile": 228,
+      "milepostNote": "Measured along OSRM's route from the start: 227.5 miles. The site is about 0.2 mile from that route line. OSRM's route from the site joins I-15 north from the I-15 Business Loop ramp, 0.6 mile away, at the Utah mile that matches exit 112.",
+      "why": "The Electrify America site at the Days Inn in Beaver has 4 chargers at 350 kW, 0.6 mile from I-15 exit 112. One driver report calls it the busiest EA site on I-15. IONNA and Rivian sites sit in town and three Tesla sites at the interchange. IONNA and Rivian are not verified.",
+      "primary": {
+        "name": "Days Inn Beaver (Beaver, UT)",
+        "network": "Electrify America",
+        "address": "646 W 1400 N, Beaver, UT 84713",
+        "exit": "Exit 112, Business Loop 15 (SR 160, SR 21)",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/beaver/646-w-1400-n/100627/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/beaver/646-w-1400-n/100627/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          123449
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Rivian/comments/173sqve/first_offroad_excursion/k6eflyd/",
+            "date": "2023-10-25",
+            "summary": "Rivian owner found 3 of 4 Beaver EA stalls taken and the fourth trickling."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1x0og6j/ice_cream_and_ev_fast_charging_united_dairy/pen1ao5/",
+            "date": "2026-10-08",
+            "summary": "Commenter says the Beaver EA site is next to a Wendy's, and the IONNA site next to a McDonald's. The Creamery has added Rivian chargers and sells ice cream and cheese."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/SaltLakeCity/comments/1gqnod1/ev_charging_slc_to_st_george/lwzz6o9/",
+            "date": "2024-11-13",
+            "summary": "Ioniq 5 driver charged about 15 minutes each way at Beaver and Scipio and peaked at 194 kW in Beaver. They had a wait of about 10 minutes at Scipio."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "Beaver, UT - Tesla Supercharger, Littlefield Interchange, Beaver",
+          "afdcIds": [
+            102456
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at Littlefield Interchange Beaver, UT 84713. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 8 NACS at 150 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/beaversupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Beaver, UT - 525 W - Tesla Supercharger, 1780 Littlefield Interchange, Beaver",
+          "afdcIds": [
+            200545
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 24 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Beaver, UT - West 1425 North - Tesla Supercharger, 314 West 1425 North, Beaver",
+          "afdcIds": [
+            422573
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Beaver, UT Rechargery Relay - 300 West, 1360 300 W, Beaver",
+          "facts": "DOE lists 6 CCS at 400 kW, 2 NACS at 400 kW on IONNA. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            422480
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Beaver, UT, 165 South 500 West, Beaver",
+          "facts": "DOE lists 6 CCS at 300 kW, 4 NACS at 300 kW on Rivian Adventure Network. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            448017
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are on the right side of the Flying J gas station. Restrooms: Not yet verified.",
+          "category": "site",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/beaver/646-w-1400-n/100627/",
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Beaver, UT",
+          "lat": 38.2761,
+          "lng": -112.6411,
+          "radius": 8
+        },
+        {
+          "name": "Fillmore, UT",
+          "lat": 38.9689,
+          "lng": -112.3236,
+          "radius": 15
+        }
+      ]
+    },
+    {
+      "id": "scipio",
+      "name": "Scipio",
+      "towns": "Scipio and Nephi, UT",
+      "mile": 304,
+      "milepostNote": "Measured along OSRM's route from the start: 304.3 miles. The site is about 0.2 mile from that route line. OSRM's route from the site joins I-15 north from US 50, 1 mile away. Flying J's store page gives I-15, exit 188.",
+      "why": "The Electrify America site at the Flying J in Scipio has 4 chargers at 350 kW, 1 mile from I-15 exit 188. It is 77 miles after Beaver and 69 miles before Spanish Fork, with only Nephi's two Tesla sites between Scipio and Spanish Fork. A March 2026 driver report said the site was down for new equipment. EA's locator lists it available on 2026-10-15.",
+      "primary": {
+        "name": "Flying J Scipio (Scipio, UT)",
+        "network": "Electrify America",
+        "address": "810 North 800 West, Scipio, UT 84656",
+        "exit": "Exit 188, US 50",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/scipio/810-north-800-west/100626/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/scipio/810-north-800-west/100626/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          123480
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/SaltLakeCity/comments/1gqnod1/ev_charging_slc_to_st_george/lwzz6o9/",
+            "date": "2024-11-13",
+            "summary": "Ioniq 5 driver peaked at about 150 kW at Scipio and waited about 10 minutes for a free charger because it was busy."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/SaltLakeCity/comments/1gqnod1/ev_charging_slc_to_st_george/lx59c7v/",
+            "date": "2024-11-14",
+            "summary": "Polestar driver who does Salt Lake to St. George often says all the Scipio sites were down once, and a couple of times a charger was capped at 50 kW for maintenance."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/etron/comments/1rreunf/2021_etron_range_road_trip/oa1adcs/",
+            "date": "2026-03-12",
+            "summary": "Commenter said the Scipio EA site was down while new equipment was installed, and called Scipio to Beaver the biggest charging hole on the route, with no chargers at Fillmore or Cove Fort. EA's locator lists the site available on 2026-10-15."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [],
+      "other": [
+        {
+          "name": "Nephi, UT - 12502 S Main St - Tesla Supercharger, 2100 S Main St, Nephi",
+          "afdcIds": [
+            102460
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 8 stalls, up to 150 kW, at 2100 12502 S Main St Nephi, UT 84648-2035. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 8 NACS at 150 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/nephisupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Nephi, UT - 2120 S Main St - Tesla Supercharger, 2120 S Main St, Nephi",
+          "afdcIds": [
+            262360
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 2120 S Main St Nephi, UT 84648. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/33700",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Scipio, UT - Tesla Supercharger, 815 N 800 W St, Scipio",
+          "afdcIds": [
+            448072
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 815 N 800 W St Scipio, UT 84656. Open to non-Tesla EVs with a NACS adapter. DOE lists 16 NACS at 325 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/58527",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "Flying J's store page lists the store as open 24 hours, on I-15 exit 188. EA's site note: chargers are at the entrance of the Flying J. Restrooms and food: Not yet verified for this store.",
+          "category": "food",
+          "source": "pilotflyingj-scipio",
+          "url": "https://locations.pilotflyingj.com/us/ut/scipio/810-n-800-w-st",
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Scipio, UT",
+          "lat": 39.2455,
+          "lng": -112.1105,
+          "radius": 8
+        },
+        {
+          "name": "Nephi, UT",
+          "lat": 39.7102,
+          "lng": -111.8363,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "id": "spanish-fork",
+      "name": "Spanish Fork",
+      "towns": "Spanish Fork, Provo, Orem, American Fork and Lehi, UT",
+      "mile": 374,
+      "milepostNote": "Measured along OSRM's route from the start: 373.5 miles. The site is about 0.5 mile from that route line. OSRM's route from the site joins I-15 north from US 6 East. Wikipedia lists exit 257B as US 6 East, Price.",
+      "why": "The Electrify America site at the Spanish Fork Walmart has 4 chargers at 350 kW, 1 mile from I-15 exit 257B. Orem's EA site, 11 miles north, is the verified backup. Provo, Orem, Lindon and Lehi have Tesla, ChargePoint, Walmart, EVgateway and Blink sites, listed below.",
+      "primary": {
+        "name": "Walmart 4068 (Spanish Fork, UT)",
+        "network": "Electrify America",
+        "address": "1206 N. Canyon Creek Pkwy, Spanish Fork, UT 84660",
+        "exit": "Exit 257B, US 6 East",
+        "stalls": {
+          "value": "4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/spanish-fork/1206-n-canyon-creek-pkwy/100103/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 4",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/spanish-fork/1206-n-canyon-creek-pkwy/100103/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          121757
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/EquinoxEv/comments/1sm11ob/vegas_road_trip_or_not/ogdo447/",
+            "date": "2026-04-15",
+            "summary": "Equinox owner charged at Spanish Fork on the way home from Salt Lake City, with Cedar City and Las Vegas next. Longest wait on the trip was 10 minutes."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Taycan/comments/1e4qr6i/plug_and_charge/lek4b8u/",
+            "date": "2024-07-23",
+            "summary": "Taycan owner on a St. George trip stopped at the Spanish Fork Walmart EA site for the first time and called it a rather nice station."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "RMP Midtown 360 (Orem, UT)",
+          "network": "Electrify America",
+          "address": "280-360 S State St, Orem, UT 84058",
+          "facts": "4 chargers: 4 CCS at 350 kW. DOE lists the same port count. On State Street in Orem, about 11 miles north of Spanish Fork and 1.7 miles off I-15.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/orem/280-360-s-state-st/701284/",
+          "afdcIds": [
+            390746
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "Orem, UT - Tesla Supercharger, 427 W University Pkwy, Orem",
+          "afdcIds": [
+            327926
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 427 W University Pkwy Orem, UT 84058. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/oremut427wuniversitypkwy",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Provo, UT - Tesla Supercharger, 1505 S 40 E, Provo",
+          "afdcIds": [
+            311224
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at None. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/19161",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "AF FORD POWER LINK 1, 597 E 1000 S, American Fork",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            460843
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "AF FORD POWER LINK 2, 597 E 1000 S, American Fork",
+          "facts": "DOE lists this as temporarily unavailable: 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            460844
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CC STATION1 CPPL0002, 95 East Center Street, Orem",
+          "facts": "DOE lists 2 CCS at 200 kW, 2 NACS at 200 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            465992
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CC STATION1 OREM CITY DC 1, 97 E Center St, Orem",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            165086
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CC STATION1 OREM CITY DC 2, 97 E Center St, Orem",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            180974
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "CC STATION1 OREM CITY DC 4, 95 E Center St, Orem",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            165274
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Doug Smith Kia, 499 Lindon Park Dr, Lindon",
+          "facts": "DOE lists 5 CCS at 120 kW on EVgateway. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            376546
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Doug Smith Spanish Fork, 1341 N Main St, Spanish Fork",
+          "facts": "DOE lists 2 CCS at 180 kW, 2 CCS at 60 kW on EVgateway. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            457622
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Ken Garff Nissan - Orem, 285 W University Pkwy, Orem",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 100 kW on a non-networked operator. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            60341
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "LEHI POWER LEHI POWER DC, 2121 N Thanksgiving Way, Lehi",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            149998
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MURDOCK GENESIS SALES SOUTH, 452 S Lindon Park Dr, Lindon",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            351975
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MURDOCK GENESIS SALES WEST, 452 S Lindon Park Dr, Lindon",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            354792
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MURDOCK LINDON HYUNDAI F1, 530 Lindon Park Dr, Lindon",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            225442
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MURDOCK LINDON HYUNDAI F2, 530 Lindon Park Dr, Lindon",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            225441
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Murdock Ford, 985 Summit Ridge Pkwy, Santaquin",
+          "facts": "DOE lists 2 CCS at 120 kW on Ford Charge. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            417832
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PROVOAIRPORT DCFAST CHARGE 1, 1331 S Sky Way, Provo",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            224866
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "PROVOAIRPORT DCFAST CHARGE 2, 1331 S Sky Way, Provo",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            224867
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SKY FORD PROVO LVL 3-1 PL, 1995 North University Parkway, Provo",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            446013
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SKY FORD PROVO LVL 3-2, 1995 North University Parkway, Provo",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            446304
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SKY FORD PROVO LVL 3-3, 1995 North University Parkway, Provo",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            446300
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SKY FORD PROVO LVL 3-4, 1995 North University Parkway, Provo",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            446302
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "TDF FC 1, 2534 N 200 E, Spanish Fork",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            375521
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "TDF FC 2, 2534 N 200 E, Spanish Fork",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            375522
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Unique Auto Body - DCFC, 221 South 500 East Street, American Fork",
+          "facts": "DOE lists 4 CCS at 180 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            354698
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "VOLVO CAR USA PROVO DC1, 979 S University Ave, Provo",
+          "facts": "DOE lists 1 CHAdeMO at 80 kW, 1 CCS at 80 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            236750
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "VOLVO CAR USA PROVO DC2, 979 S University Ave, Provo",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            236801
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "VOLVO CAR USA PROVO DC3, 979 S University Ave, Provo",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 102.5 kW, 1 CCS at 102 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            236748
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "VOLVO CAR USA PROVO DC4, 979 S University Ave, Provo",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            236749
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walmart EV Charging, 1355 Sandhill Rd, Orem",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on Walmart EV Charging. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            461475
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walmart EV Charging, 136 W State Rd 73, Saratoga Springs",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on Walmart EV Charging. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            461473
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walmart EV Charging, 585 N State St, Lindon",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on Walmart EV Charging. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            461010
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "WinCo Foods - Tesla Supercharger, 895 N 980 W, Orem",
+          "afdcIds": [
+            465057
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 500 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-08-11.",
+          "status": "unverified"
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are on the right side of the lot when facing the Walmart. Store hours and restrooms: Not yet verified.",
+          "category": "food",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/spanish-fork/1206-n-canyon-creek-pkwy/100103/",
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Spanish Fork, UT",
+          "lat": 40.1149,
+          "lng": -111.6549,
+          "radius": 8
+        },
+        {
+          "name": "Provo, UT",
+          "lat": 40.2338,
+          "lng": -111.6585,
+          "radius": 8
+        },
+        {
+          "name": "Orem, UT",
+          "lat": 40.2969,
+          "lng": -111.6946,
+          "radius": 6
+        },
+        {
+          "name": "Lehi, UT",
+          "lat": 40.3916,
+          "lng": -111.8508,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "id": "salt-lake-city",
+      "name": "Salt Lake City",
+      "towns": "Draper, Midvale, Sandy, Murray and Salt Lake City, UT",
+      "mile": 421,
+      "milepostNote": "Measured along OSRM's route from the start: 421.3 miles. The site is about 0.3 mile from that route line. OSRM's route from the site joins I-15 north from 2100 South (SR 201), the 305B interchange. Wikipedia lists exit 305B as 2100 South.",
+      "why": "The last stop before downtown. The Electrify America site at the Sam's Club on 300 West has 8 chargers at 350 kW, 0.3 mile off the route near exit 305B. The EA sites in Draper and Midvale and the EVgo site at the Target on 300 West are verified backups. Tesla, Walmart, ChargePoint and other sites in the valley are listed below.",
+      "primary": {
+        "name": "Sam's Club 6686 (Salt Lake City, UT)",
+        "network": "Electrify America",
+        "address": "1905 South 300 West, Salt Lake City, UT 84115",
+        "exit": "Exit 305B, 2100 South (SR 201)",
+        "stalls": {
+          "value": "8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/salt-lake-city/1905-south-300-west/100085/"
+        },
+        "power": {
+          "value": "350 kW, CCS on all 8",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/salt-lake-city/1905-south-300-west/100085/"
+        },
+        "access": {
+          "value": "Open to all CCS EVs",
+          "status": "verified",
+          "source": "ea-locator"
+        },
+        "price": {
+          "value": "Shown in the EA app and on the charger. EA does not publish it on the locator.",
+          "status": "unpublished",
+          "source": "ea-locator"
+        },
+        "afdcIds": [
+          170340
+        ],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Taycan/comments/1e4qr6i/plug_and_charge/lek4b8u/",
+            "date": "2024-07-23",
+            "summary": "Taycan owner calls the Sam's Club EA site the main and largest one in the Salt Lake area. Plug and Charge was not working for them and they were told to try other EA stations."
+          }
+        ],
+        "checkedOn": "2026-10-15",
+        "source": "ea-locator"
+      },
+      "backups": [
+        {
+          "name": "RMP Draper (Draper, UT)",
+          "network": "Electrify America",
+          "address": "12033 Lone Peak Pkwy, Draper, UT 84020",
+          "facts": "6 chargers: 6 CCS at 350 kW. DOE lists the same port count. About 14 miles before the Sam's Club, on Lone Peak Parkway in Draper, 1 mile from I-15 exit 292.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/draper/12033-lone-peak-pkwy/701347/",
+          "afdcIds": [
+            457110
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "RMP Midvale (Midvale, UT)",
+          "network": "Electrify America",
+          "address": "7250 S 180 W, Midvale, UT 84047",
+          "facts": "6 chargers: 6 CCS at 350 kW. DOE lists the same port count. About 7.5 miles before the Sam's Club, off 7200 South in Midvale.",
+          "access": "Open to all CCS EVs.",
+          "status": "verified",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/midvale/7250-s-180-w/701348/",
+          "afdcIds": [
+            460875
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        },
+        {
+          "name": "Target Salt Lake City #T2641",
+          "network": "EVgo",
+          "address": "1110 S 300 W, Salt Lake City, UT 84101",
+          "facts": "6 stalls: 2 chargers at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 100 kW with CCS and CHAdeMO. DOE lists the same port count. On South 300 West, about 1.2 miles (straight line) from the Sam's Club.",
+          "access": "Open to all EVs that use CCS or CHAdeMO, per EVgo.",
+          "status": "verified",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ut/salt-lake-city/73816/",
+          "afdcIds": [
+            373096
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "other": [
+        {
+          "name": "Draper, UT - Tesla Supercharger, 62-64 East 12300 South, Draper",
+          "afdcIds": [
+            186180
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 62-64 East 12300 South Draper, UT 84020. Open to non-Tesla EVs with a NACS adapter. DOE lists 12 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/DraperUTsupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Salt Lake City, UT - Tesla Supercharger, 1038 South 300 West, Salt Lake City",
+          "afdcIds": [
+            195699
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 4 stalls, up to 75 kW, at 1038 South 300 West Salt Lake City, UT 84101. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 4 NACS at 75 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/saltlakecityutah30wsupercharger",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Smith's 845 E 4500 S Slc 133",
+          "facts": "12 stalls: 4 chargers at 350 kW with two CCS (both connectors can be used at once); 2 chargers at 350 kW with two NACS (both connectors can be used at once). DOE lists the same port count.",
+          "status": "verified",
+          "afdcIds": [
+            451728
+          ],
+          "driverReports": [],
+          "checkedOn": "2026-10-15",
+          "source": "evgo",
+          "url": "https://www.evgo.com/find-a-charger/ut/salt-lake-city/89046/"
+        },
+        {
+          "name": "South Salt Lake City, UT - Tesla Supercharger, 2312 S. State Street, South Salt Lake City",
+          "afdcIds": [
+            122324
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us lists 10 stalls, up to 150 kW, at 2312 S State St South Salt Lake City, UT 84115-2755. Tesla only: the page shows Pricing for Tesla and no adapter note, and DOE says \"Open to Teslas only\". DOE lists 10 NACS at 150 kW. The count matches DOE.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/saltlakecitysstatestreet",
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
+        },
+        {
+          "name": "Taylorsville, UT - Tesla Supercharger, 5338 S Redwood Rd, Taylorsville",
+          "afdcIds": [
+            450425
+          ],
+          "driverReports": [],
+          "facts": "Tesla Find Us confirms access at 5338 S Redwood Rd Taylorsville, UT 84123. Open to non-Tesla EVs with a NACS adapter. DOE lists 8 NACS at 250 kW. Stall count and kW are DOE figures only, Tesla's page did not show them. DOE's access note: 24 hours daily. NACS partner enabled.",
+          "status": "verified",
+          "checkedOn": "2026-10-15",
+          "url": "https://www.tesla.com/findus/location/supercharger/400107",
+          "source": "tesla-findus",
+          "teslaAccess": "open"
+        },
+        {
+          "name": "Chevron - Tesla Supercharger (Saini Charge), 694 9000 S, Sandy",
+          "afdcIds": [
+            462735
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 8 CCS at 325 kW, 8 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us shows \"Adapter Included For Other EVs\" but DOE gives no access note (\"24 hours daily\"), so the two do not agree. DOE last confirmed 2026-07-15.",
+          "status": "unverified"
+        },
+        {
+          "name": "DAHLE USED SUPER CHARGER, 4545 Auto Blvd, Murray",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            236922
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "DEQ DEQ MASOB MAIN, 195 N 1950 W, Salt Lake City",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            174398
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Dick's Sporting Goods - Fort Union, 7170 S 1000 E, Midvale",
+          "facts": "DOE lists 4 CHAdeMO at 50 kW, 4 CCS at 50 kW on EV Power. DOE last confirmed 2024-03-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            328337
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Flying J Travel Center 746, 2025 S 900 W, Salt Lake City",
+          "facts": "DOE lists 6 CCS at 350 kW on EVgo. DOE last confirmed 2026-10-14. EVgo's locator had no page for this site on 2026-10-15 (404).",
+          "status": "unverified",
+          "afdcIds": [
+            458264
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Gigahub SLC S 2400 W, Salt Lake City, UT, 15 S 2400 W, Salt Lake City",
+          "facts": "DOE lists 16 CCS at 400 kW, 8 NACS at 400 kW on bp pulse. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            459857
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Ken Garff Nissan - Salt Lake City, 777 SW Temple, Salt Lake City",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on a non-networked operator. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            49748
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "LARRY H. MILLER SUPER FORD 8, 1340 S 500 W, Salt Lake City",
+          "facts": "DOE lists 2 CCS at 120 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            418037
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "LARRY H. MILLER SUPERFORD 1, 1340 South 500 West, Salt Lake City",
+          "facts": "DOE lists 2 CCS at 80 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            434979
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MURDOCK MURRAY LVL 3 EAST, 4646 S State Street, Murray",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            349475
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MURDOCK MURRAY LVL 3 WEST, 4646 S State Street, Murray",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            349474
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "MURRAYCITY PARKCNTR-EVC-1, 202 E Murray Park Ave, Murray",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            187821
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mark Miller Subaru (EnergiSpot), 3535 State St, South Salt Lake",
+          "facts": "DOE lists 1 CCS at 40 kW on Flip Turn. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            456318
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Mark Miller Subaru - DCFC, 3535 State St, South Salt Lake",
+          "facts": "DOE lists 2 CCS at 350 kW on Flip Turn. DOE last confirmed 2026-10-15. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            455975
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Midvale, UT - South 700 West - Tesla Supercharger, 7020 South 700 West, Midvale",
+          "afdcIds": [
+            440452
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 16 NACS at 325 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Midvale, UT - Tesla Supercharger, 807 Fort Union Blvd, Midvale",
+          "afdcIds": [
+            308421
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us returned 404 for this site on 2026-10-15. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Mike Hale Acura - Blink, 5601 South State Street, Murray",
+          "facts": "DOE lists 3 CCS at 30 kW on Blink. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            387222
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RIVERTON CHEVY STATION 1, 11150 Jordan Gateway, South Jordan",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            207596
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RMP West Jordan (West Jordan, UT), 8000 S Redwood Road, West Jordan",
+          "facts": "DOE lists 6 CCS at 350 kW on Electrify America. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            463466
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "RMP West Valley City (West Valley City, UT), 3000 Constitution BLVD, West Valley City",
+          "facts": "DOE lists 6 CCS at 350 kW on Electrify America. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            463830
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SANDY CITY CITY HALL DC 1, 210 Sego Lily Dr, Sandy",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            174146
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SANDY CITY CITY HALL DC2, 210 Sego Lily Dr, Sandy",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            174149
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SANDY CITY CITY HALL DC3, 210 Sego Lily Dr, Sandy",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            174147
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "SKYPOINTE SKYVISIT, 5295 Commerce Drive, Murray",
+          "facts": "DOE lists 1 CCS at 62 kW, 1 NACS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            360997
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "STATE OF UTAH UDOT SOUTH L3 1, 4501 S. 2700 W., Taylorsville",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            175116
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "STATE OF UTAH UDOT SOUTH L3 2, 4501 S. 2700 W., Taylorsville",
+          "facts": "DOE lists 1 CHAdeMO at 125 kW, 1 CCS at 125 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            153327
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Salt Lake City, UT - S 300 W - Tesla Supercharger, 1850 South 300 West, Salt Lake City",
+          "afdcIds": [
+            202618
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 8 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "South Jordan, UT - Tesla Supercharger, 1309 W S Jordan Pkwy, South Jordan",
+          "afdcIds": [
+            311221
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 12 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "South Salt Lake, UT - S Main Street - Tesla Supercharger, 2193 S Main Street, South Salt Lake",
+          "afdcIds": [
+            347603
+          ],
+          "driverReports": [],
+          "facts": "Tesla Supercharger. DOE lists 20 NACS at 250 kW. Tesla only or open to all EVs: Not yet verified. Tesla Find Us rendered only part of the page on 2026-10-15, with no access note. DOE last confirmed 2026-06-18.",
+          "status": "unverified"
+        },
+        {
+          "name": "Tim Dahle Nissan Southtowne, 11155 S Jordan Gateway, South Jordan",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on a non-networked operator. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            70456
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Tim Dahle Nissan, 4528 S State St, Murray",
+          "facts": "DOE lists 1 CHAdeMO at 50 kW, 1 CCS at 50 kW on a non-networked operator. DOE last confirmed 2026-01-13. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            47541
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "U OF U SOLAR CANOPY, 357 1400 E, Salt Lake City",
+          "facts": "DOE lists 1 CHAdeMO at 40 kW, 1 CCS at 40 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            258284
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "UTAH ELECTRICAL FAST CHARGER, 7466 S Redwood Rd, West Jordan",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            199374
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "VOLVO CAR USA SANDY DC 1, 56 W 9000 S, Sandy",
+          "facts": "DOE lists this as temporarily unavailable: 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            260783
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "VOLVO CAR USA SANDY DC 2, 56 W 9000 S, Sandy",
+          "facts": "DOE lists 1 CHAdeMO at 62.5 kW, 1 CCS at 62 kW on ChargePoint. DOE last confirmed 2026-10-16. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            260797
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Vasa Fitness - Van Wrinkle, 5546 Van Wrinkle Expwy, Salt Lake City",
+          "facts": "DOE lists 4 CHAdeMO at 50 kW, 4 CCS at 50 kW on EV Power. DOE last confirmed 2024-03-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            328336
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walmart EV Charging, 11328 S Jordan Gtwy, South Jordan",
+          "facts": "DOE lists 6 CCS at 400 kW, 6 NACS at 400 kW on Walmart EV Charging. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            462727
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walmart EV Charging, 1360 Draper Pkwy, Draper",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on Walmart EV Charging. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            460345
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walmart EV Charging, 4627 S 900 E, Salt Lake City",
+          "facts": "DOE lists 6 CCS at 400 kW, 6 NACS at 400 kW on Walmart EV Charging. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            463933
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walmart EV Charging, 5469 S Redwood Rd, Taylorsville",
+          "facts": "DOE lists 4 CCS at 400 kW, 4 NACS at 400 kW on Walmart EV Charging. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            462732
+          ],
+          "driverReports": []
+        },
+        {
+          "name": "Walmart EV Charging, 7671 S 3800 W, West Jordan",
+          "facts": "DOE lists 6 CCS at 400 kW, 6 NACS at 400 kW on Walmart EV Charging. DOE last confirmed 2026-09-14. Not checked on the network's locator.",
+          "status": "unverified",
+          "afdcIds": [
+            466560
+          ],
+          "driverReports": []
+        }
+      ],
+      "reports": [],
+      "around": [
+        {
+          "text": "EA's site note: chargers are on the southeast side of the Sam's Club lot. Club hours and restrooms: Not yet verified.",
+          "category": "food",
+          "source": "ea-locator",
+          "url": "https://www.electrifyamerica.com/locate-charger/ut/salt-lake-city/1905-south-300-west/100085/",
+          "checkedOn": "2026-10-15"
+        }
+      ],
+      "searches": [
+        {
+          "name": "Draper, UT",
+          "lat": 40.5241,
+          "lng": -111.8638,
+          "radius": 6
+        },
+        {
+          "name": "Midvale, UT",
+          "lat": 40.6122,
+          "lng": -111.8999,
+          "radius": 6
+        },
+        {
+          "name": "Salt Lake City, UT",
+          "lat": 40.7608,
+          "lng": -111.891,
+          "radius": 7
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "text": "16 Tesla sites on this route are flagged on Tesla Find Us where DOE's access note agrees. 13 stay Not yet verified because Tesla's page rendered only in part, returned 404, or DOE gave no access note. Checked 2026-10-15. Where the page shows no stall count or kW, the numbers are DOE's.",
+      "source": "tesla-findus"
+    },
+    {
+      "text": "The two Walmart sites at Mesquite and Cedar City each have 4 chargers with mixed power: some CCS at 350 kW, some at 150 kW, and one CHAdeMO connector at 50 kW. EA's page does not say whether the two connectors on one charger can be used at once.",
+      "source": "ea-locator"
+    },
+    {
+      "text": "Between Beaver (mile 227) and Scipio (mile 304) DOE lists no DC site within 4 miles of I-15. That is 77 miles. Plan to leave Beaver with enough charge to reach Scipio.",
+      "source": "afdc"
+    },
+    {
+      "text": "Las Vegas sites before Moapa (mile 54) and the Las Vegas end of the route are not listed. DOE shows many Tesla, EA and other sites in the valley that this guide does not check.",
+      "source": "afdc"
+    },
+    {
+      "text": "Electrify America's chargers on this route are CCS, with CHAdeMO on one charger each at Mesquite and Cedar City. NACS cars need an adapter.",
+      "source": "ea-locator"
+    },
+    {
+      "text": "Food and restroom notes are Not yet verified at every stop. Walmart and Sam's Club store pages were blocked on 2026-10-15. EA's site notes say what the chargers sit next to.",
+      "source": "ea-locator"
+    }
+  ],
+  "arrival": "Downtown Salt Lake City, the airport and the rest of the Wasatch Front north of 600 South are not in this guide. The last stop is the Sam's Club near 2100 South, about 2 miles before the end of the route."
+}

@@ -47,5 +47,12 @@
     "highway": "I-95",
     "miles": 223,
     "status": "verifying"
+  },
+  {
+    "slug": "las-vegas-to-salt-lake-city",
+    "title": "Las Vegas to Salt Lake City",
+    "highway": "I-15",
+    "miles": 423,
+    "status": "verifying"
   }
 ]

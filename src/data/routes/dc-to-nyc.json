@@ -206,7 +206,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/AbingdonMDsupercharger2",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Aberdeen, MD - North Philadelphia Boulevard - Tesla Supercharger, 231 N Philadelphia Blvd, Aberdeen",
@@ -218,7 +219,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/26859",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Aberdeen, MD - Tesla Supercharger, I-95, Aberdeen",
@@ -230,7 +232,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/aberdeensupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Abingdon, MD - Woodsdale Road - Tesla Supercharger, 3500 Woodsdale Road, Abingdon",
@@ -242,7 +245,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/AbingdonMDsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Bel Air, MD - Tesla Supercharger, 601 Hoagie Drive, Bel Air",
@@ -254,7 +258,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/BelAirMDSupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Bel Air, MD - Tobin Crossing - Tesla Supercharger, 2692 Tobin Xing, Bel Air",
@@ -266,7 +271,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/32750",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Belcamp, MD, 1321 Riverside Parkway, Belcamp",
@@ -368,7 +374,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/34290",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Maryland House Travel Plaza, I-95, Mile Marker 82, Aberdeen",
@@ -389,7 +396,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/32161",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Preston Ford of Aberdeen - DCFC, 505 South Philadelphia Boulevard, Aberdeen",
@@ -557,7 +565,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/BearDEQ322",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Biden Center, 520 JFK Memorial Hwy, Newark",
@@ -605,7 +614,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/34939",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Claymont, DE - Philadelphia Pike - Tesla Supercharger, 2621 Philadelphia Pike, Claymont",
@@ -617,7 +627,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/claymontdephiladelphiapikesupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Elkton, MD Rechargery Relay @ Wawa - Elkton Rd, 1657 Elkton Rd, Elkton",
@@ -665,7 +676,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/36332",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "New Castle, DE - Christiana Bypass - Tesla Supercharger, 970 Christiana Bypass, New Castle",
@@ -677,7 +689,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/26863",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "New Castle, DE - New Castle Avenue - Tesla Supercharger, 2160 New Castle Avenue, New Castle",
@@ -689,7 +702,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/26865",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "New Castle, DE - North Dupont Highway - Tesla Supercharger, 4000 North Dupont Highway, New Castle",
@@ -701,7 +715,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/NewCastleDESupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Newark, DE - Corporate Boulevard - Tesla Supercharger, 110 Corporate Blvd, Newark",
@@ -713,7 +728,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/18324",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Newark, DE - East Chestnut Hill Road - Tesla Supercharger, 274 E Chestnut Hill Rd, Newark",
@@ -725,7 +741,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/26866",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Newark, DE - Old Baltimore Pike - Tesla Supercharger, 865 Old Baltimore Pike, Newark",
@@ -737,7 +754,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/20520",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Newark, DE - Tesla Supercharger, 530 John F Kennedy Memorial Hwy, Newark",
@@ -767,7 +785,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/26861",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Pennsville, NJ - Tesla Supercharger, 251 N Broadway, Pennsville Township",
@@ -779,7 +798,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/407479",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Porter Chevrolet, 414 East Cleveland Avenue, Newark",
@@ -863,7 +883,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/32690",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         }
       ],
       "reports": [],
@@ -1112,7 +1133,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/59145",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Blackwood, NJ - Tesla Supercharger, 100 Premium Outlets Dr, Blackwood",
@@ -1124,7 +1146,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/59126",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Borough Hall DCFC | Borough of Audubon NJ, 606 W Nicholson Rd, Audubon",
@@ -1172,7 +1195,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/cherryhillnjhaddonfieldroadsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Cherry Hill, NJ Rechargery @ Wawa - Marlton Pike East, 1824 Marlton Pike E, Cherry Hill",
@@ -1193,7 +1217,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/deptfordnjsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "DoubleTree by Hilton - Cherry Hill, 2349 Marlton Pike West, Cherry Hill",
@@ -1241,7 +1266,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/4006009",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Holman Ford of Maple Shade, 571 NJ-38, Maple Shade",
@@ -1292,7 +1318,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/402407",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Magnolia, NJ - Tesla Supercharger, 340 Evesham Ave E, Magnolia",
@@ -1304,7 +1331,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/59149",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Maple Shade, NJ - Route 38 East - Tesla Supercharger, 600 Route 38 East, Maple Shade",
@@ -1316,7 +1344,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/26769",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Maple Shade, NJ - Tesla Supercharger, 2801 Route 73, Maple Shade",
@@ -1328,7 +1357,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/mapleshadenjsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Marlton, NJ - Tesla Supercharger, 500 NJ-73, Marlton",
@@ -1340,7 +1370,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/marltonnjsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Mt Laurel Township, NJ - NJ-73 - Tesla Supercharger, 915 NJ-73, Mt Laurel Township",
@@ -1352,7 +1383,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/406608",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Pennsauken Township, NJ - Tesla Supercharger, 2290 Clement Ave, Pennsauken Township",
@@ -1364,7 +1396,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/4008208",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Walt Whitman Service Plaza, 700 NJ Turnpike, Cherry Hill",
@@ -1397,7 +1430,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/westamptonnjrancocasrdsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Winner Ford - DCFC, 250 Haddonfield-Berlin Road, Cherry Hill Township",
@@ -1701,7 +1735,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/19511",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Crossings at Plainsboro - DCFC, 3 Fox Run Dr, Plainsboro Township",
@@ -1731,7 +1766,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/eastbrunswickstateroute18supercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "East Windsor, NJ - Tesla Supercharger, 610 NJ-33, East Windsor",
@@ -1743,7 +1779,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/4007754",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Edison, NJ - Tesla Supercharger, 55 Parsonage Rd., Edison",
@@ -1755,7 +1792,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/edisonsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Edison, NJ - U.S. Route 1 - Tesla Supercharger, 580 U.S. Route 1, Edison",
@@ -1767,7 +1805,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/EdisonNJSupercharger2",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Ford Charge at Haldeman Subaru, 1207 US-130, Robbinsville Township",
@@ -1815,7 +1854,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/424861",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Hamilton Township, NJ - Flock Road - Tesla Supercharger, 51 Flock Rd, Hamilton Township",
@@ -1827,7 +1867,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/26120",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Hamilton Township, NJ - Tesla Supercharger, 425 Market Place Blvd, Hamilton Township",
@@ -1839,7 +1880,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/hamiltontownshipnjsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Isles - Perry Street Headquarters, 265 Allen Street, Trenton",
@@ -1944,7 +1986,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/MonroeTownshipNJSupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "NJDOT HQ DC1, Njdot, Ewing Township",
@@ -1974,7 +2017,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/27409",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "North Brunswick, NJ - Tesla Supercharger, 191 Grand Avenue, North Brunswick",
@@ -1986,7 +2030,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/northbrunswicksupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Old Bridge, NJ - Tesla Supercharger, 1453 Route 18 South, Old Bridge",
@@ -1998,7 +2043,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/OldBridgeNJSupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Old Bridge, NJ - US-9 - Tesla Supercharger, 3600 US-9, Old Bridge",
@@ -2010,7 +2056,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/409196",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Precision Acura of Princeton, 3001 U.S. 1, Lawrence Township",
@@ -2061,7 +2108,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/robbinsvillesupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Route 33 Nissan, 951 NJ-33, Trenton",
@@ -2100,7 +2148,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/SouthRiverNJSupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "T & T Coast GMC, 2730 Route 130 North, Cranbury",
@@ -2444,7 +2493,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/AvenelNJSupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Carteret, NJ - Tesla Supercharger, 793 Roosevelt Ave, Carteret",
@@ -2456,7 +2506,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/20521",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Clark, NJ - Tesla Supercharger, 36 Valley Rd, Clark",
@@ -2468,7 +2519,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/36228",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Cranford, NJ - Tesla Supercharger, 370 North Avenue East, Cranford",
@@ -2480,7 +2532,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/CranfordNJSupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Crosspointe Town Square - Tesla Supercharger, 15 Woodbridge Center Dr, Woodbridge Township",
@@ -2528,7 +2581,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/32055",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Elizabeth, NJ - Tesla Supercharger, 651 Kapkowski Road, Elizabeth",
@@ -2540,7 +2594,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/elizabethnjsupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "Grover Cleveland Service Area, NJ Turnpike Milepost 92.9 N, Woodbridge",
@@ -2570,7 +2625,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/35810",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Holiday Inn Newark Intl Airport North, 160 Frontage Rd, Newark",
@@ -2591,7 +2647,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/406305",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Kearny, NJ - Tesla Supercharger, 200 Harrison Avenue, Kearny",
@@ -2603,7 +2660,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/kearnysupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "L443 EXPPPUBLICPL01, 2285 US-22, Union",
@@ -2660,7 +2718,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/20627",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Newark, NJ - Tesla Supercharger, 281 Ferry St, Newark",
@@ -2717,7 +2776,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/PerthAmboyNJQ322",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Route 22 Honda, 1480 North Broad Street, Hillside",
@@ -2747,7 +2807,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/springfieldnjclevelandplacesupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Twin City Shopping Center - Tesla Supercharger, 2-36 Garfield Ave, Jersey City",
@@ -2768,7 +2829,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/19245",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "open"
         },
         {
           "name": "Whitney Houston Service Area, 1 Vauxhall Rd, Union",
@@ -2789,7 +2851,8 @@
           "driverReports": [],
           "checkedOn": "2026-10-15",
           "url": "https://www.tesla.com/findus/location/supercharger/woodbridgesupercharger",
-          "source": "tesla-findus"
+          "source": "tesla-findus",
+          "teslaAccess": "tesla-only"
         },
         {
           "name": "bp Meisel Avenue, Springfield, NJ, 5 Meisel Avenue, Springfield",
