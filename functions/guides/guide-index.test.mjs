@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 import builtGuideIndex from '../_lib/built-guide-index.js';
-import { isGuidesIndex } from '../_lib/guide-response.js';
+import { guideSlashRedirect, isGuidesIndex } from '../_lib/guide-response.js';
 import { listLiveGuideIndex, listRoutes } from '../_lib/routes.js';
 import { liveBuiltGuideIndex, liveBuiltGuides } from '../../src/lib/live-guides.js';
 import {
@@ -81,7 +81,7 @@ function indexContext({ url, path, rows, fail = false, map }) {
 }
 
 function card(html, slug) {
-  const href = `href="/guides/${slug}"`;
+  const href = `href="/guides/${slug}/"`;
   const start = html.indexOf(href);
   assert.notEqual(start, -1, slug);
   const open = html.lastIndexOf('<li>', start);
@@ -179,6 +179,19 @@ test('built guide index matches the publish gate', async () => {
   for (const guide of index) assert.ok(guide.title);
 });
 
+test('slashless guide paths redirect to the canonical slash URL', () => {
+  const index = guideSlashRedirect(new Request('https://evtripreports.com/guides?utm=1'));
+  assert.equal(index.status, 308);
+  assert.equal(index.headers.get('location'), 'https://evtripreports.com/guides/?utm=1');
+  const guide = guideSlashRedirect(new Request('https://evtripreports.com/guides/la-to-sf'));
+  assert.equal(guide.status, 308);
+  assert.equal(guide.headers.get('location'), 'https://evtripreports.com/guides/la-to-sf/');
+  assert.equal(guideSlashRedirect(new Request('https://evtripreports.com/guides/')), null);
+  assert.equal(guideSlashRedirect(new Request('https://evtripreports.com/guides/la-to-sf/')), null);
+  assert.equal(guideSlashRedirect(new Request('https://evtripreports.com/guides/index.html')), null);
+  assert.equal(guideSlashRedirect(new Request('https://evtripreports.com/guides/la-to-sf/stalls')), null);
+});
+
 test('guides index is /guides and /guides/, not a slug', () => {
   assert.equal(isGuidesIndex({}, { url: 'https://evtripreports.com/guides' }), true);
   assert.equal(isGuidesIndex({ path: [] }, { url: 'https://evtripreports.com/guides/' }), true);
@@ -202,10 +215,10 @@ test('page, nav, and footer point at the guides index', async () => {
   assert.equal(page.includes('Rangeway'), false);
   assert.equal(layout.includes('href="/#guides"'), false);
   assert.match(layout, /href: '\/guides', label: 'Guides'/);
-  assert.match(layout, /<a href="\/guides">Guides<\/a>/);
-  assert.match(missing, /href="\/guides"/);
+  assert.match(layout, /<a href="\/guides\/">Guides<\/a>/);
+  assert.match(missing, /href="\/guides\/"/);
   assert.equal(guide.includes('href="/#guides"'), false);
-  assert.match(guide, /href="\/guides"/);
+  assert.match(guide, /href="\/guides\/"/);
 });
 
 test('/guides and /guides/ serve the index, including a live D1 route', async () => {
@@ -256,8 +269,14 @@ test('/guides and /guides/ serve the index, including a live D1 route', async ()
     { slug: 'no-miles', title: 'Austin to Dallas', highway: 'I-35', status: 'live', json: JSON.stringify({ title: 'Austin to Dallas', startLabel: 'Austin', endLabel: 'Dallas', stats: [{ label: 'Sites', value: '4', unit: '' }] }) },
   ];
 
+  const slashless = await onRequestGet(indexContext({
+    url: 'https://evtripreports.com/guides?utm=1',
+    map,
+  }));
+  assert.equal(slashless.status, 308);
+  assert.equal(slashless.headers.get('location'), 'https://evtripreports.com/guides/?utm=1');
+
   for (const [url, path] of [
-    ['https://evtripreports.com/guides', undefined],
     ['https://evtripreports.com/guides/', []],
     ['https://evtripreports.com/guides/index.html', 'index.html'],
   ]) {
@@ -285,7 +304,7 @@ test('/guides and /guides/ serve the index, including a live D1 route', async ()
     assert.equal(html.includes('Still checking'), false);
     assert.equal(html.includes('bad-json'), false);
     assert.equal(html.includes('built placeholder'), false);
-    assert.match(html, /href="\/guides\/la-to-sf"/);
+    assert.match(html, /href="\/guides\/la-to-sf\/"/);
   }
 
   const plain = await onRequestGet(indexContext({
@@ -298,7 +317,7 @@ test('/guides and /guides/ serve the index, including a live D1 route', async ()
   assert.match(plain.headers.get('content-type'), /text\/html/);
 
   const down = await onRequestGet(indexContext({
-    url: 'https://evtripreports.com/guides',
+    url: 'https://evtripreports.com/guides/',
     path: [],
     rows: [],
     fail: true,

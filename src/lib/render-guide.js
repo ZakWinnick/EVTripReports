@@ -163,16 +163,16 @@ export function routeLine(route, linkBase = '') {
     `<text x="${xx}" y="${y}" font-size="${size}"${weight ? ` font-weight="${weight}"` : ''} fill="${fill}" text-anchor="${anchor}">${esc(text)}</text>`;
 
   const svg = [
-    `<svg class="route__h" viewBox="0 0 ${W} 180" role="img" aria-hidden="true">`,
+    `<svg class="route__h" viewBox="0 0 ${W} 180" aria-hidden="true">`,
     ...ticks.map((m) => `<line x1="${x(m)}" x2="${x(m)}" y1="${Y - 5}" y2="${Y + 5}" stroke="#b9bfbb" stroke-width="1"/>`),
     `<line x1="${X0}" x2="${X1}" y1="${Y}" y2="${Y}" stroke="#15191a" stroke-width="3" stroke-linecap="round"/>`,
     `<circle cx="${X0}" cy="${Y}" r="6" fill="#ffffff" stroke="#15191a" stroke-width="3"/>`,
     `<rect x="${X1 - 7}" y="${Y - 7}" width="14" height="14" fill="#15191a"/>`,
     t(X0 - 6, Y - 52, 13, '#4e5653', 'start', route.startLabel),
-    t(X0 - 6, Y - 34, 13, '#7a827e', 'start', 'mile 0'),
+    t(X0 - 6, Y - 34, 13, '#686f6c', 'start', 'mile 0'),
     t(X1 + 6, Y - 52, 13, '#4e5653', 'end', route.endLabel),
-    t(X1 + 6, Y - 34, 13, '#7a827e', 'end', `mile ${total}`),
-    ...segments.map((s) => t(s.mid, Y - 14, 12, '#7a827e', 'middle', `${s.d} mi`)),
+    t(X1 + 6, Y - 34, 13, '#686f6c', 'end', `mile ${total}`),
+    ...segments.map((s) => t(s.mid, Y - 14, 12, '#686f6c', 'middle', `${s.d} mi`)),
     ...placed.map(
       (s) =>
         `<a href="${href(s.id)}"><g class="route__stop"><circle cx="${s.cx}" cy="${Y}" r="15" fill="#1e5a3c"/>` +
@@ -213,6 +213,40 @@ export function guideMeta(route) {
     title: `${route.title} EV charging guide (${route.highway}) | EV Trip Reports`,
     description: `Stop-by-stop EV charging guide for ${route.title} on ${route.highway}. Stall counts, kW, access and prices checked against each network on ${fmtDate(route.checked)}.`,
   };
+}
+
+export function guideStructuredData(route, pageUrl) {
+  const url = String(pageUrl);
+  const meta = guideMeta(route);
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Guides', item: 'https://evtripreports.com/guides/' },
+          { '@type': 'ListItem', position: 2, name: route.highway, item: url },
+        ],
+      },
+      {
+        '@type': 'Article',
+        headline: route.title,
+        dateModified: route.checked,
+        description: meta.description,
+        mainEntityOfPage: url,
+        author: {
+          '@type': 'Organization',
+          name: 'EV Trip Reports',
+          url: 'https://evtripreports.com/',
+        },
+      },
+    ],
+  };
+}
+
+export function guideJsonLd(route, pageUrl) {
+  const json = JSON.stringify(guideStructuredData(route, pageUrl)).replace(/</g, '\\u003c');
+  return `<script type="application/ld+json">${json}</script>`;
 }
 
 function primaryRollup(p) {
@@ -343,9 +377,9 @@ function arrivalNote(route) {
 export function guideMain(route) {
   const S = route.sources;
   return `<section class="band band--tight"><div class="wrap">
-<p class="muted" style="margin-bottom:14px"><a href="/guides">Guides</a> <span aria-hidden="true">/</span> ${esc(route.highway)}</p>
+<p class="muted" style="margin-bottom:14px"><a href="/guides/">Guides</a> <span aria-hidden="true">/</span> ${esc(route.highway)}</p>
 <h1 class="h1">${esc(route.title)}</h1><p class="lede" style="margin-top:18px">${esc(route.summary)}</p>
-<p class="small muted" style="margin-top:14px">Station facts checked ${esc(fmtDate(route.checked))}. Anything we couldn't confirm is labeled. <a href="/methodology">How we check</a></p>
+<p class="small muted" style="margin-top:14px">Station facts checked ${esc(fmtDate(route.checked))}. Anything we couldn't confirm is labeled. <a href="/methodology/">How we check</a></p>
 <div style="margin-top:40px">${statStrip(route.stats)}</div></div></section>
 <section class="band band--tight band--mist"><div class="wrap"><div class="panel" style="padding: clamp(18px, 3vw, 32px)">${routeLine(route)}</div>
 <p class="small muted" style="margin-top:12px">${esc(route.startNote)} Stops are placed to scale.</p></div></section>
@@ -355,7 +389,7 @@ ${route.stops.map((s, i) => stopSection(route, s, i)).join('\n')}
     .join('')}</ol><p class="note" style="margin-top:28px">${esc(arrivalNote(route))}</p></div></section>
 <section class="band band--tight band--mist"><div class="wrap plan-cta"><div><h2 class="h2">Want this planned for your car?</h2>
 <p class="lede" style="margin-top:12px">Stops that work for your port and adapter, with a backup at each. Detailed plans add food and a hotel with a charger. We don't book the room. A person reviews the plan before it is sent. Route and detailed plans within 48 hours. Multi-day plans within 3 business days.</p></div>
-<a class="pill pill--lg" href="/plans#request">Plan my trip</a></div></section>
+<a class="pill pill--lg" href="/plans/#request">Plan my trip</a></div></section>
 <section class="band band--tight newsletter-band" hidden><div class="wrap"><h2 class="h2">Route updates</h2>${newsletterForm('newsletter-guide')}</div></section>`;
 }
 
@@ -364,7 +398,7 @@ export function guideCards(routes) {
   return routes
     .map((r) =>
       r.status === 'live'
-        ? `<li><a class="panel guide guide--live" href="/guides/${esc(r.slug)}"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(
+        ? `<li><a class="panel guide guide--live" href="/guides/${esc(r.slug)}/"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(
             r.title
           )}</span><span class="small muted">${esc(r.miles)} miles, ${esc(r.stops)} charging stops</span><span class="guide__go">Read the guide</span></a></li>`
         : `<li><div class="panel guide"><span class="guide__hw">${esc(r.highway)}</span><span class="guide__t">${esc(

@@ -187,7 +187,7 @@ async function findPlan(db, token) {
 }
 
 function messagePage(title, text) {
-  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">${esc(title)}</h1><p class="lede" style="margin-top:18px">${esc(text)}</p><p style="margin-top:28px"><a class="pill" href="/find-my-plans">Find my plans</a></p></div></section>`;
+  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">${esc(title)}</h1><p class="lede" style="margin-top:18px">${esc(text)}</p><p style="margin-top:28px"><a class="pill" href="/find-my-plans/">Find my plans</a></p></div></section>`;
 }
 
 function confirmPage() {
@@ -378,7 +378,7 @@ export async function onList(context) {
       status: 302,
     });
     const headers = new Headers(page.headers);
-    headers.set('location', '/find-my-plans');
+    headers.set('location', '/find-my-plans/');
     return new Response(page.body, { status: 302, headers });
   }
 

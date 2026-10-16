@@ -3,9 +3,10 @@
   --mist: #f3f4f2;
   --ink: #15191a;
   --ink-2: #4e5653;
-  --ink-3: #7a827e;
+  --ink-3: #686f6c;
   --line: #d9ddda;
   --line-strong: #b9bfbb;
+  --control: #7a827e;
   --green: #1e5a3c;
   --green-soft: #e4ede7;
   --radius: 16px;
@@ -31,6 +32,25 @@ img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--green); }
 :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 4px; }
+
+.skip {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  z-index: 40;
+  transform: translateY(-120%);
+  background: var(--ink);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.94rem;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+.skip:focus {
+  transform: none;
+  top: 8px;
+}
 
 .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .band { padding: clamp(56px, 9vw, 112px) 0; }
@@ -59,12 +79,61 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .nav__links a:hover, .nav__links a[aria-current='page'] { color: var(--ink); }
 .pill { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--ink); color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.94rem; padding: 10px 18px; border-radius: 999px; border: 0; cursor: pointer; font-family: inherit; line-height: 1.2; white-space: nowrap; }
 .pill:hover { background: var(--green); color: var(--white); }
-.pill--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.pill--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--control); }
 .pill--ghost:hover { background: var(--ink); color: var(--white); box-shadow: none; }
 .pill--lg { padding: 14px 24px; font-size: 1rem; }
+.menu { display: none; margin: 0; }
+.menu summary { list-style: none; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary::marker { content: ''; }
 @media (max-width: 760px) {
   .nav__links { display: none; }
-  .nav__in { justify-content: space-between; }
+  .nav__in { justify-content: space-between; gap: 10px; }
+  .menu { display: block; position: relative; margin-left: auto; }
+  .menu summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: var(--ink);
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px var(--control);
+  }
+  .menu summary::after {
+    content: '';
+    width: 0.4em;
+    height: 0.4em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+  }
+  .menu[open] summary::after { transform: translateY(2px) rotate(225deg); }
+  .menu nav {
+    position: fixed;
+    z-index: 30;
+    top: 68px;
+    right: var(--gutter);
+    left: auto;
+    width: min(260px, calc(100vw - 32px));
+    min-width: 0;
+    padding: 8px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    display: grid;
+  }
+  .menu nav a {
+    text-decoration: none;
+    color: var(--ink-2);
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+  .menu nav a:hover,
+  .menu nav a[aria-current='page'] { color: var(--ink); background: var(--mist); }
 }
 
 /* Panels */
@@ -109,7 +178,7 @@ form.newsletter[hidden] { display: none !important; }
 .newsletter { display: grid; gap: 10px; max-width: 36rem; }
 .newsletter__copy { margin: 0; color: var(--ink-2); max-width: 40em; }
 .newsletter__row { display: flex; gap: 8px; align-items: center; }
-.newsletter__row input[type="email"] { flex: 1 1 auto; min-width: 0; font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); background: var(--white); border: 1px solid var(--line-strong); border-radius: 999px; padding: 11px 16px; }
+.newsletter__row input[type="email"] { flex: 1 1 auto; min-width: 0; font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); background: var(--white); border: 1px solid var(--control); border-radius: 999px; padding: 11px 16px; }
 .newsletter__row input[type="email"]:focus { outline: 2px solid var(--green); outline-offset: 0; border-color: var(--green); }
 .newsletter__note { margin: 0; font-size: 0.8rem; color: var(--ink-2); }
 .newsletter__note a { color: var(--ink); }

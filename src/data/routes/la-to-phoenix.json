@@ -61,7 +61,7 @@
     },
     "afdc-348909": {
       "name": "DOE station record 348909, US Bank Blythe",
-      "url": "https://developer.nlr.gov/api/alt-fuel-stations/v1/348909.json"
+      "url": "https://afdc.energy.gov/stations/#/station/348909"
     },
     "osrm": {
       "name": "OpenStreetMap OSRM",
@@ -666,7 +666,7 @@
             },
             {
               "name": "DOE record 348909",
-              "url": "https://developer.nlr.gov/api/alt-fuel-stations/v1/348909.json",
+              "url": "https://afdc.energy.gov/stations/#/station/348909",
               "source": "afdc-348909"
             }
           ]

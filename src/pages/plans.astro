@@ -20,7 +20,7 @@ const faq = [
   { q: 'Why the form before payment?', a: 'The Stripe page records the charge. It does not record your car, adapter, route, or dates. Send those first. Checkout then opens for the plan you picked, and Stripe brings you back here.' },
 ];
 ---
-<Base title="Plan an EV road trip" description="A plan for your car, adapter, memberships, and dates. Stops that work for your car, a backup at each, and on detailed plans a place to eat or sleep while you charge. A person reviews it before you get it.">
+<Base title="Plan an EV road trip" description="A plan for your car, adapter, memberships, and dates. Stops that work for your car, a backup at each stop, and a place to eat or sleep while you charge.">
   <section class="band band--tight">
     <div class="wrap">
       <h1 class="h1">We'll plan<br />the trip.</h1>
@@ -37,7 +37,7 @@ const faq = [
   <section id="compare" class="band band--tight band--mist">
     <div class="wrap">
       <h2 class="h2">Compare plans</h2>
-      <p class="lede" style="margin-top:12px">Each pay button opens that plan's Stripe checkout. Send the form first so we have the trip, then come back here from Stripe.</p>
+      <p class="lede" style="margin-top:12px">Choose a plan. The form below starts on that plan. Send the trip details, then pay.</p>
       <div class="cmp" role="table" aria-label="Plan comparison">
         <div class="cmp__row cmp__hdr" role="row">
           <div role="columnheader"><span class="sr">Feature</span></div>
@@ -46,7 +46,7 @@ const faq = [
               <span class="cmp__name">{t.name}</span>
               <span class="cmp__price">{priceLabel(t)}</span>
               <span class="small muted">{t.blurb}</span>
-              <a class="pill pay-link" href={t.stripeUrl}>Pay {t.price}</a>
+              <a class="pill pay-link" href="#request" data-tier={t.name}>Pay {t.price}<span class="sr">, {t.name}</span></a>
             </div>
           ))}
         </div>
@@ -55,7 +55,7 @@ const faq = [
             <div role="rowheader" class="cmp__label">{label}</div>
             {[a, b, c].map((v, i) => (
               <div role="cell" class="cmp__cell" data-tier={tiers[i].name}>
-                {v ? <span class="yes" aria-label="Included"></span> : <span class="no" aria-label="Not included"></span>}
+                {v ? <span class="yes" role="img" aria-label="Included"></span> : <span class="no" role="img" aria-label="Not included"></span>}
               </div>
             ))}
           </div>
@@ -229,6 +229,17 @@ const faq = [
     if (submitBtn) submitBtn.textContent = payLabel();
   });
 
+  document.querySelectorAll('a.pay-link').forEach((el) => {
+    el.addEventListener('click', () => {
+      const name = el.getAttribute('data-tier');
+      const select = form?.querySelector('[name=tier]') as HTMLSelectElement | null;
+      if (!select || !name) return;
+      if (![...select.options].some((option) => option.value === name)) return;
+      select.value = name;
+      select.dispatchEvent(new Event('change'));
+    });
+  });
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!form || !msg) return;
@@ -314,7 +325,7 @@ const faq = [
   .form label { display: grid; gap: 6px; font-size: 0.94rem; font-weight: 500; }
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 560px) { .grid2 { grid-template-columns: 1fr; } }
-  .form input, .form select, .form textarea { font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); background: #fff; border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 12px; width: 100%; }
+  .form input, .form select, .form textarea { font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); background: #fff; border: 1px solid var(--control); border-radius: 10px; padding: 11px 12px; width: 100%; }
   .form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid var(--green); outline-offset: 0; border-color: var(--green); }
   fieldset { border: 0; padding: 0; margin: 0; }
   legend { font-size: 0.94rem; font-weight: 500; margin-bottom: 8px; }
