@@ -99,6 +99,8 @@ p { margin: 0 0 1em; max-width: 68ch; }
 /* Footer */
 .foot { border-top: 1px solid var(--line); padding: 40px 0 56px; font-size: 0.9rem; color: var(--ink-2); }
 .foot__signup { padding-bottom: 28px; margin-bottom: 28px; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--ink-2); }
+.newsletter-band[hidden],
+form.newsletter[hidden] { display: none !important; }
 .foot__grid { display: flex; flex-wrap: wrap; gap: 24px 40px; justify-content: space-between; }
 .foot nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .foot a { text-decoration: none; }

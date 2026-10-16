@@ -4,7 +4,7 @@
 // so a new subscriber stays on Buttondown's double opt-in.
 //
 // BUTTONDOWN_API_KEY is a Pages secret. It is never returned to the browser
-// and it is not stored in this repo.
+// and it is not stored in this repo. GET returns open:true only when it is set.
 //
 // Turnstile matches /api/intake. Both names are Pages variables, not committed:
 //   TURNSTILE_SITE_KEY   public site key. GET returns it so the form can render the widget.
@@ -22,8 +22,12 @@ const ALREADY = new Set(['email_already_exists', 'subscriber_already_exists']);
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 
+function signupOpen(env) {
+  return Boolean(env.BUTTONDOWN_API_KEY);
+}
+
 export async function onRequestGet({ env }) {
-  return json({ turnstileSiteKey: env.TURNSTILE_SITE_KEY || null });
+  return json({ turnstileSiteKey: env.TURNSTILE_SITE_KEY || null, open: signupOpen(env) });
 }
 
 async function verifyTurnstile(request, env, token) {
@@ -59,7 +63,7 @@ function alreadySubscribed(body) {
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!env.BUTTONDOWN_API_KEY) return json({ error: 'Newsletter signup is not open yet.' }, 503);
+  if (!signupOpen(env)) return json({ error: 'Newsletter signup is not open yet.' }, 503);
 
   let data;
   try { data = await request.json(); } catch { return json({ error: 'The request was not valid JSON.' }, 400); }
