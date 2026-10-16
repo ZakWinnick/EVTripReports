@@ -280,9 +280,7 @@ export function planMarkdown(plan) {
     if (stop.why) lines.push(stop.why);
     const primary = stop.primary || {};
     lines.push(`Primary: ${primary.name || ''}${primary.teslaAccess ? ` (Tesla flag: ${primary.teslaAccess})` : ''}`);
-    for (const key of ['network', 'address', 'exit', 'stalls', 'power', 'access', 'price']) {
-      lines.push(`- ${key}: ${fieldText(primary[key])}`);
-    }
+    lines.push(...primaryFieldLines(primary));
     if (primary.target?.value) lines.push(`- target: ${primary.target.value}`);
     for (const fact of primary.facts || []) lines.push(`- ${fact.label}: ${fact.value}`);
     if (stop.backups?.length) {
@@ -339,6 +337,33 @@ function fieldText(field) {
   if (field == null) return '';
   if (typeof field === 'string') return field;
   return field.value || '';
+}
+
+function joinLabels(names) {
+  const shown = names.map((name, index) => (index === 0 ? name.charAt(0).toUpperCase() + name.slice(1) : name));
+  if (shown.length <= 1) return shown[0] || '';
+  if (shown.length === 2) return `${shown[0]} and ${shown[1]}`;
+  return `${shown.slice(0, -1).join(', ')} and ${shown[shown.length - 1]}`;
+}
+
+function primaryFieldLines(primary) {
+  const keys = ['network', 'address', 'exit', 'stalls', 'power', 'access', 'price'];
+  const rows = keys.map((key) => ({ key, text: fieldText(primary[key]) })).filter((row) => row.text);
+  const unknown = rows.filter((row) => row.text === UNKNOWN);
+  if (unknown.length < 2) return rows.map((row) => `- ${row.key}: ${row.text}`);
+  const lines = [];
+  let used = false;
+  for (const row of rows) {
+    if (row.text === UNKNOWN) {
+      if (!used) {
+        lines.push(`- ${joinLabels(unknown.map((item) => item.key))}: ${UNKNOWN}`);
+        used = true;
+      }
+      continue;
+    }
+    lines.push(`- ${row.key}: ${row.text}`);
+  }
+  return lines;
 }
 
 function buildSummary({ vehicle, profile, tier, route, stops, depart, startBattery, order, milesTotal, origin, strategy, dataChecked }) {

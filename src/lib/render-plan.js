@@ -3,16 +3,6 @@
 // checked-on date only when that fact (or its source id) provides them.
 import { esc, fmtDate, tag, routeLine } from './render-guide.js';
 
-const FACT_FIELDS = [
-  ['stalls', 'Stalls'],
-  ['power', 'Max power'],
-  ['access', 'Access'],
-  ['price', 'Price'],
-  ['hours', 'Hours'],
-  ['connectors', 'Connectors'],
-  ['plugs', 'Plugs'],
-];
-
 const LEAVE_FIELDS = ['target', 'leaveWith', 'targetCharge'];
 
 export function parsePlan(body) {
@@ -117,7 +107,8 @@ function ext(url, text) {
 function factBits(fact, sources) {
   if (!fact || typeof fact !== 'object') return '';
   const bits = [];
-  if (fact.status && fact.status !== 'verified') bits.push(tag(fact.status));
+  const repeatsUnknown = fact.status === 'unverified' && fieldValue(fact).trim() === 'Not yet verified';
+  if (fact.status && fact.status !== 'verified' && !repeatsUnknown) bits.push(tag(fact.status));
   if (fact.note) bits.push(`<span class="sheet__note small muted">${esc(fact.note)}</span>`);
   for (const link of sourceLinks(fact, sources)) bits.push(ext(link.url, link.name));
   const checked = checkedLabel(fact);
@@ -133,12 +124,8 @@ function sheetRow(label, value, fact, sources, extra = '') {
 
 function fieldRow(label, field, sources) {
   if (field == null || field === '') return '';
-  if (typeof field === 'object') {
-    const extra = field.value === 'Not yet verified' ? tag('unverified') : '';
-    return sheetRow(label, field.value, field, sources, extra);
-  }
-  const extra = field === 'Not yet verified' ? tag('unverified') : '';
-  return sheetRow(label, field, null, sources, extra);
+  if (typeof field === 'object') return sheetRow(label, field.value, field, sources);
+  return sheetRow(label, field, null, sources);
 }
 
 function factRows(facts, sources) {
@@ -146,14 +133,54 @@ function factRows(facts, sources) {
   return facts.map((fact) => sheetRow(fact?.label || fact?.name || 'Fact', fact?.value, fact, sources)).join('');
 }
 
+const SPEC_FIELDS = [
+  ['network', 'Network', 'network'],
+  ['address', 'Address', 'address'],
+  ['exit', 'Exit', 'exit'],
+  ['stalls', 'Stalls', 'stalls'],
+  ['power', 'Max power', 'power'],
+  ['access', 'Access', 'access'],
+  ['price', 'Price', 'price'],
+  ['hours', 'Hours', 'hours'],
+  ['connectors', 'Connectors', 'connectors'],
+  ['plugs', 'Plugs', 'plugs'],
+];
+
+function fieldValue(field) {
+  if (field == null || field === '') return '';
+  if (typeof field === 'object') return field.value == null ? '' : String(field.value);
+  return String(field);
+}
+
+function joinLabels(names) {
+  const shown = names.map((name, index) => (index === 0 ? name.charAt(0).toUpperCase() + name.slice(1) : name));
+  if (shown.length <= 1) return shown[0] || '';
+  if (shown.length === 2) return `${shown[0]} and ${shown[1]}`;
+  return `${shown.slice(0, -1).join(', ')} and ${shown[shown.length - 1]}`;
+}
+
 function stationRows(station, sources) {
   if (!station || typeof station !== 'object') return '';
-  const rows = [
-    fieldRow('Network', station.network, sources),
-    fieldRow('Address', station.address, sources),
-    fieldRow('Exit', station.exit, sources),
-  ];
-  for (const [key, label] of FACT_FIELDS) rows.push(fieldRow(label, station[key], sources));
+  const specs = [];
+  for (const [key, label, short] of SPEC_FIELDS) {
+    const value = fieldValue(station[key]).trim();
+    if (!value) continue;
+    specs.push({ label, short, field: station[key], value });
+  }
+  const unknown = specs.filter((item) => item.value === 'Not yet verified');
+  const collapse = unknown.length >= 2;
+  const rows = [];
+  let collapsed = false;
+  for (const item of specs) {
+    if (collapse && item.value === 'Not yet verified') {
+      if (!collapsed) {
+        rows.push(sheetRow(joinLabels(unknown.map((entry) => entry.short)), 'Not yet verified', null, sources));
+        collapsed = true;
+      }
+      continue;
+    }
+    rows.push(fieldRow(item.label, item.field, sources));
+  }
   let leave = '';
   for (const key of LEAVE_FIELDS) {
     leave = fieldRow('Leave with', station[key], sources);
@@ -169,8 +196,13 @@ function stationSheet(station, sources) {
   return rows ? `<dl class="sheet">${rows}</dl>` : '';
 }
 
+function tagDate(value) {
+  const match = String(value ?? '').trim().match(/^(\d{4}-\d{2}-\d{2})/);
+  return match ? match[1] : undefined;
+}
+
 function stationChecked(station, plan) {
-  return prettyDay(station?.checkedOn || station?.checked || plan?.checked || plan?.checkedOn || '');
+  return tagDate(station?.checkedOn || station?.checked || plan?.checked || plan?.checkedOn || '');
 }
 
 function rollup(station) {
@@ -206,7 +238,7 @@ function backupList(items, sources, plan) {
   if (!Array.isArray(items) || !items.length) return '';
   return `<ul class="list">${items
     .map((item) => {
-      const status = item.status ? tag(item.status, item.status === 'verified' || item.status === 'conflict' ? item.checkedOn || item.checked : undefined) : '';
+      const status = item.status ? tag(item.status, item.status === 'verified' || item.status === 'conflict' ? tagDate(item.checkedOn || item.checked) : undefined) : '';
       const text = typeof item.facts === 'string' ? item.facts : '';
       const meta = [item.network, item.address].filter((part) => typeof part === 'string' && part).join('. ');
       return `<li class="item"><div class="item__top"><strong>${esc(item.name || 'Backup')}</strong><span class="btnrow">${
@@ -272,7 +304,7 @@ ${
     ? `<div class="panel primary"><div class="primary__top"><div><p class="small muted" style="margin:0 0 4px">Primary charger</p><h3 class="h3">${esc(
         primary.name || 'Primary'
       )}</h3></div><div class="btnrow">${primary.teslaAccess ? tag(primary.teslaAccess) : ''}${
-        status ? tag(status, status === 'verified' || status === 'conflict' ? checked : undefined) : ''
+        status ? tag(status, status === 'verified' || status === 'conflict' ? tagDate(checked) : undefined) : ''
       }</div></div>${sheet}</div>`
     : sheet
       ? `<div class="panel primary">${sheet}</div>`
@@ -355,6 +387,50 @@ function sourcesFooter(map) {
     .join('')}</ul></div></section>`;
 }
 
+function percentOf(value) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
+function showsStrategy(plan, ctx) {
+  const label = `${plan?.tier || ''} ${ctx?.tier || ''}`.toLowerCase();
+  return /\$39\b|\$79\b/.test(label) || /\bdetailed plan\b|\bmulti-day\b|\bfamily\b/.test(label);
+}
+
+function strategyCopy(plan) {
+  const strategy = plan?.strategy;
+  if (!strategy || typeof strategy !== 'object' || Array.isArray(strategy)) return 'Charging strategy: Not yet verified.';
+  const parts = [];
+  const stops = Array.isArray(strategy.stops) ? strategy.stops.filter((stop) => stop && stop.name) : [];
+  if (stops.length) {
+    const bits = stops.map((stop) => (percentOf(stop.departPercent) == null ? stop.name : `${stop.name} to ${percentOf(stop.departPercent)}%`));
+    parts.push(stops.length === 1 ? `Charge at ${bits[0]}.` : `Charge at ${bits.join(', then ')}.`);
+  } else if (typeof strategy.text === 'string' && strategy.text.trim()) {
+    const first = strategy.text.trim().split(/(?<=\.)\s+/)[0];
+    parts.push(first.endsWith('.') ? first : `${first}.`);
+  }
+  const target = percentOf(strategy.targetPercent);
+  const reserve = percentOf(strategy.reservePercent);
+  if (target != null) parts.push(`Arrival target is ${target}%.`);
+  if (reserve != null) parts.push(`Reserve floor is ${reserve}%.`);
+  const dest = strategy.destination;
+  if (dest && typeof dest === 'object') {
+    const arrive = percentOf(dest.arrivePercent);
+    const clock = dest.arriveClock ? ` around ${dest.arriveClock}` : '';
+    if (dest.ranOut) parts.push(`Estimated arrival at the end${clock}: the assumed range runs out, below the reserve.`);
+    else if (arrive != null && dest.belowReserve) parts.push(`Estimated arrival at the end is ${arrive}%${clock}, below the reserve.`);
+    else if (arrive != null && dest.belowTarget) parts.push(`Estimated arrival at the end is ${arrive}%${clock}, short of the arrival target.`);
+    else if (arrive != null) parts.push(`Estimated arrival at the end is ${arrive}%${clock}.`);
+    if ((dest.ranOut || dest.belowReserve || dest.belowTarget) && target != null) parts.push('The arrival target cannot be met.');
+  }
+  return parts.length ? parts.join(' ') : 'Charging strategy: Not yet verified.';
+}
+
+function strategyHtml(plan, ctx) {
+  if (!showsStrategy(plan, ctx)) return '';
+  return `<section class="band band--tight"><div class="wrap"><h2 class="h2">Charging strategy</h2><p style="margin-top:18px">${esc(strategyCopy(plan))}</p></div></section>`;
+}
+
 function metaLine(plan, ctx) {
   const depart = prettyDay(plan.depart || ctx.depart);
   const back = prettyDay(plan.returnDate || plan.return || ctx.returnDate);
@@ -394,6 +470,7 @@ ${plan.dataChecked ? `<p class="small muted" style="margin-top:8px">Data checked
 ${topFacts ? `<div class="panel primary" style="margin-top:28px">${`<dl class="sheet">${topFacts}</dl>`}</div>` : ''}
 <div style="margin-top:40px">${planStats(plan.stats, sources)}</div>
 </div></section>
+${strategyHtml(plan, ctx)}
 ${route}
 ${stopsHtml(plan.stops, sources, plan)}
 ${days}
