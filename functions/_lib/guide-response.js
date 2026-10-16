@@ -4,11 +4,33 @@
 
 export const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-export function guideSlug(params) {
+function pathParts(params) {
   const raw = params?.path;
-  const parts = Array.isArray(raw) ? raw.filter(Boolean) : raw ? [raw] : [];
+  const parts = Array.isArray(raw) ? raw : raw ? [raw] : [];
+  return parts.map((part) => String(part || '').replace(/^\/+|\/+$/g, '')).filter(Boolean);
+}
+
+export function guideSlug(params) {
+  const parts = pathParts(params);
   if (parts.length !== 1) return null;
   return SLUG.test(parts[0]) ? parts[0] : null;
+}
+
+// /guides, /guides/, and /guides/index.html are the index. A real slug is not.
+// Empty params alone are not enough: this file also runs for /guides/<slug>.
+export function isGuidesIndex(params, request) {
+  const parts = pathParts(params);
+  if (parts.length > 1) return false;
+  if (parts.length === 1 && parts[0] !== 'index.html') return false;
+  if (parts[0] === 'index.html') return true;
+  let pathname = '';
+  try {
+    pathname = new URL(request?.url || '').pathname.replace(/\/+$/, '') || '/';
+  } catch {
+    pathname = '';
+  }
+  if (!pathname) return true;
+  return pathname === '/guides' || pathname === '/guides/index.html';
 }
 
 // `head` is the start of the HTML body. The x-etr-guide header is set on built guide files.

@@ -17,7 +17,7 @@ const fullTitle = title === 'EV Trip Reports' ? title : `${title} | EV Trip Repo
 const canonical = new URL(path || Astro.url.pathname, Astro.site).toString();
 const current = Astro.url.pathname.replace(/\/$/, '');
 const links = [
-  { href: '/#guides', label: 'Guides' },
+  { href: '/guides', label: 'Guides' },
   { href: '/plans', label: 'Custom plans' },
   { href: '/faq', label: 'FAQ' },
   { href: '/methodology', label: 'How we check' },
@@ -74,7 +74,7 @@ const links = [
           Independent. No charging network pays for placement or coverage.
         </div>
         <nav aria-label="Footer">
-          <a href="/#guides">Guides</a>
+          <a href="/guides">Guides</a>
           <a href="/plans">Custom plans</a>
           <a href="/find-my-plans">Find my plans</a>
           <a href="/faq">FAQ</a>

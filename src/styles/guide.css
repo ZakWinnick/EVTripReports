@@ -80,6 +80,13 @@
   .guide__hw { font-weight: 700; font-size: 0.9rem; color: var(--green); }
   .guide__t { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; }
   .guide__go { margin-top: 14px; font-weight: 600; font-size: 0.94rem; }
+  .index-list { list-style: none; padding: 0; margin: 36px 0 0; display: grid; gap: 12px; }
+  .index-row { display: flex; flex-direction: column; align-items: flex-start; padding: 22px; text-decoration: none; color: var(--ink); }
+  .index-row:hover { color: var(--ink); border-color: var(--green); }
+  .index-row__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; width: 100%; }
+  .index-row .guide__t { color: var(--ink); }
+  .index-row .sheet { width: 100%; margin-top: 8px; }
+  .index-row:hover .guide__go { color: var(--green); }
   .plans { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
   @media (max-width: 860px) { .plans { grid-template-columns: 1fr; } }
   .tiers { margin: 0; border-top: 1px solid var(--ink); }

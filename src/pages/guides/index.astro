@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import builtGuideIndex from '../../../functions/_lib/built-guide-index.js';
+import { guideIndexList } from '../../lib/guide-index.js';
+---
+<Base title="Route guides" description="Charging stops on the corridors we publish. Each guide names the start, the end, and the miles when we have them." path="/guides/">
+  <section class="band">
+    <div class="wrap">
+      <h1 class="h1">Route guides</h1>
+      <p class="lede" style="margin-top:16px">The corridors we publish. Each guide is the charging stops from one end of the route to the other. The primary at every stop was checked on the network's locator. Unconfirmed facts stay labeled on the page.</p>
+      <ul class="index-list" id="guides-index"><Fragment set:html={guideIndexList(builtGuideIndex)} /></ul>
+    </div>
+  </section>
+</Base>

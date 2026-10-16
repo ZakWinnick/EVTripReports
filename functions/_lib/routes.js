@@ -1,5 +1,8 @@
 // Guide content stored in D1 (table `routes`). Publishing a guide or an update is a row write;
 // the site picks it up on the next request. Without the DB binding or a row, the built version is served.
+import { guideIndexRecord } from '../../src/lib/guide-index.js';
+import { SLUG } from './guide-response.js';
+
 export async function getRoute(env, slug) {
   if (!env.DB || !slug) return null;
   try {
@@ -22,6 +25,43 @@ export async function listRoutes(env) {
   } catch (e) {
     console.error('routes list failed', e.message);
     return null;
+  }
+}
+
+// Live D1 rows for /guides/. Same status filter as the sitemap. The homepage
+// listRoutes() call is the other reader; this one keeps start, end, and miles
+// from the stored route JSON so the index can show them.
+export async function listLiveGuideIndex(env) {
+  if (!env?.DB) return [];
+  try {
+    const result = await env.DB.prepare(
+      "SELECT slug, title, highway, status, json FROM routes WHERE status = 'live' AND json IS NOT NULL ORDER BY sort, title",
+    ).all();
+    const guides = [];
+    for (const row of result?.results || []) {
+      if (!row || row.status !== 'live' || !SLUG.test(row.slug || '')) continue;
+      let parsed = row.json;
+      if (typeof parsed === 'string') {
+        try {
+          parsed = JSON.parse(parsed);
+        } catch {
+          continue;
+        }
+      }
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) continue;
+      const record = guideIndexRecord({
+        ...parsed,
+        slug: row.slug,
+        title: parsed.title || row.title,
+        highway: parsed.highway || row.highway,
+      });
+      if (!record.title) continue;
+      guides.push(record);
+    }
+    return guides;
+  } catch (e) {
+    console.error('guide index read failed', e.message);
+    return [];
   }
 }
 
