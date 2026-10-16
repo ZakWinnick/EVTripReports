@@ -15,7 +15,9 @@ const BUILT_SLUGS = [
   'dc-to-nyc',
   'la-to-las-vegas',
   'la-to-phoenix',
+  'la-to-san-diego',
   'la-to-sf',
+  'las-vegas-to-salt-lake-city',
   'nyc-to-boston',
   'seattle-to-portland',
   'sf-to-tahoe',
@@ -62,11 +64,11 @@ test('built guide list matches the publish gate', async () => {
     BUILT_SLUGS,
   );
   assert.equal(guides.some((guide) => guide.slug === 'dc-to-nyc'), true);
-  assert.equal(guides.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), false);
-  assert.equal(guides.some((guide) => guide.slug === 'la-to-san-diego'), false);
+  assert.equal(guides.some((guide) => guide.slug === 'las-vegas-to-salt-lake-city'), true);
+  assert.equal(guides.some((guide) => guide.slug === 'la-to-san-diego'), true);
   assert.deepEqual(
     guides.map((guide) => guide.lastmod),
-    ['2026-10-15', '2026-10-14', '2026-10-14', '2026-10-15', '2026-10-15', '2026-10-15', '2026-10-15'],
+    ['2026-10-15', '2026-10-14', '2026-10-14', '2026-10-16', '2026-10-15', '2026-10-15', '2026-10-15', '2026-10-15', '2026-10-15'],
   );
 });
 

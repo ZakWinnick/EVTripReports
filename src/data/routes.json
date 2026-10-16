@@ -53,13 +53,13 @@
     "title": "Las Vegas to Salt Lake City",
     "highway": "I-15",
     "miles": 423,
-    "status": "verifying"
+    "status": "live"
   },
   {
     "slug": "la-to-san-diego",
     "title": "LA to San Diego",
     "highway": "I-5",
     "miles": 116,
-    "status": "verifying"
+    "status": "live"
   }
 ]
