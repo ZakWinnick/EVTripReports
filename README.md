@@ -116,6 +116,11 @@ Drafts live in `plan_drafts`. The statement is `schema-plan-drafts.sql`. Paste i
 
 The plan page reads JSON from `plan_drafts.body` (save it with format `markdown` or `html`; the column only allows those two). Use the same shape as a guide where you can: `title`, `summary`, `checked`, `stats`, `sources`, and `stops` with a `primary` whose `stalls`, `power`, `access`, and `price` each have `value`, `url` or `source`, and `checkedOn`. Source ids resolve through `sources` on the JSON or the draft's `sources` list. Facts without a link or a date omit that part. Unapproved drafts are never shown.
 
+## Delivery, retention, and purge
+
+- `POST /api/admin/plans/:id/delivered` (optional `{ "note" }`) records when an approved plan was sent to the customer, in `plan_delivery` (`schema-delivery.sql`, a new table; apply it in the D1 console). The request stays `approved`. A second call does not overwrite the first. `GET /api/admin/plans` also returns `awaitingDelivery` (approved, not delivered, with hours since approval and `overdue` at 48 hours), and `GET /api/admin/plans/approved?pending=1&olderThanHours=48` lists them.
+- `POST /api/admin/plans/purge` is the retention job. It is a dry run unless the body is `{ "dryRun": false, "confirm": "purge" }`. `scope` is `all`, `portal`, or `plans`. `portal` removes expired `portal_signins` and `portal_sessions` and old `portal_rate_limits`. `plans` removes requests one year after the later of `depart` and `return_date`, with their drafts, private links, delivery rows, and payment rows (the privacy page promises this). Requests with no readable trip date are listed, never deleted. `keepIds` lists requests a customer asked us to keep. At most 200 requests per run. Nothing calls it on a schedule. Run a dry run first and read the list.
+
 ## Find my plans
 
 `/find-my-plans` emails a one-time link to the address used at checkout. The link expires in 15 minutes, works once, and opens a list of that email's approved plans. Each list gives private `/plan/<token>` links. Tokens are 32 bytes. The database stores only SHA-256 hashes. The plan page looks up that hash. The stored hash is not itself a working link.

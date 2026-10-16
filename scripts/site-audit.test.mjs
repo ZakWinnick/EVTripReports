@@ -105,3 +105,10 @@ test('ink and control colors meet the contrast floors', async () => {
   assert.match(plans, /\.form input, \.form select, \.form textarea \{[^}]*var\(--control\)/);
   assert.match(find, /\.form input \{[^}]*var\(--control\)/);
 });
+
+test('the dc-to-nyc guide does not cite the Marlton EA station page that returns 404', async () => {
+  const text = await readFile(new URL('../src/data/routes/dc-to-nyc.json', import.meta.url), 'utf8');
+  assert.equal(text.includes('/locate-charger/nj/marlton/307-rte-70-w/240408/'), false);
+  assert.match(text, /search 307 Rte 70 W, Marlton, NJ \(EA station 240408\)/);
+  assert.equal(text.includes('\u2014') || text.includes('\u2013'), false);
+});

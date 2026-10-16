@@ -1116,13 +1116,13 @@
           "value": "6",
           "status": "verified",
           "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/nj/marlton/307-rte-70-w/240408/"
+          "url": "https://www.electrifyamerica.com/locate-charger/"
         },
         "power": {
           "value": "350 kW, CCS on all 6",
           "status": "verified",
           "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/nj/marlton/307-rte-70-w/240408/"
+          "url": "https://www.electrifyamerica.com/locate-charger/"
         },
         "access": {
           "value": "Open to all CCS EVs",
@@ -1662,10 +1662,10 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are in the north-east parking lot of Marlton Commons.",
+          "text": "EA's site note: chargers are in the north-east parking lot of Marlton Commons. To find the site on EA's locator, search 307 Rte 70 W, Marlton, NJ (EA station 240408). EA's own page for this station address returned a 404 on 2026-10-16, so this guide links the locator, not a station page.",
           "category": "site",
           "source": "ea-locator",
-          "url": "https://www.electrifyamerica.com/locate-charger/nj/marlton/307-rte-70-w/240408/",
+          "url": "https://www.electrifyamerica.com/locate-charger/",
           "checkedOn": "2026-10-16"
         },
         {

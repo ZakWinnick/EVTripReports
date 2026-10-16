@@ -23,7 +23,11 @@ function fakeDb({ requests = [], payments = [] } = {}) {
         bind(...a) { args = a; return api; },
         async first() {
           calls.push(text);
-          if (text.startsWith('SELECT id FROM stripe_payments WHERE session_id')) return payments.find((p) => p.session_id === args[0]) || null;
+          if (text.startsWith('SELECT id FROM stripe_payments WHERE session_id')) {
+            const found = payments.find((p) => p.session_id === args[0]);
+            if (found && found.id == null) found.id = payments.indexOf(found) + 1000;
+            return found || null;
+          }
           if (text.startsWith('SELECT id, tier FROM plan_requests WHERE id = ?')) return requests.find((r) => r.id === args[0]) || null;
           if (text.includes('FROM plan_requests r WHERE lower(r.email) = ?')) {
             return [...requests].reverse().find((r) => r.email.toLowerCase() === args[0] && r.status !== 'test'
@@ -33,16 +37,27 @@ function fakeDb({ requests = [], payments = [] } = {}) {
         },
         async run() {
           calls.push(text);
+          if (text.startsWith('INSERT OR IGNORE INTO stripe_payments (session_id, payment_intent, created_at, match_kind, status)')) {
+            const [session_id, payment_intent] = args;
+            if (payments.some((p) => p.session_id === session_id)) return { success: true, meta: { changes: 0 } };
+            payments.push({ session_id, payment_intent, request_id: null, match_kind: 'none', status: 'refunded' });
+            return { success: true, meta: { changes: 1 } };
+          }
           if (text.startsWith('INSERT OR IGNORE INTO stripe_payments')) {
-            const [session_id, payment_intent, , email, amount_total, currency, , client_reference_id, request_id, match_kind, amount_ok] = args;
-            if (!payments.some((p) => p.session_id === session_id)) {
-              payments.push({ session_id, payment_intent, email, amount_total, currency, client_reference_id, request_id, match_kind, amount_ok, status: 'paid' });
-            }
+            const [session_id, payment_intent, , email, amount_total, currency, , client_reference_id, request_id, match_kind, amount_ok, status] = args;
+            if (payments.some((p) => p.session_id === session_id)) return { success: true, meta: { changes: 0 } };
+            payments.push({ session_id, payment_intent, email, amount_total, currency, client_reference_id, request_id, match_kind, amount_ok, status });
             return { success: true, meta: { changes: 1 } };
           }
           if (text.startsWith("UPDATE stripe_payments SET status = 'refunded'")) {
-            for (const p of payments) if (p.payment_intent === args[0]) p.status = 'refunded';
-            return { success: true, meta: { changes: 1 } };
+            let changes = 0;
+            for (const p of payments) if (p.payment_intent === args[0]) { p.status = 'refunded'; changes += 1; }
+            return { success: true, meta: { changes } };
+          }
+          if (text === 'DELETE FROM stripe_payments WHERE id = ?') {
+            const i = payments.findIndex((p) => p.id === args[0]);
+            if (i >= 0) payments.splice(i, 1);
+            return { success: true, meta: { changes: i >= 0 ? 1 : 0 } };
           }
           throw new Error(`unhandled run: ${text}`);
         },
@@ -142,4 +157,81 @@ test('a database failure is a 500 so Stripe retries, and nothing is emailed or a
   const db = { prepare() { throw new Error('d1 down'); } };
   const res = await post(event('checkout.session.completed', session()), { DB: db, STRIPE_WEBHOOK_SECRET: SECRET });
   assert.equal(res.status, 500);
+});
+
+test('a payment with a reference we cannot use is never matched by email', async () => {
+  const requests = [{ id: 2, email: 'driver@example.com', tier: 'Detailed plan', status: 'new' }];
+  for (const [n, ref] of [['bad', 'not-an-order'], ['missing', 'etr-999'], ['sneaky', 'etr-2 ']]) {
+    const db = fakeDb({ requests });
+    await post(event('checkout.session.completed', session({ id: `cs_${n}`, client_reference_id: ref })), { DB: db, STRIPE_WEBHOOK_SECRET: SECRET });
+    assert.deepEqual([db.payments[0].request_id, db.payments[0].match_kind], [null, 'none'], ref);
+  }
+  const none = fakeDb({ requests });
+  await post(event('checkout.session.completed', session({ id: 'cs_none', client_reference_id: null })), { DB: none, STRIPE_WEBHOOK_SECRET: SECRET });
+  assert.deepEqual([none.payments[0].request_id, none.payments[0].match_kind], [2, 'email']);
+});
+
+test('the amount must be in US dollars to count as right', async () => {
+  const requests = [{ id: 7, email: 'driver@example.com', tier: 'Detailed plan', status: 'new' }];
+  const db = fakeDb({ requests });
+  const env = { DB: db, STRIPE_WEBHOOK_SECRET: SECRET };
+  await post(event('checkout.session.completed', session({ id: 'cs_cad', currency: 'cad', amount_total: 3900 })), env);
+  await post(event('checkout.session.completed', session({ id: 'cs_usd', currency: 'USD', amount_total: 3900 })), env);
+  assert.deepEqual(db.payments.map((p) => p.amount_ok), [0, 1]);
+});
+
+test('a refund that arrives before the paid event is kept, and the payment is recorded as refunded', async () => {
+  const db = fakeDb({ requests: [{ id: 7, email: 'driver@example.com', tier: 'Detailed plan', status: 'new' }] });
+  const env = { DB: db, STRIPE_WEBHOOK_SECRET: SECRET };
+  await post(event('charge.refunded', { payment_intent: 'pi_1', refunded: true }), env);
+  await post(event('charge.refunded', { payment_intent: 'pi_1', refunded: true }), env);
+  assert.equal(db.payments.length, 1);
+  assert.equal(db.payments[0].session_id, 'refund-pending:pi_1');
+  await post(event('checkout.session.completed', session()), env);
+  assert.equal(db.payments.length, 1);
+  assert.deepEqual([db.payments[0].session_id, db.payments[0].status, db.payments[0].request_id], ['cs_live_1', 'refunded', 7]);
+  // A partial refund that arrives early is not kept.
+  const partial = fakeDb();
+  await post(event('charge.refunded', { payment_intent: 'pi_9', refunded: false }), { DB: partial, STRIPE_WEBHOOK_SECRET: SECRET });
+  assert.equal(partial.payments.length, 0);
+});
+
+function mailRun(db, body) {
+  const bodies = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init = {}) => {
+    if (String(url).includes('/session')) return new Response(JSON.stringify({ apiUrl: 'https://api.example.invalid/jmap', primaryAccounts: { 'urn:ietf:params:jmap:submission': 'a1' } }), { status: 200 });
+    const payload = JSON.parse(init.body);
+    bodies.push(init.body);
+    const responses = payload.methodCalls[0][0] === 'Identity/get'
+      ? [['Identity/get', { list: [{ id: 'i1', email: 'admin@evtripreports.com' }] }, 'i'], ['Mailbox/query', { ids: ['d1'] }, 'm']]
+      : [['Email/set', {}, 'e'], ['EmailSubmission/set', { created: { sub: {} } }, 's']];
+    return new Response(JSON.stringify({ methodResponses: responses }), { status: 200 });
+  };
+  const pending = [];
+  return onRequestPost({
+    request: new Request('https://evtripreports.com/api/stripe-webhook', { method: 'POST', body, headers: { 'stripe-signature': sign(body) } }),
+    env: { DB: db, STRIPE_WEBHOOK_SECRET: SECRET, FASTMAIL_TOKEN: 'x' },
+    waitUntil(p) { pending.push(p); },
+  }).then(async (res) => { await Promise.all(pending); return { res, bodies }; }).finally(() => { globalThis.fetch = realFetch; });
+}
+
+test('the owner is emailed only by the delivery that wrote the row', async () => {
+  const db = fakeDb({ requests: [{ id: 7, email: 'driver@example.com', tier: 'Detailed plan', status: 'new' }] });
+  const body = event('checkout.session.completed', session());
+  const first = await mailRun(db, body);
+  assert.equal(first.res.status, 200);
+  assert.ok(first.bodies.length > 0);
+  const second = await mailRun(db, body);
+  assert.equal(second.bodies.length, 0);
+  // The lookup said "not seen" but the insert was ignored: another delivery won the race. No email.
+  const racing = fakeDb({ requests: [{ id: 7, email: 'driver@example.com', tier: 'Detailed plan', status: 'new' }] });
+  const realPrepare = racing.prepare.bind(racing);
+  racing.prepare = (sql) => {
+    if (/^SELECT id FROM stripe_payments WHERE session_id/.test(sql.trim())) return { bind() { return { async first() { return null; } }; } };
+    return realPrepare(sql);
+  };
+  racing.payments.push({ session_id: 'cs_live_1', payment_intent: 'pi_1', request_id: 7, status: 'paid' });
+  const raced = await mailRun(racing, body);
+  assert.equal(raced.bodies.length, 0);
 });
