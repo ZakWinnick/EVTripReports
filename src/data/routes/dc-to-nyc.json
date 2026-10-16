@@ -143,7 +143,32 @@
         "afdcIds": [
           167597
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Ioniq5/comments/1dybkfa/i_took_my_i5_on_a_4th_of_july_weekend_road_trip/",
+            "date": "2024-07-08",
+            "summary": "Holiday weekend return stop at Abingdon Walmart EA: only one stall open on arrival, no wait. A Mach-E sat on a 350 kW stall charging toward 100% with no driver present; a Bolt occupied the other 350 kW stall."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Ioniq5/comments/1dybkfa/i_took_my_i5_on_a_4th_of_july_weekend_road_trip/lc8rnc8/",
+            "date": "2024-07-08",
+            "summary": "Regular user says the site is usually only 2\u20133 cars, but a Bolt or other low-power EV often sits on a 350 kW stall. Normally sees 180\u2013200 kW on a 350; one recent visit only got about 75 kW."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Ioniq6/comments/1mgzdaj/headed_to_center_city_philadelphia_from_dc_by/n734gqk/",
+            "date": "2025-08-05",
+            "summary": "Calls Abingdon EA a favorite mid-corridor stop: bank of 8 (a couple 350 kW, rest 150 kW), so one or two down does not kill capacity. Notes EA app notice that this station caps sessions at 85%. Panda Express across the lot while charging."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/ChargerDrama/comments/1wsa8qd/how_much_of_a_problem_is_ev_charger_congestion/pcjyv3z/",
+            "date": "2026-09-28",
+            "summary": "After lines at smaller EA sites the prior year, driver picked Abingdon Walmart (8+ stalls) and had no wait."
+          }
+        ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
@@ -450,7 +475,32 @@
         "afdcIds": [
           165405
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Ioniq5/comments/1dybkfa/i_took_my_i5_on_a_4th_of_july_weekend_road_trip/",
+            "date": "2024-07-08",
+            "summary": "Holiday weekend at New Castle Wawa EA: arrived to 5 stalls open; after a short break three cars were waiting. Busy but turnover was reasonable aside from a Bolt."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1foj8z2/it_turns_out_charging_stations_are_cash_cows_for/loqp2vy/",
+            "date": "2024-09-24",
+            "summary": "Confirms Wawa Store 840 at 4000 N DuPont Hwy (New Castle/Wilmington). Used a few times on DC\u2013PA/NJ/NYC trips: works ok, not the fastest speeds. Dunkin next door."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Ioniq6/comments/1mgzdaj/headed_to_center_city_philadelphia_from_dc_by/n734gqk/",
+            "date": "2025-08-05",
+            "summary": "Says the 6-stall Wawa Wilmington/New Castle EA is normally decent, but at the time of writing 3 of 6 were broken and recommended avoiding until repaired."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1ox1l57/good_fast_charging_stations_in_ne_maryland/nov1p29/",
+            "date": "2025-11-14",
+            "summary": "Primary pick on that corridor is the Wilmington DE Wawa EA; notes a Tesla Supercharger in the same parking lot for adapter-eligible cars. Uses Abingdon Walmart EA if this one is full."
+          }
+        ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
@@ -877,7 +927,14 @@
         "afdcIds": [
           418044
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electricvehicles/comments/1s3o9jr/east_coast_ev_ownership_and_road_trips/ocnhosw/",
+            "date": "2026-03-26",
+            "summary": "Recommends the Mount Laurel/Moorestown ShopRite EA heading north; lots of other stores in the center. Only favors EA here with a free charging plan, says the Magic Dock Tesla Supercharger at the Grand Hotel nearby is cheaper with about 40 stalls."
+          }
+        ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
@@ -1412,6 +1469,24 @@
             "url": "https://www.reddit.com/r/VWiD4Owners/comments/1git6t2/electrify_america_charging_station_kindly_updated/",
             "date": "2024-11-03",
             "summary": "Commenter calls the East Brunswick EA site a crucial station for NJ Turnpike travelers and says it had been out of commission for a stretch before it was rebuilt."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/vwidclub/comments/1hbf8xt/the_future_of_charging/m1kc3hf/",
+            "date": "2024-12-11",
+            "summary": "MA\u2013DC trip stop at East Brunswick Walmart EA: 57.7 kWh in 34 minutes at $0.42/kWh. About a 5-minute wait; 10 chargers and very busy."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/KiaEV9/comments/1kftrv9/first_road_trip_need_advice/mr8y1a2/",
+            "date": "2025-05-08",
+            "summary": "DC-area to CT trip used East Brunswick Walmart EA (about 8\u201310 stalls) as a planned stop with New Castle Wawa. Longest charge on the whole trip was 18.5 minutes."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/ChargerDrama/comments/1wsa8qd/how_much_of_a_problem_is_ev_charger_congestion/pcjyv3z/",
+            "date": "2026-09-28",
+            "summary": "Chose East Brunswick Walmart EA for its eight-plus stalls after prior-year lines elsewhere; no wait on that trip."
           }
         ],
         "checkedOn": "2026-10-15",
@@ -2098,7 +2173,32 @@
         "afdcIds": [
           164538
         ],
-        "driverReports": [],
+        "driverReports": [
+          {
+            "source": "forum",
+            "url": "https://lucidowners.com/threads/finding-a-working-charging-station-a-nightmare.7724/post-182486",
+            "date": "2024-01-16",
+            "summary": "Early morning visit to Mills at Jersey Gardens EA: half of the 10 chargers were down. No wait at 4:45am; three cars waiting when leaving at 5:15."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/Ioniq5/comments/1h91bn4/first_time_in_my_life_i_regret_this_car/m0xu338/",
+            "date": "2024-12-07",
+            "summary": "Thanksgiving weekend: waited about an hour at Mills at Jersey Gardens EA. Reports of cars charging to 100%, sitting after done, and no preconditioning. About 10 non-Teslas queued at EA (plus Teslas at the Superchargers)."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/electriccars/comments/1w53nnh/man_does_the_math_on_how_much_time_you_spend/p7daglv/",
+            "date": "2026-09-02",
+            "summary": "Regular EA traveler on the NJ Turnpike corridor calls the Jersey Gardens site good; recommends avoiding the Secaucus Walmart chargers."
+          },
+          {
+            "source": "reddit",
+            "url": "https://www.reddit.com/r/XC40_Recharge/comments/17715r0/range_question/k4t5q3e/",
+            "date": "2023-10-14",
+            "summary": "Charged at Jersey Gardens mall EA near EWR: connected on a 150 kW stall (car topped ~91 kW), grabbed food in the mall, returned in 29 minutes at 83%."
+          }
+        ],
         "checkedOn": "2026-10-15",
         "source": "ea-locator"
       },
