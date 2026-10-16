@@ -43,8 +43,45 @@ test('near places, nicknames, and look-alike cities', () => {
   assert.equal(matchOrder({ start: 'Washington, WA', end: 'NYC' }).status, 'unmatched');
   assert.equal(matchOrder({ start: 'Portland, ME', end: 'Seattle, WA' }).status, 'unmatched');
   assert.equal(matchOrder({ start: 'Chicago, IL', end: 'Milwaukee, WI' }).status, 'unmatched');
-  assert.equal(matchOrder({ start: 'South Lake Tahoe, CA', end: 'San Francisco' }).status, 'unmatched');
+  assert.equal(matchOrder({ start: 'South Lake Tahoe, CA', end: 'San Francisco' }).status, 'reverse');
   assert.equal(matchOrder({ start: 'Los Angeles', end: 'Los Angeles' }).status, 'unmatched');
   assert.equal(matchOrder({ start: '', end: '' }).status, 'unmatched');
   assert.equal(matchOrder().status, 'unmatched');
+});
+
+test('real metro spellings are not refused (a false reject loses a sale)', () => {
+  const ok = (start, end, slug) => {
+    const hit = matchOrder({ start, end });
+    assert.equal(hit.status, 'forward', `${start} to ${end}`);
+    assert.equal(hit.slug, slug, `${start} to ${end}`);
+  };
+  ok('Los Angeles, CA', 'Oakland, CA', 'la-to-sf');
+  ok('Los Angeles', 'San Jose, CA', 'la-to-sf');
+  ok('LA', 'San Francisco Bay Area', 'la-to-sf');
+  ok('Pasadena, CA', 'Berkeley', 'la-to-sf');
+  ok('Oakland, CA', 'South Lake Tahoe, CA', 'sf-to-tahoe');
+  ok('San Jose', 'Incline Village, NV', 'sf-to-tahoe');
+  ok('San Francisco', 'Tahoe City', 'sf-to-tahoe');
+  ok('Los Angeles', 'Chandler, AZ', 'la-to-phoenix');
+  ok('Los Angeles', 'La Jolla', 'la-to-san-diego');
+  ok('Irvine, CA', 'San Diego', 'la-to-san-diego');
+  ok('Los Angeles (LAX)', 'Las Vegas, NV 89109', 'la-to-las-vegas');
+  ok('123 Main St, Pasadena, CA 91101', 'Henderson, NV', 'la-to-las-vegas');
+  ok('Bellevue, WA', 'Portland, OR', 'seattle-to-portland');
+  ok('Tacoma', 'Vancouver, WA', 'seattle-to-portland');
+  ok('Arlington, VA', 'New York, NY', 'dc-to-nyc');
+  ok('Bethesda, MD', 'Jersey City, NJ', 'dc-to-nyc');
+  ok('New York City', 'Cambridge, MA', 'nyc-to-boston');
+  ok('Fort Worth, TX', 'Round Rock, TX', 'dallas-to-austin');
+  ok('Dallas-Fort Worth', 'Austin', 'dallas-to-austin');
+  ok('Henderson, NV', 'Provo, UT', 'las-vegas-to-salt-lake-city');
+});
+
+test('look-alike places in the wrong state or country still do not match', () => {
+  assert.equal(matchOrder({ start: 'Seattle', end: 'Vancouver, BC' }).status, 'unmatched');
+  assert.equal(matchOrder({ start: 'Seattle', end: 'Vancouver' }).status, 'unmatched');
+  assert.equal(matchOrder({ start: 'Seattle', end: 'Portland, WA' }).status, 'unmatched');
+  assert.equal(matchOrder({ start: 'Washington, VA', end: 'NYC' }).status, 'unmatched');
+  assert.equal(matchOrder({ start: 'Las Vegas, NM', end: 'Los Angeles' }).status, 'unmatched');
+  assert.equal(matchOrder({ start: 'Chicago, IL', end: 'Milwaukee, WI' }).status, 'unmatched');
 });
