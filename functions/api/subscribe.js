@@ -13,7 +13,8 @@
 // The widget action is newsletter_signup, so a plan-form token cannot be reused here.
 // If TURNSTILE_SECRET is unset, signup still works (it still needs the Buttondown key).
 
-const SITEVERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+import { verifyTurnstile } from '../_lib/turnstile.js';
+
 const BUTTONDOWN = 'https://api.buttondown.com/v1/subscribers';
 const ACTION = 'newsletter_signup';
 const TAG = 'site-signup';
@@ -30,32 +31,6 @@ export async function onRequestGet({ env }) {
   return json({ turnstileSiteKey: env.TURNSTILE_SITE_KEY || null, open: signupOpen(env) });
 }
 
-async function verifyTurnstile(request, env, token) {
-  if (!env.TURNSTILE_SECRET) return true;
-  const value = String(token ?? '');
-  if (value.length < 1 || value.length > 2048) return false;
-
-  const body = new URLSearchParams({ secret: env.TURNSTILE_SECRET, response: value });
-  const ip = request.headers.get('CF-Connecting-IP');
-  if (ip) body.set('remoteip', ip);
-
-  let res;
-  try {
-    res = await fetch(SITEVERIFY, { method: 'POST', body });
-  } catch {
-    return false;
-  }
-  let out;
-  try { out = await res.json(); } catch { return false; }
-  if (!res.ok || !out.success || out.action !== ACTION) return false;
-
-  const allowed = String(env.TURNSTILE_HOSTNAMES || 'evtripreports.com')
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
-  return allowed.includes(out.hostname);
-}
-
 function alreadySubscribed(body) {
   if (!body || typeof body !== 'object') return false;
   if (ALREADY.has(body.code)) return true;
@@ -70,7 +45,7 @@ export async function onRequestPost({ request, env }) {
 
   if (data.website) return json({ ok: true });
 
-  if (!(await verifyTurnstile(request, env, data['cf-turnstile-response']))) {
+  if (!(await verifyTurnstile(request, env, data['cf-turnstile-response'], ACTION))) {
     return json({ error: 'The security check failed. Refresh the page and try again.' }, 403);
   }
 

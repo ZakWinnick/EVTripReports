@@ -175,23 +175,12 @@ const faq = [
 
 <script is:inline id="plan-tiers" type="application/json" set:html={JSON.stringify(tiers.map((t) => ({ name: t.name, price: t.price, delivery: t.delivery, stripeUrl: t.stripeUrl })))}></script>
 <script>
+  import { loadTurnstile, renderWidget, SECURITY_RETRY } from '../lib/turnstile-client.js';
+
   const form = document.getElementById('intake') as HTMLFormElement | null;
   const msg = form?.querySelector('.form__msg') as HTMLElement | null;
   const slot = document.getElementById('turnstile-slot');
-  let widgetId: string | null = null;
-
-  function loadTurnstile() {
-    return new Promise<void>((resolve, reject) => {
-      const w = window as unknown as { turnstile?: { render: Function; getResponse: Function; reset: Function } };
-      if (w.turnstile) { resolve(); return; }
-      const s = document.createElement('script');
-      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-      s.async = true;
-      s.onload = () => resolve();
-      s.onerror = () => reject(new Error('turnstile'));
-      document.head.appendChild(s);
-    });
-  }
+  let widget: { getToken: () => string; reset: () => void } | null = null;
 
   async function setupTurnstile() {
     if (!slot) return;
@@ -202,11 +191,9 @@ const faq = [
       const sitekey = body.turnstileSiteKey;
       if (!sitekey) return;
       await loadTurnstile();
-      const turnstile = (window as unknown as { turnstile: { render: Function } }).turnstile;
-      slot.hidden = false;
-      widgetId = turnstile.render(slot, { sitekey, action: 'plan_request' });
+      widget = renderWidget(slot, { sitekey, action: 'plan_request' });
     } catch {
-      widgetId = null;
+      widget = null;
     }
   }
   setupTurnstile();
@@ -256,8 +243,13 @@ const faq = [
     const fd = new FormData(form);
     const data: Record<string, unknown> = Object.fromEntries(fd.entries());
     data.memberships = fd.getAll('memberships');
-    const turnstile = (window as unknown as { turnstile?: { getResponse: (id: string) => string; reset: (id: string) => void } }).turnstile;
-    if (widgetId && turnstile) data['cf-turnstile-response'] = turnstile.getResponse(widgetId);
+    if (widget && !widget.getToken()) {
+      msg.textContent = SECURITY_RETRY;
+      msg.classList.add('is-err');
+      widget.reset();
+      return;
+    }
+    if (widget) data['cf-turnstile-response'] = widget.getToken();
     const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
     const tier = selectedTier();
     btn.disabled = true;
@@ -274,6 +266,9 @@ const faq = [
         form.reset();
         msg.textContent = tier?.delivery ? `Trip details received. Delivery: ${tier.delivery}.` : 'Trip details received.';
         msg.classList.add('is-ok');
+      } else if (res.status === 403) {
+        msg.textContent = SECURITY_RETRY;
+        msg.classList.add('is-err');
       } else if (res.status === 503 || res.status === 404 || res.status === 405) {
         msg.textContent = 'Plan requests are not open yet. Check back soon.';
         msg.classList.add('is-err');
@@ -289,7 +284,7 @@ const faq = [
       if (!paid && tier?.stripeUrl && msg.classList.contains('is-ok')) return;
       btn.disabled = false;
       btn.textContent = payLabel();
-      if (widgetId && turnstile) turnstile.reset(widgetId);
+      if (widget) widget.reset();
     }
   });
 </script>
