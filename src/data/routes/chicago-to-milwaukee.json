@@ -29,12 +29,12 @@
     },
     {
       "label": "DC fast sites listed",
-      "value": "49",
+      "value": "48",
       "unit": ""
     },
     {
       "label": "Checked against the network",
-      "value": "19",
+      "value": "18",
       "unit": ""
     }
   ],
@@ -155,7 +155,7 @@
           "name": "BOA Logan Square IL4-313 (Chicago, IL)",
           "network": "Electrify America",
           "address": "3350 W Diversey Ave, Chicago, IL 60647",
-          "facts": "EA's locator lists 4 chargers up to 0 kW CCS. DOE lists the same port count. About 5 miles along the corridor, Bank of America on West Diversey.",
+          "facts": "EA's locator lists 4 chargers, CCS at 350 kW on all 4. DOE lists the same port count. About 5 miles along the corridor, Bank of America on West Diversey.",
           "access": "Open to all CCS EVs. NACS cars need an adapter.",
           "status": "verified",
           "source": "ea-locator",
@@ -170,8 +170,8 @@
           "name": "Chicago, IL - West Addison Street - Tesla Supercharger",
           "network": "Tesla Supercharger",
           "address": "2939 West Addison Street Chicago, IL 60618",
-          "facts": "Tesla Find Us confirms 20 Superchargers at 2939 West Addison Street Chicago, IL 60618. Tesla Find Us confirms access: \"Adapter Included For Other EVs\". Stall count and kW are DOE figures only (20 NACS at up to 325 kW); Tesla's page did not show them. About 5 miles along the corridor at Target on West Addison. Find Us shows Adapter Included For Other EVs.",
-          "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
+          "facts": "Tesla Find Us lists the site at 2939 West Addison Street Chicago, IL 60618. Tesla Find Us confirms access: \"Adapter Included For Other EVs\". Stall count and kW are DOE figures only (20 NACS at up to 325 kW); Tesla's page did not show them. About 5 miles along the corridor at Target on West Addison. Find Us shows Adapter Included For Other EVs.",
+          "access": "Open to all EVs. Tesla Find Us banner: Adapter Included For Other EVs; the adapter is at the stall.",
           "teslaAccess": "open",
           "status": "verified",
           "source": "tesla-findus",
@@ -212,7 +212,7 @@
           "name": "Target T2781 (Chicago, IL)",
           "network": "Electrify America",
           "address": "1101 W Jackson Blvd., Chicago, IL 60607",
-          "facts": "EA's locator lists 3 chargers up to 0 kW CCS. DOE lists the same port count.",
+          "facts": "EA's locator lists 3 chargers, CCS at 350 kW on all 3. DOE lists the same port count.",
           "access": "Open to all CCS EVs. NACS cars need an adapter.",
           "status": "verified",
           "source": "ea-locator",
@@ -432,7 +432,7 @@
           "name": "Highland Park, IL - Skokie Valley Road - Tesla Supercharger",
           "network": "Tesla Supercharger",
           "address": "2099 Skokie Valley Road Highland Park, IL 60035",
-          "facts": "Tesla Find Us confirms 12 Superchargers at 2099 Skokie Valley Road Highland Park, IL 60035. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (12 NACS at up to 250 kW); Tesla's page did not show them. Highland Park Skokie Valley Road Supercharger, about 10 miles farther. Find Us shows NACS adapter needed for non-Tesla EVs.",
+          "facts": "Tesla Find Us lists the site at 2099 Skokie Valley Road Highland Park, IL 60035. Tesla Find Us confirms access: \"NACS adapter needed for non-Tesla EVs\". Stall count and kW are DOE figures only (12 NACS at up to 250 kW); Tesla's page did not show them. Highland Park Skokie Valley Road Supercharger, about 10 miles farther. Find Us shows NACS adapter needed for non-Tesla EVs.",
           "access": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
           "teslaAccess": "open",
           "status": "verified",
@@ -554,7 +554,7 @@
       "towns": "Kenosha, WI",
       "mile": 53,
       "milepostNote": "Measured along OSRM's route from the start: 53.3 miles. The site is about 0.3 mile from that route line. Northbound leave I-94 at exit 342, WIS 158 (Wikipedia, Interstate 94 in Wisconsin).",
-      "why": "Tesla Find Us confirms this Kenosha Supercharger is open to non-Tesla EVs with a NACS adapter, mid-corridor between Skokie and Milwaukee. Pleasant Prairie's Tesla site just before it is Tesla only. Meijer Oak Creek EA is the next CCS-native stop toward Milwaukee.",
+      "why": "Tesla Find Us banner: NACS adapter needed for non-Tesla EVs, so it is open to all EVs. Stall count and kW (12 stalls at up to 250 kW) are DOE figures only. Mid-corridor between Skokie and Milwaukee. Pleasant Prairie's Tesla site just before it is Tesla only. Meijer Oak Creek EA is the next CCS-native stop toward Milwaukee.",
       "primary": {
         "name": "Kenosha, WI - Tesla Supercharger",
         "network": "Tesla Supercharger",
@@ -563,19 +563,22 @@
         "stalls": {
           "value": "12 stalls",
           "status": "verified",
-          "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger"
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations/#/station/203042",
+          "note": "Stall count and kW are DOE figures only (12 stalls at up to 250 kW); Tesla's page did not show them."
         },
         "power": {
-          "value": "Up to 250.0 kW",
+          "value": "Up to 250 kW",
+          "status": "verified",
+          "source": "afdc",
+          "url": "https://afdc.energy.gov/stations/#/station/203042",
+          "note": "Stall count and kW are DOE figures only (12 stalls at up to 250 kW); Tesla's page did not show them."
+        },
+        "access": {
+          "value": "Open to all EVs. Tesla Find Us banner: NACS adapter needed for non-Tesla EVs.",
           "status": "verified",
           "source": "tesla-findus",
           "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger"
-        },
-        "access": {
-          "value": "Open to all EVs. Non-Tesla CCS cars need a NACS adapter.",
-          "status": "verified",
-          "source": "tesla-findus"
         },
         "teslaAccess": "open",
         "price": {
@@ -588,7 +591,8 @@
         ],
         "driverReports": [],
         "checkedOn": "2026-10-16",
-        "source": "tesla-findus"
+        "source": "tesla-findus",
+        "url": "https://www.tesla.com/findus/location/supercharger/KenoshaWIsupercharger"
       },
       "backups": [
         {
