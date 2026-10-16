@@ -1048,7 +1048,7 @@ function amenityHonesty(chosen, route, order) {
     }
     for (const item of entry.stop.around || []) {
       const text = item.text || item.value;
-      const match = bestStation(text, stations) || bestStation(item.site, stations);
+      const match = exactStation(item.site, stations) || bestStation(text, stations) || bestStation(item.site, stations);
       considerHost(text, item.url, item.checkedOn || item.date || route.checked, item.source, match?.name || item.site || primaryName, entry.stop.name, { pets: false, primaryName });
     }
   }
@@ -1151,7 +1151,7 @@ function amenityBlocks(stop, sheet, ctx) {
     take(report, report.text, report.url, report.source, report.date, match?.name || report.site || sheet.name, 'route');
   }
   for (const item of stop.around || []) {
-    const match = bestStation(item.text, stations) || bestStation(item.site, stations);
+    const match = exactStation(item.site, stations) || bestStation(item.text, stations) || bestStation(item.site, stations);
     take(item, item.text || item.value, item.url, item.source, item.checkedOn || item.date, match?.name || '', 'route');
   }
   const withoutRole = (item) => {
@@ -1233,6 +1233,15 @@ function matchScore(site, stationName) {
   if (!hits.length) return 0;
   if (hits.length >= 2 || a.length === 1) return hits.length;
   return 0;
+}
+
+// A note whose site field names a station exactly belongs to that station, even when its
+// words also match other stations at the stop (Irvine Spectrum has five).
+function exactStation(site, stations) {
+  const want = cleanCopy(site || '').toLowerCase();
+  if (!want) return null;
+  const hits = stations.filter((station) => cleanCopy(station?.name || '').toLowerCase() === want);
+  return hits.length === 1 ? hits[0] : null;
 }
 
 function bestStation(site, stations) {

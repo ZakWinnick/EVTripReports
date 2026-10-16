@@ -1202,3 +1202,33 @@ test('LV to SLC Beaver primary gets its Restroom line from the Flying J store pa
   assert.match(restroom.value, /clean restrooms/);
   assert.match(restroom.note, /^Route note/);
 });
+
+test('LA to San Diego primaries each get a Restroom line: driver-reported at Irvine, official park restrooms at the no-host Dana Point and Midway sites', async () => {
+  const route = JSON.parse(await readFile(path.join(root, 'src/data/routes/la-to-san-diego.json'), 'utf8'));
+  const plan = buildPlan({ ...FAKE_ORDER, tier: '$79', notes: '', startBattery: 15, slug: route.slug, start: route.startLabel, end: route.endLabel }, route);
+  const want = [
+    { name: /Irvine Spectrum/, url: 'https://www.plugshare.com/location/351856', value: /Driver-reported[\s\S]*dated 2026-10-13/, note: /^Driver report/ },
+    { name: /Dana Point Station/, url: 'https://www.parks.ca.gov/?page_id=645', value: /Doheny State Beach[\s\S]*6:00 AM to 10:00 PM daily[\s\S]*0\.7 mile on foot/, note: /^Route note/ },
+    { name: /3757 Midway/, url: 'https://www.sandiego.gov/map-public-restrooms', value: /Bill Cleator[\s\S]*7:00 AM to dusk[\s\S]*1\.7 miles by road/, note: /^Route note/ },
+  ];
+  for (const w of want) {
+    const stop = plan.stops.find((item) => w.name.test(item.primary?.name || ''));
+    assert.ok(stop, `stop ${w.name}`);
+    const restroom = (stop.primary.facts || []).find((fact) => fact.label === 'Restroom');
+    assert.ok(restroom, `Restroom fact at ${w.name}`);
+    assert.equal(restroom.url, w.url);
+    assert.equal(restroom.checkedOn, '2026-10-16');
+    assert.match(restroom.value, w.value);
+    assert.match(restroom.note, w.note);
+  }
+  const dana = route.stops.find((stop) => stop.id === 'dana-point' || /Dana Point/.test(stop.name));
+  assert.ok(dana.around.some((item) => /^No host business at this site \(EA site note\)\./.test(item.text)));
+  const midway = route.stops.find((stop) => /San Diego/.test(stop.name));
+  assert.equal(midway.around.some((item) => item.source === 'evgo-midway-post'), false);
+  for (const url of ['https://locations.wendys.com/united-states/ca/san-diego/3760-midway-drive', 'https://local.vons.com/ca/san-diego/3645-midway-dr.html']) {
+    const stop = plan.stops.find((item) => /3757 Midway/.test(item.primary?.name || ''));
+    const note = (stop.food || []).find((item) => item.url === url);
+    assert.ok(note, `food note ${url}`);
+    assert.match(note.text, /12:00 AM daily/);
+  }
+});
