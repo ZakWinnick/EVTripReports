@@ -72,5 +72,13 @@ export default [
     "start": "East LA Interchange",
     "end": "Front Street, downtown San Diego",
     "miles": "116"
+  },
+  {
+    "slug": "dallas-to-austin",
+    "title": "Dallas to Austin",
+    "highway": "I-35",
+    "start": "I-35E at South R.L. Thornton Freeway, Dallas",
+    "end": "East 12th Street, downtown Austin",
+    "miles": "192"
   }
 ];

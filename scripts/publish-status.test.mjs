@@ -297,7 +297,7 @@ test('LA to San Diego passes the primary gate and is on the public lists', async
   assert.equal(/rangeway|ampiq/i.test(html), false);
 });
 
-test('Dallas to Austin passes the primary gate and stays off the public lists', async () => {
+test('Dallas to Austin passes the primary gate and is on the public lists', async () => {
   const raw = await readFile(new URL('../src/data/routes/dallas-to-austin.json', import.meta.url), 'utf8');
   const routeData = JSON.parse(raw);
   const list = JSON.parse(await readFile(new URL('../src/data/routes.json', import.meta.url), 'utf8'));
@@ -311,11 +311,11 @@ test('Dallas to Austin passes the primary gate and stays off the public lists', 
     title: 'Dallas to Austin',
     highway: 'I-35',
     miles: 192,
-    status: 'verifying',
+    status: 'live',
   });
   assert.equal(primaryPublishBlock(routeData), null);
   assert.equal(exportStatus('live', routeData), 'live');
-  assert.equal(exportStatus(meta.status, routeData), 'verifying');
+  assert.equal(exportStatus(meta.status, routeData), 'live');
 
   assert.equal(routeData.stops.length, 6);
   for (const stop of routeData.stops) {
@@ -327,10 +327,11 @@ test('Dallas to Austin passes the primary gate and stays off the public lists', 
 
   const guides = await liveBuiltGuides();
   const index = await liveBuiltGuideIndex();
-  assert.equal(guides.some((guide) => guide.slug === 'dallas-to-austin'), false);
-  assert.equal(index.some((guide) => guide.slug === 'dallas-to-austin'), false);
+  assert.equal(guides.some((guide) => guide.slug === 'dallas-to-austin'), true);
+  assert.equal(index.some((guide) => guide.slug === 'dallas-to-austin'), true);
   const xml = buildSitemapXml(guidesForSitemap(guides, []));
-  assert.equal(xml.includes('dallas-to-austin'), false);
+  assert.equal(xml.includes('dallas-to-austin'), true);
+  assert.equal(xml.includes('chicago-to-milwaukee'), false);
 
   const files = await readdir(new URL('../src/data/routes/', import.meta.url));
   const routeBySlug = {};
@@ -339,13 +340,20 @@ test('Dallas to Austin passes the primary gate and stays off the public lists', 
     routeBySlug[data.slug] = data;
   }
   const home = visibleHomeRoutes(list, routeBySlug);
-  assert.equal(home.some((route) => route.slug === 'dallas-to-austin'), false);
+  assert.equal(home.some((route) => route.slug === 'dallas-to-austin'), true);
+  assert.equal(home.every((route) => route.status === 'live'), true);
+  assert.equal(home.some((route) => route.slug === 'chicago-to-milwaukee'), false);
 
   const html = guideMain(routeData);
   assert.match(html, /id="stop-dallas"/);
   assert.match(html, /id="stop-austin"/);
+  assert.match(html, /Longest primary gap is Dallas to Hillsboro, about 55 miles/);
+  assert.match(html, /Temple restrooms: Not yet verified/);
+  assert.equal(html.includes('39 restroom'), false);
+  assert.equal(html.includes('PR Newswire'), false);
   assert.equal(/rangeway|ampiq/i.test(raw), false);
   assert.equal(/rangeway|ampiq/i.test(html), false);
+  assert.doesNotMatch(html, /—|–/);
 });
 
 test('dallas-to-austin route JSON contains no em dash or en dash in any string', async () => {

@@ -67,7 +67,7 @@
     "title": "Dallas to Austin",
     "highway": "I-35",
     "miles": 192,
-    "status": "verifying"
+    "status": "live"
   },
   {
     "slug": "chicago-to-milwaukee",

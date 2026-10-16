@@ -3,7 +3,7 @@
   "title": "Dallas to Austin",
   "highway": "I-35",
   "direction": "southbound",
-  "summary": "I-35E and I-35 from downtown Dallas to 12th Street in Austin, through Hillsboro, Waco, Temple and Round Rock. Primaries mix IONNA, Tesla (open where Find Us confirms), and Electrify America sites with 6 to 10 chargers at 350 kW on EA's locator. Tesla sites carry a Tesla only or open to all EVs flag only where Tesla's locator was readable.",
+  "summary": "I-35E and I-35 from downtown Dallas to 12th Street in Austin, through Hillsboro, Waco, Temple and Round Rock. Primaries mix IONNA, Tesla (open where Find Us confirms), and Electrify America sites with 6 to 10 chargers at 350 kW on EA's locator. Tesla sites carry a Tesla only or open to all EVs flag only where Tesla's locator was readable. Longest primary gap is Dallas to Hillsboro, about 55 miles.",
   "checked": "2026-10-16",
   "startLabel": "I-35E at South R.L. Thornton Freeway, Dallas",
   "startNote": "Mileage starts where southbound traffic is on I-35E at the South R.L. Thornton Freeway near downtown Dallas (OSRM point -96.806249, 32.765412) and ends at the I-35 off-ramp to East 12th Street in Austin (-97.731208, 30.275783). The 192.29 miles is OSRM's driving distance between those two points, shown as 192. Stop miles are each site's nearest point on that route. Wikipedia exit mileposts on I-35E and I-35 are cited for exit numbers.",
@@ -29,12 +29,12 @@
     },
     {
       "label": "DC fast sites listed",
-      "value": "55",
+      "value": "51",
       "unit": ""
     },
     {
       "label": "Checked against the network",
-      "value": "14",
+      "value": "18",
       "unit": ""
     }
   ],
@@ -70,6 +70,34 @@
     "wiki-i35e-tx": {
       "name": "Interstate 35E (Texas), exit list (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Interstate_35E_(Texas)"
+    },
+    "buc-ees": {
+      "name": "Buc-ee's locations list",
+      "url": "https://buc-ees.com/locations/"
+    },
+    "forum-apple-maps": {
+      "name": "Apple Maps place listing (crowd and business data, not a host statement)",
+      "url": "https://maps.apple.com/"
+    },
+    "forum-gasbuddy": {
+      "name": "GasBuddy driver reviews",
+      "url": "https://www.gasbuddy.com/"
+    },
+    "forum-refuge": {
+      "name": "Refuge Restrooms (crowd-sourced restroom database)",
+      "url": "https://www.refugerestrooms.org/"
+    },
+    "outlets-info": {
+      "name": "outlets.info center hours listing",
+      "url": "https://outlets.info/outlet/round-rock-premium-outlets/hours"
+    },
+    "simon": {
+      "name": "Simon Premium Outlets",
+      "url": "https://www.premiumoutlets.com/outlet/round-rock"
+    },
+    "heb-store-guide": {
+      "name": "H-E-B Hancock Center store guide (PDF)",
+      "url": "https://images.heb.com/is/content/HEBGrocery/Store%20Finder%20Layouts/guide-austin-425.pdf"
     }
   },
   "stops": [
@@ -191,9 +219,9 @@
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "Host hours and food at nearby shops: Not yet verified.",
+          "text": "Hours: DOE lists this site open 24 hours daily (last confirmed 2026-10-16). IONNA's page shows no hours of its own. Food at nearby shops: Not yet verified.",
           "source": "afdc",
-          "url": "https://afdc.energy.gov/stations",
+          "url": "https://afdc.energy.gov/stations/#/station/471298",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -326,9 +354,21 @@
       "reports": [],
       "around": [
         {
-          "text": "Buc-ee's Hillsboro sits next to this Supercharger cluster. Host hours and restrooms: Not yet verified on a host page (buc-ees.com location page 404'd on 2026-10-16).",
-          "source": "afdc",
-          "url": "https://afdc.energy.gov/stations",
+          "text": "Buc-ee's #59 is listed at 165 State Highway 77, the same address as this Supercharger, on Buc-ee's locations list. That list gives no store hours and no restroom details, and Buc-ee's has no page for this store. Host hours: Not yet verified on a Buc-ee's page.",
+          "source": "buc-ees",
+          "url": "https://buc-ees.com/locations/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Hours, corroboration only: Apple Maps lists the Buc-ee's at this address open 24 hours every day, and DOE lists the Supercharger open 24 hours daily (confirmed 2026-04-21).",
+          "source": "forum-apple-maps",
+          "url": "https://maps.apple.com/place?place-id=IB8441A93FDFF6656",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Driver-reported restrooms: a GasBuddy driver wrote \"Best bathrooms at Buccees!\" on 2026-09-06. Apple Maps and GasBuddy also list restrooms at this store. These are driver and listing reports, not Buc-ee's statements.",
+          "source": "forum-gasbuddy",
+          "url": "https://www.gasbuddy.com/station/210788",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -506,7 +546,7 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's locator: chargers are in the Walmart parking lot close to the Pickup area. Walmart store hours and restrooms: Not yet verified (walmart.com returned a bot check on 2026-10-16).",
+          "text": "EA's locator: chargers are in the Walmart parking lot close to the Pickup area. Walmart's own store page returned a bot check on 2026-10-16, so Walmart's hours and restrooms are Not yet verified.",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/tx/bellmead/1521-n-interstate-35-frontage-rd/100164/",
           "checkedOn": "2026-10-16"
@@ -515,6 +555,18 @@
           "text": "IONNA Casey's backup lists Casey's Pizza, market, and restrooms on IONNA's page.",
           "source": "ionna",
           "url": "https://www.ionna.com/rechargery/waco-currently-cefco/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Hours, corroboration only: Apple Maps lists this Walmart (1521 N IH-35 Service Rd) open 6:00 AM to 11:00 PM every day. DOE lists the chargers open 24 hours daily (confirmed 2026-10-16).",
+          "source": "forum-apple-maps",
+          "url": "https://maps.apple.com/place?place-id=I63BD92C75295B9D3",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Community-reported restroom: a Refuge Restrooms entry added 2026-08-13 lists a family restroom (single, wheelchair accessible) at the back of the store, by the milk wall. Crowd-sourced, not a Walmart statement.",
+          "source": "forum-refuge",
+          "url": "https://www.refugerestrooms.org/restrooms/138765",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -613,9 +665,15 @@
       "reports": [],
       "around": [
         {
-          "text": "Temple's Supercharger is on N General Bruce Drive, the I-35 frontage. Food and restrooms nearby: Not yet verified on a host page this pass.",
-          "source": "tesla-findus",
-          "url": "https://www.tesla.com/findus/location/supercharger/19206",
+          "text": "Buc-ee's #35 is listed at 4155 N General Bruce Dr, the same address as this Supercharger, on Buc-ee's locations list (car wash 7AM to 10PM). That list gives no store hours and no restroom details. Host hours and restrooms: Not yet verified on a Buc-ee's page.",
+          "source": "buc-ees",
+          "url": "https://buc-ees.com/locations/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Hours, corroboration only: Apple Maps lists the Buc-ee's at 4155 N Gen Bruce Dr open 24 hours every day, and DOE lists the Supercharger open 24 hours daily (confirmed 2026-06-18).",
+          "source": "forum-apple-maps",
+          "url": "https://maps.apple.com/place?place-id=I6C31333CFFEEE4B4",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -845,9 +903,21 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's locator: chargers sit in the middle of the Round Rock Premium Outlets lot, near N Interstate 35 Frontage Road. Center-wide hours were not readable on premiumoutlets.com (bot check). Individual Nike Factory Store hours on Premium Outlets pages (web search lead) match Mon-Sat 10am to 8 or 9pm and Sun 11am to 7pm; treat as Not yet verified until the center hours page loads.",
+          "text": "EA's locator: chargers sit in the middle of the Round Rock Premium Outlets lot, near N Interstate 35 Frontage Road.",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/tx/round-rock/4401-n-i-35/100165/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Center hours: Not yet verified on Simon's site (premiumoutlets.com is bot-checked). Corroboration only: outlets.info lists Monday to Saturday 10am to 9pm and Sunday 11am to 7pm. Simon's adidas store page shows Monday to Thursday 10am to 8pm, Friday and Saturday 10am to 9pm, Sunday 11am to 7pm, so stores can close before the center does. DOE lists the chargers open 24 hours daily (confirmed 2026-10-16).",
+          "source": "outlets-info",
+          "url": "https://outlets.info/outlet/round-rock-premium-outlets/hours",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Simon's center page lists Restrooms among the center amenities. This was read in a search-engine copy of the page on 2026-10-16 because the live page is bot-checked.",
+          "source": "simon",
+          "url": "https://www.premiumoutlets.com/outlet/round-rock",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -1070,9 +1140,15 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's locator: chargers are on the west side of Regency Hancock Center parking lot, off Red River Street. Center hours and restrooms: Not yet verified on a host page this pass.",
+          "text": "EA's locator: chargers are on the west side of Regency Hancock Center parking lot, off Red River Street.",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/tx/austin/1000-e-41st-st/220019/",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "The H-E-B at 1000 E 41st St, the same address as EA's listing, publishes a store guide that lists store hours Monday to Sunday 6 a.m. to 11 p.m. and marks Restrooms on its store map. DOE lists the chargers open 24 hours daily (confirmed 2026-10-16).",
+          "source": "heb-store-guide",
+          "url": "https://images.heb.com/is/content/HEBGrocery/Store%20Finder%20Layouts/guide-austin-425.pdf",
           "checkedOn": "2026-10-16"
         }
       ],
@@ -1106,11 +1182,15 @@
       "source": "ea-locator"
     },
     {
-      "text": "Walmart Bellmead hours and restrooms are Not yet verified (walmart.com bot check). Round Rock Premium Outlets center hours page also bot-checked; shopping is on EA's site note. IONNA pages list restrooms at Dallas W 12th and at Casey's Waco.",
+      "text": "Hours and restrooms are not all host-sourced. Hancock H-E-B and IONNA Dallas are host-sourced. Walmart Bellmead hours (6 AM to 11 PM) come from Apple Maps, not Walmart, and its restroom is a community report from 2026-08-13. Buc-ee's at Hillsboro and Temple publish no store hours or restroom details on buc-ees.com. Hillsboro hours are an Apple Maps and DOE listing, and its restrooms are a driver report dated 2026-09-06. Temple hours are an Apple Maps and DOE listing. Temple restrooms: Not yet verified. Round Rock Premium Outlets center hours are Not yet verified because Simon's site is bot-checked.",
       "source": "ea-locator"
     },
     {
       "text": "Only sites near each stop are listed. DOE has many more DC sites in Dallas, Austin, and off the I-35 corridor that this guide does not check.",
+      "source": "afdc"
+    },
+    {
+      "text": "The longest gap between primary stops is Dallas to Hillsboro, about 55 miles. Italy (Tesla only) and the unverified DOE sites at Lancaster and DeSoto sit in that stretch, but none is a primary stop.",
       "source": "afdc"
     }
   ],

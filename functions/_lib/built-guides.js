@@ -2,6 +2,10 @@
 // Live guides from src/data/routes. functions/sitemap.xml.js merges D1 rows with status live.
 export default [
   {
+    "slug": "dallas-to-austin",
+    "lastmod": "2026-10-16"
+  },
+  {
     "slug": "dc-to-nyc",
     "lastmod": "2026-10-15"
   },
