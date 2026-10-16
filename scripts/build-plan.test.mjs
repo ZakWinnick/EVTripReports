@@ -1136,3 +1136,36 @@ test('LV to SLC plan does not count the Cedar City Reddit report as a sourced re
   const restroom = cedar?.primary?.facts?.find((fact) => fact.label === 'Restroom');
   if (restroom) assert.match(restroom.note, /^Driver report/);
 });
+
+test('host-page store hours at the LA to San Diego Walmarts and the New Castle Wawa reach the plan with link and date', async () => {
+  const cases = [
+    { slug: 'la-to-san-diego', battery: 15, stops: [
+      { name: /Walmart 2242/, url: 'https://www.walmart.com/store/2242-anaheim-ca', hours: /6am to 11pm, Monday to Sunday/ },
+      { name: /Walmart 2494/, url: 'https://www.walmart.com/store/2494-oceanside-ca', hours: /6am to 11pm, Monday to Sunday/ },
+    ] },
+    { slug: 'dc-to-nyc', battery: 20, stops: [
+      { name: /Wawa Store 840/, url: 'https://www.wawa.com/locations/0840', hours: /5:00 AM to 10:00 PM, Monday to Sunday/ },
+    ] },
+  ];
+  for (const { slug, battery, stops } of cases) {
+    const route = JSON.parse(await readFile(path.join(root, `src/data/routes/${slug}.json`), 'utf8'));
+    const plan = buildPlan({ ...FAKE_ORDER, tier: '$79', notes: '', startBattery: battery, slug: route.slug, start: route.startLabel, end: route.endLabel }, route);
+    const html = renderPlan(plan);
+    for (const want of stops) {
+      const stop = plan.stops.find((item) => want.name.test(item.primary?.name || ''));
+      assert.ok(stop, `${slug}: stop ${want.name} in plan`);
+      const hours = (stop.food || []).find((item) => item.url === want.url);
+      assert.ok(hours, `${slug}: host hours note for ${want.name}`);
+      assert.match(hours.text, want.hours);
+      assert.equal(hours.checkedOn, '2026-10-16');
+      assert.match(hours.note, /^Route note/);
+      assert.match(hours.text, /Restrooms: Not yet verified/);
+      const all = JSON.stringify([stop.food || [], stop.cautions || []]);
+      assert.equal(/store hours and restrooms: Not yet verified|hours: Not yet verified|confirmed restrooms or store hours/i.test(all), false, all);
+      assert.ok(html.includes(want.url), `${slug}: rendered plan links ${want.url}`);
+      assert.equal((stop.primary.facts || []).some((fact) => fact.label === 'Restroom' && fact.url === want.url), false);
+    }
+    const tip = restroomTip(plan);
+    for (const want of stops) assert.match(tip, new RegExp(`No sourced restroom note at [^.]*${want.name.source}`));
+  }
+});

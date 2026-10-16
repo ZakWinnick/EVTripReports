@@ -1017,8 +1017,15 @@
       "reports": [],
       "around": [
         {
-          "text": "The Wawa at this site sells food and coffee. Its store page lists online ordering, curbside pickup, fuel and EV charging. Store hours on that page were blank when checked (rechecked 2026-10-15 and 2026-10-16), so hours: Not yet verified. Restrooms: Not yet verified (not listed on the store page).",
+          "text": "The Wawa at this site sells food and coffee. Its store page lists store hours of 5:00 AM to 10:00 PM, Monday to Sunday, plus online ordering, curbside pickup and fuel (checked 2026-10-16). Restrooms: Not yet verified (not listed on the store page).",
           "category": "food",
+          "source": "wawa",
+          "url": "https://www.wawa.com/locations/0840",
+          "checkedOn": "2026-10-16"
+        },
+        {
+          "text": "Wawa's store page lists CCS, Tesla Superchargers and CHAdeMO under EV charging (checked 2026-10-16), with no stall counts or kW. EA's locator and DOE list CCS only for the EA chargers, so CHAdeMO at this Wawa is Not yet verified.",
+          "category": "site",
           "source": "wawa",
           "url": "https://www.wawa.com/locations/0840",
           "checkedOn": "2026-10-16"
@@ -1031,7 +1038,7 @@
           "checkedOn": "2026-10-15"
         },
         {
-          "text": "PlugShare users list restrooms, dining, EV parking, and shopping at this Wawa, and PlugShare shows store hours of 5am to 10pm (crowd-sourced, checked 2026-10-16). EA and DOE list the chargers as open 24 hours. Wawa has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "text": "PlugShare users list restrooms, dining, EV parking, and shopping at this Wawa, and PlugShare shows store hours of 5am to 10pm (crowd-sourced, checked 2026-10-16). Wawa's store page now lists the same hours. EA and DOE list the chargers as open 24 hours. Wawa has not confirmed restrooms, so restrooms stay Not yet verified.",
           "category": "food",
           "source": "plugshare-190888",
           "url": "https://www.plugshare.com/location/190888",
@@ -3187,7 +3194,7 @@
       "source": "afdc"
     },
     {
-      "text": "Food and restroom notes are filled for all five primaries (checked 2026-10-15). Elizabeth has mall restrooms and a food court on Simon pages. Marlton hours come from Shake Shack's page for its spot in the center; Marlton restrooms stay Not yet verified. New Castle, Abingdon and East Brunswick restrooms stay Not yet verified on host pages. Walmart and some Simon live pages blocked automated reads; East Brunswick hours and Elizabeth hours cite archives where noted.",
+      "text": "Food and restroom notes are filled for all five primaries (checked 2026-10-15). Elizabeth has mall restrooms and a food court on Simon pages. Marlton hours come from Shake Shack's page for its spot in the center; Marlton restrooms stay Not yet verified. New Castle hours come from Wawa's store page (5:00 AM to 10:00 PM daily, checked 2026-10-16). New Castle, Abingdon and East Brunswick restrooms stay Not yet verified on host pages. Walmart and some Simon live pages blocked automated reads; East Brunswick hours and Elizabeth hours cite archives where noted.",
       "source": "ea-locator"
     },
     {

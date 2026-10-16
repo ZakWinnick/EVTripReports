@@ -94,6 +94,14 @@
     "ocparks-capistrano-beach": {
       "name": "OC Parks, Capistrano Beach Park (hours and amenities)",
       "url": "https://www.ocparks.com/beaches/capistrano-beach"
+    },
+    "walmart-2242": {
+      "name": "Walmart store page, Supercenter #2242, 440 N Euclid St, Anaheim",
+      "url": "https://www.walmart.com/store/2242-anaheim-ca"
+    },
+    "walmart-2494": {
+      "name": "Walmart store page, Supercenter #2494, 2100 Vista Way, Oceanside",
+      "url": "https://www.walmart.com/store/2494-oceanside-ca"
     }
   },
   "stops": [
@@ -457,14 +465,22 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the left side of the parking lot, close to the Fashion Q store. Walmart store hours and restrooms: Not yet verified. The walmart.com store page returned 403 on 2026-10-16.",
+          "text": "EA's site note: chargers are on the left side of the parking lot, close to the Fashion Q store.",
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/anaheim/440-n-euclid-st/100038/",
+          "checkedOn": "2026-10-16",
+          "site": "Walmart 2242 (Anaheim, CA)"
+        },
+        {
+          "text": "Host is Walmart Supercenter #2242 at 440 N Euclid St. Walmart's store page lists store hours of 6am to 11pm, Monday to Sunday (checked 2026-10-16). Restrooms: Not yet verified (the store page lists no restroom info).",
+          "category": "food",
+          "source": "walmart-2242",
+          "url": "https://www.walmart.com/store/2242-anaheim-ca",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "PlugShare users list grocery, dining, shopping, and restrooms as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "text": "PlugShare users list grocery, dining, shopping, and restrooms as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart's store page does not list restrooms, so restrooms stay Not yet verified.",
           "category": "food",
           "source": "plugshare-186198",
           "url": "https://www.plugshare.com/location/186198",
@@ -1360,14 +1376,22 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are in the southeastern corner of the lot, along Ronald Packard Parkway (SR 78). Walmart store hours and restrooms: Not yet verified. The walmart.com store page returned 403 on 2026-10-16.",
+          "text": "EA's site note: chargers are in the southeastern corner of the lot, along Ronald Packard Parkway (SR 78).",
           "category": "food",
           "source": "ea-locator",
           "url": "https://www.electrifyamerica.com/locate-charger/ca/oceanside/2100-vista-way/100041/",
+          "checkedOn": "2026-10-16",
+          "site": "Walmart 2494 (Oceanside, CA)"
+        },
+        {
+          "text": "Host is Walmart Supercenter #2494 at 2100 Vista Way. Walmart's store page lists store hours of 6am to 11pm, Monday to Sunday (checked 2026-10-16). Restrooms: Not yet verified (the store page lists no restroom info).",
+          "category": "food",
+          "source": "walmart-2494",
+          "url": "https://www.walmart.com/store/2494-oceanside-ca",
           "checkedOn": "2026-10-16"
         },
         {
-          "text": "PlugShare users list restrooms, shopping, grocery, and dining as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart has not confirmed restrooms or store hours, so both stay Not yet verified.",
+          "text": "PlugShare users list restrooms, shopping, grocery, and dining as amenities at this Walmart (crowd-sourced icons on the PlugShare location page, checked 2026-10-16). Walmart's store page does not list restrooms, so restrooms stay Not yet verified.",
           "category": "food",
           "source": "plugshare-347586",
           "url": "https://www.plugshare.com/location/347586",
@@ -1882,8 +1906,8 @@
       "source": "afdc"
     },
     {
-      "text": "Food, restroom and store hour notes are Not yet verified at the two Walmart stops. Walmart store pages returned 403 on 2026-10-16, and Wayback Machine captures of those pages show Walmart's block page. Dana Point Station has no host business (EA's site note: behind the Post Office on Las Vegas Street), and the nearest restrooms are Not yet verified. Capistrano Beach Park, about 1.1 miles away by road, lists portable restrooms and hours of 6:00 AM to 10:00 PM daily on its OC Parks page (checked 2026-10-16).",
-      "source": "ea-locator"
+      "text": "Walmart's store pages list store hours of 6am to 11pm, Monday to Sunday, at Anaheim (#2242) and Oceanside (#2494), checked 2026-10-16. Neither page lists restrooms, so restrooms at both Walmart stops stay Not yet verified. Dana Point Station has no host business (EA's site note: behind the Post Office on Las Vegas Street), and the nearest restrooms are Not yet verified. Capistrano Beach Park, about 1.1 miles away by road, lists portable restrooms and hours of 6:00 AM to 10:00 PM daily on its OC Parks page (checked 2026-10-16).",
+      "source": "walmart-2242"
     }
   ],
   "arrival": "Downtown San Diego, the airport, Coronado and points south of exit 17 are not in this guide. The last stop is the EVgo hub on Midway Drive, about 3 miles before the end of the route."
