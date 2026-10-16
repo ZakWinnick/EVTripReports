@@ -49,6 +49,16 @@ Plan prices and Stripe Payment Links live in `src/data/plans.js`. Each tier's pa
 
 Intake stores each request with status `new` and, when `FASTMAIL_TOKEN` is set, emails that request to the owner (`NOTIFY_TO`). The customer is not a recipient. Intake does not generate a plan and does not email a plan. Customer pages state the delivery time only: within 48 hours for route and detailed plans, within 3 business days for multi-day and family plans.
 
+## Stripe payments
+
+The Payment Links in `src/data/plans.js` are the checkout. The form is saved first, and `POST /api/intake` returns `{ ok, ref }` where `ref` is `etr-<plan_requests.id>`. The browser opens the Payment Link with `prefilled_email` and `client_reference_id=<ref>`, so the payment carries the order.
+
+`POST /api/stripe-webhook` (`functions/api/stripe-webhook.js`) records paid Checkout sessions in `stripe_payments` (`schema-payments.sql`). It checks the Stripe signature (HMAC-SHA256, 5 minute tolerance) and is closed (503) until the Pages secret `STRIPE_WEBHOOK_SECRET` and `DB` are set. A payment matches its request by `client_reference_id`, then by the newest unpaid request with the same checkout email, else it is stored unmatched. `amount_ok` flags a payment whose amount is not the price of the request's tier. A full refund (`charge.refunded` with `refunded: true`) sets the status to `refunded`. It never changes `plan_requests`, never approves a plan, and never emails a customer. With `FASTMAIL_TOKEN` it emails the owner a Paid notice.
+
+Setup, owner steps: apply `schema-payments.sql` in the D1 console. In Stripe, Developers > Webhooks, add an endpoint for `https://evtripreports.com/api/stripe-webhook` with the events `checkout.session.completed`, `checkout.session.async_payment_succeeded`, and `charge.refunded`. Copy the endpoint's signing secret (`whsec_...`) into the Pages secret `STRIPE_WEBHOOK_SECRET`.
+
+The admin API shows payment state. `GET /api/admin/plans` and `GET /api/admin/plans/:id` include `payment`: `{ state: "paid" | "refunded" | "unpaid", amountCents, amountMatchesTier, matchedBy }`, or `null` when `stripe_payments` does not exist yet. The approval response includes the same `payment`. Approval is not blocked by it. Check it before a plan is sent.
+
 ## From a paid order to a draft
 
 The order arrives at `POST /api/intake` and is stored as `new`. That request does not build a plan. Build the draft locally, then review it in the admin API. Approval is what creates the private link.
