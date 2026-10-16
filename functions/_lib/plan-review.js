@@ -92,13 +92,41 @@ function checkSources(sources) {
   return null;
 }
 
+// Payment state comes from stripe_payments (schema-payments.sql), written by the Stripe webhook.
+// 'paid', 'refunded', or 'unpaid' when the table exists; null when it does not, so the review API still works without it.
+async function paymentsFor(db, ids) {
+  const map = new Map();
+  if (!ids.length) return map;
+  try {
+    const rows = await db.prepare(
+      `SELECT request_id, amount_total, amount_ok, match_kind, status FROM stripe_payments
+       WHERE request_id IN (${ids.map(() => '?').join(',')}) ORDER BY id ASC`
+    ).bind(...ids).all();
+    for (const id of ids) map.set(id, { state: 'unpaid' });
+    for (const row of rows.results || []) {
+      map.set(row.request_id, {
+        state: row.status,
+        amountCents: row.amount_total,
+        amountMatchesTier: row.amount_ok == null ? null : row.amount_ok === 1,
+        matchedBy: row.match_kind,
+      });
+    }
+  } catch {
+    for (const id of ids) map.set(id, null);
+  }
+  return map;
+}
+
 async function listQueue(db) {
   const rows = await db.prepare(
     `SELECT ${REQUEST_COLS} FROM plan_requests WHERE status IN ('new', 'review', 'rejected-for-redo') ORDER BY created_at ASC, id ASC`
   ).all();
-  const requests = (rows.results || []).map((row) => (
-    row.status === 'rejected-for-redo' ? { ...row, queueLabel: 'Needs redo' } : row
-  ));
+  const list = rows.results || [];
+  const payments = await paymentsFor(db, list.map((row) => row.id));
+  const requests = list.map((row) => {
+    const base = { ...row, payment: payments.get(row.id) ?? null };
+    return row.status === 'rejected-for-redo' ? { ...base, queueLabel: 'Needs redo' } : base;
+  });
   return json({ requests });
 }
 
@@ -166,7 +194,8 @@ async function decide(db, id, data) {
   await db.prepare(`UPDATE plan_drafts SET access_code = NULL WHERE request_id = ?`).bind(id).run();
   await db.prepare(`UPDATE plan_drafts SET access_code = ?, updated_at = ? WHERE id = ?`).bind(tokenHash, now, latest.id).run();
   await db.prepare(`UPDATE plan_requests SET status = ? WHERE id = ?`).bind('approved', id).run();
-  return json({ ok: true, status: 'approved', draftId: latest.id, accessCode });
+  const payment = (await paymentsFor(db, [id])).get(id) ?? null;
+  return json({ ok: true, status: 'approved', draftId: latest.id, accessCode, payment });
 }
 
 export async function onRequest(context) {
@@ -189,7 +218,8 @@ export async function onRequest(context) {
   if (method === 'GET' && parts.length === 1) {
     const row = await getRequest(env.DB, id);
     if (!row) return json({ error: 'No plan request with that id.' }, 404);
-    return json({ request: row, drafts: await draftsFor(env.DB, id) });
+    const payment = (await paymentsFor(env.DB, [id])).get(id) ?? null;
+    return json({ request: row, payment, drafts: await draftsFor(env.DB, id) });
   }
 
   if (method === 'POST' && parts.length === 2 && parts[1] === 'draft') return saveDraft(env.DB, id, data);

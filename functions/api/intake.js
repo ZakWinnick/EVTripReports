@@ -14,6 +14,7 @@
 import { sendMail } from '../_lib/fastmail.js';
 import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { verifyTurnstile } from '../_lib/turnstile.js';
+import { refFor } from '../_lib/stripe.js';
 
 const REQUIRED = ['name', 'email', 'tier', 'car', 'port', 'start', 'end', 'depart'];
 const MAX = 2000;
@@ -47,19 +48,21 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const clip = (v) => String(v ?? '').slice(0, MAX);
   const memberships = Array.isArray(data.memberships) ? data.memberships.map(clip).join('; ') : clip(data.memberships);
 
-  await env.DB.prepare(
+  const saved = await env.DB.prepare(
     `INSERT INTO plan_requests (created_at, name, email, tier, car, port, start_place, end_place, depart, return_date, passengers, memberships, notes, status)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new')`
   ).bind(
     new Date().toISOString(), clip(data.name), clip(data.email), clip(data.tier), clip(data.car), clip(data.port),
     clip(data.start), clip(data.end), clip(data.depart), clip(data.return), clip(data.passengers), memberships, clip(data.notes)
   ).run();
+  const requestId = saved?.meta?.last_row_id;
 
   if (env.FASTMAIL_TOKEN) {
     const to = env.NOTIFY_TO || 'admin@evtripreports.com';
     const lines = [
       `New plan request: ${clip(data.tier)}`,
       'Owner notice only. No plan is sent to the customer from this request.',
+      'Payment is not confirmed by this email. The customer is sent to Stripe next. Check Stripe, or wait for the Paid email.',
       '',
       `Name: ${clip(data.name)}`,
       `Email: ${clip(data.email)}`,
@@ -87,5 +90,5 @@ export async function onRequestPost({ request, env, waitUntil }) {
     );
   }
 
-  return json({ ok: true });
+  return json(requestId ? { ok: true, ref: refFor(requestId) } : { ok: true });
 }

@@ -272,6 +272,9 @@ const faq = [
         if (!paid && tier?.stripeUrl) {
           const next = new URL(tier.stripeUrl);
           if (data.email) next.searchParams.set('prefilled_email', String(data.email));
+          // The order reference comes back on the Stripe payment so the webhook can match it to this request.
+          const saved = await res.clone().json().catch(() => ({}));
+          if (saved && typeof saved.ref === 'string' && /^etr-[1-9]\d{0,14}$/.test(saved.ref)) next.searchParams.set('client_reference_id', saved.ref);
           window.location.href = next.toString();
           return;
         }
