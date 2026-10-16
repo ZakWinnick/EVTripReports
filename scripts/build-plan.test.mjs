@@ -397,7 +397,7 @@ test('a draft record is the JSON body the admin API stores', () => {
   assert.match(html, /Estimate: about 64%/);
   assert.match(html, /Optional stop/);
   assert.match(html, /Not yet verified/);
-  assert.match(html, /<h2 class="h2">Charging strategy<\/h2>/);
+  assert.match(html, /<h2 class="h2">Charging Strategy<\/h2>/);
   assert.equal(html.includes('\u2014'), false);
   assertCleanHtml(html, 'draft');
 });
@@ -473,10 +473,10 @@ test('published routes build for each tier without inventing a station', async (
       const html = renderPlan(plan);
       assert.match(html, new RegExp(plan.stops[0].primary.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
       assertCleanHtml(html, meta.slug);
-      if (tier === '$19') assert.doesNotMatch(html, /Charging strategy/);
+      if (tier === '$19') assert.doesNotMatch(html, /Charging Strategy/);
       if (tier === '$39' || tier === '$79') {
-        assert.match(html, /<h2 class="h2">Charging strategy<\/h2>/);
-        assert.ok(html.indexOf('>Charging strategy<') < html.indexOf('id="stop-'), meta.slug);
+        assert.match(html, /<h2 class="h2">Charging Strategy<\/h2>/);
+        assert.ok(html.indexOf('>Charging Strategy<') < html.indexOf('id="stop-'), meta.slug);
         assert.match(html, /Reserve floor is 10%/);
         assert.match(html, /Arrival target is 15%/);
       }
@@ -945,7 +945,7 @@ test('a stored plan renders the same HTML, and new sections appear only when the
   assert.equal(storedHtml, snap);
   assertCleanHtml(storedHtml, 'stored plan');
   assert.match(storedHtml, /Verified Oct 15, 2026/);
-  assert.match(storedHtml, /<h2 class="h2">Charging strategy<\/h2>/);
+  assert.match(storedHtml, /<h2 class="h2">Charging Strategy<\/h2>/);
   assert.match(storedHtml, /Charge at Walmart Alpha to 50%/);
   assert.match(storedHtml, /Reserve floor is 10%/);
   const route = sampleRoute();

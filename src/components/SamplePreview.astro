@@ -6,7 +6,7 @@ const stop = plan.stops.find((s: any) => s.charging);
 const strategy = plan.strategy.stops.find((s: any) => s.stopId === stop?.id);
 ---
 <div class="sample-preview">
-  <div class="sample-preview__top"><span>Sample Detailed plan, $39</span><span>Example only</span></div>
+  <div class="sample-preview__top"><span>Sample Detailed Plan, $39</span><span>Example only</span></div>
   <h3>Ontario to Las Vegas</h3>
   <p class="sample-vehicle">Ioniq 5 with a CCS port and NACS adapter</p>
   <div class="sample-charger"><p class="eyebrow">Charging stop at {stop?.name}, mile {stop?.mile}</p><p><strong>{stop?.primary.name}</strong></p><p>Backup: {stop?.backups?.[0]?.name || 'Not yet verified'}</p></div>

@@ -64,7 +64,7 @@ test('mobile menu, skip link, and form autocomplete', async () => {
   const body = layout.slice(layout.indexOf('<body>'));
   assert.match(body, /<body>\s*<a class="skip" href="#main">Skip to content<\/a>/);
   assert.match(layout, /<details class="menu">\s*<summary>Menu<\/summary>/);
-  assert.match(layout, /href: '\/find-my-plans\/', label: 'Find my plans'/);
+  assert.match(layout, /href: '\/find-my-plans\/', label: 'Find My Plans'/);
   assert.match(layout, /<nav class="nav__links" aria-label="Main">/);
   assert.match(css, /@media \(max-width: 760px\) \{[\s\S]*\.nav__links \{ display: none; \}[\s\S]*\.menu \{ display: block;/);
   assert.match(css, /^\.menu \{ display: none;/m);
@@ -82,7 +82,7 @@ test('compare-table pay buttons open the intake form, and checkout still follows
   assert.match(plans, /select\.value = name/);
   assert.match(plans, /if \(tier\?\.stripeUrl\)/);
   assert.match(plans, /window\.location\.href = next\.toString\(\)/);
-  assert.match(plans, /Save details and pay/);
+  assert.match(plans, /Save Details and Pay/);
   assert.match(plans, /role="img" aria-label="Included"/);
   assert.match(plans, /role="img" aria-label="Not included"/);
   assert.match(prices, /https:\/\/buy\.stripe\.com\/dRmeVd3ui5XF9r06iq5sA00/);

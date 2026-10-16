@@ -494,7 +494,7 @@ test('the sign-in link is single use and lists only approved plans', async () =>
       env: { DB: db },
     });
     assert.equal(opened.status, 200);
-    assert.match(await opened.text(), /Show my plans/);
+    assert.match(await opened.text(), /Show My Plans/);
     assert.equal(opened.headers.get('x-robots-tag'), 'noindex, nofollow');
     assert.equal(opened.headers.get('referrer-policy'), 'no-referrer');
     assert.equal(db.signins[0].used_at, null);
@@ -634,7 +634,7 @@ test('a non-json draft is not rendered as HTML', async () => {
       env: { DB: db },
     });
     const html = await page.text();
-    assert.match(html, /can't be shown yet/);
+    assert.match(html, /Can’t Be Shown Yet/);
     assert.equal(html.includes('onerror'), false);
     assert.equal(html.includes('<img'), false);
   } finally {

@@ -173,7 +173,7 @@ test('the site offers the sample plan instead of a guide directory', async () =>
     assert.doesNotMatch(source, /id="(?:guides-list|guides-index|corridors)"/, path);
   }
   const layout = await readFile(new URL('../../src/layouts/Base.astro', import.meta.url), 'utf8');
-  assert.match(layout, /href: '\/sample-plan\/', label: 'Sample plan'/);
+  assert.match(layout, /href: '\/sample-plan\/', label: 'Sample Plan'/);
 });
 
 test('retired directory URLs redirect to the sample without reading route data', async () => {

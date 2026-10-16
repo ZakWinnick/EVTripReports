@@ -11,7 +11,7 @@ export function newsletterForm(id) {
 <div class="newsletter__row">
 <label class="sr" for="${id}-email">Email</label>
 <input id="${id}-email" name="email" type="email" required autocomplete="email" autocapitalize="none" autocorrect="off" inputmode="email" maxlength="254" placeholder="Email" aria-describedby="${id}-copy ${id}-note" />
-<button class="pill" type="submit">Sign up</button>
+<button class="pill" type="submit">Sign Up</button>
 </div>
 <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label>
 <div class="newsletter__slot" hidden></div>

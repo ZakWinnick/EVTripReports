@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import SamplePreview from '../components/SamplePreview.astro';
 import { tiers, priceLabel } from '../data/plans.js';
+import { titleCase } from '../lib/title-case.js';
 const rows: [string, boolean, boolean, boolean][] = [
   ['Charging options and available backups, with gaps flagged', true, true, true],
   ['Every stop re-checked against the network before delivery', true, true, true],
@@ -25,22 +26,22 @@ const faq = [
 ---
 <Base title="Plan an EV road trip" description="Get an EV trip plan for your car, adapter, and dates. Compare $19, $39, and $79 plans, see a sample, and tell us where you want to go.">
   <section class="band band--tight"><div class="wrap">
-    <div id="plan-intro" class="sample-feature"><div><h1 class="h1">Let us plan your EV trip.</h1><p class="lede" style="margin-top:22px">A plan for your car, adapter, and the way you like to travel. Checked charging options, available backups, and the gaps worth knowing about before you leave.</p><p class="small muted" style="margin-top:18px">Reviewed by a person. From $19. Route and detailed plans within 48 hours; multi-day plans within 3 business days after payment and complete details.</p><div class="btnrow" style="margin-top:25px"><a class="pill pill--lg" href="#compare">Compare plans</a><a class="text-link" href="/sample-plan/">Read the sample plan</a></div></div><SamplePreview /></div>
-    <div id="checkout-return" class="checkout-return" hidden role="status"><h2 class="h2">Back from checkout?</h2><p>This page cannot confirm a payment. Check for your Stripe receipt before paying again. If you submitted your trip details before checkout, you do not need to send them again.</p><p>Delivery starts once payment and complete trip details are received. When your plan is ready, use the checkout email to find it below. If you paid without sending details, email us so we can match them to your order.</p><div class="btnrow"><a class="pill" href="/find-my-plans/">Find my plans</a><a class="text-link" href="mailto:admin@evtripreports.com?subject=Trip%20order%20help">Get order help</a><a class="text-link" href="/plans/">Start a different trip</a></div></div>
+    <div id="plan-intro" class="sample-feature"><div><h1 class="h1">Let Us Plan Your EV Trip</h1><p class="lede" style="margin-top:22px">A plan for your car, adapter, and the way you like to travel. Checked charging options, available backups, and the gaps worth knowing about before you leave.</p><p class="small muted" style="margin-top:18px">Reviewed by a person. From $19. Route and detailed plans within 48 hours; multi-day plans within 3 business days after payment and complete details.</p><div class="btnrow" style="margin-top:25px"><a class="pill pill--lg" href="#compare">Compare Plans</a><a class="text-link" href="/sample-plan/">Read the Sample Plan</a></div></div><SamplePreview /></div>
+    <div id="checkout-return" class="checkout-return" hidden role="status"><h2 class="h2">Back from Checkout?</h2><p>This page cannot confirm a payment. Check for your Stripe receipt before paying again. If you submitted your trip details before checkout, you do not need to send them again.</p><p>Delivery starts once payment and complete trip details are received. When your plan is ready, use the checkout email to find it below. If you paid without sending details, email us so we can match them to your order.</p><div class="btnrow"><a class="pill" href="/find-my-plans/">Find My Plans</a><a class="text-link" href="mailto:admin@evtripreports.com?subject=Trip%20order%20help">Get Order Help</a><a class="text-link" href="/plans/">Start a Different Trip</a></div></div>
   </div></section>
 
   <section id="compare" class="band band--tight band--mist">
     <div class="wrap">
-      <h2 class="h2">Compare plans</h2>
+      <h2 class="h2">Compare Plans</h2>
       <p class="lede" style="margin-top:12px">Choose what you need. We save your trip details before opening secure checkout.</p>
-      <div class="plan-cards">{tiers.map((t) => <article class:list={['plan-card', { 'plan-card--featured': t.id === 'detailed' }]}><h3 class="h3">{t.name}</h3><p class="plan-card__price">{t.price}<span> / trip</span></p><p class="small muted">{t.blurb}</p><p class="small">{t.delivery}</p><a class="pill pay-link" href="#request" data-tier={t.name}>Choose {t.name.toLowerCase()}</a></article>)}</div>
+      <div class="plan-cards">{tiers.map((t) => <article class:list={['plan-card', { 'plan-card--featured': t.id === 'detailed' }]}><h3 class="h3">{titleCase(t.name)}</h3><p class="plan-card__price">{t.price}<span> / trip</span></p><p class="small muted">{t.blurb}</p><p class="small">{t.delivery}</p><a class="pill pay-link" href="#request" data-tier={t.name}>Choose {titleCase(t.name)}</a></article>)}</div>
       <details class="plan-comparison"><summary>Compare everything included</summary>
       <div class="cmp" role="table" aria-label="Plan comparison">
         <div class="cmp__row cmp__hdr" role="row">
           <div role="columnheader"><span class="sr">Feature</span></div>
           {tiers.map((t) => (
             <div role="columnheader" class="cmp__tier">
-              <span class="cmp__name">{t.name}</span>
+              <span class="cmp__name">{titleCase(t.name)}</span>
               <span class="cmp__price">{priceLabel(t)}</span>
               <span class="small muted">{t.blurb}</span>
 
@@ -68,12 +69,12 @@ const faq = [
   <section id="request" class="band band--tight">
     <div class="wrap req">
       <div>
-        <h2 class="h2">Tell us about your trip.</h2>
+        <h2 class="h2">Tell Us About Your Trip</h2>
         <p id="form-lede" class="lede" style="margin-top:14px">Start with where you’re going. Then tell us about the car and the people coming along. We save the details before opening checkout.</p>
       </div>
       <form id="intake" class="panel form" novalidate>
         <noscript><p>This form needs JavaScript for the spam check. Turn it on, or email <a href="mailto:admin@evtripreports.com">admin@evtripreports.com</a>.</p></noscript>
-        <p class="form-step"><b>1</b>Your route</p>
+        <p class="form-step"><b>1</b>Your Route</p>
         <div class="grid2">
           <label>Starting from<input name="start" placeholder="Pasadena, CA" required /></label>
           <label>Going to<input name="end" placeholder="Las Vegas, NV" required /></label>
@@ -83,10 +84,10 @@ const faq = [
           <label>Coming back (optional)<input name="return" type="date" /></label>
         </div>
         <p class="small muted">Need a return trip? Tell us in the notes; we will confirm the scope before building it.</p>
-        <button class="pill pill--ghost route-check" type="button">Continue to trip details</button>
+        <button class="pill pill--ghost route-check" type="button">Continue to Trip Details</button>
         <p class="route-check-message" role="status" aria-live="polite"></p>
         <div class="trip-more">
-        <p class="form-step"><b>2</b>Your car and who’s coming</p>
+        <p class="form-step"><b>2</b>Your Car and Who’s Coming</p>
         <div class="grid2">
           <label>Your name<input name="name" autocomplete="name" required /></label>
           <label>Email<input name="email" type="email" autocomplete="email" required /></label>
@@ -121,9 +122,9 @@ const faq = [
         <label>Anything else<textarea name="notes" rows="4" placeholder="Must-stops, hotels you like, how far you're comfortable driving in a day"></textarea></label>
         <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label>
         <div id="turnstile-slot" hidden></div>
-        <p class="form-step"><b>3</b>Save details and pay</p>
+        <p class="form-step"><b>3</b>Save Details and Pay</p>
         <div class="btnrow">
-          <button class="pill pill--lg" type="submit">Save details and pay $19</button>
+          <button class="pill pill--lg" type="submit">Save Details and Pay $19</button>
           <span class="small muted">By sending, you agree to the <a href="/terms/">terms</a> and <a href="/privacy/">privacy policy</a>.</span>
         </div>
         <p class="form__msg" role="status" aria-live="polite"></p>
@@ -146,7 +147,7 @@ const faq = [
         ))}
       </div>
 
-      <h2 id="refunds" class="h2" style="margin-top:64px">Refund policy</h2>
+      <h2 id="refunds" class="h2" style="margin-top:64px">Refund Policy</h2>
       <div class="prose" style="margin-top:16px">
         <ul>
           <li>If we miss the delivery time, you get a full refund.</li>
@@ -202,8 +203,8 @@ const faq = [
 
   function payLabel() {
     const tier = selectedTier();
-    if (!tier) return 'Save details and pay';
-    return `Save details and pay ${tier.price}`;
+    if (!tier) return 'Save Details and Pay';
+    return `Save Details and Pay ${tier.price}`;
   }
 
   // A URL parameter is never evidence of payment. Prevent accidental duplicate orders.
@@ -240,7 +241,7 @@ const faq = [
     if (more) more.hidden = !routeConfirmed;
     routeMessage.textContent = error || 'Next, tell us about your car and any places you want to visit.';
     routeMessage.classList.toggle('is-err', !!error);
-    if (checkButton) checkButton.textContent = error ? 'Continue to trip details' : 'Trip details are below';
+    if (checkButton) checkButton.textContent = error ? 'Continue to Trip Details' : 'Trip Details Are Below';
     return routeConfirmed;
   };
   checkButton?.addEventListener('click', () => { if (checkRoute()) routeField('name')?.focus(); });
@@ -248,7 +249,7 @@ const faq = [
     routeConfirmed = false;
     if (more) more.hidden = true;
     if (routeMessage) routeMessage.textContent = '';
-    if (checkButton) checkButton.textContent = 'Continue to trip details';
+    if (checkButton) checkButton.textContent = 'Continue to Trip Details';
   }));
   const chosenRoute = corridorBySlug(params.get('route') || '');
   if (chosenRoute) {

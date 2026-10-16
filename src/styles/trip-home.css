@@ -76,12 +76,6 @@
 .stopcard__backup p, .stopcard__caution p { font-size: 0.97rem; margin-bottom: 6px !important; }
 .stopcard__caution { background: var(--warn-soft); border-left: 4px solid var(--warn); padding: 14px 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 
-/* Zak */
-.home-zak { background: var(--mist); padding: clamp(56px, 7vw, 96px) 0; }
-.home-zak__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(20px, 6vw, 88px); }
-.home-zak__letter p { font-size: 1.2rem; line-height: 1.55; }
-.home-zak__letter p.muted { font-size: 1rem; margin-top: 8px; }
-
 /* Plans, set like a fare table */
 .home-prices { padding: clamp(56px, 8vw, 104px) 0; }
 .home-prices__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(20px, 6vw, 88px); align-items: end; margin-bottom: 36px; }
@@ -101,7 +95,7 @@
   .fare .pill { grid-column: 1 / -1; justify-self: start; min-width: 220px; }
 }
 @media (max-width: 860px) {
-  .home-hero__grid, .home-plan__head, .home-plan__grid, .home-zak__grid, .home-prices__head { grid-template-columns: 1fr; }
+  .home-hero__grid, .home-plan__head, .home-plan__grid, .home-prices__head { grid-template-columns: 1fr; }
   .roadsign { max-width: 560px; }
   .strip { position: static; }
   .strip__track { --h: 540px; }

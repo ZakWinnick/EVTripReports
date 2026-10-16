@@ -188,16 +188,16 @@ async function findPlan(db, token) {
 }
 
 function messagePage(title, text) {
-  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">${esc(title)}</h1><p class="lede" style="margin-top:18px">${esc(text)}</p><p style="margin-top:28px"><a class="pill" href="/find-my-plans/">Find my plans</a></p></div></section>`;
+  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">${esc(title)}</h1><p class="lede" style="margin-top:18px">${esc(text)}</p><p style="margin-top:28px"><a class="pill" href="/find-my-plans/">Find My Plans</a></p></div></section>`;
 }
 
 function confirmPage() {
-  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">Show my plans.</h1><p class="lede" style="margin-top:18px">This link works once and expires 15 minutes after it was sent. Continue to see your approved plans.</p><form method="post" style="margin-top:28px"><button class="pill pill--lg" type="submit">Show my plans</button></form></div></section>`;
+  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">Show My Plans</h1><p class="lede" style="margin-top:18px">This link works once and expires 15 minutes after it was sent. Continue to see your approved plans.</p><form method="post" style="margin-top:28px"><button class="pill pill--lg" type="submit">Show My Plans</button></form></div></section>`;
 }
 
 function planCards(plans) {
   if (!plans.length) {
-    return `<section class="band band--tight"><div class="wrap"><h1 class="h1">Your plans.</h1><p class="lede" style="margin-top:18px">No approved plans are on this email yet.</p></div></section>`;
+    return `<section class="band band--tight"><div class="wrap"><h1 class="h1">Your Plans</h1><p class="lede" style="margin-top:18px">No approved plans are on this email yet.</p></div></section>`;
   }
   const cards = plans.map((plan) => {
     const depart = prettyDay(plan.depart);
@@ -206,9 +206,9 @@ function planCards(plans) {
     const detail = [plan.car, when].filter(Boolean).join('. ');
     return `<div class="panel"><span class="guide__hw">${esc(plan.tier || 'Plan')}</span><span class="guide__t">${esc(plan.start_place)} to ${esc(plan.end_place)}</span>${
       detail ? `<span class="small muted">${esc(detail)}</span>` : ''
-    }<a class="pill" href="/plan/${esc(plan.token)}/">Open plan</a></div>`;
+    }<a class="pill" href="/plan/${esc(plan.token)}/">Open Plan</a></div>`;
   }).join('');
-  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">Your plans.</h1><p class="lede" style="margin-top:18px">Approved plans for this email. Each link is private.</p><div class="stack">${cards}</div></div></section>`;
+  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">Your Plans</h1><p class="lede" style="margin-top:18px">Approved plans for this email. Each link is private.</p><div class="stack">${cards}</div></div></section>`;
 }
 
 async function sessionEmail(db, request) {

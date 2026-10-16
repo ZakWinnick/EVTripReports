@@ -5,10 +5,10 @@ import Tag from '../components/Tag.astro';
 <Base title="How we check" description="Where every station fact on EV Trip Reports comes from, how often it is re-checked, and what the status labels mean.">
   <section class="band band--tight">
     <div class="wrap prose">
-      <h1 class="h1">How we check</h1>
+      <h1 class="h1">How We Check</h1>
       <p class="lede" style="margin-top:20px">One wrong stall count costs a driver an hour. So every station fact on this site has a source and the date we checked it, and anything we couldn't confirm says so.</p>
 
-      <h2>Sources, in order of authority</h2>
+      <h2>Sources, in Order of Authority</h2>
       <ol>
         <li><strong>The network's own locator.</strong> Tesla, Electrify America, EVgo, IONNA, Rivian Adventure Network, ChargePoint, bp pulse, Mercedes-Benz High-Power Charging, and Walmart. These decide stall count, maximum kW, who can use the site, and price.</li>
         <li><strong>The U.S. Department of Energy station database</strong> (Alternative Fuels Data Center). We use it to find every DC fast site in each stop town so nothing is missed. Where it disagrees with the network, the network wins and we show the disagreement.</li>
@@ -25,7 +25,7 @@ import Tag from '../components/Tag.astro';
         <li>Every Tesla site is marked either Tesla only or open to all EVs.</li>
       </ul>
 
-      <h2>What the labels mean</h2>
+      <h2>What the Labels Mean</h2>
       <dl class="labels">
         <div><dt><Tag status="verified" /></dt><dd>Checked on the network's own locator on the date shown.</dd></div>
         <div><dt><Tag status="conflict" /></dt><dd>The network and the DOE database disagree. We show the network's number and note the other.</dd></div>
@@ -35,7 +35,7 @@ import Tag from '../components/Tag.astro';
         <div><dt><Tag status="open" /></dt><dd>Tesla lists the site as open to other EVs. CCS cars need a NACS adapter.</dd></div>
       </dl>
 
-      <h2>How often we re-check</h2>
+      <h2>How Often We Re-Check</h2>
       <ul>
         <li>Published routes: weekly.</li>
         <li>Custom plans are checked against the network before delivery. A person reviews every plan before it is sent. Route and detailed plans within 48 hours. Multi-day and family plans within 3 business days.</li>

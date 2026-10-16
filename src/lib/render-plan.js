@@ -1,6 +1,7 @@
 // Renders an approved plan from the JSON stored in plan_drafts.body.
 // Same spec-sheet classes as the guides. A fact shows a source link and a
 // checked-on date only when that fact (or its source id) provides them.
+import { titleCase } from './title-case.js';
 import { esc, fmtDate, tag, routeLine } from './render-guide.js';
 
 const LEAVE_FIELDS = ['target', 'leaveWith', 'targetCharge'];
@@ -15,7 +16,7 @@ export function parsePlan(body) {
 }
 
 export function unavailablePlan() {
-  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">This plan can't be shown yet.</h1><p class="lede" style="margin-top:18px">The link works, but this plan is not ready to view here. Reply to the email your plan came in if you need another copy.</p></div></section>`;
+  return `<section class="band band--tight"><div class="wrap"><h1 class="h1">This Plan Can’t Be Shown Yet</h1><p class="lede" style="margin-top:18px">The link works, but this plan is not ready to view here. Reply to the email your plan came in if you need another copy.</p></div></section>`;
 }
 
 export function safeUrl(value) {
@@ -282,7 +283,7 @@ function stopSection(stop, index, sources, plan) {
     ? `<details class="other"><summary>Other sites nearby (${stop.other.length})</summary>${backupList(stop.other, sources, plan)}</details>`
     : '';
   const around = Array.isArray(stop.around) && stop.around.length
-    ? `<h3 class="h3 sub">Around the stop</h3><ul class="plain">${stop.around
+    ? `<h3 class="h3 sub">Around the Stop</h3><ul class="plain">${stop.around
         .map((item) => `<li>${esc(item?.text || item?.value || (typeof item === 'string' ? item : ''))}</li>`)
         .join('')}</ul>`
     : '';
@@ -357,7 +358,7 @@ function contingencyHtml(items, sources) {
     }
     group.items.push(item);
   }
-  const body = groups.map((group) => `<h3 class="h3">${esc(group.title)}</h3><ul class="tips">${group.items.map((item) => {
+  const body = groups.map((group) => `<h3 class="h3">${esc(titleCase(group.title))}</h3><ul class="tips">${group.items.map((item) => {
     const text = item?.text || '';
     return `<li>${esc(text)} ${factBits(item, sources)}</li>`;
   }).join('')}</ul>`).join('');
@@ -366,7 +367,7 @@ function contingencyHtml(items, sources) {
 
 function tipsHtml(tips, sources) {
   if (!Array.isArray(tips) || !tips.length) return '';
-  return `<section class="band band--tight"><div class="wrap"><h2 class="h2">Notes for this trip</h2><ol class="tips">${tips
+  return `<section class="band band--tight"><div class="wrap"><h2 class="h2">Notes for This Trip</h2><ol class="tips">${tips
     .map((tip) => {
       const text = typeof tip === 'string' ? tip : tip?.text || tip?.value || '';
       return `<li>${esc(text)} ${factBits(typeof tip === 'object' ? tip : null, sources)}</li>`;
@@ -429,7 +430,7 @@ function strategyCopy(plan) {
 
 function strategyHtml(plan, ctx) {
   if (!showsStrategy(plan, ctx)) return '';
-  return `<section class="band band--tight"><div class="wrap"><h2 class="h2">Charging strategy</h2><p style="margin-top:18px">${esc(strategyCopy(plan))}</p></div></section>`;
+  return `<section class="band band--tight"><div class="wrap"><h2 class="h2">Charging Strategy</h2><p style="margin-top:18px">${esc(strategyCopy(plan))}</p></div></section>`;
 }
 
 function metaLine(plan, ctx) {
@@ -455,7 +456,7 @@ export function renderPlan(plan, ctx = {}) {
         .map((day) => {
           const label = day?.title || day?.name || 'Day';
           const when = prettyDay(day?.date || day?.depart);
-          return `<section class="band band--tight"><div class="wrap"><h2 class="h2">${esc(label)}</h2>${
+          return `<section class="band band--tight"><div class="wrap"><h2 class="h2">${esc(titleCase(label))}</h2>${
             when ? `<p class="muted" style="margin-top:8px">${esc(when)}</p>` : ''
           }</div></section>${stopsHtml(day?.stops, sources, plan)}`;
         })

@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 <Base title="Find my plans" description="Email yourself a one-time link to the EV trip plans you already bought. No password.">
   <section class="band band--tight">
     <div class="wrap">
-      <h1 class="h1">Find my plans.</h1>
+      <h1 class="h1">Find My Plans</h1>
       <p class="lede" style="margin-top:20px">Enter the email you used at checkout. If it has an approved plan, we send a link that works once and expires in 15 minutes. No password and no account.</p>
     </div>
   </section>
@@ -17,7 +17,7 @@ import Base from '../layouts/Base.astro';
         <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label>
         <div id="turnstile-slot" hidden></div>
         <div class="btnrow">
-          <button class="pill pill--lg" type="submit">Email me a link</button>
+          <button class="pill pill--lg" type="submit">Email Me a Link</button>
         </div>
         <p class="form__msg" role="status" aria-live="polite"></p>
       </form>
@@ -93,7 +93,7 @@ import Base from '../layouts/Base.astro';
       msg.classList.add('is-err');
     } finally {
       btn.disabled = false;
-      btn.textContent = 'Email me a link';
+      btn.textContent = 'Email Me a Link';
       if (widget) widget.reset();
     }
   });
