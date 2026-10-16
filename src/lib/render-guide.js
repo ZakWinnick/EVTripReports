@@ -384,7 +384,7 @@ function stopSection(route, s, i) {
   );
   const firstBackup = backupItems[0] || '<li class="small muted">No confirmed backup yet.</li>';
   const directions = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${p.name}, ${p.address || s.towns || ''}`)}`;
-  const correction = `mailto:admin@evtripreports.com?subject=${encodeURIComponent(`Guide correction: ${route.title} / ${s.name}`)}`;
+  const correction = `mailto:support@evtripreports.com?subject=${encodeURIComponent(`Guide correction: ${route.title} / ${s.name}`)}`;
   const reportsCount = driverReports.length + legacyReports.length;
   return `<section id="stop-${esc(s.id)}" class="band band--tight stop"><div class="wrap">
 <header class="stop__head"><span class="milemarker"><span>Mile</span>${esc(s.mile)}</span><div><h2 class="h2">${esc(s.name)}</h2><p class="muted" style="margin:6px 0 0">${esc(s.towns)}</p></div>
