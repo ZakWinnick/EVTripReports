@@ -1861,11 +1861,11 @@
       "reports": [],
       "around": [
         {
-          "text": "EA's site note: chargers are on the southeast side of the Sam's Club lot. Sam's Club 6686 lists club hours 9:00 AM to 8:00 PM daily at 1905 South 300 West. Restrooms for non-members: Not yet verified on the club page.",
+          "text": "EA's site note: chargers are on the southeast side of the Sam's Club lot. Sam's Club 6686 lists club hours 9:00 AM to 8:00 PM daily at 1905 South 300 West, and a Sam's Cafe that opens at 10:00 AM. Whether non-members can use the cafe or the restrooms: Not yet verified on the club page.",
           "category": "food",
           "source": "samsclub-6686",
           "url": "https://www.samsclub.com/club/6686",
-          "checkedOn": "2026-10-15"
+          "checkedOn": "2026-10-16"
         }
       ],
       "searches": [
@@ -1892,7 +1892,7 @@
   ],
   "tips": [
     {
-      "text": "16 Tesla sites on this route are flagged on Tesla Find Us where DOE's access note agrees (11 open to all EVs with a NACS adapter, 5 Tesla only). 13 stay Not yet verified because Tesla's page rendered only in part, returned 404, or DOE gave no access note. Retried 2026-10-15. Where the page shows no stall count or kW, the numbers are DOE's.",
+      "text": "16 Tesla sites on this route are flagged on Tesla Find Us where DOE's access note agrees (11 open to all EVs with a NACS adapter, 5 Tesla only). 13 stay Not yet verified because Tesla's page rendered only in part, returned 404, or DOE gave no access note. Retried 2026-10-15 and again 2026-10-16, when Tesla's pages still showed only the address and hours, and DOE still gave no access note at Smith's on Pioneer Road or Chevron in Sandy. Where the page shows no stall count or kW, the numbers are DOE's.",
       "source": "tesla-findus"
     },
     {
@@ -1912,7 +1912,7 @@
       "source": "ea-locator"
     },
     {
-      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily; IONNA lists restrooms at Mesquite and Beaver. Walmart store hours at Mesquite, Washington, Cedar City and Spanish Fork are still Not yet verified.",
+      "text": "Food and restroom notes: Flying J Scipio and Beaver list 24-hour stores with showers; Wendy's next to the Beaver EA lists 10:00 AM to 11:00 PM; Sam's Club SLC lists 9:00 AM to 8:00 PM daily and a Sam's Cafe from 10:00 AM; IONNA lists restrooms at Mesquite and Beaver. Walmart store hours and restrooms at Mesquite, Washington, Cedar City and Spanish Fork are still Not yet verified: walmart.com store pages returned 403 on 2026-10-16.",
       "source": "pilotflyingj-scipio"
     },
     {
