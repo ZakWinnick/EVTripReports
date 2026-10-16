@@ -3,7 +3,7 @@
   "title": "Las Vegas to Salt Lake City",
   "highway": "I-15",
   "direction": "northbound",
-  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Six primaries are Electrify America sites confirmed on EA's own locator, 4 to 8 chargers, up to 350 kW. The last is EVgo's site at the Target on 300 West in Salt Lake City, confirmed on EVgo's locator. 28 of 29 Tesla sites carry an access flag from Tesla Find Us (23 open to all EVs, 5 Tesla only). WinCo Foods in Orem stays Not yet verified.",
+  "summary": "I-15 from Tropicana Avenue in Las Vegas to 600 South in Salt Lake City, through Mesquite, St. George, Cedar City, Beaver, Scipio and Spanish Fork. Six primaries are Electrify America sites confirmed on EA's own locator, each with 4 chargers, up to 350 kW. The last is EVgo's site at the Target on 300 West in Salt Lake City, confirmed on EVgo's locator. 28 of 29 Tesla sites carry an access flag from Tesla Find Us (23 open to all EVs, 5 Tesla only). WinCo Foods in Orem stays Not yet verified.",
   "checked": "2026-10-15",
   "startLabel": "Tropicana Ave on-ramp, Las Vegas",
   "startNote": "Mileage starts at the I-15 on-ramp at Tropicana Avenue in Las Vegas (Nevada exit 37, mile 37.40), where the LA to Las Vegas guide ends, and ends at I-15 exit 306, 600 South in Salt Lake City. The 423.07 miles is OSRM's driving distance on I-15 between those two points, shown as 423. Stop miles are each site's nearest point on that route. Utah exit miles minus 115.48 line up with those stop miles at exits 10, 57, 112, 188 and 257B.",
