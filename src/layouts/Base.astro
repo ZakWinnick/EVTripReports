@@ -65,7 +65,7 @@ const links = [
       <slot />
     </main>
     <footer class="foot">
-      <div class="wrap foot__signup">
+      <div class="wrap foot__signup newsletter-band" hidden>
         <Fragment set:html={newsletterForm('newsletter-footer')} />
       </div>
       <div class="wrap foot__grid">
@@ -91,6 +91,16 @@ const links = [
         if (!forms.length) return;
         var widgets = new WeakMap();
 
+        function setOpen(open) {
+          forms.forEach(function (form) {
+            var band = form.closest('.newsletter-band');
+            form.hidden = !open;
+            if (band) band.hidden = !open;
+          });
+        }
+
+        setOpen(false);
+
         function loadTurnstile() {
           return new Promise(function (resolve, reject) {
             if (window.turnstile) { resolve(); return; }
@@ -114,6 +124,8 @@ const links = [
           if (!res.ok) return null;
           return res.json();
         }).then(function (body) {
+          if (!body || body.open !== true) return;
+          setOpen(true);
           var sitekey = body && body.turnstileSiteKey;
           if (!sitekey) return;
           return loadTurnstile().then(function () {
