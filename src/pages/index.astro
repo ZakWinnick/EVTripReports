@@ -26,7 +26,7 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
   { '@type': 'Organization', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'A travel agent for EVs.' },
 ] };
 ---
-<Base title="Custom EV road-trip plans" description="Custom EV trip plans for your car, route, and dates. See a sample plan with charging stops, available backups, and dated sources.">
+<Base title="A Travel Agent for EV Road Trips" brandFirst={true} description="Custom EV trip plans for your car, route, and dates. See a sample plan with charging stops, available backups, and dated sources.">
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(homeLd)}></script>
   <div class="home">
     <section class="home-hero">

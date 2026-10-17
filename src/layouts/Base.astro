@@ -6,6 +6,7 @@ import { newsletterForm } from '../lib/newsletter.js';
 
 interface Props {
   title: string;
+  brandFirst?: boolean;
   description: string;
   path?: string;
   current?: string;
@@ -14,8 +15,8 @@ interface Props {
   analytics?: boolean;
   referrer?: string;
 }
-const { title, description, path = '', current: currentProp = '', noindex = false, robots = 'noindex', analytics = true, referrer = '' } = Astro.props;
-const fullTitle = `${title} | EV Trip Reports`;
+const { title, brandFirst = false, description, path = '', current: currentProp = '', noindex = false, robots = 'noindex', analytics = true, referrer = '' } = Astro.props;
+const fullTitle = brandFirst ? `EV Trip Reports | ${title}` : `${title} | EV Trip Reports`;
 const canonical = new URL(path || Astro.url.pathname, Astro.site).toString();
 const ogImage = new URL('/og.png', Astro.site).toString();
 const current = String(currentProp || Astro.url.pathname);

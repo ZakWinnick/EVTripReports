@@ -29,13 +29,13 @@ test('home title, descriptions, and home structured data', async () => {
   const home = await source('../src/pages/index.astro');
   const plans = await source('../src/pages/plans.astro');
   const layout = await source('../src/layouts/Base.astro');
-  assert.match(home, /title="Custom EV road-trip plans"/);
+  assert.match(home, /title="A Travel Agent for EV Road Trips" brandFirst=\{true\}/);
   assert.match(home, new RegExp(`description="${HOME_DESCRIPTION.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
   assert.ok(HOME_DESCRIPTION.length <= 160, HOME_DESCRIPTION.length);
   assert.match(plans, new RegExp(`description="${PLANS_DESCRIPTION.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
   assert.ok(PLANS_DESCRIPTION.length <= 160, String(PLANS_DESCRIPTION.length));
   assert.equal(layout.includes("title === 'EV Trip Reports'"), false);
-  assert.match(layout, /const fullTitle = `\$\{title\} \| EV Trip Reports`;/);
+  assert.ok(layout.includes('const fullTitle = brandFirst ? `EV Trip Reports | ${title}` : `${title} | EV Trip Reports`;'));
   assert.match(home, /'@type': 'WebSite'/);
   assert.match(home, /'@type': 'Organization'/);
   assert.match(home, /A travel agent for EVs\./);
