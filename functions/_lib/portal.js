@@ -35,14 +35,14 @@ function validEmail(email) {
   return email.length <= 200 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function clientIp(request) {
+export function clientIp(request) {
   return (request.headers.get('CF-Connecting-IP') || '').trim() || 'unknown';
 }
 
 function siteOrigin(request) {
-  const url = new URL(request.url);
-  if (url.hostname === 'evtripreports.com' || url.hostname === 'www.evtripreports.com') return 'https://evtripreports.com';
-  return url.origin;
+  // Sign-in links always point at the canonical site, even if the request
+  // arrived on pages.dev or another alias before the host check ran.
+  return 'https://evtripreports.com';
 }
 
 function readCookie(request, name) {
@@ -76,7 +76,7 @@ function parseSources(raw) {
   }
 }
 
-async function overLimit(db, scope, keyHash, limit) {
+export async function overLimit(db, scope, keyHash, limit) {
   const since = new Date(Date.now() - RATE_WINDOW_MS).toISOString();
   const row = await db.prepare(
     `SELECT COUNT(*) AS n FROM portal_rate_limits WHERE scope = ? AND key_hash = ? AND created_at > ?`
@@ -84,13 +84,20 @@ async function overLimit(db, scope, keyHash, limit) {
   return Number(row?.n || 0) >= limit;
 }
 
-async function recordLimit(db, scope, keyHash) {
+export async function recordLimit(db, scope, keyHash) {
   const now = new Date().toISOString();
   const cutoff = new Date(Date.now() - RATE_WINDOW_MS).toISOString();
   await db.prepare(`DELETE FROM portal_rate_limits WHERE created_at < ?`).bind(cutoff).run();
   await db.prepare(
     `INSERT INTO portal_rate_limits (scope, key_hash, created_at) VALUES (?, ?, ?)`
   ).bind(scope, keyHash, now).run();
+}
+
+export async function consumeIpRateLimit(db, request, scope) {
+  const ipKey = await sha256Hex(`ip\n${clientIp(request)}`);
+  if (await overLimit(db, scope, ipKey, IP_LIMIT)) return true;
+  await recordLimit(db, scope, ipKey);
+  return false;
 }
 
 async function approvedPlans(db, email) {

@@ -3,7 +3,7 @@ import test from 'node:test';
 import { onRequestPost } from './intake.js';
 
 const form = { name: 'Test Driver', email: 'driver@example.invalid', tier: 'Route plan', car: '2024 Ioniq 5', port: 'CCS port, no adapter', start: 'Los Angeles, CA', end: 'Las Vegas, NV', depart: '2026-11-02' };
-const db = (lastRowId) => ({ prepare() { return { bind() { return { async run() { return { success: true, meta: { last_row_id: lastRowId } }; } }; } }; } });
+const db = (lastRowId) => ({ prepare(sql) { return { bind() { return { async first() { return { n: 0 }; }, async run() { return { success: true, meta: { last_row_id: lastRowId } }; } }; } }; } });
 const post = (body, env) => onRequestPost({ request: new Request('https://evtripreports.com/api/intake', { method: 'POST', body: JSON.stringify(body) }), env, waitUntil() {} });
 
 test('intake returns the order reference Stripe needs, and no secret', async () => {
@@ -25,7 +25,19 @@ function capture() {
   const rows = [];
   return {
     rows,
-    DB: { prepare() { return { bind(...args) { rows.push(args); return { async run() { return { success: true, meta: { last_row_id: 7 } }; } }; } }; } },
+    DB: {
+      prepare(sql) {
+        return {
+          bind(...args) {
+            if (/portal_rate_limits/.test(sql)) {
+              return { async first() { return { n: 0 }; }, async run() { return { success: true }; } };
+            }
+            rows.push(args);
+            return { async run() { return { success: true, meta: { last_row_id: 7 } }; } };
+          },
+        };
+      },
+    },
   };
 }
 
@@ -112,4 +124,25 @@ test('the owner email says when the port is not known, and which corridor and ba
   assert.match(mail, /Leaving: 2026-11-02 at 09:15/);
   assert.match(mail, /Start battery: 60%/);
   assert.match(mail, /the way back is built by hand/);
+});
+
+test('intake rate-limits an IP the same way the portal does', async () => {
+  const seen = [];
+  const env = {
+    DB: {
+      prepare(sql) {
+        return {
+          bind(...args) {
+            seen.push(sql);
+            if (/SELECT COUNT/.test(sql)) return { async first() { return { n: 10 }; } };
+            return { async first() { return { n: 0 }; }, async run() { return { success: true }; } };
+          },
+        };
+      },
+    },
+  };
+  const res = await post(form, env);
+  assert.equal(res.status, 429);
+  assert.equal((await res.json()).error, 'Too many requests. Wait a few minutes and try again.');
+  assert.equal(seen.some((sql) => /INSERT INTO plan_requests/.test(sql)), false);
 });

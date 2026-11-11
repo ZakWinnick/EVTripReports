@@ -15,6 +15,7 @@
 
 import { applySecurityHeaders } from '../../src/lib/security-headers.js';
 import { verifyTurnstile } from '../_lib/turnstile.js';
+import { consumeIpRateLimit, RATE_MESSAGE } from '../_lib/portal.js';
 
 const BUTTONDOWN = 'https://api.buttondown.com/v1/subscribers';
 const ACTION = 'newsletter_signup';
@@ -51,6 +52,10 @@ export async function onRequestPost({ request, env }) {
 
   if (!(await verifyTurnstile(request, env, data['cf-turnstile-response'], ACTION))) {
     return json({ error: 'The security check failed. Refresh the page and try again.' }, 403);
+  }
+
+  if (env.DB && await consumeIpRateLimit(env.DB, request, 'subscribe-ip')) {
+    return json({ error: RATE_MESSAGE }, 429);
   }
 
   const email = String(data.email ?? '').trim();

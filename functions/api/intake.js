@@ -17,6 +17,7 @@ import { verifyTurnstile } from '../_lib/turnstile.js';
 import { refFor } from '../_lib/stripe.js';
 import { matchOrder } from '../../src/lib/corridors.js';
 import { packNotes, portKnown } from '../../src/lib/order-flags.js';
+import { consumeIpRateLimit, RATE_MESSAGE } from '../_lib/portal.js';
 
 const REQUIRED = ['name', 'email', 'tier', 'car', 'port', 'start', 'end', 'depart'];
 const MAX = 2000;
@@ -41,6 +42,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   if (!(await verifyTurnstile(request, env, data['cf-turnstile-response'], 'plan_request'))) {
     return json({ error: 'The security check failed. Refresh the page and try again.' }, 403);
+  }
+
+  if (await consumeIpRateLimit(env.DB, request, 'intake-ip')) {
+    return json({ error: RATE_MESSAGE }, 429);
   }
 
   const missing = REQUIRED.filter((k) => !String(data[k] ?? '').trim());
