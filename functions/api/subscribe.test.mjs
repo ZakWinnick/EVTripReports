@@ -499,3 +499,33 @@ test('form markup states the offer and the Buttondown note', () => {
   assert.doesNotMatch(html, /BUTTONDOWN|Rangeway|—/);
   assert.throws(() => newsletterForm('bad id'));
 });
+
+function rateDb(n = 0) {
+  return {
+    prepare(sql) {
+      return {
+        bind() {
+          return {
+            async first() { return { n }; },
+            async run() { return { success: true }; },
+          };
+        },
+      };
+    },
+  };
+}
+
+test('subscribe rate-limits an IP when D1 is bound', async () => {
+  const net = installFetch(() => { throw new Error('fetch should not run'); });
+  try {
+    const res = await read(await onRequestPost({
+      request: request({ email: 'a@b.co' }),
+      env: { BUTTONDOWN_API_KEY: KEY, DB: rateDb(10) },
+    }));
+    assert.equal(res.status, 429);
+    assert.equal(res.body.error, 'Too many requests. Wait a few minutes and try again.');
+    assert.equal(net.calls.length, 0);
+  } finally {
+    net.restore();
+  }
+});

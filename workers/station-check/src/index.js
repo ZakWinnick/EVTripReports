@@ -148,6 +148,43 @@ async function run(env, routes) {
 
 const list = (s) => (s || '').split(',').map((x) => x.trim()).filter(Boolean);
 
+const SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'",
+  'Referrer-Policy': 'no-referrer',
+  'Cache-Control': 'no-store',
+};
+
+function withSecurityHeaders(res) {
+  const headers = new Headers(res.headers);
+  for (const [key, value] of Object.entries(SECURITY_HEADERS)) headers.set(key, value);
+  return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+}
+
+function bearerToken(request) {
+  const header = request.headers.get('Authorization') || '';
+  const match = /^Bearer[ \t]+(\S+)$/i.exec(header.trim());
+  return match ? match[1] : null;
+}
+
+function safeEqual(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+  const encoder = new TextEncoder();
+  const left = encoder.encode(a);
+  const right = encoder.encode(b);
+  if (left.byteLength !== right.byteLength) {
+    crypto.subtle.timingSafeEqual(left, left);
+    return false;
+  }
+  return crypto.subtle.timingSafeEqual(left, right);
+}
+
+function authorized(request, env) {
+  const token = bearerToken(request);
+  return Boolean(env.RUN_TOKEN && token && safeEqual(token, env.RUN_TOKEN));
+}
+
 export default {
   async scheduled(event, env, ctx) {
     const weekly = list(env.ROUTES_WEEKLY);
@@ -155,18 +192,19 @@ export default {
     ctx.waitUntil(run(env, [...weekly, ...monthly]));
   },
 
-  // Manual run and latest report, both behind RUN_TOKEN: /run?token=... and /latest?token=...
+  // Manual run and latest report, both behind RUN_TOKEN as Authorization: Bearer.
+  // Query-string tokens are no longer accepted.
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (!env.RUN_TOKEN || url.searchParams.get('token') !== env.RUN_TOKEN) return new Response('Not found', { status: 404 });
+    if (!authorized(request, env)) return withSecurityHeaders(new Response('Not found', { status: 404 }));
     if (url.pathname === '/run') {
       const { body, emailed } = await run(env, [...list(env.ROUTES_WEEKLY), ...list(env.ROUTES_MONTHLY)]);
-      return new Response(`${body}\n\nEmailed: ${emailed}`, { headers: { 'content-type': 'text/plain; charset=utf-8' } });
+      return withSecurityHeaders(new Response(`${body}\n\nEmailed: ${emailed}`, { headers: { 'content-type': 'text/plain; charset=utf-8' } }));
     }
     if (url.pathname === '/latest') {
       const r = await env.DB.prepare('SELECT run_at, route, items, summary, details FROM check_runs ORDER BY id DESC LIMIT 10').all();
-      return Response.json(r.results);
+      return withSecurityHeaders(Response.json(r.results));
     }
-    return new Response('Not found', { status: 404 });
+    return withSecurityHeaders(new Response('Not found', { status: 404 }));
   },
 };

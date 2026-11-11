@@ -1,7 +1,8 @@
 name = "evtripreports-station-check"
 main = "src/index.js"
 compatibility_date = "2026-10-14"
-workers_dev = true
+workers_dev = false
+preview_urls = false
 # Keep variables added in the dashboard when this file is deployed.
 keep_vars = true
 
