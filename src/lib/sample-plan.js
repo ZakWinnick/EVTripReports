@@ -12,6 +12,6 @@ export function samplePlan(route) {
     depart: '2026-11-02T08:00',
     tier: '$39',
     passengers: '2 adults, 1 dog',
-    notes: 'One dog. Prefer a stop with a restroom when the guide lists one.',
+    notes: 'One dog. Prefer a stop with a confirmed restroom.',
   }, route);
 }

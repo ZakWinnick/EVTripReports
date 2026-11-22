@@ -15,7 +15,7 @@ export const FAKE_ORDER = {
   startBattery: 80,
   depart: '2026-11-02T08:00',
   tier: '$39',
-  notes: 'One dog. Prefer a stop with a restroom when the guide lists one.',
+  notes: 'One dog. Prefer a stop with a confirmed restroom.',
   start: 'Los Angeles, CA',
   end: 'Las Vegas, NV',
   passengers: '2 adults, 1 dog',
