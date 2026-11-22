@@ -56,6 +56,25 @@ test('social image tags and the 1200 by 630 card', async () => {
   assert.equal(png.readUInt32BE(20), 630);
 });
 
+test('public content has a support page and the current analytics script without signup forms', async () => {
+  for (const path of ['', 'plans/', 'sample-plan/', 'guides/la-to-las-vegas/', 'contact/']) {
+    const html = await source(`../dist/${path}index.html`);
+    assert.match(html, /<script\b[^>]*\bdefer\b[^>]*src="https:\/\/tinylytics\.app\/js\/script\.js"[^>]*data-site="yTazdLcW53ZLKkX41y8k"/, path);
+    assert.doesNotMatch(html, /newsletter-band|New corridor guides and charger changes/, path);
+    assert.match(html, /href="\/contact\/">Contact<\/a>/, path);
+    if (path === 'contact/') assert.match(html, /href="mailto:support@evtripreports\.com"/);
+  }
+});
+
+test('sample route map links to charging areas within the sample and labels the guide separately', async () => {
+  const sample = await source('../dist/sample-plan/index.html');
+  const stopAnchors = new Set([...sample.matchAll(/href="#(stop-[\w-]+)"/g)].map((match) => match[1]));
+  assert.ok(stopAnchors.size > 1);
+  for (const anchor of stopAnchors) assert.ok(sample.includes(`id="${anchor}"`), anchor);
+  assert.doesNotMatch(sample, /href="\/guides\/[^"]+#stop-/);
+  assert.match(sample, /href="\/guides\/la-to-las-vegas\/">public I-15 reference guide<\/a>/);
+});
+
 test('mobile menu, skip link, and form autocomplete', async () => {
   const layout = await source('../src/layouts/Base.astro');
   const css = await source('../src/styles/global.css');
@@ -101,7 +120,6 @@ test('ink and control colors meet the contrast floors', async () => {
   assert.ok(contrast(control, '#ffffff') >= 3, contrast(control, '#ffffff'));
   assert.ok(contrast(control, '#f3f4f2') >= 3, contrast(control, '#f3f4f2'));
   assert.match(css, /\.pill--ghost \{[^}]*var\(--control\)/);
-  assert.match(css, /\.newsletter__row input\[type="email"\] \{[^}]*var\(--control\)/);
   assert.match(plans, /\.form input, \.form select, \.form textarea \{[^}]*var\(--control\)/);
   assert.match(find, /\.form input \{[^}]*var\(--control\)/);
 });
