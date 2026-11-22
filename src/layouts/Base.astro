@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import '../styles/guide.css';
 import '../styles/field-guide.css';
-import { newsletterForm } from '../lib/newsletter.js';
 
 interface Props {
   title: string;
@@ -58,7 +57,7 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find My Plans' }
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <slot name="head" />
-    {analytics && <script is:inline src="https://tinylytics.app/embed/yTazdLcW53ZLKkX41y8k.js" defer></script>}
+    {analytics && <script is:inline defer src="https://tinylytics.app/js/script.js" data-site="yTazdLcW53ZLKkX41y8k"></script>}
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -88,9 +87,6 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find My Plans' }
       <slot />
     </main>
     <footer class="foot">
-      <div class="wrap foot__signup newsletter-band" hidden>
-        <Fragment set:html={newsletterForm('newsletter-footer')} />
-      </div>
       <div class="wrap foot__grid">
         <div>
           <strong>EV Trip Reports</strong><br />
@@ -105,13 +101,11 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find My Plans' }
           <a href="/about/">About</a>
           <a href="/terms/">Terms</a>
           <a href="/privacy/">Privacy</a>
-          <a href="mailto:support@evtripreports.com">Contact</a>
+          <a href="/contact/">Contact</a>
         </nav>
       </div>
     </footer>
     <script>
-      import { mountNewsletterForms } from '../lib/turnstile-client.js';
-      mountNewsletterForms();
       import { mountFieldGuide } from '../lib/field-guide-client.js';
       mountFieldGuide();
     </script>

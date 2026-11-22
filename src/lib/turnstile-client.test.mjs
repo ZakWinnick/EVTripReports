@@ -2,10 +2,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import {
-  SECURITY_RETRY,
   TURNSTILE_SRC,
   loadTurnstile,
-  mountNewsletterForms,
   renderWidget,
 } from './turnstile-client.js';
 
@@ -15,7 +13,6 @@ function classesOf(node) {
 
 function matches(node, selector) {
   const classes = classesOf(node);
-  if (selector === 'form.newsletter') return node.tag === 'form' && classes.includes('newsletter');
   if (selector === 'button[type="submit"]') return node.tag === 'button';
   if (selector === ':invalid') return node.invalid === true;
   if (selector.startsWith('.')) return classes.includes(selector.slice(1));
@@ -197,125 +194,13 @@ test('getResponse returning undefined does not erase the hidden input token', ()
   assert.equal(widget.getToken(), 'from-input');
 });
 
-function newsletterDom() {
-  const doc = page();
-  const slot = makeElement('div', 'newsletter__slot');
-  slot.hidden = true;
-  const email = makeElement('input');
-  email.name = 'email';
-  email.value = 'ada@example.com';
-  const msg = makeElement('p', 'newsletter__msg');
-  const btn = makeElement('button');
-  btn.textContent = 'Sign up';
-  const form = makeElement('form', 'newsletter');
-  form.checkValidity = () => !form.invalid;
-  form.appendChild(email);
-  form.appendChild(slot);
-  form.appendChild(btn);
-  form.appendChild(msg);
-  const band = makeElement('div', 'wrap foot__signup newsletter-band');
-  band.appendChild(form);
-  doc.body.appendChild(band);
-  return { doc, form, slot, msg, btn, email };
-}
-
-test('newsletter widgets render only after signup is open, one per form', async () => {
-  const { doc, slot } = newsletterDom();
-  const renders = [];
-  const win = {
-    document: doc,
-    fetch: async () => Response.json({ open: true, turnstileSiteKey: 'site-key' }),
-  };
-  mountNewsletterForms(doc, win);
-  await flush();
-  const script = doc.querySelector('script[src*="challenges.cloudflare.com/turnstile"]');
-  assert.ok(script);
-  assert.equal(slot.hidden, true);
-  win.turnstile = {
-    render(el, opts) {
-      renders.push({ el, opts });
-      return 'widget-1';
-    },
-  };
-  script.onload();
-  await flush();
-  assert.equal(renders.length, 1);
-  assert.equal(renders[0].opts.action, 'newsletter_signup');
-  assert.equal(renders[0].opts.appearance, 'always');
-  assert.equal(slot.hidden, false);
-  assert.equal(doc.querySelectorAll('script[src*="challenges.cloudflare.com/turnstile"]').length, 1);
-});
-
-test('a failed newsletter check resets the widget and asks for another try', async () => {
-  const { doc, form, msg, btn } = newsletterDom();
-  const posts = [];
-  const resets = [];
-  const win = {
-    document: doc,
-    fetch: async (url, init) => {
-      if (init) {
-        posts.push(JSON.parse(init.body));
-        return new Response(JSON.stringify({ error: 'The security check failed. Refresh the page and try again.' }), { status: 403 });
-      }
-      return Response.json({ open: true, turnstileSiteKey: 'site-key' });
-    },
-  };
-  mountNewsletterForms(doc, win);
-  await flush();
-  win.turnstile = {
-    render(el, opts) {
-      opts.callback('issued-token');
-      return 'widget-1';
-    },
-    reset(id) { resets.push(id); },
-    getResponse() { return undefined; },
-  };
-  doc.querySelector('script[src*="challenges.cloudflare.com/turnstile"]').onload();
-  await flush();
-  form.listeners.submit[0]({ preventDefault() {} });
-  await flush();
-  assert.equal(posts[0]['cf-turnstile-response'], 'issued-token');
-  assert.equal(posts[0].email, 'ada@example.com');
-  assert.equal(msg.textContent, SECURITY_RETRY);
-  assert.equal(msg.className.includes('is-err'), true);
-  assert.equal(btn.disabled, false);
-  assert.deepEqual(resets, ['widget-1']);
-});
-
-test('submitting before the challenge finishes does not send an empty token', async () => {
-  const { doc, form, msg } = newsletterDom();
-  let posted = false;
-  const win = {
-    document: doc,
-    fetch: async (url, init) => {
-      if (init) { posted = true; return Response.json({ ok: true }); }
-      return Response.json({ open: true, turnstileSiteKey: 'site-key' });
-    },
-  };
-  mountNewsletterForms(doc, win);
-  await flush();
-  win.turnstile = {
-    render() { return 'widget-1'; },
-    getResponse() { return undefined; },
-    reset() {},
-  };
-  doc.querySelector('script[src*="challenges.cloudflare.com/turnstile"]').onload();
-  await flush();
-  form.listeners.submit[0]({ preventDefault() {} });
-  await flush();
-  assert.equal(posted, false);
-  assert.equal(msg.textContent, SECURITY_RETRY);
-});
-
 test('plan and find pages use the shared widget with their own actions', () => {
   const plans = readFileSync(new URL('../pages/plans.astro', import.meta.url), 'utf8');
   const find = readFileSync(new URL('../pages/find-my-plans.astro', import.meta.url), 'utf8');
-  const layout = readFileSync(new URL('../layouts/Base.astro', import.meta.url), 'utf8');
   const client = readFileSync(new URL('./turnstile-client.js', import.meta.url), 'utf8');
-  for (const src of [plans, find, layout]) assert.match(src, /turnstile-client\.js/);
+  for (const src of [plans, find]) assert.match(src, /turnstile-client\.js/);
   assert.match(plans, /action: 'plan_request'/);
   assert.match(find, /action: 'find_plans'/);
-  assert.match(client, /action: 'newsletter_signup'/);
   assert.match(client, /appearance: 'always'/);
   assert.match(client, /cf-turnstile-response/);
   assert.match(plans, /SECURITY_RETRY/);

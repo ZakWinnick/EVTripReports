@@ -1,7 +1,6 @@
 // Renders guide HTML from route data.
 // Used at build time by the Astro pages and at request time by the Pages Functions,
 // so a guide published to D1 looks exactly like one built into the site.
-import { newsletterForm } from './newsletter.js';
 
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ESC[c]);
@@ -414,17 +413,17 @@ export function guideMain(route) {
   route = forDisplay(route);
   const S = route.sources;
   return `<section class="guide-hero"><div class="wrap">
-<div class="guide-hero__top"><p class="guide-crumb">${shield(route.highway, 'shield--lg')}<span>Charging research for ${esc(route.highway)}</span></p><div class="guide-tools"><button type="button" data-print>Print Guide</button></div></div>
+<div class="guide-hero__top"><p class="guide-crumb">${shield(route.highway, 'shield--lg')}<span>Public charging reference for ${esc(route.highway)}</span></p><div class="guide-tools"><button type="button" data-print>Print Guide</button></div></div>
 <h1 class="h1">${esc(route.title)}</h1><p class="lede" style="margin-top:20px">${esc(route.summary)}</p>
 <div class="guide-boundary"><span><strong>Covers</strong> ${esc(route.startLabel)} to ${esc(route.endLabel)}</span><span class="boundary-distance">${esc(route.stats[0].value)} corridor miles, ${route.stops.length} charging areas</span></div>
-<p class="checked-note">Facts checked ${esc(fmtDate(route.checked))}. Not live status. <a href="/methodology/">How We Check</a></p></div></section>
+<p class="checked-note">Facts checked ${esc(fmtDate(route.checked))}. Not live status. <a href="/methodology/">How We Check</a></p>
+<p class="small muted">This reference covers the corridor. <a href="/plans/?route=${esc(route.slug)}#request">Request a plan</a> matched to your car, adapter, and travel dates.</p></div></section>
 <section class="route-overview" aria-label="Route overview"><div class="wrap">${routeLine(route)}
 <p class="note">${esc(route.startNote)} You don’t need every stop.</p><details class="guide-route-facts"><summary>Route facts and sources</summary>${statStrip(route.stats)}</details></div></section>
 <nav class="stop-nav" aria-label="Jump to a charging area"><div class="wrap"><span class="stop-nav__label">Jump to</span>${route.stops.map((stop) => `<a href="#stop-${esc(stop.id)}"><span>${esc(stop.mile)}</span>${esc(stop.name)}</a>`).join('')}<a href="#route-notes">Trip notes</a></div></nav>
 ${route.stops.map((stop, i) => stopSection(route, stop, i)).join('\n')}
 <section id="route-notes" class="band"><div class="wrap guide-bottom"><div><h2 class="h2">Trip Notes</h2><ol class="tips">${route.tips.map((tip) => `<li>${esc(tip.text)} ${S[tip.source] ? ext(S[tip.source].url, 'Source', 'small') : ''}</li>`).join('')}</ol></div><div><h2 class="h2">At Your Destination</h2><p class="note">${esc(arrivalNote(route))}</p></div></div></section>
-<section class="band band--tight"><div class="wrap"><div class="plan-cta"><div><h2 class="h2">Want a Plan for This Trip?</h2><p class="lede" style="margin-top:18px">Built for your car and dates. Reviewed by a human.</p></div><div class="btnrow"><a class="pill pill--lg" href="/plans/?route=${esc(route.slug)}#request">Plan This Trip</a><a class="text-link" href="/sample-plan/">See a Sample</a></div></div></div></section>
-<section class="band band--tight newsletter-band" hidden><div class="wrap"><h2 class="h2">Guide Updates</h2>${newsletterForm('newsletter-guide')}</div></section>`;
+<section class="band band--tight"><div class="wrap"><div class="plan-cta"><div><h2 class="h2">Want a Plan for This Trip?</h2><p class="lede" style="margin-top:18px">Built for your car and dates. Reviewed by a human.</p></div><div class="btnrow"><a class="pill pill--lg" href="/plans/?route=${esc(route.slug)}#request">Plan This Trip</a><a class="text-link" href="/sample-plan/">See a Sample</a></div></div></div></section>`;
 }
 
 export function guideRegion(slug = '') {
