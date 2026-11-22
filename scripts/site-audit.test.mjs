@@ -58,6 +58,16 @@ test('social image tags and the 1200 by 630 card', async () => {
   assert.equal(png.readUInt32BE(20), 630);
 });
 
+test('the homepage photo caption uses the short credit and About carries the full attribution', async () => {
+  const home = await source('../dist/index.html');
+  const about = await source('../dist/about/index.html');
+  const caption = home.match(/<figcaption[^>]*>([^]*?Photo via[^]*?)<\/figcaption>/)?.[1];
+  assert.ok(caption);
+  assert.match(caption.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(), /Photo via Flickr, CC BY 2\.0$/);
+  assert.doesNotMatch(home, /Thank You \(22 Millions\+\) views|<summary>Full credit/);
+  assert.match(about, /California Winter Scenery[^]*?by Thank You \(22 Millions\+\) views[^]*?CC BY 2\.0[^]*?Cropped for the homepage\./);
+});
+
 test('public content has a support page and the current analytics script without signup forms', async () => {
   for (const path of ['', 'plans/', 'sample-plan/', 'guides/la-to-las-vegas/', 'contact/']) {
     const html = await source(`../dist/${path}index.html`);

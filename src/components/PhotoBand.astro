@@ -7,12 +7,12 @@ interface Props {
   caption: string;
   credit: string;
   href: string;
-  source?: { name: string; title: string };
+  creditSource?: boolean;
   license?: string;
   licenseUrl?: string;
   eager?: boolean;
 }
-const { name, alt, caption, credit, href, source, license, licenseUrl, eager = false } = Astro.props;
+const { name, alt, caption, credit, href, creditSource = false, license, licenseUrl, eager = false } = Astro.props;
 ---
 <figure class="photoband">
   <img
@@ -27,16 +27,7 @@ const { name, alt, caption, credit, href, source, license, licenseUrl, eager = f
   />
   <figcaption class="wrap">
     {caption}{' '}
-    {source ? (
-      <>
-        Photo via <a href={href}>{source.name}</a>{licenseUrl && <>, <a href={licenseUrl}>{license}</a></>}
-        <details class="photoband__credit">
-          <summary>Full credit</summary>
-          <div><a href={href}>{source.title}</a> by {credit}. Cropped for this page.</div>
-        </details>
-      </>
-    ) : (
-      <>Photo: <a href={href}>{credit}</a>{licenseUrl && <> · <a href={licenseUrl}>{license}</a> · cropped</>}</>
-    )}
+    {creditSource ? 'Photo via ' : 'Photo: '}<a href={href}>{credit}</a>
+    {licenseUrl && <>{creditSource ? ', ' : ' · '}<a href={licenseUrl}>{license}</a>{!creditSource && ' · cropped'}</>}
   </figcaption>
 </figure>
