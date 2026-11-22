@@ -17,7 +17,7 @@ interface Props {
 const { title, brandFirst = false, description, path = '', current: currentProp = '', noindex = false, robots = 'noindex', analytics = true, referrer = '' } = Astro.props;
 const fullTitle = brandFirst ? `EV Trip Reports | ${title}` : `${title} | EV Trip Reports`;
 const canonical = new URL(path || Astro.url.pathname, Astro.site).toString();
-const ogImage = new URL('/og.png', Astro.site).toString();
+const ogImage = new URL('/og.png?v=2', Astro.site).toString();
 const current = String(currentProp || Astro.url.pathname);
 const navCurrent = (href: string) => {
   const page = current.replace(/\/+$/, '') || '/';
@@ -49,7 +49,7 @@ const menuLinks = [...links, { href: '/find-my-plans/', label: 'Find My Plans' }
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="EV Trip Reports. A travel agent for EVs." />
+    <meta property="og:image:alt" content="EV Trip Reports. Custom EV Road Trip Plans." />
     <meta property="og:site_name" content="EV Trip Reports" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />

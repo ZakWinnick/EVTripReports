@@ -23,10 +23,10 @@ const signRows = [
 const at = (mile: number) => (mile / total).toFixed(4);
 const homeLd = { '@context': 'https://schema.org', '@graph': [
   { '@type': 'WebSite', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'Personal EV trip planning for any route.' },
-  { '@type': 'Organization', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'A travel agent for EVs.' },
+  { '@type': 'Organization', name: 'EV Trip Reports', url: 'https://evtripreports.com/', description: 'Custom charging plans for EV road trips.' },
 ] };
 ---
-<Base title="A Travel Agent for EV Road Trips" brandFirst={true} description="Custom EV trip plans for your car, route, and dates. See a sample plan with charging stops, available backups, and dated sources.">
+<Base title="Custom EV Road Trip Plans" brandFirst={true} description="Custom EV trip plans for your car, route, and dates. See a sample plan with charging stops, available backups, and dated sources.">
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(homeLd)}></script>
   <div class="home">
     <section class="home-hero">
@@ -55,7 +55,7 @@ const homeLd = { '@context': 'https://schema.org', '@graph': [
       </div>
     </section>
 
-    <PhotoBand name="i15-near-baker" alt="Interstate 15 near Baker, California, with snow on the surrounding mountains" caption="I-15 near Baker, California, December 2019." credit="Thank You (22 Millions+) views" href="https://commons.wikimedia.org/wiki/File:California_Winter_Scenery,_I-15_Las_Vegas_to_Los_Angeles.jpg" license="CC BY 2.0" licenseUrl="https://creativecommons.org/licenses/by/2.0/" eager />
+    <PhotoBand name="i15-near-baker" alt="Interstate 15 near Baker, California, with snow on the surrounding mountains" caption="I-15 near Baker, California, December 2019." credit="Thank You (22 Millions+) views" href="https://www.flickr.com/photos/prayitnophotography/50905795163/" source={{ name: 'Flickr', title: 'California Winter Scenery, I-15 Las Vegas to Los Angeles' }} license="CC BY 2.0" licenseUrl="https://creativecommons.org/licenses/by/2.0/" eager />
 
     <section id="inside-plan" class="home-plan">
       <div class="wrap">
