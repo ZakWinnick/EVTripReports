@@ -8,7 +8,7 @@
     "test": "node --test functions/guides/guide-404.test.mjs functions/guides/guide-index.test.mjs functions/api/plan-review.test.mjs functions/api/stripe-webhook.test.mjs functions/api/intake.test.mjs functions/api/portal.test.mjs functions/api/subscribe.test.mjs functions/_lib/turnstile.test.mjs functions/sitemap.test.mjs scripts/publish-status.test.mjs scripts/build-plan.test.mjs scripts/render-guide.test.mjs scripts/site-audit.test.mjs scripts/trailing-slash.test.mjs scripts/csp.test.mjs src/lib/turnstile-client.test.mjs src/lib/corridors.test.mjs src/lib/order-flags.test.mjs scripts/order-to-route.test.mjs functions/_lib/retention.test.mjs functions/_middleware.test.mjs"
   },
   "dependencies": {
-    "astro": "^7.3.8"
+    "astro": "^7.4.7"
   },
   "private": true,
   "type": "module"
